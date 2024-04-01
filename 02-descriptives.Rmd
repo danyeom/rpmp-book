@@ -1,0 +1,319 @@
+# Descriptive statistics (Module 5)
+
+```{r warning = FALSE, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(ggpubr)
+library(here)
+library(rstatix)
+
+# i_am("code/bookdown/02-descriptives.Rmd")
+```
+
+Descriptive statistics, as the name implies, are used to describe data. A key part of the quantitative research process is understanding the various ins and outs of your data. You'll probably have a sense of why this is important if you have the qualitative presentation still fresh in your mind - namely, knowing your data is also really important for knowing what to do with it.
+
+In this first module, we will start with the first steps of understanding quantitative data. This involves visualising our data to see what it looks like, and describing key features of the data. If you're familiar with statistics then some of this may seem a bit trivial, but it's important that we get the basics right before we go on to doing fancy statistical tests.
+
+Also, I know that the idea of doing statistics and maths freaks a lot of us out - and that's totally normal. Yes, there will be some number-crunching and maths in the next series of modules, but the focus of these modules is not to force you to calculate things by hand. You will encounter a whole bunch of mathematical formulae, but the point of doing so is to illustrate the concepts that underpin them. These concepts are crucial to understanding the 'magic' that happens with quantitative analysis, and a really solid foundation in statistical concepts will go a long way.
+
+That being said, throughout these statistics modules there will be a number of activities that ask you to actively work with sample datasets and analyse them. We promise that you will get so much more out of these modules if you complete these activities, because readings and webpages aren't the best substitute for actually doing it and getting your hands dirty with data.
+
+Also note that didactic seminars begin this week! Each seminar will go through the key concepts that are covered here in the LMS. From here to Week 11, treat the LMS pages as an online textbook rather than the primary subject delivery (you may have noticed that the module requirements now list only this page and the quiz). Note below that the majority of these 'textbook' style pages don't have estimated time allocations, as they are covered in the seminar anyway.
+
+By the end of this module you should be able to:
+
+-   Create both appropriate and meaningful graphs from data
+-   Calculate various forms of descriptive statistics
+-   Interpret both graphs and descriptive statistics, and explain what they tell you
+
+## Visualising data
+
+::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
+When you have data in your hand, it is often tempting to dive straight into plugging it into an analysis and seeing what the results are. However, in general this is unwise. The first step in working with quantitative data is to see what your data looks like. Looking at the data can give us a first glance into many aspects of the results, which can be informative for analyses.
+:::
+
+### Why visualise data?
+
+> "The greatest value of a picture is when it forces us to notice what we never expected to see." -John W. Tukey
+
+One of the first steps in working with quantitative data is data visualisation, which is the process of graphing it and looking at it. If you work with quantitative data then it should become standard practice for you to graph your data before analysing it.
+
+It's common for many students learning research methods and statistics to simply take a 'cookie cutter' approach - that is, collect data, run basic tests on it and call it a day. Sadly this is common even at our level, and you will almost certainly see this happen at music psychology conferences that you go to in future. People will present complex analyses that sound impressive - until you pick up on small cues that suggest they don't really understand their data at all.
+
+Below is an example of why data visualisation should be a crucial part of the quantitative research process:
+
+This series of datasets is called the Datasaurus Dozen
+
+Links to an external site., which are 12 datasets that look entirely different (including the dinosaur!) but share almost identical summary statistics, as shown by the bold numbers on the right.
+
+Data visualisation is important because:
+
+1.  It lets you observe patterns in your data.
+2.  It can reveal unexpected structures in your data that would normally be missed otherwise.
+3.  It is an effective way of communicating information. The best graphs tell a reader everything they need to know in one image.
+
+## Counts and central tendencies
+
+::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
+Once we understand what our data looks like, we can then move to describing the general properties of the data. Such general properties are called descriptive statistics. Reporting descriptive statistics is crucial for many aspects of quantitative research.
+:::
+
+## Variability
+
+::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
+The other important part of describing data is in how spread out it is. Is our data tightly bunched together, or is it very spread out? This helps us understand where most of our data falls, as well as how it looks.
+:::
+
+### The variability of data
+
+The other key way of describing data is in its spread, or distribution. The way data is distributed can give key insights into how that data should be treated.
+
+Consider the following graphs below.
+
+```{r fig.align = "center", echo = FALSE}
+x <- seq(0, 100, 0.2)
+random_a <- dnorm(x, mean = 50, sd = 8)
+random_b <- dnorm(x, mean = 50, sd = 12)
+random_c <- dnorm(x, mean = 50, sd = 4)
+
+normal_curves <- data.frame(cbind(
+  a = random_a,
+  b = random_b,
+  c = random_c,
+  x = x
+))
+
+normal_curve_plots <- ggplot(normal_curves, aes(x = x, y = a)) + 
+  geom_line(linewidth = 2, colour = "blue") +
+  geom_line(aes(x = x, y = b), linewidth = 2, colour = "red") +
+  geom_line(aes(x = x, y = c), linewidth = 2, colour = "orange") +
+  labs(y = "density")+
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.border = element_blank(),
+    panel.grid=element_blank(),
+    axis.ticks = element_blank(),
+    axis.text.x=element_blank(),
+    plot.title=element_text(size=14, face="bold"),
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    plot.background = element_rect(fill = "transparent",colour = NA)
+  ) +
+  geom_vline(xintercept = 50, linetype = "dashed")
+
+normal_curve_plots
+```
+
+
+You can see that all three graphs peak at around the same point, but *look* very different outside of that. The orange line is narrow, while the red line is considerably more spread out. All of these graphs peak at the same point but still look very different. Therefore, they have very different **spreads**, or **distributions**.
+
+We saw on the last page that we can quantify how far values are spread apart by finding the range. However, this isn't always a good idea - two datasets with the exact same range can look wildly different. Therefore, we need ways of quantifying how data is spread out as well.
+
+### Standard deviation
+
+**Standard deviation** ($\sigma$ or **SD**) describes how spread out our data is within our sample, in standard (i.e. comparable) units. Data that is spread out widely (like the red curve above) will have a large standard deviation; likewise, data that has a narrow spread will have a small standard deviation. We'll touch on this a bit more in the following pages, but for now just remember what a standard deviation is for.
+
+To calculate standard deviation, we first calculate **variance**, which is another measure of spread:
+
+$$
+ Variance = \frac{\Sigma (x_i - \bar{x} )^2}{n - 1}
+$$
+
+Or, in human terms:
+
+-    Take each data point (xi)
+-    Subtract the mean from each data point (x with the bar) and square that difference
+-    Add them all up together
+-    Divide by n - 1
+
+And then to calculate standard deviation, we simply take the square root of the variance.
+
+$$
+SD = \sqrt{Variance}
+$$
+Or, in full formula form:
+
+$$
+SD = \sqrt{\frac{\Sigma (x_i - \bar{x} )^2}{n - 1}}
+$$
+
+Standard deviations (SD) should reported alongside means when results are written up (consult an APA guide).
+
+### Standard error, and the SDoTM
+
+Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample's mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to sampling error. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:
+
+The spread of these sample means is called the sampling distribution of the mean (SDoTM), shown on the right. This gives us a sense of where the population mean (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.
+
+The standard error of the mean (standard error; SE) is another measure of variability - this time, it is the spread of sample means across the sampling distribution of the mean. This represents how close our sample mean is to the likely population mean. If our sampling distribution is wide, our standard error will be large - and that means that we won't have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean. 
+
+Standard error is calculated using the below formula:
+
+$$
+SE = \frac{SD}{\sqrt n}
+$$
+
+Where SD = standard deviation, and n = sample size. 
+
+ 
+
+Practice: You have a dataset of 400 people. You know that the mean of the DV is 760, with a standard deviation of 40. Calculate the standard error for this sample.
+
+## Distributions
+
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+The 'shape' of our data is equally important. What does our data actually look like? Does it even matter what it looks like? The topic of distributions in statistics and probability can make up its own subject (in fact it does), but here we discuss the basics below.
+</div>
+
+### The normal distribution
+
+Earlier, we saw a series of graphs overlaid on top of each other. These graphs, while having different variability, were essentially all the same shape - they were symmetrical bell curves. These were all examples of the normal distribution (also called the Gaussian distribution). The classic normal distribution takes on a neat bell-shaped curve:
+
+```{r fig.align = "center", fig.dim = c(4, 4), echo = FALSE}
+set.seed(2024)
+norm_data <- data.frame(
+  x = seq(-3, 3, length = 1001)
+  ) %>%
+  mutate(
+    y = dnorm(x)
+  )
+
+ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "transparent") +
+  stat_function(fun = dnorm, xlim = c(-3, 3), geom = "area", fill = "#659B5E", alpha = 0.8, colour = "#556F44") +
+  theme_pubr() +
+  labs(x = "", y = "") +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    plot.background = element_rect(fill = "transparent",colour = NA),
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank()
+  ) 
+```
+
+
+In the normal distribution, the majority of data points cluster in the middle, while all other values are symmetrically distributed from either side from the middle. This is what gives the normal distribution its recognisable bell shape.
+
+The normal distribution is defined by two parameters: the mean and the standard deviation of the data. These two parameters define the overall shape of the bell curve - the mean defines where the peak is, while the standard deviation defines how spread out the tails are.
+
+An important feature of the normal distribution is where all of the data is spread, regardless of its shape: 95% of the data within the curve falls within 1.96 standard deviations, either side of the mean. This applies to any normal distribution no matter what the scale of the data is. 99.7% of data falls within just below 3 standard deviations.
+
+```{r echo = FALSE, fig.align = "center", fig.dim = c(8, 4)}
+
+normdist_1 <- ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "transparent") +
+  stat_function(fun = dnorm, xlim = c(1.96, 3), geom = "area", fill = "#556F44", alpha = 0.8, colour = "#556F44") +
+  stat_function(fun = dnorm, xlim = c(1, 1.96), geom = "area", fill = "#659B5E", alpha = 0.8, colour = "#659B5E") +
+  stat_function(fun = dnorm, xlim = c(0, 1), geom = "area", fill = "#95BF74", alpha = 0.8, colour = "#95BF74") +
+  stat_function(fun = dnorm, xlim = c(-1, 0), geom = "area", fill = "#95BF74", alpha = 0.8, colour = "#95BF74") +
+  stat_function(fun = dnorm, xlim = c(-1.96, -1), geom = "area", fill = "#659B5E", alpha = 0.8, colour = "#659B5E") +
+  stat_function(fun = dnorm, xlim = c(-3, -1.96), geom = "area", fill = "#556F44", alpha = 0.8, colour = "#556F44") +
+  geom_segment(aes(x = 0, y = 0, xend = 0, yend = max(y)), colour = "#556F44") +
+  annotate("text", x = 0.5, y = 0.2, label = "34.1%") +
+  annotate("text", x = -0.5, y = 0.2, label = "34.1%") +
+  annotate("text", x = 1.5, y = 0.05, label = "13.6%") +
+  annotate("text", x = -1.5, y = 0.05, label = "13.6%") +
+  annotate("text", x = 2.5, y = 0.05, label = "2.1%") +
+  annotate("text", x = -2.5, y = 0.05, label = "2.1%") +
+  theme_pubr() +
+  labs(x = "Standard deviations", y = "") +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    plot.background = element_rect(fill = "transparent",colour = NA),
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  ) +
+  scale_x_continuous(breaks = c(-1.96, 0, 1.96))
+
+normdist_2 <- ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "transparent") +
+  stat_function(fun = dnorm, xlim = c(1.96, 3), geom = "area", fill = "#556F44", alpha = 0.8, colour = "#556F44") +
+  stat_function(fun = dnorm, xlim = c(-1.96, 1.96), geom = "area", fill = "#95BF74", alpha = 0.8, colour = "#95BF74") +
+  stat_function(fun = dnorm, xlim = c(-3, -1.96), geom = "area", fill = "#556F44", alpha = 0.8, colour = "#556F44") +
+  annotate("text", x = 0, y = 0.2, label = "95%") +
+  annotate("text", x = 2.5, y = 0.05, label = "2.5%") +
+  annotate("text", x = -2.5, y = 0.05, label = "2.5%") +
+  theme_pubr() +
+  labs(x = "Standard deviations", y = "") +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    plot.background = element_rect(fill = "transparent",colour = NA),
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  ) +
+  scale_x_continuous(breaks = c(-1.96, 0, 1.96))
+
+
+cowplot::plot_grid(normdist_1, normdist_2)
+```
+
+### Skew
+
+Skewness, as the name implies, describes whether or not a distribution is symmetrical or skewed. If a distribution is skewed, we would expect numbers to be bunched up at one end of the distribution. Have a look at the three graphs below:
+
+```{r fig.align = "center", echo = FALSE}
+x <- seq(0, 1, by = .02)
+
+skew_left <- data.frame(x, y = dbeta(x, 5, 2)) %>%
+  ggplot(aes(x, y)) + geom_line(color = "red") +
+  labs(y = "density") +
+  geom_area(fill = "red", alpha = 0.5) +
+  theme(legend.position = "none") + theme_minimal()
+
+skew_normal <- data.frame(x = seq(-3, 3, by = .1), y = dnorm(seq(-3, 3, by = .1))) %>%
+  ggplot(aes(x, y)) + geom_line(color = "purple") +
+  labs(y = "density") +
+  geom_area(fill = "purple", alpha = 0.5) +
+  theme(legend.position = "none")+ theme_minimal()
+
+skew_right <- data.frame(x, y = dbeta(x, 2, 5)) %>%
+  ggplot(aes(x, y)) + geom_line(color = "blue") +
+  labs(y = "density") +
+  geom_area(fill = "blue", alpha = 0.5) +
+  theme(legend.position = "none") + theme_minimal()
+
+cowplot::plot_grid(skew_left, skew_normal, skew_right, ncol = 3) 
+```
+
+
+-    The purple graph in the middle is symmetrically distributed, so we say that it has no skew.
+-    The red graph has values that are weighted towards the right-hand side of the x-axis, and so we say that it is either skewed left or negatively skewed.
+-    The blue graph, on the other hand is skewed right or positively skewed. The left-right refers to which end the tail of the distribution is on.
+
+Skewness can also be quantified numerically:
+
+-    A skewness of 0 means that a distribution is normal
+-    A positive skew value means that the data is skewed right
+-    A negative skew value means that the data is skewed left
+
+As a general rule, if a distribution has a skew greater than +1 or lower than -1, it is skewed. If your data is skewed then this is a bit of an issue; there's a nice overview of this point and one way of dealing with skew in this blog post.
+
+### Kurtosis
+
+Kurtosis refers to the shape of the tails specifically. Are all of the data bunched very tightly around one value, or are the data evenly spread out? The three graphs you saw up above all have different kurtoses.
+
+```{r fig.align = "center", echo = FALSE}
+normal_curve_plots
+```
+
+The orange graph has most values very close to the peak at 50; therefore, the tails themselves are very small. The red line, on the other hand, is spread out and flatter so the tails are larger. The blue curve again approximates a normal distribution. We can quantify kurtosis through the idea of excess kurtosis - in other words, how far does it deviate from what we see in a normal distribution. This is shown below:
+
+The different types of excess kurtoses are:
+
+-    Leptokurtic (heavy-tailed) - tails are smaller. Kurtosis > 1
+-    Mesokurtic - normally distributed. Kurtosis is close to 0
+-    Platykurtic (short-tailed) - tails are larger, and the peak is flatter. Kurtosis < -1
+
+Therefore, in the example above the orange curve would be considered leptokurtic, while the red one would be platykurtic.
+
+
+## z-scores
+
+

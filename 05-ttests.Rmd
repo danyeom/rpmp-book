@@ -1,0 +1,383 @@
+# t-tests
+
+```{r warning = FALSE, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(ggpubr)
+library(here)
+library(rstatix)
+
+# i_am("code/bookdown/05-ttests.Rmd")
+```
+
+t-tests are usually one of the first families of statistical tests that students learn when they take a research methods subject. I (Dan) pretty much learnt only t-tests until my third year of my psychology major (I learnt chi-squares and other tests through taking separate statistics subjects through my uni's Department of Statistics before I learnt them in psychology). It's not hard to see why this is the case - t-tests are really intuitive and simple to conduct, and so are an accessible way into learning statistical tests (even though chi-squares are even easier).
+
+The family of t-tests come into play when we have one categorical IV with two levels, and one continuous DV. As you can imagine, there are many instances where this kind of design comes into play, and you will see as much in the datasets and examples this week. There are nine datasets for you to play around this week (3 for each kind of test) - so hopefully that will give you plenty of practice!
+
+By the end of this module you should be able to:
+
+-   Describe how a t-test works in principle
+-   Conduct three forms of chi-square tests: one-sample, independent-samples and paired-samples
+-   Calculate and interpret an appropriate effect size for the above tests
+
+## t-tests and the t-distribution
+
+We begin this week's module in much the same way we went through last week's. We'll look at the shape of the underlying distribution, and what determines the shape of that distribution. On this page we'll also go through what the basic premise of the t-test is.
+
+### What is a *t*-test?
+
+The family of t-tests, broadly speaking, are used when we want to compare one mean against another. This can take on three major forms, which we will go into later in the module:
+
+1.  Is this sample mean different from the population mean?
+2.  Are these two group means different?
+3.  Is the mean at point 1 different to the mean at point 2?
+
+All of these instances require a comparison between two means, which the t-tests will allow you to test for. So, in a general sense our hypotheses would be something like:
+
+-   $H_0$: The means between the two groups are not significantly different. (i.e. $\mu_1 = \mu_2$)
+-   $H_1$: The means between the two groups are significantly different. (i.e. $\mu_1 \neq \mu_2$)
+
+The question of when t-tests should be used is hopefully somewhat obvious - in general, we use them we want to compare two means with each other. The important part is what kind of means they are:
+
+-   If we compare one sample mean to a hypothesised population mean, this is a one-sample t-test
+-   If we compare two group means, this is an independent samples t-test
+-   If we measure one group twice and compare the two means, this is a paired-samples t-test.
+
+In this module, we'll go through all three (but will emphasise the latter two especially as they see the most use).
+
+### The t-statistic
+
+Last week we introduced the chi-square statistic, which is the value that we use when we want to assess whether a result is significant. When we want to assess whether a difference between two means is significant we calculate a different test statistic, which (as the name implies) is the t-statistic. While you won't be required to calculate this by hand this week, it would be good to wrap your head around the below formula so you understand how it works in principle:
+
+$$
+t = \frac{M_1 - M_2}{SE}
+$$
+
+This is how t is calculated conceptually - it is the difference in the two means over the standard error of the mean. Note that the world conceptually is stressed here because the actual formula is slightly different for each t-test, but all work on this above principle. Again, we won't go through the maths of this in detail - this is beyond the scope of the subject!
+
+### The t-distribution
+
+By now, hopefully you're comfortable with the idea that we use our test statistic and find its position on its underlying probability distribution in order to calculate the p-value. The underlying distribution of this test is the t-distribution, which is depicted below. Note that like the chi-square distribution, degrees of freedom is the only parameter that determines its shape:
+
+```{r fig.dim = c(8, 4)}
+t_data <- tibble(
+  x = seq(-5, 5, length = 100),
+  df_1 = dt(x, 1),
+  df_2 = dt(x, 2),
+  df_5 = dt(x, 5)
+)
+
+
+t_data %>%
+  pivot_longer(
+    cols = df_1:df_5,
+    names_to = "df",
+    values_to = "t"
+  ) %>%
+  mutate(
+    df = factor(df, labels = c("df = 1", "df = 2", "df = 5"))
+  ) %>%
+  ggplot(
+    aes(x = x, y = t, colour = factor(df))
+  ) +
+  geom_line(size = 1) +
+  labs(
+    x = "x",
+    y = "Density",
+    colour = "df"
+  ) +
+  theme_pubr()
+  
+```
+
+The one key difference between the t-distribution and the chi-square distribution from a mathematical point of view is that the t-distribution is symmetrical, much like the normal distribution (although they are not the same). Therefore, it is possible to get a negative t test statistic; however, this simply reflects the order in which the groups are being compared. E.g.
+
+-   Say that Group 1 - Group 2 gives a test statistic of t = 1.5.
+-   If you were to enter the groups as Group 2 - Group 1 instead, the t would be -1.5. This simply reflects the ordering of the groups.
+
+### The t-table
+
+Once again, like the chi-square we have a beautiful little table for calculating a critical t-value. We won't go into too much depth over how this works because it works exactly like how it does for chi-squares - find the row corresponding to your degrees of freedom, then find the column corresponding to your alpha level.
+
+Yes, there are a lot of cross-references to what we covered last week with chi-squares - and that's a good thing! The point here is that conceptually, the process of testing hypotheses using t-tests is exactly the same as what we did with chi-squares, but the specific design and maths are different.
+
+## One-sample t-test
+
+The first test that we'll look at is the one-sample t-test, which is the most simple of the three that we will look at this week.
+
+### One-sample t-test
+
+A one-sample t-test is used when we want to compare a sample against a hypothesised population value. It is useful when we already know the expected value of the parameter we're interested in, such as a population mean or a target value.
+
+The basic hypotheses for a three-way interaction are:
+
+-   $H_0$: The sample mean is not significantly different from the hypothesised mean. (i.e. $M = \mu$)
+-   $H_1$: The sample mean is significantly different from the hypothesised mean. (i.e. $M \neq \mu$)
+
+It's worth noting that one-sample t-tests aren't that commonly used because they require you to know the population value (or, if you hypothesise a value, you need to justify why). However, they're included here because they're still a part of the t-test family, and they serve as a nice introduction to how t-tests work.
+
+### Example data
+
+Historically, scores in a fictional research methods class average at 72. This year, you are the subject coordinator for the first time, and you notice that last year's cohort appear to have really struggled. You want to see if there is a meaningful difference between the cohort's average grade and what the target grade should be.
+
+Here's the dataset below:
+
+```{r}
+w8_grades <- read_csv(here("data", "week_8", "W8_grades.csv"))
+head(w8_grades)
+```
+
+### Assumption checks
+
+There is only one relevant assumption that we need to check for the one-sample t-test: whether our data is distributed normally or not. We can do this in two ways. The first and quickest is through a test called the Shapiro-Wilks test (often abbreviated as the SW test). The SW test is a significant test of departures from normality. The statistic in question, W, is an index of normality. If W is close to 1, then data is normally distributed; the smaller W becomes, the more non-normal the data is.
+
+A significant p-value on the SW test suggests that the data is non-normal. Thankfully, that isn't an issue here.
+
+```{r}
+shapiro.test(w8_grades$sample)
+```
+
+The second way is through a QQ plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.
+
+```{r}
+knitr::include_graphics("img/w8_qqplots.svg")
+```
+
+
+### Output
+
+Here are our descriptive statistics. They alone might already tell us something is going on:
+
+```{r}
+w8_grades %>%
+  summarise(
+    mean = mean(sample, na.rm = TRUE),
+    sd = sd(sample, na.rm = TRUE),
+    median = median(sample, na.rm = TRUE)
+  ) %>%
+  knitr::kable(digits = 2)
+```
+
+To run a one-sample t-test, the basic function is the `t.test()` function. For a one-sample t-test, you must provide the argument `x` (the data) and `mu`, which is the hypothesised population mean.
+
+Below is our output from the one-sample t-test. Our result tells us that there is a significant difference between the mean of the sample (M = 67.09) and the hypothesised mean (p \< .001). The mean difference here is calculated as Sample - Hypothesis; therefore, a difference of -4.914 means that the sample mean is lower than the population mean (which hopefully would have been evident from the descriptives anyway). This means that for some reason, last year's cohort are performing worse than the expected average.
+
+```{r}
+t.test(w8_grades$sample, mu = 72)
+```
+
+Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test:
+
+```{r}
+w8_grades %>%
+  t_test(sample ~ 1, mu = 72)
+```
+
+
+
+## Independent samples t-test
+
+The independent-samples t-test is one of the most common tests that you will see in literature - it is one of the bread-and-butter tests of many music psychologists (for better or worse).
+
+### Independent samples
+
+Independent samples t-tests are used when we want to compare two separate groups on one continuous outcome. They're therefore well-suited for data with one categorical IV with two levels, against one continuous outcome.
+
+### Example data
+
+For this example we'll use a contrived but really simple example. A group of self-reported professional and amateur musicians were asked how many years of training they had on their primary instrument.
+
+```{r}
+w8_training <- read_csv(here("data", "week_8", "W8_training.csv"))
+head(w8_training)
+```
+
+### Assumption checks
+
+There are three main assumptions for a basic independent samples t-test:
+
+-   Data must be independent of each other - in other words, one person's response should not be influenced by another. This should come as a feature of good experimental design.
+-   The equality of variance (homoscedasticity) assumption. The classical t-test assumes that each group has the same variance (homoscedasticity). We can test this using a significant test called Levene's test. If the test is significant (p \< .05), the assumption is violated. In our data, this assumption seems to be intact (p = .737).
+
+```{r}
+w8_training %>%
+  levene_test(Years_training ~ Group, center = "mean")
+```
+
+-   The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the Shapiro-Wilks (SW) test. Like Levene's test, if the result of this test is significant it suggests that the normality assumption is violated. In our data, this appears to be the case (W=.946, p = .011).
+
+```{r}
+shapiro.test(w8_training$Years_training)
+```
+
+### Output
+
+In reality, it's rare that any of these assumptions are fully met even when tests say they are (the tests we just mentioned can be biased). This is especially true for classical t-tests, which are very sensitive to violations. A consistently better alternative is to use the Welch t-test, which assumes the equality of variance assumption is not met. Welch t-tests are also fairly robust against the normality assumption, and so are more flexible without sacrificing accuracy.
+
+Here's our output from R Note that this is from a Welch t-test - R will do this byu default.
+
+```{r}
+w8_training %>%
+  t_test(Years_training ~ Group)
+```
+
+From this, we can see that the two groups do significantly differ on years of training (t(57.99) = 5.859, p \< .001). We can use the mean difference value to see, well... the difference in means between the two groups. In this case, professionals have 2.92 more years of training (on average) compared to amateurs.
+
+(n.b. the signs for t and the mean difference don't overly matter so long as they are interpreted in the right way. The output above calculates amateurs - professionals, which is why the values for both are negative; but if you were to force the test to run the other way round, the values would be the same with the signs flipped. Hence why descriptives and graphs are super important too!
+
+## Paired-samples t-test
+
+Here's our last test for the module, and it is again another bread-and-butter statistical test in literature: the paired-samples t-test.
+
+### Paired-samples
+
+Paired samples t-tests, as the name sort of implies, are used when we have a sample and we take measurements twice. Often, paired-samples t-tests are interested in testing the effect of time on an outcome; for example, a before-after design lends itself quite nicely to paired-samples and other repeated-measures tests.
+
+The core hypotheses are very much the same here, aside from the caveat that the means are between conditions and not groups.
+
+Mathematically, the paired-samples t-test is actually just a variant of the one-sample t-test. If we did a one-sample t-test on the differences between the two timepoints/conditions, we would get the same results.
+
+### Example data
+
+For this example, we'll take a look at a simple interventions study. Participants were asked to answer a short list of questions relating to how they were feeling, once before an intervention and once afterwards. Higher scores represent better emotional states. The intervention was a series of self-regulation classes and exercises that the participants took twice a week. We're interested in seeing whether the intervention was effective.
+
+```{r}
+w8_symptoms <- read_csv(here("data", "week_8", "W8_symptoms.csv"))
+head(w8_symptoms)
+```
+
+R-note: For t-tests the data need to be in long format, so the below code will reformat this:
+
+```{r}
+# Create a wide version of the original dataset
+w8_symptoms_wide <- w8_symptoms
+
+# Pivot to long format
+w8_symptoms <- w8_symptoms %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "time",
+    values_to = "symptom_score"
+  )
+
+# Display start of new data
+head(w8_symptoms)
+```
+
+### Assumption checks
+
+Similar to other tests, we need to check normality. Here, the assumption is whether the differences between time 1 and 2 are normally distributed (not necessarily time 1 and 2 themselves). Hence, when we run a Shapiro-Wilks test we're running this on the values we get from Time 1 - Time 2.
+
+In our data, this assumption seems to be intact (p = .918).
+
+```{r}
+shapiro.test(w8_symptoms_wide$before - w8_symptoms_wide$after)
+```
+
+### Output
+
+In R, you can do pairwise t-tests using the default `t.test()` (or the `rstatix` equivalent `t_test()`) function. In both methods, you must set `paired = TRUE` in order to run a paired t-test. Your dataset needs to be in long format for both functions. Here are both methods. By now this should be familiar:
+
+```{r}
+t.test(symptom_score ~ time, data = w8_symptoms, paired = TRUE)
+
+w8_symptoms %>%
+  t_test(symptom_score ~ time, paired = TRUE)
+```
+
+The mean symptom scores of the two timepoints are significantly different (t(31) = 2.95, p = .006). Based on the means and mean difference, participants reported having significantly better emotional states after the intervention compared to beforehand.
+
+## Cohen's d
+
+This might be starting to sound a little familiar by now, but here are some effect sizes for t-tests. Note that they're different to the Cramer's V we saw in the chi-square test of independence last week - this is because it is a) conceptually different and b) interpreted differently too.
+
+### What is Cohen's *d*?
+
+Cohen's d is a measure of effect size that is used when comparing between two means (i.e. in a t-test). It essentially is a measure of the distance between the two means. See below for three pairs of means:
+
+```{r echo = FALSE, fig.dim = c(8, 2.5)}
+small_effect <- ggplot(data = tibble(x = c(50, 90)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 70, sd = 5), colour = "blue", size = 2) + 
+  stat_function(fun = dnorm, n = 101, args = list(mean = 71, sd = 5), colour = "red", size = 2) + 
+  labs(x = "Scores", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    plot.background = element_rect(fill = "transparent",colour = NA)
+  ) 
+
+medium_effect <- ggplot(data = tibble(x = c(50, 90)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 69, sd = 5), colour = "blue", size = 2) + 
+  stat_function(fun = dnorm, n = 101, args = list(mean = 71.5, sd = 5), colour = "red", size = 2) + 
+  labs(x = "Scores", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    plot.background = element_rect(fill = "transparent",colour = NA)
+  ) 
+
+large_effect <- ggplot(data = tibble(x = c(50, 90)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 67, sd = 5), colour = "blue", size = 2) + 
+  stat_function(fun = dnorm, n = 101, args = list(mean = 73, sd = 5), colour = "red", size = 2) + 
+  labs(x = "Scores", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    plot.background = element_rect(fill = "transparent",colour = NA)
+  ) 
+
+cowplot::plot_grid(small_effect, medium_effect, large_effect, ncol = 3, labels = "AUTO")
+```
+
+If two groups aren't all that different (e.g. panel A), then any effect of group will be small or negligible. If the two groups are further apart, however (like panel C), there is a more obvious effect of group - and so the size of the effect itself will be larger. Cohen's d essentially is a measure of this 'distance'.
+
+The basic formula for calculating Cohen's d is: 
+$$
+d = \frac{M_1 - M_2}{\sigma_{pooled}}
+$$
+
+In other words, Cohen's d is calculated by taking the difference between the two group means and dividing that by the pooled standard deviation across both groups. Pooled SD is essentially an aggregate SD across both groups in the sample, and not something we'll concern ourselves with this week (because like the maths for the t-statistic, the calculation of the pooled SD depends on the test and is hard).
+
+### Interpreting Cohen's *d*
+
+Cohen provided some now-famous guidelines for interpreting the size of Cohen's d values:
+
+```{r echo = FALSE}
+tibble(
+  effect = c("d = .20", "d = .50", "d = .80"),
+  interp = c("Small", "Medium", "Large")
+) %>%
+  knitr::kable(col.names = c("Effect size", "Interpretation"))
+```
+
+
+### Calculating Cohen's d in R
+
+The `cohens_d()` function from `rstatix` can handle the calculation of effect sizes for all three variants of t-tests. One thing that's quite nice about this is that the format for `cohens_d()` is exactly the same as it would be for the `t_test()` and `t.test()` family of functions:
+
+For a one-sample t-test, the formula once again needs to be in `var ~ 1` format and `mu` must be specified:
+
+```{r}
+w8_grades %>% 
+  cohens_d(sample ~ 1, mu = 72) 
+```
+For an independent-samples t-test:
+
+```{r}
+w8_training %>%
+  cohens_d(Years_training ~ Group)
+```
+
+For a paired-samples t-test, `paired = TRUE` must be selected:
+
+```{r}
+w8_symptoms %>%
+  cohens_d(symptom_score ~ time, paired = TRUE)
+```
+
+The Canvas version asks you to interpret each of these effect sizes, but... `rstatix` will automatically label this for you!
