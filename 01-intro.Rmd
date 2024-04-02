@@ -2,4 +2,4 @@
 
 The R version of the RPMP content is very different to the regular Jamovi version, by virture of the fact that even though Jamovi is built on R, it isn't necessarily built with R users first in mind. Rather, it's built for users of SPSS and other platforms that may be used to a point and click approach. To clarify, there's nothing wrong with this at all - one of Jamovi's greatest strengths is how easy it is to use - but it means that the same procedures in R work a little differently. 
 
-This chapter is not meant to be an exhaustive be-all end-all to how to use R. It will only go through enough to complete RPMP's content.
+This chapter is not meant to be an exhaustive be-all end-all to how to use R. It will only go through enough to complete RPMP's content. It will however introduce a couple of things that I think make for good starting habits using R, which is nice!
