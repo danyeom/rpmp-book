@@ -51,9 +51,7 @@ library(palmerpenguins)
 ```
 
 
-## Tidyverse pt 1
-
-### Pipes
+### Tidyverse 
 
 Many aspects of the tidyverse are reliant on the pipe operator, `%>%`. This basically tells R to take a dataframe or output and pass it onto a function that comes directly afterwards. Any function that takes a data frame as its first argument can (theoretically) be piped, meaning that we can chain strings of functions together in one run in a readable way. See the example below:
 
@@ -67,7 +65,7 @@ data %>%
 in the hypothetical example above, we first take `data`, pass it to function 1, pass the output of that to function 2, and pass the output from function 2 to function 3. 
 
 
-### dplyr
+## Wrangling data with dplyr and others
 
 dplyr is a package within the tidyverse for manipulating and wrangling data.
 
@@ -111,7 +109,7 @@ z
 
 
 
-## ggplot2
+## Making graphs with ggplot2
 
 ggplot2 is the tidyverse way of visualising data. The 'gg' in the name ggplot2 stands for grammar of graphics. The idea is that a graph is built by the same few components - a dataset, geoms (visual marks that represent data) and a coordinate system. 
 
