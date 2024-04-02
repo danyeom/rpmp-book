@@ -3,3 +3,166 @@
 The R version of the RPMP content is very different to the regular Jamovi version, by virture of the fact that even though Jamovi is built on R, it isn't necessarily built with R users first in mind. Rather, it's built for users of SPSS and other platforms that may be used to a point and click approach. To clarify, there's nothing wrong with this at all - one of Jamovi's greatest strengths is how easy it is to use - but it means that the same procedures in R work a little differently. 
 
 This chapter is not meant to be an exhaustive be-all end-all to how to use R. It will only go through enough to complete RPMP's content. It will however introduce a couple of things that I think make for good starting habits using R, which is nice!
+
+## Assignment and syntax
+
+In R, assigning values/strings etc. to variables is slightly different to other languages. Instead of using equals signs, we use a left arrow `<-` for assignment. For example:
+
+```{r}
+# Use this
+x <- 5
+
+# This works but isn't preferred 
+x = 5
+```
+
+When it comes to naming variables and the like, the easiest/most readable way for most people is to separate words using an underscore. e.g.
+
+```{r eval = FALSE}
+# this is preferred
+a_variable
+
+# this is also used but can be a bit hard to read
+a.variable
+
+# no spaces are allowed
+a variable # This will give you an error
+
+# some heathens use camel case
+aVariable
+
+```
+
+
+
+## Loading packages
+
+When you start a new R session, the first thing that you'll want to do is load the packages that you need to use. Packages contain functions that augment/extend what R is capable of doing. Some packages occassionally come with data too, such as the palmerpenguins dataset.
+
+For now, we'll load two packages for functions: the tidy verse and rstatix. The tidyverse is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. rstatix allows for simple statistical tests to be performed in an easy way. palmerpenguins comes with a dataset for practicing on. palmerpenguins loads a dataset named `penguins` that contains basic info on 3 species of penguins across 3 different islands.
+
+To load a package, call the `library()` function and enter the name of the package in brackets:
+
+
+```{r}
+library(tidyverse)
+library(rstatix)
+library(palmerpenguins)
+```
+
+
+## Tidyverse pt 1
+
+### Pipes
+
+Many aspects of the tidyverse are reliant on the pipe operator, `%>%`. This basically tells R to take a dataframe or output and pass it onto a function that comes directly afterwards. Any function that takes a data frame as its first argument can (theoretically) be piped, meaning that we can chain strings of functions together in one run in a readable way. See the example below:
+
+```{r eval = FALSE}
+data %>%
+  function_1() %>%
+  function_2(do = "this") %>%
+  function_3(avoid = "that")
+```
+
+in the hypothetical example above, we first take `data`, pass it to function 1, pass the output of that to function 2, and pass the output from function 2 to function 3. 
+
+
+### dplyr
+
+dplyr is a package within the tidyverse for manipulating and wrangling data.
+
+`select()` lets you select the columns you want from a dataset. Simply specify the columns that you want by name. Below we take the species and island columns from the penguins dataset:
+
+
+```{r}
+x <- penguins %>%
+  select(species, island)
+
+x
+```
+
+`filter()` selects the rows that you want based on a certain condition. Here, we specify the column that want to filter by and state the condition (`==` means equals to). We can filter on multiple conditions; for example, filtering Adelie penguins by the year 2007:
+
+```{r}
+y <- penguins %>%
+  filter(year == 2007, species == "Adelie")
+
+y
+```
+
+You can also choose to filter *out* rows based on a condition by adding an exclamation mark in front of the column name.
+
+```{r}
+penguins %>%
+  filter(!year == 2007)
+```
+
+`drop_na()` is another useful starting function that simply removes all rows with NA/empty cells. If you enter it as is then it will clean the entire dataset; if you specify a column then it will remove all rows with NAs in that column. Below is an example of a pipe using these functions - going from selecting columns to filtering rows and finally cleaning up the empty cells.
+
+```{r}
+z <- penguins %>%
+  select(species, body_mass_g, year) %>%
+  filter(year == 2009) %>%
+  drop_na()
+
+z
+```
+
+
+
+
+## ggplot2
+
+ggplot2 is the tidyverse way of visualising data. The 'gg' in the name ggplot2 stands for grammar of graphics. The idea is that a graph is built by the same few components - a dataset, geoms (visual marks that represent data) and a coordinate system. 
+
+A cheatsheet for ggplot2 can be found [here](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf).
+
+To start a plot, we first call the ggplot function. Here, we specify three of the main features of our plot - the dataset that we want to use, the x axis and the y axis. the x and y axes are wrapped within the `aes()` function, which defines our aesthetics. Here, we simply say which columns of our dataset should go on the x and y axes. Using the penguin dataset, we can start to visualise a scatter plot between bill length and bill depth like this:
+
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm))
+```
+
+However, notice that the plot is empty. This is because we haven't defined any geoms, or actual plotting methods, in our plot. 
+
+Refer to the cheatsheet for all of the possible geoms. For now, we will stick to basics. A scatter plot can be specified by adding `geom_point()`:
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + geom_point()
+```
+
+From here, we can change many things by adding or modifying our existing layers. If we want to colour the dots by sex (which is a column in the penguins data), we can do so by specifiyng `colour = sex` in our `aes()` function.
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point()
+```
+The axis labels aren't very informative as they are. We can change this by adding `labs()`, which is a simple way of specifying x and y labels:
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point() +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)") 
+```
+To add a line of best fit (e.g. in the instance of regressions), add `geom_smooth(method = "lm")`. Specifying the method is important because by default, `geom_smooth()` will probably fit LOESS curves (local polynomial regressions). Note that if you've specified a colour/grouping variable, separate regression lines will be fitted for each group.
+
+By default, the line will also have standard error bands around it. You can turn this off by also specifying `se = FALSE` in the `geom_smooth()` call.
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point() +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)") + geom_smooth(method = "lm", se = FALSE)
+```
+
+
+
+`geom_boxplot()` will create boxplots. An example is below, with species on the x axis and body mass on the y:
+
+```{r}
+ggplot(data = penguins, aes(x = species, y = body_mass_g)) + geom_boxplot()
+```
+
+Finally, if you want to split plots by a certain variable, add `facet_wrap()` to our call. You need to specify what variable/column you want to split by, with a tilde in front. For example, if we wanted to split the scatter plot by year:
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point() +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)")  + facet_wrap(~year)
+```
