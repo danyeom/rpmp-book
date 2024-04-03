@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.4 Paired-samples t-test | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-01" />
+<meta name="date" content="2024-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -129,28 +129,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -174,7 +152,23 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
 <li class="chapter" data-level="1.3" data-path="preview-book.html"><a href="preview-book.html"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
+<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#a-brief-note-on-functions"><i class="fa fa-check"></i><b>2.2.1</b> A brief note on functions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.2</b> Loading packages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.3</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a></li>
+<li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="visualising-data.html"><a href="visualising-data.html"><i class="fa fa-check"></i><b>3.1</b> Visualising data</a>
@@ -499,35 +493,35 @@ div.csl-indent {
 <div id="example-data-2" class="section level3 hasAnchor" number="6.4.2">
 <h3><span class="header-section-number">6.4.2</span> Example data<a href="paired-samples-t-test.html#example-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For this example, we’ll take a look at a simple interventions study. Participants were asked to answer a short list of questions relating to how they were feeling, once before an intervention and once afterwards. Higher scores represent better emotional states. The intervention was a series of self-regulation classes and exercises that the participants took twice a week. We’re interested in seeing whether the intervention was effective.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="paired-samples-t-test.html#cb52-1" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_symptoms.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="paired-samples-t-test.html#cb94-1" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_symptoms.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 32 Columns: 2
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (2): before, after
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="paired-samples-t-test.html#cb54-1" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="paired-samples-t-test.html#cb96-1" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
 <p>R-note: For t-tests the data need to be in long format, so the below code will reformat this:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="paired-samples-t-test.html#cb55-1" tabindex="-1"></a><span class="co"># Create a wide version of the original dataset</span></span>
-<span id="cb55-2"><a href="paired-samples-t-test.html#cb55-2" tabindex="-1"></a>w8_symptoms_wide <span class="ot">&lt;-</span> w8_symptoms</span>
-<span id="cb55-3"><a href="paired-samples-t-test.html#cb55-3" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="paired-samples-t-test.html#cb55-4" tabindex="-1"></a><span class="co"># Pivot to long format</span></span>
-<span id="cb55-5"><a href="paired-samples-t-test.html#cb55-5" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
-<span id="cb55-6"><a href="paired-samples-t-test.html#cb55-6" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb55-7"><a href="paired-samples-t-test.html#cb55-7" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb55-8"><a href="paired-samples-t-test.html#cb55-8" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb55-9"><a href="paired-samples-t-test.html#cb55-9" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;symptom_score&quot;</span></span>
-<span id="cb55-10"><a href="paired-samples-t-test.html#cb55-10" tabindex="-1"></a>  )</span>
-<span id="cb55-11"><a href="paired-samples-t-test.html#cb55-11" tabindex="-1"></a></span>
-<span id="cb55-12"><a href="paired-samples-t-test.html#cb55-12" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
-<span id="cb55-13"><a href="paired-samples-t-test.html#cb55-13" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="paired-samples-t-test.html#cb97-1" tabindex="-1"></a><span class="co"># Create a wide version of the original dataset</span></span>
+<span id="cb97-2"><a href="paired-samples-t-test.html#cb97-2" tabindex="-1"></a>w8_symptoms_wide <span class="ot">&lt;-</span> w8_symptoms</span>
+<span id="cb97-3"><a href="paired-samples-t-test.html#cb97-3" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="paired-samples-t-test.html#cb97-4" tabindex="-1"></a><span class="co"># Pivot to long format</span></span>
+<span id="cb97-5"><a href="paired-samples-t-test.html#cb97-5" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb97-6"><a href="paired-samples-t-test.html#cb97-6" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb97-7"><a href="paired-samples-t-test.html#cb97-7" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb97-8"><a href="paired-samples-t-test.html#cb97-8" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb97-9"><a href="paired-samples-t-test.html#cb97-9" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;symptom_score&quot;</span></span>
+<span id="cb97-10"><a href="paired-samples-t-test.html#cb97-10" tabindex="-1"></a>  )</span>
+<span id="cb97-11"><a href="paired-samples-t-test.html#cb97-11" tabindex="-1"></a></span>
+<span id="cb97-12"><a href="paired-samples-t-test.html#cb97-12" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
+<span id="cb97-13"><a href="paired-samples-t-test.html#cb97-13" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
 </div>
 <div id="assumption-checks-2" class="section level3 hasAnchor" number="6.4.3">
 <h3><span class="header-section-number">6.4.3</span> Assumption checks<a href="paired-samples-t-test.html#assumption-checks-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Similar to other tests, we need to check normality. Here, the assumption is whether the differences between time 1 and 2 are normally distributed (not necessarily time 1 and 2 themselves). Hence, when we run a Shapiro-Wilks test we’re running this on the values we get from Time 1 - Time 2.</p>
 <p>In our data, this assumption seems to be intact (p = .918).</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="paired-samples-t-test.html#cb56-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms_wide<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms_wide<span class="sc">$</span>after)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="paired-samples-t-test.html#cb98-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms_wide<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms_wide<span class="sc">$</span>after)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -537,7 +531,7 @@ div.csl-indent {
 <div id="output-4" class="section level3 hasAnchor" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> Output<a href="paired-samples-t-test.html#output-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, you can do pairwise t-tests using the default <code>t.test()</code> (or the <code>rstatix</code> equivalent <code>t_test()</code>) function. In both methods, you must set <code>paired = TRUE</code> in order to run a paired t-test. Your dataset needs to be in long format for both functions. Here are both methods. By now this should be familiar:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="paired-samples-t-test.html#cb58-1" tabindex="-1"></a><span class="fu">t.test</span>(symptom_score <span class="sc">~</span> time, <span class="at">data =</span> w8_symptoms, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="paired-samples-t-test.html#cb100-1" tabindex="-1"></a><span class="fu">t.test</span>(symptom_score <span class="sc">~</span> time, <span class="at">data =</span> w8_symptoms, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -549,8 +543,8 @@ div.csl-indent {
 ## sample estimates:
 ## mean difference 
 ##            2.75</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="paired-samples-t-test.html#cb60-1" tabindex="-1"></a>w8_symptoms <span class="sc">%&gt;%</span></span>
-<span id="cb60-2"><a href="paired-samples-t-test.html#cb60-2" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="paired-samples-t-test.html#cb102-1" tabindex="-1"></a>w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="paired-samples-t-test.html#cb102-2" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>The mean symptom scores of the two timepoints are significantly different (t(31) = 2.95, p = .006). Based on the means and mean difference, participants reported having significantly better emotional states after the intervention compared to beforehand.</p>
 </div>
 </div>

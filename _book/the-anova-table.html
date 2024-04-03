@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.2 The ANOVA table | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-01" />
+<meta name="date" content="2024-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -129,28 +129,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -174,7 +152,23 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
 <li class="chapter" data-level="1.3" data-path="preview-book.html"><a href="preview-book.html"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
+<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#a-brief-note-on-functions"><i class="fa fa-check"></i><b>2.2.1</b> A brief note on functions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.2</b> Loading packages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.3</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a></li>
+<li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="visualising-data.html"><a href="visualising-data.html"><i class="fa fa-check"></i><b>3.1</b> Visualising data</a>
@@ -753,8 +747,8 @@ variance into between and within-groups variance.</p>
 <p>Now that we have our observed F-value, we can now consult an F-table and
 use our two degrees of freedom to find out what our critical F-value is
 (setting alpha = .05):</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="the-anova-table.html#cb66-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>)</span></code></pre></div>
-<p><img src="img/w9_f-table.png" /><!-- --></p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="the-anova-table.html#cb108-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>)</span></code></pre></div>
+<p><img src="img/w9_f-table.png" width="1072" /></p>
 <p>Reading the column for df1 = 2, and the row for df2 = 9, we get a
 critical F-statistic of 4.2565. Now we can say that because our observed
 test statistic (15.75) is greater than this critical value, our ANOVA is

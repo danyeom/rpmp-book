@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.3 Comparing models | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-01" />
+<meta name="date" content="2024-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -129,28 +129,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -174,7 +152,23 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
 <li class="chapter" data-level="1.3" data-path="preview-book.html"><a href="preview-book.html"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
+<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#a-brief-note-on-functions"><i class="fa fa-check"></i><b>2.2.1</b> A brief note on functions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.2</b> Loading packages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.3</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a></li>
+<li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="visualising-data.html"><a href="visualising-data.html"><i class="fa fa-check"></i><b>3.1</b> Visualising data</a>
@@ -494,11 +488,11 @@ div.csl-indent {
 <h3><span class="header-section-number">10.3.1</span> Comparing <span class="math inline">\(R^2\)</span><a href="comparing-models.html#comparing-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The most commonly cited method of comparing between regression models is to examine their <span class="math inline">\(R^2\)</span> values, which you may recall is a measure of how much variance in the outcome is explained by the predictors.</p>
 <p>This is easy enough to do visually. You can see the <span class="math inline">\(R^2\)</span> values in the output. We can extract this easily using the following code. Whenever we use <code>summary()</code> on an <code>lm()</code> model, the summary object will contain a variable for the <span class="math inline">\(R^2\)</span> that we can easily pull:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="comparing-models.html#cb195-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block1)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="comparing-models.html#cb245-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block1)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.211779</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="comparing-models.html#cb197-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block2)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="comparing-models.html#cb247-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block2)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.22278</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="comparing-models.html#cb199-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block3)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="comparing-models.html#cb249-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block3)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.2971018</code></pre>
 <p>We can see that Block 3 has the highest <span class="math inline">\(R^2\)</span> at .297, meaning that the Block 3 model explains about 29.7% of the variance in the outcome. Block 2 explains 22.3% while Block 1 explains 21.2%. Therefore, based on this alone we might say that Block 2 explains only a little bit of extra variance in flow proneness than Block 1, while Block 3 explains substantially more - therefore, we should go with Block 3. However… <span class="math inline">\(R^2\)</span> will <em>always</em> increase with more predictors! The very fact that each additional predictor will explain more variance - even if only a tiny amount at a time - means that selecting based on <span class="math inline">\(R^2\)</span> alone will naturally favour models with more predictors. This isn’t necessarily a useful thing!</p>
 </div>
@@ -507,7 +501,7 @@ div.csl-indent {
 <p>This is a slightly more ‘formal’ test of whether a more complex model leads to a significant change in fit. This works by comparing <strong>nested</strong> models. Imagine model A and model B, two linear regressions fit on the same dataset. Model A has three predictors, and is the ‘full’ model of the thing we’re trying to the estimate. Model B drops one of the predictors from Model A, but keeps the other two. Model B is considered a <em>nested</em> model of Model A.</p>
 <p>The principle of this test is based on the idea of seeing whether a nested (reduced) model is a significantly better fit than a full model. If a nested model is a better fit, the residual sums of squares will <em>decrease</em> - less residuals indicate better fit. The <code>anova()</code> test works on this principle, but in a sort of reverse way. Because we’re testing whether a model with <em>additional</em> predictors is a better fit, naturally we should expect that the ‘nested’ model (in this case, our original model) will be a <em>worse</em> fit than the new model. In that case, a significant result indicates that the more complex model is the better fit.</p>
 <p>Nested model tests can be done with the <code>anova()</code> function from base R by simply giving it two model names in order. Let’s start by comparing Blocks 1 and 2:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="comparing-models.html#cb201-1" tabindex="-1"></a><span class="fu">anova</span>(flow_block1, flow_block2)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="comparing-models.html#cb251-1" tabindex="-1"></a><span class="fu">anova</span>(flow_block1, flow_block2)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: DFS_Total ~ GoldMSI
@@ -518,7 +512,7 @@ div.csl-indent {
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>And now between Blocks 2 and 3:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="comparing-models.html#cb203-1" tabindex="-1"></a><span class="fu">anova</span>(flow_block2, flow_block3)</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="comparing-models.html#cb253-1" tabindex="-1"></a><span class="fu">anova</span>(flow_block2, flow_block3)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: DFS_Total ~ GoldMSI + openness
@@ -543,8 +537,8 @@ BIC = k ln(n) - 2 ln (\hat L)
 \]</span></p>
 <p><span class="math inline">\(\hat L\)</span> is called the <strong>likelihood</strong>, which is a whole thing that we won’t dive too much into. However, <span class="math inline">\(2 ln (\hat L)\)</span> - or -2LL, or minus two log likelihood - goes by the name of <strong>deviance</strong> (as in deviation). Deviance is essentially the residual sum of squares, and thus serves as a measure of model fit.</p>
 <p>R provides some really neat functions called - you guessed it - <code>AIC()</code> and <code>BIC()</code>. These will calculate the AIC and BIC values for every model name you give it. So, we can enter all of our values at once:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="comparing-models.html#cb205-1" tabindex="-1"></a><span class="fu">AIC</span>(flow_block1, flow_block2, flow_block3)</span>
-<span id="cb205-2"><a href="comparing-models.html#cb205-2" tabindex="-1"></a><span class="fu">BIC</span>(flow_block1, flow_block2, flow_block3)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="comparing-models.html#cb255-1" tabindex="-1"></a><span class="fu">AIC</span>(flow_block1, flow_block2, flow_block3)</span>
+<span id="cb255-2"><a href="comparing-models.html#cb255-2" tabindex="-1"></a><span class="fu">BIC</span>(flow_block1, flow_block2, flow_block3)</span></code></pre></div>
 </div>
 </div>
             </section>

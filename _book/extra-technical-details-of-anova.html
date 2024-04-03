@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.5 Extra: Technical details of anova() | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-01" />
+<meta name="date" content="2024-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -129,28 +129,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -174,7 +152,23 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
 <li class="chapter" data-level="1.3" data-path="preview-book.html"><a href="preview-book.html"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
+<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#a-brief-note-on-functions"><i class="fa fa-check"></i><b>2.2.1</b> A brief note on functions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.2</b> Loading packages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.3</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a></li>
+<li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="visualising-data.html"><a href="visualising-data.html"><i class="fa fa-check"></i><b>3.1</b> Visualising data</a>
@@ -524,34 +518,34 @@ F = \frac{MS_{comp}}{MS_{a}}
 <li><span class="math inline">\(df_a\)</span> is 808</li>
 </ul>
 <p>So we end up with a test statistic of <span class="math inline">\(F(1, 808) = 11.455\)</span>. We can use this to calculate a p-value by calculating the probability of getting a value of at least 11.455, on an F distribution with degrees of freedom parameters described above. We can visualise this below. Note that because the values for F are so infinitesimally small with these parameters and at this F-value, I’ve zoomed in the plot to visualise the highlighted area:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="extra-technical-details-of-anova.html#cb206-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb206-2"><a href="extra-technical-details-of-anova.html#cb206-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> .<span class="dv">5</span>),</span>
-<span id="cb206-3"><a href="extra-technical-details-of-anova.html#cb206-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>)</span>
-<span id="cb206-4"><a href="extra-technical-details-of-anova.html#cb206-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb206-5"><a href="extra-technical-details-of-anova.html#cb206-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb206-6"><a href="extra-technical-details-of-anova.html#cb206-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb206-7"><a href="extra-technical-details-of-anova.html#cb206-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb206-8"><a href="extra-technical-details-of-anova.html#cb206-8" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb206-9"><a href="extra-technical-details-of-anova.html#cb206-9" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb206-10"><a href="extra-technical-details-of-anova.html#cb206-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">11.455</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb206-11"><a href="extra-technical-details-of-anova.html#cb206-11" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">12</span>, <span class="at">y =</span> <span class="fl">0.0024</span>, <span class="at">label =</span> <span class="st">&quot;F = 11.455&quot;</span>) <span class="sc">+</span></span>
-<span id="cb206-12"><a href="extra-technical-details-of-anova.html#cb206-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> df, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>), </span>
-<span id="cb206-13"><a href="extra-technical-details-of-anova.html#cb206-13" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">11.455</span>, <span class="dv">15</span>),</span>
-<span id="cb206-14"><a href="extra-technical-details-of-anova.html#cb206-14" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb206-15"><a href="extra-technical-details-of-anova.html#cb206-15" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
-<span id="cb206-16"><a href="extra-technical-details-of-anova.html#cb206-16" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.003</span>)) <span class="sc">+</span></span>
-<span id="cb206-17"><a href="extra-technical-details-of-anova.html#cb206-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;F-value&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Computation failed in `stat_function()`.
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="extra-technical-details-of-anova.html#cb256-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb256-2"><a href="extra-technical-details-of-anova.html#cb256-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> .<span class="dv">5</span>),</span>
+<span id="cb256-3"><a href="extra-technical-details-of-anova.html#cb256-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>)</span>
+<span id="cb256-4"><a href="extra-technical-details-of-anova.html#cb256-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb256-5"><a href="extra-technical-details-of-anova.html#cb256-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb256-6"><a href="extra-technical-details-of-anova.html#cb256-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb256-7"><a href="extra-technical-details-of-anova.html#cb256-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb256-8"><a href="extra-technical-details-of-anova.html#cb256-8" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb256-9"><a href="extra-technical-details-of-anova.html#cb256-9" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb256-10"><a href="extra-technical-details-of-anova.html#cb256-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">11.455</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb256-11"><a href="extra-technical-details-of-anova.html#cb256-11" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">12</span>, <span class="at">y =</span> <span class="fl">0.0024</span>, <span class="at">label =</span> <span class="st">&quot;F = 11.455&quot;</span>) <span class="sc">+</span></span>
+<span id="cb256-12"><a href="extra-technical-details-of-anova.html#cb256-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> df, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>), </span>
+<span id="cb256-13"><a href="extra-technical-details-of-anova.html#cb256-13" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">11.455</span>, <span class="dv">15</span>),</span>
+<span id="cb256-14"><a href="extra-technical-details-of-anova.html#cb256-14" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb256-15"><a href="extra-technical-details-of-anova.html#cb256-15" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
+<span id="cb256-16"><a href="extra-technical-details-of-anova.html#cb256-16" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.003</span>)) <span class="sc">+</span></span>
+<span id="cb256-17"><a href="extra-technical-details-of-anova.html#cb256-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;F-value&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Computation failed in `stat_function()`
 ## Caused by error in `fun()`:
 ## ! could not find function &quot;fun&quot;</code></pre>
-<pre><code>## Warning: Removed 20 rows containing missing values or values outside the scale range (`geom_line()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
+<pre><code>## Warning: Removed 20 rows containing missing values (`geom_line()`).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-200-1.png" width="672" /></p>
 <p>R can manually calculate a p-value with the <code>pf()</code> function. <code>pf()</code> will calculate the probability of a value on the F distribution, given the two degrees of freedom parameters to characterise the distribution. <code>lower.tail = FALSE</code> is used to indicate that we want to calculate the probability of getting something <em>above</em> our critical F-value; <code>lower.tail = TRUE</code> would calculuate the probability <em>below</em> it.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="extra-technical-details-of-anova.html#cb209-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="fl">11.45514</span>, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">808</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="extra-technical-details-of-anova.html#cb259-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="fl">11.45514</span>, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">808</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.0007473355</code></pre>
 <p>Note that our p-value isn’t exactly the same as the value in the table - this is because we’ve used rounded values. The code below extracts the unrounded values and uses them in the calculations. As you can see we get the exact p-value in the table.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="extra-technical-details-of-anova.html#cb211-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">anova</span>(flow_block1, flow_block2)</span>
-<span id="cb211-2"><a href="extra-technical-details-of-anova.html#cb211-2" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="extra-technical-details-of-anova.html#cb261-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">anova</span>(flow_block1, flow_block2)</span>
+<span id="cb261-2"><a href="extra-technical-details-of-anova.html#cb261-2" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: DFS_Total ~ GoldMSI
@@ -561,27 +555,19 @@ F = \frac{MS_{comp}}{MS_{a}}
 ## 2    808  9982.9  1     141.3 11.437 0.0007547 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="extra-technical-details-of-anova.html#cb213-1" tabindex="-1"></a><span class="co"># Using the output from anova() to manually calculate p-value</span></span>
-<span id="cb213-2"><a href="extra-technical-details-of-anova.html#cb213-2" tabindex="-1"></a>SSb <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">1</span>]</span>
-<span id="cb213-3"><a href="extra-technical-details-of-anova.html#cb213-3" tabindex="-1"></a>SSa <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">2</span>]</span>
-<span id="cb213-4"><a href="extra-technical-details-of-anova.html#cb213-4" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block2))</span>
-<span id="cb213-5"><a href="extra-technical-details-of-anova.html#cb213-5" tabindex="-1"></a>pb <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block1))</span>
-<span id="cb213-6"><a href="extra-technical-details-of-anova.html#cb213-6" tabindex="-1"></a>dfa <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pa</span>
-<span id="cb213-7"><a href="extra-technical-details-of-anova.html#cb213-7" tabindex="-1"></a>dfb <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pb</span>
-<span id="cb213-8"><a href="extra-technical-details-of-anova.html#cb213-8" tabindex="-1"></a></span>
-<span id="cb213-9"><a href="extra-technical-details-of-anova.html#cb213-9" tabindex="-1"></a>f_val <span class="ot">&lt;-</span> ((SSb<span class="sc">-</span>SSa)<span class="sc">/</span>(pa<span class="sc">-</span>pb))<span class="sc">/</span>(SSa<span class="sc">/</span>dfa)</span>
-<span id="cb213-10"><a href="extra-technical-details-of-anova.html#cb213-10" tabindex="-1"></a></span>
-<span id="cb213-11"><a href="extra-technical-details-of-anova.html#cb213-11" tabindex="-1"></a><span class="fu">pf</span>(f_val, <span class="at">df1 =</span> dfb<span class="sc">-</span>dfa, <span class="at">df2 =</span> dfa, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="extra-technical-details-of-anova.html#cb263-1" tabindex="-1"></a><span class="co"># Using the output from anova() to manually calculate p-value</span></span>
+<span id="cb263-2"><a href="extra-technical-details-of-anova.html#cb263-2" tabindex="-1"></a>SSb <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">1</span>]</span>
+<span id="cb263-3"><a href="extra-technical-details-of-anova.html#cb263-3" tabindex="-1"></a>SSa <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">2</span>]</span>
+<span id="cb263-4"><a href="extra-technical-details-of-anova.html#cb263-4" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block2))</span>
+<span id="cb263-5"><a href="extra-technical-details-of-anova.html#cb263-5" tabindex="-1"></a>pb <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block1))</span>
+<span id="cb263-6"><a href="extra-technical-details-of-anova.html#cb263-6" tabindex="-1"></a>dfa <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pa</span>
+<span id="cb263-7"><a href="extra-technical-details-of-anova.html#cb263-7" tabindex="-1"></a>dfb <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pb</span>
+<span id="cb263-8"><a href="extra-technical-details-of-anova.html#cb263-8" tabindex="-1"></a></span>
+<span id="cb263-9"><a href="extra-technical-details-of-anova.html#cb263-9" tabindex="-1"></a>f_val <span class="ot">&lt;-</span> ((SSb<span class="sc">-</span>SSa)<span class="sc">/</span>(pa<span class="sc">-</span>pb))<span class="sc">/</span>(SSa<span class="sc">/</span>dfa)</span>
+<span id="cb263-10"><a href="extra-technical-details-of-anova.html#cb263-10" tabindex="-1"></a></span>
+<span id="cb263-11"><a href="extra-technical-details-of-anova.html#cb263-11" tabindex="-1"></a><span class="fu">pf</span>(f_val, <span class="at">df1 =</span> dfb<span class="sc">-</span>dfa, <span class="at">df2 =</span> dfa, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.0007546911</code></pre>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.
-</div>
-<div class="csl-entry">
-———. 2024. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
-</div>
-</div>
 </div>
 </div>
 <!-- </div> -->

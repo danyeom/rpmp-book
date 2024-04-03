@@ -4,7 +4,18 @@ The R version of the RPMP content is very different to the regular Jamovi versio
 
 This chapter is not meant to be an exhaustive be-all end-all to how to use R. It will only go through enough to complete RPMP's content. It will however introduce a couple of things that I think make for good starting habits using R, which is never a bad thing!
 
+For a far more comprehensive and rigorous overview of how to program in R, there is no better guide than *R 4 Data Science* (R4DS) by Hadley Wickham: https://r4ds.had.co.nz/.
+
+In general, I am a huge proponent of the 'tidy' workflow of data analysis. While it was originally designed for data science in mind, I think it's a valuable model for psychological science as well:
+
+```{r echo = FALSE, fig.align = "center"}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/e5bf2a8f4c787a12facbc0b4191fc82bd192f4c5/4e5d2/diagrams/data-science-model.png")
+```
+
+
 ## Assignment and syntax
+
+### Basic syntax
 
 In R, assigning values/strings etc. to variables is slightly different to other languages. Instead of using equals signs, we use a left arrow `<-` for assignment. For example:
 
@@ -44,9 +55,88 @@ x
 ```
 
 
-## Loading packages
+### Variable types
 
-When you start a new R session, the first thing that you'll want to do is load the packages that you need to use. Packages contain functions that augment/extend what R is capable of doing. Some packages occassionally come with data too, such as the palmerpenguins dataset.
+Like many programming languages, R works by manipulating different types of variables. Knowing how to work with these different variables is fairly essential to using R, so here is a brief overview. 
+
+First, we have our most basic classes of variables. The first is **numeric**:
+
+```{r}
+var_a <- 5.25
+var_a
+```
+A special form of a numeric variable is an **integer** variable, which is used for whole numbers.
+
+```{r}
+var_b <- 6
+var_b
+```
+
+
+The second is **character**, which is used for text (or strings in programming language). Characters must be enclosed with speech marks:
+
+```{r}
+var_c <- "This is a string"
+var_c
+```
+Finally, we have **logical** variables, which can take on the form of `TRUE` or `FALSE`. `TRUE` and `FALSE` (or alternatively `T` or `F`) are special values in R that, as their names suggest, are used to indicate when a certain value is true or false. 
+
+```{r}
+var_d <- TRUE
+var_d
+```
+
+You can check the class of any given variable using the `class()` function in base R.
+
+```{r}
+class(var_a)
+class(var_b)
+class(var_c)
+class(var_d)
+```
+
+
+### Data structures
+
+Of course, in R we don't work with single values (often). We instead work with larger data structures. While there are a number of data structures in R, by and large the main one we will work with are **data frames.** 
+
+Data frames are flexible, row-column structures that contain data.
+
+R works best when data frames are in a *tidy* format. In a tidy format:
+
+-   Each variable is its own column
+-   Each observation (participant, object) is its own row
+-   Each value is in its own cell.
+
+```{r echo = FALSE, fig.align = "center", fig.cap = "Adapted from R4DS."}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png")
+```
+
+
+Here is an example of a data frame in tidy format. Note how each column corresponds to a different variable, or piece of data that we're interested in. Each column is also clearly labelled, so it is clear what it represents. Each row corresponds to an observation (a single penguin, in this case). So, the first row represnts an Adelie penguin on Torgersen Island, with a bill length of 39.1mm etc etc.
+
+```{r}
+library(palmerpenguins)
+penguins
+```
+
+For the purposes of RPMP you won't need to create any data frames, but you will need to know how to read files in. 
+
+
+## Packages and functions
+
+
+The beauty of R is that its functionality is essentially limitless; its open-source nature and strong community mean that new functions and capabilities are regularly made for R. These new functions augment/extend what R is capable of doing, and are generally designed in the form of **packages.**
+
+To provide a very simple explanation of what packages are, packages are a collection of code that provide new functions in R. Some packages occassionally come with data too, such as the `palmerpenguins` package.
+
+### A brief note on functions
+
+Functions are the things in R that allow us to *do* things. (highly technical description, I know.) 
+
+### Loading packages
+
+When you start a new R session, the first thing that you'll want to do is load the packages that you need to use. 
 
 For now, we'll load two packages for functions: the tidy verse and rstatix. The tidyverse is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. rstatix allows for simple statistical tests to be performed in an easy way. palmerpenguins comes with a dataset for practicing on. palmerpenguins loads a dataset named `penguins` that contains basic info on 3 species of penguins across 3 different islands.
 
@@ -61,6 +151,16 @@ library(palmerpenguins)
 
 
 ### Tidyverse 
+
+The tidyverse is a mega-collection of phenomenal packages that fundamentally change how to interface with R. The tidyverse provides packages for things like:
+
+-   Wrangling data
+-   Reading and writing data
+-   Making graphs
+-   Tidying and reshaping data
+-   Scraping the web
+
+The tidyverse is probably the single most popular suite of packages for R because of the functionality it provides. All of the tidyverse packages are written in consistent syntax, generally use very easy language that has an emphasis on verbs (i.e. you're telling R to *do* something) and integrate seamlessly with each other and R. The tidyverse is a philosophy of R just as much as it is a suite of functions, and is part of what makes R so powerful today.
 
 Many aspects of the tidyverse are reliant on the pipe operator, `%>%`. This basically tells R to take a dataframe or output and pass it onto a function that comes directly afterwards. Any function that takes a data frame as its first argument can (theoretically) be piped, meaning that we can chain strings of functions together in one run in a readable way. See the example below:
 
@@ -173,3 +273,5 @@ Finally, if you want to split plots by a certain variable, add `facet_wrap()` to
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point() +
   labs(x = "Bill length (mm)", y = "Bill depth (mm)")  + facet_wrap(~year)
 ```
+
+

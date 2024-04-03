@@ -36,7 +36,7 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="loading-packages.html"/>
+<link rel="prev" href="packages-and-functions.html"/>
 <link rel="next" href="making-graphs-with-ggplot2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="usage.html"><a href="usage.html"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
 <li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
@@ -154,10 +154,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a></li>
-<li class="chapter" data-level="2.2" data-path="loading-packages.html"><a href="loading-packages.html"><i class="fa fa-check"></i><b>2.2</b> Loading packages</a>
+<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="loading-packages.html"><a href="loading-packages.html#tidyverse"><i class="fa fa-check"></i><b>2.2.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
+<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#a-brief-note-on-functions"><i class="fa fa-check"></i><b>2.2.1</b> A brief note on functions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.2</b> Loading packages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.3</b> Tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a></li>
 <li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
@@ -478,90 +485,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.3</span> Wrangling data with dplyr and others<a href="wrangling-data-with-dplyr-and-others.html#wrangling-data-with-dplyr-and-others" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>dplyr is a package within the tidyverse for manipulating and wrangling data.</p>
 <p><code>select()</code> lets you select the columns you want from a dataset. Simply specify the columns that you want by name. Below we take the species and island columns from the penguins dataset:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="wrangling-data-with-dplyr-and-others.html#cb11-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="wrangling-data-with-dplyr-and-others.html#cb11-2" tabindex="-1"></a>  <span class="fu">select</span>(species, island)</span>
-<span id="cb11-3"><a href="wrangling-data-with-dplyr-and-others.html#cb11-3" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="wrangling-data-with-dplyr-and-others.html#cb11-4" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>## # A tibble: 344 × 2
-##    species island   
-##    &lt;fct&gt;   &lt;fct&gt;    
-##  1 Adelie  Torgersen
-##  2 Adelie  Torgersen
-##  3 Adelie  Torgersen
-##  4 Adelie  Torgersen
-##  5 Adelie  Torgersen
-##  6 Adelie  Torgersen
-##  7 Adelie  Torgersen
-##  8 Adelie  Torgersen
-##  9 Adelie  Torgersen
-## 10 Adelie  Torgersen
-## # ℹ 334 more rows</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="wrangling-data-with-dplyr-and-others.html#cb30-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="wrangling-data-with-dplyr-and-others.html#cb30-2" tabindex="-1"></a>  <span class="fu">select</span>(species, island)</span>
+<span id="cb30-3"><a href="wrangling-data-with-dplyr-and-others.html#cb30-3" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="wrangling-data-with-dplyr-and-others.html#cb30-4" tabindex="-1"></a>x</span></code></pre></div>
 <p><code>filter()</code> selects the rows that you want based on a certain condition. Here, we specify the column that want to filter by and state the condition (<code>==</code> means equals to). We can filter on multiple conditions; for example, filtering Adelie penguins by the year 2007:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="wrangling-data-with-dplyr-and-others.html#cb13-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="wrangling-data-with-dplyr-and-others.html#cb13-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
-<span id="cb13-3"><a href="wrangling-data-with-dplyr-and-others.html#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="wrangling-data-with-dplyr-and-others.html#cb13-4" tabindex="-1"></a>y</span></code></pre></div>
-<pre><code>## # A tibble: 50 × 8
-##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
-##  1 Adelie  Torgersen           39.1          18.7               181        3750
-##  2 Adelie  Torgersen           39.5          17.4               186        3800
-##  3 Adelie  Torgersen           40.3          18                 195        3250
-##  4 Adelie  Torgersen           NA            NA                  NA          NA
-##  5 Adelie  Torgersen           36.7          19.3               193        3450
-##  6 Adelie  Torgersen           39.3          20.6               190        3650
-##  7 Adelie  Torgersen           38.9          17.8               181        3625
-##  8 Adelie  Torgersen           39.2          19.6               195        4675
-##  9 Adelie  Torgersen           34.1          18.1               193        3475
-## 10 Adelie  Torgersen           42            20.2               190        4250
-## # ℹ 40 more rows
-## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="wrangling-data-with-dplyr-and-others.html#cb31-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="wrangling-data-with-dplyr-and-others.html#cb31-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
+<span id="cb31-3"><a href="wrangling-data-with-dplyr-and-others.html#cb31-3" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="wrangling-data-with-dplyr-and-others.html#cb31-4" tabindex="-1"></a>y</span></code></pre></div>
 <p>You can also choose to filter <em>out</em> rows based on a condition by adding an exclamation mark in front of the column name.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="wrangling-data-with-dplyr-and-others.html#cb15-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="wrangling-data-with-dplyr-and-others.html#cb15-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>year <span class="sc">==</span> <span class="dv">2007</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 234 × 8
-##    species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
-##  1 Adelie  Biscoe           39.6          17.7               186        3500
-##  2 Adelie  Biscoe           40.1          18.9               188        4300
-##  3 Adelie  Biscoe           35            17.9               190        3450
-##  4 Adelie  Biscoe           42            19.5               200        4050
-##  5 Adelie  Biscoe           34.5          18.1               187        2900
-##  6 Adelie  Biscoe           41.4          18.6               191        3700
-##  7 Adelie  Biscoe           39            17.5               186        3550
-##  8 Adelie  Biscoe           40.6          18.8               193        3800
-##  9 Adelie  Biscoe           36.5          16.6               181        2850
-## 10 Adelie  Biscoe           37.6          19.1               194        3750
-## # ℹ 224 more rows
-## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="wrangling-data-with-dplyr-and-others.html#cb32-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="wrangling-data-with-dplyr-and-others.html#cb32-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>year <span class="sc">==</span> <span class="dv">2007</span>)</span></code></pre></div>
 <p><code>drop_na()</code> is another useful starting function that simply removes all rows with NA/empty cells. If you enter it as is then it will clean the entire dataset; if you specify a column then it will remove all rows with NAs in that column. Below is an example of a pipe using these functions - going from selecting columns to filtering rows and finally cleaning up the empty cells.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="wrangling-data-with-dplyr-and-others.html#cb17-1" tabindex="-1"></a>z <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="wrangling-data-with-dplyr-and-others.html#cb17-2" tabindex="-1"></a>  <span class="fu">select</span>(species, body_mass_g, year) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="wrangling-data-with-dplyr-and-others.html#cb17-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2009</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="wrangling-data-with-dplyr-and-others.html#cb17-4" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
-<span id="cb17-5"><a href="wrangling-data-with-dplyr-and-others.html#cb17-5" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="wrangling-data-with-dplyr-and-others.html#cb17-6" tabindex="-1"></a>z</span></code></pre></div>
-<pre><code>## # A tibble: 119 × 3
-##    species body_mass_g  year
-##    &lt;fct&gt;         &lt;int&gt; &lt;int&gt;
-##  1 Adelie         3725  2009
-##  2 Adelie         4725  2009
-##  3 Adelie         3075  2009
-##  4 Adelie         4250  2009
-##  5 Adelie         2925  2009
-##  6 Adelie         3550  2009
-##  7 Adelie         3750  2009
-##  8 Adelie         3900  2009
-##  9 Adelie         3175  2009
-## 10 Adelie         4775  2009
-## # ℹ 109 more rows</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="wrangling-data-with-dplyr-and-others.html#cb33-1" tabindex="-1"></a>z <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="wrangling-data-with-dplyr-and-others.html#cb33-2" tabindex="-1"></a>  <span class="fu">select</span>(species, body_mass_g, year) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="wrangling-data-with-dplyr-and-others.html#cb33-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2009</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="wrangling-data-with-dplyr-and-others.html#cb33-4" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb33-5"><a href="wrangling-data-with-dplyr-and-others.html#cb33-5" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="wrangling-data-with-dplyr-and-others.html#cb33-6" tabindex="-1"></a>z</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="loading-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="packages-and-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="making-graphs-with-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
