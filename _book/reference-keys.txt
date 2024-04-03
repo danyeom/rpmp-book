@@ -197,3 +197,9 @@ fit-indices
 logistic-regression
 extra-technical-details-of-anova
 the-default-test-in-anova
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
+assignment-and-syntax
+loading-packages
+tidyverse
+wrangling-data-with-dplyr-and-others
+making-graphs-with-ggplot2

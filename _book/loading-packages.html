@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Research Process for Music Psychologists</title>
+  <title>2.2 Loading packages | Research Process for Music Psychologists</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Research Process for Music Psychologists" />
+  <meta property="og:title" content="2.2 Loading packages | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="2.2 Loading packages | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="assignment-and-syntax.html"/>
+<link rel="next" href="wrangling-data-with-dplyr-and-others.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -474,19 +474,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="loading-packages" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Loading packages<a href="loading-packages.html#loading-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When you start a new R session, the first thing that you’ll want to do is load the packages that you need to use. Packages contain functions that augment/extend what R is capable of doing. Some packages occassionally come with data too, such as the palmerpenguins dataset.</p>
+<p>For now, we’ll load two packages for functions: the tidy verse and rstatix. The tidyverse is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. rstatix allows for simple statistical tests to be performed in an easy way. palmerpenguins comes with a dataset for practicing on. palmerpenguins loads a dataset named <code>penguins</code> that contains basic info on 3 species of penguins across 3 different islands.</p>
+<p>To load a package, call the <code>library()</code> function and enter the name of the package in brackets:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="loading-packages.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.3     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="loading-packages.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;rstatix&#39;
+## 
+## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="loading-packages.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code></pre></div>
+<div id="tidyverse" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Tidyverse<a href="loading-packages.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Many aspects of the tidyverse are reliant on the pipe operator, <code>%&gt;%</code>. This basically tells R to take a dataframe or output and pass it onto a function that comes directly afterwards. Any function that takes a data frame as its first argument can (theoretically) be piped, meaning that we can chain strings of functions together in one run in a readable way. See the example below:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="loading-packages.html#cb10-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="loading-packages.html#cb10-2" tabindex="-1"></a>  <span class="fu">function_1</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="loading-packages.html#cb10-3" tabindex="-1"></a>  <span class="fu">function_2</span>(<span class="at">do =</span> <span class="st">&quot;this&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="loading-packages.html#cb10-4" tabindex="-1"></a>  <span class="fu">function_3</span>(<span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
+<p>in the hypothetical example above, we first take <code>data</code>, pass it to function 1, pass the output of that to function 2, and pass the output from function 2 to function 3.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="assignment-and-syntax.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="wrangling-data-with-dplyr-and-others.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -517,7 +545,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
 "text": "Edit"
 },
 "history": {
