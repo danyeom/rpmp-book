@@ -206,3 +206,11 @@ fit-indices
 logistic-regression
 extra-technical-details-of-anova
 the-default-test-in-anova
+fig:unnamed-chunk-10
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
+selecting-columns-with-select
+filtering-rows-with-filter
+creating-new-columns-with-mutate
+summarising-data-with-summarise-and-group_by
+some-other-handy-tidyverse-functions
+the-here-package

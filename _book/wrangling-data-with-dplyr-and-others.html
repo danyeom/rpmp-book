@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-03" />
+<meta name="date" content="2024-04-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="usage.html"><a href="usage.html"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
 <li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
@@ -162,11 +162,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#a-brief-note-on-functions"><i class="fa fa-check"></i><b>2.2.1</b> A brief note on functions</a></li>
-<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.2</b> Loading packages</a></li>
-<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.1</b> Loading packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.2.3</b> The <code>here()</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a></li>
+<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.3.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.3.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.3.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.3.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.3.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.3.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.3.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.3.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.3.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
@@ -483,27 +490,221 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="wrangling-data-with-dplyr-and-others" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Wrangling data with dplyr and others<a href="wrangling-data-with-dplyr-and-others.html#wrangling-data-with-dplyr-and-others" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>dplyr is a package within the tidyverse for manipulating and wrangling data.</p>
+<p><code>dplyr</code> is a package within the tidyverse for manipulating and wrangling data. <code>dplyr</code> is one of the most popular packages on R because it provides a suite of functions that are fairly essential to manipulating and working with data. Below is a brief overview of some of these functions, applied to the <code>penguins</code> dataset.</p>
+<div id="selecting-columns-with-select" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Selecting columns with <code>select()</code><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>select()</code> lets you select the columns you want from a dataset. Simply specify the columns that you want by name. Below we take the species and island columns from the penguins dataset:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="wrangling-data-with-dplyr-and-others.html#cb30-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="wrangling-data-with-dplyr-and-others.html#cb30-2" tabindex="-1"></a>  <span class="fu">select</span>(species, island)</span>
-<span id="cb30-3"><a href="wrangling-data-with-dplyr-and-others.html#cb30-3" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="wrangling-data-with-dplyr-and-others.html#cb30-4" tabindex="-1"></a>x</span></code></pre></div>
-<p><code>filter()</code> selects the rows that you want based on a certain condition. Here, we specify the column that want to filter by and state the condition (<code>==</code> means equals to). We can filter on multiple conditions; for example, filtering Adelie penguins by the year 2007:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="wrangling-data-with-dplyr-and-others.html#cb31-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="wrangling-data-with-dplyr-and-others.html#cb31-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
-<span id="cb31-3"><a href="wrangling-data-with-dplyr-and-others.html#cb31-3" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="wrangling-data-with-dplyr-and-others.html#cb31-4" tabindex="-1"></a>y</span></code></pre></div>
-<p>You can also choose to filter <em>out</em> rows based on a condition by adding an exclamation mark in front of the column name.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="wrangling-data-with-dplyr-and-others.html#cb32-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="wrangling-data-with-dplyr-and-others.html#cb32-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>year <span class="sc">==</span> <span class="dv">2007</span>)</span></code></pre></div>
+<span id="cb32-2"><a href="wrangling-data-with-dplyr-and-others.html#cb32-2" tabindex="-1"></a>  <span class="fu">select</span>(species, island)</span></code></pre></div>
+<pre><code>## # A tibble: 344 × 2
+##    species island   
+##    &lt;fct&gt;   &lt;fct&gt;    
+##  1 Adelie  Torgersen
+##  2 Adelie  Torgersen
+##  3 Adelie  Torgersen
+##  4 Adelie  Torgersen
+##  5 Adelie  Torgersen
+##  6 Adelie  Torgersen
+##  7 Adelie  Torgersen
+##  8 Adelie  Torgersen
+##  9 Adelie  Torgersen
+## 10 Adelie  Torgersen
+## # ℹ 334 more rows</code></pre>
+<p>You can select columns via a number of ways:</p>
+<ul>
+<li>Simply by name, e.g. <code>select(species, island)</code></li>
+<li>By their <em>index</em> or column number, e.g. <code>select(1, 2)</code>
+<ul>
+<li><code>select(1:4)</code> will select columns 1 to 4</li>
+<li><code>select(-1)</code> will select the <em>last</em> column</li>
+</ul></li>
+<li>By certain operator functions, such as <code>starts_with()</code> and <code>ends_with()</code>, e.g. <code>ends_with("mm")</code> will select all columns that end with “mm”</li>
+</ul>
+<p>Combinations of the above also work. Removing columns is simply done by adding a minus sign <code>-</code> in front of the arguments for select, and are compatible with all of the options above.</p>
+</div>
+<div id="filtering-rows-with-filter" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Filtering rows with <code>filter()</code><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>filter()</code> selects the rows that you want based on a certain condition. Here, we specify the column that want to filter by and state the condition (<code>==</code> means equals to). We can filter on multiple conditions; for example, filtering Adelie penguins by the year 2007:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="wrangling-data-with-dplyr-and-others.html#cb34-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="wrangling-data-with-dplyr-and-others.html#cb34-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 50 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           NA            NA                  NA          NA
+##  5 Adelie  Torgersen           36.7          19.3               193        3450
+##  6 Adelie  Torgersen           39.3          20.6               190        3650
+##  7 Adelie  Torgersen           38.9          17.8               181        3625
+##  8 Adelie  Torgersen           39.2          19.6               195        4675
+##  9 Adelie  Torgersen           34.1          18.1               193        3475
+## 10 Adelie  Torgersen           42            20.2               190        4250
+## # ℹ 40 more rows
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<p>You can also choose to filter <em>out</em> rows based on a condition by adding an exclamation mark in front of the column name.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="wrangling-data-with-dplyr-and-others.html#cb36-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="wrangling-data-with-dplyr-and-others.html#cb36-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>year <span class="sc">==</span> <span class="dv">2007</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 234 × 8
+##    species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+##  1 Adelie  Biscoe           39.6          17.7               186        3500
+##  2 Adelie  Biscoe           40.1          18.9               188        4300
+##  3 Adelie  Biscoe           35            17.9               190        3450
+##  4 Adelie  Biscoe           42            19.5               200        4050
+##  5 Adelie  Biscoe           34.5          18.1               187        2900
+##  6 Adelie  Biscoe           41.4          18.6               191        3700
+##  7 Adelie  Biscoe           39            17.5               186        3550
+##  8 Adelie  Biscoe           40.6          18.8               193        3800
+##  9 Adelie  Biscoe           36.5          16.6               181        2850
+## 10 Adelie  Biscoe           37.6          19.1               194        3750
+## # ℹ 224 more rows
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <p><code>drop_na()</code> is another useful starting function that simply removes all rows with NA/empty cells. If you enter it as is then it will clean the entire dataset; if you specify a column then it will remove all rows with NAs in that column. Below is an example of a pipe using these functions - going from selecting columns to filtering rows and finally cleaning up the empty cells.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="wrangling-data-with-dplyr-and-others.html#cb33-1" tabindex="-1"></a>z <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="wrangling-data-with-dplyr-and-others.html#cb33-2" tabindex="-1"></a>  <span class="fu">select</span>(species, body_mass_g, year) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="wrangling-data-with-dplyr-and-others.html#cb33-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2009</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="wrangling-data-with-dplyr-and-others.html#cb33-4" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
-<span id="cb33-5"><a href="wrangling-data-with-dplyr-and-others.html#cb33-5" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="wrangling-data-with-dplyr-and-others.html#cb33-6" tabindex="-1"></a>z</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="wrangling-data-with-dplyr-and-others.html#cb38-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="wrangling-data-with-dplyr-and-others.html#cb38-2" tabindex="-1"></a>  <span class="fu">select</span>(species, body_mass_g, year) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="wrangling-data-with-dplyr-and-others.html#cb38-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2009</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="wrangling-data-with-dplyr-and-others.html#cb38-4" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 119 × 3
+##    species body_mass_g  year
+##    &lt;fct&gt;         &lt;int&gt; &lt;int&gt;
+##  1 Adelie         3725  2009
+##  2 Adelie         4725  2009
+##  3 Adelie         3075  2009
+##  4 Adelie         4250  2009
+##  5 Adelie         2925  2009
+##  6 Adelie         3550  2009
+##  7 Adelie         3750  2009
+##  8 Adelie         3900  2009
+##  9 Adelie         3175  2009
+## 10 Adelie         4775  2009
+## # ℹ 109 more rows</code></pre>
+</div>
+<div id="creating-new-columns-with-mutate" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Creating new columns with <code>mutate()</code><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>mutate()</code> is a function that lets you create new columns. This can be extremely useful for operations like recoding variables and transforming them. The nice thing about <code>mutate()</code> is that you can do all manner of operations without touching your original data.</p>
+<p>The basic workflow of <code>mutate()</code> looks like this:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="wrangling-data-with-dplyr-and-others.html#cb40-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="wrangling-data-with-dplyr-and-others.html#cb40-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-3"><a href="wrangling-data-with-dplyr-and-others.html#cb40-3" tabindex="-1"></a>    <span class="at">new_column_1 =</span> <span class="fu">a_function</span>(...),</span>
+<span id="cb40-4"><a href="wrangling-data-with-dplyr-and-others.html#cb40-4" tabindex="-1"></a>    <span class="at">new_column_2 =</span> <span class="fu">another_function</span>(...)</span>
+<span id="cb40-5"><a href="wrangling-data-with-dplyr-and-others.html#cb40-5" tabindex="-1"></a>    )</span></code></pre></div>
+<p>This example code would create two new columns, named <code>new_column_1</code> and <code>new_column_2</code>, with their respective values being whatever the functions were. For example, in the <code>penguins</code> dataset we have a variable called <code>body_mass_g</code>, which is the body mass of each penguin in grams. If we wanted to convert this to kilograms, we would need to divide each penguin’s value on this variable by 1000. <code>mutate()</code> makes this a piece of cake. Let’s also chain a <code>select()</code> command to only show the following variables: species, island, body_mass_g and sex.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="wrangling-data-with-dplyr-and-others.html#cb41-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="wrangling-data-with-dplyr-and-others.html#cb41-2" tabindex="-1"></a>  <span class="fu">select</span>(species, island, body_mass_g, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="wrangling-data-with-dplyr-and-others.html#cb41-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_kg =</span> body_mass_g<span class="sc">/</span><span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 344 × 5
+##    species island    body_mass_g sex    body_mass_kg
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;
+##  1 Adelie  Torgersen        3750 male           3.75
+##  2 Adelie  Torgersen        3800 female         3.8 
+##  3 Adelie  Torgersen        3250 female         3.25
+##  4 Adelie  Torgersen          NA &lt;NA&gt;          NA   
+##  5 Adelie  Torgersen        3450 female         3.45
+##  6 Adelie  Torgersen        3650 male           3.65
+##  7 Adelie  Torgersen        3625 female         3.62
+##  8 Adelie  Torgersen        4675 male           4.68
+##  9 Adelie  Torgersen        3475 &lt;NA&gt;           3.48
+## 10 Adelie  Torgersen        4250 &lt;NA&gt;           4.25
+## # ℹ 334 more rows</code></pre>
+<p>You can see now that we have a new column called <code>body_mass_kg</code> that has our new transformed variable.</p>
+<p><code>mutate()</code> can also take functions (and likely will make up the majority of your use of it). For example, let’s say that we want to make a variable that takes the natural logarithm of bill length (for whatever reason). We could do this as follows using the <code>log()</code> function within our <code>mutate()</code> call:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="wrangling-data-with-dplyr-and-others.html#cb43-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="wrangling-data-with-dplyr-and-others.html#cb43-2" tabindex="-1"></a>  <span class="fu">select</span>(species, island, bill_length_mm, bill_depth_mm) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="wrangling-data-with-dplyr-and-others.html#cb43-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bill_length_log =</span> <span class="fu">log</span>(bill_length_mm))</span></code></pre></div>
+<pre><code>## # A tibble: 344 × 5
+##    species island    bill_length_mm bill_depth_mm bill_length_log
+##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;           &lt;dbl&gt;
+##  1 Adelie  Torgersen           39.1          18.7            3.67
+##  2 Adelie  Torgersen           39.5          17.4            3.68
+##  3 Adelie  Torgersen           40.3          18              3.70
+##  4 Adelie  Torgersen           NA            NA             NA   
+##  5 Adelie  Torgersen           36.7          19.3            3.60
+##  6 Adelie  Torgersen           39.3          20.6            3.67
+##  7 Adelie  Torgersen           38.9          17.8            3.66
+##  8 Adelie  Torgersen           39.2          19.6            3.67
+##  9 Adelie  Torgersen           34.1          18.1            3.53
+## 10 Adelie  Torgersen           42            20.2            3.74
+## # ℹ 334 more rows</code></pre>
+</div>
+<div id="summarising-data-with-summarise-and-group_by" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Summarising data with <code>summarise()</code> and <code>group_by()</code><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Finally, sometimes we will want to summarise data - for example, to calculate basic features such as descriptives or for plotting. To do that, we can use the function <code>summarise()</code> (or <code>summarize()</code> for American users).</p>
+<p><code>summarise()</code> works very similarly to <code>mutate()</code>.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="wrangling-data-with-dplyr-and-others.html#cb45-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="wrangling-data-with-dplyr-and-others.html#cb45-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb45-3"><a href="wrangling-data-with-dplyr-and-others.html#cb45-3" tabindex="-1"></a>    <span class="at">summary_1 =</span> <span class="fu">a_function</span>(...),</span>
+<span id="cb45-4"><a href="wrangling-data-with-dplyr-and-others.html#cb45-4" tabindex="-1"></a>    <span class="at">summary_2 =</span> <span class="fu">another_function</span>(...)</span>
+<span id="cb45-5"><a href="wrangling-data-with-dplyr-and-others.html#cb45-5" tabindex="-1"></a>    )</span></code></pre></div>
+<p>The difference is that while <code>mutate()</code> retains the features of your data, <code>summarise()</code> will instead collapse it. To illustrate, let’s say we want to calculate a) how many penguins there are (with the function <code>n()</code>) and b) the mean body mass (with the <code>mean()</code> function).</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="wrangling-data-with-dplyr-and-others.html#cb46-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="wrangling-data-with-dplyr-and-others.html#cb46-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb46-3"><a href="wrangling-data-with-dplyr-and-others.html#cb46-3" tabindex="-1"></a>    <span class="at">n_penguins =</span> <span class="fu">n</span>(),</span>
+<span id="cb46-4"><a href="wrangling-data-with-dplyr-and-others.html#cb46-4" tabindex="-1"></a>    <span class="at">mean_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb46-5"><a href="wrangling-data-with-dplyr-and-others.html#cb46-5" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
+##   n_penguins mean_mass
+##        &lt;int&gt;     &lt;dbl&gt;
+## 1        344     4202.</code></pre>
+<p>This is… good and all, but consider what we’ve just done. We’ve just calculated the number of penguins and the mean body mass across the <em>entire</em> dataset. However, that may not necessarily be meaningful, particularly in this instance where we have meaningful groups within the data. For example, the above mean collapses across years, which may not be appropriate.</p>
+<p>Enter in another function called <code>group_by()</code>. As the name implies, <code>group_by()</code> will perform operations per a grouping variable that you specify. <code>group_by()</code> works especially well with summarise, because the idea is something like this:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="wrangling-data-with-dplyr-and-others.html#cb48-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="wrangling-data-with-dplyr-and-others.html#cb48-2" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span>                 <span class="co"># Tell R to group the subsequent output by this variable</span></span>
+<span id="cb48-3"><a href="wrangling-data-with-dplyr-and-others.html#cb48-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb48-4"><a href="wrangling-data-with-dplyr-and-others.html#cb48-4" tabindex="-1"></a>    <span class="at">summary_1 =</span> <span class="fu">a_function</span>(...),</span>
+<span id="cb48-5"><a href="wrangling-data-with-dplyr-and-others.html#cb48-5" tabindex="-1"></a>    <span class="at">summary_2 =</span> <span class="fu">another_function</span>(...)</span>
+<span id="cb48-6"><a href="wrangling-data-with-dplyr-and-others.html#cb48-6" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb48-7"><a href="wrangling-data-with-dplyr-and-others.html#cb48-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()         <span class="co"># Tell R grouping is no longer needed</span></span></code></pre></div>
+<p>Let’s put this into practice by calculating the n and mean per year. Notice how the output now calculates n and the mean body mass per year, which is much more informative!</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="wrangling-data-with-dplyr-and-others.html#cb49-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="wrangling-data-with-dplyr-and-others.html#cb49-2" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="wrangling-data-with-dplyr-and-others.html#cb49-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb49-4"><a href="wrangling-data-with-dplyr-and-others.html#cb49-4" tabindex="-1"></a>    <span class="at">n_penguins =</span> <span class="fu">n</span>(),</span>
+<span id="cb49-5"><a href="wrangling-data-with-dplyr-and-others.html#cb49-5" tabindex="-1"></a>    <span class="at">mean_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb49-6"><a href="wrangling-data-with-dplyr-and-others.html#cb49-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb49-7"><a href="wrangling-data-with-dplyr-and-others.html#cb49-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 3
+##    year n_penguins mean_mass
+##   &lt;int&gt;      &lt;int&gt;     &lt;dbl&gt;
+## 1  2007        110     4125.
+## 2  2008        114     4267.
+## 3  2009        120     4210.</code></pre>
+<p>Naturally, <code>group_by()</code> can group using multiple variables. This is easy to do so as well</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="wrangling-data-with-dplyr-and-others.html#cb51-1" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="wrangling-data-with-dplyr-and-others.html#cb51-2" tabindex="-1"></a>  <span class="fu">group_by</span>(year, island) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="wrangling-data-with-dplyr-and-others.html#cb51-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb51-4"><a href="wrangling-data-with-dplyr-and-others.html#cb51-4" tabindex="-1"></a>    <span class="at">n_penguins =</span> <span class="fu">n</span>(),</span>
+<span id="cb51-5"><a href="wrangling-data-with-dplyr-and-others.html#cb51-5" tabindex="-1"></a>    <span class="at">mean_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-6"><a href="wrangling-data-with-dplyr-and-others.html#cb51-6" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the
+## `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 9 × 4
+## # Groups:   year [3]
+##    year island    n_penguins mean_mass
+##   &lt;int&gt; &lt;fct&gt;          &lt;int&gt;     &lt;dbl&gt;
+## 1  2007 Biscoe            44     4741.
+## 2  2007 Dream             46     3684.
+## 3  2007 Torgersen         20     3763.
+## 4  2008 Biscoe            64     4628.
+## 5  2008 Dream             34     3779.
+## 6  2008 Torgersen         16     3856.
+## 7  2009 Biscoe            60     4793.
+## 8  2009 Dream             44     3691.
+## 9  2009 Torgersen         16     3489.</code></pre>
+<p>Suddenly this is much more informative - we can now do calculations/operations per year and island, which provides a lot more nuance.</p>
+</div>
+<div id="some-other-handy-tidyverse-functions" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Some other handy tidyverse functions<a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As stated at the start of this chapter, this book will only cover enough R functions to provide you with an understanding of what goes on in this book and how. Nonetheless, there are so many tidyverse functions out there that are worth exploring and knowing about. Below is a brief list of some other functions from <code>dplyr</code> you may wish to keep in mind. To find out what a given function does in more detail, you just need to type <code>?function</code> into the R console to search for its documentation (or <code>??x</code> to do a broad search).</p>
+<p>Note that all of these are <code>dplyr</code> functions, so need to be piped from a dataset like usual.</p>
+<ul>
+<li><code>arrange()</code> will sort your rows by a variable you specify. For example, if you wanted to sort the penguins dataset by island, you could use <code>arrange(island)</code> (or <code>arrange(desc(island))</code> for descending order).</li>
+<li><code>distinct()</code> will give you all <em>unique</em> values in a given column. <code>distinct(island)</code>, for instance, will give you each unique island name.</li>
+<li><code>rename()</code> will let you rename columns.</li>
+<li>`<code>relocate()</code> will let you rearrange the column order.</li>
+<li>The <code>slice()</code> set of functions is another way of subsetting rows based on their position.</li>
+</ul>
+</div>
 </div>
             </section>
 

@@ -120,7 +120,7 @@ library(palmerpenguins)
 penguins
 ```
 
-For the purposes of RPMP you won't need to create any data frames, but you will need to know how to read files in. 
+For the purposes of RPMP you won't need to create any data frames, but you will need to know how to read files in. More on this on the next page!
 
 
 ## Packages and functions
@@ -130,15 +130,12 @@ The beauty of R is that its functionality is essentially limitless; its open-sou
 
 To provide a very simple explanation of what packages are, packages are a collection of code that provide new functions in R. Some packages occassionally come with data too, such as the `palmerpenguins` package.
 
-### A brief note on functions
-
-Functions are the things in R that allow us to *do* things. (highly technical description, I know.) 
 
 ### Loading packages
 
 When you start a new R session, the first thing that you'll want to do is load the packages that you need to use. 
 
-For now, we'll load two packages for functions: the tidy verse and rstatix. The tidyverse is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. rstatix allows for simple statistical tests to be performed in an easy way. palmerpenguins comes with a dataset for practicing on. palmerpenguins loads a dataset named `penguins` that contains basic info on 3 species of penguins across 3 different islands.
+For now, we'll load two packages for functions: `tidyverse` and `rstatix`. `tidyverse` is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. `rstatix` allows for simple statistical tests to be performed in an easy way. `palmerpenguins` comes with a dataset for practicing on. `palmerpenguins` loads a dataset named `penguins` that contains basic info on 3 species of penguins across 3 different islands.
 
 To load a package, call the `library()` function and enter the name of the package in brackets:
 
@@ -171,30 +168,90 @@ data %>%
   function_3(avoid = "that")
 ```
 
-in the hypothetical example above, we first take `data`, pass it to function 1, pass the output of that to function 2, and pass the output from function 2 to function 3. 
+in the hypothetical example above, we first take `data`, and pass it to function 1. We then take the output of function 1 and pass that to function 2, which has the argument `do = "this"`. Afterwards, we take the output of function 2 and pass it to function 3. 
 
+There are a number of clear benefits to the tidyverse way of doing things. These include:
+
+-   Functions are generally stated as *verbs*, which means that you're always *doing* something with a function (and it's clear what that something is)
+-   Piping avoids the cyclical hell of creating intermediate variables. Consider a non-tidyverse version of the code example above, written down below. This code is not only a bit of a pain to read, but is also clunky in that it generates several intermediate variables that aren't all that useful (a lot of the time).
+
+```{r eval = FALSE}
+output_1 <- function_1(data)
+output_2 <- function_2(output_1, do = "this")
+output_3 <- function_3(output_2, avoid = "that")
+```
+
+-   Piped code is generally quite easy to read.
+-   `tidyverse` also provides a consistent syntax for *other* packages! It provides a quasi-philosophy and style guide for developers to write their own packages to write 'tidy' packages. `rstatix` is a great example of this.
+
+Throughout this book you will see a lot of tidyverse! 
+
+### The `here()` package
+
+Another staple bit of code you will see throughout RPMP is the `here` package. The official vignette for `here` summarises what this package does:
+
+> The `here` package enables easy file referencing by using the top-level directory of a file project to easily build file paths. This is in contrast to using `setwd()`, which is fragile and dependent on the way you order your files on your computer. 
+
+Alternatively, read the below quote from R goddess Jenny Bryan:
+
+> If the first line of your #rstats script is `setwd("C:\Users\jenny\path\that\only\I\have")`, I will come into your lab and SET YOUR COMPUTER ON FIRE.
+
+In short, `here()` allows us to locate files in a *relative* manner as opposed to an *absolute* one. This is super super useful for sharing your code and data with other people, and ensuring that your scripts will run no matter where they are. 
+
+We won't get into project-oriented workflows for RPMP. However, imagine you have a folder structure like this:
+
+```
+|-code
+|-----rpmp_week1.Rmd
+|-data
+|-----w1_dataset.csv
+|-output
+|-RPMP.rproj
+```
+
+Normally, to locate a file on a disk you would generally have to give the entire pathway to that file. That could be something like `"C:\Users\Dan\Documents\Subjects\RPMP\data\w1_dataset.csv"` - which is immensely unwieldy if we want to read in data - and won't work the moment I give my script to someone else, as their folder structure could be completely different!
+
+The alternative with here could be as simple as:
+
+```{r eval = FALSE}
+here("data", "w1_dataset.csv")
+```
+
+This tells R that I'm looking for something *here* in the data folder, specifically a file named `w1_dataset.csv`. As long as the relative positions are correct - i.e. the `.csv` file is in the `data` folder - R will know where to locate the file. 
+
+You will see a lot of `here()` in this version of the RPMP guide because as you may appreciate, there are a lot of data files stored in all manner of folders. 
 
 ## Wrangling data with dplyr and others
 
-dplyr is a package within the tidyverse for manipulating and wrangling data.
+`dplyr` is a package within the tidyverse for manipulating and wrangling data. `dplyr` is one of the most popular packages on R because it provides a suite of functions that are fairly essential to manipulating and working with data. Below is a brief overview of some of these functions, applied to the `penguins` dataset.
+
+### Selecting columns with `select()`
 
 `select()` lets you select the columns you want from a dataset. Simply specify the columns that you want by name. Below we take the species and island columns from the penguins dataset:
 
 
 ```{r}
-x <- penguins %>%
+penguins %>%
   select(species, island)
-
-x
 ```
+
+You can select columns via a number of ways:
+
+-   Simply by name, e.g. `select(species, island)`
+-   By their *index* or column number, e.g. `select(1, 2)` 
+    - `select(1:4)` will select columns 1 to 4
+    - `select(-1)` will select the *last* column
+-   By certain operator functions, such as `starts_with()` and `ends_with()`, e.g. `ends_with("mm")` will select all columns that end with "mm"
+
+Combinations of the above also work. Removing columns is simply done by adding a minus sign `-` in front of the arguments for select, and are compatible with all of the options above.
+    
+### Filtering rows with `filter()`
 
 `filter()` selects the rows that you want based on a certain condition. Here, we specify the column that want to filter by and state the condition (`==` means equals to). We can filter on multiple conditions; for example, filtering Adelie penguins by the year 2007:
 
 ```{r}
-y <- penguins %>%
+penguins %>%
   filter(year == 2007, species == "Adelie")
-
-y
 ```
 
 You can also choose to filter *out* rows based on a condition by adding an exclamation mark in front of the column name.
@@ -207,22 +264,125 @@ penguins %>%
 `drop_na()` is another useful starting function that simply removes all rows with NA/empty cells. If you enter it as is then it will clean the entire dataset; if you specify a column then it will remove all rows with NAs in that column. Below is an example of a pipe using these functions - going from selecting columns to filtering rows and finally cleaning up the empty cells.
 
 ```{r}
-z <- penguins %>%
+penguins %>%
   select(species, body_mass_g, year) %>%
   filter(year == 2009) %>%
   drop_na()
 
-z
 ```
 
 
+### Creating new columns with `mutate()`
 
+`mutate()` is a function that lets you create new columns. This can be extremely useful for operations like recoding variables and transforming them. The nice thing about `mutate()` is that you can do all manner of operations without touching your original data.
+
+The basic workflow of `mutate()` looks like this:
+
+```{r eval = FALSE}
+data %>%
+  mutate(
+    new_column_1 = a_function(...),
+    new_column_2 = another_function(...)
+    )
+```
+
+This example code would create two new columns, named `new_column_1` and `new_column_2`, with their respective values being whatever the functions were. For example, in the `penguins` dataset we have a variable called `body_mass_g`, which is the body mass of each penguin in grams. If we wanted to convert this to kilograms, we would need to divide each penguin's value on this variable by 1000. `mutate()` makes this a piece of cake. Let's also chain a `select()` command to only show the following variables: species, island, body_mass_g and sex.
+
+```{r}
+penguins %>%
+  select(species, island, body_mass_g, sex) %>%
+  mutate(body_mass_kg = body_mass_g/1000)
+```
+
+You can see now that we have a new column called `body_mass_kg` that has our new transformed variable. 
+
+`mutate()` can also take functions (and likely will make up the majority of your use of it). For example, let's say that we want to make a variable that takes the natural logarithm of bill length (for whatever reason). We could do this as follows using the `log()` function within our `mutate()` call:
+
+```{r}
+penguins %>%
+  select(species, island, bill_length_mm, bill_depth_mm) %>%
+  mutate(bill_length_log = log(bill_length_mm))
+```
+
+
+### Summarising data with `summarise()` and `group_by()`
+
+Finally, sometimes we will want to summarise data - for example, to calculate basic features such as descriptives or for plotting. To do that, we can use the function `summarise()` (or `summarize()` for American users). 
+
+`summarise()` works very similarly to `mutate()`. 
+
+```{r eval = FALSE}
+data %>%
+  summarise(
+    summary_1 = a_function(...),
+    summary_2 = another_function(...)
+    )
+```
+
+The difference is that while `mutate()` retains the features of your data, `summarise()` will instead collapse it. To illustrate, let's say we want to calculate a) how many penguins there are (with the function `n()`) and b) the mean body mass (with the `mean()` function).
+
+```{r}
+penguins %>%
+  summarise(
+    n_penguins = n(),
+    mean_mass = mean(body_mass_g, na.rm = TRUE)
+  )
+```
+This is... good and all, but consider what we've just done. We've just calculated the number of penguins and the mean body mass across the *entire* dataset. However, that may not necessarily be meaningful, particularly in this instance where we have meaningful groups within the data. For example, the above mean collapses across years, which may not be appropriate.
+
+Enter in another function called `group_by()`. As the name implies, `group_by()` will perform operations per a grouping variable that you specify. `group_by()` works especially well with summarise, because the idea is something like this:
+
+```{r eval = FALSE}
+data %>%
+  group_by(variable) %>%                 # Tell R to group the subsequent output by this variable
+  summarise(
+    summary_1 = a_function(...),
+    summary_2 = another_function(...)
+    ) %>%
+  ungroup()         # Tell R grouping is no longer needed
+```
+
+Let's put this into practice by calculating the n and mean per year. Notice how the output now calculates n and the mean body mass per year, which is much more informative!
+
+```{r}
+penguins %>%
+  group_by(year) %>%
+  summarise(
+    n_penguins = n(),
+    mean_mass = mean(body_mass_g, na.rm = TRUE)
+  ) %>%
+  ungroup()
+```
+
+Naturally, `group_by()` can group using multiple variables. This is easy to do so as well
+
+```{r}
+penguins %>%
+  group_by(year, island) %>%
+  summarise(
+    n_penguins = n(),
+    mean_mass = mean(body_mass_g, na.rm = TRUE)
+  )
+```
+Suddenly this is much more informative - we can now do calculations/operations per year and island, which provides a lot more nuance. 
+
+### Some other handy tidyverse functions
+
+As stated at the start of this chapter, this book will only cover enough R functions to provide you with an understanding of what goes on in this book and how. Nonetheless, there are so many tidyverse functions out there that are worth exploring and knowing about. Below is a brief list of some other functions from `dplyr` you may wish to keep in mind. To find out what a given function does in more detail, you just need to type `?function` into the R console to search for its documentation (or `??x` to do a broad search).
+
+Note that all of these are `dplyr` functions, so need to be piped from a dataset like usual.
+
+-   `arrange()` will sort your rows by a variable you specify. For example, if you wanted to sort the penguins dataset by island, you could use `arrange(island)` (or `arrange(desc(island))` for descending order).
+-   `distinct()` will give you all *unique* values in a given column. `distinct(island)`, for instance, will give you each unique island name.
+-   `rename()` will let you rename columns. 
+-   ``relocate()` will let you rearrange the column order.
+-   The `slice()` set of functions is another way of subsetting rows based on their position. 
 
 ## Making graphs with ggplot2
 
 ggplot2 is the tidyverse way of visualising data. The 'gg' in the name ggplot2 stands for grammar of graphics. The idea is that a graph is built by the same few components - a dataset, geoms (visual marks that represent data) and a coordinate system. 
 
-A cheatsheet for ggplot2 can be found [here](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf).
+A cheatsheet for ggplot2 can be found [here](https://rstudio.github.io/cheatsheets/html/data-visualization.html).
 
 To start a plot, we first call the ggplot function. Here, we specify three of the main features of our plot - the dataset that we want to use, the x axis and the y axis. the x and y axes are wrapped within the `aes()` function, which defines our aesthetics. Here, we simply say which columns of our dataset should go on the x and y axes. Using the penguin dataset, we can start to visualise a scatter plot between bill length and bill depth like this:
 
@@ -244,12 +404,14 @@ From here, we can change many things by adding or modifying our existing layers.
 ```{r}
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point()
 ```
+
 The axis labels aren't very informative as they are. We can change this by adding `labs()`, which is a simple way of specifying x and y labels:
 
 ```{r}
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point() +
   labs(x = "Bill length (mm)", y = "Bill depth (mm)") 
 ```
+
 To add a line of best fit (e.g. in the instance of regressions), add `geom_smooth(method = "lm")`. Specifying the method is important because by default, `geom_smooth()` will probably fit LOESS curves (local polynomial regressions). Note that if you've specified a colour/grouping variable, separate regression lines will be fitted for each group.
 
 By default, the line will also have standard error bands around it. You can turn this off by also specifying `se = FALSE` in the `geom_smooth()` call.
@@ -258,8 +420,6 @@ By default, the line will also have standard error bands around it. You can turn
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point() +
   labs(x = "Bill length (mm)", y = "Bill depth (mm)") + geom_smooth(method = "lm", se = FALSE)
 ```
-
-
 
 `geom_boxplot()` will create boxplots. An example is below, with species on the x axis and body mass on the y:
 
@@ -274,4 +434,7 @@ ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)
   labs(x = "Bill length (mm)", y = "Bill depth (mm)")  + facet_wrap(~year)
 ```
 
+From here, there are so many things you can do with ggplot - and it helps to get creative! 
+
+Almost all of the graphs in RPMP (in fact, I think it actually is 100%) were made using `ggplot2`.
 
