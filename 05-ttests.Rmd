@@ -364,7 +364,7 @@ For a one-sample t-test, the formula once again needs to be in `var ~ 1` format 
 
 ```{r}
 w8_grades %>% 
-  cohens_d(sample ~ 1, mu = 72) 
+  rstatix::cohens_d(sample ~ 1, mu = 72) 
 ```
 For an independent-samples t-test:
 

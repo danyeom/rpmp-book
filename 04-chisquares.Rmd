@@ -488,9 +488,8 @@ rstatix::cramer_v(w7_instrument_table, correct = FALSE)
 An alternative is to use the `effectsize` package, which also helpfully calculates 95% CIs.
 
 ```{r}
-library(effectsize)
-phi(w7_instrument_table, adjust = FALSE)
-cramers_v(w7_instrument_table, adjust = FALSE)
+effectsize::phi(w7_instrument_table, adjust = FALSE)
+effectsize::cramers_v(w7_instrument_table, adjust = FALSE)
 ```
 
 

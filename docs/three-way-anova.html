@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9.7 Three-way ANOVA | Research Process for Music Psychologists</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9.7 Three-way ANOVA | Research Process for Music Psychologists" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9.7 Three-way ANOVA | Research Process for Music Psychologists" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Daniel Yeom" />
+
+
+<meta name="date" content="2024-04-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="two-way-mixed-anova.html"/>
+<link rel="next" href="multiple-regression-continued.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Research Process for Music Psychologists</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="usage.html"><a href="usage.html"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
+<li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
+<li class="chapter" data-level="1.3" data-path="preview-book.html"><a href="preview-book.html"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
+<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.1</b> Loading packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.2.3</b> The <code>here()</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.3.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.3.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.3.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.3.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.3.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.3.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.3.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.3.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.3.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visualising-data.html"><a href="visualising-data.html"><i class="fa fa-check"></i><b>3.1</b> Visualising data</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="visualising-data.html"><a href="visualising-data.html#why-visualise-data"><i class="fa fa-check"></i><b>3.1.1</b> Why visualise data?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="counts-and-central-tendencies.html"><a href="counts-and-central-tendencies.html"><i class="fa fa-check"></i><b>3.2</b> Counts and central tendencies</a></li>
+<li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#standard-deviation"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#standard-error-and-the-sdotm"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="z-scores.html"><a href="z-scores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html"><i class="fa fa-check"></i><b>4.1</b> The logic of hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html#revisiting-the-hypotheses"><i class="fa fa-check"></i><b>4.1.1</b> Revisiting the hypotheses</a></li>
+<li class="chapter" data-level="4.1.2" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html#the-issue-of-tails"><i class="fa fa-check"></i><b>4.1.2</b> The issue of tails</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="p-values.html"><a href="p-values.html"><i class="fa fa-check"></i><b>4.2</b> p-values</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="p-values.html"><a href="p-values.html#the-definition-of-the-p-value"><i class="fa fa-check"></i><b>4.2.1</b> The definition of the p-value</a></li>
+<li class="chapter" data-level="4.2.2" data-path="p-values.html"><a href="p-values.html#a-brief-probability-primer-and-how-this-relates-to-p-values"><i class="fa fa-check"></i><b>4.2.2</b> A brief probability primer, and how this relates to p-values</a></li>
+<li class="chapter" data-level="4.2.3" data-path="p-values.html"><a href="p-values.html#the-debate-around-p-values"><i class="fa fa-check"></i><b>4.2.3</b> The debate around p-values</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="types-of-error.html"><a href="types-of-error.html"><i class="fa fa-check"></i><b>4.3</b> Types of error</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="types-of-error.html"><a href="types-of-error.html#statistical-error"><i class="fa fa-check"></i><b>4.3.1</b> Statistical error</a></li>
+<li class="chapter" data-level="4.3.2" data-path="types-of-error.html"><a href="types-of-error.html#type-i-error-and-alpha"><i class="fa fa-check"></i><b>4.3.2</b> Type I error and alpha</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="statistical-power.html"><a href="statistical-power.html"><i class="fa fa-check"></i><b>4.4</b> Statistical power</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="statistical-power.html"><a href="statistical-power.html#statistical-power-1"><i class="fa fa-check"></i><b>4.4.1</b> Statistical power</a></li>
+<li class="chapter" data-level="4.4.2" data-path="statistical-power.html"><a href="statistical-power.html#factors-that-affect-power"><i class="fa fa-check"></i><b>4.4.2</b> Factors that affect power</a></li>
+<li class="chapter" data-level="4.4.3" data-path="statistical-power.html"><a href="statistical-power.html#power-analyses"><i class="fa fa-check"></i><b>4.4.3</b> Power analyses</a></li>
+<li class="chapter" data-level="4.4.4" data-path="statistical-power.html"><a href="statistical-power.html#post-hoc-power-analyses"><i class="fa fa-check"></i><b>4.4.4</b> Post-hoc power analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>4.5</b> Confidence intervals</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#a-reminder-from-the-previous-module"><i class="fa fa-check"></i><b>4.5.1</b> A reminder from the previous module</a></li>
+<li class="chapter" data-level="4.5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-1"><i class="fa fa-check"></i><b>4.5.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="4.5.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence"><i class="fa fa-check"></i><b>4.5.3</b> Confidence</a></li>
+<li class="chapter" data-level="4.5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-literature"><i class="fa fa-check"></i><b>4.5.4</b> Confidence intervals in literature</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chi-squares.html"><a href="chi-squares.html"><i class="fa fa-check"></i><b>5</b> Chi-squares</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html"><i class="fa fa-check"></i><b>5.1</b> Calculating a chi-square</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html#categorical-data"><i class="fa fa-check"></i><b>5.1.1</b> Categorical data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html#the-chi-square-formula"><i class="fa fa-check"></i><b>5.1.2</b> The chi-square formula</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html"><i class="fa fa-check"></i><b>5.2</b> The chi-square distribution</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#the-chi-square-distribution-1"><i class="fa fa-check"></i><b>5.2.1</b> The chi-square distribution</a></li>
+<li class="chapter" data-level="5.2.2" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#hypothesis-testing-in-chi-squares"><i class="fa fa-check"></i><b>5.2.2</b> Hypothesis testing in chi-squares</a></li>
+<li class="chapter" data-level="5.2.3" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#calculating-significance"><i class="fa fa-check"></i><b>5.2.3</b> Calculating significance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html"><i class="fa fa-check"></i><b>5.3</b> Goodness of fit</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>5.3.1</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="5.3.2" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#example"><i class="fa fa-check"></i><b>5.3.2</b> Example</a></li>
+<li class="chapter" data-level="5.3.3" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#calculating-chi2"><i class="fa fa-check"></i><b>5.3.3</b> Calculating <span class="math inline">\(\\\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.3.4" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#using-r"><i class="fa fa-check"></i><b>5.3.4</b> Using R</a></li>
+<li class="chapter" data-level="5.3.5" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#output"><i class="fa fa-check"></i><b>5.3.5</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>5.4</b> Tests of independence</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="tests-of-independence.html"><a href="tests-of-independence.html#example-scenario"><i class="fa fa-check"></i><b>5.4.1</b> Example scenario</a></li>
+<li class="chapter" data-level="5.4.2" data-path="tests-of-independence.html"><a href="tests-of-independence.html#expected-frequencies"><i class="fa fa-check"></i><b>5.4.2</b> Expected frequencies</a></li>
+<li class="chapter" data-level="5.4.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html#output-1"><i class="fa fa-check"></i><b>5.4.3</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html"><i class="fa fa-check"></i><b>5.5</b> Effect sizes for chi-squares</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#phi"><i class="fa fa-check"></i><b>5.5.1</b> Phi</a></li>
+<li class="chapter" data-level="5.5.2" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#cramers-v"><i class="fa fa-check"></i><b>5.5.2</b> Cramer’s V</a></li>
+<li class="chapter" data-level="5.5.3" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Interpretation</a></li>
+<li class="chapter" data-level="5.5.4" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#practice"><i class="fa fa-check"></i><b>5.5.4</b> Practice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-tests</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html"><i class="fa fa-check"></i><b>6.1</b> t-tests and the t-distribution</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#what-is-a-t-test"><i class="fa fa-check"></i><b>6.1.1</b> What is a <em>t</em>-test?</a></li>
+<li class="chapter" data-level="6.1.2" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-statistic"><i class="fa fa-check"></i><b>6.1.2</b> The t-statistic</a></li>
+<li class="chapter" data-level="6.1.3" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-distribution"><i class="fa fa-check"></i><b>6.1.3</b> The t-distribution</a></li>
+<li class="chapter" data-level="6.1.4" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-table"><i class="fa fa-check"></i><b>6.1.4</b> The t-table</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html"><i class="fa fa-check"></i><b>6.2</b> One-sample t-test</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#one-sample-t-test-1"><i class="fa fa-check"></i><b>6.2.1</b> One-sample t-test</a></li>
+<li class="chapter" data-level="6.2.2" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#example-data"><i class="fa fa-check"></i><b>6.2.2</b> Example data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#assumption-checks"><i class="fa fa-check"></i><b>6.2.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.2.4" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#output-2"><i class="fa fa-check"></i><b>6.2.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html"><i class="fa fa-check"></i><b>6.3</b> Independent samples t-test</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#independent-samples"><i class="fa fa-check"></i><b>6.3.1</b> Independent samples</a></li>
+<li class="chapter" data-level="6.3.2" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#example-data-1"><i class="fa fa-check"></i><b>6.3.2</b> Example data</a></li>
+<li class="chapter" data-level="6.3.3" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#assumption-checks-1"><i class="fa fa-check"></i><b>6.3.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.3.4" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#output-3"><i class="fa fa-check"></i><b>6.3.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html"><i class="fa fa-check"></i><b>6.4</b> Paired-samples t-test</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#paired-samples"><i class="fa fa-check"></i><b>6.4.1</b> Paired-samples</a></li>
+<li class="chapter" data-level="6.4.2" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#example-data-2"><i class="fa fa-check"></i><b>6.4.2</b> Example data</a></li>
+<li class="chapter" data-level="6.4.3" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#assumption-checks-2"><i class="fa fa-check"></i><b>6.4.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.4.4" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#output-4"><i class="fa fa-check"></i><b>6.4.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="cohens-d.html"><a href="cohens-d.html"><i class="fa fa-check"></i><b>6.5</b> Cohen’s d</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="cohens-d.html"><a href="cohens-d.html#what-is-cohens-d"><i class="fa fa-check"></i><b>6.5.1</b> What is Cohen’s <em>d</em>?</a></li>
+<li class="chapter" data-level="6.5.2" data-path="cohens-d.html"><a href="cohens-d.html#interpreting-cohens-d"><i class="fa fa-check"></i><b>6.5.2</b> Interpreting Cohen’s <em>d</em></a></li>
+<li class="chapter" data-level="6.5.3" data-path="cohens-d.html"><a href="cohens-d.html#calculating-cohens-d-in-r"><i class="fa fa-check"></i><b>6.5.3</b> Calculating Cohen’s d in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="anovas.html"><a href="anovas.html"><i class="fa fa-check"></i><b>7</b> ANOVAs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html"><i class="fa fa-check"></i><b>7.1</b> Anovas and the F-distribution</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-basic-logic-of-anovas"><i class="fa fa-check"></i><b>7.1.1</b> The basic logic of ANOVAs</a></li>
+<li class="chapter" data-level="7.1.2" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-f-distribution"><i class="fa fa-check"></i><b>7.1.2</b> The F-distribution</a></li>
+<li class="chapter" data-level="7.1.3" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#f-statistic-tables"><i class="fa fa-check"></i><b>7.1.3</b> <em>F</em>-statistic tables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="the-anova-table.html"><a href="the-anova-table.html"><i class="fa fa-check"></i><b>7.2</b> The ANOVA table</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="the-anova-table.html"><a href="the-anova-table.html#the-anova-table-1"><i class="fa fa-check"></i><b>7.2.1</b> The ANOVA table</a></li>
+<li class="chapter" data-level="7.2.2" data-path="the-anova-table.html"><a href="the-anova-table.html#sums-of-squares"><i class="fa fa-check"></i><b>7.2.2</b> Sums of squares</a></li>
+<li class="chapter" data-level="7.2.3" data-path="the-anova-table.html"><a href="the-anova-table.html#degrees-of-freedom"><i class="fa fa-check"></i><b>7.2.3</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="7.2.4" data-path="the-anova-table.html"><a href="the-anova-table.html#mean-squares"><i class="fa fa-check"></i><b>7.2.4</b> Mean squares</a></li>
+<li class="chapter" data-level="7.2.5" data-path="the-anova-table.html"><a href="the-anova-table.html#calculating-f"><i class="fa fa-check"></i><b>7.2.5</b> Calculating <em>F</em></a></li>
+<li class="chapter" data-level="7.2.6" data-path="the-anova-table.html"><a href="the-anova-table.html#putting-it-all-together"><i class="fa fa-check"></i><b>7.2.6</b> Putting it all together</a></li>
+<li class="chapter" data-level="7.2.7" data-path="the-anova-table.html"><a href="the-anova-table.html#consulting-the-f-table"><i class="fa fa-check"></i><b>7.2.7</b> Consulting the F-table</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html"><i class="fa fa-check"></i><b>7.3</b> Multiple comparisons</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
+<li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
+<li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="one-way-anova.html"><a href="one-way-anova.html"><i class="fa fa-check"></i><b>7.4</b> One-way ANOVA</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="one-way-anova.html"><a href="one-way-anova.html#the-basic-one-way-anova"><i class="fa fa-check"></i><b>7.4.1</b> The basic one-way ANOVA</a></li>
+<li class="chapter" data-level="7.4.2" data-path="one-way-anova.html"><a href="one-way-anova.html#example-data-3"><i class="fa fa-check"></i><b>7.4.2</b> Example data</a></li>
+<li class="chapter" data-level="7.4.3" data-path="one-way-anova.html"><a href="one-way-anova.html#assumption-checks-3"><i class="fa fa-check"></i><b>7.4.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="7.4.4" data-path="one-way-anova.html"><a href="one-way-anova.html#output-5"><i class="fa fa-check"></i><b>7.4.4</b> Output</a></li>
+<li class="chapter" data-level="7.4.5" data-path="one-way-anova.html"><a href="one-way-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>7.4.5</b> Post-hoc tests</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>7.5</b> One-way repeated measures ANOVA</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#repeated-measures-anovas"><i class="fa fa-check"></i><b>7.5.1</b> Repeated measures ANOVAs</a></li>
+<li class="chapter" data-level="7.5.2" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#example-data-4"><i class="fa fa-check"></i><b>7.5.2</b> Example data</a></li>
+<li class="chapter" data-level="7.5.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.5.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="7.5.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.5.4</b> ANOVA output</a></li>
+<li class="chapter" data-level="7.5.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.5.5</b> Post-hoc tests</a></li>
+<li class="chapter" data-level="7.5.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.5.6</b> Alternative using <code>car::Anova()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.6</b> Eta-squared</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="eta-squared.html"><a href="eta-squared.html#eta-squared-and-variance"><i class="fa fa-check"></i><b>7.6.1</b> Eta-squared and variance</a></li>
+<li class="chapter" data-level="7.6.2" data-path="eta-squared.html"><a href="eta-squared.html#an-example"><i class="fa fa-check"></i><b>7.6.2</b> An example</a></li>
+<li class="chapter" data-level="7.6.3" data-path="eta-squared.html"><a href="eta-squared.html#interpreting-eta-squared"><i class="fa fa-check"></i><b>7.6.3</b> Interpreting eta-squared</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>8.1</b> Correlations</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="correlations.html"><a href="correlations.html#correlation-coefficients"><i class="fa fa-check"></i><b>8.1.1</b> Correlation coefficients</a></li>
+<li class="chapter" data-level="8.1.2" data-path="correlations.html"><a href="correlations.html#activity"><i class="fa fa-check"></i><b>8.1.2</b> Activity</a></li>
+<li class="chapter" data-level="8.1.3" data-path="correlations.html"><a href="correlations.html#testing-correlations-in-r"><i class="fa fa-check"></i><b>8.1.3</b> Testing correlations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html"><i class="fa fa-check"></i><b>8.2</b> Regression hypotheses</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html#terminology"><i class="fa fa-check"></i><b>8.2.1</b> Terminology</a></li>
+<li class="chapter" data-level="8.2.2" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html#hypothesis-testing-in-regressions"><i class="fa fa-check"></i><b>8.2.2</b> Hypothesis testing in regressions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="least-squares-regression.html"><a href="least-squares-regression.html"><i class="fa fa-check"></i><b>8.3</b> Least squares regression</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="least-squares-regression.html"><a href="least-squares-regression.html#the-regression-line"><i class="fa fa-check"></i><b>8.3.1</b> The regression line</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="assumption-tests.html"><a href="assumption-tests.html"><i class="fa fa-check"></i><b>8.4</b> Assumption tests</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="assumption-tests.html"><a href="assumption-tests.html#linearity"><i class="fa fa-check"></i><b>8.4.1</b> Linearity</a></li>
+<li class="chapter" data-level="8.4.2" data-path="assumption-tests.html"><a href="assumption-tests.html#homoscedasticity"><i class="fa fa-check"></i><b>8.4.2</b> Homoscedasticity</a></li>
+<li class="chapter" data-level="8.4.3" data-path="assumption-tests.html"><a href="assumption-tests.html#independence"><i class="fa fa-check"></i><b>8.4.3</b> Independence</a></li>
+<li class="chapter" data-level="8.4.4" data-path="assumption-tests.html"><a href="assumption-tests.html#normality"><i class="fa fa-check"></i><b>8.4.4</b> Normality</a></li>
+<li class="chapter" data-level="8.4.5" data-path="assumption-tests.html"><a href="assumption-tests.html#multicollinearity"><i class="fa fa-check"></i><b>8.4.5</b> Multicollinearity</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html"><i class="fa fa-check"></i><b>8.5</b> Linear regressions in R</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#scenario"><i class="fa fa-check"></i><b>8.5.1</b> Scenario</a></li>
+<li class="chapter" data-level="8.5.2" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#assumptions"><i class="fa fa-check"></i><b>8.5.2</b> Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="predictions.html"><a href="predictions.html"><i class="fa fa-check"></i><b>8.6</b> Predictions</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
+<li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
+<li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#multiple-regression"><i class="fa fa-check"></i><b>8.7.1</b> Multiple regression</a></li>
+<li class="chapter" data-level="8.7.2" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#the-regression-equation-once-again"><i class="fa fa-check"></i><b>8.7.2</b> The regression equation, once again</a></li>
+<li class="chapter" data-level="8.7.3" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#assumption-testing-in-multiple-regressions"><i class="fa fa-check"></i><b>8.7.3</b> Assumption testing in multiple regressions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
+<li class="chapter" data-level="8.8.2" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
+<li class="chapter" data-level="8.8.3" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
+<li class="chapter" data-level="8.8.4" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="introduction.html"><a href="introduction.html#conventions-for-factorial-designs"><i class="fa fa-check"></i><b>9.1.1</b> Conventions for factorial designs</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="interactions.html"><a href="interactions.html"><i class="fa fa-check"></i><b>9.2</b> Interactions</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="interactions.html"><a href="interactions.html#what-is-an-interaction"><i class="fa fa-check"></i><b>9.2.1</b> What is an interaction?</a></li>
+<li class="chapter" data-level="9.2.2" data-path="interactions.html"><a href="interactions.html#testing-for-interactions"><i class="fa fa-check"></i><b>9.2.2</b> Testing for interactions</a></li>
+<li class="chapter" data-level="9.2.3" data-path="interactions.html"><a href="interactions.html#simple-effects-tests"><i class="fa fa-check"></i><b>9.2.3</b> Simple effects tests</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html"><i class="fa fa-check"></i><b>9.3</b> R-specific considerations</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#the-afex-package"><i class="fa fa-check"></i><b>9.3.1</b> The <code>afex</code> package</a></li>
+<li class="chapter" data-level="9.3.2" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#writing-interactions-in-r"><i class="fa fa-check"></i><b>9.3.2</b> Writing interactions in R</a></li>
+<li class="chapter" data-level="9.3.3" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#simple-effects-tests-in-r"><i class="fa fa-check"></i><b>9.3.3</b> Simple effects tests in R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html"><i class="fa fa-check"></i><b>9.4</b> Two-way between groups ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#introduction-1"><i class="fa fa-check"></i><b>9.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.4.2" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#example-1"><i class="fa fa-check"></i><b>9.4.2</b> Example</a></li>
+<li class="chapter" data-level="9.4.3" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#assumption-testing"><i class="fa fa-check"></i><b>9.4.3</b> Assumption testing</a></li>
+<li class="chapter" data-level="9.4.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#normality-of-residuals-look-at-the-shapiro-wilk-test-on-the-residuals-or-a-q-q-plot"><i class="fa fa-check"></i><b>9.4.4</b> Normality of residuals: Look at the Shapiro-Wilk test (on the residuals) or a Q-Q plot:</a></li>
+<li class="chapter" data-level="9.4.5" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#output-7"><i class="fa fa-check"></i><b>9.4.5</b> Output</a></li>
+<li class="chapter" data-level="9.4.6" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#write-up"><i class="fa fa-check"></i><b>9.4.6</b> Write-up</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>9.5</b> Two-way repeated measures ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#introduction-2"><i class="fa fa-check"></i><b>9.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.5.2" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#example-2"><i class="fa fa-check"></i><b>9.5.2</b> Example</a></li>
+<li class="chapter" data-level="9.5.3" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#assumptions-1"><i class="fa fa-check"></i><b>9.5.3</b> Assumptions</a></li>
+<li class="chapter" data-level="9.5.4" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#output-8"><i class="fa fa-check"></i><b>9.5.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html"><i class="fa fa-check"></i><b>9.6</b> Two-way mixed ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#introduction-3"><i class="fa fa-check"></i><b>9.6.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.6.2" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#example-3"><i class="fa fa-check"></i><b>9.6.2</b> Example</a></li>
+<li class="chapter" data-level="9.6.3" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#output-9"><i class="fa fa-check"></i><b>9.6.3</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="three-way-anova.html"><a href="three-way-anova.html"><i class="fa fa-check"></i><b>9.7</b> Three-way ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="three-way-anova.html"><a href="three-way-anova.html#introduction-4"><i class="fa fa-check"></i><b>9.7.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.7.2" data-path="three-way-anova.html"><a href="three-way-anova.html#example-4"><i class="fa fa-check"></i><b>9.7.2</b> Example</a></li>
+<li class="chapter" data-level="9.7.3" data-path="three-way-anova.html"><a href="three-way-anova.html#simple-simple-effects"><i class="fa fa-check"></i><b>9.7.3</b> Simple <em>simple</em> effects</a></li>
+<li class="chapter" data-level="9.7.4" data-path="three-way-anova.html"><a href="three-way-anova.html#assumptions-and-output"><i class="fa fa-check"></i><b>9.7.4</b> Assumptions and output</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
+<li class="chapter" data-level="10.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.2</b> Hierarchical regression</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-5"><i class="fa fa-check"></i><b>10.2.1</b> Example</a></li>
+<li class="chapter" data-level="10.2.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.2.2</b> Building blocks and output</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.3</b> Comparing models</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.3.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="10.3.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.3.2</b> Nested model tests</a></li>
+<li class="chapter" data-level="10.3.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.3.3</b> Fit indices</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10.4</b> Logistic regression</a></li>
+<li class="chapter" data-level="10.5" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html"><i class="fa fa-check"></i><b>10.5</b> Extra: Technical details of <code>anova()</code></a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>10.5.1</b> The default test in <code>anova()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Research Process for Music Psychologists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="three-way-anova" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> Three-way ANOVA<a href="three-way-anova.html#three-way-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction-4" class="section level3 hasAnchor" number="9.7.1">
+<h3><span class="header-section-number">9.7.1</span> Introduction<a href="three-way-anova.html#introduction-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Of course, we don’t have to stop at two IVs. Sometimes we may have designs where we want to</p>
+<p>At this point though, I want to ask you… <em>why</em> are you going to that complex of a design?</p>
+<p>To illustrate, consider a three-way ANOVA with variables A, B and C. In line with the principle of marginality, an ANOVA with all possible interactions will have:</p>
+<ul>
+<li>3 main effects: A, B and C</li>
+<li>3 simple (two-way) interaction effects: AxB, AxC, BxC</li>
+<li>1 three-way interaction: AxBxC</li>
+</ul>
+<p>This is not a trivial thing to interpret! A significant three-way interaction means that e.g. the main effect of variable A depends on both variable B <em>and</em> variable C. This quickly becomes really difficult to interpret, particularly when one or more variables have multiple levels. What is the effect of A when B = 2 and C = 4, for instance? What about A when B = 2 and C = 3? etc etc.</p>
+<p>Nevertheless, three-way ANOVAs (and even beyond that) are not necessarily uncommon, so it doesn’t hurt to know about them. We’ll unpack the main concepts as we step through an example, for the sake of brevity.</p>
+</div>
+<div id="example-4" class="section level3 hasAnchor" number="9.7.2">
+<h3><span class="header-section-number">9.7.2</span> Example<a href="three-way-anova.html#example-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This dataset is from a fictional experiment looking at how gender (male and female), risk of migraine (low or high) and different treatments (labelled X, Y and Z) impacted pain scores associated with a migraine headache. Below is a snippet of what our data looks like:</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="three-way-anova.html#cb230-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span></code></pre></div>
+<pre><code>## Warning: package &#39;datarium&#39; was built under R version 4.3.2</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="three-way-anova.html#cb232-1" tabindex="-1"></a><span class="fu">data</span>(headache)</span>
+<span id="cb232-2"><a href="three-way-anova.html#cb232-2" tabindex="-1"></a><span class="fu">head</span>(headache)</span></code></pre></div>
+<p>We want to run a gender (2) x risk (2) x treatment (3) three-way ANOVA to see whether these predictors have an effect on overall pain scores.</p>
+<p>Let’s start by visualising this data. We cannot fully visualise a three-way interaction because we inherently need four dimensions (as we have three predictors and one outcome variable). The best way to approach this is to draw a series of two-way interaction plots, split by the third variable. In the example below, the graphs show treatment on the x-axis, pain scores on the y-axis, different lines for low and high risk and separate graphs for male and female participants:</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="three-way-anova.html#cb233-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb233-2"><a href="three-way-anova.html#cb233-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk, treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb233-3"><a href="three-way-anova.html#cb233-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb233-4"><a href="three-way-anova.html#cb233-4" tabindex="-1"></a>    <span class="at">mean_pain =</span> <span class="fu">mean</span>(pain_score),</span>
+<span id="cb233-5"><a href="three-way-anova.html#cb233-5" tabindex="-1"></a>    <span class="at">sd_score =</span> <span class="fu">sd</span>(pain_score)</span>
+<span id="cb233-6"><a href="three-way-anova.html#cb233-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb233-7"><a href="three-way-anova.html#cb233-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb233-8"><a href="three-way-anova.html#cb233-8" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> risk, <span class="at">group =</span> risk)</span>
+<span id="cb233-9"><a href="three-way-anova.html#cb233-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb233-10"><a href="three-way-anova.html#cb233-10" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb233-11"><a href="three-way-anova.html#cb233-11" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb233-12"><a href="three-way-anova.html#cb233-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(gender)) <span class="sc">+</span></span>
+<span id="cb233-13"><a href="three-way-anova.html#cb233-13" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;gender&#39;, &#39;risk&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
+</div>
+<div id="simple-simple-effects" class="section level3 hasAnchor" number="9.7.3">
+<h3><span class="header-section-number">9.7.3</span> Simple <em>simple</em> effects<a href="three-way-anova.html#simple-simple-effects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider a scenario where a three-way interaction is significant. Naturally, as we saw in the examples with two-way ANOVAs, we now have to turn to breaking down the lower-order terms to unpack this interaction.</p>
+<p>For a two-way ANOVA, this was easy - we simply interpreted the effect of variable A at each level of variable B, and vice versa. We called this a simple effects test. But now, we need to break down a three-way interaction by looking at every <em>two-way</em> interaction that is now significant. The ‘simple effect’ is now each two-way interaction, hence why the terminology of <strong>simple interaction effect/test</strong> is sometimes used.</p>
+<p>That, of course, means that if the two-way is significant, we need to run the next level of simple effects for each main effect. At this level, we call them <strong>simple simple main effects</strong>. That’s because we’re now looking at main effects that are simple effects of a simple interaction effect, which is itself a simple effect of a three-way interaction. If that didn’t make sense, consider running an alternate analysis to a three-way ANOVA.</p>
+<p>It helps to visualise this, so I’ll use the headache data to do so. Imagine that the three-way interaction between treatment, risk and gender is significant. Imagine that every other effect is also significant (we’ll test this further down). This would give us three sets of simple interactions to test:</p>
+<ol style="list-style-type: decimal">
+<li>Treatment x risk, for each gender</li>
+<li>Treatment x gender, for each risk level</li>
+<li>Gender x risk, for each treatment</li>
+</ol>
+<p>Here is the first interaction visualised - treatment and risk, with separate plots for males and females:</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="three-way-anova.html#cb235-1" tabindex="-1"></a>headache_summary <span class="ot">&lt;-</span> headache <span class="sc">%&gt;%</span></span>
+<span id="cb235-2"><a href="three-way-anova.html#cb235-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk, treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb235-3"><a href="three-way-anova.html#cb235-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb235-4"><a href="three-way-anova.html#cb235-4" tabindex="-1"></a>    <span class="at">mean_pain =</span> <span class="fu">mean</span>(pain_score),</span>
+<span id="cb235-5"><a href="three-way-anova.html#cb235-5" tabindex="-1"></a>    <span class="at">sd_score =</span> <span class="fu">sd</span>(pain_score)</span>
+<span id="cb235-6"><a href="three-way-anova.html#cb235-6" tabindex="-1"></a>  ) </span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;gender&#39;, &#39;risk&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="three-way-anova.html#cb237-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
+<span id="cb237-2"><a href="three-way-anova.html#cb237-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb237-3"><a href="three-way-anova.html#cb237-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> risk, <span class="at">group =</span> risk)</span>
+<span id="cb237-4"><a href="three-way-anova.html#cb237-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb237-5"><a href="three-way-anova.html#cb237-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb237-6"><a href="three-way-anova.html#cb237-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb237-7"><a href="three-way-anova.html#cb237-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(gender)) <span class="sc">+</span></span>
+<span id="cb237-8"><a href="three-way-anova.html#cb237-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+<p>Here’s the second, which plots treatment x gender for each risk level:</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="three-way-anova.html#cb238-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
+<span id="cb238-2"><a href="three-way-anova.html#cb238-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb238-3"><a href="three-way-anova.html#cb238-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> gender, <span class="at">group =</span> gender)</span>
+<span id="cb238-4"><a href="three-way-anova.html#cb238-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb238-5"><a href="three-way-anova.html#cb238-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb238-6"><a href="three-way-anova.html#cb238-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb238-7"><a href="three-way-anova.html#cb238-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(risk)) <span class="sc">+</span></span>
+<span id="cb238-8"><a href="three-way-anova.html#cb238-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<p>And finally, here is gender and risk by each treatment:</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="three-way-anova.html#cb239-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
+<span id="cb239-2"><a href="three-way-anova.html#cb239-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb239-3"><a href="three-way-anova.html#cb239-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> risk, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> gender, <span class="at">group =</span> gender)</span>
+<span id="cb239-4"><a href="three-way-anova.html#cb239-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb239-5"><a href="three-way-anova.html#cb239-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb239-6"><a href="three-way-anova.html#cb239-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb239-7"><a href="three-way-anova.html#cb239-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(treatment)) <span class="sc">+</span></span>
+<span id="cb239-8"><a href="three-way-anova.html#cb239-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<p>And then within that, you would also want the main effects.</p>
+</div>
+<div id="assumptions-and-output" class="section level3 hasAnchor" number="9.7.4">
+<h3><span class="header-section-number">9.7.4</span> Assumptions and output<a href="three-way-anova.html#assumptions-and-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s run our basic ANOVA. Just like in Jamovi, we’ll do our usual assumption checks for our ANOVA model too. Based on Levene’s test and the Shapiro-Wilks test, we have no violations in multivariate equality of variance (<em>p</em> = .994) or normality (<em>p</em> = .398).</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="three-way-anova.html#cb240-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb240-2"><a href="three-way-anova.html#cb240-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(pain_score <span class="sc">~</span> gender <span class="sc">*</span> risk <span class="sc">*</span> treatment, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="three-way-anova.html#cb241-1" tabindex="-1"></a>threeway_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb241-2"><a href="three-way-anova.html#cb241-2" tabindex="-1"></a>  <span class="at">data =</span> headache,</span>
+<span id="cb241-3"><a href="three-way-anova.html#cb241-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb241-4"><a href="three-way-anova.html#cb241-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;pain_score&quot;</span>,</span>
+<span id="cb241-5"><a href="three-way-anova.html#cb241-5" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;gender&quot;</span>, <span class="st">&quot;risk&quot;</span>, <span class="st">&quot;treatment&quot;</span>),</span>
+<span id="cb241-6"><a href="three-way-anova.html#cb241-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
+<span id="cb241-7"><a href="three-way-anova.html#cb241-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb241-8"><a href="three-way-anova.html#cb241-8" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Contrasts set to contr.sum for the following variables: gender, risk, treatment</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="three-way-anova.html#cb243-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(threeway_aov<span class="sc">$</span>aov<span class="sc">$</span>residuals)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  threeway_aov$aov$residuals
+## W = 0.98212, p-value = 0.3981</code></pre>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="three-way-anova.html#cb245-1" tabindex="-1"></a>threeway_aov</span></code></pre></div>
+<pre><code>## Anova Table (Type 3 tests)
+## 
+## Response: pain_score
+##                  Effect    df   MSE         F  pes p.value
+## 1                gender 1, 60 19.35 16.20 *** .213   &lt;.001
+## 2                  risk 1, 60 19.35 92.70 *** .607   &lt;.001
+## 3             treatment 2, 60 19.35   7.32 ** .196    .001
+## 4           gender:risk 1, 60 19.35      0.14 .002    .708
+## 5      gender:treatment 2, 60 19.35    3.34 * .100    .042
+## 6        risk:treatment 2, 60 19.35      0.71 .023    .494
+## 7 gender:risk:treatment 2, 60 19.35   7.41 ** .198    .001
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>So what do our results tell us? Well:</p>
+<ul>
+<li><p>We have significant main effects of gender (F(1, 60) = 16.20, <em>p</em> &lt; .001), risk group (F(1, 60) = 92.69, <em>p</em> &lt; .001) and treatment (F(2, 60) = 7.32, <em>p</em> = .001).</p></li>
+<li><p>We have a significant two-way gender x treatment interaction (F(2, 60) = 3.34, <em>p</em> = .04), but no significant interactions between gender x risk (<em>p</em> = .708) and risk x treatment (<em>p</em> = .494).</p></li>
+<li><p>Our highest-order interaction, gender x risk x treatment is significant (F(2, 60) = 7.41, <em>p</em> = .001).</p></li>
+</ul>
+<p>Great, so we know that we’re dealing with a three-way interaction. But… how do we break that down? As in a two-way, we now need to break down simple <strong>main</strong> effects and simple <strong>interaction</strong> effects.</p>
+<p>In a two-way ANOVA, we broke down the two-way interaction by essentially running tests on the main effects (hence, simple main effects). In a three-way ANOVA, we attempt to start by testing for interactions between A and B, at each level of C. Think of it like running multiple two-way ANOVAs.</p>
+<p>In our case, let’s look at whether risk and treatment interact, for men and women separately. For simplicity, I’m defaulting to using rstatix’s <code>anova_test()</code> here, but an alternative approach is to filer the data by men and women and use these smaller datasets as calls to <code>aov_ez</code>.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="three-way-anova.html#cb247-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb247-2"><a href="three-way-anova.html#cb247-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb247-3"><a href="three-way-anova.html#cb247-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(pain_score <span class="sc">~</span> treatment <span class="sc">*</span> risk, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p>Here, the risk x treatment interaction is significant for men (<em>p</em> = .016). However, for women the interaction is not quite significant (<em>p</em> = .054).</p>
+<p>Let’s break this down for the men by doing simple simple effects. Following the principle of starting with the highest-order factor first, we now need to decompose the two-way risk x treatment interaction for men. Is there a difference between treatments when risk is low?</p>
+<p>Here’s a graph to visualise what comparisons we’re looking at:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-184-1.png" width="672" /></p>
+<p>Here’s one way to run the simple simple effets of treatment (with Holm adjustments by default):</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="three-way-anova.html#cb248-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb248-2"><a href="three-way-anova.html#cb248-2" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">&quot;male&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb248-3"><a href="three-way-anova.html#cb248-3" tabindex="-1"></a>  <span class="fu">group_by</span>(risk) <span class="sc">%&gt;%</span></span>
+<span id="cb248-4"><a href="three-way-anova.html#cb248-4" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(pain_score <span class="sc">~</span> treatment, <span class="at">detailed =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
+<p>From this we can infer the following:
+- For <em>high risk</em> men, there was a significant difference in treatment between X and Y (<em>p</em> = .004), a significant difference between X and Z (<em>p</em> = .001) but no difference between X and Z (<em>p</em> = .347)
+- No significant difference between treatments for <strong>low risk</strong> men</p>
+<p>And here are the simple simple effects for risk in men:</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="three-way-anova.html#cb249-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb249-2"><a href="three-way-anova.html#cb249-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk) <span class="sc">%&gt;%</span></span>
+<span id="cb249-3"><a href="three-way-anova.html#cb249-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(pain_score <span class="sc">~</span> treatment, <span class="at">type =</span> <span class="dv">3</span>) </span>
+<span id="cb249-4"><a href="three-way-anova.html#cb249-4" tabindex="-1"></a></span>
+<span id="cb249-5"><a href="three-way-anova.html#cb249-5" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb249-6"><a href="three-way-anova.html#cb249-6" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk) <span class="sc">%&gt;%</span></span>
+<span id="cb249-7"><a href="three-way-anova.html#cb249-7" tabindex="-1"></a>  <span class="fu">emmeans_test</span>(pain_score <span class="sc">~</span> treatment) </span></code></pre></div>
+<p>This tells us that:
+- For treatment X there was a significant difference in pain scores between high and low risk (<em>p</em> &lt; .001)
+- Same for treatment Y - a significant difference between high and low risk in pain (<em>p</em> = .009)
+- No significant difference between high and low risk for treatment Z (<em>p</em> = .071).</p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="two-way-mixed-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multiple-regression-continued.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-factorial-anovas.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
