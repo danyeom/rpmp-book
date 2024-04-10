@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.5 Effect sizes for chi-squares | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,8 @@ set in the _output.yml file.</p>" />
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -508,23 +510,23 @@ V = \sqrt{\frac{\chi^2}{n(k-1)}}
 Here, k refers to the number of groups in the variable with the lowest number of groups. So for example, in a 2x3 design, one variable has 2 levels and the other has 3; k = 2 in this instance.</p>
 <p>Phi and Cramer’s V can both be calculated in R with the following functions. Like <code>chisq.test()</code>, both functions will work if you give them a contingency table.</p>
 <p>(Note that for <code>phi()</code>, digits = 3 has been set to false just for display purposes. In <code>rstatix::cramer_v()</code>, <code>correct = FALSE</code> gives an equivalent result to Jamovi.)</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="effect-sizes-for-chi-squares.html#cb83-1" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="effect-sizes-for-chi-squares.html#cb81-1" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 0.199</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="effect-sizes-for-chi-squares.html#cb85-1" tabindex="-1"></a>rstatix<span class="sc">::</span><span class="fu">cramer_v</span>(w7_instrument_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="effect-sizes-for-chi-squares.html#cb83-1" tabindex="-1"></a>rstatix<span class="sc">::</span><span class="fu">cramer_v</span>(w7_instrument_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.1993439</code></pre>
 <p>An alternative is to use the <code>effectsize</code> package, which also helpfully calculates 95% CIs.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="effect-sizes-for-chi-squares.html#cb87-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## Phi  |       95% CI
-## -------------------
-## 0.20 | [0.05, 1.00]
-## 
-## - One-sided CIs: upper bound fixed at [1.00].</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="effect-sizes-for-chi-squares.html#cb89-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## Cramer&#39;s V |       95% CI
-## -------------------------
-## 0.20       | [0.05, 1.00]
-## 
-## - One-sided CIs: upper bound fixed at [1.00].</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="effect-sizes-for-chi-squares.html#cb85-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["phi"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.1993439","2":"0.95","3":"0.04754599","4":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="effect-sizes-for-chi-squares.html#cb86-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Cramers_v"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.1993439","2":"0.95","3":"0.04754599","4":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="interpretation" class="section level3 hasAnchor" number="5.5.3">
 <h3><span class="header-section-number">5.5.3</span> Interpretation<a href="effect-sizes-for-chi-squares.html#interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>

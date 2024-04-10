@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.5 Two-way repeated measures ANOVA | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,8 @@ set in the _output.yml file.</p>" />
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -510,9 +512,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Background music (2 levels: happy or sad)</li>
 </ul>
 <p>Every participant therefore does 6 maths exams: easy-happy, easy-sad, medium-happy, medium-sad, hard-happy and hard-sad. The dependent variable of interest is their exam score. We’re interested in whether the difficulty and the music type have an effect on exam performance. Because our two IVs are within-subject variables, we will want to use a two-way repeated measures ANOVA.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="two-way-repeated-measures-anova.html#cb208-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_rmanova_long.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="two-way-repeated-measures-anova.html#cb198-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_rmanova_long.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 80 Columns: 4
-## ── Column specification ─────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (2): difficulty, music
 ## dbl (2): ptcpt, grade
@@ -533,27 +535,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As is the case with one-way repeated measures ANOVAs, the assumption of sphericity is only tested when there are three or more levels; with only two levels, the assumption is always met. The output is below with the main ANOVA output. The sphericity for all of our effects is intact, so we don’t have any issues here, but if we did the same principle would apply - we would apply our corrections depending on the value of epsilon.</p>
 <p>Let’s also see if our variables are normally distributed:</p>
 <p>R-Note: For a repeated measures ANOVA, for some reason the closest I can get to generating what Jamovi does is to build an <code>aov()</code> model without an explicit <code>Error()</code> term - as would be the case for a fully between-subjects ANOVA. You can then use the standardised residuals to create a Q-Q plot using the below code. Note that <code>broom:augment()</code> is just a helper function that nicely extracts the residuals:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="two-way-repeated-measures-anova.html#cb210-1" tabindex="-1"></a><span class="fu">aov</span>(grade <span class="sc">~</span> difficulty <span class="sc">*</span> music, <span class="at">data =</span> twoway_exam) <span class="sc">%&gt;%</span></span>
-<span id="cb210-2"><a href="two-way-repeated-measures-anova.html#cb210-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb210-3"><a href="two-way-repeated-measures-anova.html#cb210-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
-<span id="cb210-4"><a href="two-way-repeated-measures-anova.html#cb210-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb210-5"><a href="two-way-repeated-measures-anova.html#cb210-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="two-way-repeated-measures-anova.html#cb200-1" tabindex="-1"></a><span class="fu">aov</span>(grade <span class="sc">~</span> difficulty <span class="sc">*</span> music, <span class="at">data =</span> twoway_exam) <span class="sc">%&gt;%</span></span>
+<span id="cb200-2"><a href="two-way-repeated-measures-anova.html#cb200-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb200-3"><a href="two-way-repeated-measures-anova.html#cb200-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
+<span id="cb200-4"><a href="two-way-repeated-measures-anova.html#cb200-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb200-5"><a href="two-way-repeated-measures-anova.html#cb200-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
 <p>It’s not… great but for the purposes of demonstration, we’ll run with it anyway.</p>
 </div>
 <div id="output-8" class="section level3 hasAnchor" number="9.5.4">
 <h3><span class="header-section-number">9.5.4</span> Output<a href="two-way-repeated-measures-anova.html#output-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s our output from R:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="two-way-repeated-measures-anova.html#cb211-1" tabindex="-1"></a>twoway_exam_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
-<span id="cb211-2"><a href="two-way-repeated-measures-anova.html#cb211-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_exam,</span>
-<span id="cb211-3"><a href="two-way-repeated-measures-anova.html#cb211-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;ptcpt&quot;</span>,</span>
-<span id="cb211-4"><a href="two-way-repeated-measures-anova.html#cb211-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;grade&quot;</span>,</span>
-<span id="cb211-5"><a href="two-way-repeated-measures-anova.html#cb211-5" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;difficulty&quot;</span>, <span class="st">&quot;music&quot;</span>),</span>
-<span id="cb211-6"><a href="two-way-repeated-measures-anova.html#cb211-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
-<span id="cb211-7"><a href="two-way-repeated-measures-anova.html#cb211-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
-<span id="cb211-8"><a href="two-way-repeated-measures-anova.html#cb211-8" tabindex="-1"></a>)</span>
-<span id="cb211-9"><a href="two-way-repeated-measures-anova.html#cb211-9" tabindex="-1"></a></span>
-<span id="cb211-10"><a href="two-way-repeated-measures-anova.html#cb211-10" tabindex="-1"></a>twoway_exam_aov</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="two-way-repeated-measures-anova.html#cb201-1" tabindex="-1"></a>twoway_exam_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb201-2"><a href="two-way-repeated-measures-anova.html#cb201-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_exam,</span>
+<span id="cb201-3"><a href="two-way-repeated-measures-anova.html#cb201-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;ptcpt&quot;</span>,</span>
+<span id="cb201-4"><a href="two-way-repeated-measures-anova.html#cb201-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;grade&quot;</span>,</span>
+<span id="cb201-5"><a href="two-way-repeated-measures-anova.html#cb201-5" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;difficulty&quot;</span>, <span class="st">&quot;music&quot;</span>),</span>
+<span id="cb201-6"><a href="two-way-repeated-measures-anova.html#cb201-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
+<span id="cb201-7"><a href="two-way-repeated-measures-anova.html#cb201-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb201-8"><a href="two-way-repeated-measures-anova.html#cb201-8" tabindex="-1"></a>)</span>
+<span id="cb201-9"><a href="two-way-repeated-measures-anova.html#cb201-9" tabindex="-1"></a></span>
+<span id="cb201-10"><a href="two-way-repeated-measures-anova.html#cb201-10" tabindex="-1"></a>twoway_exam_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: grade
@@ -563,9 +565,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 difficulty:music 1, 19 44.24     6.02 * .241    .024
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="two-way-repeated-measures-anova.html#cb213-1" tabindex="-1"></a><span class="co"># To get sphericity output</span></span>
-<span id="cb213-2"><a href="two-way-repeated-measures-anova.html#cb213-2" tabindex="-1"></a></span>
-<span id="cb213-3"><a href="two-way-repeated-measures-anova.html#cb213-3" tabindex="-1"></a><span class="fu">summary</span>(twoway_exam_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="two-way-repeated-measures-anova.html#cb203-1" tabindex="-1"></a><span class="co"># To get sphericity output</span></span>
+<span id="cb203-2"><a href="two-way-repeated-measures-anova.html#cb203-2" tabindex="-1"></a></span>
+<span id="cb203-3"><a href="two-way-repeated-measures-anova.html#cb203-3" tabindex="-1"></a><span class="fu">summary</span>(twoway_exam_aov)</span></code></pre></div>
 <pre><code>## 
 ## Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
 ## 

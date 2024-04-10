@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.3 R-specific considerations | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,8 @@ set in the _output.yml file.</p>" />
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -507,7 +509,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To extend this to two variables with no interaction, you can simply add the second predictor as such:</p>
 <p><code>{r} eval = FALSE} aov(outcome ~ predictor_1 + predictor_2, data = dataset)</code></p>
 <p>To code for an interaction term, however, there either needs to be an explicit term for the interaction (denoted using a colon between the two interaction variables):</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="r-specific-considerations.html#cb191-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="r-specific-considerations.html#cb181-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>OR as the shorthand for above, which uses the asterisk. Note that the asterisk will include both the interaction term and all of its main effects (a la principle of marginality):</p>
 <p><code>{r} eval = FALSE} aov(outcome ~ predictor_1 * predictor_2, data = dataset)</code></p>
 <p>For what we do in this section, this is ok - but you may find in certain circumstances that you don’t want all of these terms together, so the first approach will let you specify what terms to include in the model.</p>
@@ -516,9 +518,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.3.3</span> Simple effects tests in R<a href="r-specific-considerations.html#simple-effects-tests-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Simple effects tests, weirdly, are difficult to do in Jamovi - you have to filter your data, run pairwise tests/one-way ANOVAs on them, and then make sure you save the output before running the next test (as Jamovi’s self-updating nature will mean that your output will change every time your filter does). Alternatively, you have to install the gamlj module and learn how to code linear models for neater simple effects tests.</p>
 <p>In R, this is relatively easy through the use of <code>group_by()</code> and <code>pairwise_t_test()</code>. The code below will run simple effects tests for variable 1:</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="r-specific-considerations.html#cb192-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb192-2"><a href="r-specific-considerations.html#cb192-2" tabindex="-1"></a>  <span class="fu">group_by</span>(variable_1) <span class="sc">%&gt;%</span></span>
-<span id="cb192-3"><a href="r-specific-considerations.html#cb192-3" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(outcome <span class="sc">~</span> variable_2, <span class="at">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="r-specific-considerations.html#cb182-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb182-2"><a href="r-specific-considerations.html#cb182-2" tabindex="-1"></a>  <span class="fu">group_by</span>(variable_1) <span class="sc">%&gt;%</span></span>
+<span id="cb182-3"><a href="r-specific-considerations.html#cb182-3" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(outcome <span class="sc">~</span> variable_2, <span class="at">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
 <p>To run simple effects tests for variable two, the variable names simply need to be swapped.</p>
 </div>
 </div>

@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.5 Confidence intervals | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,8 @@ set in the _output.yml file.</p>" />
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -496,7 +498,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="a-reminder-from-the-previous-module" class="section level3 hasAnchor" number="4.5.1">
 <h3><span class="header-section-number">4.5.1</span> A reminder from the previous module<a href="confidence-intervals.html#a-reminder-from-the-previous-module" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It’s time to force you to remember what the graph below means once again (I promise this is the last time you will see this figure! I think). By now you should be very familiar with what this graph shows; namely, that 95% of the data in a normal distribution lies within 1.96 standard deviations either side of the mean, yada yada.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre><code>## Warning in geom_segment(aes(x = 0, y = 0, xend = 0, yend = max(y)), colour = &quot;#556F44&quot;): All aesthetics have length 1, but the data has 1001 rows.
+## ℹ Did you mean to use `annotate()`?</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>This sounds all well and good, but this provides us with some useful information. If all that business about values within 1.96 standard deviations is still fresh in your mind, this next statement should be a no-brainer: if 95% of our data on a normal distribution lies within 1.96 SD either side of the mean, that means that there is a certain range of values that 95% of our data falls in.</p>
 <p>For example, say we have a sample of scores on a test, with a mean of 70 and a standard deviation of 4. If we want to know where 95% of the scores lie in this sample, we would do the following calculation:</p>
 <p>Using this formula, we can calculate the values where 95% of the data lie:</p>
@@ -505,36 +509,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="confidence-intervals-1" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Confidence intervals<a href="confidence-intervals.html#confidence-intervals-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use the same principle to make inferences about the true population parameter. When we take a sample, each one will have its own standard error (remember this reflects an estimate of the distance between the sample mean and the true population mean). If we were to repeatedly take samples, in the long run we would expect the true population mean to fall within 95% of all sample means. And, just like the normal distribution, when we look at the sampling distribution of the means below, 95% of all sample means will fall within 1.96 standard errors (thanks to the Central Limit Theorem).</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="confidence-intervals.html#cb63-1" tabindex="-1"></a>norm_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb63-2"><a href="confidence-intervals.html#cb63-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">1001</span>)</span>
-<span id="cb63-3"><a href="confidence-intervals.html#cb63-3" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb63-4"><a href="confidence-intervals.html#cb63-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb63-5"><a href="confidence-intervals.html#cb63-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">dnorm</span>(x)</span>
-<span id="cb63-6"><a href="confidence-intervals.html#cb63-6" tabindex="-1"></a>  )</span>
-<span id="cb63-7"><a href="confidence-intervals.html#cb63-7" tabindex="-1"></a></span>
-<span id="cb63-8"><a href="confidence-intervals.html#cb63-8" tabindex="-1"></a></span>
-<span id="cb63-9"><a href="confidence-intervals.html#cb63-9" tabindex="-1"></a>ci_figure <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(norm_data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;transparent&quot;</span>) <span class="sc">+</span></span>
-<span id="cb63-10"><a href="confidence-intervals.html#cb63-10" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">1.96</span>, <span class="dv">3</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#3d7ab8&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#3d7ab8&quot;</span>) <span class="sc">+</span></span>
-<span id="cb63-11"><a href="confidence-intervals.html#cb63-11" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#7fbaf5&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#7fbaf5&quot;</span>) <span class="sc">+</span></span>
-<span id="cb63-12"><a href="confidence-intervals.html#cb63-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#3d7ab8&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#3d7ab8&quot;</span>) <span class="sc">+</span></span>
-<span id="cb63-13"><a href="confidence-intervals.html#cb63-13" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.2</span>, <span class="at">label =</span> <span class="st">&quot;95% of sample means</span><span class="sc">\n</span><span class="st">will fall within this range&quot;</span>) <span class="sc">+</span></span>
-<span id="cb63-14"><a href="confidence-intervals.html#cb63-14" tabindex="-1"></a>  <span class="co"># annotate(&quot;text&quot;, x = 2.5, y = 0.05, label = &quot;2.5%&quot;) +</span></span>
-<span id="cb63-15"><a href="confidence-intervals.html#cb63-15" tabindex="-1"></a>  <span class="co"># annotate(&quot;text&quot;, x = -2.5, y = 0.05, label = &quot;2.5%&quot;) +</span></span>
-<span id="cb63-16"><a href="confidence-intervals.html#cb63-16" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb63-17"><a href="confidence-intervals.html#cb63-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standard errors&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb63-18"><a href="confidence-intervals.html#cb63-18" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb63-19"><a href="confidence-intervals.html#cb63-19" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb63-20"><a href="confidence-intervals.html#cb63-20" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb63-21"><a href="confidence-intervals.html#cb63-21" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
-<span id="cb63-22"><a href="confidence-intervals.html#cb63-22" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
-<span id="cb63-23"><a href="confidence-intervals.html#cb63-23" tabindex="-1"></a>    <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb63-24"><a href="confidence-intervals.html#cb63-24" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb63-25"><a href="confidence-intervals.html#cb63-25" tabindex="-1"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb63-26"><a href="confidence-intervals.html#cb63-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb63-27"><a href="confidence-intervals.html#cb63-27" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="dv">0</span>, <span class="fl">1.96</span>))</span>
-<span id="cb63-28"><a href="confidence-intervals.html#cb63-28" tabindex="-1"></a></span>
-<span id="cb63-29"><a href="confidence-intervals.html#cb63-29" tabindex="-1"></a>ci_figure</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="confidence-intervals.html#cb61-1" tabindex="-1"></a>norm_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb61-2"><a href="confidence-intervals.html#cb61-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">1001</span>)</span>
+<span id="cb61-3"><a href="confidence-intervals.html#cb61-3" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="confidence-intervals.html#cb61-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb61-5"><a href="confidence-intervals.html#cb61-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb61-6"><a href="confidence-intervals.html#cb61-6" tabindex="-1"></a>  )</span>
+<span id="cb61-7"><a href="confidence-intervals.html#cb61-7" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="confidence-intervals.html#cb61-8" tabindex="-1"></a></span>
+<span id="cb61-9"><a href="confidence-intervals.html#cb61-9" tabindex="-1"></a>ci_figure <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(norm_data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;transparent&quot;</span>) <span class="sc">+</span></span>
+<span id="cb61-10"><a href="confidence-intervals.html#cb61-10" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">1.96</span>, <span class="dv">3</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#3d7ab8&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#3d7ab8&quot;</span>) <span class="sc">+</span></span>
+<span id="cb61-11"><a href="confidence-intervals.html#cb61-11" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#7fbaf5&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#7fbaf5&quot;</span>) <span class="sc">+</span></span>
+<span id="cb61-12"><a href="confidence-intervals.html#cb61-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#3d7ab8&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#3d7ab8&quot;</span>) <span class="sc">+</span></span>
+<span id="cb61-13"><a href="confidence-intervals.html#cb61-13" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.2</span>, <span class="at">label =</span> <span class="st">&quot;95% of sample means</span><span class="sc">\n</span><span class="st">will fall within this range&quot;</span>) <span class="sc">+</span></span>
+<span id="cb61-14"><a href="confidence-intervals.html#cb61-14" tabindex="-1"></a>  <span class="co"># annotate(&quot;text&quot;, x = 2.5, y = 0.05, label = &quot;2.5%&quot;) +</span></span>
+<span id="cb61-15"><a href="confidence-intervals.html#cb61-15" tabindex="-1"></a>  <span class="co"># annotate(&quot;text&quot;, x = -2.5, y = 0.05, label = &quot;2.5%&quot;) +</span></span>
+<span id="cb61-16"><a href="confidence-intervals.html#cb61-16" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb61-17"><a href="confidence-intervals.html#cb61-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standard errors&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb61-18"><a href="confidence-intervals.html#cb61-18" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb61-19"><a href="confidence-intervals.html#cb61-19" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb61-20"><a href="confidence-intervals.html#cb61-20" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb61-21"><a href="confidence-intervals.html#cb61-21" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
+<span id="cb61-22"><a href="confidence-intervals.html#cb61-22" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
+<span id="cb61-23"><a href="confidence-intervals.html#cb61-23" tabindex="-1"></a>    <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb61-24"><a href="confidence-intervals.html#cb61-24" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb61-25"><a href="confidence-intervals.html#cb61-25" tabindex="-1"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb61-26"><a href="confidence-intervals.html#cb61-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb61-27"><a href="confidence-intervals.html#cb61-27" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="dv">0</span>, <span class="fl">1.96</span>))</span>
+<span id="cb61-28"><a href="confidence-intervals.html#cb61-28" tabindex="-1"></a></span>
+<span id="cb61-29"><a href="confidence-intervals.html#cb61-29" tabindex="-1"></a>ci_figure</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>With this important property in mind, we can calculate a 95% confidence interval. This is an estimate of the range of values for our estimate of the parameter. In other words, it is a measure of precision. The formula for a 95% confidence interval, as it turns out, is exactly the same as above with one change:</p>
 <p><span class="math display">\[
 95\% CI = M \pm (1.96 \times SE)

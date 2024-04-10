@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.2 Packages and functions | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,8 @@ set in the _output.yml file.</p>" />
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -497,25 +499,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When you start a new R session, the first thing that you’ll want to do is load the packages that you need to use.</p>
 <p>For now, we’ll load two packages for functions: <code>tidyverse</code> and <code>rstatix</code>. <code>tidyverse</code> is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. <code>rstatix</code> allows for simple statistical tests to be performed in an easy way. <code>palmerpenguins</code> comes with a dataset for practicing on. <code>palmerpenguins</code> loads a dataset named <code>penguins</code> that contains basic info on 3 species of penguins across 3 different islands.</p>
 <p>To load a package, call the <code>library()</code> function and enter the name of the package in brackets:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="packages-and-functions.html#cb24-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching core tidyverse packages ───────────────────────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.3     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.0
-## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
-## ── Conflicts ─────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="packages-and-functions.html#cb26-1" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;rstatix&#39;
-## 
-## The following object is masked from &#39;package:stats&#39;:
-## 
-##     filter</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="packages-and-functions.html#cb28-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="packages-and-functions.html#cb24-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-2"><a href="packages-and-functions.html#cb24-2" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb24-3"><a href="packages-and-functions.html#cb24-3" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code></pre></div>
 </div>
 <div id="tidyverse" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Tidyverse<a href="packages-and-functions.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -529,19 +515,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The tidyverse is probably the single most popular suite of packages for R because of the functionality it provides. All of the tidyverse packages are written in consistent syntax, generally use very easy language that has an emphasis on verbs (i.e. you’re telling R to <em>do</em> something) and integrate seamlessly with each other and R. The tidyverse is a philosophy of R just as much as it is a suite of functions, and is part of what makes R so powerful today.</p>
 <p>Many aspects of the tidyverse are reliant on the pipe operator, <code>%&gt;%</code>. This basically tells R to take a dataframe or output and pass it onto a function that comes directly afterwards. Any function that takes a data frame as its first argument can (theoretically) be piped, meaning that we can chain strings of functions together in one run in a readable way. See the example below:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="packages-and-functions.html#cb29-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="packages-and-functions.html#cb29-2" tabindex="-1"></a>  <span class="fu">function_1</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="packages-and-functions.html#cb29-3" tabindex="-1"></a>  <span class="fu">function_2</span>(<span class="at">do =</span> <span class="st">&quot;this&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb29-4"><a href="packages-and-functions.html#cb29-4" tabindex="-1"></a>  <span class="fu">function_3</span>(<span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="packages-and-functions.html#cb25-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="packages-and-functions.html#cb25-2" tabindex="-1"></a>  <span class="fu">function_1</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="packages-and-functions.html#cb25-3" tabindex="-1"></a>  <span class="fu">function_2</span>(<span class="at">do =</span> <span class="st">&quot;this&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="packages-and-functions.html#cb25-4" tabindex="-1"></a>  <span class="fu">function_3</span>(<span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
 <p>in the hypothetical example above, we first take <code>data</code>, and pass it to function 1. We then take the output of function 1 and pass that to function 2, which has the argument <code>do = "this"</code>. Afterwards, we take the output of function 2 and pass it to function 3.</p>
 <p>There are a number of clear benefits to the tidyverse way of doing things. These include:</p>
 <ul>
 <li>Functions are generally stated as <em>verbs</em>, which means that you’re always <em>doing</em> something with a function (and it’s clear what that something is)</li>
 <li>Piping avoids the cyclical hell of creating intermediate variables. Consider a non-tidyverse version of the code example above, written down below. This code is not only a bit of a pain to read, but is also clunky in that it generates several intermediate variables that aren’t all that useful (a lot of the time).</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="packages-and-functions.html#cb30-1" tabindex="-1"></a>output_1 <span class="ot">&lt;-</span> <span class="fu">function_1</span>(data)</span>
-<span id="cb30-2"><a href="packages-and-functions.html#cb30-2" tabindex="-1"></a>output_2 <span class="ot">&lt;-</span> <span class="fu">function_2</span>(output_1, <span class="at">do =</span> <span class="st">&quot;this&quot;</span>)</span>
-<span id="cb30-3"><a href="packages-and-functions.html#cb30-3" tabindex="-1"></a>output_3 <span class="ot">&lt;-</span> <span class="fu">function_3</span>(output_2, <span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="packages-and-functions.html#cb26-1" tabindex="-1"></a>output_1 <span class="ot">&lt;-</span> <span class="fu">function_1</span>(data)</span>
+<span id="cb26-2"><a href="packages-and-functions.html#cb26-2" tabindex="-1"></a>output_2 <span class="ot">&lt;-</span> <span class="fu">function_2</span>(output_1, <span class="at">do =</span> <span class="st">&quot;this&quot;</span>)</span>
+<span id="cb26-3"><a href="packages-and-functions.html#cb26-3" tabindex="-1"></a>output_3 <span class="ot">&lt;-</span> <span class="fu">function_3</span>(output_2, <span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Piped code is generally quite easy to read.</li>
 <li><code>tidyverse</code> also provides a consistent syntax for <em>other</em> packages! It provides a quasi-philosophy and style guide for developers to write their own packages to write ‘tidy’ packages. <code>rstatix</code> is a great example of this.</li>
@@ -568,7 +554,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 |-RPMP.rproj</code></pre>
 <p>Normally, to locate a file on a disk you would generally have to give the entire pathway to that file. That could be something like <code>"C:\Users\Dan\Documents\Subjects\RPMP\data\w1_dataset.csv"</code> - which is immensely unwieldy if we want to read in data - and won’t work the moment I give my script to someone else, as their folder structure could be completely different!</p>
 <p>The alternative with here could be as simple as:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="packages-and-functions.html#cb32-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w1_dataset.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="packages-and-functions.html#cb28-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w1_dataset.csv&quot;</span>)</span></code></pre></div>
 <p>This tells R that I’m looking for something <em>here</em> in the data folder, specifically a file named <code>w1_dataset.csv</code>. As long as the relative positions are correct - i.e. the <code>.csv</code> file is in the <code>data</code> folder - R will know where to locate the file.</p>
 <p>You will see a lot of <code>here()</code> in this version of the RPMP guide because as you may appreciate, there are a lot of data files stored in all manner of folders.</p>
 </div>

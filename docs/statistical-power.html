@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.4 Statistical power | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,8 @@ set in the _output.yml file.</p>" />
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -508,15 +510,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The consequence of being underpowered means that you can miss effects that exist. A good proportion of studies in psychology are underpowered, meaning that effects are being missed where they exist. Power is therefore an integral consideration of good study design, particularly for experimental contexts.</p>
 <p>Consider two hypotheses - a null and an alternative hypothesis. As long as we sample a population, the two will always overlap (even if that overlap is really small).</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>The area shaded in bright green below represents where the two distributions overlap with each other. This is where the null hypothesis might be rejected when it shouldn’t be, or vice versa.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" />
 Let’s assume an alpha of .05, and divide this region accordingly. There is a certain probability of alpha (where the null is incorrectly rejected), as well as a probability of beta (where the null is not rejected when it should be).</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>What happens if we were to decrease alpha? (i.e. reduce our Type I error rate)? All else being equal (sample size, effect size etc), we can see that alpha now takes up less space in the overlapping area - and so, beta (Type II error) will increase.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <p>Subsequently, if we were to increase alpha we can see the opposite; beta will decrease, because now the overlap is predominantly now covered by the rejection region covered by alpha.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 </div>
 <div id="power-analyses" class="section level3 hasAnchor" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> Power analyses<a href="statistical-power.html#power-analyses" class="anchor-section" aria-label="Anchor link to header"></a></h3>

@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.1 Correlations | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,8 @@ set in the _output.yml file.</p>" />
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -564,15 +566,9 @@ r = \frac{Cov_{xy}}{SD_x \times SD_y}
 </tbody>
 </table>
 <p>The second is a correlation heatmap, which is especially effective with many correlations at once (common when working with huge questionnaires or neuroimaging). As shown by the legend on the right, the colour and shade of each square are determined by the strength of the correlation. This can be easily done by the `<code>ggcorrplot</code> package, if you have a correlation matrix formatted in R:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="correlations.html#cb157-1" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span></code></pre></div>
-<pre><code>## Warning: package &#39;ggcorrplot&#39; was built under R version 4.3.2</code></pre>
-<pre><code>## 
-## Attaching package: &#39;ggcorrplot&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:rstatix&#39;:
-## 
-##     cor_pmat</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="correlations.html#cb161-1" tabindex="-1"></a><span class="fu">ggcorrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="at">show.diag =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="correlations.html#cb152-1" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb152-2"><a href="correlations.html#cb152-2" tabindex="-1"></a><span class="fu">ggcorrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="at">show.diag =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 </div>
 </div>
             </section>

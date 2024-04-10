@@ -7,6 +7,7 @@ site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
     split_by: section
+    df_print: paged
 documentclass: book
 bibliography: [book.bib, packages.bib]
 # url: your book url like https://bookdown.org/yihui/bookdown

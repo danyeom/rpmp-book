@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.2 p-values | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,8 @@ set in the _output.yml file.</p>" />
 
 
 
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -507,34 +509,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>On the right is an example of what one possible alternative hypothesis might look like - that this data is meaningfully represented by two underlying distributions or groups, and that there is a difference between these two groups (shown as the blue and red curves). Contrast that with the left graph, where we hypothesise that there is no difference - in other words, that the data can be captured by the one distribution. This graph on the left is a representation of our null hypothesis, and as per the definition of the p-value, this is the distribution we focus on.</p>
 <p>The area shaded blue represents the probability of getting that specific result. In the left example, the area shaded represents the probability of getting a value lower than x = 1. You can see that the blue area is quite big, so the probability of getting a value lower than 1 is quite high. On the right hand side is another example, which represents the probability of getting a value of x higher than 2. Here, the shaded area is small, so the associated probability is low.</p>
 <p>Now, recall the following figure from last week:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="p-values.html#cb62-1" tabindex="-1"></a>norm_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb62-2"><a href="p-values.html#cb62-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">1001</span>)</span>
-<span id="cb62-3"><a href="p-values.html#cb62-3" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb62-4"><a href="p-values.html#cb62-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb62-5"><a href="p-values.html#cb62-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">dnorm</span>(x)</span>
-<span id="cb62-6"><a href="p-values.html#cb62-6" tabindex="-1"></a>  )</span>
-<span id="cb62-7"><a href="p-values.html#cb62-7" tabindex="-1"></a></span>
-<span id="cb62-8"><a href="p-values.html#cb62-8" tabindex="-1"></a></span>
-<span id="cb62-9"><a href="p-values.html#cb62-9" tabindex="-1"></a><span class="fu">ggplot</span>(norm_data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;transparent&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-10"><a href="p-values.html#cb62-10" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">1.96</span>, <span class="dv">3</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#556F44&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#556F44&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-11"><a href="p-values.html#cb62-11" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#95BF74&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#95BF74&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-12"><a href="p-values.html#cb62-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#556F44&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#556F44&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-13"><a href="p-values.html#cb62-13" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.2</span>, <span class="at">label =</span> <span class="st">&quot;95%&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-14"><a href="p-values.html#cb62-14" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="fl">2.5</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">&quot;2.5%&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-15"><a href="p-values.html#cb62-15" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">2.5</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">&quot;2.5%&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-16"><a href="p-values.html#cb62-16" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb62-17"><a href="p-values.html#cb62-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standard deviations&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-18"><a href="p-values.html#cb62-18" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb62-19"><a href="p-values.html#cb62-19" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb62-20"><a href="p-values.html#cb62-20" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb62-21"><a href="p-values.html#cb62-21" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
-<span id="cb62-22"><a href="p-values.html#cb62-22" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
-<span id="cb62-23"><a href="p-values.html#cb62-23" tabindex="-1"></a>    <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb62-24"><a href="p-values.html#cb62-24" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb62-25"><a href="p-values.html#cb62-25" tabindex="-1"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb62-26"><a href="p-values.html#cb62-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb62-27"><a href="p-values.html#cb62-27" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="dv">0</span>, <span class="fl">1.96</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="p-values.html#cb59-1" tabindex="-1"></a>norm_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb59-2"><a href="p-values.html#cb59-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">1001</span>)</span>
+<span id="cb59-3"><a href="p-values.html#cb59-3" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="p-values.html#cb59-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb59-5"><a href="p-values.html#cb59-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb59-6"><a href="p-values.html#cb59-6" tabindex="-1"></a>  )</span>
+<span id="cb59-7"><a href="p-values.html#cb59-7" tabindex="-1"></a></span>
+<span id="cb59-8"><a href="p-values.html#cb59-8" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="p-values.html#cb59-9" tabindex="-1"></a><span class="fu">ggplot</span>(norm_data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;transparent&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-10"><a href="p-values.html#cb59-10" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">1.96</span>, <span class="dv">3</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#556F44&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#556F44&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-11"><a href="p-values.html#cb59-11" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#95BF74&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#95BF74&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-12"><a href="p-values.html#cb59-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#556F44&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#556F44&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-13"><a href="p-values.html#cb59-13" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.2</span>, <span class="at">label =</span> <span class="st">&quot;95%&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-14"><a href="p-values.html#cb59-14" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="fl">2.5</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">&quot;2.5%&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-15"><a href="p-values.html#cb59-15" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">2.5</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">&quot;2.5%&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-16"><a href="p-values.html#cb59-16" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb59-17"><a href="p-values.html#cb59-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standard deviations&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb59-18"><a href="p-values.html#cb59-18" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb59-19"><a href="p-values.html#cb59-19" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb59-20"><a href="p-values.html#cb59-20" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb59-21"><a href="p-values.html#cb59-21" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
+<span id="cb59-22"><a href="p-values.html#cb59-22" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
+<span id="cb59-23"><a href="p-values.html#cb59-23" tabindex="-1"></a>    <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb59-24"><a href="p-values.html#cb59-24" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb59-25"><a href="p-values.html#cb59-25" tabindex="-1"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb59-26"><a href="p-values.html#cb59-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb59-27"><a href="p-values.html#cb59-27" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="dv">0</span>, <span class="fl">1.96</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>This is basically the thinking we use when we calculate a p-value. Let’s break down the steps:</p>
 <ol style="list-style-type: decimal">
 <li>We first <strong>assume the null hypothesis is true</strong>, and so we use the distribution of the null hypothesis to calculate the probability of getting our result or greater.</li>
