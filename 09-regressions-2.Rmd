@@ -9,11 +9,12 @@ library(rstatix)
 # i_am("code/bookdown/09-regressions-2.Rmd")
 ```
 
-This section deals with some more advanced topics in regression. It serves as a continuation to the first chapter on regression, and in particular focuses on multiple regressions. This chapter will cover the following:
+This section deals with some more advanced topics in ANOVAs and regression. It serves as a continuation to the first chapter on regression, and in particular focuses on multiple regressions. This chapter will cover the following:
 
+-   ANCOVA
+-   MANOVA
 -   Hierarchical regressions
 -   Model selection
--   Logistic regression
 
 This module won't cover continuous interactions because they are often considered under the topic of moderation - for which there will be a separate module. 
 
@@ -30,7 +31,19 @@ As a reminder, the coefficients in this formula correspond to the following:
 - $\beta_2$ is the coefficient for predictor $x_2$, and describes how $\hat y$ changes assuming $x_1$ does not change
 - $\epsilon_i$ is the error term, which we assume is normally distributed
 
+We can expand this formula out to include $n$ predictors, as follows:
 
+$$
+y = \beta_0 + \beta_1x_1 +\beta_2x_2 + ... \beta_nx_n + \epsilon_i
+$$
+
+
+
+## ANCOVAs
+
+ANCOVA stands for Analysis of **Co-**variance. Its basic definition is that it is an ANOVA, but with the inclusion of a covariate (or a variable we need to control for). The basic idea is that we are performing an ANOVA between our predictors and outcomes after adjusting our predictors (our model) by another variable.
+
+Just like the ANOVA, ANCOVA is a fairly generic term that can refer to a multitude of analyses. In this book we'll stick with ANOVAs relating to between-subjects predictors only.
 
 ## Hierarchical regression
 
@@ -174,13 +187,6 @@ BIC(flow_block1, flow_block2, flow_block3)
 ```
 
 
-## Logistic regression
-
-Up until now we have largely been talking about models with continuous outcomes. The t-test, ANOVA and most forms of regression have all been with continuous outcomes, for instance. But remember that we had a particular family of tests called the chi-square tests.
-
-```{r}
-
-```
 
 
 
