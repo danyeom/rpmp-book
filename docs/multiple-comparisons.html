@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-10" />
+<meta name="date" content="2024-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -453,18 +453,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
-<li class="chapter" data-level="10.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.2</b> Hierarchical regression</a>
+<li class="chapter" data-level="10.2" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.2</b> ANCOVAs</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-5"><i class="fa fa-check"></i><b>10.2.1</b> Example</a></li>
-<li class="chapter" data-level="10.2.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.2.2</b> Building blocks and output</a></li>
+<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ancovas.html"><a href="ancovas.html#example-5"><i class="fa fa-check"></i><b>10.2.2</b> Example</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.2.3</b> One-way ANCOVA</a></li>
+<li class="chapter" data-level="10.2.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.2.4</b> Assumptions</a></li>
+<li class="chapter" data-level="10.2.5" data-path="ancovas.html"><a href="ancovas.html#linearity-of-the-covariate"><i class="fa fa-check"></i><b>10.2.5</b> Linearity of the covariate</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.3</b> Comparing models</a>
+<li class="chapter" data-level="10.3" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.3</b> Hierarchical regression</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.3.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="10.3.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.3.2</b> Nested model tests</a></li>
-<li class="chapter" data-level="10.3.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.3.3</b> Fit indices</a></li>
+<li class="chapter" data-level="10.3.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-6"><i class="fa fa-check"></i><b>10.3.1</b> Example</a></li>
+<li class="chapter" data-level="10.3.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.3.2</b> Building blocks and output</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10.4</b> Logistic regression</a></li>
+<li class="chapter" data-level="10.4" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.4</b> Comparing models</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.4.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
+<li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
+</ul></li>
 <li class="chapter" data-level="10.5" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html"><i class="fa fa-check"></i><b>10.5</b> Extra: Technical details of <code>anova()</code></a>
 <ul>
 <li class="chapter" data-level="10.5.1" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>10.5.1</b> The default test in <code>anova()</code></a></li>
@@ -572,16 +579,16 @@ descending fashion. Using the same p-values as above, we would get 0.05,
 and p = .25 would be 1.</p>
 <p>You then multiply the p-value by its rank, like the table below, to get
 your adjusted p-values:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="multiple-comparisons.html#cb121-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb121-2"><a href="multiple-comparisons.html#cb121-2" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.10</span>),</span>
-<span id="cb121-3"><a href="multiple-comparisons.html#cb121-3" tabindex="-1"></a>  <span class="at">p_sort =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.25</span>),</span>
-<span id="cb121-4"><a href="multiple-comparisons.html#cb121-4" tabindex="-1"></a>  <span class="at">rank =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
-<span id="cb121-5"><a href="multiple-comparisons.html#cb121-5" tabindex="-1"></a>  <span class="at">p_adj =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.20</span>, <span class="fl">0.25</span>)</span>
-<span id="cb121-6"><a href="multiple-comparisons.html#cb121-6" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb121-7"><a href="multiple-comparisons.html#cb121-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb121-8"><a href="multiple-comparisons.html#cb121-8" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Original p-value&quot;</span>, <span class="st">&quot;Sorted p-value&quot;</span>, <span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;p-value x rank&quot;</span>),</span>
-<span id="cb121-9"><a href="multiple-comparisons.html#cb121-9" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;l&quot;</span></span>
-<span id="cb121-10"><a href="multiple-comparisons.html#cb121-10" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="multiple-comparisons.html#cb130-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb130-2"><a href="multiple-comparisons.html#cb130-2" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.10</span>),</span>
+<span id="cb130-3"><a href="multiple-comparisons.html#cb130-3" tabindex="-1"></a>  <span class="at">p_sort =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.25</span>),</span>
+<span id="cb130-4"><a href="multiple-comparisons.html#cb130-4" tabindex="-1"></a>  <span class="at">rank =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb130-5"><a href="multiple-comparisons.html#cb130-5" tabindex="-1"></a>  <span class="at">p_adj =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.20</span>, <span class="fl">0.25</span>)</span>
+<span id="cb130-6"><a href="multiple-comparisons.html#cb130-6" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb130-7"><a href="multiple-comparisons.html#cb130-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb130-8"><a href="multiple-comparisons.html#cb130-8" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Original p-value&quot;</span>, <span class="st">&quot;Sorted p-value&quot;</span>, <span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;p-value x rank&quot;</span>),</span>
+<span id="cb130-9"><a href="multiple-comparisons.html#cb130-9" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;l&quot;</span></span>
+<span id="cb130-10"><a href="multiple-comparisons.html#cb130-10" tabindex="-1"></a>  )</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10.2 ANCOVAs | Research Process for Music Psychologists</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10.2 ANCOVAs | Research Process for Music Psychologists" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10.2 ANCOVAs | Research Process for Music Psychologists" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Daniel Yeom" />
+
+
+<meta name="date" content="2024-04-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="revisiting-multiple-regression.html"/>
+<link rel="next" href="hierarchical-regression.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Research Process for Music Psychologists</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="usage.html"><a href="usage.html"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
+<li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
+<li class="chapter" data-level="1.3" data-path="preview-book.html"><a href="preview-book.html"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
+<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.1</b> Loading packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.2.3</b> The <code>here()</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.3.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.3.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.3.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.3.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.3.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.3.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.3.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.3.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.3.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visualising-data.html"><a href="visualising-data.html"><i class="fa fa-check"></i><b>3.1</b> Visualising data</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="visualising-data.html"><a href="visualising-data.html#why-visualise-data"><i class="fa fa-check"></i><b>3.1.1</b> Why visualise data?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="counts-and-central-tendencies.html"><a href="counts-and-central-tendencies.html"><i class="fa fa-check"></i><b>3.2</b> Counts and central tendencies</a></li>
+<li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#standard-deviation"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#standard-error-and-the-sdotm"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="z-scores.html"><a href="z-scores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html"><i class="fa fa-check"></i><b>4.1</b> The logic of hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html#revisiting-the-hypotheses"><i class="fa fa-check"></i><b>4.1.1</b> Revisiting the hypotheses</a></li>
+<li class="chapter" data-level="4.1.2" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html#the-issue-of-tails"><i class="fa fa-check"></i><b>4.1.2</b> The issue of tails</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="p-values.html"><a href="p-values.html"><i class="fa fa-check"></i><b>4.2</b> p-values</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="p-values.html"><a href="p-values.html#the-definition-of-the-p-value"><i class="fa fa-check"></i><b>4.2.1</b> The definition of the p-value</a></li>
+<li class="chapter" data-level="4.2.2" data-path="p-values.html"><a href="p-values.html#a-brief-probability-primer-and-how-this-relates-to-p-values"><i class="fa fa-check"></i><b>4.2.2</b> A brief probability primer, and how this relates to p-values</a></li>
+<li class="chapter" data-level="4.2.3" data-path="p-values.html"><a href="p-values.html#the-debate-around-p-values"><i class="fa fa-check"></i><b>4.2.3</b> The debate around p-values</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="types-of-error.html"><a href="types-of-error.html"><i class="fa fa-check"></i><b>4.3</b> Types of error</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="types-of-error.html"><a href="types-of-error.html#statistical-error"><i class="fa fa-check"></i><b>4.3.1</b> Statistical error</a></li>
+<li class="chapter" data-level="4.3.2" data-path="types-of-error.html"><a href="types-of-error.html#type-i-error-and-alpha"><i class="fa fa-check"></i><b>4.3.2</b> Type I error and alpha</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="statistical-power.html"><a href="statistical-power.html"><i class="fa fa-check"></i><b>4.4</b> Statistical power</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="statistical-power.html"><a href="statistical-power.html#statistical-power-1"><i class="fa fa-check"></i><b>4.4.1</b> Statistical power</a></li>
+<li class="chapter" data-level="4.4.2" data-path="statistical-power.html"><a href="statistical-power.html#factors-that-affect-power"><i class="fa fa-check"></i><b>4.4.2</b> Factors that affect power</a></li>
+<li class="chapter" data-level="4.4.3" data-path="statistical-power.html"><a href="statistical-power.html#power-analyses"><i class="fa fa-check"></i><b>4.4.3</b> Power analyses</a></li>
+<li class="chapter" data-level="4.4.4" data-path="statistical-power.html"><a href="statistical-power.html#post-hoc-power-analyses"><i class="fa fa-check"></i><b>4.4.4</b> Post-hoc power analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>4.5</b> Confidence intervals</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#a-reminder-from-the-previous-module"><i class="fa fa-check"></i><b>4.5.1</b> A reminder from the previous module</a></li>
+<li class="chapter" data-level="4.5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-1"><i class="fa fa-check"></i><b>4.5.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="4.5.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence"><i class="fa fa-check"></i><b>4.5.3</b> Confidence</a></li>
+<li class="chapter" data-level="4.5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-literature"><i class="fa fa-check"></i><b>4.5.4</b> Confidence intervals in literature</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chi-squares.html"><a href="chi-squares.html"><i class="fa fa-check"></i><b>5</b> Chi-squares</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html"><i class="fa fa-check"></i><b>5.1</b> Calculating a chi-square</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html#categorical-data"><i class="fa fa-check"></i><b>5.1.1</b> Categorical data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html#the-chi-square-formula"><i class="fa fa-check"></i><b>5.1.2</b> The chi-square formula</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html"><i class="fa fa-check"></i><b>5.2</b> The chi-square distribution</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#the-chi-square-distribution-1"><i class="fa fa-check"></i><b>5.2.1</b> The chi-square distribution</a></li>
+<li class="chapter" data-level="5.2.2" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#hypothesis-testing-in-chi-squares"><i class="fa fa-check"></i><b>5.2.2</b> Hypothesis testing in chi-squares</a></li>
+<li class="chapter" data-level="5.2.3" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#calculating-significance"><i class="fa fa-check"></i><b>5.2.3</b> Calculating significance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html"><i class="fa fa-check"></i><b>5.3</b> Goodness of fit</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>5.3.1</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="5.3.2" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#example"><i class="fa fa-check"></i><b>5.3.2</b> Example</a></li>
+<li class="chapter" data-level="5.3.3" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#calculating-chi2"><i class="fa fa-check"></i><b>5.3.3</b> Calculating <span class="math inline">\(\\\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.3.4" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#using-r"><i class="fa fa-check"></i><b>5.3.4</b> Using R</a></li>
+<li class="chapter" data-level="5.3.5" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#output"><i class="fa fa-check"></i><b>5.3.5</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>5.4</b> Tests of independence</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="tests-of-independence.html"><a href="tests-of-independence.html#example-scenario"><i class="fa fa-check"></i><b>5.4.1</b> Example scenario</a></li>
+<li class="chapter" data-level="5.4.2" data-path="tests-of-independence.html"><a href="tests-of-independence.html#expected-frequencies"><i class="fa fa-check"></i><b>5.4.2</b> Expected frequencies</a></li>
+<li class="chapter" data-level="5.4.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html#output-1"><i class="fa fa-check"></i><b>5.4.3</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html"><i class="fa fa-check"></i><b>5.5</b> Effect sizes for chi-squares</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#phi"><i class="fa fa-check"></i><b>5.5.1</b> Phi</a></li>
+<li class="chapter" data-level="5.5.2" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#cramers-v"><i class="fa fa-check"></i><b>5.5.2</b> Cramer’s V</a></li>
+<li class="chapter" data-level="5.5.3" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Interpretation</a></li>
+<li class="chapter" data-level="5.5.4" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#practice"><i class="fa fa-check"></i><b>5.5.4</b> Practice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-tests</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html"><i class="fa fa-check"></i><b>6.1</b> t-tests and the t-distribution</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#what-is-a-t-test"><i class="fa fa-check"></i><b>6.1.1</b> What is a <em>t</em>-test?</a></li>
+<li class="chapter" data-level="6.1.2" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-statistic"><i class="fa fa-check"></i><b>6.1.2</b> The t-statistic</a></li>
+<li class="chapter" data-level="6.1.3" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-distribution"><i class="fa fa-check"></i><b>6.1.3</b> The t-distribution</a></li>
+<li class="chapter" data-level="6.1.4" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-table"><i class="fa fa-check"></i><b>6.1.4</b> The t-table</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html"><i class="fa fa-check"></i><b>6.2</b> One-sample t-test</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#one-sample-t-test-1"><i class="fa fa-check"></i><b>6.2.1</b> One-sample t-test</a></li>
+<li class="chapter" data-level="6.2.2" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#example-data"><i class="fa fa-check"></i><b>6.2.2</b> Example data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#assumption-checks"><i class="fa fa-check"></i><b>6.2.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.2.4" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#output-2"><i class="fa fa-check"></i><b>6.2.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html"><i class="fa fa-check"></i><b>6.3</b> Independent samples t-test</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#independent-samples"><i class="fa fa-check"></i><b>6.3.1</b> Independent samples</a></li>
+<li class="chapter" data-level="6.3.2" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#example-data-1"><i class="fa fa-check"></i><b>6.3.2</b> Example data</a></li>
+<li class="chapter" data-level="6.3.3" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#assumption-checks-1"><i class="fa fa-check"></i><b>6.3.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.3.4" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#output-3"><i class="fa fa-check"></i><b>6.3.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html"><i class="fa fa-check"></i><b>6.4</b> Paired-samples t-test</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#paired-samples"><i class="fa fa-check"></i><b>6.4.1</b> Paired-samples</a></li>
+<li class="chapter" data-level="6.4.2" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#example-data-2"><i class="fa fa-check"></i><b>6.4.2</b> Example data</a></li>
+<li class="chapter" data-level="6.4.3" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#assumption-checks-2"><i class="fa fa-check"></i><b>6.4.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.4.4" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#output-4"><i class="fa fa-check"></i><b>6.4.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="cohens-d.html"><a href="cohens-d.html"><i class="fa fa-check"></i><b>6.5</b> Cohen’s d</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="cohens-d.html"><a href="cohens-d.html#what-is-cohens-d"><i class="fa fa-check"></i><b>6.5.1</b> What is Cohen’s <em>d</em>?</a></li>
+<li class="chapter" data-level="6.5.2" data-path="cohens-d.html"><a href="cohens-d.html#interpreting-cohens-d"><i class="fa fa-check"></i><b>6.5.2</b> Interpreting Cohen’s <em>d</em></a></li>
+<li class="chapter" data-level="6.5.3" data-path="cohens-d.html"><a href="cohens-d.html#calculating-cohens-d-in-r"><i class="fa fa-check"></i><b>6.5.3</b> Calculating Cohen’s d in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="anovas.html"><a href="anovas.html"><i class="fa fa-check"></i><b>7</b> ANOVAs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html"><i class="fa fa-check"></i><b>7.1</b> Anovas and the F-distribution</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-basic-logic-of-anovas"><i class="fa fa-check"></i><b>7.1.1</b> The basic logic of ANOVAs</a></li>
+<li class="chapter" data-level="7.1.2" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-f-distribution"><i class="fa fa-check"></i><b>7.1.2</b> The F-distribution</a></li>
+<li class="chapter" data-level="7.1.3" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#f-statistic-tables"><i class="fa fa-check"></i><b>7.1.3</b> <em>F</em>-statistic tables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="the-anova-table.html"><a href="the-anova-table.html"><i class="fa fa-check"></i><b>7.2</b> The ANOVA table</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="the-anova-table.html"><a href="the-anova-table.html#the-anova-table-1"><i class="fa fa-check"></i><b>7.2.1</b> The ANOVA table</a></li>
+<li class="chapter" data-level="7.2.2" data-path="the-anova-table.html"><a href="the-anova-table.html#sums-of-squares"><i class="fa fa-check"></i><b>7.2.2</b> Sums of squares</a></li>
+<li class="chapter" data-level="7.2.3" data-path="the-anova-table.html"><a href="the-anova-table.html#degrees-of-freedom"><i class="fa fa-check"></i><b>7.2.3</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="7.2.4" data-path="the-anova-table.html"><a href="the-anova-table.html#mean-squares"><i class="fa fa-check"></i><b>7.2.4</b> Mean squares</a></li>
+<li class="chapter" data-level="7.2.5" data-path="the-anova-table.html"><a href="the-anova-table.html#calculating-f"><i class="fa fa-check"></i><b>7.2.5</b> Calculating <em>F</em></a></li>
+<li class="chapter" data-level="7.2.6" data-path="the-anova-table.html"><a href="the-anova-table.html#putting-it-all-together"><i class="fa fa-check"></i><b>7.2.6</b> Putting it all together</a></li>
+<li class="chapter" data-level="7.2.7" data-path="the-anova-table.html"><a href="the-anova-table.html#consulting-the-f-table"><i class="fa fa-check"></i><b>7.2.7</b> Consulting the F-table</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html"><i class="fa fa-check"></i><b>7.3</b> Multiple comparisons</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
+<li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
+<li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="one-way-anova.html"><a href="one-way-anova.html"><i class="fa fa-check"></i><b>7.4</b> One-way ANOVA</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="one-way-anova.html"><a href="one-way-anova.html#the-basic-one-way-anova"><i class="fa fa-check"></i><b>7.4.1</b> The basic one-way ANOVA</a></li>
+<li class="chapter" data-level="7.4.2" data-path="one-way-anova.html"><a href="one-way-anova.html#example-data-3"><i class="fa fa-check"></i><b>7.4.2</b> Example data</a></li>
+<li class="chapter" data-level="7.4.3" data-path="one-way-anova.html"><a href="one-way-anova.html#assumption-checks-3"><i class="fa fa-check"></i><b>7.4.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="7.4.4" data-path="one-way-anova.html"><a href="one-way-anova.html#output-5"><i class="fa fa-check"></i><b>7.4.4</b> Output</a></li>
+<li class="chapter" data-level="7.4.5" data-path="one-way-anova.html"><a href="one-way-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>7.4.5</b> Post-hoc tests</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>7.5</b> One-way repeated measures ANOVA</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#repeated-measures-anovas"><i class="fa fa-check"></i><b>7.5.1</b> Repeated measures ANOVAs</a></li>
+<li class="chapter" data-level="7.5.2" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#example-data-4"><i class="fa fa-check"></i><b>7.5.2</b> Example data</a></li>
+<li class="chapter" data-level="7.5.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.5.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="7.5.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.5.4</b> ANOVA output</a></li>
+<li class="chapter" data-level="7.5.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.5.5</b> Post-hoc tests</a></li>
+<li class="chapter" data-level="7.5.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.5.6</b> Alternative using <code>car::Anova()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.6</b> Eta-squared</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="eta-squared.html"><a href="eta-squared.html#eta-squared-and-variance"><i class="fa fa-check"></i><b>7.6.1</b> Eta-squared and variance</a></li>
+<li class="chapter" data-level="7.6.2" data-path="eta-squared.html"><a href="eta-squared.html#an-example"><i class="fa fa-check"></i><b>7.6.2</b> An example</a></li>
+<li class="chapter" data-level="7.6.3" data-path="eta-squared.html"><a href="eta-squared.html#interpreting-eta-squared"><i class="fa fa-check"></i><b>7.6.3</b> Interpreting eta-squared</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>8.1</b> Correlations</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="correlations.html"><a href="correlations.html#correlation-coefficients"><i class="fa fa-check"></i><b>8.1.1</b> Correlation coefficients</a></li>
+<li class="chapter" data-level="8.1.2" data-path="correlations.html"><a href="correlations.html#activity"><i class="fa fa-check"></i><b>8.1.2</b> Activity</a></li>
+<li class="chapter" data-level="8.1.3" data-path="correlations.html"><a href="correlations.html#testing-correlations-in-r"><i class="fa fa-check"></i><b>8.1.3</b> Testing correlations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html"><i class="fa fa-check"></i><b>8.2</b> Regression hypotheses</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html#terminology"><i class="fa fa-check"></i><b>8.2.1</b> Terminology</a></li>
+<li class="chapter" data-level="8.2.2" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html#hypothesis-testing-in-regressions"><i class="fa fa-check"></i><b>8.2.2</b> Hypothesis testing in regressions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="least-squares-regression.html"><a href="least-squares-regression.html"><i class="fa fa-check"></i><b>8.3</b> Least squares regression</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="least-squares-regression.html"><a href="least-squares-regression.html#the-regression-line"><i class="fa fa-check"></i><b>8.3.1</b> The regression line</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="assumption-tests.html"><a href="assumption-tests.html"><i class="fa fa-check"></i><b>8.4</b> Assumption tests</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="assumption-tests.html"><a href="assumption-tests.html#linearity"><i class="fa fa-check"></i><b>8.4.1</b> Linearity</a></li>
+<li class="chapter" data-level="8.4.2" data-path="assumption-tests.html"><a href="assumption-tests.html#homoscedasticity"><i class="fa fa-check"></i><b>8.4.2</b> Homoscedasticity</a></li>
+<li class="chapter" data-level="8.4.3" data-path="assumption-tests.html"><a href="assumption-tests.html#independence"><i class="fa fa-check"></i><b>8.4.3</b> Independence</a></li>
+<li class="chapter" data-level="8.4.4" data-path="assumption-tests.html"><a href="assumption-tests.html#normality"><i class="fa fa-check"></i><b>8.4.4</b> Normality</a></li>
+<li class="chapter" data-level="8.4.5" data-path="assumption-tests.html"><a href="assumption-tests.html#multicollinearity"><i class="fa fa-check"></i><b>8.4.5</b> Multicollinearity</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html"><i class="fa fa-check"></i><b>8.5</b> Linear regressions in R</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#scenario"><i class="fa fa-check"></i><b>8.5.1</b> Scenario</a></li>
+<li class="chapter" data-level="8.5.2" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#assumptions"><i class="fa fa-check"></i><b>8.5.2</b> Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="predictions.html"><a href="predictions.html"><i class="fa fa-check"></i><b>8.6</b> Predictions</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
+<li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
+<li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#multiple-regression"><i class="fa fa-check"></i><b>8.7.1</b> Multiple regression</a></li>
+<li class="chapter" data-level="8.7.2" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#the-regression-equation-once-again"><i class="fa fa-check"></i><b>8.7.2</b> The regression equation, once again</a></li>
+<li class="chapter" data-level="8.7.3" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#assumption-testing-in-multiple-regressions"><i class="fa fa-check"></i><b>8.7.3</b> Assumption testing in multiple regressions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
+<li class="chapter" data-level="8.8.2" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
+<li class="chapter" data-level="8.8.3" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
+<li class="chapter" data-level="8.8.4" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="introduction.html"><a href="introduction.html#conventions-for-factorial-designs"><i class="fa fa-check"></i><b>9.1.1</b> Conventions for factorial designs</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="interactions.html"><a href="interactions.html"><i class="fa fa-check"></i><b>9.2</b> Interactions</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="interactions.html"><a href="interactions.html#what-is-an-interaction"><i class="fa fa-check"></i><b>9.2.1</b> What is an interaction?</a></li>
+<li class="chapter" data-level="9.2.2" data-path="interactions.html"><a href="interactions.html#testing-for-interactions"><i class="fa fa-check"></i><b>9.2.2</b> Testing for interactions</a></li>
+<li class="chapter" data-level="9.2.3" data-path="interactions.html"><a href="interactions.html#simple-effects-tests"><i class="fa fa-check"></i><b>9.2.3</b> Simple effects tests</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html"><i class="fa fa-check"></i><b>9.3</b> R-specific considerations</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#the-afex-package"><i class="fa fa-check"></i><b>9.3.1</b> The <code>afex</code> package</a></li>
+<li class="chapter" data-level="9.3.2" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#writing-interactions-in-r"><i class="fa fa-check"></i><b>9.3.2</b> Writing interactions in R</a></li>
+<li class="chapter" data-level="9.3.3" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#simple-effects-tests-in-r"><i class="fa fa-check"></i><b>9.3.3</b> Simple effects tests in R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html"><i class="fa fa-check"></i><b>9.4</b> Two-way between groups ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#introduction-1"><i class="fa fa-check"></i><b>9.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.4.2" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#example-1"><i class="fa fa-check"></i><b>9.4.2</b> Example</a></li>
+<li class="chapter" data-level="9.4.3" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#assumption-testing"><i class="fa fa-check"></i><b>9.4.3</b> Assumption testing</a></li>
+<li class="chapter" data-level="9.4.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#normality-of-residuals-look-at-the-shapiro-wilk-test-on-the-residuals-or-a-q-q-plot"><i class="fa fa-check"></i><b>9.4.4</b> Normality of residuals: Look at the Shapiro-Wilk test (on the residuals) or a Q-Q plot:</a></li>
+<li class="chapter" data-level="9.4.5" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#output-7"><i class="fa fa-check"></i><b>9.4.5</b> Output</a></li>
+<li class="chapter" data-level="9.4.6" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#write-up"><i class="fa fa-check"></i><b>9.4.6</b> Write-up</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>9.5</b> Two-way repeated measures ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#introduction-2"><i class="fa fa-check"></i><b>9.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.5.2" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#example-2"><i class="fa fa-check"></i><b>9.5.2</b> Example</a></li>
+<li class="chapter" data-level="9.5.3" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#assumptions-1"><i class="fa fa-check"></i><b>9.5.3</b> Assumptions</a></li>
+<li class="chapter" data-level="9.5.4" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#output-8"><i class="fa fa-check"></i><b>9.5.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html"><i class="fa fa-check"></i><b>9.6</b> Two-way mixed ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#introduction-3"><i class="fa fa-check"></i><b>9.6.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.6.2" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#example-3"><i class="fa fa-check"></i><b>9.6.2</b> Example</a></li>
+<li class="chapter" data-level="9.6.3" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#output-9"><i class="fa fa-check"></i><b>9.6.3</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="three-way-anova.html"><a href="three-way-anova.html"><i class="fa fa-check"></i><b>9.7</b> Three-way ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="three-way-anova.html"><a href="three-way-anova.html#introduction-4"><i class="fa fa-check"></i><b>9.7.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.7.2" data-path="three-way-anova.html"><a href="three-way-anova.html#example-4"><i class="fa fa-check"></i><b>9.7.2</b> Example</a></li>
+<li class="chapter" data-level="9.7.3" data-path="three-way-anova.html"><a href="three-way-anova.html#simple-simple-effects"><i class="fa fa-check"></i><b>9.7.3</b> Simple <em>simple</em> effects</a></li>
+<li class="chapter" data-level="9.7.4" data-path="three-way-anova.html"><a href="three-way-anova.html#assumptions-and-output"><i class="fa fa-check"></i><b>9.7.4</b> Assumptions and output</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
+<li class="chapter" data-level="10.2" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.2</b> ANCOVAs</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ancovas.html"><a href="ancovas.html#example-5"><i class="fa fa-check"></i><b>10.2.2</b> Example</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.2.3</b> One-way ANCOVA</a></li>
+<li class="chapter" data-level="10.2.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.2.4</b> Assumptions</a></li>
+<li class="chapter" data-level="10.2.5" data-path="ancovas.html"><a href="ancovas.html#linearity-of-the-covariate"><i class="fa fa-check"></i><b>10.2.5</b> Linearity of the covariate</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.3</b> Hierarchical regression</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-6"><i class="fa fa-check"></i><b>10.3.1</b> Example</a></li>
+<li class="chapter" data-level="10.3.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.3.2</b> Building blocks and output</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.4</b> Comparing models</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.4.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
+<li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html"><i class="fa fa-check"></i><b>10.5</b> Extra: Technical details of <code>anova()</code></a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>10.5.1</b> The default test in <code>anova()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Research Process for Music Psychologists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ancovas" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> ANCOVAs<a href="ancovas.html#ancovas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction-5" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Introduction<a href="ancovas.html#introduction-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>ANCOVA stands for Analysis of <strong>Co-</strong>variance. Its basic definition is that it is an ANOVA, but with the inclusion of a covariate (or a variable we need to control for). The basic idea is that we are performing an ANOVA between our predictors and outcomes after adjusting our predictors (our model) by another variable.</p>
+<p>Just like the ANOVA, ANCOVA is a fairly generic term that can refer to a multitude of analyses. In this book we’ll stick with ANOVAs relating to between-subjects predictors only.</p>
+</div>
+<div id="example-5" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Example<a href="ancovas.html#example-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following data comes from Plaster (1989). The dataset is described as below:</p>
+<blockquote>
+<p>Male participants were shown a picture of one of three young women. Pilot work had indicated that the one woman was beautiful, another of average physical attractiveness, and the third unattractive. Participants rated the woman they saw on each of twelve attributes. These measures were used to check on the manipulation by the photo.
+Then the participants were told that the person in the photo had committed a Crime, and asked to rate the seriousness of the crime and recommend a prison sentence, in Years.</p>
+</blockquote>
+<p>Our main questions are:</p>
+<ol style="list-style-type: decimal">
+<li>Does the perceived attractiveness of the “defendant” (the women in the photo) influence the number of years the mock juror (the participant) sentence them for?</li>
+<li>How does this relationship change after controlling for the perceived seriousness of the crime?</li>
+</ol>
+<p>Our dataset, <code>jury_data</code>, contains the following variables:</p>
+<ul>
+<li>Attr: The perceived attractiveness of the defendant (Beautiful, Average, Unattractive)</li>
+<li>Crime: The crime that was commited by the defendant (Burglary, Swindle)</li>
+<li>Serious: The perceived seriousness of the crime from 1-10</li>
+<li>Years: The number of years the participant sentenced the defendant for</li>
+</ul>
+</div>
+<div id="one-way-ancova" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> One-way ANCOVA<a href="ancovas.html#one-way-ancova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To start us off, let’s begin with a simple one-way ANOVA between attractiveness and years. We can see this below.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="ancovas.html#cb255-1" tabindex="-1"></a>jury_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;regression_2&quot;</span>, <span class="st">&quot;anova_mockjury.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="ancovas.html#cb256-1" tabindex="-1"></a>jury_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr, <span class="at">data =</span> jury_data)</span>
+<span id="cb256-2"><a href="ancovas.html#cb256-2" tabindex="-1"></a><span class="fu">summary</span>(jury_aov)</span></code></pre></div>
+<pre><code>##              Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## Attr          2   70.9   35.47    2.77  0.067 .
+## Residuals   111 1421.3   12.80                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="ancovas.html#cb258-1" tabindex="-1"></a><span class="fu">eta_squared</span>(jury_aov, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## For one-way between subjects designs, partial eta squared is equivalent to eta squared.
+##   Returning eta squared.</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Eta2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"0.04753771","3":"0.95","4":"0","5":"0.1356405"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>From this we can infer that the effect of attractiveness is not significant (<em>F</em>(2, 111) = 2.77, <em>p</em> = .067, <span class="math inline">\(\eta^2\)</span> = .05, 95% CI = [0, .14]). In other words, perceived attractiveness does not appear to relate to the years of sentencing.</p>
+<p>Let’s now add the covariate <code>Serious</code> in. To do this in R, we simply add in the predictor to the <code>aov</code> model just like we would with adding a second predictor in a multiple regression - by specifying <code>IV + covariate</code> within the relevant function. See below for two ways of running an ANCOVA:</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="ancovas.html#cb260-1" tabindex="-1"></a><span class="co"># One way using car::Anova - this is useful for getting the correct eta squared confidence intervals</span></span>
+<span id="cb260-2"><a href="ancovas.html#cb260-2" tabindex="-1"></a></span>
+<span id="cb260-3"><a href="ancovas.html#cb260-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts =</span> <span class="fu">c</span>(<span class="st">&quot;contr.helmert&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</span>
+<span id="cb260-4"><a href="ancovas.html#cb260-4" tabindex="-1"></a></span>
+<span id="cb260-5"><a href="ancovas.html#cb260-5" tabindex="-1"></a>jury_acov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr <span class="sc">+</span> Serious, <span class="at">data =</span> jury_data)</span>
+<span id="cb260-6"><a href="ancovas.html#cb260-6" tabindex="-1"></a>jury_acov_sum <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(jury_acov, <span class="at">type =</span> <span class="dv">3</span>)</span>
+<span id="cb260-7"><a href="ancovas.html#cb260-7" tabindex="-1"></a>jury_acov_sum</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sum Sq"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["F value"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"4.557094","2":"1","3":"0.4819212","4":"4.890169e-01","_rn_":"(Intercept)"},{"1":"73.256059","2":"2","3":"3.8734820","4":"2.367899e-02","_rn_":"Attr"},{"1":"381.145147","2":"1","3":"40.3068063","4":"4.998213e-09","_rn_":"Serious"},{"1":"1040.170880","2":"110","3":"NA","4":"NA","_rn_":"Residuals"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="ancovas.html#cb261-1" tabindex="-1"></a><span class="fu">eta_squared</span>(jury_acov_sum, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Eta2_partial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"0.06579332","3":"0.95","4":"0.0002784374","5":"0.1632670"},{"1":"Serious","2":"0.26816355","3":"0.95","4":"0.1384786529","5":"0.3946331"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="ancovas.html#cb262-1" tabindex="-1"></a><span class="co"># Another way using rstatix</span></span>
+<span id="cb262-2"><a href="ancovas.html#cb262-2" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb262-3"><a href="ancovas.html#cb262-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">+</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["DFn"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["DFd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[6],"type":["chr"],"align":["left"]},{"label":["pes"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"2","3":"110","4":"3.873","5":"2.4e-02","6":"*","7":"0.066","_rn_":"1"},{"1":"Serious","2":"1","3":"110","4":"40.307","5":"5.0e-09","6":"*","7":"0.268","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>What do we see? Well, the main effect of attractiveness is now significant (<em>F</em>(2, 110) = 3.87, <em>p</em> = .024, <span class="math inline">\(\eta^2_p\)</span> = .07, 95% CI = [0, .16]). The effect of the covariate is also significant (<em>F</em>(1, 110) = 40.31, <em>p</em> &lt; .001, <span class="math inline">\(\eta^2_p\)</span> = .27, 95% CI = [.14, .39]).</p>
+<p>What’s actually going on here? Well, the first model showed us that by itself, attractiveness was not a significant part of the model. However, once we factored in the effect of Seriousness (and more importantly, controlled for it) we saw that Attractive <em>did</em> in fact relate to the sentence length. Unsurprisingly, the seriousness of the crime also predicted sentence length.</p>
+</div>
+<div id="assumptions-2" class="section level3 hasAnchor" number="10.2.4">
+<h3><span class="header-section-number">10.2.4</span> Assumptions<a href="ancovas.html#assumptions-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>By and large, the assumptions required for an ANCOVA are the same as that of a regular ANOVA. However, there are two new ones in bold below:</p>
+<ul>
+<li>Normality of residuals</li>
+<li>Homogeneity of variances</li>
+<li><strong>Linearity of the covariate</strong></li>
+<li><strong>Homogeneity of regression slopes</strong></li>
+</ul>
+<p>Let’s check each of these below.</p>
+<p>First, the normality of residuals can simply be tested as in the usual way. Our residuals are not normally distributed in this model (<em>W</em> = .97, <em>p</em> = .006).</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="ancovas.html#cb263-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(jury_acov<span class="sc">$</span>residuals)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  jury_acov$residuals
+## W = 0.96616, p-value = 0.005529</code></pre>
+<p>The homoegeneity of variance assumption is also largely tested in the same way. Our homogeneity of variance assumption also isn’t met (<em>F</em>(2, 111) = 5.68, <em>p</em> = .004)…</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="ancovas.html#cb265-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb265-2"><a href="ancovas.html#cb265-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years <span class="sc">~</span> Attr, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to factor.</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"111","3":"5.684661","4":"0.004462711"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="linearity-of-the-covariate" class="section level3 hasAnchor" number="10.2.5">
+<h3><span class="header-section-number">10.2.5</span> Linearity of the covariate<a href="ancovas.html#linearity-of-the-covariate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A third assumption tests whether the covariate is linearly related to the DV. This assumption is essentially similar to the linearity assumption in a regression model - because we are still dealing with linear models, our covariates must also be linearly related to our outcome.</p>
+<p>This is simple enough to test just by visualising the relationship. In general, this assumption appears to hold - it looks like there’s a vague linear relationship in there.</p>
+<p>(Note that due to the data being in integers - i.e. whole numbers - I’ve used <code>geom_jitter()</code> in place of <code>geom_point()</code> to help visualise this a bit better.)</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="ancovas.html#cb267-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb267-2"><a href="ancovas.html#cb267-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb267-3"><a href="ancovas.html#cb267-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years)</span>
+<span id="cb267-4"><a href="ancovas.html#cb267-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb267-5"><a href="ancovas.html#cb267-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb267-6"><a href="ancovas.html#cb267-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-192-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Finally, the <strong>homogeneity of regression slopes</strong> assumption specifies that for each group, the slope of the relationship between the covariate and the dependent variable are the same. To test this, we need to run an ANOVA that allows for an interaction between the predictor and covariate.</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="ancovas.html#cb268-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb268-2"><a href="ancovas.html#cb268-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["DFn"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["DFd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[6],"type":["chr"],"align":["left"]},{"label":["pes"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"2","3":"108","4":"0.951","5":"3.90e-01","6":"","7":"0.017","_rn_":"1"},{"1":"Serious","2":"1","3":"108","4":"42.794","5":"2.09e-09","6":"*","7":"0.284","_rn_":"2"},{"1":"Attr:Serious","2":"2","3":"108","4":"3.622","5":"3.00e-02","6":"*","7":"0.063","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Uh oh - this isn’t good. A significant interaction suggests that the slope of the relationship between <code>Serious</code> and <code>Years</code> differs for each level of attractiveness, as indicated by the significant interaction effect (<em>p</em> = .03). We can see as much if we fit separate regression lines to the scatterplot above:</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="ancovas.html#cb269-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb269-2"><a href="ancovas.html#cb269-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb269-3"><a href="ancovas.html#cb269-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years, <span class="at">colour =</span> Attr)</span>
+<span id="cb269-4"><a href="ancovas.html#cb269-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb269-5"><a href="ancovas.html#cb269-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb269-6"><a href="ancovas.html#cb269-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb269-7"><a href="ancovas.html#cb269-7" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-194-1.png" width="672" style="display: block; margin: auto;" />
+As we can clearly see, the slopes are not identical for each group. In particular, the Unattractive group has a much stronger slope between seriousness and sentence length (indicating that unattractive people basically have it harder if they’re perceived to have committed more serious crimes).</p>
+<p>Overall, given that many of our assumptions are not met - particularly the important one of homogeneity of regression slopes - this indicates that an ANCOVA isn’t a suitable model for our data. What would we do in this instance, then? We’d probably model a regression that allows for the interaction between attractiveness and seriousness.</p>
+<p>A final note on ANCOVAs: naturally, we can extend an ANCOVA model to have multiple predictors <em>and</em> multiple covariates. In this instance, we would need to model multi-way interactions to test all of our effects and assumptions. Below is a lightly annotated example of a two-way ANCOVA using attractiveness and type of crime as predictors, seriousness as a covariate and sentence length as an outcome.</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="ancovas.html#cb271-1" tabindex="-1"></a><span class="co"># Build two way ANCOVA</span></span>
+<span id="cb271-2"><a href="ancovas.html#cb271-2" tabindex="-1"></a>jury_twoway_acov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime <span class="sc">+</span> Serious, <span class="at">data =</span> jury_data)</span>
+<span id="cb271-3"><a href="ancovas.html#cb271-3" tabindex="-1"></a></span>
+<span id="cb271-4"><a href="ancovas.html#cb271-4" tabindex="-1"></a><span class="co"># Normality of residuals</span></span>
+<span id="cb271-5"><a href="ancovas.html#cb271-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(jury_twoway_acov<span class="sc">$</span>residuals)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  jury_twoway_acov$residuals
+## W = 0.96895, p-value = 0.009416</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="ancovas.html#cb273-1" tabindex="-1"></a><span class="co"># Homogeneity of variance</span></span>
+<span id="cb273-2"><a href="ancovas.html#cb273-2" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb273-3"><a href="ancovas.html#cb273-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"5","2":"108","3":"3.135448","4":"0.01107427"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="ancovas.html#cb274-1" tabindex="-1"></a><span class="co"># Linearity of covariate + homogeneity of regression slopes</span></span>
+<span id="cb274-2"><a href="ancovas.html#cb274-2" tabindex="-1"></a></span>
+<span id="cb274-3"><a href="ancovas.html#cb274-3" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb274-4"><a href="ancovas.html#cb274-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb274-5"><a href="ancovas.html#cb274-5" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years, <span class="at">colour =</span> Attr)</span>
+<span id="cb274-6"><a href="ancovas.html#cb274-6" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb274-7"><a href="ancovas.html#cb274-7" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb274-8"><a href="ancovas.html#cb274-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb274-9"><a href="ancovas.html#cb274-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb274-10"><a href="ancovas.html#cb274-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Crime)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-195-1.png" width="672" /></p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="ancovas.html#cb276-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb276-2"><a href="ancovas.html#cb276-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime <span class="sc">*</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["DFn"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["DFd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[6],"type":["chr"],"align":["left"]},{"label":["pes"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"2","3":"102","4":"4.179","5":"1.80e-02","6":"*","7":"0.076","_rn_":"1"},{"1":"Crime","2":"1","3":"102","4":"0.403","5":"5.27e-01","6":"","7":"0.004","_rn_":"2"},{"1":"Serious","2":"1","3":"102","4":"42.943","5":"2.34e-09","6":"*","7":"0.296","_rn_":"3"},{"1":"Attr:Crime","2":"2","3":"102","4":"2.955","5":"5.70e-02","6":"","7":"0.055","_rn_":"4"},{"1":"Attr:Serious","2":"2","3":"102","4":"3.977","5":"2.20e-02","6":"*","7":"0.072","_rn_":"5"},{"1":"Crime:Serious","2":"1","3":"102","4":"0.658","5":"4.19e-01","6":"","7":"0.006","_rn_":"6"},{"1":"Attr:Crime:Serious","2":"2","3":"102","4":"0.672","5":"5.13e-01","6":"","7":"0.013","_rn_":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="ancovas.html#cb277-1" tabindex="-1"></a><span class="co"># Output ANCOVA</span></span>
+<span id="cb277-2"><a href="ancovas.html#cb277-2" tabindex="-1"></a><span class="fu">Anova</span>(jury_twoway_acov, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sum Sq"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["F value"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"5.319637","2":"1","3":"0.5767281","4":"4.492675e-01","_rn_":"(Intercept)"},{"1":"80.417012","2":"2","3":"4.3592023","4":"1.513567e-02","_rn_":"Attr"},{"1":"4.427754","2":"1","3":"0.4800346","4":"4.899077e-01","_rn_":"Crime"},{"1":"379.489154","2":"1","3":"41.1422899","4":"3.938355e-09","_rn_":"Serious"},{"1":"49.297643","2":"2","3":"2.6723002","4":"7.370368e-02","_rn_":"Attr:Crime"},{"1":"986.948941","2":"107","3":"NA","4":"NA","_rn_":"Residuals"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="revisiting-multiple-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hierarchical-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-regressions-2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

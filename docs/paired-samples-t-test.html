@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-10" />
+<meta name="date" content="2024-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -453,18 +453,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
-<li class="chapter" data-level="10.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.2</b> Hierarchical regression</a>
+<li class="chapter" data-level="10.2" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.2</b> ANCOVAs</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-5"><i class="fa fa-check"></i><b>10.2.1</b> Example</a></li>
-<li class="chapter" data-level="10.2.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.2.2</b> Building blocks and output</a></li>
+<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ancovas.html"><a href="ancovas.html#example-5"><i class="fa fa-check"></i><b>10.2.2</b> Example</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.2.3</b> One-way ANCOVA</a></li>
+<li class="chapter" data-level="10.2.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.2.4</b> Assumptions</a></li>
+<li class="chapter" data-level="10.2.5" data-path="ancovas.html"><a href="ancovas.html#linearity-of-the-covariate"><i class="fa fa-check"></i><b>10.2.5</b> Linearity of the covariate</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.3</b> Comparing models</a>
+<li class="chapter" data-level="10.3" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.3</b> Hierarchical regression</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.3.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="10.3.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.3.2</b> Nested model tests</a></li>
-<li class="chapter" data-level="10.3.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.3.3</b> Fit indices</a></li>
+<li class="chapter" data-level="10.3.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-6"><i class="fa fa-check"></i><b>10.3.1</b> Example</a></li>
+<li class="chapter" data-level="10.3.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.3.2</b> Building blocks and output</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10.4</b> Logistic regression</a></li>
+<li class="chapter" data-level="10.4" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.4</b> Comparing models</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.4.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
+<li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
+</ul></li>
 <li class="chapter" data-level="10.5" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html"><i class="fa fa-check"></i><b>10.5</b> Extra: Technical details of <code>anova()</code></a>
 <ul>
 <li class="chapter" data-level="10.5.1" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>10.5.1</b> The default test in <code>anova()</code></a></li>
@@ -502,34 +509,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-data-2" class="section level3 hasAnchor" number="6.4.2">
 <h3><span class="header-section-number">6.4.2</span> Example data<a href="paired-samples-t-test.html#example-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For this example, we’ll take a look at a simple interventions study. Participants were asked to answer a short list of questions relating to how they were feeling, once before an intervention and once afterwards. Higher scores represent better emotional states. The intervention was a series of self-regulation classes and exercises that the participants took twice a week. We’re interested in seeing whether the intervention was effective.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="paired-samples-t-test.html#cb106-1" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_symptoms.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="paired-samples-t-test.html#cb115-1" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_symptoms.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 32 Columns: 2
-## ── Column specification ────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (2): before, after
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="paired-samples-t-test.html#cb108-1" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="paired-samples-t-test.html#cb117-1" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["before"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["after"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"14","2":"18"},{"1":"18","2":"17"},{"1":"14","2":"18"},{"1":"10","2":"18"},{"1":"14","2":"12"},{"1":"14","2":"13"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>R-note: For t-tests the data need to be in long format, so the below code will reformat this:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="paired-samples-t-test.html#cb109-1" tabindex="-1"></a><span class="co"># Create a wide version of the original dataset</span></span>
-<span id="cb109-2"><a href="paired-samples-t-test.html#cb109-2" tabindex="-1"></a>w8_symptoms_wide <span class="ot">&lt;-</span> w8_symptoms</span>
-<span id="cb109-3"><a href="paired-samples-t-test.html#cb109-3" tabindex="-1"></a></span>
-<span id="cb109-4"><a href="paired-samples-t-test.html#cb109-4" tabindex="-1"></a><span class="co"># Pivot to long format</span></span>
-<span id="cb109-5"><a href="paired-samples-t-test.html#cb109-5" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
-<span id="cb109-6"><a href="paired-samples-t-test.html#cb109-6" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb109-7"><a href="paired-samples-t-test.html#cb109-7" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb109-8"><a href="paired-samples-t-test.html#cb109-8" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb109-9"><a href="paired-samples-t-test.html#cb109-9" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;symptom_score&quot;</span></span>
-<span id="cb109-10"><a href="paired-samples-t-test.html#cb109-10" tabindex="-1"></a>  )</span>
-<span id="cb109-11"><a href="paired-samples-t-test.html#cb109-11" tabindex="-1"></a></span>
-<span id="cb109-12"><a href="paired-samples-t-test.html#cb109-12" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
-<span id="cb109-13"><a href="paired-samples-t-test.html#cb109-13" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="paired-samples-t-test.html#cb118-1" tabindex="-1"></a><span class="co"># Create a wide version of the original dataset</span></span>
+<span id="cb118-2"><a href="paired-samples-t-test.html#cb118-2" tabindex="-1"></a>w8_symptoms_wide <span class="ot">&lt;-</span> w8_symptoms</span>
+<span id="cb118-3"><a href="paired-samples-t-test.html#cb118-3" tabindex="-1"></a></span>
+<span id="cb118-4"><a href="paired-samples-t-test.html#cb118-4" tabindex="-1"></a><span class="co"># Pivot to long format</span></span>
+<span id="cb118-5"><a href="paired-samples-t-test.html#cb118-5" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb118-6"><a href="paired-samples-t-test.html#cb118-6" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb118-7"><a href="paired-samples-t-test.html#cb118-7" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb118-8"><a href="paired-samples-t-test.html#cb118-8" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb118-9"><a href="paired-samples-t-test.html#cb118-9" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;symptom_score&quot;</span></span>
+<span id="cb118-10"><a href="paired-samples-t-test.html#cb118-10" tabindex="-1"></a>  )</span>
+<span id="cb118-11"><a href="paired-samples-t-test.html#cb118-11" tabindex="-1"></a></span>
+<span id="cb118-12"><a href="paired-samples-t-test.html#cb118-12" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
+<span id="cb118-13"><a href="paired-samples-t-test.html#cb118-13" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["time"],"name":[1],"type":["chr"],"align":["left"]},{"label":["symptom_score"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"before","2":"14"},{"1":"after","2":"18"},{"1":"before","2":"18"},{"1":"after","2":"17"},{"1":"before","2":"14"},{"1":"after","2":"18"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -540,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.4.3</span> Assumption checks<a href="paired-samples-t-test.html#assumption-checks-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Similar to other tests, we need to check normality. Here, the assumption is whether the differences between time 1 and 2 are normally distributed (not necessarily time 1 and 2 themselves). Hence, when we run a Shapiro-Wilks test we’re running this on the values we get from Time 1 - Time 2.</p>
 <p>In our data, this assumption seems to be intact (p = .918).</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="paired-samples-t-test.html#cb110-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms_wide<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms_wide<span class="sc">$</span>after)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="paired-samples-t-test.html#cb119-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms_wide<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms_wide<span class="sc">$</span>after)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -550,7 +557,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="output-4" class="section level3 hasAnchor" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> Output<a href="paired-samples-t-test.html#output-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, you can do pairwise t-tests using the default <code>t.test()</code> (or the <code>rstatix</code> equivalent <code>t_test()</code>) function. In both methods, you must set <code>paired = TRUE</code> in order to run a paired t-test. Your dataset needs to be in long format for both functions. Here are both methods. By now this should be familiar:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="paired-samples-t-test.html#cb112-1" tabindex="-1"></a><span class="fu">t.test</span>(symptom_score <span class="sc">~</span> time, <span class="at">data =</span> w8_symptoms, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="paired-samples-t-test.html#cb121-1" tabindex="-1"></a><span class="fu">t.test</span>(symptom_score <span class="sc">~</span> time, <span class="at">data =</span> w8_symptoms, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -562,8 +569,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean difference 
 ##            2.75</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="paired-samples-t-test.html#cb114-1" tabindex="-1"></a>w8_symptoms <span class="sc">%&gt;%</span></span>
-<span id="cb114-2"><a href="paired-samples-t-test.html#cb114-2" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="paired-samples-t-test.html#cb123-1" tabindex="-1"></a>w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb123-2"><a href="paired-samples-t-test.html#cb123-2" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[4],"type":["int"],"align":["right"]},{"label":["n2"],"name":[5],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"symptom_score","2":"after","3":"before","4":"32","5":"32","6":"2.950087","7":"31","8":"0.006","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
