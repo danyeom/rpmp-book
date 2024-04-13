@@ -552,8 +552,8 @@ is best used in meta-analyses.</p>
 calculate <em>generalised</em> eta squared (labelled <code>ges</code> in the output). If
 you want partial eta-squared, you just need to give <code>anova_test()</code> the
 extra argument <code>effect.size = "pes</code> as follows:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="eta-squared.html#cb160-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb160-2"><a href="eta-squared.html#cb160-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="eta-squared.html#cb153-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb153-2"><a href="eta-squared.html#cb153-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
 <pre><code>## ANOVA Table (type III tests)
 ## 
 ## $ANOVA

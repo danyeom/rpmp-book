@@ -503,7 +503,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.4.1</span> Linearity<a href="assumption-tests.html#linearity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Believe it or not, for a linear regression your data should be… linear. Wild, right?</p>
 <p>Bitter sarcasm aside, linearity is an important assumption that needs to be met before conducting a linear regression. Not all data will follow a linear pattern; some data may instead sit on a curve. Compare the two examples below, where one is clearly non-linear:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-135-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-188-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>If the data shows no clear linear relationship between your IV and DV, it is likely because the two are weakly correlated (and so a linear regression would not be useful anyway). If instead the data lies on a very obvious curve, you can either:</p>
 <ul>
 <li>Transform the data to make it linear (but you must be clear about what this represents)</li>
@@ -514,8 +514,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.4.2</span> Homoscedasticity<a href="assumption-tests.html#homoscedasticity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The homoscedasticity assumption is one that we’ve seen before - it is essentially a version of the equality of variance test. In a linear regression context, however, this assumption works a little bit differently; if this assumption is met, then the variance should be equal at all levels of our predictor (i.e. the x-axis).</p>
 <p>The easiest way to test this is to create a fitted vs residuals graph. As the name implies, we take the fitted values for each level of the predictor in our data, and plot that against the residuals (fitted - actual). Here are some fitted vs residual plots for two sets of data. The data on the left has an even spread of variance as X increases, meaning that it is homoscedastic; the data on the right, on the other hand, spreads out like a cone. The data on the right therefore is likely heteroscedastic.</p>
-<pre><code>## Warning: Removed 7 rows containing missing values or values outside the scale range (`geom_point()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre><code>## Warning: Removed 7 rows containing missing values or values outside the scale range
+## (`geom_point()`).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-189-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>There are a couple of ways to overcome this, such as either transforming the raw variables or weighting them.</p>
 </div>
 <div id="independence" class="section level3 hasAnchor" number="8.4.3">

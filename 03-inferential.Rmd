@@ -418,7 +418,7 @@ In other words, 95% of our data in this sample lie between 62.16 and 77.84. The 
 
 We can use the same principle to make inferences about the true population parameter. When we take a sample, each one will have its own standard error (remember this reflects an estimate of the distance between the sample mean and the true population mean). If we were to repeatedly take samples, in the long run we would expect the true population mean to fall within 95% of all sample means. And, just like the normal distribution, when we look at the sampling distribution of the means below, 95% of all sample means will fall within 1.96 standard errors (thanks to the Central Limit Theorem).
 
-```{r}
+```{r echo = FALSE, fig.align = "center"}
 norm_data <- data.frame(
   x = seq(-3, 3, length = 1001)
   ) %>%

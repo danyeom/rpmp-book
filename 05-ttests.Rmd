@@ -364,20 +364,35 @@ For a one-sample t-test, the formula once again needs to be in `var ~ 1` format 
 
 ```{r}
 w8_grades %>% 
-  rstatix::cohens_d(sample ~ 1, mu = 72) 
+  cohens_d(sample ~ 1, mu = 72, ci = TRUE) 
 ```
 For an independent-samples t-test:
 
 ```{r}
 w8_training %>%
-  cohens_d(Years_training ~ Group)
+  cohens_d(Years_training ~ Group, ci = TRUE)
 ```
 
 For a paired-samples t-test, `paired = TRUE` must be selected:
 
 ```{r}
 w8_symptoms %>%
-  cohens_d(symptom_score ~ time, paired = TRUE)
+  cohens_d(symptom_score ~ time, paired = TRUE, ci = TRUE)
 ```
 
 The Canvas version asks you to interpret each of these effect sizes, but... `rstatix` will automatically label this for you!
+
+Alternatively, you can use the `effectsize` package as follows, although this sometimes isn't all that intuitive:
+
+```{r}
+# One-sample
+effectsize::cohens_d(data = w8_grades, sample ~ 1, mu = 72) 
+
+# Independent samples. Note that pooled_sd = FALSE must be ticked for Welch tests
+effectsize::cohens_d(data = w8_training, Years_training ~ Group, pooled_sd = FALSE) 
+
+# Paired sample - works with wide data
+effectsize::rm_d(data = w8_symptoms_wide, Pair(before, after) ~ 1, method = "z", adjust = FALSE)
+```
+
+

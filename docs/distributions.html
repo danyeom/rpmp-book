@@ -505,18 +505,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-normal-distribution" class="section level3 hasAnchor" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> The normal distribution<a href="distributions.html#the-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Earlier, we saw a series of graphs overlaid on top of each other. These graphs, while having different variability, were essentially all the same shape - they were symmetrical bell curves. These were all examples of the normal distribution (also called the Gaussian distribution). The classic normal distribution takes on a neat bell-shaped curve:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>In the normal distribution, the majority of data points cluster in the middle, while all other values are symmetrically distributed from either side from the middle. This is what gives the normal distribution its recognisable bell shape.</p>
 <p>The normal distribution is defined by two parameters: the mean and the standard deviation of the data. These two parameters define the overall shape of the bell curve - the mean defines where the peak is, while the standard deviation defines how spread out the tails are.</p>
 <p>An important feature of the normal distribution is where all of the data is spread, regardless of its shape: 95% of the data within the curve falls within 1.96 standard deviations, either side of the mean. This applies to any normal distribution no matter what the scale of the data is. 99.7% of data falls within just below 3 standard deviations.</p>
 <pre><code>## Warning in geom_segment(aes(x = 0, y = 0, xend = 0, yend = max(y)), colour = &quot;#556F44&quot;): All aesthetics have length 1, but the data has 1001 rows.
 ## ℹ Did you mean to use `annotate()`?</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-93-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="skew" class="section level3 hasAnchor" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Skew<a href="distributions.html#skew" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Skewness, as the name implies, describes whether or not a distribution is symmetrical or skewed. If a distribution is skewed, we would expect numbers to be bunched up at one end of the distribution. Have a look at the three graphs below:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>The purple graph in the middle is symmetrically distributed, so we say that it has no skew.</li>
 <li>The red graph has values that are weighted towards the right-hand side of the x-axis, and so we say that it is either skewed left or negatively skewed.</li>
@@ -533,7 +533,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="kurtosis" class="section level3 hasAnchor" number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> Kurtosis<a href="distributions.html#kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Kurtosis refers to the shape of the tails specifically. Are all of the data bunched very tightly around one value, or are the data evenly spread out? The three graphs you saw up above all have different kurtoses.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The orange graph has most values very close to the peak at 50; therefore, the tails themselves are very small. The red line, on the other hand, is spread out and flatter so the tails are larger. The blue curve again approximates a normal distribution. We can quantify kurtosis through the idea of excess kurtosis - in other words, how far does it deviate from what we see in a normal distribution. This is shown below:</p>
 <p>The different types of excess kurtoses are:</p>
 <ul>

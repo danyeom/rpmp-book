@@ -542,7 +542,7 @@ scenario, the Type I error rate will stack with each new comparison,
 meaning that our overall Type I error rate will climb higher and higher.
 This means that the chance of finding a false positive will increase
 (see graph below).</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-104-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-157-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>This overall rate of Type I errors is called the family-wise error rate
 (FWER). ‘Family’ in this context refers to a family of comparisons -
 like the comparison across A to E that we saw above.</p>
@@ -579,16 +579,16 @@ descending fashion. Using the same p-values as above, we would get 0.05,
 and p = .25 would be 1.</p>
 <p>You then multiply the p-value by its rank, like the table below, to get
 your adjusted p-values:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="multiple-comparisons.html#cb130-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb130-2"><a href="multiple-comparisons.html#cb130-2" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.10</span>),</span>
-<span id="cb130-3"><a href="multiple-comparisons.html#cb130-3" tabindex="-1"></a>  <span class="at">p_sort =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.25</span>),</span>
-<span id="cb130-4"><a href="multiple-comparisons.html#cb130-4" tabindex="-1"></a>  <span class="at">rank =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
-<span id="cb130-5"><a href="multiple-comparisons.html#cb130-5" tabindex="-1"></a>  <span class="at">p_adj =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.20</span>, <span class="fl">0.25</span>)</span>
-<span id="cb130-6"><a href="multiple-comparisons.html#cb130-6" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb130-7"><a href="multiple-comparisons.html#cb130-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb130-8"><a href="multiple-comparisons.html#cb130-8" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Original p-value&quot;</span>, <span class="st">&quot;Sorted p-value&quot;</span>, <span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;p-value x rank&quot;</span>),</span>
-<span id="cb130-9"><a href="multiple-comparisons.html#cb130-9" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;l&quot;</span></span>
-<span id="cb130-10"><a href="multiple-comparisons.html#cb130-10" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="multiple-comparisons.html#cb123-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb123-2"><a href="multiple-comparisons.html#cb123-2" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.10</span>),</span>
+<span id="cb123-3"><a href="multiple-comparisons.html#cb123-3" tabindex="-1"></a>  <span class="at">p_sort =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.25</span>),</span>
+<span id="cb123-4"><a href="multiple-comparisons.html#cb123-4" tabindex="-1"></a>  <span class="at">rank =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb123-5"><a href="multiple-comparisons.html#cb123-5" tabindex="-1"></a>  <span class="at">p_adj =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.20</span>, <span class="fl">0.25</span>)</span>
+<span id="cb123-6"><a href="multiple-comparisons.html#cb123-6" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb123-7"><a href="multiple-comparisons.html#cb123-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb123-8"><a href="multiple-comparisons.html#cb123-8" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Original p-value&quot;</span>, <span class="st">&quot;Sorted p-value&quot;</span>, <span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;p-value x rank&quot;</span>),</span>
+<span id="cb123-9"><a href="multiple-comparisons.html#cb123-9" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;l&quot;</span></span>
+<span id="cb123-10"><a href="multiple-comparisons.html#cb123-10" tabindex="-1"></a>  )</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
