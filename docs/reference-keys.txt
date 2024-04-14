@@ -1,4 +1,4 @@
-fig:unnamed-chunk-18
+fig:unnamed-chunk-14
 preface
 intro
 assignment-and-syntax
@@ -217,6 +217,4 @@ comparing-models
 comparing-r2
 nested-model-tests
 fit-indices
-appendix
 appendix-a-technical-details-of-anova
-the-default-test-in-anova

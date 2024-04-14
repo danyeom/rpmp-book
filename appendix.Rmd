@@ -1,4 +1,4 @@
-# Appendix
+# (APPENDIX) Appendix {-}
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
@@ -8,12 +8,14 @@ library(rstatix)
 library(effectsize)
 library(car)
 ```
-# (APPENDIX) Appendix {-}
 
-## Appendix A: Technical details of `anova()` 
+# Appendix A: Technical details of `anova()` 
 
-
-### The default test in `anova()`
+```{r echo = FALSE}
+w10_flow <- read_csv(here("data", "week_10", "w10_flow.csv"))
+flow_block1 <- lm(DFS_Total ~ GoldMSI, data = w10_flow)
+flow_block2 <- lm(DFS_Total ~ GoldMSI + openness, data = w10_flow)
+```
 
 Technical note: this test works not too unlike a regular ANOVA, except the F-test is being conducted on the residual sums of scores. From a mathematical point of view, we are essentially conducting an F-test on the change in the residual sum of squares with the following formula:
 

@@ -392,7 +392,7 @@ effectsize::cohens_d(data = w8_grades, sample ~ 1, mu = 72)
 effectsize::cohens_d(data = w8_training, Years_training ~ Group, pooled_sd = FALSE) 
 
 # Paired sample - works with wide data
-effectsize::cohens_d(data = w8_symptoms_wide, Pair(before, after) ~ 1, method = "z", adjust = FALSE)
+effectsize::rm_d(data = w8_symptoms_wide, Pair(before, after) ~ 1, method = "z", adjust = FALSE)
 ```
 
 
