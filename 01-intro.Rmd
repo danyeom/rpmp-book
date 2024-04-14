@@ -378,7 +378,7 @@ Note that all of these are `dplyr` functions, so need to be piped from a dataset
 -   ``relocate()` will let you rearrange the column order.
 -   The `slice()` set of functions is another way of subsetting rows based on their position. 
 
-## Making graphs with ggplot2
+## Making graphs with ggplot2 {#ggplot}
 
 ggplot2 is the tidyverse way of visualising data. The 'gg' in the name ggplot2 stands for grammar of graphics. The idea is that a graph is built by the same few components - a dataset, geoms (visual marks that represent data) and a coordinate system. 
 

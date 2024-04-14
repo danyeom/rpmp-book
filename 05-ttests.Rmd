@@ -165,11 +165,11 @@ Below is our output from the one-sample t-test. Our result tells us that there i
 t.test(w8_grades$sample, mu = 72)
 ```
 
-Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test:
+Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test. `detailed = TRUE` will print a detailed output that will give the 95% CI for the test statistic: 
 
 ```{r}
 w8_grades %>%
-  t_test(sample ~ 1, mu = 72)
+  t_test(sample ~ 1, mu = 72, detailed = TRUE)
 ```
 
 
@@ -213,11 +213,11 @@ shapiro.test(w8_training$Years_training)
 
 In reality, it's rare that any of these assumptions are fully met even when tests say they are (the tests we just mentioned can be biased). This is especially true for classical t-tests, which are very sensitive to violations. A consistently better alternative is to use the Welch t-test, which assumes the equality of variance assumption is not met. Welch t-tests are also fairly robust against the normality assumption, and so are more flexible without sacrificing accuracy.
 
-Here's our output from R Note that this is from a Welch t-test - R will do this byu default.
+Here's our output from R Note that this is from a Welch t-test - R will do this by default. 
 
 ```{r}
 w8_training %>%
-  t_test(Years_training ~ Group)
+  t_test(Years_training ~ Group, detailed = TRUE)
 ```
 
 From this, we can see that the two groups do significantly differ on years of training (t(57.99) = 5.859, p \< .001). We can use the mean difference value to see, well... the difference in means between the two groups. In this case, professionals have 2.92 more years of training (on average) compared to amateurs.
@@ -281,7 +281,7 @@ In R, you can do pairwise t-tests using the default `t.test()` (or the `rstatix`
 t.test(symptom_score ~ time, data = w8_symptoms, paired = TRUE)
 
 w8_symptoms %>%
-  t_test(symptom_score ~ time, paired = TRUE)
+  t_test(symptom_score ~ time, paired = TRUE, detailed = TRUE)
 ```
 
 The mean symptom scores of the two timepoints are significantly different (t(31) = 2.95, p = .006). Based on the means and mean difference, participants reported having significantly better emotional states after the intervention compared to beforehand.
@@ -364,25 +364,25 @@ For a one-sample t-test, the formula once again needs to be in `var ~ 1` format 
 
 ```{r}
 w8_grades %>% 
-  cohens_d(sample ~ 1, mu = 72, ci = TRUE) 
+  cohens_d(sample ~ 1, mu = 72, ci = TRUE, ci.type = "norm") 
 ```
 For an independent-samples t-test:
 
 ```{r}
 w8_training %>%
-  cohens_d(Years_training ~ Group, ci = TRUE)
+  cohens_d(Years_training ~ Group, ci = TRUE, ci.type = "norm")
 ```
 
 For a paired-samples t-test, `paired = TRUE` must be selected:
 
 ```{r}
 w8_symptoms %>%
-  cohens_d(symptom_score ~ time, paired = TRUE, ci = TRUE)
+  cohens_d(symptom_score ~ time, paired = TRUE, ci = TRUE, ci.type = "norm")
 ```
 
 The Canvas version asks you to interpret each of these effect sizes, but... `rstatix` will automatically label this for you!
 
-Alternatively, you can use the `effectsize` package as follows, although this sometimes isn't all that intuitive:
+Alternatively, you can use the `effectsize` package as follows. Just note that for paired samples t-tests, the following code works for wide data:
 
 ```{r}
 # One-sample

@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 ANOVAs | Research Process for Music Psychologists</title>
+  <title>11.1 Appendix A: Technical details of anova() | Research Process for Music Psychologists</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 ANOVAs | Research Process for Music Psychologists" />
+  <meta property="og:title" content="11.1 Appendix A: Technical details of anova() | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 ANOVAs | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="11.1 Appendix A: Technical details of anova() | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="cohens-d.html"/>
-<link rel="next" href="anovas-and-the-f-distribution.html"/>
+<link rel="prev" href="appendix.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -505,43 +505,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="anovas" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> ANOVAs<a href="anovas.html#anovas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>t-tests, as we saw last week, were a simple way of comparing a
-continuous outcome between two groups or conditions (i.e. one
-categorical variable with two levels). However, it’s also common to
-compare across three or more groups when doing real research. To test
-this kind of hypothesis where we have three or more groups, we need to
-turn to a different method - the ANOVA. ANOVAs are useful when you have
-one categorical IV with 3+ levels, and one continuous DV.</p>
-<p>The ANOVA is perhaps one of the most common statistical tests you will
-see in music psychology literature, in part because they generalise to a
-lot of research designs. In many respects, this week is fairly important
-in terms of knowing how to conduct an ANOVA and when. We’ll only be
-stepping through the basics this week, but there are some really
-important fundamentals to cover here.</p>
-<p>It’s also common to analyse two independent variables against one
-dependent variable. These too can be done using ANOVAs. While we won’t
-go into this in this module, there will be an Extension Module that
-deals with this separately - check it out sometime around Week 10/11 if
-you’re interested.</p>
-<p>By the end of this module you should be able to:</p>
+<div id="appendix-a-technical-details-of-anova" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Appendix A: Technical details of <code>anova()</code><a href="appendix-a-technical-details-of-anova.html#appendix-a-technical-details-of-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-default-test-in-anova" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> The default test in <code>anova()</code><a href="appendix-a-technical-details-of-anova.html#the-default-test-in-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Technical note: this test works not too unlike a regular ANOVA, except the F-test is being conducted on the residual sums of scores. From a mathematical point of view, we are essentially conducting an F-test on the change in the residual sum of squares with the following formula:</p>
+<p><span class="math display">\[
+F(df_{df_b - df_a}, df_a) = \frac{MS_{comp}}{MS_{a}} = \frac{(SS_b - SS_a)/(p_a - p_b)}{SS_a/df_a}
+\]</span></p>
+<p>Consider two models, Model A and Model B. Imagine Model B is a nested version of Model A - i.e. it it the same model as Model A but with less predictors. In our case, imagine Model B is <code>flow_block1</code> (which only had one predictor) and Model A is <code>flow_block2</code> (which had two). <span class="math inline">\(p_a\)</span> is the number of coefficients in Model A <em>including</em> the intercept, and same with <span class="math inline">\(p_b\)</span>.</p>
+<p>The exact process is:</p>
+<ol style="list-style-type: decimal">
+<li><p>Calculate the difference between residual SS in the two models - this is the <span class="math inline">\((SS_b - SS_a)\)</span> part of the formula above. This is just the difference in RSS between model 1 (model B) and 2 (model A), i.e. 10124.2 - 9982.9 = 141.3.</p></li>
+<li><p>Calculate the difference in df <span class="math inline">\((p_a - p_b)\)</span>. In <code>flow_block1</code> we have one predictor and one intercept, so we have 2 terms - this is <span class="math inline">\(p_b\)</span>. In <code>flow_block2</code> we have two predictors and one intercept, which makes <span class="math inline">\(p_a = 3\)</span>. Therefore, <span class="math inline">\((p_a - p_b) = 3 - 2 = 1\)</span>.</p></li>
+<li><p>Calculate a mean square ratio for the comparison, which is <span class="math inline">\(MS_{comp}\)</span>. Essentially, we divide the result in step 1 (143.1) by the result in step 2 (1). This follows the same formula for mean squarews as we have seen before: <span class="math inline">\(MS = \frac{SS_{comp}}{df_{comp}}\)</span>, so
+<span class="math inline">\(MS_{comp} = \frac{141.3}{1} = 141.3.\)</span> While this is identical to the sum of squares value in the table above, note that this is <em>not</em> the same value.</p></li>
+<li><p>Calculate a mean square ratio between RSS and df for the new model. This is the <span class="math inline">\(SS_a/df_a\)</span> part of the equation. <span class="math inline">\(df_a\)</span> is calculated as <span class="math inline">\(n - p_a\)</span>, where n is the original sample size. So <span class="math inline">\(df_a = 811 - 3 = 808\)</span>. Note that the value for row 2 (which corresponds to Model A/<code>flow_block2</code>) under <code>Res.df</code> is 808.</p></li>
+</ol>
+<p>Note that <span class="math inline">\(df_b\)</span> is the same; <span class="math inline">\(n - p_b = 811 - 2 = 809\)</span>.</p>
+<p>Same deal as above after that, except this time we use the values from the new model only, i.e. residual SS for model A (<code>flow_block2</code>) and the residual df.</p>
+<p><span class="math inline">\(MS_a = \frac{SS_{a}}{df_{a}}\)</span>
+<span class="math inline">\(MS_a = \frac{9982.9}{808} = 12.33507\)</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Calculate an F ratio between the MS of the comparison and the MS of the new model to calculate a value for F.</li>
+</ol>
+<p>This is exactly the same formula as it would be for a regular ANOVA, just that now we are doing:</p>
+<p><span class="math display">\[
+F = \frac{MS_{comp}}{MS_{a}}
+\]</span></p>
+<p><span class="math inline">\(F = \frac{141.3}{12.33507} = 11.45514\)</span></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Calculate a p-value for this F-statistic by comparing the p against an F distribution. The two dfs in the original formula are a) <span class="math inline">\(df_b - df_a\)</span> and b) <span class="math inline">\(df_a\)</span>. Which means:</li>
+</ol>
 <ul>
-<li>Understand and describe the conceptual basis of an analysis of
-variance</li>
-<li>Describe how an ANOVA is calculated</li>
-<li>Conduct both one-way ANOVAs and one-way repeated ANOVAs, including
-their assumption tests</li>
-<li>Interpret the output of the ANOVAs and report their findings</li>
+<li><span class="math inline">\(df_b\)</span> is 809 - <span class="math inline">\(df_a\)</span> is 808 = 1</li>
+<li><span class="math inline">\(df_a\)</span> is 808</li>
 </ul>
+<p>So we end up with a test statistic of <span class="math inline">\(F(1, 808) = 11.455\)</span>. We can use this to calculate a p-value by calculating the probability of getting a value of at least 11.455, on an F distribution with degrees of freedom parameters described above. We can visualise this below. Note that because the values for F are so infinitesimally small with these parameters and at this F-value, I’ve zoomed in the plot to visualise the highlighted area:</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="appendix-a-technical-details-of-anova.html#cb291-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb291-2"><a href="appendix-a-technical-details-of-anova.html#cb291-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> .<span class="dv">5</span>),</span>
+<span id="cb291-3"><a href="appendix-a-technical-details-of-anova.html#cb291-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>)</span>
+<span id="cb291-4"><a href="appendix-a-technical-details-of-anova.html#cb291-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb291-5"><a href="appendix-a-technical-details-of-anova.html#cb291-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb291-6"><a href="appendix-a-technical-details-of-anova.html#cb291-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb291-7"><a href="appendix-a-technical-details-of-anova.html#cb291-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb291-8"><a href="appendix-a-technical-details-of-anova.html#cb291-8" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb291-9"><a href="appendix-a-technical-details-of-anova.html#cb291-9" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb291-10"><a href="appendix-a-technical-details-of-anova.html#cb291-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">11.455</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb291-11"><a href="appendix-a-technical-details-of-anova.html#cb291-11" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">12</span>, <span class="at">y =</span> <span class="fl">0.0024</span>, <span class="at">label =</span> <span class="st">&quot;F = 11.455&quot;</span>) <span class="sc">+</span></span>
+<span id="cb291-12"><a href="appendix-a-technical-details-of-anova.html#cb291-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> df, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>), </span>
+<span id="cb291-13"><a href="appendix-a-technical-details-of-anova.html#cb291-13" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">11.455</span>, <span class="dv">15</span>),</span>
+<span id="cb291-14"><a href="appendix-a-technical-details-of-anova.html#cb291-14" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb291-15"><a href="appendix-a-technical-details-of-anova.html#cb291-15" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
+<span id="cb291-16"><a href="appendix-a-technical-details-of-anova.html#cb291-16" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.003</span>)) <span class="sc">+</span></span>
+<span id="cb291-17"><a href="appendix-a-technical-details-of-anova.html#cb291-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;F-value&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Computation failed in `stat_function()`.
+## Caused by error in `fun()`:
+## ! could not find function &quot;fun&quot;</code></pre>
+<pre><code>## Warning: Removed 20 rows containing missing values or values outside the scale range (`geom_line()`).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
+<p>R can manually calculate a p-value with the <code>pf()</code> function. <code>pf()</code> will calculate the probability of a value on the F distribution, given the two degrees of freedom parameters to characterise the distribution. <code>lower.tail = FALSE</code> is used to indicate that we want to calculate the probability of getting something <em>above</em> our critical F-value; <code>lower.tail = TRUE</code> would calculuate the probability <em>below</em> it.</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="appendix-a-technical-details-of-anova.html#cb294-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="fl">11.45514</span>, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">808</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.0007473355</code></pre>
+<p>Note that our p-value isn’t exactly the same as the value in the table - this is because we’ve used rounded values. The code below extracts the unrounded values and uses them in the calculations. As you can see we get the exact p-value in the table.</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="appendix-a-technical-details-of-anova.html#cb296-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">anova</span>(flow_block1, flow_block2)</span>
+<span id="cb296-2"><a href="appendix-a-technical-details-of-anova.html#cb296-2" tabindex="-1"></a>x</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"809","2":"10124.204","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"808","2":"9982.903","3":"1","4":"141.3011","5":"11.43668","6":"0.0007546911","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="appendix-a-technical-details-of-anova.html#cb297-1" tabindex="-1"></a><span class="co"># Using the output from anova() to manually calculate p-value</span></span>
+<span id="cb297-2"><a href="appendix-a-technical-details-of-anova.html#cb297-2" tabindex="-1"></a>SSb <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">1</span>]</span>
+<span id="cb297-3"><a href="appendix-a-technical-details-of-anova.html#cb297-3" tabindex="-1"></a>SSa <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">2</span>]</span>
+<span id="cb297-4"><a href="appendix-a-technical-details-of-anova.html#cb297-4" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block2))</span>
+<span id="cb297-5"><a href="appendix-a-technical-details-of-anova.html#cb297-5" tabindex="-1"></a>pb <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block1))</span>
+<span id="cb297-6"><a href="appendix-a-technical-details-of-anova.html#cb297-6" tabindex="-1"></a>dfa <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pa</span>
+<span id="cb297-7"><a href="appendix-a-technical-details-of-anova.html#cb297-7" tabindex="-1"></a>dfb <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pb</span>
+<span id="cb297-8"><a href="appendix-a-technical-details-of-anova.html#cb297-8" tabindex="-1"></a></span>
+<span id="cb297-9"><a href="appendix-a-technical-details-of-anova.html#cb297-9" tabindex="-1"></a>f_val <span class="ot">&lt;-</span> ((SSb<span class="sc">-</span>SSa)<span class="sc">/</span>(pa<span class="sc">-</span>pb))<span class="sc">/</span>(SSa<span class="sc">/</span>dfa)</span>
+<span id="cb297-10"><a href="appendix-a-technical-details-of-anova.html#cb297-10" tabindex="-1"></a></span>
+<span id="cb297-11"><a href="appendix-a-technical-details-of-anova.html#cb297-11" tabindex="-1"></a><span class="fu">pf</span>(f_val, <span class="at">df1 =</span> dfb<span class="sc">-</span>dfa, <span class="at">df2 =</span> dfa, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.0007546911</code></pre>
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="cohens-d.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="anovas-and-the-f-distribution.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="appendix.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -572,7 +628,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-anovas.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-appendix.Rmd",
 "text": "Edit"
 },
 "history": {

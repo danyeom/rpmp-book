@@ -1,8 +1,5 @@
-fig:unnamed-chunk-65
+fig:unnamed-chunk-51
 preface
-usage
-render-book
-preview-book
 intro
 assignment-and-syntax
 basic-syntax
@@ -18,11 +15,13 @@ filtering-rows-with-filter
 creating-new-columns-with-mutate
 summarising-data-with-summarise-and-group_by
 some-other-handy-tidyverse-functions
-making-graphs-with-ggplot2
+ggplot
 descriptive-statistics-module-5
 visualising-data
 why-visualise-data
 counts-and-central-tendencies
+basic-features
+central-tendencies
 variability
 the-variability-of-data
 standard-deviation
@@ -32,6 +31,9 @@ the-normal-distribution
 skew
 kurtosis
 z-scores
+z-scores-1
+calculating-z-scores
+comparing-across-scales
 inferential-statistics
 the-logic-of-hypothesis-testing
 revisiting-the-hypotheses
@@ -76,6 +78,7 @@ phi
 cramers-v
 interpretation
 practice
+bonus-mcnemars-test
 t-tests
 t-tests-and-the-t-distribution
 what-is-a-t-test
@@ -214,5 +217,6 @@ comparing-models
 comparing-r2
 nested-model-tests
 fit-indices
-extra-technical-details-of-anova
+appendix
+appendix-a-technical-details-of-anova
 the-default-test-in-anova

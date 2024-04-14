@@ -13,11 +13,9 @@ Descriptive statistics, as the name implies, are used to describe data. A key pa
 
 In this first module, we will start with the first steps of understanding quantitative data. This involves visualising our data to see what it looks like, and describing key features of the data. If you're familiar with statistics then some of this may seem a bit trivial, but it's important that we get the basics right before we go on to doing fancy statistical tests.
 
-Also, I know that the idea of doing statistics and maths freaks a lot of us out - and that's totally normal. Yes, there will be some number-crunching and maths in the next series of modules, but the focus of these modules is not to force you to calculate things by hand. You will encounter a whole bunch of mathematical formulae, but the point of doing so is to illustrate the concepts that underpin them. These concepts are crucial to understanding the 'magic' that happens with quantitative analysis, and a really solid foundation in statistical concepts will go a long way.
+> Also, I know that the idea of doing statistics and maths freaks a lot of us out - and that's totally normal. Yes, there will be some number-crunching and maths in the next series of modules, but the focus of these modules is not to force you to calculate things by hand. You will encounter a whole bunch of mathematical formulae, but the point of doing so is to illustrate the concepts that underpin them. These concepts are crucial to understanding the 'magic' that happens with quantitative analysis, and a really solid foundation in statistical concepts will go a long way.
 
-That being said, throughout these statistics modules there will be a number of activities that ask you to actively work with sample datasets and analyse them. We promise that you will get so much more out of these modules if you complete these activities, because readings and webpages aren't the best substitute for actually doing it and getting your hands dirty with data.
-
-Also note that didactic seminars begin this week! Each seminar will go through the key concepts that are covered here in the LMS. From here to Week 11, treat the LMS pages as an online textbook rather than the primary subject delivery (you may have noticed that the module requirements now list only this page and the quiz). Note below that the majority of these 'textbook' style pages don't have estimated time allocations, as they are covered in the seminar anyway.
+> That being said, throughout these statistics modules there will be a number of activities that ask you to actively work with sample datasets and analyse them. We promise that you will get so much more out of these modules if you complete these activities, because readings and webpages aren't the best substitute for actually doing it and getting your hands dirty with data.
 
 By the end of this module you should be able to:
 
@@ -41,9 +39,12 @@ It's common for many students learning research methods and statistics to simply
 
 Below is an example of why data visualisation should be a crucial part of the quantitative research process:
 
-This series of datasets is called the Datasaurus Dozen
+```{r echo = FALSE}
+knitr::include_graphics(here("img", "datasaurus.gif"))
+```
 
-Links to an external site., which are 12 datasets that look entirely different (including the dinosaur!) but share almost identical summary statistics, as shown by the bold numbers on the right.
+
+This series of datasets is called the [Datasaurus Dozen](https://www.research.autodesk.com/publications/same-stats-different-graphs/), which are 12 datasets that look entirely different (including the dinosaur!) but share almost identical summary statistics, as shown by the bold numbers on the right.
 
 Data visualisation is important because:
 
@@ -51,11 +52,72 @@ Data visualisation is important because:
 2.  It can reveal unexpected structures in your data that would normally be missed otherwise.
 3.  It is an effective way of communicating information. The best graphs tell a reader everything they need to know in one image.
 
+In the Canvas version of this subject, there are some general guidelines as to how to make good figures right around this point. For this version of the book, the [section on ggplot](#ggplot) is going to be infinitely better. 
+
+Regardless of which graph you use, every good graph should have the basic following features:
+
+<iframe src="https://unimelb.h5p.com/content/1291596978884900599/embed" aria-label="module_5_graphs" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://unimelb.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+Content made with H5P.
+
 ## Counts and central tendencies
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
 Once we understand what our data looks like, we can then move to describing the general properties of the data. Such general properties are called descriptive statistics. Reporting descriptive statistics is crucial for many aspects of quantitative research.
 :::
+
+### Basic features
+
+There are a couple of basic features of any dataset that should be looked at and noted:
+
+```{r echo = FALSE}
+options(knitr.kable.NA = "")
+
+data.frame(
+  col1 = c("Count (n)", "Range", "Percentages"),
+  col2 = c(
+    "The number of data points.",
+    "In the context of writing up statistics, this is usually the minimum and maximum values.",
+    NA
+  ),
+  col3 = c(
+    "The number of participants should always be reported - not just for the sample as a whole, but for each analysis done. ",
+    "Reporting these values is often useful as a range when writing up demographic variables, e.g. age or years of training.",
+    "Use primarily for categorical data, e.g. sex or groups."
+  )
+) %>%
+  knitr::kable(
+    col.names = c("Name (APA Symbol)", "Definition", "When to report?")
+  )
+```
+
+### Central tendencies
+
+While the range can be informative in some sitautions, it usually isn't enough to draw deeper interpretations from raw data. One key way of describing data is in terms of central tendency - or where the 'average' value approximately is. There are three main types of central tendency, summarized in the table below. 
+
+```{r echo = FALSE}
+data.frame(
+  col1 = c("Mean (M)", "Median (Mdn)", "Mode"),
+  col2 = c(
+    "The sum of all values, divided by the number of data points.",
+    "The 'middle' data point, when sorted in order.",
+    "The most frequent value."
+  ),
+  col3 = c(
+    "Use if data is normally distributed.",
+    "Use for skewed data, or for ordinal data.",
+    "Use for nominal data."
+  ),
+  col4 = c(
+    "Can be influenced by outliers, so generally unsuitable when data is skewed.",
+    "Generally is less preferable to the mean, except for use in skewed/ordinal data.",
+    "Unsuitable for most other types of data."
+  )
+) %>%
+  knitr::kable(
+    col.names = c("Name (APA Symbol)", "Definition", "When to use?", "Things to note")
+  )
+```
+
 
 ## Variability
 
@@ -201,7 +263,7 @@ The normal distribution is defined by two parameters: the mean and the standard 
 
 An important feature of the normal distribution is where all of the data is spread, regardless of its shape: 95% of the data within the curve falls within 1.96 standard deviations, either side of the mean. This applies to any normal distribution no matter what the scale of the data is. 99.7% of data falls within just below 3 standard deviations.
 
-```{r echo = FALSE, fig.align = "center", fig.dim = c(8, 4)}
+```{r echo = FALSE, fig.align = "center", fig.dim = c(8, 4), warning = FALSE}
 
 normdist_1 <- ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "transparent") +
   stat_function(fun = dnorm, xlim = c(1.96, 3), geom = "area", fill = "#556F44", alpha = 0.8, colour = "#556F44") +
@@ -313,7 +375,106 @@ The different types of excess kurtoses are:
 
 Therefore, in the example above the orange curve would be considered leptokurtic, while the red one would be platykurtic.
 
+Below are a series of skewness and kurtosis values from three different data sets. For each:
+
+-    Determine if the data is skewed or not, and if so then what type of skew
+-    Determine the type of kurtosis
+-    Sketch a rough version of what this skew and kurtosis might look like (doesn't have to be perfect!)
+
+```{r echo = FALSE}
+data.frame(
+  col1 = c("Skewness", "Kurtosis"),
+  col2 = c(0.3209, -.1023),
+  col3 = c(5.2934, 10.9238),
+  col4 = c(-3.1945, -2.7263)
+) %>%
+  knitr::kable(
+    col.names = c("", "Dataset A", "Dataset B", "Dataset C")
+  )
+```
+
 
 ## z-scores
 
 
+::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
+The last major component of this week is about a really useful but important property of the normal distribution (which, as you may have guessed, is fairly important in statistics. The process of standardising data and calculating z-scores is one that we actually use a lot in statistics.
+:::
+
+\newline
+Let's briefly recap where we're at so far:
+
+-    We've covered basic descriptive statistics, such as means, standard deviations etc etc.
+-    We've talked a bit about the normal distribution and its properties - specifically, that 95% of your data lies within 1.96 SD either way of the mean
+
+If you've got those concepts down, the rest of this page will be fairly straightforward.
+
+### z-scores
+
+**z-scores** (z), sometimes called **standard scores**, are a measure that describe how many standard deviations a single data point is from the mean. If you recall the figure of the normal distribution from the previous page, notice how we quantify how much data is captured in terms of the number of standard deviations. z-scores are essentially this number - in other words, 95% of your data lies between z = -1.96 and z = 1.96.
+
+```{r echo = FALSE, warning = FALSE}
+cowplot::plot_grid(normdist_1, normdist_2)
+```
+
+The process of calculating z-scores is called standardisation. The primary utility of converting data into z-scores is that it becomes possible to compare data on different scales. Many statistical analyses employ some form of standardisation for a variety of reasons - some of which we'll see in this subject.
+
+### Calculating z-scores
+
+The formula for converting a raw data point into a z-score is:
+
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+
+Where x = an individual data point, $\mu$ = mean and $\sigma$ = SD.
+
+For example - in their paper on the Goldsmiths Musical Sophistication Index, Mullensiefen et al. (2014) show that their general sophistication measure has a mean of 81.58, with an SD of 20.62. If a participant scores 100, we can calculate a z-score to see how many standard deviations they are away from the mean:
+
+$$
+z = \frac{100 - 81.58}{20.62}
+$$
+$$
+z = 0.8933
+$$
+A participant with a general sophistication score of 100 would be roughly 0.89 standard deviations away from the mean.
+
+### Comparing across scales
+
+As mentioned above, we can use z-scores to compare across measures on different scales. This becomes really useful when we want to compare two participants, for instance, or two different measures. This is simply done by calculating a z-score for each formula - as long as you know the mean and standard deviation of each scale as well. 
+
+As a simplistic example, let's say we have two scales:
+
+-    Measure A sits on a scale of 0 - 100, with a mean of 50 and a standard deviation of 5
+-    Measure B sits on a scale of 0 - 80, with a mean of 45 and a standard deviation of 4
+
+If a participant scores 40 on both scales, clearly we can't compare them directly - a 40/100 is vastly different to a 40/80! But we could convert these into z-scores to see where the participant sits on each scale:
+
+$z_a = \frac{40 - 50}{5}$, and $z_b = \frac{40 - 50}{5}$
+
+$z_a = \frac{-10}{5}$, and $z_b = \frac{-5}{4}$
+
+$z_a = -2, z_b = -1.25$
+
+In other words, the participant's z-score on Measure A is -2, and -1.25 on Measure B. Based on this, we can say that the participant scored slightly higher (relatively) on Measure B compared to Measure A.
+
+A z-score lets us see how many standard deviations away from the mean a participant is. However, a more intuitive way of thinking about this is what percentile they sit in. To do this, we use something called a z-table. This z-table, in short, allows us to work out this percentage. 
+
+Most versions of the z-tables will present two separate z-tables: one for negative z-values, and one for positive z-values (credit: [https://zoebeesley.com/2018/11/13/z-table/](https://zoebeesley.com/2018/11/13/z-table/))
+
+```{r echo = FALSE}
+knitr::include_graphics(here("img", "z-table.webp"))
+```
+
+Here are the steps to read this table:
+
+1.    Choose which table to read first. If you have a negative z-score, read the left one; if you have a positive z-score, read the right one.
+2.    The rows and columns are basically arranged by decimal place. The rows index z-scores to 1dp, while the columns add the second decimal place. So, find the row first that corresponds to your z-score. In our example from above, our z-score was 0.89, so we want to find the row corresponding to 0.8.
+3.    Next, find the column that corresponds to the second decimal place. We want to go all the way to the right-hand column labelled .09, to find the right column for our z-score of 0.89.
+4.    Find the cell that corresponds to the row and column from above - that is the probability of getting a value below our z-score. 
+
+```{r echo = FALSE, fig.align = "center"}
+knitr::include_graphics(here("img", "ztable_highlight.png"))
+```
+
+In this instance, our z-score of 0.89 has an associated probability of .8133, meaning that 81.3% of scores are below this z-score. 

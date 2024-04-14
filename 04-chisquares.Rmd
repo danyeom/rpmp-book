@@ -512,3 +512,8 @@ Given the following results from a 2x2 chi-square test of independence:
 
 Calculate both phi and Cramer's V. (You should get the same answer, but have a go at trying it both ways!)
 
+
+
+## Bonus: McNemar's Test
+
+
