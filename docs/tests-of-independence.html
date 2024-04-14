@@ -478,14 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
-<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
-<ul>
-<li class="chapter" data-level="11.1.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>11.1.1</b> The default test in <code>anova()</code></a></li>
-</ul></li>
-</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>A</b> Appendix A: Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -518,7 +512,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We’ll start off with a very basic example. In the below dataset, children from several schools were surveyed regarding what instrument they played. This dataset focuses on two instruments that have historically been seen as gendered (e.g. see Abeles 2009) - clarinet and drums. The sex of the child playing the instrument was also recorded.</p>
 <p>Our research question is: is there an association between sex and instrument choice?</p>
 <p>Dataset:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="tests-of-independence.html#cb68-1" tabindex="-1"></a>instrument_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_instruments.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="tests-of-independence.html#cb72-1" tabindex="-1"></a>instrument_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_instruments.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 122 Columns: 2
 ## ── Column specification ────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -526,7 +520,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="tests-of-independence.html#cb70-1" tabindex="-1"></a><span class="fu">head</span>(instrument_data)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="tests-of-independence.html#cb74-1" tabindex="-1"></a><span class="fu">head</span>(instrument_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["instrument"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"clarinet","2":"M"},{"1":"clarinet","2":"M"},{"1":"clarinet","2":"M"},{"1":"clarinet","2":"F"},{"1":"clarinet","2":"F"},{"1":"clarinet","2":"M"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -534,11 +528,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Contingency tables</p>
 <p>The primary way of ‘drawing up’ categorical data, particularly when two variables are involved, is to draw a contingency table. A contingency table is a two-way table that shows how many participants/items/objects fall under each combination of our two variables. Here is a contingency table of our data below:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="tests-of-independence.html#cb71-1" tabindex="-1"></a>w7_instrument_table <span class="ot">&lt;-</span> <span class="fu">table</span>(instrument_data<span class="sc">$</span>instrument,</span>
-<span id="cb71-2"><a href="tests-of-independence.html#cb71-2" tabindex="-1"></a>                             instrument_data<span class="sc">$</span>sex)</span>
-<span id="cb71-3"><a href="tests-of-independence.html#cb71-3" tabindex="-1"></a></span>
-<span id="cb71-4"><a href="tests-of-independence.html#cb71-4" tabindex="-1"></a>w7_instrument_table  <span class="sc">%&gt;%</span></span>
-<span id="cb71-5"><a href="tests-of-independence.html#cb71-5" tabindex="-1"></a>  <span class="fu">addmargins</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="tests-of-independence.html#cb75-1" tabindex="-1"></a>w7_instrument_table <span class="ot">&lt;-</span> <span class="fu">table</span>(instrument_data<span class="sc">$</span>instrument,</span>
+<span id="cb75-2"><a href="tests-of-independence.html#cb75-2" tabindex="-1"></a>                             instrument_data<span class="sc">$</span>sex)</span>
+<span id="cb75-3"><a href="tests-of-independence.html#cb75-3" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="tests-of-independence.html#cb75-4" tabindex="-1"></a>w7_instrument_table  <span class="sc">%&gt;%</span></span>
+<span id="cb75-5"><a href="tests-of-independence.html#cb75-5" tabindex="-1"></a>  <span class="fu">addmargins</span>()</span></code></pre></div>
 <pre><code>##           
 ##              F   M Sum
 ##   clarinet  51  48  99
@@ -561,20 +555,20 @@ E = \frac{R \times C}{N}
 <div id="output-1" class="section level3 hasAnchor" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Output<a href="tests-of-independence.html#output-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s our output! Firstly, our contingency table:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="tests-of-independence.html#cb73-1" tabindex="-1"></a>w7_inst_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(w7_instrument_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb73-2"><a href="tests-of-independence.html#cb73-2" tabindex="-1"></a></span>
-<span id="cb73-3"><a href="tests-of-independence.html#cb73-3" tabindex="-1"></a>w7_inst_chisq<span class="sc">$</span>observed</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="tests-of-independence.html#cb77-1" tabindex="-1"></a>w7_inst_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(w7_instrument_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb77-2"><a href="tests-of-independence.html#cb77-2" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="tests-of-independence.html#cb77-3" tabindex="-1"></a>w7_inst_chisq<span class="sc">$</span>observed</span></code></pre></div>
 <pre><code>##           
 ##             F  M
 ##   clarinet 51 48
 ##   drums     6 17</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="tests-of-independence.html#cb75-1" tabindex="-1"></a>w7_inst_chisq<span class="sc">$</span>expected</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="tests-of-independence.html#cb79-1" tabindex="-1"></a>w7_inst_chisq<span class="sc">$</span>expected</span></code></pre></div>
 <pre><code>##           
 ##                  F       M
 ##   clarinet 46.2541 52.7459
 ##   drums    10.7459 12.2541</code></pre>
 <p>Next is our chi-square test output. As you can see, our test of independence suggests a significant result (p = .03). In other words, we reject the null hypothesis that there is no association between instrument and sex.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="tests-of-independence.html#cb77-1" tabindex="-1"></a>w7_inst_chisq</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="tests-of-independence.html#cb81-1" tabindex="-1"></a>w7_inst_chisq</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 

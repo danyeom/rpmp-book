@@ -478,14 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
-<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
-<ul>
-<li class="chapter" data-level="11.1.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>11.1.1</b> The default test in <code>anova()</code></a></li>
-</ul></li>
-</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>A</b> Appendix A: Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -551,7 +545,7 @@ scenario, the Type I error rate will stack with each new comparison,
 meaning that our overall Type I error rate will climb higher and higher.
 This means that the chance of finding a false positive will increase
 (see graph below).</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-117-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-113-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>This overall rate of Type I errors is called the family-wise error rate
 (FWER). ‘Family’ in this context refers to a family of comparisons -
 like the comparison across A to E that we saw above.</p>
@@ -588,16 +582,16 @@ descending fashion. Using the same p-values as above, we would get 0.05,
 and p = .25 would be 1.</p>
 <p>You then multiply the p-value by its rank, like the table below, to get
 your adjusted p-values:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="multiple-comparisons.html#cb120-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb120-2"><a href="multiple-comparisons.html#cb120-2" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.10</span>),</span>
-<span id="cb120-3"><a href="multiple-comparisons.html#cb120-3" tabindex="-1"></a>  <span class="at">p_sort =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.25</span>),</span>
-<span id="cb120-4"><a href="multiple-comparisons.html#cb120-4" tabindex="-1"></a>  <span class="at">rank =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
-<span id="cb120-5"><a href="multiple-comparisons.html#cb120-5" tabindex="-1"></a>  <span class="at">p_adj =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.20</span>, <span class="fl">0.25</span>)</span>
-<span id="cb120-6"><a href="multiple-comparisons.html#cb120-6" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb120-7"><a href="multiple-comparisons.html#cb120-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb120-8"><a href="multiple-comparisons.html#cb120-8" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Original p-value&quot;</span>, <span class="st">&quot;Sorted p-value&quot;</span>, <span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;p-value x rank&quot;</span>),</span>
-<span id="cb120-9"><a href="multiple-comparisons.html#cb120-9" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;l&quot;</span></span>
-<span id="cb120-10"><a href="multiple-comparisons.html#cb120-10" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="multiple-comparisons.html#cb124-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb124-2"><a href="multiple-comparisons.html#cb124-2" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.10</span>),</span>
+<span id="cb124-3"><a href="multiple-comparisons.html#cb124-3" tabindex="-1"></a>  <span class="at">p_sort =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.25</span>),</span>
+<span id="cb124-4"><a href="multiple-comparisons.html#cb124-4" tabindex="-1"></a>  <span class="at">rank =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb124-5"><a href="multiple-comparisons.html#cb124-5" tabindex="-1"></a>  <span class="at">p_adj =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.20</span>, <span class="fl">0.25</span>)</span>
+<span id="cb124-6"><a href="multiple-comparisons.html#cb124-6" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb124-7"><a href="multiple-comparisons.html#cb124-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb124-8"><a href="multiple-comparisons.html#cb124-8" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Original p-value&quot;</span>, <span class="st">&quot;Sorted p-value&quot;</span>, <span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;p-value x rank&quot;</span>),</span>
+<span id="cb124-9"><a href="multiple-comparisons.html#cb124-9" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;l&quot;</span></span>
+<span id="cb124-10"><a href="multiple-comparisons.html#cb124-10" tabindex="-1"></a>  )</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">

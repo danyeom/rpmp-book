@@ -478,14 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
-<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
-<ul>
-<li class="chapter" data-level="11.1.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>11.1.1</b> The default test in <code>anova()</code></a></li>
-</ul></li>
-</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>A</b> Appendix A: Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -561,8 +555,8 @@ is best used in meta-analyses.</p>
 calculate <em>generalised</em> eta squared (labelled <code>ges</code> in the output). If
 you want partial eta-squared, you just need to give <code>anova_test()</code> the
 extra argument <code>effect.size = "pes</code> as follows:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="eta-squared.html#cb150-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb150-2"><a href="eta-squared.html#cb150-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="eta-squared.html#cb154-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb154-2"><a href="eta-squared.html#cb154-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
 <pre><code>## ANOVA Table (type III tests)
 ## 
 ## $ANOVA

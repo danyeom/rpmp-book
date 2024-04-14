@@ -478,14 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
-<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
-<ul>
-<li class="chapter" data-level="11.1.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>11.1.1</b> The default test in <code>anova()</code></a></li>
-</ul></li>
-</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>A</b> Appendix A: Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -525,7 +519,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To extend this to two variables with no interaction, you can simply add the second predictor as such:</p>
 <p><code>{r} eval = FALSE} aov(outcome ~ predictor_1 + predictor_2, data = dataset)</code></p>
 <p>To code for an interaction term, however, there either needs to be an explicit term for the interaction (denoted using a colon between the two interaction variables):</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="r-specific-considerations.html#cb185-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="r-specific-considerations.html#cb189-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>OR as the shorthand for above, which uses the asterisk. Note that the asterisk will include both the interaction term and all of its main effects (a la principle of marginality):</p>
 <p><code>{r} eval = FALSE} aov(outcome ~ predictor_1 * predictor_2, data = dataset)</code></p>
 <p>For what we do in this section, this is ok - but you may find in certain circumstances that you don’t want all of these terms together, so the first approach will let you specify what terms to include in the model.</p>
@@ -534,9 +528,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.3.3</span> Simple effects tests in R<a href="r-specific-considerations.html#simple-effects-tests-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Simple effects tests, weirdly, are difficult to do in Jamovi - you have to filter your data, run pairwise tests/one-way ANOVAs on them, and then make sure you save the output before running the next test (as Jamovi’s self-updating nature will mean that your output will change every time your filter does). Alternatively, you have to install the gamlj module and learn how to code linear models for neater simple effects tests.</p>
 <p>In R, this is relatively easy through the use of <code>group_by()</code> and <code>pairwise_t_test()</code>. The code below will run simple effects tests for variable 1:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="r-specific-considerations.html#cb186-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb186-2"><a href="r-specific-considerations.html#cb186-2" tabindex="-1"></a>  <span class="fu">group_by</span>(variable_1) <span class="sc">%&gt;%</span></span>
-<span id="cb186-3"><a href="r-specific-considerations.html#cb186-3" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(outcome <span class="sc">~</span> variable_2, <span class="at">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="r-specific-considerations.html#cb190-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb190-2"><a href="r-specific-considerations.html#cb190-2" tabindex="-1"></a>  <span class="fu">group_by</span>(variable_1) <span class="sc">%&gt;%</span></span>
+<span id="cb190-3"><a href="r-specific-considerations.html#cb190-3" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(outcome <span class="sc">~</span> variable_2, <span class="at">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
 <p>To run simple effects tests for variable two, the variable names simply need to be swapped.</p>
 </div>
 </div>
