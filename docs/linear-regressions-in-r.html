@@ -478,7 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a>
+<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
+<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
 <ul>
@@ -511,20 +512,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.5.1</span> Scenario<a href="linear-regressions-in-r.html#scenario" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Musical sophistication describes the various ways in which people engage with music. In general, the more ways in which people engage with music, the more musically sophisticated they are.</p>
 <p>One hypothesis is that years of musical training will clearly influence musical sophistication. While this is a bit of a no-brainer hypothesis, we’ll test it using some example data.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="linear-regressions-in-r.html#cb161-1" tabindex="-1"></a>w10_goldmsi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_goldmsi.csv&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="linear-regressions-in-r.html#cb158-1" tabindex="-1"></a>w10_goldmsi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_goldmsi.csv&quot;</span>)) </span></code></pre></div>
 <pre><code>## Rows: 74 Columns: 2
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (2): years_training, GoldMSI
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="linear-regressions-in-r.html#cb163-1" tabindex="-1"></a><span class="co"># This extra code is here for later</span></span>
-<span id="cb163-2"><a href="linear-regressions-in-r.html#cb163-2" tabindex="-1"></a>w10_goldmsi <span class="ot">&lt;-</span> w10_goldmsi <span class="sc">%&gt;%</span></span>
-<span id="cb163-3"><a href="linear-regressions-in-r.html#cb163-3" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb163-4"><a href="linear-regressions-in-r.html#cb163-4" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(w10_goldmsi))</span>
-<span id="cb163-5"><a href="linear-regressions-in-r.html#cb163-5" tabindex="-1"></a>  ) </span>
-<span id="cb163-6"><a href="linear-regressions-in-r.html#cb163-6" tabindex="-1"></a><span class="fu">head</span>(w10_goldmsi)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="linear-regressions-in-r.html#cb160-1" tabindex="-1"></a><span class="co"># This extra code is here for later</span></span>
+<span id="cb160-2"><a href="linear-regressions-in-r.html#cb160-2" tabindex="-1"></a>w10_goldmsi <span class="ot">&lt;-</span> w10_goldmsi <span class="sc">%&gt;%</span></span>
+<span id="cb160-3"><a href="linear-regressions-in-r.html#cb160-3" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb160-4"><a href="linear-regressions-in-r.html#cb160-4" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(w10_goldmsi))</span>
+<span id="cb160-5"><a href="linear-regressions-in-r.html#cb160-5" tabindex="-1"></a>  ) </span>
+<span id="cb160-6"><a href="linear-regressions-in-r.html#cb160-6" tabindex="-1"></a><span class="fu">head</span>(w10_goldmsi)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["years_training"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["GoldMSI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["id"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"5","2":"98","3":"1"},{"1":"3","2":"71","3":"2"},{"1":"2","2":"75","3":"3"},{"1":"5","2":"94","3":"4"},{"1":"6","2":"89","3":"5"},{"1":"3","2":"52","3":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -534,27 +535,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="assumptions" class="section level3 hasAnchor" number="8.5.2">
 <h3><span class="header-section-number">8.5.2</span> Assumptions<a href="linear-regressions-in-r.html#assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R the linear regression needs to be coded first <em>before</em> testing assumptions. Linear regression models can be built using <code>lm()</code>, and the same formula notation used in <code>aov()</code>:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="linear-regressions-in-r.html#cb164-1" tabindex="-1"></a>w10_goldmsi_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(GoldMSI <span class="sc">~</span> years_training, <span class="at">data =</span> w10_goldmsi)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="linear-regressions-in-r.html#cb161-1" tabindex="-1"></a>w10_goldmsi_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(GoldMSI <span class="sc">~</span> years_training, <span class="at">data =</span> w10_goldmsi)</span></code></pre></div>
 <p>Let’s test our assumptions from the previous page.</p>
 <p>Linearity: a simple scatterplot tells us that our data probably is suitable for a linear regression:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="linear-regressions-in-r.html#cb165-1" tabindex="-1"></a>w10_goldmsi <span class="sc">%&gt;%</span></span>
-<span id="cb165-2"><a href="linear-regressions-in-r.html#cb165-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb165-3"><a href="linear-regressions-in-r.html#cb165-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> years_training, <span class="at">y =</span> GoldMSI)</span>
-<span id="cb165-4"><a href="linear-regressions-in-r.html#cb165-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb165-5"><a href="linear-regressions-in-r.html#cb165-5" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-185-1.png" width="672" /></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="linear-regressions-in-r.html#cb162-1" tabindex="-1"></a>w10_goldmsi <span class="sc">%&gt;%</span></span>
+<span id="cb162-2"><a href="linear-regressions-in-r.html#cb162-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb162-3"><a href="linear-regressions-in-r.html#cb162-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> years_training, <span class="at">y =</span> GoldMSI)</span>
+<span id="cb162-4"><a href="linear-regressions-in-r.html#cb162-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb162-5"><a href="linear-regressions-in-r.html#cb162-5" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
 <p>Homoscedasticity: To plot a residual vs fitted plot in R, there are two ways:
 - <code>plot(model, which = 1)</code>.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="linear-regressions-in-r.html#cb166-1" tabindex="-1"></a><span class="fu">plot</span>(w10_goldmsi_lm, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="linear-regressions-in-r.html#cb163-1" tabindex="-1"></a><span class="fu">plot</span>(w10_goldmsi_lm, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
 <ul>
 <li>Using ggplot, but giving the model name instead of the data and setting the x and y aesthetics as follows:</li>
 </ul>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="linear-regressions-in-r.html#cb167-1" tabindex="-1"></a><span class="fu">ggplot</span>(w10_goldmsi_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb167-2"><a href="linear-regressions-in-r.html#cb167-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-187-1.png" width="672" /></p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="linear-regressions-in-r.html#cb164-1" tabindex="-1"></a><span class="fu">ggplot</span>(w10_goldmsi_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb164-2"><a href="linear-regressions-in-r.html#cb164-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
 <p>Normality: our SW test is non-significant, so this assumption is not violated. Like <code>aov</code> models, residuals in <code>lm</code> models can be accessed using the $ operator.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="linear-regressions-in-r.html#cb168-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_goldmsi_lm<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="linear-regressions-in-r.html#cb165-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_goldmsi_lm<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -562,7 +563,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## W = 0.98995, p-value = 0.8289</code></pre>
 <p>Output</p>
 <p>The output that R gives us for a linear regression comes in two parts: a test of the overall model, and a breakdown of the predictors and their slopes.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="linear-regressions-in-r.html#cb170-1" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="linear-regressions-in-r.html#cb167-1" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = GoldMSI ~ years_training, data = w10_goldmsi)

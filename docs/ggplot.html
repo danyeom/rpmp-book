@@ -478,7 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a>
+<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
+<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
 <ul>
@@ -511,21 +512,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A cheatsheet for ggplot2 can be found <a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html">here</a>.</p>
 <p>To start a plot, we first call the ggplot function. Here, we specify three of the main features of our plot - the dataset that we want to use, the x axis and the y axis. the x and y axes are wrapped within the <code>aes()</code> function, which defines our aesthetics. Here, we simply say which columns of our dataset should go on the x and y axes. Using the penguin dataset, we can start to visualise a scatter plot between bill length and bill depth like this:</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="ggplot.html#cb42-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <p>However, notice that the plot is empty. This is because we haven’t defined any geoms, or actual plotting methods, in our plot.</p>
 <p>Refer to the cheatsheet for all of the possible geoms. For now, we will stick to basics. A scatter plot can be specified by adding <code>geom_point()</code>:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="ggplot.html#cb43-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range (`geom_point()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>From here, we can change many things by adding or modifying our existing layers. If we want to colour the dots by sex (which is a column in the penguins data), we can do so by specifiyng <code>colour = sex</code> in our <code>aes()</code> function.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="ggplot.html#cb45-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm, <span class="at">colour =</span> sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range (`geom_point()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <p>The axis labels aren’t very informative as they are. We can change this by adding <code>labs()</code>, which is a simple way of specifying x and y labels:</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="ggplot.html#cb47-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm, <span class="at">colour =</span> sex)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb47-2"><a href="ggplot.html#cb47-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Bill length (mm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Bill depth (mm)&quot;</span>) </span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range (`geom_point()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>To add a line of best fit (e.g. in the instance of regressions), add <code>geom_smooth(method = "lm")</code>. Specifying the method is important because by default, <code>geom_smooth()</code> will probably fit LOESS curves (local polynomial regressions). Note that if you’ve specified a colour/grouping variable, separate regression lines will be fitted for each group.</p>
 <p>By default, the line will also have standard error bands around it. You can turn this off by also specifying <code>se = FALSE</code> in the <code>geom_smooth()</code> call.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="ggplot.html#cb49-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm, <span class="at">colour =</span> sex)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -533,16 +534,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`).</code></pre>
 <pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range (`geom_point()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 <p><code>geom_boxplot()</code> will create boxplots. An example is below, with species on the x axis and body mass on the y:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="ggplot.html#cb53-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing non-finite outside the scale range (`stat_boxplot()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p>Finally, if you want to split plots by a certain variable, add <code>facet_wrap()</code> to our call. You need to specify what variable/column you want to split by, with a tilde in front. For example, if we wanted to split the scatter plot by year:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="ggplot.html#cb55-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm, <span class="at">colour =</span> sex)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb55-2"><a href="ggplot.html#cb55-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Bill length (mm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Bill depth (mm)&quot;</span>)  <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>year)</span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range (`geom_point()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <p>From here, there are so many things you can do with ggplot - and it helps to get creative!</p>
 <p>Almost all of the graphs in RPMP (in fact, I think it actually is 100%) were made using <code>ggplot2</code>.</p>
 

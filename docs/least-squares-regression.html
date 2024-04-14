@@ -478,7 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a>
+<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
+<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
 <ul>
@@ -513,12 +514,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-regression-line" class="section level3 hasAnchor" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> The regression line<a href="least-squares-regression.html#the-regression-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>See if you can take a guess where we should draw a line of best fit on the plot below:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-179-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-146-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>You might have some good guesses, and there’s every chance that you’ve drawn a line that fits the data points pretty well. But for this data, it’s pretty obvious where the line would sit, and the data that we do work with won’t always be as clear cut.</p>
 <p>The line of best fit sits where the distance between the line and every point is minimised. See the example below, where we have 10 data points to illustrate. Each dot represents a single data point, while the solid blue line is our line of best fit. The dashed lines represent the difference between the blue line (which is what we predict - more on this later) and the actual data point. This difference is called a residual.</p>
 <p>So, in other words, the line of best fit sits where the residuals are minimised.</p>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-180-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-147-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We do this using the least squares principle. In essence, we calculate a squared deviation for each residual using the formula below - it might be familiar…</p>
 <p><span class="math display">\[
 SS_{res} = \Sigma (y_i - \bar y_i)^2

@@ -58,7 +58,7 @@ This is how t is calculated conceptually - it is the difference in the two means
 
 By now, hopefully you're comfortable with the idea that we use our test statistic and find its position on its underlying probability distribution in order to calculate the p-value. The underlying distribution of this test is the t-distribution, which is depicted below. Note that like the chi-square distribution, degrees of freedom is the only parameter that determines its shape:
 
-```{r fig.dim = c(8, 4)}
+```{r fig.dim = c(8, 4), echo = FALSE}
 t_data <- tibble(
   x = seq(-5, 5, length = 100),
   df_1 = dt(x, 1),
@@ -138,7 +138,7 @@ shapiro.test(w8_grades$sample)
 
 The second way is through a QQ plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.
 
-```{r}
+```{r echo = FALSE}
 knitr::include_graphics("img/w8_qqplots.svg")
 ```
 
@@ -165,7 +165,7 @@ Below is our output from the one-sample t-test. Our result tells us that there i
 t.test(w8_grades$sample, mu = 72)
 ```
 
-Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test. `detailed = TRUE` will print a detailed output that will give the 95% CI for the test statistic: 
+Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test. `detailed = TRUE` will print a detailed output that will give the 95% CI for the mean difference: 
 
 ```{r}
 w8_grades %>%
@@ -392,7 +392,7 @@ effectsize::cohens_d(data = w8_grades, sample ~ 1, mu = 72)
 effectsize::cohens_d(data = w8_training, Years_training ~ Group, pooled_sd = FALSE) 
 
 # Paired sample - works with wide data
-effectsize::rm_d(data = w8_symptoms_wide, Pair(before, after) ~ 1, method = "z", adjust = FALSE)
+effectsize::cohens_d(data = w8_symptoms_wide, Pair(before, after) ~ 1, method = "z", adjust = FALSE)
 ```
 
 

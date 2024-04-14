@@ -478,7 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a>
+<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
+<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
 <ul>
@@ -581,15 +582,14 @@ r = \frac{Cov_{xy}}{SD_x \times SD_y}
 </tbody>
 </table>
 <p>The second is a correlation heatmap, which is especially effective with many correlations at once (common when working with huge questionnaires or neuroimaging). As shown by the legend on the right, the colour and shade of each square are determined by the strength of the correlation. This can be easily done by the `<code>ggcorrplot</code> package, if you have a correlation matrix formatted in R:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="correlations.html#cb154-1" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span></code></pre></div>
-<pre><code>## Warning: package &#39;ggcorrplot&#39; was built under R version 4.3.2</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="correlations.html#cb152-1" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;ggcorrplot&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:rstatix&#39;:
 ## 
 ##     cor_pmat</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="correlations.html#cb158-1" tabindex="-1"></a><span class="fu">ggcorrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="at">show.diag =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="correlations.html#cb155-1" tabindex="-1"></a><span class="fu">ggcorrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="at">show.diag =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
 </div>
 </div>
             </section>

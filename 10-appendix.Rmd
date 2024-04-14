@@ -8,6 +8,7 @@ library(rstatix)
 library(effectsize)
 library(car)
 ```
+# (APPENDIX) Appendix {-}
 
 ## Appendix A: Technical details of `anova()` 
 

@@ -478,7 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a>
+<li class="chapter" data-level="11" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>11</b> Appendix</a></li>
+<li class="chapter" data-level="" data-path="appendix-appendix.html"><a href="appendix-appendix.html"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>11.1</b> Appendix A: Technical details of <code>anova()</code></a>
 <ul>
@@ -522,15 +523,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.2.2</span> Example data<a href="one-sample-t-test.html#example-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Historically, scores in a fictional research methods class average at 72. This year, you are the subject coordinator for the first time, and you notice that last year’s cohort appear to have really struggled. You want to see if there is a meaningful difference between the cohort’s average grade and what the target grade should be.</p>
 <p>Here’s the dataset below:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="one-sample-t-test.html#cb86-1" tabindex="-1"></a>w8_grades <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_grades.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="one-sample-t-test.html#cb85-1" tabindex="-1"></a>w8_grades <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_grades.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 128 Columns: 1
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (1): sample
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="one-sample-t-test.html#cb88-1" tabindex="-1"></a><span class="fu">head</span>(w8_grades)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="one-sample-t-test.html#cb87-1" tabindex="-1"></a><span class="fu">head</span>(w8_grades)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"60"},{"1":"66"},{"1":"70"},{"1":"72"},{"1":"63"},{"1":"71"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -541,26 +542,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.2.3</span> Assumption checks<a href="one-sample-t-test.html#assumption-checks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There is only one relevant assumption that we need to check for the one-sample t-test: whether our data is distributed normally or not. We can do this in two ways. The first and quickest is through a test called the Shapiro-Wilks test (often abbreviated as the SW test). The SW test is a significant test of departures from normality. The statistic in question, W, is an index of normality. If W is close to 1, then data is normally distributed; the smaller W becomes, the more non-normal the data is.</p>
 <p>A significant p-value on the SW test suggests that the data is non-normal. Thankfully, that isn’t an issue here.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="one-sample-t-test.html#cb89-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_grades<span class="sc">$</span>sample)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="one-sample-t-test.html#cb88-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_grades<span class="sc">$</span>sample)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  w8_grades$sample
 ## W = 0.98652, p-value = 0.2395</code></pre>
 <p>The second way is through a QQ plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="one-sample-t-test.html#cb91-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;img/w8_qqplots.svg&quot;</span>)</span></code></pre></div>
 <p><img src="img/w8_qqplots.svg" /><!-- --></p>
 </div>
 <div id="output-2" class="section level3 hasAnchor" number="6.2.4">
 <h3><span class="header-section-number">6.2.4</span> Output<a href="one-sample-t-test.html#output-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here are our descriptive statistics. They alone might already tell us something is going on:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="one-sample-t-test.html#cb92-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
-<span id="cb92-2"><a href="one-sample-t-test.html#cb92-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb92-3"><a href="one-sample-t-test.html#cb92-3" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(sample, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb92-4"><a href="one-sample-t-test.html#cb92-4" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(sample, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb92-5"><a href="one-sample-t-test.html#cb92-5" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(sample, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb92-6"><a href="one-sample-t-test.html#cb92-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb92-7"><a href="one-sample-t-test.html#cb92-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="one-sample-t-test.html#cb90-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
+<span id="cb90-2"><a href="one-sample-t-test.html#cb90-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb90-3"><a href="one-sample-t-test.html#cb90-3" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(sample, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb90-4"><a href="one-sample-t-test.html#cb90-4" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(sample, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb90-5"><a href="one-sample-t-test.html#cb90-5" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(sample, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb90-6"><a href="one-sample-t-test.html#cb90-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb90-7"><a href="one-sample-t-test.html#cb90-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -579,7 +579,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>To run a one-sample t-test, the basic function is the <code>t.test()</code> function. For a one-sample t-test, you must provide the argument <code>x</code> (the data) and <code>mu</code>, which is the hypothesised population mean.</p>
 <p>Below is our output from the one-sample t-test. Our result tells us that there is a significant difference between the mean of the sample (M = 67.09) and the hypothesised mean (p &lt; .001). The mean difference here is calculated as Sample - Hypothesis; therefore, a difference of -4.914 means that the sample mean is lower than the population mean (which hopefully would have been evident from the descriptives anyway). This means that for some reason, last year’s cohort are performing worse than the expected average.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="one-sample-t-test.html#cb93-1" tabindex="-1"></a><span class="fu">t.test</span>(w8_grades<span class="sc">$</span>sample, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="one-sample-t-test.html#cb91-1" tabindex="-1"></a><span class="fu">t.test</span>(w8_grades<span class="sc">$</span>sample, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -591,9 +591,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##  67.08594</code></pre>
-<p>Alternatively, you can use the <code>t_test()</code> function in R. This function requires formula notation. In this case, the formula must take the form of <code>variable ~ 1</code> to indicate that it is a one-sample test. <code>detailed = TRUE</code> will print a detailed output that will give the 95% CI for the test statistic:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="one-sample-t-test.html#cb95-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
-<span id="cb95-2"><a href="one-sample-t-test.html#cb95-2" tabindex="-1"></a>  <span class="fu">t_test</span>(sample <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Alternatively, you can use the <code>t_test()</code> function in R. This function requires formula notation. In this case, the formula must take the form of <code>variable ~ 1</code> to indicate that it is a one-sample test. <code>detailed = TRUE</code> will print a detailed output that will give the 95% CI for the mean difference:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="one-sample-t-test.html#cb93-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a href="one-sample-t-test.html#cb93-2" tabindex="-1"></a>  <span class="fu">t_test</span>(sample <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":[".y."],"name":[2],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[3],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[4],"type":["chr"],"align":["left"]},{"label":["n"],"name":[5],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[11],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[12],"type":["chr"],"align":["left"]}],"data":[{"1":"67.08594","2":"sample","3":"1","4":"null model","5":"128","6":"-10.34216","7":"1.47e-18","8":"127","9":"66.1457","10":"68.02617","11":"T-test","12":"two.sided","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
