@@ -412,6 +412,13 @@ The Estimate column gives us the B coefficient, which is our slope. This tells u
 
 From this, we can see that years of training is a significant predictor of Gold-MSI scores (*t* = 4.27, *p* < .001); for every year of training, Gold-MSI scores increase by 4.86 (given by the value under Estimate, next to our predictor variable).
 
+Finally, we can use the `confint` function to return 95% confidence intervals on each regression slope:
+
+```{r}
+confint(w10_goldmsi_lm)
+```
+Therefore, the 95% CI around the estimated regression coefficient of 4.86 is [2.59, 7.13].
+
 ## Predictions
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
@@ -601,23 +608,21 @@ Let's start as always by taking a look at our output. Our regression explains 13
 With that in mind, let's turn to our individual predictors. Remember, now we have two predictors to consider - and we need to interpret them individually as well.
 
 ```{r}
-summary(w10_goldmsi_lm)
+summary(w10_flow_lm)
+confint(w10_flow_lm)
 ```
 
 
 We can see that both trait anxiety and openness are significant predictors of flow proneness, but interpreting the direction is also really important here. For that, we turn to our estimates:
 
--    The estimate for trait anxiety is *B* = -.111, suggesting that higher trait anxiety predicts lower flow proneness (*p* < .001)
--    On the other hand, the estimate for openness is *B* = .834, suggesting that higher openness predicts higher flow proneness (*p* < .001).
+-    The estimate for trait anxiety is *B* = -.111 (95% CI = [-.136, .086]), suggesting that higher trait anxiety predicts lower flow proneness (*p* < .001)
+-    On the other hand, the estimate for openness is *B* = .834 (95% CI = [.548, 1.119]), suggesting that higher openness predicts higher flow proneness (*p* < .001).
 
 Therefore, we can conclude that both are significant predictors and have opposite effects to each other. We can write this up as follows:
 
 
 
-We ran a multiple regression with trait anxiety and openness as predictors, and flow proneness as an outcome. The overall regression model was significant (*F*(2, 808) = 63.81, *p* < .001), and explained 13.6% of the variance in flow proneness. Trait anxiety significantly predicted flow proneness (*B* = -.11, *t* = -8.70, *p* < .001); higher trait anxiety predicted lower flow proneness. Openness was also a significant predictor (*B* = .83, *t* = 5.74, *p* < .001); higher openness predicted higher flow proneness.
-
- 
-We ran a multiple regression with trait anxiety and openness as predictors, and flow proneness as an outcome. The overall regression model was significant (*F*(2, 808) = 63.81, *p* < .001), and explained 13.6% of the variance in flow proneness. Trait anxiety significantly predicted flow proneness (*B* = -.11, *t* = -8.70, *p* < .001); higher trait anxiety predicted lower flow proneness. Openness was also a significant predictor (*B* = .83, *t* = 5.74, *p* < .001); higher openness predicted higher flow proneness.
+We ran a multiple regression with trait anxiety and openness as predictors, and flow proneness as an outcome. The overall regression model was significant (*F*(2, 808) = 63.81, *p* < .001), and explained 13.6% of the variance in flow proneness. Trait anxiety significantly predicted flow proneness (*B* = -.11, 95% CI = [-.14, -.09], *t* = -8.70, *p* < .001); higher trait anxiety predicted lower flow proneness. Openness was also a significant predictor (*B* = .83, 95% CI = [.55, 1.12], *t* = 5.74, *p* < .001); higher openness predicted higher flow proneness.
  
 
 But there's one more thing we can consider here...
@@ -629,6 +634,27 @@ When we do a multiple regression, we can actually identify which of our predicto
 
 Our estimate column alone won't tell us that, because these are unstandardised coefficients. They are unstandardised because they describe the relationship in terms of the original units of each measure. An increase of 1 unit on trait anxiety is not necessarily the same thing as a 1 unit increase in openness because they are on different scales, so we can't compare them directly!
 
-However, if we were to standardise these coefficients, we would then bring them all into the same scale (think back to z-scores!) - which would allow us to directly compare which predictor leads to a greater change in the outcome. Jamovi will calculate a standardised estimate (sometimes called standardised coefficient), which is presented in the rightmost column of the above table. These are simply regression coefficients that have been standardised, meaning that they are all on the same scale.
+However, if we were to standardise these coefficients, we would then bring them all into the same scale (think back to z-scores!) - which would allow us to directly compare which predictor leads to a greater change in the outcome. These are simply regression coefficients that have been standardised, meaning that they are all on the same scale. Jamovi will calculate a standardised estimate (sometimes called standardised coefficient), which is presented in the rightmost column of the above table. In R, we need to use an extra function to do this. We can call on the `lm.beta` package:
 
+```{r}
+library(lm.beta)
+lm.beta(w10_flow_lm)
+```
+Alternatively, we can simply standardise our predictors before running our regression (which is a lot easier in R than in other programs): 
+
+```{r}
+# Standardise predictors
+
+w10_flow_std <- w10_flow %>%
+  mutate(
+    trait_anxiety = scale(trait_anxiety),
+    openness = scale(openness),
+    DFS_Total = scale(DFS_Total)
+  )
+
+w10_flow_lm_std <- lm(DFS_Total ~ trait_anxiety + openness, data = w10_flow_std)
+summary(w10_flow_lm_std)
+
+confint(w10_flow_lm_std)
+```
 This means that we can just compare the numbers of the standardised estimates (ignoring positive/negative signs) to see which one is the greatest predictor of the outcome. In the example above, trait anxiety has a standard coefficient of .288, whereas openness has a standard coefficient of .190. Trait anxiety is therefore a stronger predictor of flow proneness, because a 1 standard unit increase in trait anxiety leads to a greater increase in flow proneness.
