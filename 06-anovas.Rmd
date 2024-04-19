@@ -641,7 +641,7 @@ levene_test(w9_slices_aov, center = "mean")
 levene_test(w9_slices_aov, center = "mean")
 ```
 
-The assumption doesn't appear to be violated (p = .491). If it was, we
+The assumption doesn't appear to be violated (*F*(2, 60) = .721, *p* = .491). If it was, we
 might consider using a Welch's ANOVA, which can be done with
 `welch_anova_test()` from `rstatix`.
 

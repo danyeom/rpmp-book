@@ -5,13 +5,11 @@ library(tidyverse)
 library(ggpubr)
 library(here)
 library(rstatix)
-
-# i_am("code/bookdown/05-ttests.Rmd")
 ```
 
-t-tests are usually one of the first families of statistical tests that students learn when they take a research methods subject. I (Dan) pretty much learnt only t-tests until my third year of my psychology major (I learnt chi-squares and other tests through taking separate statistics subjects through my uni's Department of Statistics before I learnt them in psychology). It's not hard to see why this is the case - t-tests are really intuitive and simple to conduct, and so are an accessible way into learning statistical tests (even though chi-squares are even easier).
+*t*-tests are usually one of the first families of statistical tests that students learn when they take a research methods subject. I (Dan) pretty much learnt only t-tests until my third year of my psychology major (I learnt chi-squares and other tests through taking separate statistics subjects through my uni's Department of Statistics before I learnt them in psychology). It's not hard to see why this is the case - t-tests are really intuitive and simple to conduct, and so are an accessible way into learning statistical tests (even though chi-squares are even easier).
 
-The family of t-tests come into play when we have one categorical IV with two levels, and one continuous DV. As you can imagine, there are many instances where this kind of design comes into play, and you will see as much in the datasets and examples this week. There are nine datasets for you to play around this week (3 for each kind of test) - so hopefully that will give you plenty of practice!
+The family of *t*-tests come into play when we have one categorical IV with two levels, and one continuous DV. As you can imagine, there are many instances where this kind of design comes into play, and you will see as much in the datasets and examples this week. There are nine datasets for you to play around this week (3 for each kind of test) - so hopefully that will give you plenty of practice!
 
 By the end of this module you should be able to:
 
@@ -25,7 +23,7 @@ We begin this week's module in much the same way we went through last week's. We
 
 ### What is a *t*-test?
 
-The family of t-tests, broadly speaking, are used when we want to compare one mean against another. This can take on three major forms, which we will go into later in the module:
+The family of *t*-tests, broadly speaking, are used when we want to compare one mean against another. This can take on three major forms, which we will go into later in the module:
 
 1.  Is this sample mean different from the population mean?
 2.  Are these two group means different?
@@ -159,13 +157,15 @@ w8_grades %>%
 
 To run a one-sample t-test, the basic function is the `t.test()` function. For a one-sample t-test, you must provide the argument `x` (the data) and `mu`, which is the hypothesised population mean.
 
-Below is our output from the one-sample t-test. Our result tells us that there is a significant difference between the mean of the sample (M = 67.09) and the hypothesised mean (p \< .001). The mean difference here is calculated as Sample - Hypothesis; therefore, a difference of -4.914 means that the sample mean is lower than the population mean (which hopefully would have been evident from the descriptives anyway). This means that for some reason, last year's cohort are performing worse than the expected average.
+Below is our output from the one-sample t-test. Our result tells us that there is a significant difference between the mean of the sample (*M* = 67.09) and the hypothesised mean of 72 (*p* < .001). The mean difference here is calculated as Sample - Hypothesis; therefore, a difference of -4.91 means that the sample mean is 4.91 units *lower* than the population mean (which hopefully would have been evident from the descriptives anyway). This means that for some reason, last year's cohort are performing worse than the expected average. 
+
+R Note: Jamovi will give you a 95% confidence interval around the mean difference as 95% CI = [-5.85, -3.97]. R however will give you a CI around the actual *mean*. In this case, the 95% confidence interval for the group mean is [66.15, 68.03]. Really though, this is giving us the same information; 72 - 5.85 = 66.15, and 72 - 3.97 = 68.03. So the only difference is in what value is presented for the 95% CI, but the actual inference itself doesn't change.
 
 ```{r}
 t.test(w8_grades$sample, mu = 72)
 ```
 
-Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test. `detailed = TRUE` will print a detailed output that will give the 95% CI for the mean difference: 
+Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test. `detailed = TRUE` will print a detailed output that will give the 95% CI for the mean as well: 
 
 ```{r}
 w8_grades %>%
@@ -191,19 +191,43 @@ w8_training <- read_csv(here("data", "week_8", "W8_training.csv"))
 head(w8_training)
 ```
 
+Let us start with a nice plot:
+
+```{r fig.dim = c(4, 4), fig.align = "center"}
+w8_training %>%
+  group_by(Group) %>%
+  summarise(
+    mean = mean(Years_training, na.rm = TRUE),
+    sd = sd(Years_training, na.rm = TRUE),
+    se = sd/n()
+  ) %>%
+  ggplot(
+    aes(x = Group, y = mean)
+  ) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(
+    ymin = mean - 1.96*se,
+    ymax = mean + 1.96*se
+  ), width = 0.2) +
+  theme_pubr()
+
+
+```
+
+
 ### Assumption checks
 
 There are three main assumptions for a basic independent samples t-test:
 
 -   Data must be independent of each other - in other words, one person's response should not be influenced by another. This should come as a feature of good experimental design.
--   The equality of variance (homoscedasticity) assumption. The classical t-test assumes that each group has the same variance (homoscedasticity). We can test this using a significant test called Levene's test. If the test is significant (p \< .05), the assumption is violated. In our data, this assumption seems to be intact (p = .737).
+-   The equality of variance (homoscedasticity) assumption. The classical t-test assumes that each group has the same variance (homoscedasticity). We can test this using a significant test called Levene's test. If the test is significant (*p* < .05), the assumption is violated. In our data, this assumption seems to be intact (*F*(1, 58) = .114, *p* = .737).
 
 ```{r}
 w8_training %>%
   levene_test(Years_training ~ Group, center = "mean")
 ```
 
--   The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the Shapiro-Wilks (SW) test. Like Levene's test, if the result of this test is significant it suggests that the normality assumption is violated. In our data, this appears to be the case (W=.946, p = .011).
+-   The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the Shapiro-Wilks (SW) test. Like Levene's test, if the result of this test is significant it suggests that the normality assumption is violated. In our data, this appears to be the case (*W* = .946, *p* = .011).
 
 ```{r}
 shapiro.test(w8_training$Years_training)
@@ -220,7 +244,7 @@ w8_training %>%
   t_test(Years_training ~ Group, detailed = TRUE)
 ```
 
-From this, we can see that the two groups do significantly differ on years of training (t(57.99) = 5.859, p \< .001). We can use the mean difference value to see, well... the difference in means between the two groups. In this case, professionals have 2.92 more years of training (on average) compared to amateurs.
+From this, we can see that the two groups do significantly differ on years of training (*t*(57.99) = 5.86, *p* < .001). We can use the mean difference value to see, well... the difference in means between the two groups. In this case, professionals have 2.92 more years of training (on average; 95% CI = [1.92, 3.92]) compared to amateurs.
 
 (n.b. the signs for t and the mean difference don't overly matter so long as they are interpreted in the right way. The output above calculates amateurs - professionals, which is why the values for both are negative; but if you were to force the test to run the other way round, the values would be the same with the signs flipped. Hence why descriptives and graphs are super important too!
 
@@ -267,7 +291,7 @@ head(w8_symptoms)
 
 Similar to other tests, we need to check normality. Here, the assumption is whether the differences between time 1 and 2 are normally distributed (not necessarily time 1 and 2 themselves). Hence, when we run a Shapiro-Wilks test we're running this on the values we get from Time 1 - Time 2.
 
-In our data, this assumption seems to be intact (p = .918).
+In our data, this assumption seems to be intact (*W*  .985, *p* = .918).
 
 ```{r}
 shapiro.test(w8_symptoms_wide$before - w8_symptoms_wide$after)
@@ -284,7 +308,7 @@ w8_symptoms %>%
   t_test(symptom_score ~ time, paired = TRUE, detailed = TRUE)
 ```
 
-The mean symptom scores of the two timepoints are significantly different (t(31) = 2.95, p = .006). Based on the means and mean difference, participants reported having significantly better emotional states after the intervention compared to beforehand.
+The mean symptom scores of the two timepoints are significantly different (*t*(31) = 2.95, *p* = .006). Based on the means and mean difference (2.75; 95% CI = [0.85, 4.65]), participants reported having significantly better emotional states after the intervention compared to beforehand.
 
 ## Cohen's d
 
@@ -334,14 +358,14 @@ large_effect <- ggplot(data = tibble(x = c(50, 90)), aes(x)) +
 cowplot::plot_grid(small_effect, medium_effect, large_effect, ncol = 3, labels = "AUTO")
 ```
 
-If two groups aren't all that different (e.g. panel A), then any effect of group will be small or negligible. If the two groups are further apart, however (like panel C), there is a more obvious effect of group - and so the size of the effect itself will be larger. Cohen's d essentially is a measure of this 'distance'.
+If two groups aren't all that different (e.g. panel A), then any effect of group will be small or negligible. If the two groups are further apart, however (like panel C), there is a more obvious effect of group - and so the size of the effect itself will be larger. Cohen's *d* essentially is a measure of this 'distance'.
 
 The basic formula for calculating Cohen's d is: 
 $$
 d = \frac{M_1 - M_2}{\sigma_{pooled}}
 $$
 
-In other words, Cohen's d is calculated by taking the difference between the two group means and dividing that by the pooled standard deviation across both groups. Pooled SD is essentially an aggregate SD across both groups in the sample, and not something we'll concern ourselves with this week (because like the maths for the t-statistic, the calculation of the pooled SD depends on the test and is hard).
+In other words, Cohen's *d* is calculated by taking the difference between the two group means and dividing that by the pooled standard deviation across both groups. Pooled SD is essentially an aggregate SD across both groups in the sample, and not something we'll concern ourselves with this week (because like the maths for the t-statistic, the calculation of the pooled SD depends on the test and is hard).
 
 ### Interpreting Cohen's *d*
 
@@ -356,7 +380,7 @@ tibble(
 ```
 
 
-### Calculating Cohen's d in R
+### Calculating Cohen's *d* in R
 
 The `cohens_d()` function from `rstatix` can handle the calculation of effect sizes for all three variants of t-tests. One thing that's quite nice about this is that the format for `cohens_d()` is exactly the same as it would be for the `t_test()` and `t.test()` family of functions:
 
