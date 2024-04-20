@@ -180,9 +180,10 @@ twoway_alcohol <- read_csv(here("data", "factorial", "twoway_bganova.csv"))
 twoway_alcohol %>%
   group_by(alcohol_type, genre) %>%
   summarise(
+    n = n(),
     mean = mean(spend), na.rm = TRUE,
     sd = sd(spend, na.rm = TRUE),
-    se = sd/length(spend)
+    se = sd/n
   ) %>%
   ggplot(
     aes(x = alcohol_type, y = mean, colour = genre, group = genre)
@@ -307,6 +308,28 @@ twoway_exam <- read_csv(here("data", "factorial", "twoway_rmanova_long.csv"))
 ```
 
 Let's start with the usual descriptives and graphs:
+
+```{r echo = FALSE}
+twoway_exam %>%
+  group_by(difficulty, music) %>%
+  summarise(
+    n = n(),
+    mean = mean(grade),
+    sd = sd(grade),
+    se = sd/n
+  ) %>%
+  ungroup() %>%
+  ggplot(
+    aes(x = difficulty, y = mean, colour = music, group = music) 
+  ) +
+  geom_point() +
+  geom_errorbar(aes(
+    ymin = mean - 1.96*se,
+    ymax = mean + 1.96*se
+  ), width = .2) +
+  geom_line()
+```
+
 
 Eyeballing the graph, we can see that there might be some sort of effect happening. Unsurprisingly, it looks like the easy maths exams are, well. easier, because people are scoring better on them. There might be an effect of music, because in both easy and hard conditions it looks like people do better with happy music compared to sad music. But the interaction plot tells us there's something clearly going on, and it paints a really interesting story on its own. It appears that there's almost a 'plateau'-ing effect with medium difficulty, in that both happy and sad hit the same point in exam scores. However, it looks like for happy music, harder exams see no further decrease in performance - but there is a sharp drop again for sad music.
 
