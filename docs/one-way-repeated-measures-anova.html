@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
@@ -509,86 +509,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="one-way-repeated-measures-anova" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> One-way repeated measures ANOVA<a href="one-way-repeated-measures-anova.html#one-way-repeated-measures-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
-<p>The second form of ANOVA that we will cover in this module is the
-repeated measures ANOVA (sometimes abbreviated as RM-ANOVA). While it
-shares many features with the basic one-way ANOVA, the nature of
-repeated measures data introduces some key differences in the
-interpretation and calculation of this test.</p>
+<p>The second form of ANOVA that we will cover in this module is the repeated measures ANOVA (sometimes abbreviated as RM-ANOVA). While it shares many features with the basic one-way ANOVA, the nature of repeated measures data introduces some key differences in the interpretation and calculation of this test.</p>
 </div>
 <div id="repeated-measures-anovas" class="section level3 hasAnchor" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> Repeated measures ANOVAs<a href="one-way-repeated-measures-anova.html#repeated-measures-anovas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In principle, a repeated-measures ANOVA is very similar to the
-paired-samples t-test: both are repeated measures versions of their
-respective between-groups versions. So naturally, repeated-measures
-ANOVAs are used when we test one sample two or more times (again, like a
+<p>In principle, a repeated-measures ANOVA is very similar to the paired-samples t-test: both are repeated measures versions of their respective between-groups versions. So naturally, repeated-measures ANOVAs are used when we test one sample two or more times (again, like a
 regular ANOVA, it’s typically for 3+ times but can be used for two).</p>
-<p>It shares many similarities with the basic one-way ANOVA, albeit with
-one additional step in calculation: because we now test the same sample
-repeatedly, we need to account for variance within subjects. We won’t go
-too into detail about how that’s calculated here, but essentially we
-split within-groups variance into subject variance and error/residual
-variance. This essentially adds an extra step to the ANOVA table.</p>
+<p>It shares many similarities with the basic one-way ANOVA, albeit with one additional step in calculation: because we now test the same sample repeatedly, we need to account for variance within subjects. We won’t go too into detail about how that’s calculated here, but essentially we split within-groups variance into subject variance and error/residual variance. This essentially adds an extra step to the ANOVA table.</p>
 </div>
 <div id="example-data-4" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> Example data<a href="one-way-repeated-measures-anova.html#example-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In this example, we’ll use a dataset derived from McPherson (2005). This
-is a subset of data where children were scored on their ability to play
-songs from memory over three years - 1997 - 1999. We’re interested in
-seeing whether this change over time is significant - therefore, time (3
-levels) is our independent variable, while playing from memory is our
-dependent variable.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="one-way-repeated-measures-anova.html#cb148-1" tabindex="-1"></a>w9_memory <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Week_9&quot;</span>, <span class="st">&quot;w9_playing_from_memory.csv&quot;</span>))</span></code></pre></div>
+<p>In this example, we’ll use a dataset derived from McPherson (2005). This is a subset of data where children were scored on their ability to play songs from memory over three years - 1997 - 1999. We’re interested in seeing whether this change over time is significant - therefore, time (3 levels) is our independent variable, while playing from memory is our dependent variable.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="one-way-repeated-measures-anova.html#cb20-1" tabindex="-1"></a>w9_memory <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Week_9&quot;</span>, <span class="st">&quot;w9_playing_from_memory.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 95 Columns: 4
-## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (4): Participant, PFM_97, PFM_98, PFM_99
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="one-way-repeated-measures-anova.html#cb150-1" tabindex="-1"></a><span class="fu">head</span>(w9_memory)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="one-way-repeated-measures-anova.html#cb22-1" tabindex="-1"></a><span class="fu">head</span>(w9_memory)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Participant"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["PFM_97"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PFM_98"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PFM_99"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"56","3":"131","4":"139"},{"1":"2","2":"84","3":"114","4":"138"},{"1":"3","2":"159","3":"173","4":"199"},{"1":"4","2":"110","3":"147","4":"160"},{"1":"5","2":"118","3":"148","4":"158"},{"1":"6","2":"131","3":"155","4":"177"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>For further analyses, we’ll shape this into long format:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="one-way-repeated-measures-anova.html#cb151-1" tabindex="-1"></a>w9_memory_wide <span class="ot">&lt;-</span> w9_memory</span>
-<span id="cb151-2"><a href="one-way-repeated-measures-anova.html#cb151-2" tabindex="-1"></a></span>
-<span id="cb151-3"><a href="one-way-repeated-measures-anova.html#cb151-3" tabindex="-1"></a>w9_memory <span class="ot">&lt;-</span> w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb151-4"><a href="one-way-repeated-measures-anova.html#cb151-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb151-5"><a href="one-way-repeated-measures-anova.html#cb151-5" tabindex="-1"></a>    <span class="at">cols =</span> PFM_97<span class="sc">:</span>PFM_99,</span>
-<span id="cb151-6"><a href="one-way-repeated-measures-anova.html#cb151-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb151-7"><a href="one-way-repeated-measures-anova.html#cb151-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;memory_score&quot;</span></span>
-<span id="cb151-8"><a href="one-way-repeated-measures-anova.html#cb151-8" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="one-way-repeated-measures-anova.html#cb23-1" tabindex="-1"></a>w9_memory_wide <span class="ot">&lt;-</span> w9_memory</span>
+<span id="cb23-2"><a href="one-way-repeated-measures-anova.html#cb23-2" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="one-way-repeated-measures-anova.html#cb23-3" tabindex="-1"></a>w9_memory <span class="ot">&lt;-</span> w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="one-way-repeated-measures-anova.html#cb23-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb23-5"><a href="one-way-repeated-measures-anova.html#cb23-5" tabindex="-1"></a>    <span class="at">cols =</span> PFM_97<span class="sc">:</span>PFM_99,</span>
+<span id="cb23-6"><a href="one-way-repeated-measures-anova.html#cb23-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb23-7"><a href="one-way-repeated-measures-anova.html#cb23-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;memory_score&quot;</span></span>
+<span id="cb23-8"><a href="one-way-repeated-measures-anova.html#cb23-8" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
 <div id="assumption-checks-4" class="section level3 hasAnchor" number="7.5.3">
 <h3><span class="header-section-number">7.5.3</span> Assumption checks<a href="one-way-repeated-measures-anova.html#assumption-checks-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are two main assumptions for a repeated-measures ANOVA. Note that
-while the independence assumption as we know it doesn’t apply here (by
-definition, repeated data is dependent), good experimental design should
-still aim to ensure that participants are independent of each other.</p>
+<p>There are two main assumptions for a repeated-measures ANOVA. Note that while the independence assumption as we know it doesn’t apply here (by definition, repeated data is dependent), good experimental design should still aim to ensure that participants are independent of each other.</p>
 <ul>
 <li>The residuals should be normally distributed.</li>
 </ul>
-<p>Our usual tests apply here too. Below is a QQ plot, which might suggest
-that our residuals aren’t normally distributed. (Use the data and
-perform a SW test on it to see what happens!)</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="one-way-repeated-measures-anova.html#cb152-1" tabindex="-1"></a><span class="fu">aov</span>(memory_score <span class="sc">~</span> time, <span class="at">data =</span> w9_memory) <span class="sc">%&gt;%</span></span>
-<span id="cb152-2"><a href="one-way-repeated-measures-anova.html#cb152-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb152-3"><a href="one-way-repeated-measures-anova.html#cb152-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
-<span id="cb152-4"><a href="one-way-repeated-measures-anova.html#cb152-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb152-5"><a href="one-way-repeated-measures-anova.html#cb152-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
+<p>Our usual tests apply here too. Below is a QQ plot, which might suggest that our residuals aren’t normally distributed. (Use the data and perform a SW test on it to see what happens!)</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="one-way-repeated-measures-anova.html#cb24-1" tabindex="-1"></a><span class="fu">aov</span>(memory_score <span class="sc">~</span> time, <span class="at">data =</span> w9_memory) <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="one-way-repeated-measures-anova.html#cb24-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="one-way-repeated-measures-anova.html#cb24-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="one-way-repeated-measures-anova.html#cb24-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb24-5"><a href="one-way-repeated-measures-anova.html#cb24-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
 <pre><code>## Warning: The `augment()` method for objects of class `aov` is not maintained by the broom team, and is only supported through the `lm` tidier method. Please be cautious in interpreting and reporting broom output.
 ## 
 ## This warning is displayed once per session.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <ul>
-<li>The sphericity assumption. Sphericity is assumed if, the variances
-of the differences between each level of the IV are equal. Think of
-it as a form of the equality of variances assumption, where we
-assumed that the variances within groups were equal. The sphericity
-assumption applies to the differences between T1 and T2, then T2 and
-T3… etc etc.</li>
+<li>The sphericity assumption. Sphericity is assumed if, the variances of the differences between each level of the IV are equal. Think of it as a form of the equality of variances assumption, where we assumed that the variances within groups were equal. The sphericity assumption applies to the differences between T1 and T2, then T2 and T3… etc etc.</li>
 </ul>
 <p>Note that sphericity only applies when you have at least 3 levels of your IV (i.e. 3 timepoints). We can formally test it using Mauchly’s test of sphericity. If sphericity is violated, it means that our degrees of freedom are too high for the data, which inflates the Type I error rate.</p>
 <p>What next? We need to apply a correction to the omnibus ANOVA, which will alter the p-value. There are two on offer: Greenhouse-Geisser and Huynh-Feldt corrections. To help decide which one to use, R also calculates a value called epsilon (<span class="math inline">\(\epsilon\)</span>). Epsilon, in short, is a measure of sphericity; if sphericity is assumed, <span class="math inline">\(\epsilon\)</span> = 1. If <span class="math inline">\(\epsilon\)</span> is below 1, sphericity is violated; the smaller it is, the greater the violation and therefore the greater the correction needs to be. Therefore, these corrections alter the degrees of freedom for each
@@ -605,22 +578,14 @@ correction.</p>
 </div>
 <div id="anova-output" class="section level3 hasAnchor" number="7.5.4">
 <h3><span class="header-section-number">7.5.4</span> ANOVA output<a href="one-way-repeated-measures-anova.html#anova-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>R-Note: Repeated measures ANOVAs in R are <em>not</em> trivial in the
-slightest, and adapting this was a genuine challenge. To some extent
-this probably reflects the differences in approach between
-point-and-click software compared to actually having to code the anova
-model: the former is easy but you perhaps make many assumptions about
-what’s going on along the way. Below is the easiest way to run this
-analysis.</p>
-<p>Here’s our overall output from the ANOVA. It looks (and reads) pretty
-much the same as our previous example, but just bear in mind that the
-top row in the within-subjects effect (i.e. the effect of interest). In
-addition, this time you can see that there are now three rows to be
+<p>R-Note: Repeated measures ANOVAs in R are <em>not</em> trivial in the slightest, and adapting this was a genuine challenge. To some extent this probably reflects the differences in approach between
+point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make many assumptions about what’s going on along the way. Below is the easiest way to run this analysis.</p>
+<p>Here’s our overall output from the ANOVA. It looks (and reads) pretty much the same as our previous example, but just bear in mind that the top row in the within-subjects effect (i.e. the effect of interest). In addition, this time you can see that there are now three rows to be
 read:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="one-way-repeated-measures-anova.html#cb154-1" tabindex="-1"></a>w9_memory_aov <span class="ot">&lt;-</span> w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb154-2"><a href="one-way-repeated-measures-anova.html#cb154-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time) </span>
-<span id="cb154-3"><a href="one-way-repeated-measures-anova.html#cb154-3" tabindex="-1"></a></span>
-<span id="cb154-4"><a href="one-way-repeated-measures-anova.html#cb154-4" tabindex="-1"></a>w9_memory_aov</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="one-way-repeated-measures-anova.html#cb26-1" tabindex="-1"></a>w9_memory_aov <span class="ot">&lt;-</span> w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="one-way-repeated-measures-anova.html#cb26-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time) </span>
+<span id="cb26-3"><a href="one-way-repeated-measures-anova.html#cb26-3" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="one-way-repeated-measures-anova.html#cb26-4" tabindex="-1"></a>w9_memory_aov</span></code></pre></div>
 <pre><code>## ANOVA Table (type III tests)
 ## 
 ## $ANOVA
@@ -632,44 +597,35 @@ read:</p>
 ## 1   time 0.939 0.054      
 ## 
 ## $`Sphericity Corrections`
-##   Effect   GGe       DF[GG]    p[GG] p[GG]&lt;.05   HFe       DF[HF]    p[HF] p[HF]&lt;.05
-## 1   time 0.943 1.89, 177.21 1.05e-34         * 0.961 1.92, 180.72 2.45e-35         *</code></pre>
-<p>Knowing which row to read is crucial here, as each one corresponds to a
-correction (or the original ANOVA). Here, our p-value is almost significant (p = .054); rather than going by a strict arbitrary cutoff, let’s assume that it has been violated (both for teaching and for methodological purposes). The associated epislon value is <span class="math inline">\(\epsilon = .943\)</span>; when reporting the repeated measures ANOVA we
-need to look at the rows corresponding to the Huynh-Feldt correction.</p>
-<p>The two columns to look for are the ones labelled <code>DF[HF]</code> - this gives
-the adjusted degrees of freedom with the Huynh-Feldt corrections
-(<code>DF[GG]</code> would give Greenhouse-Geisser dfs) - and <code>p[HF]</code>, which gives
-the adjusted p-value. Thus, with the corrected output we can see our
-effect of time is significant (F(1.92, 180.72) = 132.63, p &lt; .001).</p>
+##   Effect   GGe       DF[GG]    p[GG] p[GG]&lt;.05   HFe       DF[HF]    p[HF]
+## 1   time 0.943 1.89, 177.21 1.05e-34         * 0.961 1.92, 180.72 2.45e-35
+##   p[HF]&lt;.05
+## 1         *</code></pre>
+<p>Knowing which row to read is crucial here, as each one corresponds to a correction (or the original ANOVA). Here, our p-value is almost significant (<em>p</em> = .054); rather than going by a strict arbitrary cutoff, let’s assume that it has been violated (both for teaching and for methodological purposes). The associated epsilon value is <span class="math inline">\(\epsilon = .943\)</span>; when reporting the repeated measures ANOVA we need to look at the rows corresponding to the Huynh-Feldt correction.</p>
+<p>The two columns to look for are the ones labelled <code>DF[HF]</code> - this gives the adjusted degrees of freedom with the Huynh-Feldt corrections (<code>DF[GG]</code> would give Greenhouse-Geisser dfs) - and <code>p[HF]</code>, which gives the adjusted <em>p</em>-value. Thus, with the corrected output we can see our
+effect of time is significant (<em>F</em>(1.92, 180.72) = 132.63, <em>p</em> &lt; .001).</p>
 </div>
 <div id="post-hoc-tests-2" class="section level3 hasAnchor" number="7.5.5">
 <h3><span class="header-section-number">7.5.5</span> Post-hoc tests<a href="one-way-repeated-measures-anova.html#post-hoc-tests-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As per usual, we follow up a significant overall ANOVA with a series of
-post-hoc comparisons (note this time we set <code>paired = TRUE</code>:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="one-way-repeated-measures-anova.html#cb156-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb156-2"><a href="one-way-repeated-measures-anova.html#cb156-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(memory_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<p>As per usual, we follow up a significant overall ANOVA with a series of post-hoc comparisons (note this time we set <code>paired = TRUE</code>:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="one-way-repeated-measures-anova.html#cb28-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="one-way-repeated-measures-anova.html#cb28-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(memory_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[4],"type":["int"],"align":["right"]},{"label":["n2"],"name":[5],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p.adj"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["p.adj.signif"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"memory_score","2":"PFM_97","3":"PFM_98","4":"95","5":"95","6":"-10.500951","7":"94","8":"1.59e-17","9":"4.77e-17","10":"****","_rn_":"1"},{"1":"memory_score","2":"PFM_97","3":"PFM_99","4":"95","5":"95","6":"-14.577427","7":"94","8":"7.35e-26","9":"2.21e-25","10":"****","_rn_":"2"},{"1":"memory_score","2":"PFM_98","3":"PFM_99","4":"95","5":"95","6":"-6.169773","7":"94","8":"1.71e-08","9":"5.13e-08","10":"****","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>From this, we can see that all three means are significantly different
-from each other (p &lt; .001, for brevity’s sake). Scores increased year
-on year, i.e. 1997 &lt; 1998 &lt; 1999.</p>
+<p>From this, we can see that all three means are significantly different from each other (<em>p</em> &lt; .001, for brevity’s sake). Scores increased year on year, i.e. 1997 &lt; 1998 &lt; 1999.</p>
 </div>
 <div id="alternative-using-caranova" class="section level3 hasAnchor" number="7.5.6">
 <h3><span class="header-section-number">7.5.6</span> Alternative using <code>car::Anova()</code><a href="one-way-repeated-measures-anova.html#alternative-using-caranova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Below is an alternative way of running a repeated measures ANOVA, this
-time using the <code>car</code> package. The function <code>factorial_design()</code> from the
-<code>rstatix</code> package is a useful helper function that can generate the
-necessary arguments to <code>Anova()</code> for repeated measures tests.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="one-way-repeated-measures-anova.html#cb157-1" tabindex="-1"></a>w9_memory_design <span class="ot">&lt;-</span> <span class="fu">factorial_design</span>(</span>
-<span id="cb157-2"><a href="one-way-repeated-measures-anova.html#cb157-2" tabindex="-1"></a>  <span class="at">data =</span> w9_memory,</span>
-<span id="cb157-3"><a href="one-way-repeated-measures-anova.html#cb157-3" tabindex="-1"></a>  <span class="at">dv =</span> memory_score,</span>
-<span id="cb157-4"><a href="one-way-repeated-measures-anova.html#cb157-4" tabindex="-1"></a>  <span class="at">within =</span> time,</span>
-<span id="cb157-5"><a href="one-way-repeated-measures-anova.html#cb157-5" tabindex="-1"></a>  <span class="at">wid =</span> Participant</span>
-<span id="cb157-6"><a href="one-way-repeated-measures-anova.html#cb157-6" tabindex="-1"></a>)</span></code></pre></div>
+<p>Below is an alternative way of running a repeated measures ANOVA, this time using the <code>car</code> package. The function <code>factorial_design()</code> from the <code>rstatix</code> package is a useful helper function that can generate the necessary arguments to <code>Anova()</code> for repeated measures tests.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="one-way-repeated-measures-anova.html#cb29-1" tabindex="-1"></a>w9_memory_design <span class="ot">&lt;-</span> <span class="fu">factorial_design</span>(</span>
+<span id="cb29-2"><a href="one-way-repeated-measures-anova.html#cb29-2" tabindex="-1"></a>  <span class="at">data =</span> w9_memory,</span>
+<span id="cb29-3"><a href="one-way-repeated-measures-anova.html#cb29-3" tabindex="-1"></a>  <span class="at">dv =</span> memory_score,</span>
+<span id="cb29-4"><a href="one-way-repeated-measures-anova.html#cb29-4" tabindex="-1"></a>  <span class="at">within =</span> time,</span>
+<span id="cb29-5"><a href="one-way-repeated-measures-anova.html#cb29-5" tabindex="-1"></a>  <span class="at">wid =</span> Participant</span>
+<span id="cb29-6"><a href="one-way-repeated-measures-anova.html#cb29-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>The important things that are generated by this function are:</p>
 <ul>
 <li><p><code>name$model</code>: this essentially creates an ANOVA model</p></li>
@@ -678,19 +634,15 @@ necessary arguments to <code>Anova()</code> for repeated measures tests.</p>
 <li><p><code>name$idesign</code>: this creates a formula-style notation specifying
 what the within-subjects IV(s) are</p></li>
 </ul>
-<p>We then just need to feed this to <code>car::Anova()</code> as follows. Setting
-<code>type = 3</code> isn’t strictly necessary here (this is more relevant for
-factorial ANOVAs):</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="one-way-repeated-measures-anova.html#cb158-1" tabindex="-1"></a>w9_memory_alternate <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(</span>
-<span id="cb158-2"><a href="one-way-repeated-measures-anova.html#cb158-2" tabindex="-1"></a>  <span class="at">mod =</span> w9_memory_design<span class="sc">$</span>model,</span>
-<span id="cb158-3"><a href="one-way-repeated-measures-anova.html#cb158-3" tabindex="-1"></a>  <span class="at">idata =</span> w9_memory_design<span class="sc">$</span>idata,</span>
-<span id="cb158-4"><a href="one-way-repeated-measures-anova.html#cb158-4" tabindex="-1"></a>  <span class="at">idesign =</span> w9_memory_design<span class="sc">$</span>idesign,</span>
-<span id="cb158-5"><a href="one-way-repeated-measures-anova.html#cb158-5" tabindex="-1"></a>  <span class="at">type =</span> <span class="dv">3</span></span>
-<span id="cb158-6"><a href="one-way-repeated-measures-anova.html#cb158-6" tabindex="-1"></a>)</span></code></pre></div>
-<p>Now that we’ve built our ANOVA model we can ask for the output like so.
-<code>multivariate = FALSE</code> is just an argument to specify that we’re doing a
-univariate analysis (i.e. one dependent outcome).</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="one-way-repeated-measures-anova.html#cb159-1" tabindex="-1"></a><span class="fu">summary</span>(w9_memory_alternate, <span class="at">multivariate =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>We then just need to feed this to <code>car::Anova()</code> as follows. Setting <code>type = 3</code> isn’t strictly necessary here (this is more relevant for factorial ANOVAs):</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="one-way-repeated-measures-anova.html#cb30-1" tabindex="-1"></a>w9_memory_alternate <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(</span>
+<span id="cb30-2"><a href="one-way-repeated-measures-anova.html#cb30-2" tabindex="-1"></a>  <span class="at">mod =</span> w9_memory_design<span class="sc">$</span>model,</span>
+<span id="cb30-3"><a href="one-way-repeated-measures-anova.html#cb30-3" tabindex="-1"></a>  <span class="at">idata =</span> w9_memory_design<span class="sc">$</span>idata,</span>
+<span id="cb30-4"><a href="one-way-repeated-measures-anova.html#cb30-4" tabindex="-1"></a>  <span class="at">idesign =</span> w9_memory_design<span class="sc">$</span>idesign,</span>
+<span id="cb30-5"><a href="one-way-repeated-measures-anova.html#cb30-5" tabindex="-1"></a>  <span class="at">type =</span> <span class="dv">3</span></span>
+<span id="cb30-6"><a href="one-way-repeated-measures-anova.html#cb30-6" tabindex="-1"></a>)</span></code></pre></div>
+<p>Now that we’ve built our ANOVA model we can ask for the output like so. <code>multivariate = FALSE</code> is just an argument to specify that we’re doing a univariate analysis (i.e. one dependent outcome).</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="one-way-repeated-measures-anova.html#cb31-1" tabindex="-1"></a><span class="fu">summary</span>(w9_memory_alternate, <span class="at">multivariate =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
 ## 

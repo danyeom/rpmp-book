@@ -223,3 +223,5 @@ comparing-r2
 nested-model-tests
 fit-indices
 appendix-a-technical-details-of-anova
+fig:unnamed-chunk-2
+url-your-book-url-like-httpsbookdown.orgyihuibookdown

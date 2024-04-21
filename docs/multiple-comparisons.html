@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
@@ -551,7 +551,7 @@ scenario, the Type I error rate will stack with each new comparison,
 meaning that our overall Type I error rate will climb higher and higher.
 This means that the chance of finding a false positive will increase
 (see graph below).</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-120-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>This overall rate of Type I errors is called the family-wise error rate
 (FWER). ‘Family’ in this context refers to a family of comparisons -
 like the comparison across A to E that we saw above.</p>
@@ -572,10 +572,10 @@ significant.</p>
 <p>The Bonferroni correction is a method that can be used both within
 ANOVAs and in more general contexts. The Bonferroni correction works by
 multiplying each p-value in a set of comparisons by the number of
-comparisons (i.e. the number of p-values).</p>
-<p>For example, if a set of comparisons gives the following p-values: 0.05,
+comparisons (i.e. the number of <em>p</em>-values).</p>
+<p>For example, if a set of comparisons gives the following <em>p</em>-values: 0.05,
 0.25 and 0.10, we would apply a Bonferroni correction by multiplying
-each p-value by 3 (as there are 3 p-values) to get 0.15, 0.75 and 0.30
+each p-value by 3 (as there are 3 <em>p</em>-values) to get 0.15, 0.75 and 0.30
 respectively.</p>
 <p>(Note: in reality, Bonferroni works by dividing alpha by the number of
 comparisons, i.e. 0.05/3 - but for the purpose of significance testing,
@@ -583,21 +583,11 @@ the maths works out to be the same).</p>
 <p><strong>Holm</strong></p>
 <p>The Holm correction is another correction method. In this method, each
 p-value is first ranked from smallest to largest. and then numbered in a
-descending fashion. Using the same p-values as above, we would get 0.05,
-0.10 and 0.25. The p = .05 would be ranked as 3, the p = .10 would be 2
-and p = .25 would be 1.</p>
+descending fashion. Using the same <em>p</em>-values as above, we would get 0.05,
+0.10 and 0.25. The <em>p</em> = .05 would be ranked as 3, the <em>p</em> = .10 would be 2
+and <em>p</em> = .25 would be 1.</p>
 <p>You then multiply the p-value by its rank, like the table below, to get
-your adjusted p-values:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="multiple-comparisons.html#cb131-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb131-2"><a href="multiple-comparisons.html#cb131-2" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.10</span>),</span>
-<span id="cb131-3"><a href="multiple-comparisons.html#cb131-3" tabindex="-1"></a>  <span class="at">p_sort =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.25</span>),</span>
-<span id="cb131-4"><a href="multiple-comparisons.html#cb131-4" tabindex="-1"></a>  <span class="at">rank =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>),</span>
-<span id="cb131-5"><a href="multiple-comparisons.html#cb131-5" tabindex="-1"></a>  <span class="at">p_adj =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.20</span>, <span class="fl">0.25</span>)</span>
-<span id="cb131-6"><a href="multiple-comparisons.html#cb131-6" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb131-7"><a href="multiple-comparisons.html#cb131-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb131-8"><a href="multiple-comparisons.html#cb131-8" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Original p-value&quot;</span>, <span class="st">&quot;Sorted p-value&quot;</span>, <span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;p-value x rank&quot;</span>),</span>
-<span id="cb131-9"><a href="multiple-comparisons.html#cb131-9" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;l&quot;</span></span>
-<span id="cb131-10"><a href="multiple-comparisons.html#cb131-10" tabindex="-1"></a>  )</span></code></pre></div>
+your adjusted <em>p</em>-values:</p>
 <table>
 <thead>
 <tr class="header">

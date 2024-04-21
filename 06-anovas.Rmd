@@ -45,6 +45,11 @@ By the end of this module you should be able to:
     their assumption tests
 -   Interpret the output of the ANOVAs and report their findings
 
+```{r echo = FALSE, fig.align = "center", fig.cap = "[xkcd: Third Way](https://xkcd.com/1285/)"}
+knitr::include_graphics("https://imgs.xkcd.com/comics/third_way_2x.png")
+```
+
+
 ## Anovas and the F-distribution
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
@@ -69,7 +74,7 @@ we have data that we categorise into different groups, we end up with
 two key sources of variability, or variance: variance that exists
 between groups, and variance that exists within groups:
 
-```{r fig.dim = c(8, 3)}
+```{r fig.dim = c(8, 3), echo = FALSE}
 ggplot(data = tibble(x = c(37, 90)), aes(x)) +
   stat_function(fun = dnorm, n = 101, args = list(mean = 52, sd = 5), colour = "steelblue", linewidth = 2) + 
   stat_function(fun = dnorm, n = 101, args = list(mean = 61, sd = 5), colour = "darkseagreen", linewidth = 2) + 
@@ -117,15 +122,17 @@ variance:
 
 $$
 F = \frac{Variance_{between}}{Variance_{within}}
-$$ We will see this more in practice on the next page, but the
-F-statistic, which we use as part of significance testing in ANOVAs, is
+$$ 
+
+We will see this more in practice on the next page, but the
+*F*-statistic, which we use as part of significance testing in ANOVAs, is
 calculated by simply dividing the between-group variance by the
 within-group variance.
 
 ### The F-distribution
 
 Like the other tests we've encountered so far, ANOVAs have their own
-underlying distribution. In this instance, this is the F distribution,
+underlying distribution. In this instance, this is the *F* distribution,
 which describes how the F-statistic behaves. We won't go far into the
 maths around this, but the key here is that the F distribution is
 characterised by two sets of degrees of freedom: one that relates to the
@@ -170,10 +177,10 @@ f_data %>%
 
 ### *F*-statistic tables
 
-And, once again, we have a special F-table to determine critical F-stat
+And, once again, we have a special *F*-table to determine critical *F*
 values, given two degrees of freedom values. However, given that we have
 two degrees of freedom the process is a little bit more complicated.
-Most F-stat tables actually provide multiple tables, corresponding to
+Most *F*-stat tables actually provide multiple tables, corresponding to
 different alpha levels. For now, we will always use the table
 corresponding to alpha = 0.05, a snippet of which is below:
 
@@ -186,18 +193,18 @@ how to find that on the next page). The columns, marked df1, refer to
 the first df value (between-groups), while the rows correspond to the
 second df value (within-groups).
 
-So, for example, if we have an F-test with degrees of freedom of (4,
+So, for example, if we have an *F*-test with degrees of freedom of (4,
 10), we would first need to find the column that corresponds to 4 (our
 df1), and then the row that corresponds to df2 = 10. Reading the cell at
-the intersection would give us a critical F-statistic of 3.48; this is
-the value our F-statistic would need to be greater than to be
-significant at the p \< .05 level.
+the intersection would give us a critical *F*-statistic of 3.48; this is
+the value our *F*-statistic would need to be greater than to be
+significant at the p < .05 level.
 
 ## The ANOVA table
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
 Every time we do an ANOVA, there are actually a raft of calculations
-that have to occur in order to get our test statistic and p-value.
+that have to occur in order to get our test statistic and *p*-value.
 Statistical software will display all of this in the form of an ANOVA
 table, which we cover below.
 
@@ -210,7 +217,7 @@ the previous page.
 
 ### The ANOVA table
 
-On the previous page, we talked in depth about how the F statistic is
+On the previous page, we talked in depth about how the *F* statistic is
 calculated, and what shapes the overall distribution. But how do we
 actually calculate all of that stuff to begin with from raw data? Enter
 the ANOVA table, a beautiful (remember, beauty is subjective) way of
@@ -290,9 +297,11 @@ This one is a bit more tedious. It means:
 -   Square that difference
 -   Add them all up.
 
-So for our data, it would look something like.. $$
+So for our data, it would look something like.. 
+$$
 SS_w = (1-2)^2 + (2-2)^2 + (3-2)^2 + (2-2)^2 + (2-3.5)^2 + (4-3.5)^2 + (5-3.5)^2 + (3-3.5)^2 + (5-6.5)^2 + (8-6.5)^2 + (6-6.5)^2 + (7-6.5)^2
-$$ $SS_w = 12$.
+$$ 
+$$SS_w = 12$$.
 
 ### Degrees of freedom
 
@@ -303,7 +312,9 @@ simple.
 
 **Between**
 
-The between-groups df is given as: $$
+The between-groups df is given as: 
+
+$$
 df_b = k - 1
 $$
 
@@ -318,7 +329,7 @@ $$
 df_b = N - k
 $$
 
-Where k = the number of groups, and N is the total sample size (in our
+Where k = the number of groups, and *N* is the total sample size (in our
 case, 12). So $df_w = 12 -3 = 9$ (as we have 3 groups and 12 data points
 in total).
 
@@ -334,20 +345,23 @@ $$
 
 We've calculated SS and df for both our between and within-groups
 effects, so we can substitute these values in to calculate a mean square
-value for both: $$MS_b = \frac{SS_b}{df_b}$$
+value for both: 
+
+$$MS_b = \frac{SS_b}{df_b}$$
 $$MS_w = \frac{SS_w}{df_w}$$
 
 Putting in our values that we calculated earlier, we get:
 
-$$MS_b = \frac{42}{2}$$ $$MS_w = \frac{12}{9}$$
+$$MS_b = \frac{42}{2}$$ 
+$$MS_w = \frac{12}{9}$$
 
 This gives us $MS_b = 21$ and $MS_w = 1.33$.
 
 ### Calculating *F*
 
-Remember on the previous page, how we talked about the F-statistic being
+Remember on the previous page, how we talked about the *F*-statistic being
 a ratio between two variances (between divided by within)? That's
-exactly what we're going to do next, using our calculatd mean-square
+exactly what we're going to do next, using our calculated mean-square
 values:
 
 $$
@@ -389,11 +403,11 @@ variance into between and within-groups variance.
 
 ### Consulting the F-table
 
-Now that we have our observed F-value, we can now consult an F-table and
-use our two degrees of freedom to find out what our critical F-value is
+Now that we have our observed F-value, we can now consult an *F*-table and
+use our two degrees of freedom to find out what our critical *F*-value is
 (setting alpha = .05):
 
-```{r}
+```{r echo = FALSE}
 knitr::include_graphics("img/w9_f-table.png")
 ```
 
@@ -402,11 +416,18 @@ critical F-statistic of 4.2565. Now we can say that because our observed
 test statistic (15.75) is greater than this critical value, our ANOVA is
 significant at the alpha = .05 level.
 
-In reality, like many of the other tests, we would calculate a p-value
+In reality, like many of the other tests, we would calculate a *p*-value
 by observing where our test statistic falls on the F-distribution, and
 the associated probability of getting that value or greater. Our
 software will do all of this stuff for us, but it helps to know exactly
 how an ANOVA works!
+
+If you want to calculate the *p*-value manurally in R though, this is entirely possible using the `pf()` function:
+
+```{r}
+pf(q = 15.75, df1 = 2, df2 = 9, lower.tail = FALSE)
+```
+
 
 ## Multiple comparisons
 
@@ -502,11 +523,11 @@ significant.
 The Bonferroni correction is a method that can be used both within
 ANOVAs and in more general contexts. The Bonferroni correction works by
 multiplying each p-value in a set of comparisons by the number of
-comparisons (i.e. the number of p-values).
+comparisons (i.e. the number of *p*-values).
 
-For example, if a set of comparisons gives the following p-values: 0.05,
+For example, if a set of comparisons gives the following *p*-values: 0.05,
 0.25 and 0.10, we would apply a Bonferroni correction by multiplying
-each p-value by 3 (as there are 3 p-values) to get 0.15, 0.75 and 0.30
+each p-value by 3 (as there are 3 *p*-values) to get 0.15, 0.75 and 0.30
 respectively.
 
 (Note: in reality, Bonferroni works by dividing alpha by the number of
@@ -517,14 +538,14 @@ the maths works out to be the same).
 
 The Holm correction is another correction method. In this method, each
 p-value is first ranked from smallest to largest. and then numbered in a
-descending fashion. Using the same p-values as above, we would get 0.05,
-0.10 and 0.25. The p = .05 would be ranked as 3, the p = .10 would be 2
-and p = .25 would be 1.
+descending fashion. Using the same *p*-values as above, we would get 0.05,
+0.10 and 0.25. The *p* = .05 would be ranked as 3, the *p* = .10 would be 2
+and *p* = .25 would be 1.
 
 You then multiply the p-value by its rank, like the table below, to get
-your adjusted p-values:
+your adjusted *p*-values:
 
-```{r}
+```{r echo = FALSE}
 tibble(
   p = c(0.05, 0.25, 0.10),
   p_sort = c(0.05, 0.10, 0.25),
@@ -584,16 +605,15 @@ head(w9_slices)
 
 ### Assumption checks
 
-There are four main assumptions for a basic ANOVA. The key difference
-with R however is that you need to run the ANOVA *first* to access the
-residuals. The basic function for this in R is the `aov()` function,
-which takes a formula input (much like `t.test()`). The key difference
-is that anything created from aov needs to be assigned to a new variable
-so that we can use it later. This creates an `aov` object:
+In R, to test assumptions we need to run the ANOVA *first*. This is because some assumptions rely on values that are calculated when the ANOVA is run. Other programs, such as Jamovi and SPSS, will hide this manual work and present the information to you automatically. This is not quite the case in R, but that's ok!
+
+The basic function for running an ANOVA in R is the `aov()` function, which takes a formula input (much like `t.test()`). Anything created using `aov()` should be assigned to a new variable so that we can use it later. This creates an `aov` object that will a) test our main effects and b) let us check some of our assumptions.
 
 ```{r}
 w9_slices_aov <- aov(rating ~ group, data = w9_slices)
 ```
+
+There are four main assumptions for a basic ANOVA. 
 
 -   Data must be independent of each other - in other words, one
     person's response should not be influenced by another. This should
@@ -613,21 +633,14 @@ This lets us do the SW test:
 shapiro.test(w9_slices_aov$residuals)
 ```
 
-A SW test on this data suggests the assumption is violated (W=.951, p =
+A SW test on this data suggests the assumption is violated (*W* =.951, *p* =
 .014), suggesting that the residuals are not normally distributed.
 
-This is a bit of a problem in our dataset because our sample is
-relatively small. However - the ANOVA is fairly robust to violations of
-the normality assumption, meaning that non-normal residuals aren't a
-major problem so long as a) you have a big enough sample size and b) the
-skew isn't huge (or driven by outliers).
+This is a bit of a problem in our dataset because our sample is relatively small. However - the ANOVA is fairly robust to violations of the normality assumption, meaning that non-normal residuals aren't a major problem so long as a) you have a big enough sample size and b) the skew isn't huge (or driven by outliers).
 
 -   The equality of variance (homoscedasticity) assumption.
 
-This means that the variances within each group are the same. We test
-this using Levene's test, using the `levene_test()` function. Helpfully,
-`levene_test()` is flexible enough to work with either a formula *or* an
-`aov` object we have already fitted:
+This means that the variances within each group are the same. We test this using Levene's test, using the `levene_test()` function. Helpfully, `levene_test()` is flexible enough to work with either a formula *or* an `aov` object we have already fitted:
 
 ```{r eval = FALSE}
 # Either one of these will work
@@ -642,34 +655,25 @@ levene_test(w9_slices_aov, center = "mean")
 ```
 
 The assumption doesn't appear to be violated (*F*(2, 60) = .721, *p* = .491). If it was, we
-might consider using a Welch's ANOVA, which can be done with
-`welch_anova_test()` from `rstatix`.
+might consider using a Welch's ANOVA, which can be done with `welch_anova_test()` from `rstatix`.
 
 For now though, we'll press ahead.
 
 ### Output
 
-Here's our main output from the ANOVA, generated using the `summary()`
-function. This is called an omnibus, because it is a general test of the
-hypotheses:
+Here's our main output from the ANOVA, generated using the `summary()` function. This is called an omnibus, because it is a general test of the hypotheses:
 
 ```{r}
 summary(w9_slices_aov)
 ```
 
-Our main results suggest that there is a significant difference between
-means (F(2, 60) = 6.90, p = .002).
+Our main results suggest that there is a significant difference between means (*F*(2, 60) = 6.90, *p* = .002).
 
 ### Post-hoc tests
 
-The output above told us that we could reject our basic null
-hypothesis - that there was no difference between means. However,
-remember that it doesn't tell us where those differences are. To figure
-out where they are, we need to follow up that ANOVA with post-hocs
-tests.
+The output above told us that we could reject our basic null hypothesis - that there was no difference between means. However, remember that it doesn't tell us where those differences are. To figure out where they are, we need to follow up that ANOVA with post-hoc tests.
 
-To generate post-hocs, there are a couple of ways. Tukey tests can be
-calculated with `TukeyHSD()` or `tukey_hsd()`:
+To generate post-hocs, there are a couple of ways. Tukey tests can be calculated with `TukeyHSD()` or `tukey_hsd()`:
 
 ```{r}
 TukeyHSD(w9_slices_aov)
@@ -688,20 +692,13 @@ w9_slices %>%
 tukey_hsd(w9_slices_aov)
 ```
 
-Here, you can see that we run a test for caramel vs lemon, caramel vs
-vanilla and lemon vs vanilla. For post-hocs in one-way ANOVAs, it is ok
-to stick to the Tukey-adjusted p-values. We can see that:
+Here, you can see that we run a test for caramel vs lemon, caramel vs vanilla and lemon vs vanilla. For post-hocs in one-way ANOVAs, it is ok to stick to the Tukey-adjusted *p*-values. We can see that:
 
--   There is no significant difference between ratings of caramel and
-    lemon slices (mean difference, MD = .48; p = .449).
--   There is a (marginal) significant difference between caramel and
-    vanilla slices; participants rated vanilla slices higher than
-    caramel slices (MD = .95, p = .047).
--   There is a significant difference between lemon and vanilla slices,
-    in that participants preferred vanilla slices (MD = 1.43, p = .002).
+-   There is no significant difference between ratings of caramel and lemon slices (mean difference, MD = .48; *p* = .449).
+-   There is a (marginal) significant difference between caramel and vanilla slices; participants rated vanilla slices higher than caramel slices (MD = .95, *p* = .047).
+-   There is a significant difference between lemon and vanilla slices, in that participants preferred vanilla slices (MD = 1.43, *p* = .002).
 
-To generate Bonferroni or Holm-corrected p-values, you need to use the
-`pairwise.t.test()` function:
+To generate Bonferroni or Holm-corrected p-values, you need to use the `pairwise.t.test()` function:
 
 ```{r}
 pairwise.t.test(x = w9_slices$rating, g = w9_slices$group, p.adjust.method = "bonferroni")
@@ -714,42 +711,24 @@ w9_slices %>%
   pairwise_t_test(rating ~ group, p.adjust.method = "bonferroni")
 ```
 
-In both instances, you must provide `p.adjust.method` as an argument. By
-default, both versions will use Holm corrections.
+In both instances, you must provide `p.adjust.method` as an argument. By default, both versions will use Holm corrections.
 
 ## One-way repeated measures ANOVA
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
-The second form of ANOVA that we will cover in this module is the
-repeated measures ANOVA (sometimes abbreviated as RM-ANOVA). While it
-shares many features with the basic one-way ANOVA, the nature of
-repeated measures data introduces some key differences in the
-interpretation and calculation of this test.
+The second form of ANOVA that we will cover in this module is the repeated measures ANOVA (sometimes abbreviated as RM-ANOVA). While it shares many features with the basic one-way ANOVA, the nature of repeated measures data introduces some key differences in the interpretation and calculation of this test.
 :::
 
 ### Repeated measures ANOVAs
 
-In principle, a repeated-measures ANOVA is very similar to the
-paired-samples t-test: both are repeated measures versions of their
-respective between-groups versions. So naturally, repeated-measures
-ANOVAs are used when we test one sample two or more times (again, like a
+In principle, a repeated-measures ANOVA is very similar to the paired-samples t-test: both are repeated measures versions of their respective between-groups versions. So naturally, repeated-measures ANOVAs are used when we test one sample two or more times (again, like a
 regular ANOVA, it's typically for 3+ times but can be used for two).
 
-It shares many similarities with the basic one-way ANOVA, albeit with
-one additional step in calculation: because we now test the same sample
-repeatedly, we need to account for variance within subjects. We won't go
-too into detail about how that's calculated here, but essentially we
-split within-groups variance into subject variance and error/residual
-variance. This essentially adds an extra step to the ANOVA table.
+It shares many similarities with the basic one-way ANOVA, albeit with one additional step in calculation: because we now test the same sample repeatedly, we need to account for variance within subjects. We won't go too into detail about how that's calculated here, but essentially we split within-groups variance into subject variance and error/residual variance. This essentially adds an extra step to the ANOVA table.
 
 ### Example data
 
-In this example, we'll use a dataset derived from McPherson (2005). This
-is a subset of data where children were scored on their ability to play
-songs from memory over three years - 1997 - 1999. We're interested in
-seeing whether this change over time is significant - therefore, time (3
-levels) is our independent variable, while playing from memory is our
-dependent variable.
+In this example, we'll use a dataset derived from McPherson (2005). This is a subset of data where children were scored on their ability to play songs from memory over three years - 1997 - 1999. We're interested in seeing whether this change over time is significant - therefore, time (3 levels) is our independent variable, while playing from memory is our dependent variable.
 
 ```{r}
 w9_memory <- read_csv(here("data", "Week_9", "w9_playing_from_memory.csv"))
@@ -771,16 +750,11 @@ w9_memory <- w9_memory %>%
 
 ### Assumption checks
 
-There are two main assumptions for a repeated-measures ANOVA. Note that
-while the independence assumption as we know it doesn't apply here (by
-definition, repeated data is dependent), good experimental design should
-still aim to ensure that participants are independent of each other.
+There are two main assumptions for a repeated-measures ANOVA. Note that while the independence assumption as we know it doesn't apply here (by definition, repeated data is dependent), good experimental design should still aim to ensure that participants are independent of each other.
 
 -   The residuals should be normally distributed.
 
-Our usual tests apply here too. Below is a QQ plot, which might suggest
-that our residuals aren't normally distributed. (Use the data and
-perform a SW test on it to see what happens!)
+Our usual tests apply here too. Below is a QQ plot, which might suggest that our residuals aren't normally distributed. (Use the data and perform a SW test on it to see what happens!)
 
 ```{r}
 aov(memory_score ~ time, data = w9_memory) %>%
@@ -792,12 +766,7 @@ aov(memory_score ~ time, data = w9_memory) %>%
 
 
 
--   The sphericity assumption. Sphericity is assumed if, the variances
-    of the differences between each level of the IV are equal. Think of
-    it as a form of the equality of variances assumption, where we
-    assumed that the variances within groups were equal. The sphericity
-    assumption applies to the differences between T1 and T2, then T2 and
-    T3... etc etc.
+-   The sphericity assumption. Sphericity is assumed if, the variances of the differences between each level of the IV are equal. Think of it as a form of the equality of variances assumption, where we assumed that the variances within groups were equal. The sphericity     assumption applies to the differences between T1 and T2, then T2 and T3... etc etc.
 
 Note that sphericity only applies when you have at least 3 levels of your IV (i.e. 3 timepoints). We can formally test it using Mauchly's test of sphericity. If sphericity is violated, it means that our degrees of freedom are too high for the data, which inflates the Type I error rate.
 
@@ -808,27 +777,18 @@ test to account for this higher error rate.
 
 Broadly:
 
--   If epsilon ($\epsilon$) \> .75, use the Huynh-Feldt correction.
--   If epsilon ($\epsilon$) \< .75, use the Greenhouse-Geisser
+-   If epsilon ($\epsilon$) > .75, use the Huynh-Feldt correction.
+-   If epsilon ($\epsilon$) < .75, use the Greenhouse-Geisser
     correction.
 
-Here, our epsilon value is high (\~.95), so let's apply the Hyunh-Feldt
-correction.
+In R, most main packages will test the sphericity assumption along with the main ANOVA, so we will see this below.
 
 ### ANOVA output
 
-R-Note: Repeated measures ANOVAs in R are *not* trivial in the
-slightest, and adapting this was a genuine challenge. To some extent
-this probably reflects the differences in approach between
-point-and-click software compared to actually having to code the anova
-model: the former is easy but you perhaps make many assumptions about
-what's going on along the way. Below is the easiest way to run this
-analysis.
+R-Note: Repeated measures ANOVAs in R are *not* trivial in the slightest, and adapting this was a genuine challenge. To some extent this probably reflects the differences in approach between
+point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make many assumptions about what's going on along the way. Below is the easiest way to run this analysis.
 
-Here's our overall output from the ANOVA. It looks (and reads) pretty
-much the same as our previous example, but just bear in mind that the
-top row in the within-subjects effect (i.e. the effect of interest). In
-addition, this time you can see that there are now three rows to be
+Here's our overall output from the ANOVA. It looks (and reads) pretty much the same as our previous example, but just bear in mind that the top row in the within-subjects effect (i.e. the effect of interest). In addition, this time you can see that there are now three rows to be
 read:
 
 ```{r}
@@ -838,36 +798,25 @@ w9_memory_aov <- w9_memory %>%
 w9_memory_aov
 ```
 
-Knowing which row to read is crucial here, as each one corresponds to a
-correction (or the original ANOVA). Here, our p-value is almost significant (p = .054); rather than going by a strict arbitrary cutoff, let's assume that it has been violated (both for teaching and for methodological purposes). The associated epislon value is $\epsilon = .943$; when reporting the repeated measures ANOVA we
-need to look at the rows corresponding to the Huynh-Feldt correction.
+Knowing which row to read is crucial here, as each one corresponds to a correction (or the original ANOVA). Here, our p-value is almost significant (*p* = .054); rather than going by a strict arbitrary cutoff, let's assume that it has been violated (both for teaching and for methodological purposes). Here, our epsilon value is high (~.95), so let's apply the Hyunh-Feldt correction. The associated epsilon value is $\epsilon = .943$; when reporting the repeated measures ANOVA we need to look at the rows corresponding to the Huynh-Feldt correction.
 
-The two columns to look for are the ones labelled `DF[HF]` - this gives
-the adjusted degrees of freedom with the Huynh-Feldt corrections
-(`DF[GG]` would give Greenhouse-Geisser dfs) - and `p[HF]`, which gives
-the adjusted p-value. Thus, with the corrected output we can see our
-effect of time is significant (F(1.92, 180.72) = 132.63, p \< .001).
+The two columns to look for are the ones labelled `DF[HF]` - this gives the adjusted degrees of freedom with the Huynh-Feldt corrections (`DF[GG]` would give Greenhouse-Geisser dfs) - and `p[HF]`, which gives the adjusted *p*-value. Thus, with the corrected output we can see our
+effect of time is significant (*F*(1.92, 180.72) = 132.63, *p* < .001).
 
 ### Post-hoc tests
 
-As per usual, we follow up a significant overall ANOVA with a series of
-post-hoc comparisons (note this time we set `paired = TRUE`:
+As per usual, we follow up a significant overall ANOVA with a series of post-hoc comparisons (note this time we set `paired = TRUE`:
 
 ```{r}
 w9_memory %>%
   pairwise_t_test(memory_score ~ time, paired = TRUE, p.adjust.method = "bonferroni")
 ```
 
-From this, we can see that all three means are significantly different
-from each other (p \< .001, for brevity's sake). Scores increased year
-on year, i.e. 1997 \< 1998 \< 1999.
+From this, we can see that all three means are significantly different from each other (*p* < .001, for brevity's sake). Scores increased year on year, i.e. 1997 < 1998 < 1999.
 
 ### Alternative using `car::Anova()`
 
-Below is an alternative way of running a repeated measures ANOVA, this
-time using the `car` package. The function `factorial_design()` from the
-`rstatix` package is a useful helper function that can generate the
-necessary arguments to `Anova()` for repeated measures tests.
+Below is an alternative way of running a repeated measures ANOVA, this time using the `car` package. The function `factorial_design()` from the `rstatix` package is a useful helper function that can generate the necessary arguments to `Anova()` for repeated measures tests.
 
 ```{r}
 
@@ -889,9 +838,7 @@ The important things that are generated by this function are:
 -   `name$idesign`: this creates a formula-style notation specifying
     what the within-subjects IV(s) are
 
-We then just need to feed this to `car::Anova()` as follows. Setting
-`type = 3` isn't strictly necessary here (this is more relevant for
-factorial ANOVAs):
+We then just need to feed this to `car::Anova()` as follows. Setting `type = 3` isn't strictly necessary here (this is more relevant for factorial ANOVAs):
 
 ```{r}
 w9_memory_alternate <- car::Anova(
@@ -902,9 +849,7 @@ w9_memory_alternate <- car::Anova(
 )
 ```
 
-Now that we've built our ANOVA model we can ask for the output like so.
-`multivariate = FALSE` is just an argument to specify that we're doing a
-univariate analysis (i.e. one dependent outcome).
+Now that we've built our ANOVA model we can ask for the output like so. `multivariate = FALSE` is just an argument to specify that we're doing a univariate analysis (i.e. one dependent outcome).
 
 ```{r}
 summary(w9_memory_alternate, multivariate = FALSE)
@@ -913,43 +858,28 @@ summary(w9_memory_alternate, multivariate = FALSE)
 ## Eta-squared
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
-TIme to go over a new effect size measure! This time, we use eta-squared
-($\eta^2$) as an effect size for ANOVAs.
+TIme to go over a new effect size measure! This time, we use eta-squared ($\eta^2$) as an effect size for ANOVAs.
 :::
 
 ### Eta-squared and variance
 
-At the start of this module, we introduced the concept of how ANOVA
-partitions total variance into both between and within-subject variance:
+At the start of this module, we introduced the concept of how ANOVA partitions total variance into both between and within-subject variance:
 
 $$
 Variance_{total} = Variance_{between} + Variance_{within}
 $$
 
-This partitioning allows for a simple but important way of calculating
-effect sizes for ANOVAs. If we're interested in the effect of our IV
-(group, which is between-subject variance), we simply need to know how
-much of the total variance is explained by this variable.
+This partitioning allows for a simple but important way of calculating effect sizes for ANOVAs. If we're interested in the effect of our IV (group, which is between-subject variance), we simply need to know how much of the total variance is explained by this variable.
 
-This is essentially eta-squared ($\eta^2$), our effect size for ANOVAs.
-Eta-squared gives us a percentage of how much variance can be attributed
-to the main effect. So an eta-squared of .778 means that 77.8% of the
-total variance is because of the effect. It is calculated as follows:
+This is essentially eta-squared ($\eta^2$), our effect size for ANOVAs. Eta-squared gives us a percentage of how much variance can be attributed to the main effect. So an eta-squared of .778 means that 77.8% of the total variance is because of the effect. It is calculated as follows:
 
 $$
 \eta^2 = \frac{SS_{effect}}{SS_t}
 $$
 
-In other words, we divide the sum of squares for the main effect by the
-total sum of squares. For repeated-measures ANOVAs, the formula is the
-same in practice (i.e. divide the SS in the top row in the ANOVA table
-by the total).
+In other words, we divide the sum of squares for the main effect by the total sum of squares. For repeated-measures ANOVAs, the formula is the same in practice (i.e. divide the SS in the top row in the ANOVA table by the total).
 
-A related version of this is **partial eta-squared** ($\eta^2_p$). This
-describes the effect of the IV *after* accounting for the variance
-explained by other factors. This is not so relevant for one-way
-designs - regular and partial eta-squared will give the same answer -
-but becomes more relevant when you move into factorial designs.
+A related version of this is **partial eta-squared** ($\eta^2_p$). This describes the effect of the IV *after* accounting for the variance explained by other factors. This is not so relevant for one-way designs - regular and partial eta-squared will give the same answer - but becomes more relevant when you move into factorial designs.
 
 The formula for partial eta-squared is:
 
@@ -957,26 +887,12 @@ $$
 \eta^2_p = \frac{SS_{effect}}{SS_{effect} + SS_{error}}
 $$
 
-Where $SS_{error}$ is the sums of squares for the error/residual term in
-an ANOVA. In general, it's good practice to default to at least
-reporting partial eta-squared. Again, in a one-way ANOVA this will give
-the same answer as regular eta-squared, but in a factorial design (where
-you have more than one IV) it will give a more precise estimate of each
-variable's effect size.
+Where $SS_{error}$ is the sums of squares for the error/residual term in an ANOVA. In general, it's good practice to default to at least reporting partial eta-squared. Again, in a one-way ANOVA this will give the same answer as regular eta-squared, but in a factorial design (where
+you have more than one IV) it will give a more precise estimate of each variable's effect size.
 
-One more variant you will see is *generalised* eta-squared, which is
-similar to the partial variant. While partial eta-squared is great, it
-is sensitive to design - in other words, what variables are included in
-the analysis will influence the calculation of $\eta^2_p$, meaning that
-it is only really comparable across studies of similar design. However,
-not every design will manipulate every predictor (e.g. gender), and so
-generalised eta-squared ($\eta^2_G$) can handle this. This effect size
-is best used in meta-analyses.
+One more variant you will see is *generalised* eta-squared, which is similar to the partial variant. While partial eta-squared is great, it is sensitive to design - in other words, what variables are included in the analysis will influence the calculation of $\eta^2_p$, meaning that it is only really comparable across studies of similar design. However, not every design will manipulate every predictor (e.g. gender), and so generalised eta-squared ($\eta^2_G$) can handle this. This effect size is best used in meta-analyses.
 
-By default, `anova_test()` (and other ANOVA-related packages in R) will
-calculate *generalised* eta squared (labelled `ges` in the output). If
-you want partial eta-squared, you just need to give `anova_test()` the
-extra argument `effect.size = "pes` as follows:
+By default, `anova_test()` (and other ANOVA-related packages in R) will calculate *generalised* eta squared (labelled `ges` in the output). If you want partial eta-squared, you just need to give `anova_test()` the extra argument `effect.size = "pes` as follows:
 
 ```{r}
 w9_memory %>%
@@ -1003,8 +919,7 @@ tibble(
   )
 ```
 
-If we were to calculate an eta-squared value for this, we would use SS
-effect (42) and SSt (54) like so:
+If we were to calculate an eta-squared value for this, we would use SS effect (42) and SSt (54) like so:
 
 $$
 \eta^2 = \frac{42}{54} = .778
@@ -1012,17 +927,12 @@ $$
 
 ### Interpreting eta-squared
 
-Cohen (1988) provided the following guidelines for interpreting
-eta-squared:
+Cohen (1988) provided the following guidelines for interpreting eta-squared:
 
 -   $\eta^2$ = .01 is a small effect
 -   $\eta^2$ = .06 is a medium effect
 -   $\eta^2$ = .14 is a large effect
 
-With these guidelines (which aren't perfect), a $\eta^2$ of .778 is
-astronomically huge.
+With these guidelines (which aren't perfect), a $\eta^2$ of .778 is astronomically huge.
 
-To give yourself a bit of practice, go back into Sections 9.5 and 9.6,
-find the eta-squared values for each in the outputs (they're in the
-omnibus tables) and interpret them a) as percentages of total variance
-and b) using Cohen's (1988) guidelines.
+To give yourself a bit of practice, go back into Sections 9.5 and 9.6, find the eta-squared values for each in the outputs (they're in the omnibus tables) and interpret them a) as percentages of total variance and b) using Cohen's (1988) guidelines.

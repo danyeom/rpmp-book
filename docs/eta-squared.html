@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
@@ -509,60 +509,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="eta-squared" class="section level2 hasAnchor" number="7.6">
 <h2><span class="header-section-number">7.6</span> Eta-squared<a href="eta-squared.html#eta-squared" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
-<p>TIme to go over a new effect size measure! This time, we use eta-squared
-(<span class="math inline">\(\eta^2\)</span>) as an effect size for ANOVAs.</p>
+<p>TIme to go over a new effect size measure! This time, we use eta-squared (<span class="math inline">\(\eta^2\)</span>) as an effect size for ANOVAs.</p>
 </div>
 <div id="eta-squared-and-variance" class="section level3 hasAnchor" number="7.6.1">
 <h3><span class="header-section-number">7.6.1</span> Eta-squared and variance<a href="eta-squared.html#eta-squared-and-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>At the start of this module, we introduced the concept of how ANOVA
-partitions total variance into both between and within-subject variance:</p>
+<p>At the start of this module, we introduced the concept of how ANOVA partitions total variance into both between and within-subject variance:</p>
 <p><span class="math display">\[
 Variance_{total} = Variance_{between} + Variance_{within}
 \]</span></p>
-<p>This partitioning allows for a simple but important way of calculating
-effect sizes for ANOVAs. If we’re interested in the effect of our IV
-(group, which is between-subject variance), we simply need to know how
-much of the total variance is explained by this variable.</p>
-<p>This is essentially eta-squared (<span class="math inline">\(\eta^2\)</span>), our effect size for ANOVAs.
-Eta-squared gives us a percentage of how much variance can be attributed
-to the main effect. So an eta-squared of .778 means that 77.8% of the
-total variance is because of the effect. It is calculated as follows:</p>
+<p>This partitioning allows for a simple but important way of calculating effect sizes for ANOVAs. If we’re interested in the effect of our IV (group, which is between-subject variance), we simply need to know how much of the total variance is explained by this variable.</p>
+<p>This is essentially eta-squared (<span class="math inline">\(\eta^2\)</span>), our effect size for ANOVAs. Eta-squared gives us a percentage of how much variance can be attributed to the main effect. So an eta-squared of .778 means that 77.8% of the total variance is because of the effect. It is calculated as follows:</p>
 <p><span class="math display">\[
 \eta^2 = \frac{SS_{effect}}{SS_t}
 \]</span></p>
-<p>In other words, we divide the sum of squares for the main effect by the
-total sum of squares. For repeated-measures ANOVAs, the formula is the
-same in practice (i.e. divide the SS in the top row in the ANOVA table
-by the total).</p>
-<p>A related version of this is <strong>partial eta-squared</strong> (<span class="math inline">\(\eta^2_p\)</span>). This
-describes the effect of the IV <em>after</em> accounting for the variance
-explained by other factors. This is not so relevant for one-way
-designs - regular and partial eta-squared will give the same answer -
-but becomes more relevant when you move into factorial designs.</p>
+<p>In other words, we divide the sum of squares for the main effect by the total sum of squares. For repeated-measures ANOVAs, the formula is the same in practice (i.e. divide the SS in the top row in the ANOVA table by the total).</p>
+<p>A related version of this is <strong>partial eta-squared</strong> (<span class="math inline">\(\eta^2_p\)</span>). This describes the effect of the IV <em>after</em> accounting for the variance explained by other factors. This is not so relevant for one-way designs - regular and partial eta-squared will give the same answer - but becomes more relevant when you move into factorial designs.</p>
 <p>The formula for partial eta-squared is:</p>
 <p><span class="math display">\[
 \eta^2_p = \frac{SS_{effect}}{SS_{effect} + SS_{error}}
 \]</span></p>
-<p>Where <span class="math inline">\(SS_{error}\)</span> is the sums of squares for the error/residual term in
-an ANOVA. In general, it’s good practice to default to at least
-reporting partial eta-squared. Again, in a one-way ANOVA this will give
-the same answer as regular eta-squared, but in a factorial design (where
-you have more than one IV) it will give a more precise estimate of each
-variable’s effect size.</p>
-<p>One more variant you will see is <em>generalised</em> eta-squared, which is
-similar to the partial variant. While partial eta-squared is great, it
-is sensitive to design - in other words, what variables are included in
-the analysis will influence the calculation of <span class="math inline">\(\eta^2_p\)</span>, meaning that
-it is only really comparable across studies of similar design. However,
-not every design will manipulate every predictor (e.g. gender), and so
-generalised eta-squared (<span class="math inline">\(\eta^2_G\)</span>) can handle this. This effect size
-is best used in meta-analyses.</p>
-<p>By default, <code>anova_test()</code> (and other ANOVA-related packages in R) will
-calculate <em>generalised</em> eta squared (labelled <code>ges</code> in the output). If
-you want partial eta-squared, you just need to give <code>anova_test()</code> the
-extra argument <code>effect.size = "pes</code> as follows:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="eta-squared.html#cb161-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb161-2"><a href="eta-squared.html#cb161-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
+<p>Where <span class="math inline">\(SS_{error}\)</span> is the sums of squares for the error/residual term in an ANOVA. In general, it’s good practice to default to at least reporting partial eta-squared. Again, in a one-way ANOVA this will give the same answer as regular eta-squared, but in a factorial design (where
+you have more than one IV) it will give a more precise estimate of each variable’s effect size.</p>
+<p>One more variant you will see is <em>generalised</em> eta-squared, which is similar to the partial variant. While partial eta-squared is great, it is sensitive to design - in other words, what variables are included in the analysis will influence the calculation of <span class="math inline">\(\eta^2_p\)</span>, meaning that it is only really comparable across studies of similar design. However, not every design will manipulate every predictor (e.g. gender), and so generalised eta-squared (<span class="math inline">\(\eta^2_G\)</span>) can handle this. This effect size is best used in meta-analyses.</p>
+<p>By default, <code>anova_test()</code> (and other ANOVA-related packages in R) will calculate <em>generalised</em> eta squared (labelled <code>ges</code> in the output). If you want partial eta-squared, you just need to give <code>anova_test()</code> the extra argument <code>effect.size = "pes</code> as follows:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="eta-squared.html#cb33-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="eta-squared.html#cb33-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
 <pre><code>## ANOVA Table (type III tests)
 ## 
 ## $ANOVA
@@ -574,8 +545,10 @@ extra argument <code>effect.size = "pes</code> as follows:</p>
 ## 1   time 0.939 0.054      
 ## 
 ## $`Sphericity Corrections`
-##   Effect   GGe       DF[GG]    p[GG] p[GG]&lt;.05   HFe       DF[HF]    p[HF] p[HF]&lt;.05
-## 1   time 0.943 1.89, 177.21 1.05e-34         * 0.961 1.92, 180.72 2.45e-35         *</code></pre>
+##   Effect   GGe       DF[GG]    p[GG] p[GG]&lt;.05   HFe       DF[HF]    p[HF]
+## 1   time 0.943 1.89, 177.21 1.05e-34         * 0.961 1.92, 180.72 2.45e-35
+##   p[HF]&lt;.05
+## 1         *</code></pre>
 </div>
 <div id="an-example" class="section level3 hasAnchor" number="7.6.2">
 <h3><span class="header-section-number">7.6.2</span> An example<a href="eta-squared.html#an-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -626,27 +599,21 @@ extra argument <code>effect.size = "pes</code> as follows:</p>
 </tr>
 </tbody>
 </table>
-<p>If we were to calculate an eta-squared value for this, we would use SS
-effect (42) and SSt (54) like so:</p>
+<p>If we were to calculate an eta-squared value for this, we would use SS effect (42) and SSt (54) like so:</p>
 <p><span class="math display">\[
 \eta^2 = \frac{42}{54} = .778
 \]</span></p>
 </div>
 <div id="interpreting-eta-squared" class="section level3 hasAnchor" number="7.6.3">
 <h3><span class="header-section-number">7.6.3</span> Interpreting eta-squared<a href="eta-squared.html#interpreting-eta-squared" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Cohen (1988) provided the following guidelines for interpreting
-eta-squared:</p>
+<p>Cohen (1988) provided the following guidelines for interpreting eta-squared:</p>
 <ul>
 <li><span class="math inline">\(\eta^2\)</span> = .01 is a small effect</li>
 <li><span class="math inline">\(\eta^2\)</span> = .06 is a medium effect</li>
 <li><span class="math inline">\(\eta^2\)</span> = .14 is a large effect</li>
 </ul>
-<p>With these guidelines (which aren’t perfect), a <span class="math inline">\(\eta^2\)</span> of .778 is
-astronomically huge.</p>
-<p>To give yourself a bit of practice, go back into Sections 9.5 and 9.6,
-find the eta-squared values for each in the outputs (they’re in the
-omnibus tables) and interpret them a) as percentages of total variance
-and b) using Cohen’s (1988) guidelines.</p>
+<p>With these guidelines (which aren’t perfect), a <span class="math inline">\(\eta^2\)</span> of .778 is astronomically huge.</p>
+<p>To give yourself a bit of practice, go back into Sections 9.5 and 9.6, find the eta-squared values for each in the outputs (they’re in the omnibus tables) and interpret them a) as percentages of total variance and b) using Cohen’s (1988) guidelines.</p>
 
 </div>
 </div>

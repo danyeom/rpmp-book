@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
@@ -527,19 +527,7 @@ means between groups are significantly different, i.e.:</p>
 we have data that we categorise into different groups, we end up with
 two key sources of variability, or variance: variance that exists
 between groups, and variance that exists within groups:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="anovas-and-the-f-distribution.html#cb128-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">90</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb128-2"><a href="anovas-and-the-f-distribution.html#cb128-2" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">n =</span> <span class="dv">101</span>, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">52</span>, <span class="at">sd =</span> <span class="dv">5</span>), <span class="at">colour =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb128-3"><a href="anovas-and-the-f-distribution.html#cb128-3" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">n =</span> <span class="dv">101</span>, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">61</span>, <span class="at">sd =</span> <span class="dv">5</span>), <span class="at">colour =</span> <span class="st">&quot;darkseagreen&quot;</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb128-4"><a href="anovas-and-the-f-distribution.html#cb128-4" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">n =</span> <span class="dv">101</span>, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">73</span>, <span class="at">sd =</span> <span class="dv">5</span>), <span class="at">colour =</span> <span class="st">&quot;indianred&quot;</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb128-5"><a href="anovas-and-the-f-distribution.html#cb128-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Scores&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb128-6"><a href="anovas-and-the-f-distribution.html#cb128-6" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb128-7"><a href="anovas-and-the-f-distribution.html#cb128-7" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb128-8"><a href="anovas-and-the-f-distribution.html#cb128-8" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb128-9"><a href="anovas-and-the-f-distribution.html#cb128-9" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb128-10"><a href="anovas-and-the-f-distribution.html#cb128-10" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
-<span id="cb128-11"><a href="anovas-and-the-f-distribution.html#cb128-11" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>)</span>
-<span id="cb128-12"><a href="anovas-and-the-f-distribution.html#cb128-12" tabindex="-1"></a>  ) </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-114-1.png" width="768" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="768" /></p>
 <p>Pretend that the three curves above represent data covering three
 different groups, and that we’ve hypothesised that there are three
 different means. Collectively, this data has a certain amount of
@@ -566,15 +554,16 @@ different.</p>
 variance:</p>
 <p><span class="math display">\[
 F = \frac{Variance_{between}}{Variance_{within}}
-\]</span> We will see this more in practice on the next page, but the
-F-statistic, which we use as part of significance testing in ANOVAs, is
+\]</span></p>
+<p>We will see this more in practice on the next page, but the
+<em>F</em>-statistic, which we use as part of significance testing in ANOVAs, is
 calculated by simply dividing the between-group variance by the
 within-group variance.</p>
 </div>
 <div id="the-f-distribution" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> The F-distribution<a href="anovas-and-the-f-distribution.html#the-f-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Like the other tests we’ve encountered so far, ANOVAs have their own
-underlying distribution. In this instance, this is the F distribution,
+underlying distribution. In this instance, this is the <em>F</em> distribution,
 which describes how the F-statistic behaves. We won’t go far into the
 maths around this, but the key here is that the F distribution is
 characterised by two sets of degrees of freedom: one that relates to the
@@ -583,27 +572,27 @@ within-groups variance. One thing to note here is the terminology in the
 headers of each graph: the first number in the brackets refers to the
 between-groups variance, while the second number refers to the
 within-groups variance.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="f-statistic-tables" class="section level3 hasAnchor" number="7.1.3">
 <h3><span class="header-section-number">7.1.3</span> <em>F</em>-statistic tables<a href="anovas-and-the-f-distribution.html#f-statistic-tables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>And, once again, we have a special F-table to determine critical F-stat
+<p>And, once again, we have a special <em>F</em>-table to determine critical <em>F</em>
 values, given two degrees of freedom values. However, given that we have
 two degrees of freedom the process is a little bit more complicated.
-Most F-stat tables actually provide multiple tables, corresponding to
+Most <em>F</em>-stat tables actually provide multiple tables, corresponding to
 different alpha levels. For now, we will always use the table
 corresponding to alpha = 0.05, a snippet of which is below:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="anovas-and-the-f-distribution.html#cb129-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="anovas-and-the-f-distribution.html#cb1-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>))</span></code></pre></div>
 <p><img src="img/w9_f-table.png" width="1072" /></p>
 <p>To read this table, you need to know both degrees of freedom (more on
 how to find that on the next page). The columns, marked df1, refer to
 the first df value (between-groups), while the rows correspond to the
 second df value (within-groups).</p>
-<p>So, for example, if we have an F-test with degrees of freedom of (4,
+<p>So, for example, if we have an <em>F</em>-test with degrees of freedom of (4,
 10), we would first need to find the column that corresponds to 4 (our
 df1), and then the row that corresponds to df2 = 10. Reading the cell at
-the intersection would give us a critical F-statistic of 3.48; this is
-the value our F-statistic would need to be greater than to be
+the intersection would give us a critical <em>F</em>-statistic of 3.48; this is
+the value our <em>F</em>-statistic would need to be greater than to be
 significant at the p &lt; .05 level.</p>
 </div>
 </div>

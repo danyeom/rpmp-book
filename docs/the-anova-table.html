@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
@@ -510,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.2</span> The ANOVA table<a href="the-anova-table.html#the-anova-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
 <p>Every time we do an ANOVA, there are actually a raft of calculations
-that have to occur in order to get our test statistic and p-value.
+that have to occur in order to get our test statistic and <em>p</em>-value.
 Statistical software will display all of this in the form of an ANOVA
 table, which we cover below.</p>
 <p>Don’t stress too much about the maths here - while the quiz does include
@@ -521,7 +521,7 @@ the previous page.</p>
 </div>
 <div id="the-anova-table-1" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> The ANOVA table<a href="the-anova-table.html#the-anova-table-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>On the previous page, we talked in depth about how the F statistic is
+<p>On the previous page, we talked in depth about how the <em>F</em> statistic is
 calculated, and what shapes the overall distribution. But how do we
 actually calculate all of that stuff to begin with from raw data? Enter
 the ANOVA table, a beautiful (remember, beauty is subjective) way of
@@ -656,9 +656,11 @@ SS_w = \Sigma (x - \bar x)^2
 <li>Square that difference</li>
 <li>Add them all up.</li>
 </ul>
-<p>So for our data, it would look something like.. <span class="math display">\[
+<p>So for our data, it would look something like..
+<span class="math display">\[
 SS_w = (1-2)^2 + (2-2)^2 + (3-2)^2 + (2-2)^2 + (2-3.5)^2 + (4-3.5)^2 + (5-3.5)^2 + (3-3.5)^2 + (5-6.5)^2 + (8-6.5)^2 + (6-6.5)^2 + (7-6.5)^2
-\]</span> <span class="math inline">\(SS_w = 12\)</span>.</p>
+\]</span>
+<span class="math display">\[SS_w = 12\]</span>.</p>
 </div>
 <div id="degrees-of-freedom" class="section level3 hasAnchor" number="7.2.3">
 <h3><span class="header-section-number">7.2.3</span> Degrees of freedom<a href="the-anova-table.html#degrees-of-freedom" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -667,7 +669,8 @@ also have degrees of freedom for both (think back to the previous page).
 Thankfully, unlike the mess above the formulae here are relatively
 simple.</p>
 <p><strong>Between</strong></p>
-<p>The between-groups df is given as: <span class="math display">\[
+<p>The between-groups df is given as:</p>
+<p><span class="math display">\[
 df_b = k - 1
 \]</span></p>
 <p>Where k = the number of groups. So, in our data, <span class="math inline">\(df_b = 3 -1 = 2\)</span> (as
@@ -677,7 +680,7 @@ we have 3 groups).</p>
 <p><span class="math display">\[
 df_b = N - k
 \]</span></p>
-<p>Where k = the number of groups, and N is the total sample size (in our
+<p>Where k = the number of groups, and <em>N</em> is the total sample size (in our
 case, 12). So <span class="math inline">\(df_w = 12 -3 = 9\)</span> (as we have 3 groups and 12 data points
 in total).</p>
 </div>
@@ -691,17 +694,19 @@ MS = \frac{SS}{df}
 \]</span></p>
 <p>We’ve calculated SS and df for both our between and within-groups
 effects, so we can substitute these values in to calculate a mean square
-value for both: <span class="math display">\[MS_b = \frac{SS_b}{df_b}\]</span>
+value for both:</p>
+<p><span class="math display">\[MS_b = \frac{SS_b}{df_b}\]</span>
 <span class="math display">\[MS_w = \frac{SS_w}{df_w}\]</span></p>
 <p>Putting in our values that we calculated earlier, we get:</p>
-<p><span class="math display">\[MS_b = \frac{42}{2}\]</span> <span class="math display">\[MS_w = \frac{12}{9}\]</span></p>
+<p><span class="math display">\[MS_b = \frac{42}{2}\]</span>
+<span class="math display">\[MS_w = \frac{12}{9}\]</span></p>
 <p>This gives us <span class="math inline">\(MS_b = 21\)</span> and <span class="math inline">\(MS_w = 1.33\)</span>.</p>
 </div>
 <div id="calculating-f" class="section level3 hasAnchor" number="7.2.5">
 <h3><span class="header-section-number">7.2.5</span> Calculating <em>F</em><a href="the-anova-table.html#calculating-f" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Remember on the previous page, how we talked about the F-statistic being
+<p>Remember on the previous page, how we talked about the <em>F</em>-statistic being
 a ratio between two variances (between divided by within)? That’s
-exactly what we’re going to do next, using our calculatd mean-square
+exactly what we’re going to do next, using our calculated mean-square
 values:</p>
 <p><span class="math display">\[
 F = \frac{MS_b}{MS_w}
@@ -769,20 +774,22 @@ variance into between and within-groups variance.</p>
 </div>
 <div id="consulting-the-f-table" class="section level3 hasAnchor" number="7.2.7">
 <h3><span class="header-section-number">7.2.7</span> Consulting the F-table<a href="the-anova-table.html#consulting-the-f-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now that we have our observed F-value, we can now consult an F-table and
-use our two degrees of freedom to find out what our critical F-value is
+<p>Now that we have our observed F-value, we can now consult an <em>F</em>-table and
+use our two degrees of freedom to find out what our critical <em>F</em>-value is
 (setting alpha = .05):</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="the-anova-table.html#cb130-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>)</span></code></pre></div>
 <p><img src="img/w9_f-table.png" width="1072" /></p>
 <p>Reading the column for df1 = 2, and the row for df2 = 9, we get a
 critical F-statistic of 4.2565. Now we can say that because our observed
 test statistic (15.75) is greater than this critical value, our ANOVA is
 significant at the alpha = .05 level.</p>
-<p>In reality, like many of the other tests, we would calculate a p-value
+<p>In reality, like many of the other tests, we would calculate a <em>p</em>-value
 by observing where our test statistic falls on the F-distribution, and
 the associated probability of getting that value or greater. Our
 software will do all of this stuff for us, but it helps to know exactly
 how an ANOVA works!</p>
+<p>If you want to calculate the <em>p</em>-value manurally in R though, this is entirely possible using the <code>pf()</code> function:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="the-anova-table.html#cb2-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fl">15.75</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">9</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.001149592</code></pre>
 </div>
 </div>
             </section>
