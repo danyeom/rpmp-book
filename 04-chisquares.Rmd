@@ -516,4 +516,127 @@ Calculate both phi and Cramer's V. (You should get the same answer, but have a g
 
 ## Bonus: McNemar's Test
 
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+The chi-square test of independence, as the name implies, relies on the assumption of independence - that variable A is statistically independent of B. But what happens if we have a relationship that doesn't meet this assumption? The most common kind is when data is *paired* or *repeated*, i.e. participants are measured on the same variable twice. McNemar's test allows us to apply chi-square techniques to this kind of data. 
+</div>
 
+### McNemar's test
+
+**McNemar's test** is used for when you have repeated-measures categorical data. Specifically, it applies to a 2x2 repeated measures contingency table. This will apply when you have one sample tested **twice** on a **binary outcome**. The most common example of this is a yes/no outcome, before and after something (e.g. an intervention.
+
+McNemar's test will apply to situations where you have one sample tested twice like this:
+
+```{r}
+data.frame(
+  var = c("", "Timepoint 1 - A", "Timepoint 1 - B", "Total"),
+  var2 = c("", "", "", ""),
+  var3 = c("", "", "", ""),
+  var2 = c("", "", "", "")
+) %>%
+  knitr::kable(
+    col.names = c("", "Timepoint 2 - A", "Timepoint 2 - B", "Total")
+  )
+```
+ 			
+
+ 
+### Mathematical basis
+
+Consider the table above. We can formulate the cells between each combination of predictors, and their totals, as follows:
+
+```{r}
+data.frame(
+  var = c("", "Timepoint 1 - A", "Timepoint 1 - B", "Total"),
+  var2 = c("", "a", "c", "a + c"),
+  var3 = c("", "b", "d", "b + d"),
+  var2 = c("", "a + b", "c + d", "N")
+) %>%
+  knitr::kable(
+    col.names = c("", "Timepoint 2 - A", "Timepoint 2 - B", "Total")
+  )
+```
+
+Essentially, in this instance cell *a* represents the number of cases/participants in T1-A and T2-A, *b* is T1-A and T2-B etc etc. Each cell has two **marginal probabilities**, which are the row and column totals corresponding to that cell. Cell *a*, for example, has marginal probabilities of *a + b* (the row total) and *a + c* (the column total). Cell d has marginal probabilities of *c + d* and *b + d*. 
+
+The null hypothesis in this scenario is that the **two marginal properties for each outcome are the same**. This is a principle known as marginal homogeneity. In essence, the McNemar test tests the hypothesis that the proportion of participants responding A beforehand is the same at that responding A afterwards. The marginal probability in this instance is a + b (proportion of response A at timepoint 1) and a + c (proportion of response A at timepoint 2).
+
+The same hypothesis applies to the proportion of participant saying B before and after, corresponding to cell d. In this case, the marginal probabilities are c + d (time 1) and b + d (time 2).
+
+We can express this null hypothesis like this:
+
+$$
+p_a + p_b = p_a + p_c
+$$
+
+$$
+p_b + p_d = p_c + p_d
+$$
+
+We can simplify both equations by removing identical terms from both sides of the equation. You might see then that both equations cancel out to simply be:
+
+$$
+p_b = p_c
+$$
+
+That, in effect, is our null hypothesis - that the probability of cell b is identical to cell c! So now we can express our null and alternative hypotheses:
+
+-   $H_0: p_b = p_c$
+-   $H_1: p_b \neq p_c$
+ 
+
+Our chi-square test statistic is calculated as follows:
+
+$$
+\chi^2 = \frac{(b-c)^2}{b+c}
+$$
+
+And then from here on, the process of deriving a p-value is identical to a regular chi-square test, with the exception that the df is always df = 1 (remember we have a 2 x 2 table, and the formula for a df in a two-way chi-square test is to subtract 1 from each and multiply them together).
+
+ 
+### Example
+
+Below is a fictional dataset from 70 registered voters in a fictional country. The 70 voters were asked whether they intended to vote for the current government twice: before event X happened in the government and after event X. Their responses were recorded as simple Yes-No answers.
+
+```{r}
+w7_voting <- read_csv(here("data", "week_7", "W7_voting.csv"))
+```
+
+
+
+Here is a contingency table of our data:
+
+```{r}
+w7_voting_table <- table(w7_voting$before, w7_voting$after) 
+
+w7_voting_table %>%
+  addmargins()
+```
+
+
+We can identify our b = 28 and our c = 11. We can calculate a relevant chi-squared test statistic using the formula above:
+
+$$
+\chi^2 = \frac{(b-c)^2}{b+c}
+$$
+
+$$
+\chi^2 = \frac{(28-11)^2}{28+11}
+$$
+$$
+\chi^2 = \frac{(17)^2}{39}
+$$
+
+$$
+\chi^2 = 7.41
+$$
+
+If we were doing this fully by hand, we could consult a chi-squared table and see what the relevant p-value would be with this chi-squared value and a df = 1. However, we'll skip straight to Jamovi. A McNemar test can be run in R using the `mcnemar.test()` function in base R:
+
+```{r}
+w7_voting_mcn <- mcnemar.test(w7_voting_table, correct = FALSE)
+
+w7_voting_mcn
+```
+
+
+The output looks like this, and confirms that there is a significant change in proportions before and after event ($\chi^2$(1, *N* = 70) = 7.41, *p* = .006). Based on the original values of *b* and *c*, we can infer that this might be because more people changed their vote from No -> Yes than the other way round.
