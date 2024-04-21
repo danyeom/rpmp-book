@@ -17,7 +17,6 @@ library(here)
 While many of the things we are interested in when it comes to psychological research are continuously distributed (height, weight, reaction time, personality), there are many instances where we will need to work with data that is categorical. This can involve categorical independent variables (e.g. assigning participants to one or two groups) or categorical outcomes (e.g. responding yes or no). We'll start with looking at relationships between these categorical variables, and testing for significant associations.
 
 This module will see you diving deep into Jamovi again - so be prepared to get hands on with a bunch of data! Between the seminar, the worked examples and exercises there are at least 6 different datasets to play around with for this week!
- 
 
 By the end of this module you should be able to:
 
@@ -25,10 +24,17 @@ By the end of this module you should be able to:
 -    Conduct two forms of chi-square tests: goodness-of-fit and tests of independence
 -    Calculate and interpret an appropriate effect size for tests of independence
 
+```{r echo = FALSE, fig.align = "center", fig.cap = "[xkcd: Question](https://xkcd.com/1448/)"}
+knitr::include_graphics("https://imgs.xkcd.com/comics/question_2x.png")
+```
+
+
 
 ## Calculating a chi-square
 
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
 We'll start this module off by briefly going through the basics of what research designs suit chi-square tests, as well as the basic maths underlying the first part of the statistical test.
+</div>
 
 ### Categorical data
 
@@ -118,7 +124,9 @@ Have a think about the following:
 
 ## The chi-square distribution
 
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
 On the previous page we introduced the formula for a chi-square test statistic. But what do we do with it? We'll go through this below in detail, given that this is the first time we're coming across an actual test. While a computer will do all of this stuff automatically, it's useful to know the actual mechanisms underlying the test.
+</div>
 
 ### The chi-square distribution
 
@@ -160,7 +168,7 @@ data %>%
   theme(legend.position = "right")
 ```
 
-The shape of the chi-square distribution is only dependent on the degrees of freedom (df). We'll look at how to calculate degrees of freedom for various tests, including the family of chi-square tests, as we move along the subject.
+The shape of the chi-square distribution is only dependent on the degrees of freedom (*df*). We'll look at how to calculate degrees of freedom for various tests, including the family of chi-square tests, as we move along the subject.
 
 Here is the same set of lines above, but shown in their own plot this time:
 
@@ -191,7 +199,7 @@ data %>%
   ggplot(
     aes(x = x, y = density, colour = df)
   ) +
-  geom_line(size = 1, show.legend = FALSE) +
+  geom_line(linewidth = 1, show.legend = FALSE) +
   labs(
     x = expression(chi^2),
     y = "Probability distribution function",
@@ -202,7 +210,7 @@ data %>%
 ```
 
 
-As you can hopefully see, the chi-square distribution is very heavily skewed at lower degrees of freedom (and therefore in smaller sample sizes). As degrees of freedom increase though, it approximates a normal distribution. For instance, here's what the chi-square distribution looks like when df = 100:
+As you can hopefully see, the chi-square distribution is very heavily skewed at lower degrees of freedom (and therefore in smaller sample sizes). As degrees of freedom increase though, it approximates a normal distribution. For instance, here's what the chi-square distribution looks like when *df* = 100:
 
 ```{r echo = FALSE}
 tibble(
@@ -212,7 +220,7 @@ tibble(
   ggplot(
     aes(x = x, y = y)
   ) +
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   labs(
     x = expression(chi^2),
     y = "Probability distribution function"
@@ -223,12 +231,12 @@ tibble(
 
 ### Hypothesis testing in chi-squares
 
-At this point, also recall that p-values are the probability that we would get our observed result (or greater), assuming the null hypothesis is true.
+At this point, also recall that *p*-values are the probability that we would get our observed result (or greater), assuming the null hypothesis is true.
 
 Here is our first application of this concept. When we use a chi-square test, we are performing the following basic steps:
 
 1.    Establish null and alternative hypotheses
-2.    Determine alpha level (in this case, alpha = .05 as always)
+2.    Determine alpha level (in this case, $\alpha$ = .05 as always)
 3.    Calculate our test statistic - here, this is the chi-square statistic
 4.    Compare our chi-square test statistic against the chi-square distribution
 5.    Calculate how likely we would have seen our chi-square value or greater on this distribution
@@ -239,11 +247,11 @@ We'll expand on this more in the next couple of pages.
 
 ### Calculating significance
 
-Let's say that we have a df of 5. How do we know where the critical chi-square value is?
+Let's say that we have a *df* of 5. How do we know where the critical chi-square value is?
 
 For that, we consult a chi-square table. This table gives the critical chi-square value at a set degrees of freedom and alpha level. These are freely available online, but here's a short excerpt. To read this table:
 
--    The far-left column lists different degrees of freedom. We need to find the row that corresponds to df = 5.
+-    The far-left column lists different degrees of freedom. We need to find the row that corresponds to *df* = 5.
 -    Each column provides critical chi-squares at different alpha levels. We want to find the column that says .05.
 -    The number at both of these points tells us the critical chi-square value.
 
@@ -252,7 +260,7 @@ knitr::include_graphics("img/w7_chisq_table.png")
 ```
 
 
-So, for a df = 5 and an alpha = .05, the critical chi-square value is 11.07. If our own chi-square value is greater than this, the probability of that value or greater occurring (assuming the null) will be less than 5%; i.e. the boundary for statistical significance.
+So, for a *df* = 5 and an $\alpha$ = .05, the critical chi-square value is 11.07. If our own chi-square value is greater than this, the probability of that value or greater occurring (assuming the null) will be less than 5%; i.e. the boundary for statistical significance.
 
 In picture form:
 
@@ -265,7 +273,9 @@ Hopefully that makes sense - this kind of logic is pretty much identical to the 
 
 ## Goodness of fit
 
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
 Now that we've covered the conceptual groundwork for chi-square tests in general, we can now start looking at actual tests that can help us answer research questions. The most basic chi-square test is the goodness of fit test. 
+</div>
 
 ### Goodness of fit tests
 
@@ -273,17 +283,11 @@ Goodness of fit tests are used when we want to compare a set of categorical data
 
 "Distribution" in this context means probability distributions, and can apply to a wide range of scenarios. For the purposes of what we're learning here, we'll stick to a question along the lines of: "do the categories of variable X align with their expected probabilities"?
 
-```{r}
-
-```
-
 ### Example
 
 An example question that we look at in the seminar is Do Skittle bags have an even number of each colour? In the seminar, we go through whether or not a random bag has an even split of colours.
 
-Here on Canvas, we'll now tackle their equally delicious rivals, M&Ms. The data and analysis come courtesy of Rick Wicklin, a data analyst at SAS (who also make statistics software). You can read his full blog here: The distribution of colors for plain M&M candies - The DO Loop (sas.com)
-
-Links to an external site.. We'll be recreating Rick's first analysis here. We're sticking with the candy theme because a) they're delicious and b) the M&Ms are a great way to introduce what to do when expected proportions are not equal.
+Here on Canvas, we'll now tackle their equally delicious rivals, M&Ms. The data and analysis come courtesy of Rick Wicklin, a data analyst at SAS (who also make statistics software). You can read his full blog here: [The distribution of colors for plain M&M candies](https://blogs.sas.com/content/iml/2017/02/20/proportion-of-colors-mandms.html). We'll be recreating Rick's first analysis here. We're sticking with the candy theme because a) they're delicious and b) the M&Ms are a great way to introduce what to do when expected proportions are not equal.
 
 M&Ms come in six colours: red, blue, green, brown, orange and yellow. Unlike Skittles, these colours are not distributed equally within each bag of M&Ms. In 2008, Mars (the parent company) published the following percentage breakdown of colours:
 
@@ -325,7 +329,10 @@ mnm_data %>%
       "$712 \\times 0.13 = 92.56$", 99.68
     )
   ) %>%
-  knitr::kable(escape = "FALSE")
+  knitr::kable(
+    escape = "FALSE",
+    col.names = c("Colour", "Observed", "Expected proportion", "Expected count")
+    )
 ```
 
 Then we would use the formula we saw on the previous page to calculate a chi-square statistic. However, since we're doing this in R we'll skip the manual maths.
@@ -335,6 +342,27 @@ $$
 $$
 
 If we have a look at the observed vs expected values, we might have a good idea of what's going on already:
+
+```{r echo = FALSE}
+mnm_data %>%
+  group_by(colour) %>%
+  summarise(observed = n()) %>%
+  mutate(
+    expected_prop = c(0.24, 0.13, 0.16, 0.20, 0.13, 0.14),
+    expected = nrow(mnm_data) * expected_prop
+    ) %>%
+  pivot_longer(
+    cols = c(observed, expected),
+    names_to = "var",
+    values_to = "value"
+  ) %>%
+  ggplot(
+    aes(x = colour, y = value, fill = var)
+  ) +
+  geom_col(position = position_dodge()) +
+  theme_pubr() +
+  labs(fill = "", x = "Colour", y = "Count")
+```
 
 
 ### Using R
@@ -362,13 +390,17 @@ w7_mnm_chisq$expected
 ```
 
 
-Next, here is our test output. The result is significant (p = .004), suggesting that the 2017 bag of M&Ms does not follow the same distribution of colours as the 2008 values. (If you read the rest of Rick's blog post, it turns out that somewhere between 2008 and 2017 they changed where M&Ms are made, and actually split production across two factories that produce different distributions of colours. Rick eventually found out that his bag most likely came from one of the plants, although Mars has not made these proportions public like they used to.)
+Next, here is our test output. The result is significant (*p* = .004), suggesting that the 2017 bag of M&Ms does not follow the same distribution of colours as the 2008 values. (If you read the rest of Rick's blog post, it turns out that somewhere between 2008 and 2017 they changed where M&Ms are made, and actually split production across two factories that produce different distributions of colours. Rick eventually found out that his bag most likely came from one of the plants, although Mars has not made these proportions public like they used to.)
 
 ```{r}
 w7_mnm_chisq
 ```
 
 ## Tests of independence
+
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+The next chi-square test we will cover is probably the most common - the chi-square test of independence. Here, we move from one categorical variable to two.
+</div>
 
 Chi square tests of independence are used when we want to test whether two categorical variables are associated with each other (i.e. show a relationship). Some examples of this question might take on the following:
 
@@ -389,7 +421,7 @@ instrument_data <- read_csv(here("data", "week_7", "W7_instruments.csv"))
 head(instrument_data)
 ```
  
-Contingency tables
+### Contingency tables
 
 The primary way of 'drawing up' categorical data, particularly when two variables are involved, is to draw a contingency table. A contingency table is a two-way table that shows how many participants/items/objects fall under each combination of our two variables. Here is a contingency table of our data below:
 
@@ -421,8 +453,9 @@ This works out to be roughly 46.25 - which means that we would expect roughly 46
 
 Once we've done that, we can then calculate our chi-square test statistic using the same formula as always:
 
- 
-In R
+$$
+\chi^2 = \Sigma \frac{(O-E)^2}{E}
+$$
 
  
 ### Output
@@ -439,7 +472,7 @@ w7_inst_chisq$expected
 
  
 
-Next is our chi-square test output. As you can see, our test of independence suggests a significant result (p = .03). In other words, we reject the null hypothesis that there is no association between instrument and sex.
+Next is our chi-square test output. As you can see, our test of independence suggests a significant result (*p* = .03). In other words, we reject the null hypothesis that there is no association between instrument and sex.
 
 
 ```{r}
@@ -452,11 +485,14 @@ Lastly we have this output. Hold onto this for now - we'll look at this in more 
 
 ## Effect sizes for chi-squares
 
-This is the first time we're coming across effect sizes for any test - thankfully, we start with relatively easy ones to wrap your head around. We will cover two effect sizes: phi and Cramer's V, both of which apply when conducting a test of independence.
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+This is the first time we're coming across effect sizes for any test - thankfully, we start with relatively easy ones to wrap your head around. We will cover two effect sizes: phi ($\phi$) and Cramer's *V*, both of which apply when conducting a test of independence.
+</div>
+
 
 ### Phi
 
-Phi is an effect size for chi-squares that applies only to 2x2 designs. The formula for phi is:
+Phi ($\phi$) is an effect size for chi-squares that applies only to 2x2 designs. The formula for phi is:
 
 $$
 \phi = \sqrt{\frac{\chi^2}{n}}
@@ -467,17 +503,17 @@ Essentially, it is the chi-square test statistic divided by the sample size, whi
 
 ### Cramer's V
 
-Cramer's V is another effect size for chi-squares, but one that can be used for anything beyond a 2x2 design as well. The formula for Cramer's V is similar:
+Cramer's V is another effect size for chi-squares, but one that can be used for anything beyond a 2x2 design as well. The formula for Cramer's *V* is similar:
 
 
 $$
 V = \sqrt{\frac{\chi^2}{n(k-1)}}
 $$
-Here, k refers to the number of groups in the variable with the lowest number of groups. So for example, in a 2x3 design, one variable has 2 levels and the other has 3; k = 2 in this instance.
+Here, *k* refers to the number of groups in the variable with the lowest number of groups. So for example, in a 2x3 design, one variable has 2 levels and the other has 3; *k* = 2 in this instance.
 
-Phi and Cramer's V can both be calculated in R with the following functions. Like `chisq.test()`, both functions will work if you give them a contingency table.
+Phi and Cramer's *V* can both be calculated in R with the following functions. Like `chisq.test()`, both functions will work if you give them a contingency table.
 
-(Note that for `phi()`, digits = 3 has been set to false just for display purposes. In `rstatix::cramer_v()`, `correct = FALSE` gives an equivalent result to Jamovi.)
+(Note that for `phi()`, `digits = 3` has been set to false just for display purposes. In `rstatix::cramer_v()`, `correct = FALSE` gives an equivalent result to Jamovi.)
 
 ```{r}
 psych::phi(w7_instrument_table, digits = 3)
@@ -496,7 +532,7 @@ effectsize::cramers_v(w7_instrument_table, adjust = FALSE, alternative = "two.si
 ### Interpretation
 
 
-Phi and Cramer's V are essentially both correlation coefficients (more on this in Week 10). Both phi and Cramer's V can only be between 0 and 1. For this subject, the size of Cramer's V and phi can be interpreted as follows:
+Phi and Cramer's *V* are essentially both correlation coefficients (more on this in Week 10). Both phi and Cramer's *V* can only be between 0 and 1. For this subject, the size of Cramer's *V* and phi can be interpreted as follows:
 
 -    If the effect size = .10, the effect is small
 -    If effect size = .30, the effect is medium
@@ -508,9 +544,9 @@ Phi and Cramer's V are essentially both correlation coefficients (more on this i
 Given the following results from a 2x2 chi-square test of independence:
 
 -   $\chi^2$ = 5.45
--   N = 46
+-   *N* = 46
 
-Calculate both phi and Cramer's V. (You should get the same answer, but have a go at trying it both ways!)
+Calculate both phi and Cramer's *V*. (You should get the same answer, but have a go at trying it both ways!)
 
 
 
@@ -526,7 +562,7 @@ The chi-square test of independence, as the name implies, relies on the assumpti
 
 McNemar's test will apply to situations where you have one sample tested twice like this:
 
-```{r}
+```{r echo = FALSE}
 data.frame(
   var = c("", "Timepoint 1 - A", "Timepoint 1 - B", "Total"),
   var2 = c("", "", "", ""),
@@ -544,7 +580,7 @@ data.frame(
 
 Consider the table above. We can formulate the cells between each combination of predictors, and their totals, as follows:
 
-```{r}
+```{r echo = FALSE}
 data.frame(
   var = c("", "Timepoint 1 - A", "Timepoint 1 - B", "Total"),
   var2 = c("", "a", "c", "a + c"),
