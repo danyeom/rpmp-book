@@ -382,7 +382,7 @@ tibble(
 
 ### Calculating Cohen's *d* in R
 
-The `cohens_d()` function from `rstatix` can handle the calculation of effect sizes for all three variants of t-tests. One thing that's quite nice about this is that the format for `cohens_d()` is exactly the same as it would be for the `t_test()` and `t.test()` family of functions:
+The `cohens_d()` function from `rstatix` can handle the calculation of effect sizes for all three variants of t-tests. One thing that's quite nice about this function is that the format for `cohens_d()` is exactly the same as it would be for the `t_test()` and `t.test()` family of functions:
 
 For a one-sample t-test, the formula once again needs to be in `var ~ 1` format and `mu` must be specified:
 
@@ -406,7 +406,7 @@ w8_symptoms %>%
 
 The Canvas version asks you to interpret each of these effect sizes, but... `rstatix` will automatically label this for you!
 
-Alternatively, you can use the `effectsize` package as follows. Just note that for paired samples t-tests, the following code works for wide data:
+Alternatively, you can use the `effectsize` package. Just note that for paired samples t-tests, the following code works for wide data:
 
 ```{r}
 # One-sample
