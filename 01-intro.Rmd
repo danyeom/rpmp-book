@@ -95,12 +95,51 @@ class(var_c)
 class(var_d)
 ```
 
+### Functions
 
-### Data structures
+
+
+## Data structures
 
 Of course, in R we don't work with single values (often). We instead work with larger data structures. While there are a number of data structures in R, by and large the main one we will work with are **data frames.** 
 
-Data frames are flexible, row-column structures that contain data.
+### Vectors
+
+Vectors are extremely important in R: so much so that many functions are what we call *vectorised*, meaning that they operate over vectors. Vectors are a data structure that provide an ordered list of values of the same type. Vectors can contain multiple numbers, strings or logical values, as an example. 
+
+To create a vector, the `c()` function is used. Below is a vector containing 5 numbers: 
+
+```{r}
+vector_a <- c(4, 1, 6, 2, 3)
+
+vector_a
+```
+Each value in the vector has an **index**, which denotes its position in the vector starting from 1. We can pull values from vectors by using square brackets, `[]`. We give R the name of the vector, followed by the index of the value we want. Let us pull the number 1, for instance, which has an index of 2 (as it is 2nd in the vector):
+
+```{r}
+vector_a[2]
+```
+To subset multiple values, we can simply give a vector of indices within the square brackets. For example, let's say we want to pull values from indices 2-4. This means that our output should be 1, 6 and 2. We can create a vector corresponding to the indices that we want (`c(2, 3, 4)`), and give this to the square brackets for subsetting.
+
+```{r}
+vector_a[c(2, 3, 4)]
+```
+But there's a neater trick here that R allows you to do. When placing a semicolon, `:`, between two numbers, R will create a vector of numbers between the two numbers you give. The below command, for example, will create a vector of integers between the numbers 2 and 7:
+
+```{r}
+2:7
+```
+
+We can use this to great effect by subsetting multiple values from a vector at once:
+
+```{r}
+vector_a[2:4]
+```
+
+
+### Data frames
+
+Data frames are flexible, row-column structures that contain data. Data frames can essentially be thought of as several vectors joined together as columns.
 
 R works best when data frames are in a *tidy* format. In a tidy format:
 
@@ -112,7 +151,6 @@ R works best when data frames are in a *tidy* format. In a tidy format:
 knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png")
 ```
 
-
 Here is an example of a data frame in tidy format. Note how each column corresponds to a different variable, or piece of data that we're interested in. Each column is also clearly labelled, so it is clear what it represents. Each row corresponds to an observation (a single penguin, in this case). So, the first row represnts an Adelie penguin on Torgersen Island, with a bill length of 39.1mm etc etc.
 
 ```{r}
@@ -120,7 +158,50 @@ library(palmerpenguins)
 penguins
 ```
 
-For the purposes of RPMP you won't need to create any data frames, but you will need to know how to read files in. More on this on the next page!
+For the purposes of RPMP you won't need to create any data frames, but you will need to know how to read files in and work with them. 
+
+With data frames, there are a number of functions in base R that allow us to do certain operations. These will be super useful in a range of scenarios.
+
+First, it helps to understand that data frames are (conceptually) like matrices, in that they have rows and columns that are indexed. We can therefore pull out bits of information by the row or column index (i.e. number) using R. To do so, we can use the format `name[row, column]`. `name` in this instance is the name of our data frame, while `row` and `column` are the row and column numbers we want respectively. For example, let us take the cell corresponding to the first row and the first column:
+
+```{r}
+penguins[1,1]
+```
+Or, the cell in row 3, column 4:
+
+```{r}
+penguins[3,4]
+```
+
+We can pull out whole rows or columns by simply leaving the number blank. If we want all values in a row, we do not specify a column and vice versa. For example, let us take all of row 1 from the `penguins` dataset:
+
+```{r}
+penguins[1,]
+```
+
+Or let's take all of the species column only, which is column 1:
+
+```{r}
+penguins[,1]
+```
+
+The above operation actually can be done another way in R, and perhaps a way that is more intuitive. With data frames, we can grab individual columns using the `$` operator, followed by the column's *name*. This lets us grab columns by their name.
+
+```{r}
+penguins$species
+```
+Note though that the output here is different; it simply returns a vector, while the `[row,column]` notation returns a data frame. Given that many functions in R rely on vectors, this notation is often useful.
+
+Finally, if we want to select multiple rows or columns then we need to give vectors to the row and/or column arguments within the square brackets. This means that our semicolon notation will work here as well. For instance, let's say we want to get the first 6 rows of the dataset:
+
+```{r}
+penguins[1:6,]
+```
+Or, columns 2 to 4:
+
+```{r}
+penguins[,2:4]
+```
 
 
 ## Packages and functions
