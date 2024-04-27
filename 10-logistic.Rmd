@@ -43,3 +43,4 @@ P(Burnout) = \frac{30}{42} = 0.71
 $$
 
 What about the probability that someone is a musician *and* and burnt out?
+
