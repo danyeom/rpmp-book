@@ -225,3 +225,8 @@ fit-indices
 appendix-a-technical-details-of-anova
 fig:unnamed-chunk-2
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
+functions
+vectors
+data-frames
+logistic-regression
+probability-and-odds

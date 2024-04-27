@@ -1,0 +1,45 @@
+# Logistic regression
+
+```{r warning = FALSE, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(ggpubr)
+library(here)
+library(rstatix)
+library(effectsize)
+```
+
+The final section of the book (at least for the time being) deals with **logistic regression.** In some ways, we have come full circle with the inclusion of this chapter: the first statistical test we looked at were to do with categorical data, and now we make a partial return to categorical data. 
+
+## Probability and odds
+
+### Reminder of probabilities
+
+Consider the following table:
+
+```{r echo = FALSE}
+data.frame(
+  v1 = c("Musician", "Non-musician", "Total"),
+  v2 = c(20, 10, 30),
+  v3 = c(4, 8, 12),
+  v4 = c(24, 18, 42)
+) %>%
+  knitr::kable(
+    col.names = c("", "Burnout", "No burnout", "Total")
+  )
+```
+
+You may recall that this is a 2x2 contingency table, which we have seen before in a chi-square context. Using this table, we can work out the *probability* of certain events or outcomes.
+
+If we selected someone randomly from this table, for example, what is the probability that they would be a musician? Well, we can see that there are 24 musicians from the sample of 42, so we could simply say:
+
+$$
+P(Musician) = \frac{24}{42} = 0.57
+$$
+
+Likewise, what is the probability that someone is burnt out? That would simply be:
+
+$$
+P(Burnout) = \frac{30}{42} = 0.71
+$$
+
+What about the probability that someone is a musician *and* and burnt out?

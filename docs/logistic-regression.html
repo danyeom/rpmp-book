@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.4 Logistic regression | Research Process for Music Psychologists</title>
+  <title>Chapter 11 Logistic regression | Research Process for Music Psychologists</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.4 Logistic regression | Research Process for Music Psychologists" />
+  <meta property="og:title" content="Chapter 11 Logistic regression | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.4 Logistic regression | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="Chapter 11 Logistic regression | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-10" />
+<meta name="date" content="2024-04-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -37,7 +37,7 @@ set in the _output.yml file.</p>" />
   
   
 <link rel="prev" href="comparing-models.html"/>
-<link rel="next" href="extra-technical-details-of-anova.html"/>
+<link rel="next" href="probability-and-odds.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -62,70 +62,6 @@ set in the _output.yml file.</p>" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -148,35 +84,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="usage.html"><a href="usage.html"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
-<li class="chapter" data-level="1.2" data-path="render-book.html"><a href="render-book.html"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
-<li class="chapter" data-level="1.3" data-path="preview-book.html"><a href="preview-book.html"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
-</ul></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
 <li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
-<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#functions"><i class="fa fa-check"></i><b>2.1.3</b> Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.1</b> Loading packages</a></li>
-<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.2</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.2.3</b> The <code>here()</code> package</a></li>
+<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a>
+<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.3.1</b> Selecting columns with <code>select()</code></a></li>
-<li class="chapter" data-level="2.3.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.3.2</b> Filtering rows with <code>filter()</code></a></li>
-<li class="chapter" data-level="2.3.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.3.3</b> Creating new columns with <code>mutate()</code></a></li>
-<li class="chapter" data-level="2.3.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.3.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
-<li class="chapter" data-level="2.3.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.3.5</b> Some other handy tidyverse functions</a></li>
+<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.3.1</b> Loading packages</a></li>
+<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.3</b> The <code>here()</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="making-graphs-with-ggplot2.html"><a href="making-graphs-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
+<li class="chapter" data-level="2.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.4</b> Wrangling data with dplyr and others</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.4.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.4.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.4.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.4.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.4.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.4.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.4.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
@@ -184,7 +120,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="visualising-data.html"><a href="visualising-data.html#why-visualise-data"><i class="fa fa-check"></i><b>3.1.1</b> Why visualise data?</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="counts-and-central-tendencies.html"><a href="counts-and-central-tendencies.html"><i class="fa fa-check"></i><b>3.2</b> Counts and central tendencies</a></li>
+<li class="chapter" data-level="3.2" data-path="counts-and-central-tendencies.html"><a href="counts-and-central-tendencies.html"><i class="fa fa-check"></i><b>3.2</b> Counts and central tendencies</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="counts-and-central-tendencies.html"><a href="counts-and-central-tendencies.html#basic-features"><i class="fa fa-check"></i><b>3.2.1</b> Basic features</a></li>
+<li class="chapter" data-level="3.2.2" data-path="counts-and-central-tendencies.html"><a href="counts-and-central-tendencies.html#central-tendencies"><i class="fa fa-check"></i><b>3.2.2</b> Central tendencies</a></li>
+</ul></li>
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
@@ -197,7 +137,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
 <li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="z-scores.html"><a href="z-scores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a></li>
+<li class="chapter" data-level="3.5" data-path="z-scores.html"><a href="z-scores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="z-scores.html"><a href="z-scores.html#z-scores-1"><i class="fa fa-check"></i><b>3.5.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.5.2" data-path="z-scores.html"><a href="z-scores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.5.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.5.3" data-path="z-scores.html"><a href="z-scores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.5.3</b> Comparing across scales</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
 <ul>
@@ -256,8 +201,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>5.4</b> Tests of independence</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="tests-of-independence.html"><a href="tests-of-independence.html#example-scenario"><i class="fa fa-check"></i><b>5.4.1</b> Example scenario</a></li>
-<li class="chapter" data-level="5.4.2" data-path="tests-of-independence.html"><a href="tests-of-independence.html#expected-frequencies"><i class="fa fa-check"></i><b>5.4.2</b> Expected frequencies</a></li>
-<li class="chapter" data-level="5.4.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html#output-1"><i class="fa fa-check"></i><b>5.4.3</b> Output</a></li>
+<li class="chapter" data-level="5.4.2" data-path="tests-of-independence.html"><a href="tests-of-independence.html#contingency-tables"><i class="fa fa-check"></i><b>5.4.2</b> Contingency tables</a></li>
+<li class="chapter" data-level="5.4.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html#expected-frequencies"><i class="fa fa-check"></i><b>5.4.3</b> Expected frequencies</a></li>
+<li class="chapter" data-level="5.4.4" data-path="tests-of-independence.html"><a href="tests-of-independence.html#output-1"><i class="fa fa-check"></i><b>5.4.4</b> Output</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html"><i class="fa fa-check"></i><b>5.5</b> Effect sizes for chi-squares</a>
 <ul>
@@ -265,6 +211,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.2" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#cramers-v"><i class="fa fa-check"></i><b>5.5.2</b> Cramer’s V</a></li>
 <li class="chapter" data-level="5.5.3" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Interpretation</a></li>
 <li class="chapter" data-level="5.5.4" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#practice"><i class="fa fa-check"></i><b>5.5.4</b> Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="bonus-mcnemars-test.html"><a href="bonus-mcnemars-test.html"><i class="fa fa-check"></i><b>5.6</b> Bonus: McNemar’s Test</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="bonus-mcnemars-test.html"><a href="bonus-mcnemars-test.html#mcnemars-test"><i class="fa fa-check"></i><b>5.6.1</b> McNemar’s test</a></li>
+<li class="chapter" data-level="5.6.2" data-path="bonus-mcnemars-test.html"><a href="bonus-mcnemars-test.html#mathematical-basis"><i class="fa fa-check"></i><b>5.6.2</b> Mathematical basis</a></li>
+<li class="chapter" data-level="5.6.3" data-path="bonus-mcnemars-test.html"><a href="bonus-mcnemars-test.html#example-1"><i class="fa fa-check"></i><b>5.6.3</b> Example</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-tests</a>
@@ -301,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.5.1" data-path="cohens-d.html"><a href="cohens-d.html#what-is-cohens-d"><i class="fa fa-check"></i><b>6.5.1</b> What is Cohen’s <em>d</em>?</a></li>
 <li class="chapter" data-level="6.5.2" data-path="cohens-d.html"><a href="cohens-d.html#interpreting-cohens-d"><i class="fa fa-check"></i><b>6.5.2</b> Interpreting Cohen’s <em>d</em></a></li>
-<li class="chapter" data-level="6.5.3" data-path="cohens-d.html"><a href="cohens-d.html#calculating-cohens-d-in-r"><i class="fa fa-check"></i><b>6.5.3</b> Calculating Cohen’s d in R</a></li>
+<li class="chapter" data-level="6.5.3" data-path="cohens-d.html"><a href="cohens-d.html#calculating-cohens-d-in-r"><i class="fa fa-check"></i><b>6.5.3</b> Calculating Cohen’s <em>d</em> in R</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="anovas.html"><a href="anovas.html"><i class="fa fa-check"></i><b>7</b> ANOVAs</a>
@@ -423,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html"><i class="fa fa-check"></i><b>9.4</b> Two-way between groups ANOVA</a>
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#introduction-1"><i class="fa fa-check"></i><b>9.4.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.4.2" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#example-1"><i class="fa fa-check"></i><b>9.4.2</b> Example</a></li>
+<li class="chapter" data-level="9.4.2" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#example-2"><i class="fa fa-check"></i><b>9.4.2</b> Example</a></li>
 <li class="chapter" data-level="9.4.3" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#assumption-testing"><i class="fa fa-check"></i><b>9.4.3</b> Assumption testing</a></li>
 <li class="chapter" data-level="9.4.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#normality-of-residuals-look-at-the-shapiro-wilk-test-on-the-residuals-or-a-q-q-plot"><i class="fa fa-check"></i><b>9.4.4</b> Normality of residuals: Look at the Shapiro-Wilk test (on the residuals) or a Q-Q plot:</a></li>
 <li class="chapter" data-level="9.4.5" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#output-7"><i class="fa fa-check"></i><b>9.4.5</b> Output</a></li>
@@ -432,20 +384,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>9.5</b> Two-way repeated measures ANOVA</a>
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#introduction-2"><i class="fa fa-check"></i><b>9.5.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.5.2" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#example-2"><i class="fa fa-check"></i><b>9.5.2</b> Example</a></li>
+<li class="chapter" data-level="9.5.2" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#example-3"><i class="fa fa-check"></i><b>9.5.2</b> Example</a></li>
 <li class="chapter" data-level="9.5.3" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#assumptions-1"><i class="fa fa-check"></i><b>9.5.3</b> Assumptions</a></li>
 <li class="chapter" data-level="9.5.4" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#output-8"><i class="fa fa-check"></i><b>9.5.4</b> Output</a></li>
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html"><i class="fa fa-check"></i><b>9.6</b> Two-way mixed ANOVA</a>
 <ul>
 <li class="chapter" data-level="9.6.1" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#introduction-3"><i class="fa fa-check"></i><b>9.6.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.6.2" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#example-3"><i class="fa fa-check"></i><b>9.6.2</b> Example</a></li>
+<li class="chapter" data-level="9.6.2" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#example-4"><i class="fa fa-check"></i><b>9.6.2</b> Example</a></li>
 <li class="chapter" data-level="9.6.3" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#output-9"><i class="fa fa-check"></i><b>9.6.3</b> Output</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="three-way-anova.html"><a href="three-way-anova.html"><i class="fa fa-check"></i><b>9.7</b> Three-way ANOVA</a>
 <ul>
 <li class="chapter" data-level="9.7.1" data-path="three-way-anova.html"><a href="three-way-anova.html#introduction-4"><i class="fa fa-check"></i><b>9.7.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.7.2" data-path="three-way-anova.html"><a href="three-way-anova.html#example-4"><i class="fa fa-check"></i><b>9.7.2</b> Example</a></li>
+<li class="chapter" data-level="9.7.2" data-path="three-way-anova.html"><a href="three-way-anova.html#example-5"><i class="fa fa-check"></i><b>9.7.2</b> Example</a></li>
 <li class="chapter" data-level="9.7.3" data-path="three-way-anova.html"><a href="three-way-anova.html#simple-simple-effects"><i class="fa fa-check"></i><b>9.7.3</b> Simple <em>simple</em> effects</a></li>
 <li class="chapter" data-level="9.7.4" data-path="three-way-anova.html"><a href="three-way-anova.html#assumptions-and-output"><i class="fa fa-check"></i><b>9.7.4</b> Assumptions and output</a></li>
 </ul></li>
@@ -453,23 +405,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
-<li class="chapter" data-level="10.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.2</b> Hierarchical regression</a>
+<li class="chapter" data-level="10.2" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.2</b> ANCOVAs</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-5"><i class="fa fa-check"></i><b>10.2.1</b> Example</a></li>
-<li class="chapter" data-level="10.2.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.2.2</b> Building blocks and output</a></li>
+<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2.2" data-path="ancovas.html"><a href="ancovas.html#example-6"><i class="fa fa-check"></i><b>10.2.2</b> Example</a></li>
+<li class="chapter" data-level="10.2.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.2.3</b> One-way ANCOVA</a></li>
+<li class="chapter" data-level="10.2.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.2.4</b> Assumptions</a></li>
+<li class="chapter" data-level="10.2.5" data-path="ancovas.html"><a href="ancovas.html#linearity-of-the-covariate"><i class="fa fa-check"></i><b>10.2.5</b> Linearity of the covariate</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.3</b> Comparing models</a>
+<li class="chapter" data-level="10.3" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.3</b> Hierarchical regression</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.3.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="10.3.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.3.2</b> Nested model tests</a></li>
-<li class="chapter" data-level="10.3.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.3.3</b> Fit indices</a></li>
+<li class="chapter" data-level="10.3.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-7"><i class="fa fa-check"></i><b>10.3.1</b> Example</a></li>
+<li class="chapter" data-level="10.3.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.3.2</b> Building blocks and output</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10.4</b> Logistic regression</a></li>
-<li class="chapter" data-level="10.5" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html"><i class="fa fa-check"></i><b>10.5</b> Extra: Technical details of <code>anova()</code></a>
+<li class="chapter" data-level="10.4" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.4</b> Comparing models</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="extra-technical-details-of-anova.html"><a href="extra-technical-details-of-anova.html#the-default-test-in-anova"><i class="fa fa-check"></i><b>10.5.1</b> The default test in <code>anova()</code></a></li>
+<li class="chapter" data-level="10.4.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.4.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
+<li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="probability-and-odds.html"><a href="probability-and-odds.html"><i class="fa fa-check"></i><b>11.1</b> Probability and odds</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>A</b> Appendix A: Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -490,9 +451,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="logistic-regression" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Logistic regression<a href="logistic-regression.html#logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Up until now we have largely been talking about models with continuous outcomes. The t-test, ANOVA and most forms of regression have all been with continuous outcomes, for instance. But remember that we had a particular family of tests called the chi-square tests.</p>
+<div id="logistic-regression" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Logistic regression<a href="logistic-regression.html#logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The final section of the book (at least for the time being) deals with <strong>logistic regression.</strong> In some ways, we have come full circle with the inclusion of this chapter: the first statistical test we looked at were to do with categorical data, and now we make a partial return to categorical data.</p>
 </div>
             </section>
 
@@ -500,7 +461,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="comparing-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="extra-technical-details-of-anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="probability-and-odds.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -531,7 +492,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-regressions-2.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-logistic.Rmd",
 "text": "Edit"
 },
 "history": {
