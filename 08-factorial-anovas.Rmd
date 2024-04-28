@@ -190,7 +190,7 @@ twoway_alcohol %>%
   ) +
   geom_point() +
   geom_line() +
-  geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.2)
+  geom_errorbar(aes(ymin = mean - 1.96*se, ymax = mean + 1.96*se), width = 0.2)
 ```
 
 ### Assumption testing
@@ -254,7 +254,7 @@ Our post-hoc table gives us this information - but not all rows are necessarily 
 ```{r}
 twoway_alcohol %>%
   group_by(alcohol_type) %>%
-  pairwise_t_test(spend ~ genre, detailed = TRUE, p.adjust.method = "holm")
+  emmeans_test(spend ~ genre, detailed = TRUE, p.adjust.method = "holm")
 ```
 
 If we were to frame it in terms of the variables in the dataset, we would be looking for:
@@ -272,7 +272,11 @@ Of course, it might make more sense to do the simple effects tests the other way
 ```{r}
 twoway_alcohol %>%
   group_by(genre) %>%
-  pairwise_t_test(spend ~ alcohol_type, p.adjust.method = "holm")
+  emmeans_test(spend ~ alcohol_type, p.adjust.method = "holm", detailed = TRUE)
+
+emmeans(twoway_alcohol_aov, ~ alcohol_type, by = "genre") %>%
+  contrast(method = "pairwise") %>%
+  confint(adjust = "bonf")
 ```
 
 ### Write-up
@@ -384,6 +388,17 @@ Once again this is quite a busy table! We can see that there is a significant ma
 
 To decompose this, we'll do our usual simple effects tests - holding one variable constant and running pairwise comparisons with the other. For this example, we'll just hold the difficulty constant and compare music genres. We can absolutely reverse the simple effects, but for the sake of simplicity we'll just do it the one way round for this example.
 
+```{r}
+twoway_exam %>%
+  group_by(difficulty) %>%
+  t_test(grade ~ music, detailed = TRUE, paired = TRUE)
+
+emmeans(twoway_exam_aov, ~ difficulty, by = "music") %>%
+  contrast(method = "pairwise") %>%
+  confint(adjust = "bonf")
+```
+
+
 From this we can see that for easy exams, on average people scored 4.4 points higher with happy music compared to sad music (p = .023). On medium exams, there was no difference between happy and sad music (p = .900). Lastly, for harder exams people who listened to happy music scored, on average, 11.7 points higher than people who listened to sad music (p \< .001). This suggests overall that happy music is probably better for completing exams than sad music, though the medium difficulty exam is a strange one here.
 
 If, instead, we wanted to hold music type constant and test differences in difficulty, we would get this output. This paints a much more interesting picture about what is going on, and might be a more interesting way of decomposing the interaction. But remember - only do one or the other!
@@ -478,7 +493,11 @@ Let's decompose this with simple effects. Doing this in Jamovi is not trivial at
 ```{r}
 twoway_mixed %>%
   group_by(time) %>%
-  pairwise_t_test(anxiety ~ group, p.adjust.method = "none")
+  t_test(anxiety ~ group, p.adjust.method = "none", detailed = TRUE)
+
+emmeans(twoway_mixed_aov, ~ group, by = "time") %>%
+  contrast(method = "pairwise") %>%
+  confint(adjust = "bonf")
 ```
 
 -   Run a one-way repeated measures ANOVA for each group - this would be the simple effect of time
@@ -486,7 +505,11 @@ twoway_mixed %>%
 ```{r}
 twoway_mixed %>%
   group_by(group) %>%
-  pairwise_t_test(anxiety ~ time, p.adjust.method = "none", paired = TRUE)
+  emmeans_test(anxiety ~ time, p.adjust.method = "none", detailed = TRUE)
+
+emmeans(twoway_mixed_aov, ~ time, by = "group") %>%
+  contrast(method = "pairwise") %>%
+  confint(adjust = "bonf")
 ```
 
 Let's bulletpoint the main feature of each, and you can refer to the output below as you go through:
