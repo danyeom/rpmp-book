@@ -107,3 +107,4 @@ f_val <- ((SSb-SSa)/(pa-pb))/(SSa/dfa)
 pf(f_val, df1 = dfb-dfa, df2 = dfa, lower.tail = FALSE)
 
 ```
+

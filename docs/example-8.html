@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11.1 Probability and odds | Research Process for Music Psychologists</title>
+  <title>11.3 Example | Research Process for Music Psychologists</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.1 Probability and odds | Research Process for Music Psychologists" />
+  <meta property="og:title" content="11.3 Example | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.1 Probability and odds | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="11.3 Example | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="logistic-regression.html"/>
-<link rel="next" href="logistic-regression-introduction.html"/>
+<link rel="prev" href="logistic-regression-introduction.html"/>
+<link rel="next" href="appendix-a-technical-details-of-anova.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -532,146 +532,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="probability-and-odds" class="section level2 hasAnchor" number="11.1">
-<h2><span class="header-section-number">11.1</span> Probability and odds<a href="probability-and-odds.html#probability-and-odds" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="reminder-of-probabilities" class="section level3 hasAnchor" number="11.1.1">
-<h3><span class="header-section-number">11.1.1</span> Reminder of probabilities<a href="probability-and-odds.html#reminder-of-probabilities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Consider the following table:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">Burnout</th>
-<th align="right">No burnout</th>
-<th align="right">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Musician</td>
-<td align="right">20</td>
-<td align="right">4</td>
-<td align="right">24</td>
-</tr>
-<tr class="even">
-<td align="left">Non-musician</td>
-<td align="right">10</td>
-<td align="right">8</td>
-<td align="right">18</td>
-</tr>
-<tr class="odd">
-<td align="left">Total</td>
-<td align="right">30</td>
-<td align="right">12</td>
-<td align="right">42</td>
-</tr>
-</tbody>
-</table>
-<p>You may recall that this is a 2x2 contingency table, which we have seen before in a chi-square context. Using this table, we can work out the <em>probability</em> of certain events or outcomes.</p>
-<p>If we selected someone randomly from this table, for example, what is the probability that they would be a musician? Well, we can see that there are 24 musicians from the sample of 42, so we could simply say:</p>
-<p><span class="math display">\[
-P(Musician) = \frac{24}{42} = 0.57
-\]</span></p>
-<p>Likewise, what is the probability that someone is burnt out? That would simply be:</p>
-<p><span class="math display">\[
-P(Burnout) = \frac{30}{42} = 0.71
-\]</span></p>
-<p>What about the probability that someone is a musician <em>and</em> and burnt out? We could denote this as follows:</p>
-<p><span class="math display">\[
-P(Musician \cap Burnout) = \frac{20}{42} = 0.47
-\]</span>
-What about the probability that someone is burnt out, given they are a musician? This would be a <em>conditional</em> probability, where we are finding a probability of something on the condition that the person is burnt out. There are 24 participants who reported burnout, so our calculation would be as follows:</p>
-<p><span class="math display">\[
-P(Burnout | Musician) = \frac{20}{24} = 0.83
-\]</span></p>
+<div id="example-8" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Example<a href="example-8.html#example-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Below is a dataset relating to the presence of sleep disorders (credit to Laksika Tharmalingam on <a href="https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset">Kaggle</a> for this dataset!), and various metrics relating to lifestyle and physical health. The dataset contains the following variables:</p>
+<ul>
+<li>id: Participant id</li>
+<li>gender: Participant gender</li>
+<li>age: Participant age</li>
+<li>sleep_duration: The number of hours the participant sleeps per day</li>
+<li>sleep_quality: The participant’s subjective rating (1-10) of the quality of their sleep</li>
+<li>physical_activity: How many minutes per day the participant does physical activity</li>
+<li>stress: Subjective rating of stress level (1-10)</li>
+<li>bmi: BMI category (Underweight, normal, overweight)</li>
+<li>blood_pressure: systolic/diastolic blood pressure</li>
+<li>heart_rate: Resting heart rate of the participant, in bpm</li>
+<li>sleep_disorder: Whether the participant has a sleep disorder or not (0 = No, 1 = Yes)</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="example-8.html#cb6-1" tabindex="-1"></a>sleep <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;logistic&quot;</span>, <span class="st">&quot;sleep_data.csv&quot;</span>))</span></code></pre></div>
+<pre><code>## Rows: 374 Columns: 11
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (3): gender, bmi, blood_pressure
+## dbl (8): id, age, sleep_duration, sleep_quality, physical_activity, stress, ...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>In this example, we’re interested in seeing whether specific factors predict whether or not the participant has a sleep disorder. We’ll work with an example with one predictor to start, and then move to multiple predictors afterwards.</p>
+<div id="assumptions-3" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Assumptions<a href="example-8.html#assumptions-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The refreshing thing about the logistic regression is that there are actually very few assumptions that need to be made. For starters, we do <strong>not</strong> assume the following:</p>
+<ul>
+<li>Linearity between the IV and the DV</li>
+<li>Normality</li>
+<li>Homoscedasticity</li>
+</ul>
+<p>None of these assumptions apply! What we do assume instead is:</p>
+<ul>
+<li>Linearity between the IV and the <em>logit</em> (i.e. the log odds)</li>
+<li>The outcome is a binary variable that is <em>mutually exclusive</em> (someone cannot be Y = 0 and Y = 1 at the same time)</li>
+<li>Absence of multicollinearity (in a multiple regression context)</li>
+</ul>
 </div>
-<div id="odds" class="section level3 hasAnchor" number="11.1.2">
-<h3><span class="header-section-number">11.1.2</span> Odds<a href="probability-and-odds.html#odds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now, let’s talk about <strong>odds.</strong> Odds are simply the likelihood of a particular outcome occuring, and is calculated as the probability that an event will occur, divided by the probability that the event will <em>not</em> occur. In other words, if the probability of an event is denoted as <span class="math inline">\(A\)</span>, the probability of event <span class="math inline">\(A\)</span> not occuring is <span class="math inline">\(1-A\)</span>. We can then calculate the odds as:</p>
+<div id="building-the-model" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Building the model<a href="example-8.html#building-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is where things start to change a little from what we’re used to. Because we are not building a linear model but a <em>generalised</em> linear model, we now need to use the <code>glm()</code> function in R. <code>glm()</code>, by and large, works exactly the same way as you have seen with <code>lm()</code>; you need to give it arguments in the form of <code>outcome ~ predictor</code>, and once you have run the function you need to call the results using <code>summary()</code>. The first thing that changes is that by virtue of the fact that we are using the GLM, we must specify what link function we are working with. This can be set using the <code>family</code> argument.</p>
+<p>In the instance of logistic regression, the relevant family is <code>binomial</code>, and specifically <code>binomial(link = "logit")</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="example-8.html#cb8-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> data, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>))</span></code></pre></div>
+<p>The formula is a little strange, but <code>binomial()</code> is essentially a function that takes the argument <code>link</code>, for which we set the value as <code>"logit"</code>. The <code>logit</code> argument is the default for this function though, so we can simply shorten this down to <code>family = binomial</code> specifically for logistic regressions. (For other binomial-based GLMs, you must specify the link.)</p>
+<p>With that in mind, we can build our logistic regression models. In the first instance, let’s see if age predicts whether someone has a sleep disorder.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="example-8.html#cb9-1" tabindex="-1"></a>sleep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
+<span id="cb9-2"><a href="example-8.html#cb9-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -5.28024    0.65343  -8.081 6.44e-16 ***
+## age          0.11549    0.01493   7.738 1.01e-14 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 507.47  on 373  degrees of freedom
+## Residual deviance: 433.36  on 372  degrees of freedom
+## AIC: 437.36
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p>Note that our output table is a little bit different than what we’re used to; this is because of the change in procedure mentioned on the previous page (from least squares to maximum likelihood). However, we can still largely read this output the same way as we have. We can see that age is a significant predictor (<em>p</em> &lt; .001).</p>
+<p>The coefficient for age is .115. We can get the coefficients seperately by using the <code>coef()</code> function on our model:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="example-8.html#cb11-1" tabindex="-1"></a><span class="fu">coef</span>(sleep_glm)</span></code></pre></div>
+<pre><code>## (Intercept)         age 
+##  -5.2802414   0.1154897</code></pre>
+<p>What does this mean? It means that for every 1 unit increase in age, the <em>log odds</em> increase by .115. This is important because remember that we’re modelling against <em>log odds</em>, not odds or probability! In essence, we have estimated the following:</p>
 <p><span class="math display">\[
-Odds = \frac{A}{1-A}
+log(Odds) = -5.280 + (0.115 \times x_1)
 \]</span></p>
-<p>Let’s return to our example above, and print out the table again for ease of reference.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">Burnout</th>
-<th align="right">No burnout</th>
-<th align="right">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Musician</td>
-<td align="right">20</td>
-<td align="right">4</td>
-<td align="right">24</td>
-</tr>
-<tr class="even">
-<td align="left">Non-musician</td>
-<td align="right">10</td>
-<td align="right">8</td>
-<td align="right">18</td>
-</tr>
-<tr class="odd">
-<td align="left">Total</td>
-<td align="right">30</td>
-<td align="right">12</td>
-<td align="right">42</td>
-</tr>
-</tbody>
-</table>
-<p>What are the <em>odds</em> of burnout in the musician group? To do this, we need to find the probability of burnout given they are musicians, and divide that by the probability of no burnout given they are musicians. The odds of burnout given that someone is a musician is as we saw above:</p>
+<p>We need to make sense of this another way somehow. Recall that log odds and odds relate to each other in the following way:</p>
 <p><span class="math display">\[
-P(Burnout | Musician) = \frac{20}{24}
+Odds = e^{\beta_0 + \beta_1 x_1 + \epsilon_i}
 \]</span></p>
-<p>And the probability of someone <em>not</em> burning out given that they are a musician must therefore be:</p>
-<p><span class="math display">\[
-P(No \ burnout | Musician) = \frac{4}{24}
-\]</span>
-Now we can divide these two probabilities as follows:</p>
-<p><span class="math display">\[
-Odds = \frac{20/24}{4/24} = \frac{20}{4} = 5
-\]</span></p>
-<p>What this means is that musicians are <em>5</em> times as more likely to experience burnout than not experience it.</p>
-<p>One more example. What are the odds of burnout in the non-musician group? Using the same principles as above, we can calculate this as follows.</p>
-<p><span class="math display">\[
-P(Burnout | Nonmusician) = \frac{10}{18}
-\]</span>
-<span class="math display">\[
-P(No \ burnout | Nonmusician) = \frac{8}{18}
-\]</span></p>
-<p><span class="math display">\[
-Odds = \frac{10/18}{8/18} = \frac{10}{8} = 1.25
-\]</span></p>
-<p>So even non-musicians are 1.25 times more likely - or, in other words, 25% more likely - to increase burnout than not experience it.</p>
+<p>To obtain the odds, as discussed on the previous page, we need to exponentiate our coefficients:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="example-8.html#cb13-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm))</span></code></pre></div>
+<pre><code>## (Intercept)         age 
+## 0.005091201 1.122423009</code></pre>
+<p>The exponentiated coefficient gives us our <strong>odds ratio.</strong> This describes the <em>multiplied</em> change in odds for every 1 unit increase of our predictor. In this instance, for every 1 year increase in age, the predicted odds of having a sleep disorder are multiplied by 1.12. Another way to describe this is that the predicted odds of having a sleep disorder increase by a <em>factor of</em> 1.12.</p>
+<p>This coefficient does <em>not</em> mean the following:</p>
+<ul>
+<li>The odds increase by 1.12 for every unit of x - remember, only the <em>log odds</em> are linearly related to the predictor. The odds are non-linearly related.</li>
+<li>The probability increases by 1.12 - same deal as above, the probability isn’t linearly related to the predictors.</li>
+</ul>
 </div>
-<div id="odds-ratios" class="section level3 hasAnchor" number="11.1.3">
-<h3><span class="header-section-number">11.1.3</span> Odds ratios<a href="probability-and-odds.html#odds-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now we can take a look at the <strong>odds ratio</strong>. The odds ratio describes how likely one <em>outcome</em> is given an exposure/group, compared to another exposure/group. The odds ratio is calculated by dividing the <em>odds</em> of event A by the odds of event B. The resulting value gives an indication of how much more likely event A is compared to event B, given differences in exposure.</p>
-<p>We have already calculated two sets of odds ratios:</p>
-<ol style="list-style-type: lower-alpha">
-<li>The odds that a musician experiences burnout; <span class="math inline">\(Odds = 5\)</span></li>
-<li>The odds that a non-musician experiences burnout; <span class="math inline">\(Odds = 1.25\)</span></li>
-</ol>
-<p>We can now calculate an odds ratio for how likely a <em>musician</em> is to experience burnout compared to a non-musician. We simply divide the two sets of odds:</p>
+<div id="predictions-1" class="section level3 hasAnchor" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> Predictions<a href="example-8.html#predictions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now recall that we can convert from odds to probabilities in the following manner:</p>
 <p><span class="math display">\[
-OR = \frac{Odds(A)}{Odds(B)}
+P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \epsilon_i)}}
+\]</span></p>
+<p>Using this, we can make predictions about the <em>probability</em> of our outcome for a given value of our predictor. For example, what is the probability that a 50 year old will have a sleep disorder? That would be given as the following:</p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \epsilon_i)}}
 \]</span></p>
 <p><span class="math display">\[
-OR = \frac{5}{1.25} = 4
+P(Y = 1) = \frac{1}{1 + e^{-(-5.280 + (0.115 \times 50)}}
 \]</span></p>
-<p>An odds ratio of 4 indicates that a musician is <em>4 times as likely</em> to experience burnout compared to a non-musician. Heavens!</p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-0.47}}
+\]</span></p>
+<p>We can use R to do the calculation for us:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="example-8.html#cb15-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.47</span>))</span></code></pre></div>
+<pre><code>## [1] 0.6153838</code></pre>
+<p>Thus, a 50 year old person has a 61.5% chance of having a sleep disorder (note that this has been rounded).</p>
+<p>We can actually plot the expected probabilities across a range of values for age by first asking R to predict the probabilities across a range of ages. This will draw the characteristic S-shaped curve of the logistic model. We use the <code>predict()</code> function to calculate the predicted probabilities of each value of our predictor. The <code>type = response</code> argument is used here to tell R to predict the probabilities (and not the log odds).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="example-8.html#cb17-1" tabindex="-1"></a>age_range <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-2"><a href="example-8.html#cb17-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">70</span></span>
+<span id="cb17-3"><a href="example-8.html#cb17-3" tabindex="-1"></a>) </span>
+<span id="cb17-4"><a href="example-8.html#cb17-4" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="example-8.html#cb17-5" tabindex="-1"></a>age_range<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(sleep_glm, age_range, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb17-6"><a href="example-8.html#cb17-6" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="example-8.html#cb17-7" tabindex="-1"></a>age_range <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="example-8.html#cb17-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb17-9"><a href="example-8.html#cb17-9" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> predicted)</span>
+<span id="cb17-10"><a href="example-8.html#cb17-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="example-8.html#cb17-11" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> binomial), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb17-12"><a href="example-8.html#cb17-12" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial glm!</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>We can get confidence intervals around our estimated coefficients using <code>confint()</code>, just like we have previously. We can do this either on the original coefficients, or the exponentiated ones. The confidence interval around the exponentiated coefficients gives us a 95% CI for our odds ratio.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="example-8.html#cb20-1" tabindex="-1"></a><span class="fu">confint</span>(sleep_glm)</span></code></pre></div>
+<pre><code>## Waiting for profiling to be done...</code></pre>
+<pre><code>##                   2.5 %     97.5 %
+## (Intercept) -6.60646431 -4.0395789
+## age          0.08712071  0.1457569</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="example-8.html#cb23-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm))</span></code></pre></div>
+<pre><code>## Waiting for profiling to be done...</code></pre>
+<pre><code>##                   2.5 %     97.5 %
+## (Intercept) 0.001351603 0.01760488
+## age         1.091028365 1.15691494</code></pre>
+<p>Thus, we can say that the OR of a sleep disorder is 1.12 (95% CI = [1.09, 1.16]).</p>
+
 </div>
 </div>
+<!-- </div> -->
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="logistic-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="logistic-regression-introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="logistic-regression-introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix-a-technical-details-of-anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

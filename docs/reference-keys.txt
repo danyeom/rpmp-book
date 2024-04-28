@@ -230,3 +230,14 @@ vectors
 data-frames
 logistic-regression
 probability-and-odds
+reminder-of-probabilities
+odds
+odds-ratios
+logistic-regression-introduction
+introduction-6
+modelling-probabilities-sort-of
+the-logistic-model
+example-8
+assumptions-3
+building-the-model
+predictions-1
