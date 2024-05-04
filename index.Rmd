@@ -8,15 +8,14 @@ output:
   bookdown::gitbook:
     split_by: section
     df_print: paged
+    fontsettings:
+      theme: night
 documentclass: book
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+url: https://danyeom.github.io/rpmp-book
 # cover-image: path to the social sharing image like images/cover.jpg
-# # cd C:/Users/yeom7/OneDrive\ -\ The\ University\ of\ Melbourne/Tutoring/RPMP/rpmp_bookdown
 description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
-  set in the _output.yml file.
+  This is an R adaptation of Research Process for Music Psychologists.
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
@@ -35,6 +34,11 @@ By and large the content is exactly the same as the Jamovi-focused content in th
 
 ```{r, eval=FALSE}
 bookdown::render_book()
+```
+```{r eval = FALSE, echo = FALSE}
+install.packages(c(
+  "tidyverse", "here", "psych", "rstatix", "ggpubr", "DescTools", "ggcorrplot", "afex", "emmeans", "effectsize"
+))
 ```
 
 
