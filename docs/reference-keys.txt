@@ -241,3 +241,5 @@ example-8
 assumptions-3
 building-the-model
 predictions-1
+theory-of-logistic-regression
+logistic-regression-with-multiple-predictors
