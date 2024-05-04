@@ -131,7 +131,7 @@ There is only one relevant assumption that we need to check for the one-sample t
 A significant p-value on the SW test suggests that the data is non-normal. Thankfully, that isn't an issue here.
 
 ```{r}
-shapiro.test(w8_grades$sample)
+shapiro.test(w8_grades$grade)
 ```
 
 The second way is through a QQ plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.
@@ -148,9 +148,9 @@ Here are our descriptive statistics. They alone might already tell us something 
 ```{r}
 w8_grades %>%
   summarise(
-    mean = mean(sample, na.rm = TRUE),
-    sd = sd(sample, na.rm = TRUE),
-    median = median(sample, na.rm = TRUE)
+    mean = mean(grade, na.rm = TRUE),
+    sd = sd(grade, na.rm = TRUE),
+    median = median(grade, na.rm = TRUE)
   ) %>%
   knitr::kable(digits = 2)
 ```
@@ -162,14 +162,14 @@ Below is our output from the one-sample t-test. Our result tells us that there i
 R Note: Jamovi will give you a 95% confidence interval around the mean difference as 95% CI = [-5.85, -3.97]. R however will give you a CI around the actual *mean*. In this case, the 95% confidence interval for the group mean is [66.15, 68.03]. Really though, this is giving us the same information; 72 - 5.85 = 66.15, and 72 - 3.97 = 68.03. So the only difference is in what value is presented for the 95% CI, but the actual inference itself doesn't change.
 
 ```{r}
-t.test(w8_grades$sample, mu = 72)
+t.test(w8_grades$grade, mu = 72)
 ```
 
 Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test. `detailed = TRUE` will print a detailed output that will give the 95% CI for the mean as well: 
 
 ```{r}
 w8_grades %>%
-  t_test(sample ~ 1, mu = 72, detailed = TRUE)
+  t_test(grade ~ 1, mu = 72, detailed = TRUE)
 ```
 
 
@@ -390,20 +390,20 @@ For a one-sample t-test, the formula once again needs to be in `var ~ 1` format 
 
 ```{r}
 w8_grades %>% 
-  cohens_d(sample ~ 1, mu = 72, ci = TRUE, ci.type = "norm") 
+  rstatix::cohens_d(grade ~ 1, mu = 72, ci = TRUE, ci.type = "norm") 
 ```
 For an independent-samples t-test:
 
 ```{r}
 w8_training %>%
-  cohens_d(Years_training ~ Group, ci = TRUE, ci.type = "norm")
+  rstatix::cohens_d(Years_training ~ Group, ci = TRUE, ci.type = "norm")
 ```
 
 For a paired-samples t-test, `paired = TRUE` must be selected:
 
 ```{r}
 w8_symptoms %>%
-  cohens_d(symptom_score ~ time, paired = TRUE, ci = TRUE, ci.type = "norm")
+  rstatix::cohens_d(symptom_score ~ time, paired = TRUE, ci = TRUE, ci.type = "norm")
 ```
 
 The Canvas version asks you to interpret each of these effect sizes, but... `rstatix` will automatically label this for you!
@@ -412,7 +412,7 @@ Alternatively, you can use the `effectsize` package. Just note that for paired s
 
 ```{r}
 # One-sample
-effectsize::cohens_d(data = w8_grades, sample ~ 1, mu = 72) 
+effectsize::cohens_d(data = w8_grades, grade ~ 1, mu = 72) 
 
 # Independent samples. Note that pooled_sd = FALSE must be ticked for Welch tests
 effectsize::cohens_d(data = w8_training, Years_training ~ Group, pooled_sd = FALSE) 
