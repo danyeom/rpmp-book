@@ -5,25 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.3 R-specific considerations | Research Process for Music Psychologists</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.3 R-specific considerations | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9.3 R-specific considerations | Research Process for Music Psychologists" />
   
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
 
 <meta name="author" content="Daniel Yeom" />
@@ -64,7 +58,7 @@ set in the _output.yml file.</p>" />
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -148,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
@@ -547,14 +541,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.3.2</span> Writing interactions in R<a href="r-specific-considerations.html#writing-interactions-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>aov_ez()</code> function that was just mentioned doesn’t use the same kind of formula notation that we saw in the other test sections, and that’s to make it easier to run. However, these analyses absolutely can be recreated in formula notation, and you will see many instances of this.</p>
 <p>Recall the basic layout for a formula in R:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-specific-considerations.html#cb9-1" tabindex="-1"></a><span class="fu">lm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span>
-<span id="cb9-2"><a href="r-specific-considerations.html#cb9-2" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="r-specific-considerations.html#cb222-1" tabindex="-1"></a><span class="fu">lm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span>
+<span id="cb222-2"><a href="r-specific-considerations.html#cb222-2" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>To extend this to two variables with no interaction, you can simply add the second predictor as such:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-specific-considerations.html#cb10-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="r-specific-considerations.html#cb223-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>To code for an interaction term, however, there either needs to be an explicit term for the interaction (denoted using a colon between the two interaction variables):</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-specific-considerations.html#cb11-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="r-specific-considerations.html#cb224-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>OR as the shorthand for above, which uses the asterisk. Note that the asterisk will include both the interaction term and all of its main effects (a la principle of marginality):</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-specific-considerations.html#cb12-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">*</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="r-specific-considerations.html#cb225-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">*</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>For what we do in this section, this is ok - but you may find in certain circumstances that you don’t want all of these terms together, so the first approach will let you specify what terms to include in the model.</p>
 </div>
 <div id="simple-effects-tests-in-r" class="section level3 hasAnchor" number="9.3.3">
@@ -566,18 +560,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Define the estimated marginal means for the simple effects test you wish to run.</li>
 </ol>
 <p>Imagine an ANOVA model named <code>model_aov</code> and two predictors named <code>A</code> and <code>B</code>. If we wanted to run a simple effects test between each level of A for every level of B, we can define the following:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-specific-considerations.html#cb13-1" tabindex="-1"></a>model_em <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="r-specific-considerations.html#cb226-1" tabindex="-1"></a>model_em <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>)</span></code></pre></div>
 <p>This will estimate the EM means for every level of A, at each level of B. We assign this to a variable called <code>model_em</code>, as we will use this later.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Generate pairwise comparisons for the simple effects test.</li>
 </ol>
 <p>Continuing on from the example above, we can use the <code>pairs()</code> function on our EM object, <code>model_em</code>, to run the simple effects test. <code>infer = TRUE</code> will generate confidence intervals for the difference in EM means. By default this will be set at 95% confidence, which is typically what we want.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-specific-considerations.html#cb14-1" tabindex="-1"></a><span class="fu">pairs</span>(model_em, <span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="r-specific-considerations.html#cb227-1" tabindex="-1"></a><span class="fu">pairs</span>(model_em, <span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>If we want to adjust the <em>p</em>-values at this stage, we can give <code>pairs()</code> an additional argument <code>adjust</code>, with the name of the adjustment method as a string (e.g. <code>pairs(x, adjust = "holm"</code>.))</p>
 <p>To run simple effects tests for variable two, the variable names simply need to be swapped.</p>
 <p>Optionally, to do this all in one go we could simply pipe from <code>emmeans()</code> to <code>pairs</code> as follows:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-specific-considerations.html#cb15-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="r-specific-considerations.html#cb15-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="r-specific-considerations.html#cb228-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb228-2"><a href="r-specific-considerations.html#cb228-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Final note on this matter: Rstatix does provide a function called <code>emmeans_test</code> to perform a similar test. However, using the original <code>emmeans</code> package and its functions give you much greater flexibility, so it helps to learn how to use this as is.</p>
 </div>
 </div>

@@ -5,31 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.2 p-values | Research Process for Music Psychologists</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.2 p-values | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4.2 p-values | Research Process for Music Psychologists" />
   
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
 
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-04-21" />
+<meta name="date" content="2024-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,7 +58,7 @@ set in the _output.yml file.</p>" />
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -155,23 +149,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
 <li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
-<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#data-structures"><i class="fa fa-check"></i><b>2.1.3</b> Data structures</a></li>
+<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#functions"><i class="fa fa-check"></i><b>2.1.3</b> Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.2</b> Packages and functions</a>
+<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.2.1</b> Loading packages</a></li>
-<li class="chapter" data-level="2.2.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.2.2</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.2.3</b> The <code>here()</code> package</a></li>
+<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.3</b> Wrangling data with dplyr and others</a>
+<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.3.1</b> Selecting columns with <code>select()</code></a></li>
-<li class="chapter" data-level="2.3.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.3.2</b> Filtering rows with <code>filter()</code></a></li>
-<li class="chapter" data-level="2.3.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.3.3</b> Creating new columns with <code>mutate()</code></a></li>
-<li class="chapter" data-level="2.3.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.3.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
-<li class="chapter" data-level="2.3.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.3.5</b> Some other handy tidyverse functions</a></li>
+<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.3.1</b> Loading packages</a></li>
+<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.2</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.3</b> The <code>here()</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.4</b> Making graphs with ggplot2</a></li>
+<li class="chapter" data-level="2.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.4</b> Wrangling data with dplyr and others</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.4.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.4.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.4.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.4.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.4.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.4.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.4.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
@@ -436,9 +435,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.1" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#introduction-1"><i class="fa fa-check"></i><b>9.4.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.4.2" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#example-2"><i class="fa fa-check"></i><b>9.4.2</b> Example</a></li>
 <li class="chapter" data-level="9.4.3" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#assumption-testing"><i class="fa fa-check"></i><b>9.4.3</b> Assumption testing</a></li>
-<li class="chapter" data-level="9.4.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#normality-of-residuals-look-at-the-shapiro-wilk-test-on-the-residuals-or-a-q-q-plot"><i class="fa fa-check"></i><b>9.4.4</b> Normality of residuals: Look at the Shapiro-Wilk test (on the residuals) or a Q-Q plot:</a></li>
-<li class="chapter" data-level="9.4.5" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#output-7"><i class="fa fa-check"></i><b>9.4.5</b> Output</a></li>
-<li class="chapter" data-level="9.4.6" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#write-up"><i class="fa fa-check"></i><b>9.4.6</b> Write-up</a></li>
+<li class="chapter" data-level="9.4.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#output-7"><i class="fa fa-check"></i><b>9.4.4</b> Output</a></li>
+<li class="chapter" data-level="9.4.5" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#write-up"><i class="fa fa-check"></i><b>9.4.5</b> Write-up</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>9.5</b> Two-way repeated measures ANOVA</a>
 <ul>
@@ -484,6 +482,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="probability-and-odds.html"><a href="probability-and-odds.html"><i class="fa fa-check"></i><b>11.1</b> Probability and odds</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="probability-and-odds.html"><a href="probability-and-odds.html#reminder-of-probabilities"><i class="fa fa-check"></i><b>11.1.1</b> Reminder of probabilities</a></li>
+<li class="chapter" data-level="11.1.2" data-path="probability-and-odds.html"><a href="probability-and-odds.html#odds"><i class="fa fa-check"></i><b>11.1.2</b> Odds</a></li>
+<li class="chapter" data-level="11.1.3" data-path="probability-and-odds.html"><a href="probability-and-odds.html#odds-ratios"><i class="fa fa-check"></i><b>11.1.3</b> Odds ratios</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html"><i class="fa fa-check"></i><b>11.2</b> Theory of logistic regression</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-6"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#modelling-probabilities-sort-of"><i class="fa fa-check"></i><b>11.2.2</b> Modelling probabilities (sort of)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#the-logistic-model"><i class="fa fa-check"></i><b>11.2.3</b> The logistic model</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="example-8.html"><a href="example-8.html"><i class="fa fa-check"></i><b>11.3</b> Example</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="example-8.html"><a href="example-8.html#assumptions-3"><i class="fa fa-check"></i><b>11.3.1</b> Assumptions</a></li>
+<li class="chapter" data-level="11.3.2" data-path="example-8.html"><a href="example-8.html#building-the-model"><i class="fa fa-check"></i><b>11.3.2</b> Building the model</a></li>
+<li class="chapter" data-level="11.3.3" data-path="example-8.html"><a href="example-8.html#predictions-1"><i class="fa fa-check"></i><b>11.3.3</b> Predictions</a></li>
+<li class="chapter" data-level="11.3.4" data-path="example-8.html"><a href="example-8.html#logistic-regression-with-multiple-predictors"><i class="fa fa-check"></i><b>11.3.4</b> Logistic regression with multiple predictors</a></li>
+</ul></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>A</b> Appendix A: Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
@@ -525,34 +545,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>On the right is an example of what one possible alternative hypothesis might look like - that this data is meaningfully represented by two underlying distributions or groups, and that there is a difference between these two groups (shown as the blue and red curves). Contrast that with the left graph, where we hypothesise that there is no difference - in other words, that the data can be captured by the one distribution. This graph on the left is a representation of our null hypothesis, and as per the definition of the p-value, this is the distribution we focus on.</p>
 <p>The area shaded blue represents the probability of getting that specific result. In the left example, the area shaded represents the probability of getting a value lower than x = 1. You can see that the blue area is quite big, so the probability of getting a value lower than 1 is quite high. On the right hand side is another example, which represents the probability of getting a value of x higher than 2. Here, the shaded area is small, so the associated probability is low.</p>
 <p>Now, recall the following figure from last week:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="p-values.html#cb62-1" tabindex="-1"></a>norm_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb62-2"><a href="p-values.html#cb62-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">1001</span>)</span>
-<span id="cb62-3"><a href="p-values.html#cb62-3" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb62-4"><a href="p-values.html#cb62-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb62-5"><a href="p-values.html#cb62-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">dnorm</span>(x)</span>
-<span id="cb62-6"><a href="p-values.html#cb62-6" tabindex="-1"></a>  )</span>
-<span id="cb62-7"><a href="p-values.html#cb62-7" tabindex="-1"></a></span>
-<span id="cb62-8"><a href="p-values.html#cb62-8" tabindex="-1"></a></span>
-<span id="cb62-9"><a href="p-values.html#cb62-9" tabindex="-1"></a><span class="fu">ggplot</span>(norm_data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;transparent&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-10"><a href="p-values.html#cb62-10" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">1.96</span>, <span class="dv">3</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#556F44&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#556F44&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-11"><a href="p-values.html#cb62-11" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#95BF74&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#95BF74&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-12"><a href="p-values.html#cb62-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#556F44&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#556F44&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-13"><a href="p-values.html#cb62-13" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.2</span>, <span class="at">label =</span> <span class="st">&quot;95%&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-14"><a href="p-values.html#cb62-14" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="fl">2.5</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">&quot;2.5%&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-15"><a href="p-values.html#cb62-15" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">2.5</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">&quot;2.5%&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-16"><a href="p-values.html#cb62-16" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb62-17"><a href="p-values.html#cb62-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standard deviations&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb62-18"><a href="p-values.html#cb62-18" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb62-19"><a href="p-values.html#cb62-19" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb62-20"><a href="p-values.html#cb62-20" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb62-21"><a href="p-values.html#cb62-21" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
-<span id="cb62-22"><a href="p-values.html#cb62-22" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
-<span id="cb62-23"><a href="p-values.html#cb62-23" tabindex="-1"></a>    <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb62-24"><a href="p-values.html#cb62-24" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb62-25"><a href="p-values.html#cb62-25" tabindex="-1"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb62-26"><a href="p-values.html#cb62-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb62-27"><a href="p-values.html#cb62-27" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="dv">0</span>, <span class="fl">1.96</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="p-values.html#cb75-1" tabindex="-1"></a>norm_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb75-2"><a href="p-values.html#cb75-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">1001</span>)</span>
+<span id="cb75-3"><a href="p-values.html#cb75-3" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb75-4"><a href="p-values.html#cb75-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb75-5"><a href="p-values.html#cb75-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb75-6"><a href="p-values.html#cb75-6" tabindex="-1"></a>  )</span>
+<span id="cb75-7"><a href="p-values.html#cb75-7" tabindex="-1"></a></span>
+<span id="cb75-8"><a href="p-values.html#cb75-8" tabindex="-1"></a></span>
+<span id="cb75-9"><a href="p-values.html#cb75-9" tabindex="-1"></a><span class="fu">ggplot</span>(norm_data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;transparent&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-10"><a href="p-values.html#cb75-10" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">1.96</span>, <span class="dv">3</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#556F44&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#556F44&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-11"><a href="p-values.html#cb75-11" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#95BF74&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#95BF74&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-12"><a href="p-values.html#cb75-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="fl">1.96</span>), <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#556F44&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">colour =</span> <span class="st">&quot;#556F44&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-13"><a href="p-values.html#cb75-13" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.2</span>, <span class="at">label =</span> <span class="st">&quot;95%&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-14"><a href="p-values.html#cb75-14" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="fl">2.5</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">&quot;2.5%&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-15"><a href="p-values.html#cb75-15" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">2.5</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">&quot;2.5%&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-16"><a href="p-values.html#cb75-16" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb75-17"><a href="p-values.html#cb75-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standard deviations&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-18"><a href="p-values.html#cb75-18" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb75-19"><a href="p-values.html#cb75-19" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb75-20"><a href="p-values.html#cb75-20" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb75-21"><a href="p-values.html#cb75-21" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
+<span id="cb75-22"><a href="p-values.html#cb75-22" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="at">colour =</span> <span class="cn">NA</span>),</span>
+<span id="cb75-23"><a href="p-values.html#cb75-23" tabindex="-1"></a>    <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb75-24"><a href="p-values.html#cb75-24" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb75-25"><a href="p-values.html#cb75-25" tabindex="-1"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb75-26"><a href="p-values.html#cb75-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb75-27"><a href="p-values.html#cb75-27" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="dv">0</span>, <span class="fl">1.96</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>This is basically the thinking we use when we calculate a p-value. Let’s break down the steps:</p>
 <ol style="list-style-type: decimal">
 <li>We first <strong>assume the null hypothesis is true</strong>, and so we use the distribution of the null hypothesis to calculate the probability of getting our result or greater.</li>
@@ -562,7 +582,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>So in essence, if a p-value is p = .05 we’re saying that assuming the null is true, there is a 5% chance of observing this result or greater. Likewise, an extremely small p-value (e.g. p = .0000000001) means that assuming the null is true, the probability of getting the data we have is extremely small. The logic, therefore, is that there must be an alternative explanation.</p>
 </div>
-<div id="the-debate-around-p-values" class="section level3 hasAnchor" number="4.2.3" style="background-color: #f5f5f5;  padding: 1.75rem;">
+<div id="the-debate-around-p-values" class="section level3 hasAnchor" style="background-color: #f5f5f5;  padding: 1.75rem;" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> The debate around p-values<a href="p-values.html#the-debate-around-p-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Throughout history, p-values have been so misunderstood and misappropriated that some journals, such as Basic and Applied Social Psychology, actually either discourage or outright ban the reporting of p-values. This ties into a wider debate about the usefulness or meaningfulness of the hypothesis testing approach outlined on the previous page, with a number of academics and scientists arguing that it is time to do away with the system as a whole.</p>
 <p>The debate is something that goes beyond the scope of the subject, so we won’t be taking a strong stand on it either way. What we do think though is that it’s really important that you understand how hypothesis testing works and what p-values can or can’t tell you.</p>

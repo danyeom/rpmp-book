@@ -37,7 +37,7 @@ bookdown::render_book()
 ```
 ```{r eval = FALSE, echo = FALSE}
 install.packages(c(
-  "tidyverse", "here", "psych", "rstatix", "ggpubr", "DescTools", "ggcorrplot", "afex", "emmeans", "effectsize"
+  "tidyverse", "here", "psych", "rstatix", "ggpubr", "DescTools", "ggcorrplot", "afex", "emmeans", "effectsize", "lm.beta", "datarium"
 ))
 ```
 
