@@ -38,7 +38,7 @@ bookdown::render_book()
 ```
 
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo = FALSE}
 bookdown::serve_book()
 ```
 
