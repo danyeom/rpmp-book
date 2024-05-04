@@ -240,6 +240,8 @@ In reality, it's rare that any of these assumptions are fully met even when test
 Here's our output from R Note that this is from a Welch t-test - R will do this by default. 
 
 ```{r}
+t.test(Years_training ~ Group, data = w8_training)
+
 w8_training %>%
   t_test(Years_training ~ Group, detailed = TRUE)
 ```
@@ -302,7 +304,7 @@ shapiro.test(w8_symptoms_wide$before - w8_symptoms_wide$after)
 In R, you can do pairwise t-tests using the default `t.test()` (or the `rstatix` equivalent `t_test()`) function. In both methods, you must set `paired = TRUE` in order to run a paired t-test. Your dataset needs to be in long format for both functions. Here are both methods. By now this should be familiar:
 
 ```{r}
-t.test(symptom_score ~ time, data = w8_symptoms, paired = TRUE)
+t.test(x = w8_symptoms_wide$before, y = w8_symptoms_wide$after, paired = TRUE)
 
 w8_symptoms %>%
   t_test(symptom_score ~ time, paired = TRUE, detailed = TRUE)
