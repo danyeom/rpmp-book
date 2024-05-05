@@ -763,7 +763,7 @@ threeway_aov
 
 So what do our results tell us? Well:
 
--   We have significant main effects of gender (*F*(1, 60) = 16.20, *p* \< .001), risk group (*F*(1, 60) = 92.69, *p* \< .001) and treatment (*F*(2, 60) = 7.32, *p* = .001).
+-   We have significant main effects of gender (*F*(1, 60) = 16.20, *p* < .001), risk group (*F*(1, 60) = 92.69, *p* < .001) and treatment (*F*(2, 60) = 7.32, *p* = .001).
 
 -   We have a significant two-way gender x treatment interaction (*F*(2, 60) = 3.34, *p* = .04), but no significant interactions between gender x risk (*p* = .708) and risk x treatment (*p* = .494).
 
@@ -806,10 +806,8 @@ headache_summary %>%
 Here's one way to run the simple simple effets of treatment (with Holm adjustments by default):
 
 ```{r}
-headache %>%
-  filter(gender == "male") %>%
-  group_by(risk) %>%
-  pairwise_t_test(pain_score ~ treatment, detailed = TRUE) 
+emmeans(threeway_aov, ~ treatment | gender * risk) %>%
+  pairs(infer = TRUE, adjust = "holm")
 ```
 
 From this we can infer the following:
