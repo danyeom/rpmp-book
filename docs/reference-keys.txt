@@ -240,3 +240,4 @@ building-the-model
 predictions-1
 logistic-regression-with-multiple-predictors
 appendix-a-technical-details-of-anova
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
