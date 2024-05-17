@@ -511,17 +511,7 @@ V = \sqrt{\frac{\chi^2}{n(k-1)}}
 $$
 Here, *k* refers to the number of groups in the variable with the lowest number of groups. So for example, in a 2x3 design, one variable has 2 levels and the other has 3; *k* = 2 in this instance.
 
-Phi and Cramer's *V* can both be calculated in R with the following functions. Like `chisq.test()`, both functions will work if you give them a contingency table.
-
-(Note that for `phi()`, `digits = 3` has been set to false just for display purposes. In `rstatix::cramer_v()`, `correct = FALSE` gives an equivalent result to Jamovi.)
-
-```{r}
-psych::phi(w7_instrument_table, digits = 3)
-
-rstatix::cramer_v(w7_instrument_table, correct = FALSE)
-```
-
-An alternative is to use the `effectsize` package, which also helpfully calculates 95% CIs.
+Phi and Cramer's *V* can both be calculated in R with the following functions from the `effectsize` package, a handy package that will calculate many common effect size measures. Like `chisq.test()`, both functions will work if you give them a contingency table. Helpfully, both functions calculate 95% CIs.
 
 ```{r}
 effectsize::phi(w7_instrument_table, adjust = FALSE, alternative = "two.sided")
