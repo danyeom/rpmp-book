@@ -164,15 +164,18 @@ R Note: Jamovi will give you a 95% confidence interval around the mean differenc
 ```{r}
 t.test(w8_grades$grade, mu = 72)
 ```
+Anoter way of writing a one-sample t-test is to use `variable ~ 1` formula notation. The ` ~ 1` is used to indicate that we are running a one-sample t-test. We still need to define `mu = 72` to set our hypothesised population mean.
 
-Alternatively, you can use the `t_test()` function in R. This function requires formula notation. In this case, the formula must take the form of `variable ~ 1` to indicate that it is a one-sample test. `detailed = TRUE` will print a detailed output that will give the 95% CI for the mean as well: 
+```{r}
+t.test(grade ~ 1, data = w8_grades, mu = 72)
+```
+
+Alternatively, you can use the `t_test()` function in `rstatix`. This function also requires formula notation. `detailed = TRUE` will print a detailed output that will give the 95% CI for the mean as well: 
 
 ```{r}
 w8_grades %>%
   t_test(grade ~ 1, mu = 72, detailed = TRUE)
 ```
-
-
 
 ## Independent samples t-test
 
@@ -237,7 +240,7 @@ shapiro.test(w8_training$Years_training)
 
 In reality, it's rare that any of these assumptions are fully met even when tests say they are (the tests we just mentioned can be biased). This is especially true for classical t-tests, which are very sensitive to violations. A consistently better alternative is to use the Welch t-test, which assumes the equality of variance assumption is not met. Welch t-tests are also fairly robust against the normality assumption, and so are more flexible without sacrificing accuracy.
 
-Here's our output from R Note that this is from a Welch t-test - R will do this by default. 
+Here's our output from R. Note that this is from a Welch t-test - R will do this by default. 
 
 ```{r}
 t.test(Years_training ~ Group, data = w8_training)
@@ -249,6 +252,16 @@ w8_training %>%
 From this, we can see that the two groups do significantly differ on years of training (*t*(57.99) = 5.86, *p* < .001). We can use the mean difference value to see, well... the difference in means between the two groups. In this case, professionals have 2.92 more years of training (on average; 95% CI = [1.92, 3.92]) compared to amateurs.
 
 (n.b. the signs for t and the mean difference don't overly matter so long as they are interpreted in the right way. The output above calculates amateurs - professionals, which is why the values for both are negative; but if you were to force the test to run the other way round, the values would be the same with the signs flipped. Hence why descriptives and graphs are super important too!
+
+If for some reason you do want R to run a Student's *t*-test, you need to specify `var.equal = TRUE`. This tells R that we assume equality of variances.
+
+```{r}
+t.test(Years_training ~ Group, data = w8_training, var.equal = TRUE)
+
+w8_training %>%
+  t_test(Years_training ~ Group, detailed = TRUE, var.equal = TRUE)
+```
+
 
 ## Paired-samples t-test
 
@@ -271,14 +284,12 @@ w8_symptoms <- read_csv(here("data", "week_8", "W8_symptoms.csv"))
 head(w8_symptoms)
 ```
 
-R-note: Data for paired-samples t-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:
+R-note: Data for paired-samples *t*-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:
 
 ```{r}
-# Create a wide version of the original dataset
-w8_symptoms_wide <- w8_symptoms
 
 # Pivot to long format
-w8_symptoms <- w8_symptoms %>%
+w8_symptoms_long <- w8_symptoms %>%
   pivot_longer(
     cols = everything(),
     names_to = "time",
@@ -286,7 +297,7 @@ w8_symptoms <- w8_symptoms %>%
   )
 
 # Display start of new data
-head(w8_symptoms)
+head(w8_symptoms_long)
 ```
 
 ### Assumption checks
@@ -296,7 +307,7 @@ Similar to other tests, we need to check normality. Here, the assumption is whet
 In our data, this assumption seems to be intact (*W*  .985, *p* = .918).
 
 ```{r}
-shapiro.test(w8_symptoms_wide$before - w8_symptoms_wide$after)
+shapiro.test(w8_symptoms$before - w8_symptoms$after)
 ```
 
 ### Output
@@ -306,12 +317,19 @@ In R, you can do pairwise t-tests using the default `t.test()` (or the `rstatix`
 For the base `t.test()` function, your data needs to be in wide format. From there it is as simple as giving the two columns as the arguments to the function, and setting `paired = TRUE`:
 
 ```{r}
-t.test(x = w8_symptoms_wide$before, y = w8_symptoms_wide$after, paired = TRUE)
+t.test(x = w8_symptoms$before, y = w8_symptoms$after, paired = TRUE)
 ```
+Alternatively, you can use the below notation. `Pair(before, after)` indicates that we want R to treat the `before` and `after` variables as paired data. The `~ 1`, as we saw before, indicates that this is a one-sample t-test. This is because a paired-samples t-test is functionally equivalent to a one-sample t-test on the differences between conditions (see the expandable dropdown below for more details).
+
+```{r}
+t.test(Pair(before, after) ~ 1, data = w8_symptoms)
+```
+
+
 If you prefer rstatix, on the other hand, your data needs to be in long format. After that, you can pass the test as a formula much like how you would do so in the indendent samples case:
 
 ```{r}
-w8_symptoms %>%
+w8_symptoms_long %>%
   t_test(symptom_score ~ time, paired = TRUE, detailed = TRUE)
 ```
 
@@ -324,18 +342,18 @@ The mean symptom scores of the two timepoints are significantly different (*t*(3
   Let's start by returning to the wide version of our dataset. We first need to calculate the difference between the `before` and `after` columns, which we can easily do with `mutate()`.
   
 ```{r}
-w8_symptoms_wide <- w8_symptoms_wide %>%
+w8_symptoms <- w8_symptoms %>%
   mutate(
     diff = before - after
   )
 
-w8_symptoms_wide
+w8_symptoms
 ```
   
   We can run a one-sample t-test on the differences now, with the null hypothesis value being 0 - i.e. we are testing the null hypothesis that the mean differences are not significantly different from 0.
   
 ```{r}
-t.test(w8_symptoms_wide$diff ~ 1, mu = 0)
+t.test(w8_symptoms$diff ~ 1, mu = 0)
 ```
   As we can see, the results are equivalent to the output of the paired-samples t-test above. Note too that our Shapiro-Wilks test will also give equivalent results if it is run on the differences directly.
   
@@ -413,7 +431,57 @@ tibble(
 
 ### Calculating Cohen's *d* in R
 
-The `cohens_d()` function from `rstatix` can handle the calculation of effect sizes for all three variants of t-tests. One thing that's quite nice about this function is that the format for `cohens_d()` is exactly the same as it would be for the `t_test()` and `t.test()` family of functions:
+The `cohens_d()` function from `effectsize` can handle the calculation of effect sizes for all three variants of t-tests. One thing that's quite nice about this function is that the required syntax for `cohens_d()` is nearly identical to that for `t.test()` - meaning that the correct type of Cohen's *d* (one-sample, independent samples, paired) will be calculated based on what you put in.
+
+For a one-sample t-test, for instance, you can write the syntax exactly as you would for `t.test()`:
+
+```{r}
+# One-sample
+# t.test(w8_grades$grade, mu = 72)
+effectsize::cohens_d(w8_grades$grade, mu = 72)
+```
+The alternate way of specifying a one-sample t-test, the `var ~ 1` format, also works. `cohens_d()` will recognise both.
+
+```{r}
+# One-sample - alternate
+# t.test(grade ~ 1, data = w8_grades, mu = 72)
+effectsize::cohens_d(grade ~ 1, data = w8_grades, mu = 72)
+```
+
+
+
+
+For an independent samples t-test, you can give it *almost* the same. The only change is that by default, `cohens_d()` will calculate Cohen's *d* assuming equal variance. In order for our value of *d* to match a Welch-samples t-test, we need to set `pooled_sd = FALSE` (which makes the syntax slightly different to `t.test()`).
+
+```{r}
+# Independent samples
+# t.test(Years_training ~ Group, data = w8_training)
+effectsize::cohens_d(Years_training ~ Group, data = w8_training, pooled_sd = FALSE)
+```
+Finally, for a paired-samples t-test the developers of `effectsize` recommend using the `rm_d()` function, which stands for repeated-measures Cohen's *d*. This function takes the same basic syntax as `t.test()` for paired-samples t-tests, including the use of wide data, but a couple of extra arguments are required.
+
+- `method = "z"` defines how the pooled SD term is calculated. There are six possible options, but this option gives the standard calculation.
+- `adjust = FALSE`: calculates Hedges' G, which is an alternative effect size that corrects for small sample bias. We won't worry about this here, so we will set this to `FALSE`.
+
+Note that like the other functions, you can either provide the arguments in `Pairs() ~ 1` or by subsetting the columns (`x = x$1, y = x$2`). 
+
+```{r}
+# Paired sample - works with wide data
+# t.test(Pair(before, after) ~ 1, data = w8_symptoms)
+effectsize::rm_d(Pair(before, after) ~ 1, data = w8_symptoms, method = "z", adjust = FALSE)
+
+```
+
+```{r}
+# t.test(x = w8_symptoms$before, y = w8_symptoms$after, paired = TRUE)
+effectsize::rm_d(x = w8_symptoms$before, y = w8_symptoms$after, method = "z", adjust = FALSE)
+```
+
+
+
+### Alternative using `rstatix`
+
+Alternatively, you can use the `rstatix` package. This will give the same values, but the confidence intervals generated by `effectsize` are traditional confidence intervals, whereas `rstaix` uses a different method (which we need not concern ourselves with). In any case, the actual width of the intervals should be similar. Just note that for paired samples Cohen's *d*, long data is required (as is the case with t-tests in `rstatix`).
 
 For a one-sample t-test, the formula once again needs to be in `var ~ 1` format and `mu` must be specified:
 
@@ -431,23 +499,8 @@ w8_training %>%
 For a paired-samples t-test, `paired = TRUE` must be selected:
 
 ```{r}
-w8_symptoms %>%
+w8_symptoms_long %>%
   rstatix::cohens_d(symptom_score ~ time, paired = TRUE, ci = TRUE, ci.type = "norm")
 ```
 
 The Canvas version asks you to interpret each of these effect sizes, but... `rstatix` will automatically label this for you!
-
-Alternatively, you can use the `effectsize` package. This will give the same values, but the confidence intervals generated by `effectsize` are traditional confidence intervals, whereas `rstaix` uses a different method (which we need not concern ourselves with). In any case, the actual width of the intervals should be similar. Just note that for paired samples t-tests, the following code works for wide data:
-
-```{r}
-# One-sample
-effectsize::cohens_d(data = w8_grades, grade ~ 1, mu = 72) 
-
-# Independent samples. Note that pooled_sd = FALSE must be ticked for Welch tests
-effectsize::cohens_d(data = w8_training, Years_training ~ Group, pooled_sd = FALSE) 
-
-# Paired sample - works with wide data
-effectsize::rm_d(data = w8_symptoms_wide, Pair(before, after) ~ 1, method = "z", adjust = FALSE)
-```
-
-
