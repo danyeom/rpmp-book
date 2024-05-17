@@ -23,12 +23,14 @@ github-repo: rstudio/bookdown-demo
 
 # Preface
 
-This is an R adaptation of Modules 5 - 11 of Research Process for Music Psychologists (MUSI90252). 
+This is an R adaptation of the statistics content from a subject called Research Process for Music Psychologists (MUSI90252). The subject is an overview of research methods for Masters and PhD students in music psychology at the University of Melbourne.
 
-By and large the content is exactly the same as the Jamovi-focused content in the Canvas shell, except:
-- Some commentary has either been added or removed for R-specific material (e.g. information on functions)
-- Embedded content, such as that in Module 7, is not available here (but is Jamovi-specific anyway)
-- Some content has been reorganised in a minor way because of how R outputs things compared to Jamovi. This mainly affects the content around effect sizes, because often they rely on separate functions in R - but also occurs more often during the ANOVA and linear regression content (due to the fact that the models need to be built first before doing some steps, such as assumptions)
+The subject's statistics material was originally written for Jamovi, given its ease of use and impressive functionality, but we have also encouraged any quantitative-oriented students to consider learning R in the long term. With that in mind, by and large the content is exactly the same as the Jamovi-focused content in the Canvas shell, except:
+
+- Some commentary has either been added or removed for R-specific material (e.g. information on functions).
+- Embedded content, such as that in Module 7, is not available here (but is Jamovi-specific anyway).
+- Some content has been reorganised in a minor way because of how R outputs things compared to Jamovi. 
+- The first chapter is a very (*very*) brief overview of how to use core R and tidyverse functions.
 
 
 

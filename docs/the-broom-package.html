@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 t-tests | Research Process for Music Psychologists</title>
+  <title>A The broom() package | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 t-tests | Research Process for Music Psychologists" />
+  <meta property="og:title" content="A The broom() package | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 t-tests | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="A The broom() package | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-18" />
+<meta name="date" content="2024-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="bonus-mcnemars-test.html"/>
-<link rel="next" href="t-tests-and-the-t-distribution.html"/>
+<link rel="prev" href="example-8.html"/>
+<link rel="next" href="the-tidy-function.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -312,7 +312,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.1" data-path="cohens-d.html"><a href="cohens-d.html#what-is-cohens-d"><i class="fa fa-check"></i><b>6.5.1</b> What is Cohen’s <em>d</em>?</a></li>
 <li class="chapter" data-level="6.5.2" data-path="cohens-d.html"><a href="cohens-d.html#interpreting-cohens-d"><i class="fa fa-check"></i><b>6.5.2</b> Interpreting Cohen’s <em>d</em></a></li>
 <li class="chapter" data-level="6.5.3" data-path="cohens-d.html"><a href="cohens-d.html#calculating-cohens-d-in-r"><i class="fa fa-check"></i><b>6.5.3</b> Calculating Cohen’s <em>d</em> in R</a></li>
-<li class="chapter" data-level="6.5.4" data-path="cohens-d.html"><a href="cohens-d.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>6.5.4</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="anovas.html"><a href="anovas.html"><i class="fa fa-check"></i><b>7</b> ANOVAs</a>
@@ -515,13 +514,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>A.1.3</b> t-tests</a></li>
 <li class="chapter" data-level="A.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>A.1.4</b> ANOVA objects</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>A.2</b> The <code>glance()</code> function</a></li>
-<li class="chapter" data-level="A.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>A.3</b> The <code>augment()</code> function</a>
-<ul>
-<li class="chapter" data-level="A.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>A.3.1</b> Chi-square tests</a></li>
-<li class="chapter" data-level="A.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>A.3.2</b> Regressions</a></li>
+<li class="chapter" data-level="A.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>A.2</b> <strong>The <code>glance()</code> function</strong></a></li>
+<li class="chapter" data-level="A.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>A.3</b> The <code>augment()</code> function</a></li>
 </ul></li>
-</ul></li>
+<li class="chapter" data-level="B" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>B</b> Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -542,24 +538,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="t-tests" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> t-tests<a href="t-tests.html#t-tests" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><em>t</em>-tests are usually one of the first families of statistical tests that students learn when they take a research methods subject. I (Dan) pretty much learnt only t-tests until my third year of my psychology major (I learnt chi-squares and other tests through taking separate statistics subjects through my uni’s Department of Statistics before I learnt them in psychology). It’s not hard to see why this is the case - t-tests are really intuitive and simple to conduct, and so are an accessible way into learning statistical tests (even though chi-squares are even easier).</p>
-<p>The family of <em>t</em>-tests come into play when we have one categorical IV with two levels, and one continuous DV. As you can imagine, there are many instances where this kind of design comes into play, and you will see as much in the datasets and examples this week. There are nine datasets for you to play around this week (3 for each kind of test) - so hopefully that will give you plenty of practice!</p>
-<p>By the end of this module you should be able to:</p>
-<ul>
-<li>Describe how a t-test works in principle</li>
-<li>Conduct three forms of chi-square tests: one-sample, independent-samples and paired-samples</li>
-<li>Calculate and interpret an appropriate effect size for the above tests</li>
-</ul>
+<div id="the-broom-package" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">A</span> The <code>broom()</code> package<a href="the-broom-package.html#the-broom-package" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The <code>broom()</code> package provides a couple of helper functions for tidying up output from numerous R functions for running tests. This can be useful in a couple of instances, particularly for either a) accessing certain aspects of models that are not immediately accessible or b) simply for neater manipulation for multiple models.</p>
+<p>While <code>broom</code> is a part of the tidyverse, it is not one of the tidyverse’s default packages. Therefore, to use the package you need to manually call it:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="the-broom-package.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
+<p>For the examples on this page, we will use datasets from the <code>datarium</code> package (which we have seen before), just because it provides a nice set of datasets for demonstrating how these functions work. So let’s go ahead and load that too:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="the-broom-package.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span></code></pre></div>
+<p>The main functions in <code>broom</code> are generic functions with what R calls several <em>methods</em> - i.e. ways that the function handles different types of data or objects. Every method comes with a different set of arguments that can change the output, depending on what object the function is run on. For example, if you use <code>tidy()</code> on an <code>lm</code> object, you get different optional arguments than for an <code>aov()</code> object, and so on. The next page gives examples using the <code>datarium</code> datasets.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="bonus-mcnemars-test.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="t-tests-and-the-t-distribution.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="example-8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-tidy-function.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -590,7 +584,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-ttests.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/appendix.Rmd",
 "text": "Edit"
 },
 "history": {

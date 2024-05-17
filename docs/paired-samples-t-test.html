@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-05" />
+<meta name="date" content="2024-05-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -312,6 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.1" data-path="cohens-d.html"><a href="cohens-d.html#what-is-cohens-d"><i class="fa fa-check"></i><b>6.5.1</b> What is Cohen’s <em>d</em>?</a></li>
 <li class="chapter" data-level="6.5.2" data-path="cohens-d.html"><a href="cohens-d.html#interpreting-cohens-d"><i class="fa fa-check"></i><b>6.5.2</b> Interpreting Cohen’s <em>d</em></a></li>
 <li class="chapter" data-level="6.5.3" data-path="cohens-d.html"><a href="cohens-d.html#calculating-cohens-d-in-r"><i class="fa fa-check"></i><b>6.5.3</b> Calculating Cohen’s <em>d</em> in R</a></li>
+<li class="chapter" data-level="6.5.4" data-path="cohens-d.html"><a href="cohens-d.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>6.5.4</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="anovas.html"><a href="anovas.html"><i class="fa fa-check"></i><b>7</b> ANOVAs</a>
@@ -505,7 +506,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="appendix-a-technical-details-of-anova.html"><a href="appendix-a-technical-details-of-anova.html"><i class="fa fa-check"></i><b>A</b> Appendix A: Technical details of <code>anova()</code></a></li>
+<li class="chapter" data-level="A" data-path="the-broom-package.html"><a href="the-broom-package.html"><i class="fa fa-check"></i><b>A</b> The <code>broom()</code> package</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>A.1</b> The <code>tidy()</code> function</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>A.1.1</b> Correlations</a></li>
+<li class="chapter" data-level="A.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>A.1.2</b> Chi-squares</a></li>
+<li class="chapter" data-level="A.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>A.1.3</b> t-tests</a></li>
+<li class="chapter" data-level="A.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>A.1.4</b> ANOVA objects</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>A.2</b> The <code>glance()</code> function</a></li>
+<li class="chapter" data-level="A.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>A.3</b> The <code>augment()</code> function</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>A.3.1</b> Chi-square tests</a></li>
+<li class="chapter" data-level="A.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>A.3.2</b> Regressions</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -538,7 +554,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-data-2" class="section level3 hasAnchor" number="6.4.2">
 <h3><span class="header-section-number">6.4.2</span> Example data<a href="paired-samples-t-test.html#example-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For this example, we’ll take a look at a simple interventions study. Participants were asked to answer a short list of questions relating to how they were feeling, once before an intervention and once afterwards. Higher scores represent better emotional states. The intervention was a series of self-regulation classes and exercises that the participants took twice a week. We’re interested in seeing whether the intervention was effective.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="paired-samples-t-test.html#cb22-1" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_symptoms.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="paired-samples-t-test.html#cb27-1" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_symptoms.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 32 Columns: 2
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -546,26 +562,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="paired-samples-t-test.html#cb24-1" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="paired-samples-t-test.html#cb29-1" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["before"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["after"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"14","2":"18"},{"1":"18","2":"17"},{"1":"14","2":"18"},{"1":"10","2":"18"},{"1":"14","2":"12"},{"1":"14","2":"13"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>R-note: Data for paired-samples t-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="paired-samples-t-test.html#cb25-1" tabindex="-1"></a><span class="co"># Create a wide version of the original dataset</span></span>
-<span id="cb25-2"><a href="paired-samples-t-test.html#cb25-2" tabindex="-1"></a>w8_symptoms_wide <span class="ot">&lt;-</span> w8_symptoms</span>
-<span id="cb25-3"><a href="paired-samples-t-test.html#cb25-3" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="paired-samples-t-test.html#cb25-4" tabindex="-1"></a><span class="co"># Pivot to long format</span></span>
-<span id="cb25-5"><a href="paired-samples-t-test.html#cb25-5" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
-<span id="cb25-6"><a href="paired-samples-t-test.html#cb25-6" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb25-7"><a href="paired-samples-t-test.html#cb25-7" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb25-8"><a href="paired-samples-t-test.html#cb25-8" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb25-9"><a href="paired-samples-t-test.html#cb25-9" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;symptom_score&quot;</span></span>
-<span id="cb25-10"><a href="paired-samples-t-test.html#cb25-10" tabindex="-1"></a>  )</span>
-<span id="cb25-11"><a href="paired-samples-t-test.html#cb25-11" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="paired-samples-t-test.html#cb25-12" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
-<span id="cb25-13"><a href="paired-samples-t-test.html#cb25-13" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div>
+<p>R-note: Data for paired-samples <em>t</em>-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="paired-samples-t-test.html#cb30-1" tabindex="-1"></a><span class="co"># Pivot to long format</span></span>
+<span id="cb30-2"><a href="paired-samples-t-test.html#cb30-2" tabindex="-1"></a>w8_symptoms_long <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="paired-samples-t-test.html#cb30-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb30-4"><a href="paired-samples-t-test.html#cb30-4" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb30-5"><a href="paired-samples-t-test.html#cb30-5" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb30-6"><a href="paired-samples-t-test.html#cb30-6" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;symptom_score&quot;</span></span>
+<span id="cb30-7"><a href="paired-samples-t-test.html#cb30-7" tabindex="-1"></a>  )</span>
+<span id="cb30-8"><a href="paired-samples-t-test.html#cb30-8" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="paired-samples-t-test.html#cb30-9" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
+<span id="cb30-10"><a href="paired-samples-t-test.html#cb30-10" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms_long)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["time"],"name":[1],"type":["chr"],"align":["left"]},{"label":["symptom_score"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"before","2":"14"},{"1":"after","2":"18"},{"1":"before","2":"18"},{"1":"after","2":"17"},{"1":"before","2":"14"},{"1":"after","2":"18"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -576,22 +589,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.4.3</span> Assumption checks<a href="paired-samples-t-test.html#assumption-checks-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Similar to other tests, we need to check normality. Here, the assumption is whether the differences between time 1 and 2 are normally distributed (not necessarily time 1 and 2 themselves). Hence, when we run a Shapiro-Wilks test we’re running this on the values we get from Time 1 - Time 2.</p>
 <p>In our data, this assumption seems to be intact (<em>W</em> .985, <em>p</em> = .918).</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="paired-samples-t-test.html#cb26-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms_wide<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms_wide<span class="sc">$</span>after)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="paired-samples-t-test.html#cb31-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms<span class="sc">$</span>after)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
-## data:  w8_symptoms_wide$before - w8_symptoms_wide$after
+## data:  w8_symptoms$before - w8_symptoms$after
 ## W = 0.98465, p-value = 0.9177</code></pre>
 </div>
 <div id="output-4" class="section level3 hasAnchor" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> Output<a href="paired-samples-t-test.html#output-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, you can do pairwise t-tests using the default <code>t.test()</code> (or the <code>rstatix</code> equivalent <code>t_test()</code>) function. In both methods, you must set <code>paired = TRUE</code> in order to run a paired t-test. However, there is one key difference: the base <code>t.test()</code> requires data in <em>wide</em> format, whereas <code>rstatix::t_test()</code> requires data in <em>long</em> format. Here are both methods.</p>
 <p>For the base <code>t.test()</code> function, your data needs to be in wide format. From there it is as simple as giving the two columns as the arguments to the function, and setting <code>paired = TRUE</code>:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="paired-samples-t-test.html#cb28-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> w8_symptoms_wide<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms_wide<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="paired-samples-t-test.html#cb33-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
-## data:  w8_symptoms_wide$before and w8_symptoms_wide$after
+## data:  w8_symptoms$before and w8_symptoms$after
+## t = -2.9501, df = 31, p-value = 0.005999
+## alternative hypothesis: true mean difference is not equal to 0
+## 95 percent confidence interval:
+##  -4.651185 -0.848815
+## sample estimates:
+## mean difference 
+##           -2.75</code></pre>
+<p>Alternatively, you can use the below notation. <code>Pair(before, after)</code> indicates that we want R to treat the <code>before</code> and <code>after</code> variables as paired data. The <code>~ 1</code>, as we saw before, indicates that this is a one-sample t-test. This is because a paired-samples t-test is functionally equivalent to a one-sample t-test on the differences between conditions (see the expandable dropdown below for more details).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="paired-samples-t-test.html#cb35-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  Pair(before, after)
 ## t = -2.9501, df = 31, p-value = 0.005999
 ## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
@@ -600,8 +626,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## mean difference 
 ##           -2.75</code></pre>
 <p>If you prefer rstatix, on the other hand, your data needs to be in long format. After that, you can pass the test as a formula much like how you would do so in the indendent samples case:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="paired-samples-t-test.html#cb30-1" tabindex="-1"></a>w8_symptoms <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="paired-samples-t-test.html#cb30-2" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="paired-samples-t-test.html#cb37-1" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="paired-samples-t-test.html#cb37-2" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":[".y."],"name":[2],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[3],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[4],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[5],"type":["int"],"align":["right"]},{"label":["n2"],"name":[6],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[12],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[13],"type":["chr"],"align":["left"]}],"data":[{"1":"2.75","2":"symptom_score","3":"after","4":"before","5":"32","6":"32","7":"2.950087","8":"0.006","9":"31","10":"0.848815","11":"4.651185","12":"T-test","13":"two.sided","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -614,23 +640,23 @@ Paired samples using the one-sample t-test
 </summary>
 <p>Mathematically, all a paired-samples t-test is doing is running a one-sample t-test on the differences between the two timepoints/groups, Below is a demonstration of how paired-samples tests can be run using the one-sample t-test.</p>
 <p>Let’s start by returning to the wide version of our dataset. We first need to calculate the difference between the <code>before</code> and <code>after</code> columns, which we can easily do with <code>mutate()</code>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="paired-samples-t-test.html#cb31-1" tabindex="-1"></a>w8_symptoms_wide <span class="ot">&lt;-</span> w8_symptoms_wide <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="paired-samples-t-test.html#cb31-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb31-3"><a href="paired-samples-t-test.html#cb31-3" tabindex="-1"></a>    <span class="at">diff =</span> before <span class="sc">-</span> after</span>
-<span id="cb31-4"><a href="paired-samples-t-test.html#cb31-4" tabindex="-1"></a>  )</span>
-<span id="cb31-5"><a href="paired-samples-t-test.html#cb31-5" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="paired-samples-t-test.html#cb31-6" tabindex="-1"></a>w8_symptoms_wide</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="paired-samples-t-test.html#cb38-1" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="paired-samples-t-test.html#cb38-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb38-3"><a href="paired-samples-t-test.html#cb38-3" tabindex="-1"></a>    <span class="at">diff =</span> before <span class="sc">-</span> after</span>
+<span id="cb38-4"><a href="paired-samples-t-test.html#cb38-4" tabindex="-1"></a>  )</span>
+<span id="cb38-5"><a href="paired-samples-t-test.html#cb38-5" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="paired-samples-t-test.html#cb38-6" tabindex="-1"></a>w8_symptoms</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["before"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["after"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["diff"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"14","2":"18","3":"-4"},{"1":"18","2":"17","3":"1"},{"1":"14","2":"18","3":"-4"},{"1":"10","2":"18","3":"-8"},{"1":"14","2":"12","3":"2"},{"1":"14","2":"13","3":"1"},{"1":"11","2":"20","3":"-9"},{"1":"12","2":"18","3":"-6"},{"1":"15","2":"18","3":"-3"},{"1":"18","2":"8","3":"10"},{"1":"16","2":"18","3":"-2"},{"1":"14","2":"14","3":"0"},{"1":"6","2":"15","3":"-9"},{"1":"9","2":"13","3":"-4"},{"1":"4","2":"18","3":"-14"},{"1":"4","2":"15","3":"-11"},{"1":"14","2":"16","3":"-2"},{"1":"15","2":"11","3":"4"},{"1":"10","2":"17","3":"-7"},{"1":"17","2":"20","3":"-3"},{"1":"10","2":"8","3":"2"},{"1":"15","2":"11","3":"4"},{"1":"11","2":"21","3":"-10"},{"1":"15","2":"17","3":"-2"},{"1":"10","2":"14","3":"-4"},{"1":"14","2":"16","3":"-2"},{"1":"7","2":"10","3":"-3"},{"1":"10","2":"13","3":"-3"},{"1":"13","2":"12","3":"1"},{"1":"15","2":"9","3":"6"},{"1":"17","2":"17","3":"0"},{"1":"10","2":"19","3":"-9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>We can run a one-sample t-test on the differences now, with the null hypothesis value being 0 - i.e. we are testing the null hypothesis that the mean differences are not significantly different from 0.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="paired-samples-t-test.html#cb32-1" tabindex="-1"></a><span class="fu">t.test</span>(w8_symptoms_wide<span class="sc">$</span>diff <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="paired-samples-t-test.html#cb39-1" tabindex="-1"></a><span class="fu">t.test</span>(w8_symptoms<span class="sc">$</span>diff <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
-## data:  w8_symptoms_wide$diff
+## data:  w8_symptoms$diff
 ## t = -2.9501, df = 31, p-value = 0.005999
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:

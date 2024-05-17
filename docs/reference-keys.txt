@@ -241,3 +241,15 @@ predictions-1
 logistic-regression-with-multiple-predictors
 appendix-a-technical-details-of-anova
 cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+the-broom-package
+the-tidy-function
+the-glance-function
+technical-details-of-anova
+correlations-1
+chi-squares-1
+t-tests-1
+anova-objects
+the-augment-function
+chi-square-tests
+regressions
+alternative-using-rstatix

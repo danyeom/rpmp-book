@@ -7,9 +7,169 @@ library(here)
 library(rstatix)
 library(effectsize)
 library(car)
+library(emmeans)
 ```
 
-# Appendix A: Technical details of `anova()` 
+# The `broom()` package
+
+The `broom()` package provides a couple of helper functions for tidying up output from numerous R functions for running tests. This can be useful in a couple of instances, particularly for either a) accessing certain aspects of models that are not immediately accessible or b) simply for neater manipulation for multiple models.
+
+While `broom` is a part of the tidyverse, it is not one of the tidyverse's default packages. Therefore, to use the package you need to manually call it:
+
+```{r}
+library(broom)
+```
+
+For the examples on this page, we will use datasets from the `datarium` package (which we have seen before), just because it provides a nice set of datasets for demonstrating how these functions work. So let's go ahead and load that too:
+
+```{r}
+library(datarium)
+```
+
+The main functions in `broom` are generic functions with what R calls several *methods* - i.e. ways that the function handles different types of data or objects. Every method comes with a different set of arguments that can change the output, depending on what object the function is run on. For example, if you use `tidy()` on an `lm` object, you get different optional arguments than for an `aov()` object, and so on. The next page gives examples using the `datarium` datasets.
+
+## The `tidy()` function
+
+You may have noticed that many of the outputs from common R functions, like `lm()` and `aov()`, print their results in a certain format - namely, it essentially prints as text. The `tidy()` function will simply turn the core output into a data frame. This is useful when you are running multiple models at once, or if for some reason you want to work with the values in model outputs directly. This function will work with just about every standard test function you get in R.
+
+Here an example with the `marketing` dataset, which contains continuous variables. Let's fit a multiple regression using `lm()`, and call `summary()` on the results:
+
+```{r}
+data(marketing)
+
+marketing_lm <- lm(sales ~ youtube + facebook + newspaper, data = marketing)
+summary(marketing_lm)
+```
+`tidy()` works directly on *model* objects, not raw data, so we use the `tidy()` function on our regression model. As you can see, the data is now in data frame format:
+
+```{r}
+tidy(marketing_lm)
+```
+
+For `lm()` objects, you can return a confidence interval on the regression coefficients:
+
+```{r}
+tidy(marketing_lm, conf.int = TRUE, conf.level = 0.95)
+```
+
+### Correlations
+
+For a correlation:
+
+```{r}
+marketing_cor <- cor.test(marketing$youtube, marketing$facebook)
+marketing_cor
+```
+```{r}
+tidy(marketing_cor)
+```
+
+### Chi-squares
+
+A chi-square test object:
+
+```{r}
+data("properties")
+
+properties_table <- table(properties$property_type, properties$buyer_type)
+properties_chisq <- chisq.test(properties_table, correct = FALSE)
+properties_chisq
+```
+```{r}
+tidy(properties_chisq)
+```
+
+### t-tests
+
+For a t-test object (applies to all t-tests):
+
+```{r}
+data("genderweight")
+
+weight_t <- t.test(weight ~ group, data = genderweight)
+weight_t
+```
+
+```{r}
+tidy(weight_t)
+```
+
+### ANOVA objects
+
+For a regular `aov()` object, you can optionally ask for the intercept term using `intercept = TRUE`:
+
+```{r}
+data("stress")
+
+stress_aov <- aov(score ~ treatment * exercise, data = stress)
+summary(stress_aov)
+```
+```{r}
+tidy(stress_aov)
+```
+
+Objects fitted by the `Anova` package also work, *but* repeated measures designs do not work. It's best to stick to `rstatix` if you want a repeated measures ANOVA in dataframe format.
+
+`TukeyHSD()` can also be used:
+
+```{r}
+TukeyHSD(stress_aov) %>%
+  tidy()
+```
+
+
+`emmeans` objects can also be tidied, e.g. for simple effects tests:
+
+```{r}
+# Simple effects of exercise for every treatment
+
+emmeans(stress_aov, ~ exercise, by = "treatment") %>%
+  pairs() %>%
+  tidy()
+```
+
+
+## The `glance()` function
+
+The `glance()` function will generate model fit summaries from models. It works primarily with `lm()` and other models, and returns several indices of model fit (depending on the original object).
+
+For `lm()` objects, importantly, it returns $R^2$ and adjusted $R^2$. IT also returns estimates for the AIC and BIC, as well as some other fit statistics.
+
+```{r}
+glance(marketing_lm)
+```
+`glance()` also works for `aov()` objects, but is perhaps less useful.
+
+```{r}
+glance(stress_aov)
+```
+
+## The `augment()` function
+
+The a
+
+### Chi-square tests
+
+Using `augment()` on a chi-square object will print out a dataframe containing both the expected and the observed proportions for each cell.
+
+```{r}
+augment(properties_chisq)
+```
+
+### Regressions
+
+`augment()` is probably most useful for regression models. It will print out the following:
+
+- `.fitted` is the predicted score for each participant
+- `.resid` is the residual for each participant (i.e. actual - fitted)
+- `.cooksd` is Cook's distance, which is useful for outlier detection in some contexts
+
+```{r}
+augment(marketing_lm)
+```
+
+
+# Technical details of `anova()` 
 
 ```{r echo = FALSE}
 w10_flow <- read_csv(here("data", "week_10", "w10_flow.csv"))
