@@ -1,6 +1,6 @@
-fig:unnamed-chunk-26
-fig:unnamed-chunk-85
-fig:unnamed-chunk-133
+fig:unnamed-chunk-57
+fig:unnamed-chunk-116
+fig:unnamed-chunk-173
 preface
 intro
 assignment-and-syntax
@@ -113,6 +113,7 @@ cohens-d
 what-is-cohens-d
 interpreting-cohens-d
 calculating-cohens-d-in-r
+alternative-using-rstatix
 anovas
 anovas-and-the-f-distribution
 the-basic-logic-of-anovas
@@ -239,17 +240,14 @@ assumptions-3
 building-the-model
 predictions-1
 logistic-regression-with-multiple-predictors
-appendix-a-technical-details-of-anova
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 the-broom-package
 the-tidy-function
-the-glance-function
-technical-details-of-anova
 correlations-1
 chi-squares-1
 t-tests-1
 anova-objects
+the-glance-function
 the-augment-function
 chi-square-tests
 regressions
-alternative-using-rstatix
+technical-details-of-anova
