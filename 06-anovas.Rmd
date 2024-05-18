@@ -11,6 +11,7 @@ library(tidyverse)
 library(ggpubr)
 library(here)
 library(rstatix)
+library(effectsize)
 
 # i_am("code/bookdown/06-anovas.Rmd")
 ```
@@ -898,6 +899,16 @@ By default, `anova_test()` (and other ANOVA-related packages in R) will calculat
 w9_memory %>%
   anova_test(dv = memory_score, wid = Participant, within = time, effect.size = "pes") 
 ```
+Otherwise, our trusty `effectsize` package provides functions for calculating effect sizes in R. We use a function called - you guessed it - `eta_squared()`. This function works in very much the same way as the other `effectsize` family of functions do - you need to give them an anova model to calculate effect sizes for.
+
+```{r}
+eta_squared(w9_slices_aov, alternative = "two.sided")
+```
+For repeated-measures ANOVAs, the best way to calculate eta-squared using this function is to first create a `car::Anova()` model using the syntax described above, and then passing the resulting model to the function.
+
+```{r}
+eta_squared(w9_memory_alternate, alternative = "two.sided")
+```
 
 ### An example
 
@@ -936,3 +947,4 @@ Cohen (1988) provided the following guidelines for interpreting eta-squared:
 With these guidelines (which aren't perfect), a $\eta^2$ of .778 is astronomically huge.
 
 To give yourself a bit of practice, go back into Sections 9.5 and 9.6, find the eta-squared values for each in the outputs (they're in the omnibus tables) and interpret them a) as percentages of total variance and b) using Cohen's (1988) guidelines.
+
