@@ -251,3 +251,13 @@ the-augment-function
 chi-square-tests
 regressions
 technical-details-of-anova
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+operators
+assignment-and-naming
+packages
+building-the-plot
+geoms
+making-the-graph-look-better
+colours
+broom
+fig:unnamed-chunk-17

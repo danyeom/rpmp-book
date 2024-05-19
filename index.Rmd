@@ -34,9 +34,11 @@ The subject's statistics material was originally written for Jamovi, given its e
 
 
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo = FALSE}
 bookdown::render_book()
 ```
+
+
 ```{r eval = FALSE, echo = FALSE}
 install.packages(c(
   "tidyverse", "here", "psych", "rstatix", "ggpubr", "DescTools", "ggcorrplot", "afex", "emmeans", "effectsize", "lm.beta", "datarium"

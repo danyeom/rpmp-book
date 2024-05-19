@@ -10,7 +10,54 @@ library(car)
 library(emmeans)
 ```
 
-# The `broom()` package
+
+# R colour palettes {#colours}
+
+
+```{r echo = FALSE, results = "hide"}
+colour_list <- colours()
+
+colour_rgb <- col2rgb(colour_list)
+
+colour_rgb <- rgb(colour_rgb[1,], colour_rgb[2,], colour_rgb[3,],
+    names = colour_list,
+    maxColorValue = 255)
+
+# colour_rgb <- colour_rgb[!duplicated(colour_rgb)]
+
+colour_df <- data.frame(
+  colour = names(colour_rgb),
+  hexcode = colour_rgb,
+  row.names = NULL
+) 
+
+colour_df$colour <- factor(colour_df$colour, levels = colour_df$colour)
+```
+
+```{r echo = FALSE, fig.dim = c(5, 130)}
+
+colourplot <- ggplot(
+  data = colour_df,
+    aes(
+      x = 1, y = 1:nrow(colour_df), 
+      fill = colour,
+      label = paste0(colour, " ", hexcode)
+      )
+  ) +
+  geom_tile(width = 0.5, height = 1, colour = "black")  +
+  scale_fill_manual(values = colour_df$hexcode) +
+  theme_void() +
+  theme(legend.position = "none") +
+  geom_label(fill = "white", alpha = 0.5)  +
+  # geom_text(aes(color = ))
+  scale_y_continuous(limits = c(0, NA), expand = c(0, 0)) 
+
+colourplot
+```
+
+
+
+# The `broom()` package {#broom}
 
 The `broom()` package provides a couple of helper functions for tidying up output from numerous R functions for running tests. This can be useful in a couple of instances, particularly for either a) accessing certain aspects of models that are not immediately accessible or b) simply for neater manipulation for multiple models.
 
