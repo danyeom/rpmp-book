@@ -6,7 +6,7 @@ library(ggpubr)
 library(here)
 library(rstatix)
 
-# i_am("code/bookdown/03-inferential.Rmd")
+theme_set(theme_pubr())
 ```
 
 
@@ -107,15 +107,15 @@ To start with, a p-value is a probability. A probability, of course, ranges from
 
 On the right is an example of what one possible alternative hypothesis might look like - that this data is meaningfully represented by two underlying distributions or groups, and that there is a difference between these two groups (shown as the blue and red curves). Contrast that with the left graph, where we hypothesise that there is no difference - in other words, that the data can be captured by the one distribution. This graph on the left is a representation of our null hypothesis, and as per the definition of the p-value, this is the distribution we focus on.
 
-```{r}
-
+```{r echo = FALSE}
+knitr::include_graphics("img/prob_dist.svg")
 ```
 
 The area shaded blue represents the probability of getting that specific result. In the left example, the area shaded represents the probability of getting a value lower than x = 1. You can see that the blue area is quite big, so the probability of getting a value lower than 1 is quite high. On the right hand side is another example, which represents the probability of getting a value of x higher than 2. Here, the shaded area is small, so the associated probability is low.
 
 Now, recall the following figure from last week:
 
-```{r fig.align = "center"}
+```{r fig.align = "center", echo = FALSE}
 norm_data <- data.frame(
   x = seq(-3, 3, length = 1001)
   ) %>%
@@ -352,7 +352,7 @@ As we saw on the page about p-values, some people are vocal about their distaste
 
 It's time to force you to remember what the graph below means once again (I promise this is the last time you will see this figure! I think). By now you should be very familiar with what this graph shows; namely, that 95% of the data in a normal distribution lies within 1.96 standard deviations either side of the mean, yada yada. 
 
-```{r echo = FALSE, fig.align = "center", fig.dim = c(8, 4)}
+```{r echo = FALSE, fig.align = "center", fig.dim = c(8, 4), warning = FALSE}
 
 
 normdist_1 <- ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "transparent") +
@@ -466,7 +466,110 @@ Not all confidence intervals though will contain the true parameter purely becau
 
 The confidence level is a long-run probability that a group of confidence intervals will contain the true population parameter. A 95% confidence level means that if we were to take samples repeatedly and calculate a CI for each one, 95% of those CIs will contain the true population parameter in the long-run. 
 
-Or, say if you were to take 100 samples and calculate a CI for each one, 95 of them would include the true population parameter. The choice of 95% is conventional, like alpha (our significance criterion); we can (but often don't) change our level of confidence. This changes the relevant formula for calculating the interval, as in the examples below:
+Or, say if you were to take 100 samples and calculate a CI for each one, 95 of them would include the true population parameter:
+
+```{r echo = FALSE, fig.dim = c(12, 4)}
+samples <- vector("list", 100)
+set.seed(2024)
+population <- tibble(
+  x = seq(35, 65, by = .01),
+  y = rnorm(length(x), mean = 50, sd = 8),
+  z = seq(1:length(x))
+) 
+```
+
+```{r echo = FALSE, fig.dim = c(12, 4)}
+samples <- vector("list", 100)
+names(samples) <- seq(1:100)
+for (i in 1:100) {
+  samples[[i]] <- sample(population$y, 40)
+}
+
+samples <- do.call("rbind", samples) 
+samples <- t(samples)
+
+samples <- data.frame(samples)
+colnames(samples) <- seq(1:100)
+
+samples <- samples %>%
+  pivot_longer(cols = everything(),
+               names_to = "sample",
+               values_to = "x") %>%
+  mutate(sample = as.numeric(sample)) %>%
+  group_by(sample) %>%
+  summarise(
+    mean = mean(x),
+    sd = sd(x),
+    se = sd/sqrt(40),
+    ci_lower = mean - 1.96 * se,
+    ci_upper = mean + 1.96 * se
+  ) %>%
+  ungroup() %>%
+  rowwise() %>%
+  mutate(
+    contained = if_else(between(50, ci_lower, ci_upper), 1, 0)
+  )
+
+samples %>%
+  ggplot(aes(x = sample, y = mean, colour = factor(contained, labels = c("No", "Yes")))) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.1) +
+  ylim(35, 65) +
+  geom_hline(yintercept = 50, linetype = "dashed") +
+  labs(x = "Sample", y = "Estimate", colour = "Does 95% CI contain population mean?") +
+  scale_x_continuous(breaks = seq(10, 100, by = 10)) +
+  scale_colour_manual(values = c("red", "seagreen3"))
+```
+
+The 95% long-run probability **does not change** with sample size. What does change, however, is the **precision** of the estimates. This makes sense if you remember the formula for standard error, which divides by the square root of *n*. A larger *n* will lead to lower SE, and thus narrower confidence intervals. Below is an example with a much larger sample size. Notice how the confidence intervals are now much smaller:
+
+```{r echo = FALSE, fig.dim = c(12, 4)}
+samples <- vector("list", 100)
+names(samples) <- seq(1:100)
+for (i in 1:100) {
+  samples[[i]] <- sample(population$y, 300)
+}
+
+samples <- do.call("rbind", samples) 
+samples <- t(samples)
+
+samples <- data.frame(samples)
+colnames(samples) <- seq(1:100)
+
+samples <- samples %>%
+  pivot_longer(cols = everything(),
+               names_to = "sample",
+               values_to = "x") %>%
+  mutate(sample = as.numeric(sample)) %>%
+  group_by(sample) %>%
+  summarise(
+    mean = mean(x),
+    sd = sd(x),
+    se = sd/sqrt(300),
+    ci_lower = mean - 1.96 * se,
+    ci_upper = mean + 1.96 * se
+  ) %>%
+  ungroup() %>%
+  rowwise() %>%
+  mutate(
+    contained = if_else(between(50, ci_lower, ci_upper), 1, 0)
+  )
+
+samples %>%
+  ggplot(aes(x = sample, y = mean, colour = factor(contained, labels = c("No", "Yes")))) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.1) +
+  ylim(35, 65) +
+  geom_hline(yintercept = 50, linetype = "dashed") +
+  labs(x = "Sample", y = "Estimate", colour = "Does 95% CI contain population mean?") +
+  scale_x_continuous(breaks = seq(10, 100, by = 10)) +
+  scale_colour_manual(values = c("red", "seagreen3"))
+```
+
+
+
+
+The choice of 95% is conventional, like alpha (our significance criterion); we can (but often don't) change our level of confidence. This changes the relevant formula for calculating the interval, as in the examples below:
 
 $$
 90\% CI = M \pm (1.645 \times SE)
