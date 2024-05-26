@@ -656,34 +656,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  contrast      estimate    SE df t.ratio p.value
 ##  female - male   -0.886 0.246 52  -3.602  0.0007</code></pre>
 <p>Generally, it is wise to run simple effects tests both ways - as this decomposes the interaction into something that is interpretable. This is usually guided by theoretical reasons (i.e. a hypothesis about which simple effects to run). Of course, a good graph will tell the rest of the story:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="interactions.html#cb244-1" tabindex="-1"></a>jobsat <span class="sc">%&gt;%</span></span>
-<span id="cb244-2"><a href="interactions.html#cb244-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb244-3"><a href="interactions.html#cb244-3" tabindex="-1"></a>    <span class="at">education_level =</span> <span class="fu">factor</span>(education_level, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;school&quot;</span>, <span class="st">&quot;college&quot;</span>, <span class="st">&quot;university&quot;</span>)),</span>
-<span id="cb244-4"><a href="interactions.html#cb244-4" tabindex="-1"></a>    <span class="at">gender =</span> <span class="fu">factor</span>(gender, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
-<span id="cb244-5"><a href="interactions.html#cb244-5" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb244-6"><a href="interactions.html#cb244-6" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, education_level) <span class="sc">%&gt;%</span></span>
-<span id="cb244-7"><a href="interactions.html#cb244-7" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb244-8"><a href="interactions.html#cb244-8" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
-<span id="cb244-9"><a href="interactions.html#cb244-9" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(score),</span>
-<span id="cb244-10"><a href="interactions.html#cb244-10" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">nrow</span>(jobsat))</span>
-<span id="cb244-11"><a href="interactions.html#cb244-11" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb244-12"><a href="interactions.html#cb244-12" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb244-13"><a href="interactions.html#cb244-13" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb244-14"><a href="interactions.html#cb244-14" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> education_level, <span class="at">y =</span> mean, <span class="at">colour =</span> gender, <span class="at">group =</span> gender)</span>
-<span id="cb244-15"><a href="interactions.html#cb244-15" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb244-16"><a href="interactions.html#cb244-16" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb244-17"><a href="interactions.html#cb244-17" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb244-18"><a href="interactions.html#cb244-18" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(</span>
-<span id="cb244-19"><a href="interactions.html#cb244-19" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb244-20"><a href="interactions.html#cb244-20" tabindex="-1"></a>      <span class="at">ymin =</span> mean <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se,</span>
-<span id="cb244-21"><a href="interactions.html#cb244-21" tabindex="-1"></a>      <span class="at">ymax =</span> mean <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
-<span id="cb244-22"><a href="interactions.html#cb244-22" tabindex="-1"></a>    ), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb244-23"><a href="interactions.html#cb244-23" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="sc">+</span></span>
-<span id="cb244-24"><a href="interactions.html#cb244-24" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb244-25"><a href="interactions.html#cb244-25" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Education level&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Score&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Gender&quot;</span></span>
-<span id="cb244-26"><a href="interactions.html#cb244-26" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="interactions.html#cb239-1" tabindex="-1"></a>jobsat <span class="sc">%&gt;%</span></span>
+<span id="cb239-2"><a href="interactions.html#cb239-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb239-3"><a href="interactions.html#cb239-3" tabindex="-1"></a>    <span class="at">education_level =</span> <span class="fu">factor</span>(education_level, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;school&quot;</span>, <span class="st">&quot;college&quot;</span>, <span class="st">&quot;university&quot;</span>)),</span>
+<span id="cb239-4"><a href="interactions.html#cb239-4" tabindex="-1"></a>    <span class="at">gender =</span> <span class="fu">factor</span>(gender, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb239-5"><a href="interactions.html#cb239-5" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb239-6"><a href="interactions.html#cb239-6" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, education_level) <span class="sc">%&gt;%</span></span>
+<span id="cb239-7"><a href="interactions.html#cb239-7" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb239-8"><a href="interactions.html#cb239-8" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
+<span id="cb239-9"><a href="interactions.html#cb239-9" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(score),</span>
+<span id="cb239-10"><a href="interactions.html#cb239-10" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">nrow</span>(jobsat))</span>
+<span id="cb239-11"><a href="interactions.html#cb239-11" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb239-12"><a href="interactions.html#cb239-12" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb239-13"><a href="interactions.html#cb239-13" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb239-14"><a href="interactions.html#cb239-14" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> education_level, <span class="at">y =</span> mean, <span class="at">colour =</span> gender, <span class="at">group =</span> gender)</span>
+<span id="cb239-15"><a href="interactions.html#cb239-15" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb239-16"><a href="interactions.html#cb239-16" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb239-17"><a href="interactions.html#cb239-17" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb239-18"><a href="interactions.html#cb239-18" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(</span>
+<span id="cb239-19"><a href="interactions.html#cb239-19" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb239-20"><a href="interactions.html#cb239-20" tabindex="-1"></a>      <span class="at">ymin =</span> mean <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se,</span>
+<span id="cb239-21"><a href="interactions.html#cb239-21" tabindex="-1"></a>      <span class="at">ymax =</span> mean <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb239-22"><a href="interactions.html#cb239-22" tabindex="-1"></a>    ), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb239-23"><a href="interactions.html#cb239-23" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb239-24"><a href="interactions.html#cb239-24" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb239-25"><a href="interactions.html#cb239-25" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Education level&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Score&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Gender&quot;</span></span>
+<span id="cb239-26"><a href="interactions.html#cb239-26" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;gender&#39;. You can override using the `.groups` argument.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
 </div>
 </div>
             </section>

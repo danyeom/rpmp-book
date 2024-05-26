@@ -1,6 +1,6 @@
-fig:unnamed-chunk-36
-fig:unnamed-chunk-108
-fig:unnamed-chunk-165
+fig:unnamed-chunk-22
+fig:unnamed-chunk-94
+fig:unnamed-chunk-151
 preface
 intro
 basic-syntax
