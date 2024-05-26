@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-18" />
+<meta name="date" content="2024-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -145,11 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
-<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
-<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#functions"><i class="fa fa-check"></i><b>2.1.3</b> Functions</a></li>
+<li class="chapter" data-level="2.1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-syntax.html"><a href="basic-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.1.3" data-path="basic-syntax.html"><a href="basic-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
 <ul>
@@ -158,9 +158,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.3.1</b> Loading packages</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.2</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.3</b> The <code>here()</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
+<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
+<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here()</code> package</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.4</b> Wrangling data with dplyr and others</a>
 <ul>
@@ -170,7 +171,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.4.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
 <li class="chapter" data-level="2.4.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.4.5</b> Some other handy tidyverse functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a></li>
+<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.5.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.5.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.5.3</b> Making the graph look better</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
@@ -506,23 +512,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="the-broom-package.html"><a href="the-broom-package.html"><i class="fa fa-check"></i><b>A</b> The <code>broom()</code> package</a>
+<li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
+<li class="chapter" data-level="B" data-path="broom.html"><a href="broom.html"><i class="fa fa-check"></i><b>B</b> The <code>broom()</code> package</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>A.1</b> The <code>tidy()</code> function</a>
+<li class="chapter" data-level="B.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
 <ul>
-<li class="chapter" data-level="A.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>A.1.1</b> Correlations</a></li>
-<li class="chapter" data-level="A.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>A.1.2</b> Chi-squares</a></li>
-<li class="chapter" data-level="A.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>A.1.3</b> t-tests</a></li>
-<li class="chapter" data-level="A.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>A.1.4</b> ANOVA objects</a></li>
+<li class="chapter" data-level="B.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
+<li class="chapter" data-level="B.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
+<li class="chapter" data-level="B.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
+<li class="chapter" data-level="B.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>A.2</b> The <code>glance()</code> function</a></li>
-<li class="chapter" data-level="A.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>A.3</b> The <code>augment()</code> function</a>
+<li class="chapter" data-level="B.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
+<li class="chapter" data-level="B.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
 <ul>
-<li class="chapter" data-level="A.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>A.3.1</b> Chi-square tests</a></li>
-<li class="chapter" data-level="A.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>A.3.2</b> Regressions</a></li>
+<li class="chapter" data-level="B.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
+<li class="chapter" data-level="B.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>B</b> Technical details of <code>anova()</code></a></li>
+<li class="chapter" data-level="C" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>C</b> Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -557,40 +564,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>DFS_Total: a measure of proneness to flow.</li>
 </ul>
 <p>Let’s see if trait anxiety and openness predict flow proneness.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="multiple-regressions-in-r.html#cb209-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="multiple-regressions-in-r.html#cb218-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 811 Columns: 6
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (6): id, age, GoldMSI, DFS_Total, trait_anxiety, openness
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>To build a multiple regression model in R, we simply need to add (literally) more terms to <code>lm()</code>:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="multiple-regressions-in-r.html#cb211-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="multiple-regressions-in-r.html#cb220-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
 </div>
 <div id="assumption-checks-5" class="section level3 hasAnchor" number="8.8.2">
 <h3><span class="header-section-number">8.8.2</span> Assumption checks<a href="multiple-regressions-in-r.html#assumption-checks-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The Shapiro-Wilks test suggests that our normality assumption is violated - though if you look at the relevant Q-Q plot, it doesn’t appear to be very severe.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="multiple-regressions-in-r.html#cb212-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_flow_lm<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="multiple-regressions-in-r.html#cb221-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_flow_lm<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  w10_flow_lm$residuals
 ## W = 0.99311, p-value = 0.0008488</code></pre>
 <p>The residuals-fitted plot for our data looks ok - no obvious conical shape, suggesting that the homoscedasticity assumption is intact.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="multiple-regressions-in-r.html#cb214-1" tabindex="-1"></a><span class="fu">ggplot</span>(w10_flow_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb214-2"><a href="multiple-regressions-in-r.html#cb214-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="multiple-regressions-in-r.html#cb223-1" tabindex="-1"></a><span class="fu">ggplot</span>(w10_flow_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb223-2"><a href="multiple-regressions-in-r.html#cb223-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
 <p>Lastly, our multicollinearity statistics look good - no violations suggested here.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="multiple-regressions-in-r.html#cb215-1" tabindex="-1"></a><span class="co"># Variance</span></span>
-<span id="cb215-2"><a href="multiple-regressions-in-r.html#cb215-2" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="multiple-regressions-in-r.html#cb224-1" tabindex="-1"></a><span class="co"># Variance</span></span>
+<span id="cb224-2"><a href="multiple-regressions-in-r.html#cb224-2" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## Registered S3 method overwritten by &#39;data.table&#39;:
 ##   method           from
 ##   print.data.table</code></pre>
 <pre><code>## trait_anxiety      openness 
 ##      1.025955      1.025955</code></pre>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="multiple-regressions-in-r.html#cb218-1" tabindex="-1"></a><span class="co"># Tolerance</span></span>
-<span id="cb218-2"><a href="multiple-regressions-in-r.html#cb218-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="multiple-regressions-in-r.html#cb227-1" tabindex="-1"></a><span class="co"># Tolerance</span></span>
+<span id="cb227-2"><a href="multiple-regressions-in-r.html#cb227-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## trait_anxiety      openness 
 ##     0.9747012     0.9747012</code></pre>
 </div>
@@ -598,7 +605,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.8.3</span> Output<a href="multiple-regressions-in-r.html#output-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start as always by taking a look at our output. Our regression explains 13.6 of the variance in flow proneness (R2 = .136), and our overall model is significant (<em>F</em>(2, 808) = 63.81, <em>p</em> &lt; .001).</p>
 <p>With that in mind, let’s turn to our individual predictors. Remember, now we have two predictors to consider - and we need to interpret them individually as well.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="multiple-regressions-in-r.html#cb220-1" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="multiple-regressions-in-r.html#cb229-1" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
@@ -618,7 +625,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 3.705 on 808 degrees of freedom
 ## Multiple R-squared:  0.1364, Adjusted R-squared:  0.1343 
 ## F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="multiple-regressions-in-r.html#cb222-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="multiple-regressions-in-r.html#cb231-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>##                    2.5 %      97.5 %
 ## (Intercept)   30.4252962 34.87625896
 ## trait_anxiety -0.1362446 -0.08606874
@@ -637,8 +644,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When we do a multiple regression, we can actually identify which of our predictors is the strongest predictor of the outcome.</p>
 <p>Our estimate column alone won’t tell us that, because these are unstandardised coefficients. They are unstandardised because they describe the relationship in terms of the original units of each measure. An increase of 1 unit on trait anxiety is not necessarily the same thing as a 1 unit increase in openness because they are on different scales, so we can’t compare them directly!</p>
 <p>However, if we were to standardise these coefficients, we would then bring them all into the same scale (think back to z-scores!) - which would allow us to directly compare which predictor leads to a greater change in the outcome. These are simply regression coefficients that have been standardised, meaning that they are all on the same scale. Jamovi will calculate a standardised estimate (sometimes called standardised coefficient), which is presented in the rightmost column of the above table. In R, we need to use an extra function to do this. We can call on the <code>lm.beta</code> package:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="multiple-regressions-in-r.html#cb224-1" tabindex="-1"></a><span class="fu">library</span>(lm.beta)</span>
-<span id="cb224-2"><a href="multiple-regressions-in-r.html#cb224-2" tabindex="-1"></a><span class="fu">lm.beta</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="multiple-regressions-in-r.html#cb233-1" tabindex="-1"></a><span class="fu">library</span>(lm.beta)</span>
+<span id="cb233-2"><a href="multiple-regressions-in-r.html#cb233-2" tabindex="-1"></a><span class="fu">lm.beta</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
@@ -647,17 +654,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   (Intercept) trait_anxiety      openness 
 ##            NA    -0.2879944     0.1899044</code></pre>
 <p>Alternatively, we can simply standardise our predictors before running our regression (which is a lot easier in R than in other programs):</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="multiple-regressions-in-r.html#cb226-1" tabindex="-1"></a><span class="co"># Standardise predictors</span></span>
-<span id="cb226-2"><a href="multiple-regressions-in-r.html#cb226-2" tabindex="-1"></a></span>
-<span id="cb226-3"><a href="multiple-regressions-in-r.html#cb226-3" tabindex="-1"></a>w10_flow_std <span class="ot">&lt;-</span> w10_flow <span class="sc">%&gt;%</span></span>
-<span id="cb226-4"><a href="multiple-regressions-in-r.html#cb226-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb226-5"><a href="multiple-regressions-in-r.html#cb226-5" tabindex="-1"></a>    <span class="at">trait_anxiety =</span> <span class="fu">scale</span>(trait_anxiety),</span>
-<span id="cb226-6"><a href="multiple-regressions-in-r.html#cb226-6" tabindex="-1"></a>    <span class="at">openness =</span> <span class="fu">scale</span>(openness),</span>
-<span id="cb226-7"><a href="multiple-regressions-in-r.html#cb226-7" tabindex="-1"></a>    <span class="at">DFS_Total =</span> <span class="fu">scale</span>(DFS_Total)</span>
-<span id="cb226-8"><a href="multiple-regressions-in-r.html#cb226-8" tabindex="-1"></a>  )</span>
-<span id="cb226-9"><a href="multiple-regressions-in-r.html#cb226-9" tabindex="-1"></a></span>
-<span id="cb226-10"><a href="multiple-regressions-in-r.html#cb226-10" tabindex="-1"></a>w10_flow_lm_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow_std)</span>
-<span id="cb226-11"><a href="multiple-regressions-in-r.html#cb226-11" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm_std)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="multiple-regressions-in-r.html#cb235-1" tabindex="-1"></a><span class="co"># Standardise predictors</span></span>
+<span id="cb235-2"><a href="multiple-regressions-in-r.html#cb235-2" tabindex="-1"></a></span>
+<span id="cb235-3"><a href="multiple-regressions-in-r.html#cb235-3" tabindex="-1"></a>w10_flow_std <span class="ot">&lt;-</span> w10_flow <span class="sc">%&gt;%</span></span>
+<span id="cb235-4"><a href="multiple-regressions-in-r.html#cb235-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb235-5"><a href="multiple-regressions-in-r.html#cb235-5" tabindex="-1"></a>    <span class="at">trait_anxiety =</span> <span class="fu">scale</span>(trait_anxiety),</span>
+<span id="cb235-6"><a href="multiple-regressions-in-r.html#cb235-6" tabindex="-1"></a>    <span class="at">openness =</span> <span class="fu">scale</span>(openness),</span>
+<span id="cb235-7"><a href="multiple-regressions-in-r.html#cb235-7" tabindex="-1"></a>    <span class="at">DFS_Total =</span> <span class="fu">scale</span>(DFS_Total)</span>
+<span id="cb235-8"><a href="multiple-regressions-in-r.html#cb235-8" tabindex="-1"></a>  )</span>
+<span id="cb235-9"><a href="multiple-regressions-in-r.html#cb235-9" tabindex="-1"></a></span>
+<span id="cb235-10"><a href="multiple-regressions-in-r.html#cb235-10" tabindex="-1"></a>w10_flow_lm_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow_std)</span>
+<span id="cb235-11"><a href="multiple-regressions-in-r.html#cb235-11" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm_std)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow_std)
@@ -677,7 +684,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 0.9304 on 808 degrees of freedom
 ## Multiple R-squared:  0.1364, Adjusted R-squared:  0.1343 
 ## F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="multiple-regressions-in-r.html#cb228-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm_std)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="multiple-regressions-in-r.html#cb237-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm_std)</span></code></pre></div>
 <pre><code>##                     2.5 %      97.5 %
 ## (Intercept)   -0.06413295  0.06413295
 ## trait_anxiety -0.35299439 -0.22299437

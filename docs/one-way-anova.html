@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-18" />
+<meta name="date" content="2024-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -145,11 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
-<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
-<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#functions"><i class="fa fa-check"></i><b>2.1.3</b> Functions</a></li>
+<li class="chapter" data-level="2.1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-syntax.html"><a href="basic-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.1.3" data-path="basic-syntax.html"><a href="basic-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
 <ul>
@@ -158,9 +158,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.3.1</b> Loading packages</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.2</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.3</b> The <code>here()</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
+<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
+<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here()</code> package</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.4</b> Wrangling data with dplyr and others</a>
 <ul>
@@ -170,7 +171,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.4.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
 <li class="chapter" data-level="2.4.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.4.5</b> Some other handy tidyverse functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a></li>
+<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.5.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.5.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.5.3</b> Making the graph look better</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
@@ -506,23 +512,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="the-broom-package.html"><a href="the-broom-package.html"><i class="fa fa-check"></i><b>A</b> The <code>broom()</code> package</a>
+<li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
+<li class="chapter" data-level="B" data-path="broom.html"><a href="broom.html"><i class="fa fa-check"></i><b>B</b> The <code>broom()</code> package</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>A.1</b> The <code>tidy()</code> function</a>
+<li class="chapter" data-level="B.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
 <ul>
-<li class="chapter" data-level="A.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>A.1.1</b> Correlations</a></li>
-<li class="chapter" data-level="A.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>A.1.2</b> Chi-squares</a></li>
-<li class="chapter" data-level="A.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>A.1.3</b> t-tests</a></li>
-<li class="chapter" data-level="A.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>A.1.4</b> ANOVA objects</a></li>
+<li class="chapter" data-level="B.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
+<li class="chapter" data-level="B.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
+<li class="chapter" data-level="B.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
+<li class="chapter" data-level="B.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>A.2</b> The <code>glance()</code> function</a></li>
-<li class="chapter" data-level="A.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>A.3</b> The <code>augment()</code> function</a>
+<li class="chapter" data-level="B.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
+<li class="chapter" data-level="B.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
 <ul>
-<li class="chapter" data-level="A.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>A.3.1</b> Chi-square tests</a></li>
-<li class="chapter" data-level="A.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>A.3.2</b> Regressions</a></li>
+<li class="chapter" data-level="B.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
+<li class="chapter" data-level="B.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>B</b> Technical details of <code>anova()</code></a></li>
+<li class="chapter" data-level="C" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>C</b> Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -576,16 +583,16 @@ different types of slices: caramel slices, vanilla slices and lemon
 slices. Participants were randomly allocated to taste one of the three
 slices blindfolded, and were then asked to verbally rate its taste on a
 scale from 1-10 (10 being super tasty).</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="one-way-anova.html#cb154-1" tabindex="-1"></a>w9_slices <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_9&quot;</span>, <span class="st">&quot;w9_slices.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="one-way-anova.html#cb162-1" tabindex="-1"></a>w9_slices <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_9&quot;</span>, <span class="st">&quot;w9_slices.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 63 Columns: 2
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): group
 ## dbl (1): rating
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="one-way-anova.html#cb156-1" tabindex="-1"></a><span class="fu">head</span>(w9_slices)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="one-way-anova.html#cb164-1" tabindex="-1"></a><span class="fu">head</span>(w9_slices)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["group"],"name":[1],"type":["chr"],"align":["left"]},{"label":["rating"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"caramel","2":"6"},{"1":"vanilla","2":"8"},{"1":"lemon","2":"4"},{"1":"caramel","2":"6"},{"1":"vanilla","2":"6"},{"1":"lemon","2":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -596,7 +603,7 @@ scale from 1-10 (10 being super tasty).</p>
 <h3><span class="header-section-number">7.4.3</span> Assumption checks<a href="one-way-anova.html#assumption-checks-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, to test assumptions we need to run the ANOVA <em>first</em>. This is because some assumptions rely on values that are calculated when the ANOVA is run. Other programs, such as Jamovi and SPSS, will hide this manual work and present the information to you automatically. This is not quite the case in R, but that’s ok!</p>
 <p>The basic function for running an ANOVA in R is the <code>aov()</code> function, which takes a formula input (much like <code>t.test()</code>). Anything created using <code>aov()</code> should be assigned to a new variable so that we can use it later. This creates an <code>aov</code> object that will a) test our main effects and b) let us check some of our assumptions.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="one-way-anova.html#cb157-1" tabindex="-1"></a>w9_slices_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(rating <span class="sc">~</span> group, <span class="at">data =</span> w9_slices)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="one-way-anova.html#cb165-1" tabindex="-1"></a>w9_slices_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(rating <span class="sc">~</span> group, <span class="at">data =</span> w9_slices)</span></code></pre></div>
 <p>There are four main assumptions for a basic ANOVA.</p>
 <ul>
 <li>Data must be independent of each other - in other words, one
@@ -607,9 +614,9 @@ using the same methods as t-tests: either a QQ plot or a normality
 test (e.g. Shapiro-Wilks). You can access the residuals from the
 <code>aov</code> object directly like this:</li>
 </ul>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="one-way-anova.html#cb158-1" tabindex="-1"></a>w9_slices_aov<span class="sc">$</span>residuals</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="one-way-anova.html#cb166-1" tabindex="-1"></a>w9_slices_aov<span class="sc">$</span>residuals</span></code></pre></div>
 <p>This lets us do the SW test:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="one-way-anova.html#cb159-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w9_slices_aov<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="one-way-anova.html#cb167-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w9_slices_aov<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -622,11 +629,11 @@ test (e.g. Shapiro-Wilks). You can access the residuals from the
 <li>The equality of variance (homoscedasticity) assumption.</li>
 </ul>
 <p>This means that the variances within each group are the same. We test this using Levene’s test, using the <code>levene_test()</code> function. Helpfully, <code>levene_test()</code> is flexible enough to work with either a formula <em>or</em> an <code>aov</code> object we have already fitted:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="one-way-anova.html#cb161-1" tabindex="-1"></a><span class="co"># Either one of these will work</span></span>
-<span id="cb161-2"><a href="one-way-anova.html#cb161-2" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
-<span id="cb161-3"><a href="one-way-anova.html#cb161-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(rating <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span>
-<span id="cb161-4"><a href="one-way-anova.html#cb161-4" tabindex="-1"></a></span>
-<span id="cb161-5"><a href="one-way-anova.html#cb161-5" tabindex="-1"></a><span class="fu">levene_test</span>(w9_slices_aov, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="one-way-anova.html#cb169-1" tabindex="-1"></a><span class="co"># Either one of these will work</span></span>
+<span id="cb169-2"><a href="one-way-anova.html#cb169-2" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
+<span id="cb169-3"><a href="one-way-anova.html#cb169-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(rating <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span>
+<span id="cb169-4"><a href="one-way-anova.html#cb169-4" tabindex="-1"></a></span>
+<span id="cb169-5"><a href="one-way-anova.html#cb169-5" tabindex="-1"></a><span class="fu">levene_test</span>(w9_slices_aov, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"60","3":"0.720662","4":"0.4905921"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -639,7 +646,7 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 <div id="output-5" class="section level3 hasAnchor" number="7.4.4">
 <h3><span class="header-section-number">7.4.4</span> Output<a href="one-way-anova.html#output-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s our main output from the ANOVA, generated using the <code>summary()</code> function. This is called an omnibus, because it is a general test of the hypotheses:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="one-way-anova.html#cb162-1" tabindex="-1"></a><span class="fu">summary</span>(w9_slices_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="one-way-anova.html#cb170-1" tabindex="-1"></a><span class="fu">summary</span>(w9_slices_aov)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 ## group        2  22.22  11.111   6.897 0.00201 **
 ## Residuals   60  96.67   1.611                   
@@ -651,7 +658,7 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 <h3><span class="header-section-number">7.4.5</span> Post-hoc tests<a href="one-way-anova.html#post-hoc-tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The output above told us that we could reject our basic null hypothesis - that there was no difference between means. However, remember that it doesn’t tell us where those differences are. To figure out where they are, we need to follow up that ANOVA with post-hoc tests.</p>
 <p>To generate post-hocs, there are a couple of ways. Tukey tests can be calculated with <code>TukeyHSD()</code> or <code>tukey_hsd()</code>:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="one-way-anova.html#cb164-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(w9_slices_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="one-way-anova.html#cb172-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(w9_slices_aov)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -662,12 +669,12 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 ## lemon-caramel   -0.4761905 -1.4175618 0.4651809 0.4486738
 ## vanilla-caramel  0.9523810  0.0110096 1.8937523 0.0467882
 ## vanilla-lemon    1.4285714  0.4872001 2.3699428 0.0015928</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="one-way-anova.html#cb166-1" tabindex="-1"></a><span class="co"># These will give the same output</span></span>
-<span id="cb166-2"><a href="one-way-anova.html#cb166-2" tabindex="-1"></a></span>
-<span id="cb166-3"><a href="one-way-anova.html#cb166-3" tabindex="-1"></a><span class="fu">tukey_hsd</span>(w9_slices_aov)</span>
-<span id="cb166-4"><a href="one-way-anova.html#cb166-4" tabindex="-1"></a></span>
-<span id="cb166-5"><a href="one-way-anova.html#cb166-5" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
-<span id="cb166-6"><a href="one-way-anova.html#cb166-6" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(rating <span class="sc">~</span> group)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="one-way-anova.html#cb174-1" tabindex="-1"></a><span class="co"># These will give the same output</span></span>
+<span id="cb174-2"><a href="one-way-anova.html#cb174-2" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="one-way-anova.html#cb174-3" tabindex="-1"></a><span class="fu">tukey_hsd</span>(w9_slices_aov)</span>
+<span id="cb174-4"><a href="one-way-anova.html#cb174-4" tabindex="-1"></a></span>
+<span id="cb174-5"><a href="one-way-anova.html#cb174-5" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
+<span id="cb174-6"><a href="one-way-anova.html#cb174-6" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(rating <span class="sc">~</span> group)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["null.value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["estimate"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p.adj"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p.adj.signif"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"group","2":"caramel","3":"lemon","4":"0","5":"-0.4761905","6":"-1.4175618","7":"0.4651809","8":"0.44900","9":"ns","_rn_":"1"},{"1":"group","2":"caramel","3":"vanilla","4":"0","5":"0.9523810","6":"0.0110096","7":"1.8937523","8":"0.04680","9":"*","_rn_":"2"},{"1":"group","2":"lemon","3":"vanilla","4":"0","5":"1.4285714","6":"0.4872001","7":"2.3699428","8":"0.00159","9":"**","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -680,7 +687,7 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 <li>There is a significant difference between lemon and vanilla slices, in that participants preferred vanilla slices (MD = 1.43, <em>p</em> = .002).</li>
 </ul>
 <p>To generate Bonferroni or Holm-corrected p-values, you need to use the <code>pairwise.t.test()</code> function:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="one-way-anova.html#cb167-1" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> w9_slices<span class="sc">$</span>rating, <span class="at">g =</span> w9_slices<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="one-way-anova.html#cb175-1" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> w9_slices<span class="sc">$</span>rating, <span class="at">g =</span> w9_slices<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 
@@ -692,8 +699,8 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 ## 
 ## P value adjustment method: bonferroni</code></pre>
 <p><code>rstatix::pairwise_t_test()</code> will also work, and looks like this:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="one-way-anova.html#cb169-1" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
-<span id="cb169-2"><a href="one-way-anova.html#cb169-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(rating <span class="sc">~</span> group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="one-way-anova.html#cb177-1" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
+<span id="cb177-2"><a href="one-way-anova.html#cb177-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(rating <span class="sc">~</span> group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[4],"type":["int"],"align":["right"]},{"label":["n2"],"name":[5],"type":["int"],"align":["right"]},{"label":["p"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p.signif"],"name":[7],"type":["chr"],"align":["left"]},{"label":["p.adj"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p.adj.signif"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"rating","2":"caramel","3":"lemon","4":"21","5":"21","6":"0.229000","7":"ns","8":"0.68700","9":"ns","_rn_":"1"},{"1":"rating","2":"caramel","3":"vanilla","4":"21","5":"21","6":"0.018000","7":"*","8":"0.05410","9":"ns","_rn_":"2"},{"1":"rating","2":"lemon","3":"vanilla","4":"21","5":"21","6":"0.000557","7":"***","8":"0.00167","9":"**","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-18" />
+<meta name="date" content="2024-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -145,11 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
-<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
-<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#functions"><i class="fa fa-check"></i><b>2.1.3</b> Functions</a></li>
+<li class="chapter" data-level="2.1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-syntax.html"><a href="basic-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.1.3" data-path="basic-syntax.html"><a href="basic-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
 <ul>
@@ -158,9 +158,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.3.1</b> Loading packages</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.2</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.3</b> The <code>here()</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
+<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
+<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here()</code> package</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.4</b> Wrangling data with dplyr and others</a>
 <ul>
@@ -170,7 +171,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.4.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
 <li class="chapter" data-level="2.4.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.4.5</b> Some other handy tidyverse functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a></li>
+<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.5.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.5.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.5.3</b> Making the graph look better</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
@@ -506,23 +512,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="the-broom-package.html"><a href="the-broom-package.html"><i class="fa fa-check"></i><b>A</b> The <code>broom()</code> package</a>
+<li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
+<li class="chapter" data-level="B" data-path="broom.html"><a href="broom.html"><i class="fa fa-check"></i><b>B</b> The <code>broom()</code> package</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>A.1</b> The <code>tidy()</code> function</a>
+<li class="chapter" data-level="B.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
 <ul>
-<li class="chapter" data-level="A.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>A.1.1</b> Correlations</a></li>
-<li class="chapter" data-level="A.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>A.1.2</b> Chi-squares</a></li>
-<li class="chapter" data-level="A.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>A.1.3</b> t-tests</a></li>
-<li class="chapter" data-level="A.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>A.1.4</b> ANOVA objects</a></li>
+<li class="chapter" data-level="B.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
+<li class="chapter" data-level="B.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
+<li class="chapter" data-level="B.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
+<li class="chapter" data-level="B.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>A.2</b> The <code>glance()</code> function</a></li>
-<li class="chapter" data-level="A.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>A.3</b> The <code>augment()</code> function</a>
+<li class="chapter" data-level="B.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
+<li class="chapter" data-level="B.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
 <ul>
-<li class="chapter" data-level="A.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>A.3.1</b> Chi-square tests</a></li>
-<li class="chapter" data-level="A.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>A.3.2</b> Regressions</a></li>
+<li class="chapter" data-level="B.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
+<li class="chapter" data-level="B.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>B</b> Technical details of <code>anova()</code></a></li>
+<li class="chapter" data-level="C" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>C</b> Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -551,16 +558,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-normal-distribution" class="section level3 hasAnchor" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> The normal distribution<a href="distributions.html#the-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Earlier, we saw a series of graphs overlaid on top of each other. These graphs, while having different variability, were essentially all the same shape - they were symmetrical bell curves. These were all examples of the normal distribution (also called the Gaussian distribution). The classic normal distribution takes on a neat bell-shaped curve:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-83-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>In the normal distribution, the majority of data points cluster in the middle, while all other values are symmetrically distributed from either side from the middle. This is what gives the normal distribution its recognisable bell shape.</p>
 <p>The normal distribution is defined by two parameters: the mean and the standard deviation of the data. These two parameters define the overall shape of the bell curve - the mean defines where the peak is, while the standard deviation defines how spread out the tails are.</p>
 <p>An important feature of the normal distribution is where all of the data is spread, regardless of its shape: 95% of the data within the curve falls within 1.96 standard deviations, either side of the mean. This applies to any normal distribution no matter what the scale of the data is. 99.7% of data falls within just below 3 standard deviations.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="skew" class="section level3 hasAnchor" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Skew<a href="distributions.html#skew" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Skewness, as the name implies, describes whether or not a distribution is symmetrical or skewed. If a distribution is skewed, we would expect numbers to be bunched up at one end of the distribution. Have a look at the three graphs below:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>The purple graph in the middle is symmetrically distributed, so we say that it has no skew.</li>
 <li>The red graph has values that are weighted towards the right-hand side of the x-axis, and so we say that it is either skewed left or negatively skewed.</li>
@@ -577,7 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="kurtosis" class="section level3 hasAnchor" number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> Kurtosis<a href="distributions.html#kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Kurtosis refers to the shape of the tails specifically. Are all of the data bunched very tightly around one value, or are the data evenly spread out? The three graphs you saw up above all have different kurtoses.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-97-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The orange graph has most values very close to the peak at 50; therefore, the tails themselves are very small. The red line, on the other hand, is spread out and flatter so the tails are larger. The blue curve again approximates a normal distribution. We can quantify kurtosis through the idea of excess kurtosis - in other words, how far does it deviate from what we see in a normal distribution. This is shown below:</p>
 <p>The different types of excess kurtoses are:</p>
 <ul>

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-18" />
+<meta name="date" content="2024-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -145,11 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Assignment and syntax</a>
+<li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#basic-syntax"><i class="fa fa-check"></i><b>2.1.1</b> Basic syntax</a></li>
-<li class="chapter" data-level="2.1.2" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.2</b> Variable types</a></li>
-<li class="chapter" data-level="2.1.3" data-path="assignment-and-syntax.html"><a href="assignment-and-syntax.html#functions"><i class="fa fa-check"></i><b>2.1.3</b> Functions</a></li>
+<li class="chapter" data-level="2.1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-syntax.html"><a href="basic-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.1.3" data-path="basic-syntax.html"><a href="basic-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
 <ul>
@@ -158,9 +158,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#loading-packages"><i class="fa fa-check"></i><b>2.3.1</b> Loading packages</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.2</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.3</b> The <code>here()</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
+<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
+<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here()</code> package</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.4</b> Wrangling data with dplyr and others</a>
 <ul>
@@ -170,7 +171,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.4.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
 <li class="chapter" data-level="2.4.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.4.5</b> Some other handy tidyverse functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a></li>
+<li class="chapter" data-level="2.5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.5</b> Making graphs with ggplot2</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.5.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.5.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.5.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.5.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.5.3</b> Making the graph look better</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptive-statistics-module-5.html"><a href="descriptive-statistics-module-5.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
 <ul>
@@ -506,23 +512,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="the-broom-package.html"><a href="the-broom-package.html"><i class="fa fa-check"></i><b>A</b> The <code>broom()</code> package</a>
+<li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
+<li class="chapter" data-level="B" data-path="broom.html"><a href="broom.html"><i class="fa fa-check"></i><b>B</b> The <code>broom()</code> package</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>A.1</b> The <code>tidy()</code> function</a>
+<li class="chapter" data-level="B.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
 <ul>
-<li class="chapter" data-level="A.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>A.1.1</b> Correlations</a></li>
-<li class="chapter" data-level="A.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>A.1.2</b> Chi-squares</a></li>
-<li class="chapter" data-level="A.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>A.1.3</b> t-tests</a></li>
-<li class="chapter" data-level="A.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>A.1.4</b> ANOVA objects</a></li>
+<li class="chapter" data-level="B.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
+<li class="chapter" data-level="B.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
+<li class="chapter" data-level="B.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
+<li class="chapter" data-level="B.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>A.2</b> The <code>glance()</code> function</a></li>
-<li class="chapter" data-level="A.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>A.3</b> The <code>augment()</code> function</a>
+<li class="chapter" data-level="B.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
+<li class="chapter" data-level="B.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
 <ul>
-<li class="chapter" data-level="A.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>A.3.1</b> Chi-square tests</a></li>
-<li class="chapter" data-level="A.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>A.3.2</b> Regressions</a></li>
+<li class="chapter" data-level="B.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
+<li class="chapter" data-level="B.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>B</b> Technical details of <code>anova()</code></a></li>
+<li class="chapter" data-level="C" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>C</b> Technical details of <code>anova()</code></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -557,29 +564,29 @@ regular ANOVA, it’s typically for 3+ times but can be used for two).</p>
 <div id="example-data-4" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> Example data<a href="one-way-repeated-measures-anova.html#example-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this example, we’ll use a dataset derived from McPherson (2005). This is a subset of data where children were scored on their ability to play songs from memory over three years - 1997 - 1999. We’re interested in seeing whether this change over time is significant - therefore, time (3 levels) is our independent variable, while playing from memory is our dependent variable.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="one-way-repeated-measures-anova.html#cb170-1" tabindex="-1"></a>w9_memory <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Week_9&quot;</span>, <span class="st">&quot;w9_playing_from_memory.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="one-way-repeated-measures-anova.html#cb178-1" tabindex="-1"></a>w9_memory <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Week_9&quot;</span>, <span class="st">&quot;w9_playing_from_memory.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 95 Columns: 4
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (4): Participant, PFM_97, PFM_98, PFM_99
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="one-way-repeated-measures-anova.html#cb172-1" tabindex="-1"></a><span class="fu">head</span>(w9_memory)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="one-way-repeated-measures-anova.html#cb180-1" tabindex="-1"></a><span class="fu">head</span>(w9_memory)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Participant"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["PFM_97"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PFM_98"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PFM_99"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"56","3":"131","4":"139"},{"1":"2","2":"84","3":"114","4":"138"},{"1":"3","2":"159","3":"173","4":"199"},{"1":"4","2":"110","3":"147","4":"160"},{"1":"5","2":"118","3":"148","4":"158"},{"1":"6","2":"131","3":"155","4":"177"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>For further analyses, we’ll shape this into long format:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="one-way-repeated-measures-anova.html#cb173-1" tabindex="-1"></a>w9_memory_wide <span class="ot">&lt;-</span> w9_memory</span>
-<span id="cb173-2"><a href="one-way-repeated-measures-anova.html#cb173-2" tabindex="-1"></a></span>
-<span id="cb173-3"><a href="one-way-repeated-measures-anova.html#cb173-3" tabindex="-1"></a>w9_memory <span class="ot">&lt;-</span> w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb173-4"><a href="one-way-repeated-measures-anova.html#cb173-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb173-5"><a href="one-way-repeated-measures-anova.html#cb173-5" tabindex="-1"></a>    <span class="at">cols =</span> PFM_97<span class="sc">:</span>PFM_99,</span>
-<span id="cb173-6"><a href="one-way-repeated-measures-anova.html#cb173-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb173-7"><a href="one-way-repeated-measures-anova.html#cb173-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;memory_score&quot;</span></span>
-<span id="cb173-8"><a href="one-way-repeated-measures-anova.html#cb173-8" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="one-way-repeated-measures-anova.html#cb181-1" tabindex="-1"></a>w9_memory_wide <span class="ot">&lt;-</span> w9_memory</span>
+<span id="cb181-2"><a href="one-way-repeated-measures-anova.html#cb181-2" tabindex="-1"></a></span>
+<span id="cb181-3"><a href="one-way-repeated-measures-anova.html#cb181-3" tabindex="-1"></a>w9_memory <span class="ot">&lt;-</span> w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb181-4"><a href="one-way-repeated-measures-anova.html#cb181-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb181-5"><a href="one-way-repeated-measures-anova.html#cb181-5" tabindex="-1"></a>    <span class="at">cols =</span> PFM_97<span class="sc">:</span>PFM_99,</span>
+<span id="cb181-6"><a href="one-way-repeated-measures-anova.html#cb181-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb181-7"><a href="one-way-repeated-measures-anova.html#cb181-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;memory_score&quot;</span></span>
+<span id="cb181-8"><a href="one-way-repeated-measures-anova.html#cb181-8" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
 <div id="assumption-checks-4" class="section level3 hasAnchor" number="7.5.3">
 <h3><span class="header-section-number">7.5.3</span> Assumption checks<a href="one-way-repeated-measures-anova.html#assumption-checks-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -588,12 +595,15 @@ regular ANOVA, it’s typically for 3+ times but can be used for two).</p>
 <li>The residuals should be normally distributed.</li>
 </ul>
 <p>Our usual tests apply here too. Below is a QQ plot, which might suggest that our residuals aren’t normally distributed. (Use the data and perform a SW test on it to see what happens!)</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="one-way-repeated-measures-anova.html#cb174-1" tabindex="-1"></a><span class="fu">aov</span>(memory_score <span class="sc">~</span> time, <span class="at">data =</span> w9_memory) <span class="sc">%&gt;%</span></span>
-<span id="cb174-2"><a href="one-way-repeated-measures-anova.html#cb174-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb174-3"><a href="one-way-repeated-measures-anova.html#cb174-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
-<span id="cb174-4"><a href="one-way-repeated-measures-anova.html#cb174-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb174-5"><a href="one-way-repeated-measures-anova.html#cb174-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-197-1.png" width="672" /></p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="one-way-repeated-measures-anova.html#cb182-1" tabindex="-1"></a><span class="fu">aov</span>(memory_score <span class="sc">~</span> time, <span class="at">data =</span> w9_memory) <span class="sc">%&gt;%</span></span>
+<span id="cb182-2"><a href="one-way-repeated-measures-anova.html#cb182-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb182-3"><a href="one-way-repeated-measures-anova.html#cb182-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
+<span id="cb182-4"><a href="one-way-repeated-measures-anova.html#cb182-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb182-5"><a href="one-way-repeated-measures-anova.html#cb182-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
+<pre><code>## Warning: The `augment()` method for objects of class `aov` is not maintained by the broom team, and is only supported through the `lm` tidier method. Please be cautious in interpreting and reporting broom output.
+## 
+## This warning is displayed once per session.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
 <ul>
 <li>The sphericity assumption. Sphericity is assumed if, the variances of the differences between each level of the IV are equal. Think of it as a form of the equality of variances assumption, where we assumed that the variances within groups were equal. The sphericity assumption applies to the differences between T1 and T2, then T2 and T3… etc etc.</li>
 </ul>
@@ -615,10 +625,10 @@ correction.</li>
 point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make many assumptions about what’s going on along the way. Below is the easiest way to run this analysis.</p>
 <p>Here’s our overall output from the ANOVA. It looks (and reads) pretty much the same as our previous example, but just bear in mind that the top row in the within-subjects effect (i.e. the effect of interest). In addition, this time you can see that there are now three rows to be
 read:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="one-way-repeated-measures-anova.html#cb175-1" tabindex="-1"></a>w9_memory_aov <span class="ot">&lt;-</span> w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb175-2"><a href="one-way-repeated-measures-anova.html#cb175-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time) </span>
-<span id="cb175-3"><a href="one-way-repeated-measures-anova.html#cb175-3" tabindex="-1"></a></span>
-<span id="cb175-4"><a href="one-way-repeated-measures-anova.html#cb175-4" tabindex="-1"></a>w9_memory_aov</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="one-way-repeated-measures-anova.html#cb184-1" tabindex="-1"></a>w9_memory_aov <span class="ot">&lt;-</span> w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb184-2"><a href="one-way-repeated-measures-anova.html#cb184-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time) </span>
+<span id="cb184-3"><a href="one-way-repeated-measures-anova.html#cb184-3" tabindex="-1"></a></span>
+<span id="cb184-4"><a href="one-way-repeated-measures-anova.html#cb184-4" tabindex="-1"></a>w9_memory_aov</span></code></pre></div>
 <pre><code>## ANOVA Table (type III tests)
 ## 
 ## $ANOVA
@@ -639,8 +649,8 @@ effect of time is significant (<em>F</em>(1.92, 180.72) = 132.63, <em>p</em> &lt
 <div id="post-hoc-tests-2" class="section level3 hasAnchor" number="7.5.5">
 <h3><span class="header-section-number">7.5.5</span> Post-hoc tests<a href="one-way-repeated-measures-anova.html#post-hoc-tests-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As per usual, we follow up a significant overall ANOVA with a series of post-hoc comparisons (note this time we set <code>paired = TRUE</code>:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="one-way-repeated-measures-anova.html#cb177-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb177-2"><a href="one-way-repeated-measures-anova.html#cb177-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(memory_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="one-way-repeated-measures-anova.html#cb186-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb186-2"><a href="one-way-repeated-measures-anova.html#cb186-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(memory_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[4],"type":["int"],"align":["right"]},{"label":["n2"],"name":[5],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p.adj"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["p.adj.signif"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"memory_score","2":"PFM_97","3":"PFM_98","4":"95","5":"95","6":"-10.500951","7":"94","8":"1.59e-17","9":"4.77e-17","10":"****","_rn_":"1"},{"1":"memory_score","2":"PFM_97","3":"PFM_99","4":"95","5":"95","6":"-14.577427","7":"94","8":"7.35e-26","9":"2.21e-25","10":"****","_rn_":"2"},{"1":"memory_score","2":"PFM_98","3":"PFM_99","4":"95","5":"95","6":"-6.169773","7":"94","8":"1.71e-08","9":"5.13e-08","10":"****","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -651,12 +661,12 @@ effect of time is significant (<em>F</em>(1.92, 180.72) = 132.63, <em>p</em> &lt
 <div id="alternative-using-caranova" class="section level3 hasAnchor" number="7.5.6">
 <h3><span class="header-section-number">7.5.6</span> Alternative using <code>car::Anova()</code><a href="one-way-repeated-measures-anova.html#alternative-using-caranova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is an alternative way of running a repeated measures ANOVA, this time using the <code>car</code> package. The function <code>factorial_design()</code> from the <code>rstatix</code> package is a useful helper function that can generate the necessary arguments to <code>Anova()</code> for repeated measures tests.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="one-way-repeated-measures-anova.html#cb178-1" tabindex="-1"></a>w9_memory_design <span class="ot">&lt;-</span> <span class="fu">factorial_design</span>(</span>
-<span id="cb178-2"><a href="one-way-repeated-measures-anova.html#cb178-2" tabindex="-1"></a>  <span class="at">data =</span> w9_memory,</span>
-<span id="cb178-3"><a href="one-way-repeated-measures-anova.html#cb178-3" tabindex="-1"></a>  <span class="at">dv =</span> memory_score,</span>
-<span id="cb178-4"><a href="one-way-repeated-measures-anova.html#cb178-4" tabindex="-1"></a>  <span class="at">within =</span> time,</span>
-<span id="cb178-5"><a href="one-way-repeated-measures-anova.html#cb178-5" tabindex="-1"></a>  <span class="at">wid =</span> Participant</span>
-<span id="cb178-6"><a href="one-way-repeated-measures-anova.html#cb178-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="one-way-repeated-measures-anova.html#cb187-1" tabindex="-1"></a>w9_memory_design <span class="ot">&lt;-</span> <span class="fu">factorial_design</span>(</span>
+<span id="cb187-2"><a href="one-way-repeated-measures-anova.html#cb187-2" tabindex="-1"></a>  <span class="at">data =</span> w9_memory,</span>
+<span id="cb187-3"><a href="one-way-repeated-measures-anova.html#cb187-3" tabindex="-1"></a>  <span class="at">dv =</span> memory_score,</span>
+<span id="cb187-4"><a href="one-way-repeated-measures-anova.html#cb187-4" tabindex="-1"></a>  <span class="at">within =</span> time,</span>
+<span id="cb187-5"><a href="one-way-repeated-measures-anova.html#cb187-5" tabindex="-1"></a>  <span class="at">wid =</span> Participant</span>
+<span id="cb187-6"><a href="one-way-repeated-measures-anova.html#cb187-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>The important things that are generated by this function are:</p>
 <ul>
 <li><p><code>name$model</code>: this essentially creates an ANOVA model</p></li>
@@ -666,14 +676,14 @@ effect of time is significant (<em>F</em>(1.92, 180.72) = 132.63, <em>p</em> &lt
 what the within-subjects IV(s) are</p></li>
 </ul>
 <p>We then just need to feed this to <code>car::Anova()</code> as follows. Setting <code>type = 3</code> isn’t strictly necessary here (this is more relevant for factorial ANOVAs):</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="one-way-repeated-measures-anova.html#cb179-1" tabindex="-1"></a>w9_memory_alternate <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(</span>
-<span id="cb179-2"><a href="one-way-repeated-measures-anova.html#cb179-2" tabindex="-1"></a>  <span class="at">mod =</span> w9_memory_design<span class="sc">$</span>model,</span>
-<span id="cb179-3"><a href="one-way-repeated-measures-anova.html#cb179-3" tabindex="-1"></a>  <span class="at">idata =</span> w9_memory_design<span class="sc">$</span>idata,</span>
-<span id="cb179-4"><a href="one-way-repeated-measures-anova.html#cb179-4" tabindex="-1"></a>  <span class="at">idesign =</span> w9_memory_design<span class="sc">$</span>idesign,</span>
-<span id="cb179-5"><a href="one-way-repeated-measures-anova.html#cb179-5" tabindex="-1"></a>  <span class="at">type =</span> <span class="dv">3</span></span>
-<span id="cb179-6"><a href="one-way-repeated-measures-anova.html#cb179-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="one-way-repeated-measures-anova.html#cb188-1" tabindex="-1"></a>w9_memory_alternate <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(</span>
+<span id="cb188-2"><a href="one-way-repeated-measures-anova.html#cb188-2" tabindex="-1"></a>  <span class="at">mod =</span> w9_memory_design<span class="sc">$</span>model,</span>
+<span id="cb188-3"><a href="one-way-repeated-measures-anova.html#cb188-3" tabindex="-1"></a>  <span class="at">idata =</span> w9_memory_design<span class="sc">$</span>idata,</span>
+<span id="cb188-4"><a href="one-way-repeated-measures-anova.html#cb188-4" tabindex="-1"></a>  <span class="at">idesign =</span> w9_memory_design<span class="sc">$</span>idesign,</span>
+<span id="cb188-5"><a href="one-way-repeated-measures-anova.html#cb188-5" tabindex="-1"></a>  <span class="at">type =</span> <span class="dv">3</span></span>
+<span id="cb188-6"><a href="one-way-repeated-measures-anova.html#cb188-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>Now that we’ve built our ANOVA model we can ask for the output like so. <code>multivariate = FALSE</code> is just an argument to specify that we’re doing a univariate analysis (i.e. one dependent outcome).</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="one-way-repeated-measures-anova.html#cb180-1" tabindex="-1"></a><span class="fu">summary</span>(w9_memory_alternate, <span class="at">multivariate =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="one-way-repeated-measures-anova.html#cb189-1" tabindex="-1"></a><span class="fu">summary</span>(w9_memory_alternate, <span class="at">multivariate =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
 ## 
