@@ -179,7 +179,7 @@ multiple-regression-theory
 multiple-regression
 the-regression-equation-once-again
 assumption-testing-in-multiple-regressions
-multiple-regressions-in-r
+multreg-intro
 example-data-5
 assumption-checks-5
 output-6
@@ -244,6 +244,10 @@ assumptions-3
 building-the-model
 predictions-1
 logistic-regression-with-multiple-predictors
+pseudo-r2
+regular-r2
+calculating-pseudo-r2-measures
+when-do-you-report-it
 colours
 broom
 the-tidy-function

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-26" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,12 +411,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7.2" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#the-regression-equation-once-again"><i class="fa fa-check"></i><b>8.7.2</b> The regression equation, once again</a></li>
 <li class="chapter" data-level="8.7.3" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#assumption-testing-in-multiple-regressions"><i class="fa fa-check"></i><b>8.7.3</b> Assumption testing in multiple regressions</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
+<li class="chapter" data-level="8.8" data-path="multreg-intro.html"><a href="multreg-intro.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
-<li class="chapter" data-level="8.8.2" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
-<li class="chapter" data-level="8.8.3" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
-<li class="chapter" data-level="8.8.4" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
+<li class="chapter" data-level="8.8.1" data-path="multreg-intro.html"><a href="multreg-intro.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
+<li class="chapter" data-level="8.8.2" data-path="multreg-intro.html"><a href="multreg-intro.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
+<li class="chapter" data-level="8.8.3" data-path="multreg-intro.html"><a href="multreg-intro.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
+<li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
@@ -510,6 +510,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="example-8.html"><a href="example-8.html#predictions-1"><i class="fa fa-check"></i><b>11.3.3</b> Predictions</a></li>
 <li class="chapter" data-level="11.3.4" data-path="example-8.html"><a href="example-8.html#logistic-regression-with-multiple-predictors"><i class="fa fa-check"></i><b>11.3.4</b> Logistic regression with multiple predictors</a></li>
 </ul></li>
+<li class="chapter" data-level="11.4" data-path="pseudo-r2.html"><a href="pseudo-r2.html"><i class="fa fa-check"></i><b>11.4</b> Pseudo <span class="math inline">\(R^2\)</span></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="pseudo-r2.html"><a href="pseudo-r2.html#regular-r2"><i class="fa fa-check"></i><b>11.4.1</b> Regular <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="11.4.2" data-path="pseudo-r2.html"><a href="pseudo-r2.html#calculating-pseudo-r2-measures"><i class="fa fa-check"></i><b>11.4.2</b> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures</a></li>
+<li class="chapter" data-level="11.4.3" data-path="pseudo-r2.html"><a href="pseudo-r2.html#when-do-you-report-it"><i class="fa fa-check"></i><b>11.4.3</b> When do you report it?</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
@@ -580,17 +586,17 @@ Then the participants were told that the person in the photo had committed a Cri
 <div id="one-way-ancova" class="section level3 hasAnchor" number="10.2.3">
 <h3><span class="header-section-number">10.2.3</span> One-way ANCOVA<a href="ancovas.html#one-way-ancova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To start us off, let’s begin with a simple one-way ANOVA between attractiveness and years. We can see this below.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="ancovas.html#cb315-1" tabindex="-1"></a>jury_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;regression_2&quot;</span>, <span class="st">&quot;anova_mockjury.csv&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="ancovas.html#cb316-1" tabindex="-1"></a>jury_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr, <span class="at">data =</span> jury_data)</span>
-<span id="cb316-2"><a href="ancovas.html#cb316-2" tabindex="-1"></a><span class="fu">summary</span>(jury_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="ancovas.html#cb323-1" tabindex="-1"></a>jury_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;regression_2&quot;</span>, <span class="st">&quot;anova_mockjury.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="ancovas.html#cb324-1" tabindex="-1"></a>jury_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr, <span class="at">data =</span> jury_data)</span>
+<span id="cb324-2"><a href="ancovas.html#cb324-2" tabindex="-1"></a><span class="fu">summary</span>(jury_aov)</span></code></pre></div>
 <pre><code>##              Df Sum Sq Mean Sq F value Pr(&gt;F)  
 ## Attr          2   70.9   35.47    2.77  0.067 .
 ## Residuals   111 1421.3   12.80                 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="ancovas.html#cb318-1" tabindex="-1"></a><span class="fu">eta_squared</span>(jury_aov, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
-<pre><code>## For one-way between subjects designs, partial eta squared is equivalent to eta squared.
-##   Returning eta squared.</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="ancovas.html#cb326-1" tabindex="-1"></a><span class="fu">eta_squared</span>(jury_aov, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## For one-way between subjects designs, partial eta squared is equivalent to eta
+##   squared. Returning eta squared.</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Eta2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"0.04753771","3":"0.95","4":"0","5":"0.1356405"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -598,27 +604,27 @@ Then the participants were told that the person in the photo had committed a Cri
 </div>
 <p>From this we can infer that the effect of attractiveness is not significant (<em>F</em>(2, 111) = 2.77, <em>p</em> = .067, <span class="math inline">\(\eta^2\)</span> = .05, 95% CI = [0, .14]). In other words, perceived attractiveness does not appear to relate to the years of sentencing.</p>
 <p>Let’s now add the covariate <code>Serious</code> in. To do this in R, we simply add in the predictor to the <code>aov</code> model just like we would with adding a second predictor in a multiple regression - by specifying <code>IV + covariate</code> within the relevant function. See below for two ways of running an ANCOVA:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="ancovas.html#cb320-1" tabindex="-1"></a><span class="co"># One way using car::Anova - this is useful for getting the correct eta squared confidence intervals</span></span>
-<span id="cb320-2"><a href="ancovas.html#cb320-2" tabindex="-1"></a></span>
-<span id="cb320-3"><a href="ancovas.html#cb320-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts =</span> <span class="fu">c</span>(<span class="st">&quot;contr.helmert&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</span>
-<span id="cb320-4"><a href="ancovas.html#cb320-4" tabindex="-1"></a></span>
-<span id="cb320-5"><a href="ancovas.html#cb320-5" tabindex="-1"></a>jury_acov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr <span class="sc">+</span> Serious, <span class="at">data =</span> jury_data)</span>
-<span id="cb320-6"><a href="ancovas.html#cb320-6" tabindex="-1"></a>jury_acov_sum <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(jury_acov, <span class="at">type =</span> <span class="dv">3</span>)</span>
-<span id="cb320-7"><a href="ancovas.html#cb320-7" tabindex="-1"></a>jury_acov_sum</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="ancovas.html#cb328-1" tabindex="-1"></a><span class="co"># One way using car::Anova - this is useful for getting the correct eta squared confidence intervals</span></span>
+<span id="cb328-2"><a href="ancovas.html#cb328-2" tabindex="-1"></a></span>
+<span id="cb328-3"><a href="ancovas.html#cb328-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts =</span> <span class="fu">c</span>(<span class="st">&quot;contr.helmert&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</span>
+<span id="cb328-4"><a href="ancovas.html#cb328-4" tabindex="-1"></a></span>
+<span id="cb328-5"><a href="ancovas.html#cb328-5" tabindex="-1"></a>jury_acov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr <span class="sc">+</span> Serious, <span class="at">data =</span> jury_data)</span>
+<span id="cb328-6"><a href="ancovas.html#cb328-6" tabindex="-1"></a>jury_acov_sum <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(jury_acov, <span class="at">type =</span> <span class="dv">3</span>)</span>
+<span id="cb328-7"><a href="ancovas.html#cb328-7" tabindex="-1"></a>jury_acov_sum</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sum Sq"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["F value"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"4.557094","2":"1","3":"0.4819212","4":"4.890169e-01","_rn_":"(Intercept)"},{"1":"73.256059","2":"2","3":"3.8734820","4":"2.367899e-02","_rn_":"Attr"},{"1":"381.145147","2":"1","3":"40.3068063","4":"4.998213e-09","_rn_":"Serious"},{"1":"1040.170880","2":"110","3":"NA","4":"NA","_rn_":"Residuals"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="ancovas.html#cb321-1" tabindex="-1"></a><span class="fu">eta_squared</span>(jury_acov_sum, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="ancovas.html#cb329-1" tabindex="-1"></a><span class="fu">eta_squared</span>(jury_acov_sum, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Eta2_partial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"0.06579332","3":"0.95","4":"0.0002784374","5":"0.1632670"},{"1":"Serious","2":"0.26816355","3":"0.95","4":"0.1384786529","5":"0.3946331"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="ancovas.html#cb322-1" tabindex="-1"></a><span class="co"># Another way using rstatix</span></span>
-<span id="cb322-2"><a href="ancovas.html#cb322-2" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
-<span id="cb322-3"><a href="ancovas.html#cb322-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">+</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="ancovas.html#cb330-1" tabindex="-1"></a><span class="co"># Another way using rstatix</span></span>
+<span id="cb330-2"><a href="ancovas.html#cb330-2" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb330-3"><a href="ancovas.html#cb330-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">+</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["DFn"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["DFd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[6],"type":["chr"],"align":["left"]},{"label":["pes"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"2","3":"110","4":"3.873","5":"2.4e-02","6":"*","7":"0.066","_rn_":"1"},{"1":"Serious","2":"1","3":"110","4":"40.307","5":"5.0e-09","6":"*","7":"0.268","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -638,15 +644,15 @@ Then the participants were told that the person in the photo had committed a Cri
 </ul>
 <p>Let’s check each of these below.</p>
 <p>First, the normality of residuals can simply be tested as in the usual way. Our residuals are not normally distributed in this model (<em>W</em> = .97, <em>p</em> = .006).</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="ancovas.html#cb323-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(jury_acov<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="ancovas.html#cb331-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(jury_acov<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  jury_acov$residuals
 ## W = 0.96616, p-value = 0.005529</code></pre>
 <p>The homoegeneity of variance assumption is also largely tested in the same way. Our homogeneity of variance assumption also isn’t met (<em>F</em>(2, 111) = 5.68, <em>p</em> = .004)…</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="ancovas.html#cb325-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
-<span id="cb325-2"><a href="ancovas.html#cb325-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years <span class="sc">~</span> Attr, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="ancovas.html#cb333-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb333-2"><a href="ancovas.html#cb333-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years <span class="sc">~</span> Attr, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to factor.</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -659,73 +665,73 @@ Then the participants were told that the person in the photo had committed a Cri
 <p>A third assumption tests whether the covariate is linearly related to the DV. This assumption is essentially similar to the linearity assumption in a regression model - because we are still dealing with linear models, our covariates must also be linearly related to our outcome.</p>
 <p>This is simple enough to test just by visualising the relationship. In general, this assumption appears to hold - it looks like there’s a vague linear relationship in there.</p>
 <p>(Note that due to the data being in integers - i.e. whole numbers - I’ve used <code>geom_jitter()</code> in place of <code>geom_point()</code> to help visualise this a bit better.)</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="ancovas.html#cb327-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
-<span id="cb327-2"><a href="ancovas.html#cb327-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb327-3"><a href="ancovas.html#cb327-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years)</span>
-<span id="cb327-4"><a href="ancovas.html#cb327-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb327-5"><a href="ancovas.html#cb327-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
-<span id="cb327-6"><a href="ancovas.html#cb327-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="ancovas.html#cb335-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb335-2"><a href="ancovas.html#cb335-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb335-3"><a href="ancovas.html#cb335-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years)</span>
+<span id="cb335-4"><a href="ancovas.html#cb335-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb335-5"><a href="ancovas.html#cb335-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb335-6"><a href="ancovas.html#cb335-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-266-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Finally, the <strong>homogeneity of regression slopes</strong> assumption specifies that for each group, the slope of the relationship between the covariate and the dependent variable are the same. To test this, we need to run an ANOVA that allows for an interaction between the predictor and covariate.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="ancovas.html#cb328-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
-<span id="cb328-2"><a href="ancovas.html#cb328-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="ancovas.html#cb336-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb336-2"><a href="ancovas.html#cb336-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["DFn"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["DFd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[6],"type":["chr"],"align":["left"]},{"label":["pes"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"2","3":"108","4":"0.951","5":"3.90e-01","6":"","7":"0.017","_rn_":"1"},{"1":"Serious","2":"1","3":"108","4":"42.794","5":"2.09e-09","6":"*","7":"0.284","_rn_":"2"},{"1":"Attr:Serious","2":"2","3":"108","4":"3.622","5":"3.00e-02","6":"*","7":"0.063","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Uh oh - this isn’t good. A significant interaction suggests that the slope of the relationship between <code>Serious</code> and <code>Years</code> differs for each level of attractiveness, as indicated by the significant interaction effect (<em>p</em> = .03). We can see as much if we fit separate regression lines to the scatterplot above:</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="ancovas.html#cb329-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
-<span id="cb329-2"><a href="ancovas.html#cb329-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb329-3"><a href="ancovas.html#cb329-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years, <span class="at">colour =</span> Attr)</span>
-<span id="cb329-4"><a href="ancovas.html#cb329-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb329-5"><a href="ancovas.html#cb329-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
-<span id="cb329-6"><a href="ancovas.html#cb329-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb329-7"><a href="ancovas.html#cb329-7" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="ancovas.html#cb337-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb337-2"><a href="ancovas.html#cb337-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb337-3"><a href="ancovas.html#cb337-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years, <span class="at">colour =</span> Attr)</span>
+<span id="cb337-4"><a href="ancovas.html#cb337-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb337-5"><a href="ancovas.html#cb337-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb337-6"><a href="ancovas.html#cb337-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb337-7"><a href="ancovas.html#cb337-7" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-268-1.png" width="672" style="display: block; margin: auto;" />
 As we can clearly see, the slopes are not identical for each group. In particular, the Unattractive group has a much stronger slope between seriousness and sentence length (indicating that unattractive people basically have it harder if they’re perceived to have committed more serious crimes).</p>
 <p>Overall, given that many of our assumptions are not met - particularly the important one of homogeneity of regression slopes - this indicates that an ANCOVA isn’t a suitable model for our data. What would we do in this instance, then? We’d probably model a regression that allows for the interaction between attractiveness and seriousness.</p>
 <p>A final note on ANCOVAs: naturally, we can extend an ANCOVA model to have multiple predictors <em>and</em> multiple covariates. In this instance, we would need to model multi-way interactions to test all of our effects and assumptions. Below is a lightly annotated example of a two-way ANCOVA using attractiveness and type of crime as predictors, seriousness as a covariate and sentence length as an outcome.</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="ancovas.html#cb331-1" tabindex="-1"></a><span class="co"># Build two way ANCOVA</span></span>
-<span id="cb331-2"><a href="ancovas.html#cb331-2" tabindex="-1"></a>jury_twoway_acov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime <span class="sc">+</span> Serious, <span class="at">data =</span> jury_data)</span>
-<span id="cb331-3"><a href="ancovas.html#cb331-3" tabindex="-1"></a></span>
-<span id="cb331-4"><a href="ancovas.html#cb331-4" tabindex="-1"></a><span class="co"># Normality of residuals</span></span>
-<span id="cb331-5"><a href="ancovas.html#cb331-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(jury_twoway_acov<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="ancovas.html#cb339-1" tabindex="-1"></a><span class="co"># Build two way ANCOVA</span></span>
+<span id="cb339-2"><a href="ancovas.html#cb339-2" tabindex="-1"></a>jury_twoway_acov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime <span class="sc">+</span> Serious, <span class="at">data =</span> jury_data)</span>
+<span id="cb339-3"><a href="ancovas.html#cb339-3" tabindex="-1"></a></span>
+<span id="cb339-4"><a href="ancovas.html#cb339-4" tabindex="-1"></a><span class="co"># Normality of residuals</span></span>
+<span id="cb339-5"><a href="ancovas.html#cb339-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(jury_twoway_acov<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  jury_twoway_acov$residuals
 ## W = 0.96895, p-value = 0.009416</code></pre>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="ancovas.html#cb333-1" tabindex="-1"></a><span class="co"># Homogeneity of variance</span></span>
-<span id="cb333-2"><a href="ancovas.html#cb333-2" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
-<span id="cb333-3"><a href="ancovas.html#cb333-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="ancovas.html#cb341-1" tabindex="-1"></a><span class="co"># Homogeneity of variance</span></span>
+<span id="cb341-2"><a href="ancovas.html#cb341-2" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb341-3"><a href="ancovas.html#cb341-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"5","2":"108","3":"3.135448","4":"0.01107427"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="ancovas.html#cb334-1" tabindex="-1"></a><span class="co"># Linearity of covariate + homogeneity of regression slopes</span></span>
-<span id="cb334-2"><a href="ancovas.html#cb334-2" tabindex="-1"></a></span>
-<span id="cb334-3"><a href="ancovas.html#cb334-3" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
-<span id="cb334-4"><a href="ancovas.html#cb334-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb334-5"><a href="ancovas.html#cb334-5" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years, <span class="at">colour =</span> Attr)</span>
-<span id="cb334-6"><a href="ancovas.html#cb334-6" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb334-7"><a href="ancovas.html#cb334-7" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
-<span id="cb334-8"><a href="ancovas.html#cb334-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb334-9"><a href="ancovas.html#cb334-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb334-10"><a href="ancovas.html#cb334-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Crime)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="ancovas.html#cb342-1" tabindex="-1"></a><span class="co"># Linearity of covariate + homogeneity of regression slopes</span></span>
+<span id="cb342-2"><a href="ancovas.html#cb342-2" tabindex="-1"></a></span>
+<span id="cb342-3"><a href="ancovas.html#cb342-3" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb342-4"><a href="ancovas.html#cb342-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb342-5"><a href="ancovas.html#cb342-5" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Serious, <span class="at">y =</span> Years, <span class="at">colour =</span> Attr)</span>
+<span id="cb342-6"><a href="ancovas.html#cb342-6" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb342-7"><a href="ancovas.html#cb342-7" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb342-8"><a href="ancovas.html#cb342-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Perceived seriousness of crime&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sentence length (Years)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb342-9"><a href="ancovas.html#cb342-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb342-10"><a href="ancovas.html#cb342-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Crime)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="ancovas.html#cb336-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
-<span id="cb336-2"><a href="ancovas.html#cb336-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime <span class="sc">*</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="ancovas.html#cb344-1" tabindex="-1"></a>jury_data <span class="sc">%&gt;%</span></span>
+<span id="cb344-2"><a href="ancovas.html#cb344-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(Years <span class="sc">~</span> Attr <span class="sc">*</span> Crime <span class="sc">*</span> Serious, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["DFn"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["DFd"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[6],"type":["chr"],"align":["left"]},{"label":["pes"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Attr","2":"2","3":"102","4":"4.179","5":"1.80e-02","6":"*","7":"0.076","_rn_":"1"},{"1":"Crime","2":"1","3":"102","4":"0.403","5":"5.27e-01","6":"","7":"0.004","_rn_":"2"},{"1":"Serious","2":"1","3":"102","4":"42.943","5":"2.34e-09","6":"*","7":"0.296","_rn_":"3"},{"1":"Attr:Crime","2":"2","3":"102","4":"2.955","5":"5.70e-02","6":"","7":"0.055","_rn_":"4"},{"1":"Attr:Serious","2":"2","3":"102","4":"3.977","5":"2.20e-02","6":"*","7":"0.072","_rn_":"5"},{"1":"Crime:Serious","2":"1","3":"102","4":"0.658","5":"4.19e-01","6":"","7":"0.006","_rn_":"6"},{"1":"Attr:Crime:Serious","2":"2","3":"102","4":"0.672","5":"5.13e-01","6":"","7":"0.013","_rn_":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="ancovas.html#cb337-1" tabindex="-1"></a><span class="co"># Output ANCOVA</span></span>
-<span id="cb337-2"><a href="ancovas.html#cb337-2" tabindex="-1"></a><span class="fu">Anova</span>(jury_twoway_acov, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="ancovas.html#cb345-1" tabindex="-1"></a><span class="co"># Output ANCOVA</span></span>
+<span id="cb345-2"><a href="ancovas.html#cb345-2" tabindex="-1"></a><span class="fu">Anova</span>(jury_twoway_acov, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sum Sq"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["F value"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"5.319637","2":"1","3":"0.5767281","4":"4.492675e-01","_rn_":"(Intercept)"},{"1":"80.417012","2":"2","3":"4.3592023","4":"1.513567e-02","_rn_":"Attr"},{"1":"4.427754","2":"1","3":"0.4800346","4":"4.899077e-01","_rn_":"Crime"},{"1":"379.489154","2":"1","3":"41.1422899","4":"3.938355e-09","_rn_":"Serious"},{"1":"49.297643","2":"2","3":"2.6723002","4":"7.370368e-02","_rn_":"Attr:Crime"},{"1":"986.948941","2":"107","3":"NA","4":"NA","_rn_":"Residuals"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

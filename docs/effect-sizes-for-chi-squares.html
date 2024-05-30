@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-26" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,12 +411,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7.2" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#the-regression-equation-once-again"><i class="fa fa-check"></i><b>8.7.2</b> The regression equation, once again</a></li>
 <li class="chapter" data-level="8.7.3" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#assumption-testing-in-multiple-regressions"><i class="fa fa-check"></i><b>8.7.3</b> Assumption testing in multiple regressions</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
+<li class="chapter" data-level="8.8" data-path="multreg-intro.html"><a href="multreg-intro.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
-<li class="chapter" data-level="8.8.2" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
-<li class="chapter" data-level="8.8.3" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
-<li class="chapter" data-level="8.8.4" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
+<li class="chapter" data-level="8.8.1" data-path="multreg-intro.html"><a href="multreg-intro.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
+<li class="chapter" data-level="8.8.2" data-path="multreg-intro.html"><a href="multreg-intro.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
+<li class="chapter" data-level="8.8.3" data-path="multreg-intro.html"><a href="multreg-intro.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
+<li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
@@ -510,6 +510,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="example-8.html"><a href="example-8.html#predictions-1"><i class="fa fa-check"></i><b>11.3.3</b> Predictions</a></li>
 <li class="chapter" data-level="11.3.4" data-path="example-8.html"><a href="example-8.html#logistic-regression-with-multiple-predictors"><i class="fa fa-check"></i><b>11.3.4</b> Logistic regression with multiple predictors</a></li>
 </ul></li>
+<li class="chapter" data-level="11.4" data-path="pseudo-r2.html"><a href="pseudo-r2.html"><i class="fa fa-check"></i><b>11.4</b> Pseudo <span class="math inline">\(R^2\)</span></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="pseudo-r2.html"><a href="pseudo-r2.html#regular-r2"><i class="fa fa-check"></i><b>11.4.1</b> Regular <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="11.4.2" data-path="pseudo-r2.html"><a href="pseudo-r2.html#calculating-pseudo-r2-measures"><i class="fa fa-check"></i><b>11.4.2</b> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures</a></li>
+<li class="chapter" data-level="11.4.3" data-path="pseudo-r2.html"><a href="pseudo-r2.html#when-do-you-report-it"><i class="fa fa-check"></i><b>11.4.3</b> When do you report it?</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
@@ -571,13 +577,13 @@ V = \sqrt{\frac{\chi^2}{n(k-1)}}
 \]</span>
 Here, <em>k</em> refers to the number of groups in the variable with the lowest number of groups. So for example, in a 2x3 design, one variable has 2 levels and the other has 3; <em>k</em> = 2 in this instance.</p>
 <p>Phi and Cramer’s <em>V</em> can both be calculated in R with the following functions from the <code>effectsize</code> package, a handy package that will calculate many common effect size measures. Like <code>chisq.test()</code>, both functions will work if you give them a contingency table. Helpfully, both functions calculate 95% CIs.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="effect-sizes-for-chi-squares.html#cb104-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="effect-sizes-for-chi-squares.html#cb108-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["phi"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.1993439","2":"0.95","3":"0","4":"0.3767907"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="effect-sizes-for-chi-squares.html#cb105-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="effect-sizes-for-chi-squares.html#cb109-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cramers_v"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.1993439","2":"0.95","3":"0","4":"0.3767907"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

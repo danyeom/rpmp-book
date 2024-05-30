@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Research Process for Music Psychologists</title>
+  <title>8.8 Multiple regressions in R | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Research Process for Music Psychologists" />
+  <meta property="og:title" content="8.8 Multiple regressions in R | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="8.8 Multiple regressions in R | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="multiple-regression-theory.html"/>
+<link rel="next" href="factorial-anovas.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -556,31 +556,154 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Research Process for Music Psychologists</h1>
-<h2 class="subtitle"><em>R version</em></h2>
-<p class="author"><em>Daniel Yeom</em></p>
-<p class="date"><em>2024-05-31</em></p>
+<div id="multreg-intro" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Multiple regressions in R<a href="multreg-intro.html#multreg-intro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>Phew - we’re almost there! Let’s round out this week’s module by doing a standard multiple regression in Jamovi.</p>
 </div>
-<div id="preface" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is an R adaptation of the statistics content from a subject called Research Process for Music Psychologists (MUSI90252). The subject is an overview of research methods for Masters and PhD students in music psychology at the University of Melbourne.</p>
-<p>The subject’s statistics material was originally written for Jamovi, given its ease of use and impressive functionality, but we have also encouraged any quantitative-oriented students to consider learning R in the long term. With that in mind, by and large the content is exactly the same as the Jamovi-focused content in the Canvas shell, except:</p>
+<div id="example-data-5" class="section level3 hasAnchor" number="8.8.1">
+<h3><span class="header-section-number">8.8.1</span> Example data<a href="multreg-intro.html#example-data-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s look at a real set of data from Rakei et al. (2022). Their study looked at what predicts how prone people are to flow - the experience of being ‘in the moment’ and extremely focused while doing a task, such as performing. They measured a wide range of personality and emotion-related variables, but we’ll focus on just a subset here:</p>
 <ul>
-<li>Some commentary has either been added or removed for R-specific material (e.g. information on functions).</li>
-<li>Embedded content, such as that in Module 7, is not available here (but is Jamovi-specific anyway).</li>
-<li>Some content has been reorganised in a minor way because of how R outputs things compared to Jamovi.</li>
-<li>The first chapter is a very (<em>very</em>) brief overview of how to use core R and tidyverse functions.</li>
+<li>Trait anxiety: broadly, refers to people’s tendency to feel anxious</li>
+<li>Openness to experience: a personality trait that describes how likely people are to seek new experiences</li>
+<li>DFS_Total: a measure of proneness to flow.</li>
 </ul>
+<p>Let’s see if trait anxiety and openness predict flow proneness.</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="multreg-intro.html#cb222-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
+<pre><code>## Rows: 811 Columns: 6
+## ── Column specification ───────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (6): id, age, GoldMSI, DFS_Total, trait_anxiety, openness
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>To build a multiple regression model in R, we simply need to add (literally) more terms to <code>lm()</code>:</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="multreg-intro.html#cb224-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+</div>
+<div id="assumption-checks-5" class="section level3 hasAnchor" number="8.8.2">
+<h3><span class="header-section-number">8.8.2</span> Assumption checks<a href="multreg-intro.html#assumption-checks-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Shapiro-Wilks test suggests that our normality assumption is violated - though if you look at the relevant Q-Q plot, it doesn’t appear to be very severe.</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="multreg-intro.html#cb225-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_flow_lm<span class="sc">$</span>residuals)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  w10_flow_lm$residuals
+## W = 0.99311, p-value = 0.0008488</code></pre>
+<p>The residuals-fitted plot for our data looks ok - no obvious conical shape, suggesting that the homoscedasticity assumption is intact.</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="multreg-intro.html#cb227-1" tabindex="-1"></a><span class="fu">ggplot</span>(w10_flow_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb227-2"><a href="multreg-intro.html#cb227-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-207-1.png" width="672" /></p>
+<p>Lastly, our multicollinearity statistics look good - no violations suggested here.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="multreg-intro.html#cb228-1" tabindex="-1"></a><span class="co"># Variance</span></span>
+<span id="cb228-2"><a href="multreg-intro.html#cb228-2" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
+<pre><code>## trait_anxiety      openness 
+##      1.025955      1.025955</code></pre>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="multreg-intro.html#cb230-1" tabindex="-1"></a><span class="co"># Tolerance</span></span>
+<span id="cb230-2"><a href="multreg-intro.html#cb230-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
+<pre><code>## trait_anxiety      openness 
+##     0.9747012     0.9747012</code></pre>
+</div>
+<div id="output-6" class="section level3 hasAnchor" number="8.8.3">
+<h3><span class="header-section-number">8.8.3</span> Output<a href="multreg-intro.html#output-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s start as always by taking a look at our output. Our regression explains 13.6 of the variance in flow proneness (R2 = .136), and our overall model is significant (<em>F</em>(2, 808) = 63.81, <em>p</em> &lt; .001).</p>
+<p>With that in mind, let’s turn to our individual predictors. Remember, now we have two predictors to consider - and we need to interpret them individually as well.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="multreg-intro.html#cb232-1" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -16.596  -2.331  -0.151   2.308  12.794 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   32.65078    1.13377  28.798  &lt; 2e-16 ***
+## trait_anxiety -0.11116    0.01278  -8.697  &lt; 2e-16 ***
+## openness       0.83372    0.14538   5.735 1.38e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.705 on 808 degrees of freedom
+## Multiple R-squared:  0.1364, Adjusted R-squared:  0.1343 
+## F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="multreg-intro.html#cb234-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm)</span></code></pre></div>
+<pre><code>##                    2.5 %      97.5 %
+## (Intercept)   30.4252962 34.87625896
+## trait_anxiety -0.1362446 -0.08606874
+## openness       0.5483533  1.11907751</code></pre>
+<p>We can see that both trait anxiety and openness are significant predictors of flow proneness, but interpreting the direction is also really important here. For that, we turn to our estimates:</p>
+<ul>
+<li>The estimate for trait anxiety is <em>B</em> = -.111 (95% CI = [-.136, .086]), suggesting that higher trait anxiety predicts lower flow proneness (<em>p</em> &lt; .001)</li>
+<li>On the other hand, the estimate for openness is <em>B</em> = .834 (95% CI = [.548, 1.119]), suggesting that higher openness predicts higher flow proneness (<em>p</em> &lt; .001).</li>
+</ul>
+<p>Therefore, we can conclude that both are significant predictors and have opposite effects to each other. We can write this up as follows:</p>
+<p>We ran a multiple regression with trait anxiety and openness as predictors, and flow proneness as an outcome. The overall regression model was significant (<em>F</em>(2, 808) = 63.81, <em>p</em> &lt; .001), and explained 13.6% of the variance in flow proneness. Trait anxiety significantly predicted flow proneness (<em>B</em> = -.11, 95% CI = [-.14, -.09], <em>t</em> = -8.70, <em>p</em> &lt; .001); higher trait anxiety predicted lower flow proneness. Openness was also a significant predictor (<em>B</em> = .83, 95% CI = [.55, 1.12], <em>t</em> = 5.74, <em>p</em> &lt; .001); higher openness predicted higher flow proneness.</p>
+<p>But there’s one more thing we can consider here…</p>
+</div>
+<div id="comparing-predictive-strength" class="section level3 hasAnchor" number="8.8.4">
+<h3><span class="header-section-number">8.8.4</span> Comparing predictive strength<a href="multreg-intro.html#comparing-predictive-strength" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When we do a multiple regression, we can actually identify which of our predictors is the strongest predictor of the outcome.</p>
+<p>Our estimate column alone won’t tell us that, because these are unstandardised coefficients. They are unstandardised because they describe the relationship in terms of the original units of each measure. An increase of 1 unit on trait anxiety is not necessarily the same thing as a 1 unit increase in openness because they are on different scales, so we can’t compare them directly!</p>
+<p>However, if we were to standardise these coefficients, we would then bring them all into the same scale (think back to z-scores!) - which would allow us to directly compare which predictor leads to a greater change in the outcome. These are simply regression coefficients that have been standardised, meaning that they are all on the same scale. Jamovi will calculate a standardised estimate (sometimes called standardised coefficient), which is presented in the rightmost column of the above table. In R, we need to use an extra function to do this. We can call on the <code>lm.beta</code> package:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="multreg-intro.html#cb236-1" tabindex="-1"></a><span class="fu">library</span>(lm.beta)</span>
+<span id="cb236-2"><a href="multreg-intro.html#cb236-2" tabindex="-1"></a><span class="fu">lm.beta</span>(w10_flow_lm)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
+## 
+## Standardized Coefficients::
+##   (Intercept) trait_anxiety      openness 
+##            NA    -0.2879944     0.1899044</code></pre>
+<p>Alternatively, we can simply standardise our predictors before running our regression (which is a lot easier in R than in other programs):</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="multreg-intro.html#cb238-1" tabindex="-1"></a><span class="co"># Standardise predictors</span></span>
+<span id="cb238-2"><a href="multreg-intro.html#cb238-2" tabindex="-1"></a></span>
+<span id="cb238-3"><a href="multreg-intro.html#cb238-3" tabindex="-1"></a>w10_flow_std <span class="ot">&lt;-</span> w10_flow <span class="sc">%&gt;%</span></span>
+<span id="cb238-4"><a href="multreg-intro.html#cb238-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb238-5"><a href="multreg-intro.html#cb238-5" tabindex="-1"></a>    <span class="at">trait_anxiety =</span> <span class="fu">scale</span>(trait_anxiety),</span>
+<span id="cb238-6"><a href="multreg-intro.html#cb238-6" tabindex="-1"></a>    <span class="at">openness =</span> <span class="fu">scale</span>(openness),</span>
+<span id="cb238-7"><a href="multreg-intro.html#cb238-7" tabindex="-1"></a>    <span class="at">DFS_Total =</span> <span class="fu">scale</span>(DFS_Total)</span>
+<span id="cb238-8"><a href="multreg-intro.html#cb238-8" tabindex="-1"></a>  )</span>
+<span id="cb238-9"><a href="multreg-intro.html#cb238-9" tabindex="-1"></a></span>
+<span id="cb238-10"><a href="multreg-intro.html#cb238-10" tabindex="-1"></a>w10_flow_lm_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow_std)</span>
+<span id="cb238-11"><a href="multreg-intro.html#cb238-11" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm_std)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow_std)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.1675 -0.5855 -0.0379  0.5795  3.2128 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    9.281e-16  3.267e-02   0.000        1    
+## trait_anxiety -2.880e-01  3.311e-02  -8.697  &lt; 2e-16 ***
+## openness       1.899e-01  3.311e-02   5.735 1.38e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9304 on 808 degrees of freedom
+## Multiple R-squared:  0.1364, Adjusted R-squared:  0.1343 
+## F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="multreg-intro.html#cb240-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm_std)</span></code></pre></div>
+<pre><code>##                     2.5 %      97.5 %
+## (Intercept)   -0.06413295  0.06413295
+## trait_anxiety -0.35299439 -0.22299437
+## openness       0.12490436  0.25490437</code></pre>
+<p>This means that we can just compare the numbers of the standardised estimates (ignoring positive/negative signs) to see which one is the greatest predictor of the outcome. In the example above, trait anxiety has a standard coefficient of .288, whereas openness has a standard coefficient of .190. Trait anxiety is therefore a stronger predictor of flow proneness, because a 1 standard unit increase in trait anxiety leads to a greater increase in flow proneness.</p>
 
 </div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multiple-regression-theory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="factorial-anovas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -611,7 +734,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-regressions.Rmd",
 "text": "Edit"
 },
 "history": {

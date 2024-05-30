@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Research Process for Music Psychologists</title>
+  <title>11.4 Pseudo \(R^2\) | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Research Process for Music Psychologists" />
+  <meta property="og:title" content="11.4 Pseudo \(R^2\) | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="11.4 Pseudo \(R^2\) | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="example-8.html"/>
+<link rel="next" href="colours.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -556,31 +556,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Research Process for Music Psychologists</h1>
-<h2 class="subtitle"><em>R version</em></h2>
-<p class="author"><em>Daniel Yeom</em></p>
-<p class="date"><em>2024-05-31</em></p>
+<div id="pseudo-r2" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Pseudo <span class="math inline">\(R^2\)</span><a href="pseudo-r2.html#pseudo-r2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="regular-r2" class="section level3 hasAnchor" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Regular <span class="math inline">\(R^2\)</span><a href="pseudo-r2.html#regular-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall that in a linear regression, we often talk about <span class="math inline">\(R^2\)</span>, or the coefficient of determination. We interpret this value as the amount of variance that is explained in our outcome by our predictor in the regression (or all of our predictors, in the case of multiple regression).</p>
+<p>As a reminder, here is the output for the regression on flow proneness in <a href="multreg-intro.html#multreg-intro">the regression module</a>:</p>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="pseudo-r2.html#cb399-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span>
+<span id="cb399-2"><a href="pseudo-r2.html#cb399-2" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -16.596  -2.331  -0.151   2.308  12.794 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   32.65078    1.13377  28.798  &lt; 2e-16 ***
+## trait_anxiety -0.11116    0.01278  -8.697  &lt; 2e-16 ***
+## openness       0.83372    0.14538   5.735 1.38e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.705 on 808 degrees of freedom
+## Multiple R-squared:  0.1364, Adjusted R-squared:  0.1343 
+## F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>As we can see, our value for <span class="math inline">\(R^2\)</span> is .1364, meaning that 13.64% of the variance in our outcome, flow proneness, can be explained by our predictors trait anxiety and openness. The mathematical properties of least squares regression allow us to derive this value and interpret it fairly cleanly and easily. We can even compare <span class="math inline">\(R^2\)</span> across similar models, or (in the hierarchical case) use it to directly compare model fit.</p>
+<p>In logistic regression, however, we cannot calculate the same value as we no longer use ordinary least squares regression. Instead, we use <strong>maximum likelihood</strong>, which provides a different way of calculating the various parameters (i.e. coefficients) in our model. Maximum likelihood methods in the context of logistic regression don’t really give us the same ‘clean’ and easily interpretable <span class="math inline">\(R^2\)</span> as we get in normal regressions, because we don’t operate under the same method of minimising residuals.</p>
+<p>To partially overcome this, several measures of <strong>pseudo <span class="math inline">\(R^2\)</span></strong> have been developed. The word ‘pseudo’ is important here, as it’s important to acknowledge that these are not quite the same thing as our usual <span class="math inline">\(R^2\)</span>. We can’t use them in the same way to directly compare across models, for instance - each pseudo-<span class="math inline">\(R^2\)</span> has its own suggested interpretation, and thus do not always cohere with each other. The wonderful <a href="https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/">Statistical Methods and Data Analysis group</a> at UCLA have a great explanation, with formulae for several pseudo-<span class="math inline">\(R^2\)</span> measures. We will focus on three in this module, mainly for parity with Jamovi (but they also happen to be the most popular).</p>
 </div>
-<div id="preface" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is an R adaptation of the statistics content from a subject called Research Process for Music Psychologists (MUSI90252). The subject is an overview of research methods for Masters and PhD students in music psychology at the University of Melbourne.</p>
-<p>The subject’s statistics material was originally written for Jamovi, given its ease of use and impressive functionality, but we have also encouraged any quantitative-oriented students to consider learning R in the long term. With that in mind, by and large the content is exactly the same as the Jamovi-focused content in the Canvas shell, except:</p>
-<ul>
-<li>Some commentary has either been added or removed for R-specific material (e.g. information on functions).</li>
-<li>Embedded content, such as that in Module 7, is not available here (but is Jamovi-specific anyway).</li>
-<li>Some content has been reorganised in a minor way because of how R outputs things compared to Jamovi.</li>
-<li>The first chapter is a very (<em>very</em>) brief overview of how to use core R and tidyverse functions.</li>
-</ul>
+<div id="calculating-pseudo-r2-measures" class="section level3 hasAnchor" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures<a href="pseudo-r2.html#calculating-pseudo-r2-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As a reminder, let’s print the output from our logistic regression on sleep:</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="pseudo-r2.html#cb401-1" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -5.28024    0.65343  -8.081 6.44e-16 ***
+## age          0.11549    0.01493   7.738 1.01e-14 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 507.47  on 373  degrees of freedom
+## Residual deviance: 433.36  on 372  degrees of freedom
+## AIC: 437.36
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p>The <code>DescTools</code> package provides a very convenient function, <code>PseudoR2()</code>, to calculate these pseudo-<span class="math inline">\(R^2\)</span> measures for us. This function requires a) the name of the <code>glm</code> model (i.e. our logistic regression object), and b) a character specifying which type(s) of <span class="math inline">\(R^2\)</span> should be calculated. You’ll see this in the examples below.</p>
+<p><strong>McFadden’s <span class="math inline">\(R^2\)</span></strong> is roughly analogous to a regular <span class="math inline">\(R^2\)</span>, in that it is intended to give an estimate of how much total variability is explained by the logistic model. It is calculated by comparing the fit of a logistic model against a null (i.e. no predictor) model.</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="pseudo-r2.html#cb403-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;DescTools&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:car&#39;:
+## 
+##     Recode</code></pre>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="pseudo-r2.html#cb406-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;McFadden&quot;</span>)</span></code></pre></div>
+<pre><code>##  McFadden 
+## 0.1460373</code></pre>
+<p><strong>Cox and Snell’s <span class="math inline">\(R^2\)</span></strong> is also calculated by comparing a full model to an null/no predictor model. The underlying calculation, however, is different, and a particular oddity of the Cox and Snell <span class="math inline">\(R^2\)</span> is that the maximum possible value is less than 1.</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="pseudo-r2.html#cb408-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;CoxSnell&quot;</span>)</span></code></pre></div>
+<pre><code>##  CoxSnell 
+## 0.1797558</code></pre>
+<p><strong>Nagelkerke’s <span class="math inline">\(R^2\)</span></strong> is an adjustment of the Cox and Snell <span class="math inline">\(R^2\)</span> - specifically, it adjusts the value of <span class="math inline">\(R^2\)</span> so that it ranges from 0-1.</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="pseudo-r2.html#cb410-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Nagelkerke&quot;</span>)</span></code></pre></div>
+<pre><code>## Nagelkerke 
+##  0.2420843</code></pre>
+</div>
+<div id="when-do-you-report-it" class="section level3 hasAnchor" number="11.4.3">
+<h3><span class="header-section-number">11.4.3</span> When do you report it?<a href="pseudo-r2.html#when-do-you-report-it" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Truthfully, as the UCLA help page states, pseudo-<span class="math inline">\(R^2\)</span> methods are not as useful or as cleanly interpretable as normal OLS-based <span class="math inline">\(R^2\)</span>. They are only useful when comparing models using the <em>same</em> pseudo-<span class="math inline">\(R^2\)</span> value, using the same data and variables. In other words, these measures are useful to select between competing models on the same data; they are not valid for comparing across datasets.</p>
+<p>Another thing to consider is that different measures perform differently. Simulation studies (e.g. Veall and Zimmermann 1992) have shown that Nagelkerke and McFadden’s <span class="math inline">\(R^2\)</span> both severaly underestimate the ‘true’ value of <span class="math inline">\(R^2\)</span>. Other methods exist, which can be calculated with <code>PseudoR2()</code>, but are not as widely implemented.</p>
+<p>Some will argue that <span class="math inline">\(R^2\)</span> values are pointless outside of the model selection context. Others will say that it never hurts to report them anyway even if you are reporting just the one model. The decision, ultimately, is probably best left to you as the researcher to figure out what is most appropriate for what you are doing.</p>
 
 </div>
+</div>
+<!-- </div> -->
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="example-8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="colours.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -611,7 +678,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-logistic.Rmd",
 "text": "Edit"
 },
 "history": {

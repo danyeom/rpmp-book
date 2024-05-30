@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-26" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,12 +411,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7.2" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#the-regression-equation-once-again"><i class="fa fa-check"></i><b>8.7.2</b> The regression equation, once again</a></li>
 <li class="chapter" data-level="8.7.3" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#assumption-testing-in-multiple-regressions"><i class="fa fa-check"></i><b>8.7.3</b> Assumption testing in multiple regressions</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
+<li class="chapter" data-level="8.8" data-path="multreg-intro.html"><a href="multreg-intro.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
-<li class="chapter" data-level="8.8.2" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
-<li class="chapter" data-level="8.8.3" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
-<li class="chapter" data-level="8.8.4" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
+<li class="chapter" data-level="8.8.1" data-path="multreg-intro.html"><a href="multreg-intro.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
+<li class="chapter" data-level="8.8.2" data-path="multreg-intro.html"><a href="multreg-intro.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
+<li class="chapter" data-level="8.8.3" data-path="multreg-intro.html"><a href="multreg-intro.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
+<li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
@@ -510,6 +510,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="example-8.html"><a href="example-8.html#predictions-1"><i class="fa fa-check"></i><b>11.3.3</b> Predictions</a></li>
 <li class="chapter" data-level="11.3.4" data-path="example-8.html"><a href="example-8.html#logistic-regression-with-multiple-predictors"><i class="fa fa-check"></i><b>11.3.4</b> Logistic regression with multiple predictors</a></li>
 </ul></li>
+<li class="chapter" data-level="11.4" data-path="pseudo-r2.html"><a href="pseudo-r2.html"><i class="fa fa-check"></i><b>11.4</b> Pseudo <span class="math inline">\(R^2\)</span></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="pseudo-r2.html"><a href="pseudo-r2.html#regular-r2"><i class="fa fa-check"></i><b>11.4.1</b> Regular <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="11.4.2" data-path="pseudo-r2.html"><a href="pseudo-r2.html#calculating-pseudo-r2-measures"><i class="fa fa-check"></i><b>11.4.2</b> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures</a></li>
+<li class="chapter" data-level="11.4.3" data-path="pseudo-r2.html"><a href="pseudo-r2.html#when-do-you-report-it"><i class="fa fa-check"></i><b>11.4.3</b> When do you report it?</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
@@ -568,9 +574,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-5" class="section level3 hasAnchor" number="9.7.2">
 <h3><span class="header-section-number">9.7.2</span> Example<a href="three-way-anova.html#example-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This dataset is from a fictional experiment looking at how gender (male and female), risk of migraine (low or high) and different treatments (labelled X, Y and Z) impacted pain scores associated with a migraine headache. Below is a snippet of what our data looks like:</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="three-way-anova.html#cb295-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span>
-<span id="cb295-2"><a href="three-way-anova.html#cb295-2" tabindex="-1"></a><span class="fu">data</span>(headache)</span>
-<span id="cb295-3"><a href="three-way-anova.html#cb295-3" tabindex="-1"></a><span class="fu">head</span>(headache)</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="three-way-anova.html#cb303-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span>
+<span id="cb303-2"><a href="three-way-anova.html#cb303-2" tabindex="-1"></a><span class="fu">data</span>(headache)</span>
+<span id="cb303-3"><a href="three-way-anova.html#cb303-3" tabindex="-1"></a><span class="fu">head</span>(headache)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["fct"],"align":["left"]},{"label":["risk"],"name":[3],"type":["fct"],"align":["left"]},{"label":["treatment"],"name":[4],"type":["fct"],"align":["left"]},{"label":["pain_score"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"male","3":"low","4":"X","5":"79.31170"},{"1":"2","2":"male","3":"low","4":"X","5":"76.84340"},{"1":"3","2":"male","3":"low","4":"X","5":"70.83242"},{"1":"4","2":"male","3":"low","4":"X","5":"81.16394"},{"1":"5","2":"male","3":"low","4":"X","5":"75.05221"},{"1":"6","2":"male","3":"low","4":"X","5":"73.10703"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -578,20 +584,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>We want to run a gender (2) x risk (2) x treatment (3) three-way ANOVA to see whether these predictors have an effect on overall pain scores.</p>
 <p>Let’s start by visualising this data. We cannot fully visualise a three-way interaction because we inherently need four dimensions (as we have three predictors and one outcome variable). The best way to approach this is to draw a series of two-way interaction plots, split by the third variable. In the example below, the graphs show treatment on the x-axis, pain scores on the y-axis, different lines for low and high risk and separate graphs for male and female participants:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="three-way-anova.html#cb296-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
-<span id="cb296-2"><a href="three-way-anova.html#cb296-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk, treatment) <span class="sc">%&gt;%</span></span>
-<span id="cb296-3"><a href="three-way-anova.html#cb296-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb296-4"><a href="three-way-anova.html#cb296-4" tabindex="-1"></a>    <span class="at">mean_pain =</span> <span class="fu">mean</span>(pain_score),</span>
-<span id="cb296-5"><a href="three-way-anova.html#cb296-5" tabindex="-1"></a>    <span class="at">sd_score =</span> <span class="fu">sd</span>(pain_score)</span>
-<span id="cb296-6"><a href="three-way-anova.html#cb296-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb296-7"><a href="three-way-anova.html#cb296-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb296-8"><a href="three-way-anova.html#cb296-8" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> risk, <span class="at">group =</span> risk)</span>
-<span id="cb296-9"><a href="three-way-anova.html#cb296-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb296-10"><a href="three-way-anova.html#cb296-10" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb296-11"><a href="three-way-anova.html#cb296-11" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb296-12"><a href="three-way-anova.html#cb296-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(gender)) <span class="sc">+</span></span>
-<span id="cb296-13"><a href="three-way-anova.html#cb296-13" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;gender&#39;, &#39;risk&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="three-way-anova.html#cb304-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb304-2"><a href="three-way-anova.html#cb304-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk, treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb304-3"><a href="three-way-anova.html#cb304-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb304-4"><a href="three-way-anova.html#cb304-4" tabindex="-1"></a>    <span class="at">mean_pain =</span> <span class="fu">mean</span>(pain_score),</span>
+<span id="cb304-5"><a href="three-way-anova.html#cb304-5" tabindex="-1"></a>    <span class="at">sd_score =</span> <span class="fu">sd</span>(pain_score)</span>
+<span id="cb304-6"><a href="three-way-anova.html#cb304-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb304-7"><a href="three-way-anova.html#cb304-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb304-8"><a href="three-way-anova.html#cb304-8" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> risk, <span class="at">group =</span> risk)</span>
+<span id="cb304-9"><a href="three-way-anova.html#cb304-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb304-10"><a href="three-way-anova.html#cb304-10" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb304-11"><a href="three-way-anova.html#cb304-11" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb304-12"><a href="three-way-anova.html#cb304-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(gender)) <span class="sc">+</span></span>
+<span id="cb304-13"><a href="three-way-anova.html#cb304-13" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;gender&#39;, &#39;risk&#39;. You can override using the `.groups`
+## argument.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-249-1.png" width="672" /></p>
 </div>
 <div id="simple-simple-effects" class="section level3 hasAnchor" number="9.7.3">
@@ -606,70 +613,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Gender x risk, for each treatment</li>
 </ol>
 <p>Here is the first interaction visualised - treatment and risk, with separate plots for males and females:</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="three-way-anova.html#cb298-1" tabindex="-1"></a>headache_summary <span class="ot">&lt;-</span> headache <span class="sc">%&gt;%</span></span>
-<span id="cb298-2"><a href="three-way-anova.html#cb298-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk, treatment) <span class="sc">%&gt;%</span></span>
-<span id="cb298-3"><a href="three-way-anova.html#cb298-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb298-4"><a href="three-way-anova.html#cb298-4" tabindex="-1"></a>    <span class="at">mean_pain =</span> <span class="fu">mean</span>(pain_score),</span>
-<span id="cb298-5"><a href="three-way-anova.html#cb298-5" tabindex="-1"></a>    <span class="at">sd_score =</span> <span class="fu">sd</span>(pain_score)</span>
-<span id="cb298-6"><a href="three-way-anova.html#cb298-6" tabindex="-1"></a>  ) </span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;gender&#39;, &#39;risk&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="three-way-anova.html#cb300-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
-<span id="cb300-2"><a href="three-way-anova.html#cb300-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb300-3"><a href="three-way-anova.html#cb300-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> risk, <span class="at">group =</span> risk)</span>
-<span id="cb300-4"><a href="three-way-anova.html#cb300-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb300-5"><a href="three-way-anova.html#cb300-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb300-6"><a href="three-way-anova.html#cb300-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb300-7"><a href="three-way-anova.html#cb300-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(gender)) <span class="sc">+</span></span>
-<span id="cb300-8"><a href="three-way-anova.html#cb300-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="three-way-anova.html#cb306-1" tabindex="-1"></a>headache_summary <span class="ot">&lt;-</span> headache <span class="sc">%&gt;%</span></span>
+<span id="cb306-2"><a href="three-way-anova.html#cb306-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk, treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb306-3"><a href="three-way-anova.html#cb306-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb306-4"><a href="three-way-anova.html#cb306-4" tabindex="-1"></a>    <span class="at">mean_pain =</span> <span class="fu">mean</span>(pain_score),</span>
+<span id="cb306-5"><a href="three-way-anova.html#cb306-5" tabindex="-1"></a>    <span class="at">sd_score =</span> <span class="fu">sd</span>(pain_score)</span>
+<span id="cb306-6"><a href="three-way-anova.html#cb306-6" tabindex="-1"></a>  ) </span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;gender&#39;, &#39;risk&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="three-way-anova.html#cb308-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
+<span id="cb308-2"><a href="three-way-anova.html#cb308-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb308-3"><a href="three-way-anova.html#cb308-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> risk, <span class="at">group =</span> risk)</span>
+<span id="cb308-4"><a href="three-way-anova.html#cb308-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb308-5"><a href="three-way-anova.html#cb308-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb308-6"><a href="three-way-anova.html#cb308-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb308-7"><a href="three-way-anova.html#cb308-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(gender)) <span class="sc">+</span></span>
+<span id="cb308-8"><a href="three-way-anova.html#cb308-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
 <p>Here’s the second, which plots treatment x gender for each risk level:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="three-way-anova.html#cb301-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
-<span id="cb301-2"><a href="three-way-anova.html#cb301-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb301-3"><a href="three-way-anova.html#cb301-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> gender, <span class="at">group =</span> gender)</span>
-<span id="cb301-4"><a href="three-way-anova.html#cb301-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb301-5"><a href="three-way-anova.html#cb301-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb301-6"><a href="three-way-anova.html#cb301-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb301-7"><a href="three-way-anova.html#cb301-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(risk)) <span class="sc">+</span></span>
-<span id="cb301-8"><a href="three-way-anova.html#cb301-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="three-way-anova.html#cb309-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
+<span id="cb309-2"><a href="three-way-anova.html#cb309-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb309-3"><a href="three-way-anova.html#cb309-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> gender, <span class="at">group =</span> gender)</span>
+<span id="cb309-4"><a href="three-way-anova.html#cb309-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb309-5"><a href="three-way-anova.html#cb309-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb309-6"><a href="three-way-anova.html#cb309-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb309-7"><a href="three-way-anova.html#cb309-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(risk)) <span class="sc">+</span></span>
+<span id="cb309-8"><a href="three-way-anova.html#cb309-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-251-1.png" width="672" /></p>
 <p>And finally, here is gender and risk by each treatment:</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="three-way-anova.html#cb302-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
-<span id="cb302-2"><a href="three-way-anova.html#cb302-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb302-3"><a href="three-way-anova.html#cb302-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> risk, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> gender, <span class="at">group =</span> gender)</span>
-<span id="cb302-4"><a href="three-way-anova.html#cb302-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb302-5"><a href="three-way-anova.html#cb302-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb302-6"><a href="three-way-anova.html#cb302-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb302-7"><a href="three-way-anova.html#cb302-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(treatment)) <span class="sc">+</span></span>
-<span id="cb302-8"><a href="three-way-anova.html#cb302-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="three-way-anova.html#cb310-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
+<span id="cb310-2"><a href="three-way-anova.html#cb310-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb310-3"><a href="three-way-anova.html#cb310-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> risk, <span class="at">y =</span> mean_pain, <span class="at">colour =</span> gender, <span class="at">group =</span> gender)</span>
+<span id="cb310-4"><a href="three-way-anova.html#cb310-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb310-5"><a href="three-way-anova.html#cb310-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb310-6"><a href="three-way-anova.html#cb310-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb310-7"><a href="three-way-anova.html#cb310-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(treatment)) <span class="sc">+</span></span>
+<span id="cb310-8"><a href="three-way-anova.html#cb310-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-252-1.png" width="672" /></p>
 <p>And then within that, you would also want the main effects.</p>
 </div>
 <div id="assumptions-and-output" class="section level3 hasAnchor" number="9.7.4">
 <h3><span class="header-section-number">9.7.4</span> Assumptions and output<a href="three-way-anova.html#assumptions-and-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s run our basic ANOVA. Just like in Jamovi, we’ll do our usual assumption checks for our ANOVA model too. Based on Levene’s test and the Shapiro-Wilks test, we have no violations in multivariate equality of variance (<em>p</em> = .994) or normality (<em>p</em> = .398).</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="three-way-anova.html#cb303-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
-<span id="cb303-2"><a href="three-way-anova.html#cb303-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(pain_score <span class="sc">~</span> gender <span class="sc">*</span> risk <span class="sc">*</span> treatment, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="three-way-anova.html#cb311-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb311-2"><a href="three-way-anova.html#cb311-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(pain_score <span class="sc">~</span> gender <span class="sc">*</span> risk <span class="sc">*</span> treatment, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"11","2":"60","3":"0.2370226","4":"0.9937379"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="three-way-anova.html#cb304-1" tabindex="-1"></a>threeway_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
-<span id="cb304-2"><a href="three-way-anova.html#cb304-2" tabindex="-1"></a>  <span class="at">data =</span> headache,</span>
-<span id="cb304-3"><a href="three-way-anova.html#cb304-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
-<span id="cb304-4"><a href="three-way-anova.html#cb304-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;pain_score&quot;</span>,</span>
-<span id="cb304-5"><a href="three-way-anova.html#cb304-5" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;gender&quot;</span>, <span class="st">&quot;risk&quot;</span>, <span class="st">&quot;treatment&quot;</span>),</span>
-<span id="cb304-6"><a href="three-way-anova.html#cb304-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
-<span id="cb304-7"><a href="three-way-anova.html#cb304-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
-<span id="cb304-8"><a href="three-way-anova.html#cb304-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="three-way-anova.html#cb312-1" tabindex="-1"></a>threeway_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb312-2"><a href="three-way-anova.html#cb312-2" tabindex="-1"></a>  <span class="at">data =</span> headache,</span>
+<span id="cb312-3"><a href="three-way-anova.html#cb312-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb312-4"><a href="three-way-anova.html#cb312-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;pain_score&quot;</span>,</span>
+<span id="cb312-5"><a href="three-way-anova.html#cb312-5" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;gender&quot;</span>, <span class="st">&quot;risk&quot;</span>, <span class="st">&quot;treatment&quot;</span>),</span>
+<span id="cb312-6"><a href="three-way-anova.html#cb312-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
+<span id="cb312-7"><a href="three-way-anova.html#cb312-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb312-8"><a href="three-way-anova.html#cb312-8" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Contrasts set to contr.sum for the following variables: gender, risk, treatment</code></pre>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="three-way-anova.html#cb306-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(threeway_aov<span class="sc">$</span>aov<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="three-way-anova.html#cb314-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(threeway_aov<span class="sc">$</span>aov<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  threeway_aov$aov$residuals
 ## W = 0.98212, p-value = 0.3981</code></pre>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="three-way-anova.html#cb308-1" tabindex="-1"></a>threeway_aov</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="three-way-anova.html#cb316-1" tabindex="-1"></a>threeway_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: pain_score
@@ -692,9 +700,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Great, so we know that we’re dealing with a three-way interaction. But… how do we break that down? As in a two-way, we now need to break down simple <strong>main</strong> effects and simple <strong>interaction</strong> effects.</p>
 <p>In a two-way ANOVA, we broke down the two-way interaction by essentially running tests on the main effects (hence, simple main effects). In a three-way ANOVA, we attempt to start by testing for interactions between A and B, at each level of C. Think of it like running multiple two-way ANOVAs.</p>
 <p>In our case, let’s look at whether risk and treatment interact, for men and women separately. For simplicity, I’m defaulting to using rstatix’s <code>anova_test()</code> here, but an alternative approach is to filer the data by men and women and use these smaller datasets as calls to <code>aov_ez</code>.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="three-way-anova.html#cb310-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
-<span id="cb310-2"><a href="three-way-anova.html#cb310-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
-<span id="cb310-3"><a href="three-way-anova.html#cb310-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(pain_score <span class="sc">~</span> treatment <span class="sc">*</span> risk, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="three-way-anova.html#cb318-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb318-2"><a href="three-way-anova.html#cb318-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb318-3"><a href="three-way-anova.html#cb318-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(pain_score <span class="sc">~</span> treatment <span class="sc">*</span> risk, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["gender"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Effect"],"name":[2],"type":["chr"],"align":["left"]},{"label":["DFn"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["DFd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[7],"type":["chr"],"align":["left"]},{"label":["ges"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"male","2":"treatment","3":"2","4":"30","5":"9.155","6":"7.88e-04","7":"*","8":"0.379","_rn_":"1"},{"1":"male","2":"risk","3":"1","4":"30","5":"45.022","6":"1.95e-07","7":"*","8":"0.600","_rn_":"2"},{"1":"male","2":"treatment:risk","3":"2","4":"30","5":"4.725","6":"1.60e-02","7":"*","8":"0.240","_rn_":"3"},{"1":"female","2":"treatment","3":"2","4":"30","5":"0.542","6":"5.87e-01","7":"","8":"0.035","_rn_":"4"},{"1":"female","2":"risk","3":"1","4":"30","5":"48.168","6":"1.04e-07","7":"*","8":"0.616","_rn_":"5"},{"1":"female","2":"treatment:risk","3":"2","4":"30","5":"3.227","6":"5.40e-02","7":"","8":"0.177","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -705,8 +713,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Here’s a graph to visualise what comparisons we’re looking at:</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 <p>Here’s one way to run the simple simple effets of treatment (with Holm adjustments by default):</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="three-way-anova.html#cb311-1" tabindex="-1"></a><span class="fu">emmeans</span>(threeway_aov, <span class="sc">~</span> treatment <span class="sc">|</span> gender <span class="sc">*</span> risk) <span class="sc">%&gt;%</span></span>
-<span id="cb311-2"><a href="three-way-anova.html#cb311-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="three-way-anova.html#cb319-1" tabindex="-1"></a><span class="fu">emmeans</span>(threeway_aov, <span class="sc">~</span> treatment <span class="sc">|</span> gender <span class="sc">*</span> risk) <span class="sc">%&gt;%</span></span>
+<span id="cb319-2"><a href="three-way-anova.html#cb319-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
 <pre><code>## gender = male, risk = high:
 ##  contrast estimate   SE df lower.CL upper.CL t.ratio p.value
 ##  X - Y       10.40 2.54 60    4.142    16.65   4.094  0.0003
@@ -738,17 +746,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 - For <em>high risk</em> men, there was a significant difference in treatment between X and Y (<em>p</em> = .004), a significant difference between X and Z (<em>p</em> = .001) but no difference between X and Z (<em>p</em> = .347)
 - No significant difference between treatments for <strong>low risk</strong> men</p>
 <p>And here are the simple simple effects for risk in men:</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="three-way-anova.html#cb313-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
-<span id="cb313-2"><a href="three-way-anova.html#cb313-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk) <span class="sc">%&gt;%</span></span>
-<span id="cb313-3"><a href="three-way-anova.html#cb313-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(pain_score <span class="sc">~</span> treatment, <span class="at">type =</span> <span class="dv">3</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="three-way-anova.html#cb321-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb321-2"><a href="three-way-anova.html#cb321-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk) <span class="sc">%&gt;%</span></span>
+<span id="cb321-3"><a href="three-way-anova.html#cb321-3" tabindex="-1"></a>  <span class="fu">anova_test</span>(pain_score <span class="sc">~</span> treatment, <span class="at">type =</span> <span class="dv">3</span>) </span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["gender"],"name":[1],"type":["fct"],"align":["left"]},{"label":["risk"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Effect"],"name":[3],"type":["chr"],"align":["left"]},{"label":["DFn"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["DFd"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[8],"type":["chr"],"align":["left"]},{"label":["ges"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"male","2":"high","3":"treatment","4":"2","5":"15","6":"12.688","7":"0.000595","8":"*","9":"0.628","_rn_":"1"},{"1":"male","2":"low","3":"treatment","4":"2","5":"15","6":"0.623","7":"0.550000","8":"","9":"0.077","_rn_":"2"},{"1":"female","2":"high","3":"treatment","4":"2","5":"15","6":"0.461","7":"0.639000","8":"","9":"0.058","_rn_":"3"},{"1":"female","2":"low","3":"treatment","4":"2","5":"15","6":"4.359","7":"0.032000","8":"*","9":"0.368","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="three-way-anova.html#cb314-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
-<span id="cb314-2"><a href="three-way-anova.html#cb314-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk) <span class="sc">%&gt;%</span></span>
-<span id="cb314-3"><a href="three-way-anova.html#cb314-3" tabindex="-1"></a>  <span class="fu">emmeans_test</span>(pain_score <span class="sc">~</span> treatment) </span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="three-way-anova.html#cb322-1" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb322-2"><a href="three-way-anova.html#cb322-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, risk) <span class="sc">%&gt;%</span></span>
+<span id="cb322-3"><a href="three-way-anova.html#cb322-3" tabindex="-1"></a>  <span class="fu">emmeans_test</span>(pain_score <span class="sc">~</span> treatment) </span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["gender"],"name":[1],"type":["fct"],"align":["left"]},{"label":["risk"],"name":[2],"type":["fct"],"align":["left"]},{"label":["term"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".y."],"name":[4],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[6],"type":["chr"],"align":["left"]},{"label":["df"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["p.adj"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["p.adj.signif"],"name":[11],"type":["chr"],"align":["left"]}],"data":[{"1":"male","2":"high","3":"treatment","4":"pain_score","5":"X","6":"Y","7":"60","8":"4.09412380","9":"1.286368e-04","10":"3.859103e-04","11":"***","_rn_":"1"},{"1":"male","2":"high","3":"treatment","4":"pain_score","5":"X","6":"Z","7":"60","8":"5.14186343","9":"3.139653e-06","10":"9.418958e-06","11":"****","_rn_":"2"},{"1":"male","2":"high","3":"treatment","4":"pain_score","5":"Y","6":"Z","7":"60","8":"1.04773963","9":"2.989609e-01","10":"8.968828e-01","11":"ns","_rn_":"3"},{"1":"male","2":"low","3":"treatment","4":"pain_score","5":"X","6":"Y","7":"60","8":"1.14704968","9":"2.559146e-01","10":"7.677439e-01","11":"ns","_rn_":"4"},{"1":"male","2":"low","3":"treatment","4":"pain_score","5":"X","6":"Z","7":"60","8":"0.62842197","9":"5.321125e-01","10":"1.000000e+00","11":"ns","_rn_":"5"},{"1":"male","2":"low","3":"treatment","4":"pain_score","5":"Y","6":"Z","7":"60","8":"-0.51862772","9":"6.059279e-01","10":"1.000000e+00","11":"ns","_rn_":"6"},{"1":"female","2":"high","3":"treatment","4":"pain_score","5":"X","6":"Y","7":"60","8":"-0.90970006","9":"3.666207e-01","10":"1.000000e+00","11":"ns","_rn_":"7"},{"1":"female","2":"high","3":"treatment","4":"pain_score","5":"X","6":"Z","7":"60","8":"-0.85450891","9":"3.962222e-01","10":"1.000000e+00","11":"ns","_rn_":"8"},{"1":"female","2":"high","3":"treatment","4":"pain_score","5":"Y","6":"Z","7":"60","8":"0.05519116","9":"9.561695e-01","10":"1.000000e+00","11":"ns","_rn_":"9"},{"1":"female","2":"low","3":"treatment","4":"pain_score","5":"X","6":"Y","7":"60","8":"2.28161075","9":"2.607490e-02","10":"7.822471e-02","11":"ns","_rn_":"10"},{"1":"female","2":"low","3":"treatment","4":"pain_score","5":"X","6":"Z","7":"60","8":"1.72339369","9":"8.996752e-02","10":"2.699026e-01","11":"ns","_rn_":"11"},{"1":"female","2":"low","3":"treatment","4":"pain_score","5":"Y","6":"Z","7":"60","8":"-0.55821707","9":"5.787733e-01","10":"1.000000e+00","11":"ns","_rn_":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

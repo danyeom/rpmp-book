@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-26" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,12 +411,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7.2" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#the-regression-equation-once-again"><i class="fa fa-check"></i><b>8.7.2</b> The regression equation, once again</a></li>
 <li class="chapter" data-level="8.7.3" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#assumption-testing-in-multiple-regressions"><i class="fa fa-check"></i><b>8.7.3</b> Assumption testing in multiple regressions</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
+<li class="chapter" data-level="8.8" data-path="multreg-intro.html"><a href="multreg-intro.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
-<li class="chapter" data-level="8.8.2" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
-<li class="chapter" data-level="8.8.3" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
-<li class="chapter" data-level="8.8.4" data-path="multiple-regressions-in-r.html"><a href="multiple-regressions-in-r.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
+<li class="chapter" data-level="8.8.1" data-path="multreg-intro.html"><a href="multreg-intro.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
+<li class="chapter" data-level="8.8.2" data-path="multreg-intro.html"><a href="multreg-intro.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
+<li class="chapter" data-level="8.8.3" data-path="multreg-intro.html"><a href="multreg-intro.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
+<li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
@@ -509,6 +509,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.2" data-path="example-8.html"><a href="example-8.html#building-the-model"><i class="fa fa-check"></i><b>11.3.2</b> Building the model</a></li>
 <li class="chapter" data-level="11.3.3" data-path="example-8.html"><a href="example-8.html#predictions-1"><i class="fa fa-check"></i><b>11.3.3</b> Predictions</a></li>
 <li class="chapter" data-level="11.3.4" data-path="example-8.html"><a href="example-8.html#logistic-regression-with-multiple-predictors"><i class="fa fa-check"></i><b>11.3.4</b> Logistic regression with multiple predictors</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="pseudo-r2.html"><a href="pseudo-r2.html"><i class="fa fa-check"></i><b>11.4</b> Pseudo <span class="math inline">\(R^2\)</span></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="pseudo-r2.html"><a href="pseudo-r2.html#regular-r2"><i class="fa fa-check"></i><b>11.4.1</b> Regular <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="11.4.2" data-path="pseudo-r2.html"><a href="pseudo-r2.html#calculating-pseudo-r2-measures"><i class="fa fa-check"></i><b>11.4.2</b> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures</a></li>
+<li class="chapter" data-level="11.4.3" data-path="pseudo-r2.html"><a href="pseudo-r2.html#when-do-you-report-it"><i class="fa fa-check"></i><b>11.4.3</b> When do you report it?</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -626,7 +632,7 @@ two degrees of freedom the process is a little bit more complicated.
 Most <em>F</em>-stat tables actually provide multiple tables, corresponding to
 different alpha levels. For now, we will always use the table
 corresponding to alpha = 0.05, a snippet of which is below:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="anovas-and-the-f-distribution.html#cb159-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="anovas-and-the-f-distribution.html#cb163-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>))</span></code></pre></div>
 <p><img src="img/w9_f-table.png" width="1072" /></p>
 <p>To read this table, you need to know both degrees of freedom (more on
 how to find that on the next page). The columns, marked df1, refer to
