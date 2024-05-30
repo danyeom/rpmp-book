@@ -10,6 +10,8 @@ library(effectsize)
 
 The final section of the book (at least for the time being) deals with **logistic regression.** In some ways, we have come full circle with the inclusion of this chapter: the first statistical test we looked at were to do with categorical data, and now we make a partial return to categorical data. 
 
+While I recognise that logistic regression has an awesome application to classification and basic machine learning, the focus of this book is not on classification but prediction. Thus, we won't be diving into classification accuracy or ROC curves in the context of logistic regression, even though these are not terribly hard to implement in either R or Jamovi.
+
 ## Probability and odds
 
 ### Reminder of probabilities
@@ -406,3 +408,61 @@ $$
 P(Y = 1) = \frac{1}{1 + e^{-1.644}} = 0.838
 $$
 Now the person's probability is 83.8%. In other words, it helps not to be stressed!
+
+## Pseudo $R^2$
+
+### Regular $R^2$
+
+Recall that in a linear regression, we often talk about $R^2$, or the coefficient of determination. We interpret this value as the amount of variance that is explained in our outcome by our predictor in the regression (or all of our predictors, in the case of multiple regression).
+
+As a reminder, here is the output for the regression on flow proneness in [the regression module](#multreg-intro):
+
+```{r echo = FALSE, message = FALSE}
+w10_flow <- read_csv(here("data", "week_10", "w10_flow.csv"))
+```
+
+```{r}
+w10_flow_lm <- lm(DFS_Total ~ trait_anxiety + openness, data = w10_flow)
+summary(w10_flow_lm)
+```
+
+As we can see, our value for $R^2$ is .1364, meaning that 13.64% of the variance in our outcome, flow proneness, can be explained by our predictors trait anxiety and openness. The mathematical properties of least squares regression allow us to derive this value and interpret it fairly cleanly and easily. We can even compare $R^2$ across similar models, or (in the hierarchical case) use it to directly compare model fit.
+
+In logistic regression, however, we cannot calculate the same value as we no longer use ordinary least squares regression. Instead, we use **maximum likelihood**, which provides a different way of calculating the various parameters (i.e. coefficients) in our model. Maximum likelihood methods in the context of logistic regression don't really give us the same 'clean' and easily interpretable $R^2$ as we get in normal regressions, because we don't operate under the same method of minimising residuals. 
+
+To partially overcome this, several measures of **pseudo $R^2$** have been developed. The word 'pseudo' is important here, as it's important to acknowledge that these are not quite the same thing as our usual $R^2$. We can't use them in the same way to directly compare across models, for instance - each pseudo-$R^2$ has its own suggested interpretation, and thus do not always cohere with each other. The wonderful [Statistical Methods and Data Analysis group](https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/) at UCLA have a great explanation, with formulae for several pseudo-$R^2$ measures. We will focus on three in this module, mainly for parity with Jamovi (but they also happen to be the most popular).
+
+### Calculating pseudo-$R^2$ measures
+
+As a reminder, let's print the output from our logistic regression on sleep:
+
+```{r}
+summary(sleep_glm)
+```
+The `DescTools` package provides a very convenient function, `PseudoR2()`, to calculate these pseudo-$R^2$ measures for us. This function requires a) the name of the `glm` model (i.e. our logistic regression object), and b) a character specifying which type(s) of $R^2$ should be calculated. You'll see this in the examples below.
+
+**McFadden's $R^2$** is roughly analogous to a regular $R^2$, in that it is intended to give an estimate of how much total variability is explained by the logistic model. It is calculated by comparing the fit of a logistic model against a null (i.e. no predictor) model.
+
+```{r}
+library(DescTools)
+PseudoR2(sleep_glm, which = "McFadden")
+```
+
+**Cox and Snell's $R^2$** is also calculated by comparing a full model to an null/no predictor model. The underlying calculation, however, is different, and a particular oddity of the Cox and Snell $R^2$ is that the maximum possible value is less than 1. 
+
+```{r}
+PseudoR2(sleep_glm, which = "CoxSnell")
+```
+**Nagelkerke's $R^2$** is an adjustment of the Cox and Snell $R^2$ - specifically, it adjusts the value of $R^2$ so that it ranges from 0-1.
+
+```{r}
+PseudoR2(sleep_glm, which = "Nagelkerke")
+```
+
+### When do you report it?
+
+Truthfully, as the UCLA help page states, pseudo-$R^2$ methods are not as useful or as cleanly interpretable as normal OLS-based $R^2$. They are only useful when comparing models using the *same* pseudo-$R^2$ value, using the same data and variables. In other words, these measures are useful to select between competing models on the same data; they are not valid for comparing across datasets. 
+
+Another thing to consider is that different measures perform differently. Simulation studies (e.g. Veall and Zimmermann 1992) have shown that Nagelkerke and McFadden's $R^2$ both severaly underestimate the 'true' value of $R^2$. Other methods exist, which can be calculated with `PseudoR2()`, but are not as widely implemented.
+
+Some will argue that $R^2$ values are pointless outside of the model selection context. Others will say that it never hurts to report them anyway even if you are reporting just the one model. The decision, ultimately, is probably best left to you as the researcher to figure out what is most appropriate for what you are doing. 

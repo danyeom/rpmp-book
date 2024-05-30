@@ -549,7 +549,7 @@ All of the following assumption tests apply:
 
 We'll test these on the next page!
 
-## Multiple regressions in R
+## Multiple regressions in R {#multreg-intro}
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
 Phew - we're almost there! Let's round out this week's module by doing a standard multiple regression in Jamovi. 
