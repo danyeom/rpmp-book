@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Research Process for Music Psychologists</title>
+  <title>12.3 Initial considerations for EFA | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Research Process for Music Psychologists" />
+  <meta property="og:title" content="12.3 Initial considerations for EFA | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="12.3 Initial considerations for EFA | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="theory-of-efa.html"/>
+<link rel="next" href="how-many-factorscomponents.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -594,19 +594,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="initial-considerations-for-efa" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Initial considerations for EFA<a href="initial-considerations-for-efa.html#initial-considerations-for-efa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll start with some basic considerations for EFA/PCA. These are generally things that should be thought about/considered before an EFA, or at least before you interpret the results.</p>
+<div id="sample-size" class="section level3 hasAnchor" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Sample size<a href="initial-considerations-for-efa.html#sample-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For adequate power, EFA typically needs a fairly big sample size. There is no clear agreement about what constitutes a ‘good’ sample size, and it’s difficult to give concrete recommendations.</p>
+<p>Many guides and sources will often mention a n:p rule of thumb, where n is sample size and p is number of variables (which is the number of parameters that needs to be estimated). The idea is that an ideal EFA sample size will have n participants for every variable you are analysing. These can range from as low as 3:1 to 20:1, with a typical ‘ok’ range being from 10-20:1. However, there is no clear support for these rules, and no minimum is truly sufficient (Hogarty et al. 2005).</p>
+<p>In general - the bigger the better, and the more variables you have the more participants you need. Aim for at least 300+ no matter the circumstance (this is a very blunt rule of thumb!).</p>
+<p>Below are our descriptives. While we can use a bit of tidyverse to get descriptives, the <code>describe()</code> function from the <code>psych</code> package is also convenient for getting basic descriptives for every column in a dataset. We can see that we have n = 2571, which should be more than adequate.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="initial-considerations-for-efa.html#cb3-1" tabindex="-1"></a><span class="fu">describe</span>(saq)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["vars"],"name":[1],"type":["int"],"align":["right"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["trimmed"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mad"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["min"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["range"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["skew"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kurtosis"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"2571","3":"2.374173","4":"0.8280221","5":"2","6":"2.336898","7":"0.0000","8":"1","9":"5","10":"4","11":"0.65456004","12":"0.6055246","13":"0.01633018","_rn_":"q01"},{"1":"2","2":"2571","3":"1.623493","4":"0.8510787","5":"1","6":"1.460865","7":"0.0000","8":"1","9":"5","10":"4","11":"1.48767803","12":"2.0367054","13":"0.01678490","_rn_":"q02"},{"1":"3","2":"2571","3":"2.786075","4":"0.9485482","5":"3","6":"2.741857","7":"1.4826","8":"1","9":"5","10":"4","11":"0.38517992","12":"-0.2878337","13":"0.01870718","_rn_":"q04"},{"1":"4","2":"2571","3":"2.722287","4":"0.9646904","5":"3","6":"2.675741","7":"1.4826","8":"1","9":"5","10":"4","11":"0.45564247","12":"-0.4418064","13":"0.01902554","_rn_":"q05"},{"1":"5","2":"2571","3":"2.227149","4":"1.1220023","5":"2","6":"2.087992","7":"1.4826","8":"1","9":"5","10":"4","11":"0.92666201","12":"0.1507951","13":"0.02212803","_rn_":"q06"},{"1":"6","2":"2571","3":"2.876313","4":"0.9985724","5":"3","6":"2.836169","7":"1.4826","8":"1","9":"5","10":"4","11":"0.29366080","12":"-0.3563454","13":"0.01969375","_rn_":"q14"},{"1":"7","2":"2571","3":"2.766239","4":"1.0093935","5":"3","6":"2.718522","7":"1.4826","8":"1","9":"5","10":"4","11":"0.42969018","12":"-0.4450235","13":"0.01990717","_rn_":"q15"},{"1":"8","2":"2571","3":"2.292104","4":"1.1014016","5":"2","6":"2.210987","7":"1.4826","8":"1","9":"5","10":"4","11":"0.48059829","12":"-0.7202466","13":"0.02172174","_rn_":"q19"},{"1":"9","2":"2571","3":"2.887981","4":"1.0407530","5":"3","6":"2.928051","7":"1.4826","8":"1","9":"5","10":"4","11":"-0.06517382","12":"-0.6762664","13":"0.02052564","_rn_":"q22"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="assumptions-4" class="section level3 hasAnchor" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Assumptions<a href="initial-considerations-for-efa.html#assumptions-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>EFA can be conducted with one of multiple algorithms that determines the final factor structure to be extracted. Different methods rely on different assumptions, so basic assumption checks are useful:</p>
+<ul>
+<li>Data must be interval/ratio data. Ordinal data is problematic unless you generally have at least 5 scale points; in which case, you can broadly approximate this to be continuous.</li>
+<li>Normality is important, depending on the method. The usual QQ-plot or Shapiro-Wilks tests on individual items can be useful here.a</li>
+<li>Multicollinearity: observed variables should not be collinear with each other.</li>
+</ul>
+<p>Note though that this only tests the normality of one variable, i.e. univariate normality. EFA is ideal with multivariate normality, i.e. the joint dimensions of the entire dataset are normally distributed. Univariate normality is necessary but not sufficient for multivariate normality. Sadly, however, Jamovi doesn’t give an easy way to test multivariate normality so let’s run with univariate normality for now.</p>
+</div>
+<div id="factorability" class="section level3 hasAnchor" number="12.3.3">
+<h3><span class="header-section-number">12.3.3</span> Factorability<a href="initial-considerations-for-efa.html#factorability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Factorability broadly describes whether the data are likely to be amenable to factor analysis. If data are factorable, it suggests that there is likely to be at least one latent factor underlying the observations.</p>
+<p>We can test factorability in three ways:</p>
+<ol style="list-style-type: decimal">
+<li>Correlations</li>
+</ol>
+<p>A simple matrix of correlations can give us a first-pass indication of factorability. If most items correlate with each other, this can indicate that there are underlying latent factors. There is no hard and fast rule for what counts as ‘acceptable’, but if most variables are not significantly correlated that indicates that the data may not be factorable. In our SAQ-9 data, we can see that all correlations between variables are significant, which is generally a good sign.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="initial-considerations-for-efa.html#cb4-1" tabindex="-1"></a><span class="fu">cor</span>(saq)</span></code></pre></div>
+<pre><code>##             q01         q02         q04        q05         q06        q14
+## q01  1.00000000 -0.09872403  0.43586018  0.4024399  0.21673399  0.3378797
+## q02 -0.09872403  1.00000000 -0.11185965 -0.1193466 -0.07420968 -0.1646999
+## q04  0.43586018 -0.11185965  1.00000000  0.4006722  0.27820154  0.3508096
+## q05  0.40243992 -0.11934658  0.40067225  1.0000000  0.25746014  0.3153381
+## q06  0.21673399 -0.07420968  0.27820154  0.2574601  1.00000000  0.4022441
+## q14  0.33787966 -0.16469991  0.35080964  0.3153381  0.40224407  1.0000000
+## q15  0.24575263 -0.16499581  0.33423089  0.2613719  0.35989309  0.3801148
+## q19 -0.18901103  0.20329748 -0.18597751 -0.1653221 -0.16675017 -0.2540581
+## q22 -0.10440866  0.23087487 -0.09838349 -0.1325359 -0.16513541 -0.1698375
+##            q15        q19         q22
+## q01  0.2457526 -0.1890110 -0.10440866
+## q02 -0.1649958  0.2032975  0.23087487
+## q04  0.3342309 -0.1859775 -0.09838349
+## q05  0.2613719 -0.1653221 -0.13253593
+## q06  0.3598931 -0.1667502 -0.16513541
+## q14  0.3801148 -0.2540581 -0.16983754
+## q15  1.0000000 -0.2098023 -0.16790617
+## q19 -0.2098023  1.0000000  0.23392259
+## q22 -0.1679062  0.2339226  1.00000000</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="initial-considerations-for-efa.html#cb6-1" tabindex="-1"></a><span class="co"># Alternatively, the lowerCor() fucntion from psych prints this more nicely</span></span>
+<span id="cb6-2"><a href="initial-considerations-for-efa.html#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="initial-considerations-for-efa.html#cb6-3" tabindex="-1"></a><span class="fu">lowerCor</span>(saq)</span></code></pre></div>
+<pre><code>##     q01   q02   q04   q05   q06   q14   q15   q19   q22  
+## q01  1.00                                                
+## q02 -0.10  1.00                                          
+## q04  0.44 -0.11  1.00                                    
+## q05  0.40 -0.12  0.40  1.00                              
+## q06  0.22 -0.07  0.28  0.26  1.00                        
+## q14  0.34 -0.16  0.35  0.32  0.40  1.00                  
+## q15  0.25 -0.16  0.33  0.26  0.36  0.38  1.00            
+## q19 -0.19  0.20 -0.19 -0.17 -0.17 -0.25 -0.21  1.00      
+## q22 -0.10  0.23 -0.10 -0.13 -0.17 -0.17 -0.17  0.23  1.00</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Bartlett’s test of sphericity</li>
+</ol>
+<p>Bartlett’s test of sphericity tests the null hypothesis that all correlations between variables are zero at the population level. In other words, if Bartlett’s test is non-significant it suggests that all of the indicator variables are not correlated. As a result, Bartlett’s test is pretty much always significant as it is very sensitive to sample size. Unsurprisingly, then, our Bartlett’s test result is significant.</p>
+<p>To run this, we use the <code>cortest.bartlett()</code> function from <code>psych</code>. Note that base R does include a function called <code>bartlett.test()</code>, but this is not the same test! (same Bartlett, though.)</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="initial-considerations-for-efa.html#cb8-1" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(saq)</span></code></pre></div>
+<pre><code>## R was not square, finding R from data</code></pre>
+<pre><code>## $chisq
+## [1] 3674.737
+## 
+## $p.value
+## [1] 0
+## 
+## $df
+## [1] 36</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Kaiser-Meyer-Olkin (KMO) Test/Kaiser’s Measure of Sampling Adequacy</li>
+</ol>
+<p>This test is often referred to as the KMO Test or Kaiser’s MSA, but both respectively mean the same thing. It is a measure of how much variance among all variables might be due to common variance. Higher KMO/MSA values indicate that more variance is likely due to common factors, thus indicating suitability for factor analysis.</p>
+<p>Kaiser (1974) provided the following (hilarious) interpretations of MSA values:</p>
+<p>MSA values are typically calculated for each variable, and for overall. It helps to report both. The <code>KMO()</code> function in <code>psych</code> will calculate both sets of measures of sampling adequacy. Here are our variables below. Overall they are generally in the meritorious range (except for one):</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="initial-considerations-for-efa.html#cb11-1" tabindex="-1"></a><span class="fu">KMO</span>(saq)</span></code></pre></div>
+<pre><code>## Kaiser-Meyer-Olkin factor adequacy
+## Call: KMO(r = saq)
+## Overall MSA =  0.82
+## MSA for each item = 
+##  q01  q02  q04  q05  q06  q14  q15  q19  q22 
+## 0.81 0.76 0.82 0.84 0.82 0.84 0.85 0.84 0.77</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="theory-of-efa.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="how-many-factorscomponents.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -637,7 +729,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-efa.Rmd",
 "text": "Edit"
 },
 "history": {

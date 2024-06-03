@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Research Process for Music Psychologists</title>
+  <title>12.2 Theory of EFA | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Research Process for Music Psychologists" />
+  <meta property="og:title" content="12.2 Theory of EFA | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="12.2 Theory of EFA | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="introduction-to-efa.html"/>
+<link rel="next" href="initial-considerations-for-efa.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -594,19 +594,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="theory-of-efa" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Theory of EFA<a href="theory-of-efa.html#theory-of-efa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>On this page, we (briefly) touch on a bit of the statistical theory underlying factor analysis and PCA. We won’t dive too deeply into the maths underlying EFA, but will focus on the high-level conceptual stuff.</p>
+<div id="pca-vs-efa" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> PCA vs EFA<a href="theory-of-efa.html#pca-vs-efa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is a good point to formally differentiate PCA vs EFA, following on from the brief disclaimer on the previous page.</p>
+<p>Both PCA and EFA will extract up to k factors that attempt to explain the observed variables. k, in this instance, is capped at the number of observed variables; so, if you input 24 variables into a PCA, the maximum number of components that you can estimate is 24. However, what defines these components/factors differs:</p>
+<ul>
+<li>In PCA, where we are just interested in collapsing variables, we assume that all variance in the observed variables is explained by the factors. Ultimately, a PCA will extract k components that ultimately explain 100% of the variance in all of the observed variables.</li>
+<li>In EFA, the goal is only to explain common variance between the observed variables. EFA explicitly models the variance in the items to be comprised of common variance, which is variance due to shared underlying factors, and unique variance. Unique variance can be further broken down into specific variance, which is variance that is specific to each item, and error variance. By partitioning variance in this way, EFA is able to test models of factors as it allows for disconfirmation - a vital part of any model testing.</li>
+</ul>
+<p>In short, EFA allows us to generate theoretical entities that we can test in subsequent analyses. PCA only provides us with a measure that combines the effects of multiple variables, but does not test latent factors.</p>
+<p>The common factor model</p>
+<p>The basis of factor analysis is the common factor model. Broadly speaking, the common factor model suggests that variables that relate to each other are likely driven by underlying latent variables. For example, if five questions in a survey all ask about a specific aspect of motivation, and these items correlate with each other, we would expect the same thing - or latent factor - to be driving responses on these five items. Exploratory factor analysis operates under this common factor model.</p>
+<p>Below is a basic diagram of the common factor model. The squares represent observed variables, which are the variables that we measure. The big circle denotes the latent factor that we want to estimate. The circles leading to the observed variables are error terms. In an exploratory factor analysis, the primary thing we want to investigate is the factor loadings, denoted by the various lambdas (<span class="math inline">\(\lambda\)</span>). We will see precisely what the factor loadings are later, but generally they are how strongly the latent factor predicts each observed variable.</p>
+<p><img src="img/common_factor_1.svg" /><!-- --></p>
+<p>Now let’s take a look at the common factor model with two factors. As you can see, we allow every observed variable to load onto every factor - thus, we estimate factor loadings for every possible path going from latent factors to observed variables. This is what we estimate in exploratory factor analysis (and PCA - sort of).</p>
+<p>For brevity’s sake, only three lambdas have been shown, but hopefully they are illustrative enough to get the general gist across. Every path leading from a latent variable to an observed variable is a parameter to be estimated in an exploratory factor analysis.</p>
+<p><img src="img/common_factor_2.svg" /><!-- --></p>
+</div>
+<div id="partial-correlations" class="section level3 hasAnchor" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Partial correlations<a href="theory-of-efa.html#partial-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In Module 10, we talked about the concept of correlation - i.e. how related two variables are. Recall that correlation coefficients are scaled from -1 to 1. Now we move to the concept of partial correlation - the relationship between two variables while controlling for a third.</p>
+<p>Let’s come back to the flow data in Week 10. Imagine we want to test the correlation between Gold MSI scores and flow proneness. However, we might suspect that openness to experience may play a role in the relationship between these variables. One thing we could do is to calculate a partial correlation between MSI scores and flow proneness while controlling for openness.</p>
+<p>If we know the correlation between:</p>
+<ul>
+<li>MSI scores and flow proneness,</li>
+<li>MSI scores and openness,</li>
+<li>Flow proneness and openness,</li>
+</ul>
+<p>We could calculate the partial correlation between Gold-MSI and flow proneness, controlling for openness, using the below formula:</p>
+<p>Both PCA and EFA rely on estimating partial correlations. Specifically, factor analysis aims to estimate latent factors that minimise the partial correlations among observed variables. If a latent factor perfectly explains the relationship between two variables, the partial correlations between the observed variables should be zero. A lot of the ‘under the hood’ maths, which we won’t touch on, essentially relates to identifying the latent factors that maximise the amount of variance explained in each variable by the factor solutions.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="introduction-to-efa.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="initial-considerations-for-efa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -637,7 +665,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-efa.Rmd",
 "text": "Edit"
 },
 "history": {

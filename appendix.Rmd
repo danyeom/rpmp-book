@@ -75,7 +75,7 @@ library(datarium)
 
 The main functions in `broom` are generic functions with what R calls several *methods* - i.e. ways that the function handles different types of data or objects. Every method comes with a different set of arguments that can change the output, depending on what object the function is run on. For example, if you use `tidy()` on an `lm` object, you get different optional arguments than for an `aov()` object, and so on. The next page gives examples using the `datarium` datasets.
 
-## The `tidy()` function
+## The `tidy()` function {#broom-tidy}
 
 You may have noticed that many of the outputs from common R functions, like `lm()` and `aov()`, print their results in a certain format - namely, it essentially prints as text. The `tidy()` function will simply turn the core output into a data frame. This is useful when you are running multiple models at once, or if for some reason you want to work with the values in model outputs directly. This function will work with just about every standard test function you get in R.
 
@@ -176,7 +176,7 @@ emmeans(stress_aov, ~ exercise, by = "treatment") %>%
 ```
 
 
-## The `glance()` function
+## The `glance()` function {#broom-glance}
 
 The `glance()` function will generate model fit summaries from models. It works primarily with `lm()` and other models, and returns several indices of model fit (depending on the original object).
 
@@ -191,7 +191,7 @@ glance(marketing_lm)
 glance(stress_aov)
 ```
 
-## The `augment()` function
+## The `augment()` function {#broom-augment}
 
 The a
 
