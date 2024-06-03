@@ -23,14 +23,14 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-31" />
+<meta name="date" content="2024-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="pseudo-r2.html"/>
+<link rel="prev" href="rotation-and-interpreting-output-again.html"/>
 <link rel="next" href="broom.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -517,22 +517,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4.3" data-path="pseudo-r2.html"><a href="pseudo-r2.html#when-do-you-report-it"><i class="fa fa-check"></i><b>11.4.3</b> When do you report it?</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="exploratory-factor-analysis.html"><a href="exploratory-factor-analysis.html"><i class="fa fa-check"></i><b>12</b> Exploratory factor analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html"><i class="fa fa-check"></i><b>12.1</b> Introduction to EFA</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#dimension-reduction"><i class="fa fa-check"></i><b>12.1.1</b> Dimension reduction</a></li>
+<li class="chapter" data-level="12.1.2" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#factor-analysis"><i class="fa fa-check"></i><b>12.1.2</b> Factor analysis</a></li>
+<li class="chapter" data-level="12.1.3" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#the-steps-of-exploratory-factor-analysis"><i class="fa fa-check"></i><b>12.1.3</b> The steps of exploratory factor analysis</a></li>
+<li class="chapter" data-level="12.1.4" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#example-dataset"><i class="fa fa-check"></i><b>12.1.4</b> Example dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html"><i class="fa fa-check"></i><b>12.2</b> Theory of EFA</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="theory-of-efa.html"><a href="theory-of-efa.html#pca-vs-efa"><i class="fa fa-check"></i><b>12.2.1</b> PCA vs EFA</a></li>
+<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations"><i class="fa fa-check"></i><b>12.2.2</b> Partial correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html"><i class="fa fa-check"></i><b>12.3</b> Initial considerations for EFA</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#sample-size"><i class="fa fa-check"></i><b>12.3.1</b> Sample size</a></li>
+<li class="chapter" data-level="12.3.2" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#assumptions-4"><i class="fa fa-check"></i><b>12.3.2</b> Assumptions</a></li>
+<li class="chapter" data-level="12.3.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#factorability"><i class="fa fa-check"></i><b>12.3.3</b> Factorability</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html"><i class="fa fa-check"></i><b>12.4</b> How many factors/components?</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#deciding-on-the-number-of-factors"><i class="fa fa-check"></i><b>12.4.1</b> Deciding on the number of factors</a></li>
+<li class="chapter" data-level="12.4.2" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#the-kaiser-guttman-rule"><i class="fa fa-check"></i><b>12.4.2</b> The Kaiser-Guttman rule</a></li>
+<li class="chapter" data-level="12.4.3" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#the-scree-plot"><i class="fa fa-check"></i><b>12.4.3</b> The scree plot</a></li>
+<li class="chapter" data-level="12.4.4" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#parallel-analysis"><i class="fa fa-check"></i><b>12.4.4</b> Parallel analysis</a></li>
+<li class="chapter" data-level="12.4.5" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#how-to-decide"><i class="fa fa-check"></i><b>12.4.5</b> How to decide?</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="interpreting-output.html"><a href="interpreting-output.html"><i class="fa fa-check"></i><b>12.5</b> Interpreting output</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="interpreting-output.html"><a href="interpreting-output.html#extraction-methods"><i class="fa fa-check"></i><b>12.5.1</b> Extraction methods</a></li>
+<li class="chapter" data-level="12.5.2" data-path="interpreting-output.html"><a href="interpreting-output.html#interpreting-output-1"><i class="fa fa-check"></i><b>12.5.2</b> Interpreting output</a></li>
+<li class="chapter" data-level="12.5.3" data-path="interpreting-output.html"><a href="interpreting-output.html#total-variance-explained"><i class="fa fa-check"></i><b>12.5.3</b> Total variance explained</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html"><i class="fa fa-check"></i><b>12.6</b> Rotation, and interpreting output again</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html#rotations"><i class="fa fa-check"></i><b>12.6.1</b> Rotations</a></li>
+<li class="chapter" data-level="12.6.2" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html#rotated-factor-solution"><i class="fa fa-check"></i><b>12.6.2</b> Rotated factor solution</a></li>
+</ul></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
 <li class="chapter" data-level="B" data-path="broom.html"><a href="broom.html"><i class="fa fa-check"></i><b>B</b> The <code>broom()</code> package</a>
 <ul>
-<li class="chapter" data-level="B.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
+<li class="chapter" data-level="B.1" data-path="broom-tidy.html"><a href="broom-tidy.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
 <ul>
-<li class="chapter" data-level="B.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
-<li class="chapter" data-level="B.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
-<li class="chapter" data-level="B.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
-<li class="chapter" data-level="B.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
+<li class="chapter" data-level="B.1.1" data-path="broom-tidy.html"><a href="broom-tidy.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
+<li class="chapter" data-level="B.1.2" data-path="broom-tidy.html"><a href="broom-tidy.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
+<li class="chapter" data-level="B.1.3" data-path="broom-tidy.html"><a href="broom-tidy.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
+<li class="chapter" data-level="B.1.4" data-path="broom-tidy.html"><a href="broom-tidy.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
-<li class="chapter" data-level="B.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
+<li class="chapter" data-level="B.2" data-path="broom-glance.html"><a href="broom-glance.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
+<li class="chapter" data-level="B.3" data-path="broom-augment.html"><a href="broom-augment.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
 <ul>
-<li class="chapter" data-level="B.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
-<li class="chapter" data-level="B.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
+<li class="chapter" data-level="B.3.1" data-path="broom-augment.html"><a href="broom-augment.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
+<li class="chapter" data-level="B.3.2" data-path="broom-augment.html"><a href="broom-augment.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>C</b> Technical details of <code>anova()</code></a></li>
@@ -556,16 +596,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="colours" class="section level1 hasAnchor" number="12">
+<div id="colours" class="section level1 hasAnchor" number="13">
 <h1><span class="header-section-number">A</span> R colour palettes<a href="colours.html#colours" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="_main_files/figure-html/unnamed-chunk-309-1.png" width="480" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-331-1.png" width="480" /></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="pseudo-r2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rotation-and-interpreting-output-again.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="broom.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

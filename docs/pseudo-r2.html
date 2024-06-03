@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-05-31" />
+<meta name="date" content="2024-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="example-8.html"/>
-<link rel="next" href="colours.html"/>
+<link rel="next" href="exploratory-factor-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -517,22 +517,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4.3" data-path="pseudo-r2.html"><a href="pseudo-r2.html#when-do-you-report-it"><i class="fa fa-check"></i><b>11.4.3</b> When do you report it?</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="exploratory-factor-analysis.html"><a href="exploratory-factor-analysis.html"><i class="fa fa-check"></i><b>12</b> Exploratory factor analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html"><i class="fa fa-check"></i><b>12.1</b> Introduction to EFA</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#dimension-reduction"><i class="fa fa-check"></i><b>12.1.1</b> Dimension reduction</a></li>
+<li class="chapter" data-level="12.1.2" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#factor-analysis"><i class="fa fa-check"></i><b>12.1.2</b> Factor analysis</a></li>
+<li class="chapter" data-level="12.1.3" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#the-steps-of-exploratory-factor-analysis"><i class="fa fa-check"></i><b>12.1.3</b> The steps of exploratory factor analysis</a></li>
+<li class="chapter" data-level="12.1.4" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#example-dataset"><i class="fa fa-check"></i><b>12.1.4</b> Example dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html"><i class="fa fa-check"></i><b>12.2</b> Theory of EFA</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="theory-of-efa.html"><a href="theory-of-efa.html#pca-vs-efa"><i class="fa fa-check"></i><b>12.2.1</b> PCA vs EFA</a></li>
+<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations"><i class="fa fa-check"></i><b>12.2.2</b> Partial correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html"><i class="fa fa-check"></i><b>12.3</b> Initial considerations for EFA</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#sample-size"><i class="fa fa-check"></i><b>12.3.1</b> Sample size</a></li>
+<li class="chapter" data-level="12.3.2" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#assumptions-4"><i class="fa fa-check"></i><b>12.3.2</b> Assumptions</a></li>
+<li class="chapter" data-level="12.3.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#factorability"><i class="fa fa-check"></i><b>12.3.3</b> Factorability</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html"><i class="fa fa-check"></i><b>12.4</b> How many factors/components?</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#deciding-on-the-number-of-factors"><i class="fa fa-check"></i><b>12.4.1</b> Deciding on the number of factors</a></li>
+<li class="chapter" data-level="12.4.2" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#the-kaiser-guttman-rule"><i class="fa fa-check"></i><b>12.4.2</b> The Kaiser-Guttman rule</a></li>
+<li class="chapter" data-level="12.4.3" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#the-scree-plot"><i class="fa fa-check"></i><b>12.4.3</b> The scree plot</a></li>
+<li class="chapter" data-level="12.4.4" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#parallel-analysis"><i class="fa fa-check"></i><b>12.4.4</b> Parallel analysis</a></li>
+<li class="chapter" data-level="12.4.5" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#how-to-decide"><i class="fa fa-check"></i><b>12.4.5</b> How to decide?</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="interpreting-output.html"><a href="interpreting-output.html"><i class="fa fa-check"></i><b>12.5</b> Interpreting output</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="interpreting-output.html"><a href="interpreting-output.html#extraction-methods"><i class="fa fa-check"></i><b>12.5.1</b> Extraction methods</a></li>
+<li class="chapter" data-level="12.5.2" data-path="interpreting-output.html"><a href="interpreting-output.html#interpreting-output-1"><i class="fa fa-check"></i><b>12.5.2</b> Interpreting output</a></li>
+<li class="chapter" data-level="12.5.3" data-path="interpreting-output.html"><a href="interpreting-output.html#total-variance-explained"><i class="fa fa-check"></i><b>12.5.3</b> Total variance explained</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html"><i class="fa fa-check"></i><b>12.6</b> Rotation, and interpreting output again</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html#rotations"><i class="fa fa-check"></i><b>12.6.1</b> Rotations</a></li>
+<li class="chapter" data-level="12.6.2" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html#rotated-factor-solution"><i class="fa fa-check"></i><b>12.6.2</b> Rotated factor solution</a></li>
+</ul></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
 <li class="chapter" data-level="B" data-path="broom.html"><a href="broom.html"><i class="fa fa-check"></i><b>B</b> The <code>broom()</code> package</a>
 <ul>
-<li class="chapter" data-level="B.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
+<li class="chapter" data-level="B.1" data-path="broom-tidy.html"><a href="broom-tidy.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
 <ul>
-<li class="chapter" data-level="B.1.1" data-path="the-tidy-function.html"><a href="the-tidy-function.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
-<li class="chapter" data-level="B.1.2" data-path="the-tidy-function.html"><a href="the-tidy-function.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
-<li class="chapter" data-level="B.1.3" data-path="the-tidy-function.html"><a href="the-tidy-function.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
-<li class="chapter" data-level="B.1.4" data-path="the-tidy-function.html"><a href="the-tidy-function.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
+<li class="chapter" data-level="B.1.1" data-path="broom-tidy.html"><a href="broom-tidy.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
+<li class="chapter" data-level="B.1.2" data-path="broom-tidy.html"><a href="broom-tidy.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
+<li class="chapter" data-level="B.1.3" data-path="broom-tidy.html"><a href="broom-tidy.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
+<li class="chapter" data-level="B.1.4" data-path="broom-tidy.html"><a href="broom-tidy.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="the-glance-function.html"><a href="the-glance-function.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
-<li class="chapter" data-level="B.3" data-path="the-augment-function.html"><a href="the-augment-function.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
+<li class="chapter" data-level="B.2" data-path="broom-glance.html"><a href="broom-glance.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
+<li class="chapter" data-level="B.3" data-path="broom-augment.html"><a href="broom-augment.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
 <ul>
-<li class="chapter" data-level="B.3.1" data-path="the-augment-function.html"><a href="the-augment-function.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
-<li class="chapter" data-level="B.3.2" data-path="the-augment-function.html"><a href="the-augment-function.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
+<li class="chapter" data-level="B.3.1" data-path="broom-augment.html"><a href="broom-augment.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
+<li class="chapter" data-level="B.3.2" data-path="broom-augment.html"><a href="broom-augment.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>C</b> Technical details of <code>anova()</code></a></li>
@@ -562,8 +602,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.4.1</span> Regular <span class="math inline">\(R^2\)</span><a href="pseudo-r2.html#regular-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Recall that in a linear regression, we often talk about <span class="math inline">\(R^2\)</span>, or the coefficient of determination. We interpret this value as the amount of variance that is explained in our outcome by our predictor in the regression (or all of our predictors, in the case of multiple regression).</p>
 <p>As a reminder, here is the output for the regression on flow proneness in <a href="multreg-intro.html#multreg-intro">the regression module</a>:</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="pseudo-r2.html#cb399-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span>
-<span id="cb399-2"><a href="pseudo-r2.html#cb399-2" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="pseudo-r2.html#cb402-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span>
+<span id="cb402-2"><a href="pseudo-r2.html#cb402-2" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
@@ -584,13 +624,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.1364, Adjusted R-squared:  0.1343 
 ## F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>As we can see, our value for <span class="math inline">\(R^2\)</span> is .1364, meaning that 13.64% of the variance in our outcome, flow proneness, can be explained by our predictors trait anxiety and openness. The mathematical properties of least squares regression allow us to derive this value and interpret it fairly cleanly and easily. We can even compare <span class="math inline">\(R^2\)</span> across similar models, or (in the hierarchical case) use it to directly compare model fit.</p>
-<p>In logistic regression, however, we cannot calculate the same value as we no longer use ordinary least squares regression. Instead, we use <strong>maximum likelihood</strong>, which provides a different way of calculating the various parameters (i.e. coefficients) in our model. Maximum likelihood methods in the context of logistic regression don’t really give us the same ‘clean’ and easily interpretable <span class="math inline">\(R^2\)</span> as we get in normal regressions, because we don’t operate under the same method of minimising residuals.</p>
+<p>In logistic regression, however, we cannot calculate the same value as we no longer use ordinary least squares regression. Instead, we use <strong>maximum likelihood</strong>, which provides a different way of calculating the various parameters (i.e. coefficients) in our model. Maximum likelihood methods in the context of logistic regression don’t really give us the same ‘clean’ and easily interpretable <span class="math inline">\(R^2\)</span> as we get in normal regressions, because we don’t operate under the same method of minimising residuals. Rather, these <span class="math inline">\(R^2\)</span> methods are calculated using each model’s likelihood, <span class="math inline">\(\hat L\)</span>.</p>
 <p>To partially overcome this, several measures of <strong>pseudo <span class="math inline">\(R^2\)</span></strong> have been developed. The word ‘pseudo’ is important here, as it’s important to acknowledge that these are not quite the same thing as our usual <span class="math inline">\(R^2\)</span>. We can’t use them in the same way to directly compare across models, for instance - each pseudo-<span class="math inline">\(R^2\)</span> has its own suggested interpretation, and thus do not always cohere with each other. The wonderful <a href="https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/">Statistical Methods and Data Analysis group</a> at UCLA have a great explanation, with formulae for several pseudo-<span class="math inline">\(R^2\)</span> measures. We will focus on three in this module, mainly for parity with Jamovi (but they also happen to be the most popular).</p>
 </div>
 <div id="calculating-pseudo-r2-measures" class="section level3 hasAnchor" number="11.4.2">
 <h3><span class="header-section-number">11.4.2</span> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures<a href="pseudo-r2.html#calculating-pseudo-r2-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As a reminder, let’s print the output from our logistic regression on sleep:</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="pseudo-r2.html#cb401-1" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="pseudo-r2.html#cb404-1" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
@@ -611,21 +651,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>The <code>DescTools</code> package provides a very convenient function, <code>PseudoR2()</code>, to calculate these pseudo-<span class="math inline">\(R^2\)</span> measures for us. This function requires a) the name of the <code>glm</code> model (i.e. our logistic regression object), and b) a character specifying which type(s) of <span class="math inline">\(R^2\)</span> should be calculated. You’ll see this in the examples below.</p>
 <p><strong>McFadden’s <span class="math inline">\(R^2\)</span></strong> is roughly analogous to a regular <span class="math inline">\(R^2\)</span>, in that it is intended to give an estimate of how much total variability is explained by the logistic model. It is calculated by comparing the fit of a logistic model against a null (i.e. no predictor) model.</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="pseudo-r2.html#cb403-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="pseudo-r2.html#cb406-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;DescTools&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:car&#39;:
 ## 
 ##     Recode</code></pre>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="pseudo-r2.html#cb406-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;McFadden&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="pseudo-r2.html#cb409-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;McFadden&quot;</span>)</span></code></pre></div>
 <pre><code>##  McFadden 
 ## 0.1460373</code></pre>
 <p><strong>Cox and Snell’s <span class="math inline">\(R^2\)</span></strong> is also calculated by comparing a full model to an null/no predictor model. The underlying calculation, however, is different, and a particular oddity of the Cox and Snell <span class="math inline">\(R^2\)</span> is that the maximum possible value is less than 1.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="pseudo-r2.html#cb408-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;CoxSnell&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="pseudo-r2.html#cb411-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;CoxSnell&quot;</span>)</span></code></pre></div>
 <pre><code>##  CoxSnell 
 ## 0.1797558</code></pre>
 <p><strong>Nagelkerke’s <span class="math inline">\(R^2\)</span></strong> is an adjustment of the Cox and Snell <span class="math inline">\(R^2\)</span> - specifically, it adjusts the value of <span class="math inline">\(R^2\)</span> so that it ranges from 0-1.</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="pseudo-r2.html#cb410-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Nagelkerke&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="pseudo-r2.html#cb413-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Nagelkerke&quot;</span>)</span></code></pre></div>
 <pre><code>## Nagelkerke 
 ##  0.2420843</code></pre>
 </div>
@@ -638,16 +678,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <!-- </div> -->
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="example-8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="colours.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exploratory-factor-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
