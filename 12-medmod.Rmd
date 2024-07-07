@@ -242,7 +242,7 @@ Where $\beta_1$ and $\beta_2$ and are regression coefficients (slopes) for X and
 However, you may have already clocked that this may not be as easy as it may be for a factorial ANOVA, where we deal with categorical predictors. After all, at least in the categorical instance we could group observations based on the combinations of the two predictors. For example, in a factorial ANOVA with sex as one of the variables, we could plot/test an effect between a predictor and an outcome for men and women separately. But how do we do this for continuous variables, where there are no 'clear' cutpoints? To unpack a moderation, there are two techniques we can apply.
 
  
-Simple slopes
+### Simple slopes
 
 The first approach is the **simple slopes** approach, which is similar in principle to simple effects tests after factorial ANOVAs. The basic idea of a simple slopes test is to calculate the predicted values between X and Y, for multiple levels of the moderator W. The standard approach is to take the mean value of the moderator W, as well as 1 SD above and below the mean, and calculate the regression slopes for each level of the moderator. We can then plot this as follows:
 
@@ -270,7 +270,7 @@ knitr::include_graphics("img/j-n-plot-1.png")
 
 The red shaded region indicates where the moderation is non-significant. So, in this instance, values of the moderator between ~ 3.8 and 5.9 (as an eyeball guess) do not significantly moderate the relationship between the predictor and outcome. Values above or below this, however, do indicate significant moderation. Using the PROCESS macro in SPSS/R, it's possible to get the exact values for where this range starts and ends. 
 
-### Moderation: Example
+## Moderation: Example
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
 To round this module off, here is a worked example of a moderation.
@@ -290,9 +290,11 @@ To set up a moderation using PROCESS, we turn to the `process()` function once a
 
 - `w` sets our moderator.
 - `model = 1` indicates that we want a simple moderation.
-- `plot = 1` gives us values for plotting the moderation. Unfortunately
+- `plot = 1` gives us values for plotting the moderation.
+- `jn = 1` calculates the Johnson-Neyman values for a significant moderation. These are also used for plotting.
+- `save = 2` is used to save the output to a variable.
 
-```{r}
+```{r eval = FALSE}
 passion_mod <- process(
   data = passion_data,
   y = "HP_TOT",
@@ -305,32 +307,53 @@ passion_mod <- process(
 )
 ```
 
+
+### Output
+
+Let's now take a look at our output. The first output is our overall model fit, which is identical to what we get for any other multiple regression. Our model in this instance is significant, and explains 19.6% of the variance in harmonious passion.
+
+The second output gives us our standard regression table. This tells us whether the moderation is significant, and we can interpret this as we would for any other regression we've seen. So, here we can see that positive experiences are a significant predictor of harmonious passion (B = 0.796, t = 6.290, p < .001), but satisfaction with life is not (p = .279). However, the interaction - or moderation - between the two is significant (B = 0.036, t = 2.576, p = .011).
+
+```{r echo = FALSE}
+passion_mod <- process(
+  data = passion_data,
+  y = "HP_TOT",
+  x = "SPANE_pos",
+  w = "SWLS_TOT",
+  model = 1,
+  plot = 1,
+  jn = 1,
+  save = 2
+)
+```
+
+
+This indicates that we should investigate further, first with our simple slope/interaction plot as below. Unfortunately, as you can tell, the `plot` argument in `process()` doesn't actually generate any plots. Rather, it gives a series of values for the predictor, moderator and outcome to plot. The same applies for the output from the Johnson-Neyman technique - while the output does tell you where the moderation is/is not significant, it does not draw a plot. This is probably because PROCESS was designed for SPSS users first and foremost in mind, and the SAS and R versions were designed for parity for SPSS first and foremost (rather than designed to take advantage of their native capabilities).
+
+There are ways to use these values for plotting, but truthfully - at least for this subject - they are far more effort than they are worth. Rather, there is a great package called `interactions` that will draw these plots for us. 
+
+To start, we use `lm()` to build a regular regression model with an interaction between our predictor and moderator:
+
 ```{r}
 library(interactions)
-
 passion_mod_lm <- lm(HP_TOT ~ SPANE_pos * SWLS_TOT, data = passion_data)
-summary(passion_mod_lm)
-
-interact_plot(passion_mod_lm, pred = "SPANE_pos", modx = "SWLS_TOT")
 ```
+
+The `interact_plot()` function will then draw us a standard plot with simple slopes, based on the model above. For this function to work, at a minimum you must give it a) the name of the `lm()` model, b) the name of the predictor to `pred` and c) the name of the moderator to `modx`. The `colors` argument has also been specified to change the colours for the lines (by default they are different shades of blue).
+
+Based on the below graph, we can see that in all instances, the relationship between positive experiences and harmonious passion is positive. However, for people who are high on satisfaction with like (Mean + 1SD), the relationship is stronger - indexed by a greater slope. This relationship is weaker for people who are low on satisfaction with life (Mean - 1SD).
+
+```{r}
+interact_plot(passion_mod_lm, 
+              pred = "SPANE_pos",
+              modx = "SWLS_TOT", 
+              colors = "Set1") 
+```
+
+Lastly, we can examine the Johnson-Neyman plots to see where this relationship is non-significant.  The same basic set of arguments - model, predictor, and moderator - can also be used as is for the `johnson_neyman()` function, which will draw a Johnson-Neyman plot. Helpfully, the function will also give a brief summary of the regions of significance/non-significance. Based on the plot and the text output, the moderation is non-significant when the moderator (satifaction with life) is below 6.9.
 
 ```{r}
 johnson_neyman(passion_mod_lm, pred = "SPANE_pos", modx = "SWLS_TOT")
 ```
 
 
-
-Output
-
-Let's now take a look at our output. The first output is our overall model fit, which is identical to what we get for any other multiple regression. Our model in this instance is significant, and explains 19.6% of the variance in harmonious passion.
-
-moderation_output1.png
-
-The second output gives us our standard regression table. This tells us whether the moderation is significant, and we can interpret this as we would for any other regression we've seen. So, here we can see that positive experiences are a significant predictor of harmonious passion (B = 0.796, t = 6.290, p < .001), but satisfaction with life is not (p = .279). However, the interaction - or moderation - between the two is significant (B = 0.036, t = 2.576, p = .011).
-
-moderation_output2.png
-
-This indicates that we should investigate further, first with our simple slope/interaction plot as below. Based on the below graph, we can see that in all instances, the relationship between positive experiences and harmonious passion is positive. However, for people who are high on satisfaction with like (Mean + 1SD), the relationship is stronger - indexed by a greater slope. This relationship is weaker for people who are low on satisfaction with life (Mean - 1SD).
-
-moderation_plot1.svg
-Lastly, we can examine the Johnson-Neyman plots to see where this relationship is non-significant. We can see that for values of satisfaction with life below ~ -12, the moderation is no longer significant. Note here though, that it's impossible to get a satisfaction with life scale that is negative given the way it is scored; therefore, our main takeaway from this is that the moderation is significant across all possible values of satisfaction with life. Thus, we can say that if you are more satisfied with life, the greater the effect of positive experiences with music on your harmonious passion!
