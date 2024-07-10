@@ -8,7 +8,7 @@ library(rstatix)
 library(effectsize)
 ```
 
-The final section of the book (at least for the time being) deals with **logistic regression.** In some ways, we have come full circle with the inclusion of this chapter: the first statistical test we looked at were to do with categorical data, and now we make a partial return to categorical data. 
+This section of the book (at least for the time being) deals with **logistic regression.** In some ways, we have come full circle with the inclusion of this chapter: the first statistical test we looked at were to do with categorical data, and now we make a partial return to categorical data. 
 
 While I recognise that logistic regression has an awesome application to classification and basic machine learning, the focus of this book is not on classification but prediction. Thus, we won't be diving into classification accuracy or ROC curves in the context of logistic regression, even though these are not terribly hard to implement in either R or Jamovi.
 
