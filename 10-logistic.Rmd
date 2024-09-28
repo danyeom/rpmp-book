@@ -463,6 +463,6 @@ PseudoR2(sleep_glm, which = "Nagelkerke")
 
 Truthfully, as the UCLA help page states, pseudo-$R^2$ methods are not as useful or as cleanly interpretable as normal OLS-based $R^2$. They are only useful when comparing models using the *same* pseudo-$R^2$ value, using the same data and variables. In other words, these measures are useful to select between competing models on the same data; they are not valid for comparing across datasets. 
 
-Another thing to consider is that different measures perform differently. Simulation studies (e.g. Veall and Zimmermann 1992) have shown that Nagelkerke and McFadden's $R^2$ both severaly underestimate the 'true' value of $R^2$. Other methods exist, which can be calculated with `PseudoR2()`, but are not as widely implemented.
+Another thing to consider is that different measures perform differently. Simulation studies (e.g. Veall and Zimmermann 1992) have shown that Nagelkerke and McFadden's $R^2$ both severely underestimate the 'true' value of $R^2$. Other methods exist, which can be calculated with `PseudoR2()`, but are not as widely implemented.
 
 Some will argue that $R^2$ values are pointless outside of the model selection context. Others will say that it never hurts to report them anyway even if you are reporting just the one model. The decision, ultimately, is probably best left to you as the researcher to figure out what is most appropriate for what you are doing. 

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-07-07" />
+<meta name="date" content="2024-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -142,7 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="the-general-idea.html"><a href="the-general-idea.html"><i class="fa fa-check"></i><b>1.1</b> The general idea</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
@@ -241,6 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-literature"><i class="fa fa-check"></i><b>4.5.4</b> Confidence intervals in literature</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>II Basic inferential tests</b></span></li>
 <li class="chapter" data-level="5" data-path="chi-squares.html"><a href="chi-squares.html"><i class="fa fa-check"></i><b>5</b> Chi-squares</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html"><i class="fa fa-check"></i><b>5.1</b> Calculating a chi-square</a>
@@ -419,6 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>III Advanced methods</b></span></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
@@ -640,7 +646,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.3.1</span> The variability of data<a href="variability.html#the-variability-of-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The other key way of describing data is in its spread, or distribution. The way data is distributed can give key insights into how that data should be treated.</p>
 <p>Consider the following graphs below.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>You can see that all three graphs peak at around the same point, but <em>look</em> very different outside of that. The orange line is narrow, while the red line is considerably more spread out. All of these graphs peak at the same point but still look very different. Therefore, they have very different <strong>spreads</strong>, or <strong>distributions</strong>.</p>
 <p>We saw on the last page that we can quantify how far values are spread apart by finding the range. However, this isn’t always a good idea - two datasets with the exact same range can look wildly different. Therefore, we need ways of quantifying how data is spread out as well.</p>
 </div>
@@ -667,6 +673,19 @@ Or, in full formula form:</p>
 SD = \sqrt{\frac{\Sigma (x_i - \bar{x} )^2}{n - 1}}
 \]</span></p>
 <p>Standard deviations (SD) should reported alongside means when results are written up (consult an APA guide).</p>
+<p>To calculate standard deviations in R, use the <code>sd()</code> function. Once again, this has an <code>na.rm</code> argument you can specify.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="variability.html#cb105-1" tabindex="-1"></a><span class="fu">sd</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 1.923538</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="variability.html#cb107-1" tabindex="-1"></a><span class="co"># Tidyverse form</span></span>
+<span id="cb107-2"><a href="variability.html#cb107-2" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
+<span id="cb107-3"><a href="variability.html#cb107-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb107-4"><a href="variability.html#cb107-4" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb107-5"><a href="variability.html#cb107-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sd"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"1.923538"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="standard-error-and-the-sdotm" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Standard error, and the SDoTM<a href="variability.html#standard-error-and-the-sdotm" class="anchor-section" aria-label="Anchor link to header"></a></h3>

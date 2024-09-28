@@ -1,3 +1,5 @@
+# (PART) Advanced methods {-}
+
 # Factorial ANOVAs
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}

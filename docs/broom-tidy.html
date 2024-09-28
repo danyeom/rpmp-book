@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-07-07" />
+<meta name="date" content="2024-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -142,7 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="the-general-idea.html"><a href="the-general-idea.html"><i class="fa fa-check"></i><b>1.1</b> The general idea</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
@@ -241,6 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-literature"><i class="fa fa-check"></i><b>4.5.4</b> Confidence intervals in literature</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>II Basic inferential tests</b></span></li>
 <li class="chapter" data-level="5" data-path="chi-squares.html"><a href="chi-squares.html"><i class="fa fa-check"></i><b>5</b> Chi-squares</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html"><i class="fa fa-check"></i><b>5.1</b> Calculating a chi-square</a>
@@ -419,6 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>III Advanced methods</b></span></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
@@ -635,10 +641,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">B.1</span> The <code>tidy()</code> function<a href="broom-tidy.html#broom-tidy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You may have noticed that many of the outputs from common R functions, like <code>lm()</code> and <code>aov()</code>, print their results in a certain format - namely, it essentially prints as text. The <code>tidy()</code> function will simply turn the core output into a data frame. This is useful when you are running multiple models at once, or if for some reason you want to work with the values in model outputs directly. This function will work with just about every standard test function you get in R.</p>
 <p>Here an example with the <code>marketing</code> dataset, which contains continuous variables. Let’s fit a multiple regression using <code>lm()</code>, and call <code>summary()</code> on the results:</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="broom-tidy.html#cb474-1" tabindex="-1"></a><span class="fu">data</span>(marketing)</span>
-<span id="cb474-2"><a href="broom-tidy.html#cb474-2" tabindex="-1"></a></span>
-<span id="cb474-3"><a href="broom-tidy.html#cb474-3" tabindex="-1"></a>marketing_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> youtube <span class="sc">+</span> facebook <span class="sc">+</span> newspaper, <span class="at">data =</span> marketing)</span>
-<span id="cb474-4"><a href="broom-tidy.html#cb474-4" tabindex="-1"></a><span class="fu">summary</span>(marketing_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="broom-tidy.html#cb495-1" tabindex="-1"></a><span class="fu">data</span>(marketing)</span>
+<span id="cb495-2"><a href="broom-tidy.html#cb495-2" tabindex="-1"></a></span>
+<span id="cb495-3"><a href="broom-tidy.html#cb495-3" tabindex="-1"></a>marketing_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> youtube <span class="sc">+</span> facebook <span class="sc">+</span> newspaper, <span class="at">data =</span> marketing)</span>
+<span id="cb495-4"><a href="broom-tidy.html#cb495-4" tabindex="-1"></a><span class="fu">summary</span>(marketing_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sales ~ youtube + facebook + newspaper, data = marketing)
@@ -660,14 +666,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.8972, Adjusted R-squared:  0.8956 
 ## F-statistic: 570.3 on 3 and 196 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><code>tidy()</code> works directly on <em>model</em> objects, not raw data, so we use the <code>tidy()</code> function on our regression model. As you can see, the data is now in data frame format:</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="broom-tidy.html#cb476-1" tabindex="-1"></a><span class="fu">tidy</span>(marketing_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="broom-tidy.html#cb497-1" tabindex="-1"></a><span class="fu">tidy</span>(marketing_lm)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"3.526667243","3":"0.374289884","4":"9.4222884","5":"1.267295e-17"},{"1":"youtube","2":"0.045764645","3":"0.001394897","4":"32.8086244","5":"1.509960e-81"},{"1":"facebook","2":"0.188530017","3":"0.008611234","4":"21.8934961","5":"1.505339e-54"},{"1":"newspaper","2":"-0.001037493","3":"0.005871010","4":"-0.1767146","5":"8.599151e-01"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>For <code>lm()</code> objects, you can return a confidence interval on the regression coefficients:</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="broom-tidy.html#cb477-1" tabindex="-1"></a><span class="fu">tidy</span>(marketing_lm, <span class="at">conf.int =</span> <span class="cn">TRUE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="broom-tidy.html#cb498-1" tabindex="-1"></a><span class="fu">tidy</span>(marketing_lm, <span class="at">conf.int =</span> <span class="cn">TRUE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"3.526667243","3":"0.374289884","4":"9.4222884","5":"1.267295e-17","6":"2.78851474","7":"4.26481975"},{"1":"youtube","2":"0.045764645","3":"0.001394897","4":"32.8086244","5":"1.509960e-81","6":"0.04301371","7":"0.04851558"},{"1":"facebook","2":"0.188530017","3":"0.008611234","4":"21.8934961","5":"1.505339e-54","6":"0.17154745","7":"0.20551259"},{"1":"newspaper","2":"-0.001037493","3":"0.005871010","4":"-0.1767146","5":"8.599151e-01","6":"-0.01261595","7":"0.01054097"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -676,8 +682,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="correlations-1" class="section level3 hasAnchor" number="15.1.1">
 <h3><span class="header-section-number">B.1.1</span> Correlations<a href="broom-tidy.html#correlations-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For a correlation:</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="broom-tidy.html#cb478-1" tabindex="-1"></a>marketing_cor <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(marketing<span class="sc">$</span>youtube, marketing<span class="sc">$</span>facebook)</span>
-<span id="cb478-2"><a href="broom-tidy.html#cb478-2" tabindex="-1"></a>marketing_cor</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="broom-tidy.html#cb499-1" tabindex="-1"></a>marketing_cor <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(marketing<span class="sc">$</span>youtube, marketing<span class="sc">$</span>facebook)</span>
+<span id="cb499-2"><a href="broom-tidy.html#cb499-2" tabindex="-1"></a>marketing_cor</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -689,7 +695,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##        cor 
 ## 0.05480866</code></pre>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="broom-tidy.html#cb480-1" tabindex="-1"></a><span class="fu">tidy</span>(marketing_cor)</span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="broom-tidy.html#cb501-1" tabindex="-1"></a><span class="fu">tidy</span>(marketing_cor)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["parameter"],"name":[4],"type":["int"],"align":["right"]},{"label":["conf.low"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[7],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"0.05480866","2":"0.7723873","3":"0.4408061","4":"198","5":"-0.08457548","6":"0.192089","7":"Pearson's product-moment correlation","8":"two.sided"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -699,17 +705,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="chi-squares-1" class="section level3 hasAnchor" number="15.1.2">
 <h3><span class="header-section-number">B.1.2</span> Chi-squares<a href="broom-tidy.html#chi-squares-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A chi-square test object:</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="broom-tidy.html#cb481-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;properties&quot;</span>)</span>
-<span id="cb481-2"><a href="broom-tidy.html#cb481-2" tabindex="-1"></a></span>
-<span id="cb481-3"><a href="broom-tidy.html#cb481-3" tabindex="-1"></a>properties_table <span class="ot">&lt;-</span> <span class="fu">table</span>(properties<span class="sc">$</span>property_type, properties<span class="sc">$</span>buyer_type)</span>
-<span id="cb481-4"><a href="broom-tidy.html#cb481-4" tabindex="-1"></a>properties_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(properties_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb481-5"><a href="broom-tidy.html#cb481-5" tabindex="-1"></a>properties_chisq</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="broom-tidy.html#cb502-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;properties&quot;</span>)</span>
+<span id="cb502-2"><a href="broom-tidy.html#cb502-2" tabindex="-1"></a></span>
+<span id="cb502-3"><a href="broom-tidy.html#cb502-3" tabindex="-1"></a>properties_table <span class="ot">&lt;-</span> <span class="fu">table</span>(properties<span class="sc">$</span>property_type, properties<span class="sc">$</span>buyer_type)</span>
+<span id="cb502-4"><a href="broom-tidy.html#cb502-4" tabindex="-1"></a>properties_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(properties_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb502-5"><a href="broom-tidy.html#cb502-5" tabindex="-1"></a>properties_chisq</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  properties_table
 ## X-squared = 82.504, df = 9, p-value = 5.134e-14</code></pre>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="broom-tidy.html#cb483-1" tabindex="-1"></a><span class="fu">tidy</span>(properties_chisq)</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="broom-tidy.html#cb504-1" tabindex="-1"></a><span class="fu">tidy</span>(properties_chisq)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["statistic"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["parameter"],"name":[3],"type":["int"],"align":["right"]},{"label":["method"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"82.50366","2":"5.134064e-14","3":"9","4":"Pearson's Chi-squared test"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -719,10 +725,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="t-tests-1" class="section level3 hasAnchor" number="15.1.3">
 <h3><span class="header-section-number">B.1.3</span> t-tests<a href="broom-tidy.html#t-tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For a t-test object (applies to all t-tests):</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="broom-tidy.html#cb484-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;genderweight&quot;</span>)</span>
-<span id="cb484-2"><a href="broom-tidy.html#cb484-2" tabindex="-1"></a></span>
-<span id="cb484-3"><a href="broom-tidy.html#cb484-3" tabindex="-1"></a>weight_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> genderweight)</span>
-<span id="cb484-4"><a href="broom-tidy.html#cb484-4" tabindex="-1"></a>weight_t</span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="broom-tidy.html#cb505-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;genderweight&quot;</span>)</span>
+<span id="cb505-2"><a href="broom-tidy.html#cb505-2" tabindex="-1"></a></span>
+<span id="cb505-3"><a href="broom-tidy.html#cb505-3" tabindex="-1"></a>weight_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> genderweight)</span>
+<span id="cb505-4"><a href="broom-tidy.html#cb505-4" tabindex="-1"></a>weight_t</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -734,7 +740,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean in group F mean in group M 
 ##        63.49867        85.82612</code></pre>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="broom-tidy.html#cb486-1" tabindex="-1"></a><span class="fu">tidy</span>(weight_t)</span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="broom-tidy.html#cb507-1" tabindex="-1"></a><span class="fu">tidy</span>(weight_t)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["estimate1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["estimate2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["parameter"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[9],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"-22.32744","2":"63.49867","3":"85.82612","4":"-20.79138","5":"4.298062e-18","6":"26.87236","7":"-24.53135","8":"-20.12353","9":"Welch Two Sample t-test","10":"two.sided"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -744,10 +750,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="anova-objects" class="section level3 hasAnchor" number="15.1.4">
 <h3><span class="header-section-number">B.1.4</span> ANOVA objects<a href="broom-tidy.html#anova-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For a regular <code>aov()</code> object, you can optionally ask for the intercept term using <code>intercept = TRUE</code>:</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="broom-tidy.html#cb487-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;stress&quot;</span>)</span>
-<span id="cb487-2"><a href="broom-tidy.html#cb487-2" tabindex="-1"></a></span>
-<span id="cb487-3"><a href="broom-tidy.html#cb487-3" tabindex="-1"></a>stress_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(score <span class="sc">~</span> treatment <span class="sc">*</span> exercise, <span class="at">data =</span> stress)</span>
-<span id="cb487-4"><a href="broom-tidy.html#cb487-4" tabindex="-1"></a><span class="fu">summary</span>(stress_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="broom-tidy.html#cb508-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;stress&quot;</span>)</span>
+<span id="cb508-2"><a href="broom-tidy.html#cb508-2" tabindex="-1"></a></span>
+<span id="cb508-3"><a href="broom-tidy.html#cb508-3" tabindex="-1"></a>stress_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(score <span class="sc">~</span> treatment <span class="sc">*</span> exercise, <span class="at">data =</span> stress)</span>
+<span id="cb508-4"><a href="broom-tidy.html#cb508-4" tabindex="-1"></a><span class="fu">summary</span>(stress_aov)</span></code></pre></div>
 <pre><code>##                    Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## treatment           1  351.4   351.4  12.295 0.000923 ***
 ## exercise            2 1776.3   888.1  31.076 1.04e-09 ***
@@ -755,7 +761,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residuals          54 1543.3    28.6                     
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="broom-tidy.html#cb489-1" tabindex="-1"></a><span class="fu">tidy</span>(stress_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="broom-tidy.html#cb510-1" tabindex="-1"></a><span class="fu">tidy</span>(stress_aov)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["df"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sumsq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["meansq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"treatment","2":"1","3":"351.384","4":"351.38400","5":"12.294943","6":"9.226641e-04"},{"1":"exercise","2":"2","3":"1776.266","4":"888.13317","5":"31.075821","6":"1.044592e-09"},{"1":"treatment:exercise","2":"2","3":"217.321","4":"108.66050","5":"3.802036","6":"2.852182e-02"},{"1":"Residuals","2":"54","3":"1543.296","4":"28.57956","5":"NA","6":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -763,19 +769,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Objects fitted by the <code>Anova</code> package also work, <em>but</em> repeated measures designs do not work. It’s best to stick to <code>rstatix</code> if you want a repeated measures ANOVA in dataframe format.</p>
 <p><code>TukeyHSD()</code> can also be used:</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="broom-tidy.html#cb490-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(stress_aov) <span class="sc">%&gt;%</span></span>
-<span id="cb490-2"><a href="broom-tidy.html#cb490-2" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="broom-tidy.html#cb511-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(stress_aov) <span class="sc">%&gt;%</span></span>
+<span id="cb511-2"><a href="broom-tidy.html#cb511-2" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["contrast"],"name":[2],"type":["chr"],"align":["left"]},{"label":["null.value"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["estimate"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["adj.p.value"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"treatment","2":"no-yes","3":"0","4":"4.840","5":"2.072610","6":"7.6073898","7":"9.226641e-04"},{"1":"exercise","2":"moderate-low","3":"0","4":"-0.610","5":"-4.684196","6":"3.4641956","7":"9.308415e-01"},{"1":"exercise","2":"high-low","3":"0","4":"-11.835","5":"-15.909196","6":"-7.7608044","7":"1.227992e-08"},{"1":"exercise","2":"high-moderate","3":"0","4":"-11.225","5":"-15.299196","6":"-7.1508044","7":"4.724332e-08"},{"1":"treatment:exercise","2":"no:low-yes:low","3":"0","4":"1.730","5":"-5.333562","6":"8.7935616","7":"9.781909e-01"},{"1":"treatment:exercise","2":"yes:moderate-yes:low","3":"0","4":"-1.040","5":"-8.103562","6":"6.0235616","7":"9.979171e-01"},{"1":"treatment:exercise","2":"no:moderate-yes:low","3":"0","4":"1.550","5":"-5.513562","6":"8.6135616","7":"9.866324e-01"},{"1":"treatment:exercise","2":"yes:high-yes:low","3":"0","4":"-16.070","5":"-23.133562","6":"-9.0064384","7":"1.718253e-07"},{"1":"treatment:exercise","2":"no:high-yes:low","3":"0","4":"-5.870","5":"-12.933562","6":"1.1935616","7":"1.560923e-01"},{"1":"treatment:exercise","2":"yes:moderate-no:low","3":"0","4":"-2.770","5":"-9.833562","6":"4.2935616","7":"8.541551e-01"},{"1":"treatment:exercise","2":"no:moderate-no:low","3":"0","4":"-0.180","5":"-7.243562","6":"6.8835616","7":"9.999996e-01"},{"1":"treatment:exercise","2":"yes:high-no:low","3":"0","4":"-17.800","5":"-24.863562","6":"-10.7364384","7":"1.155961e-08"},{"1":"treatment:exercise","2":"no:high-no:low","3":"0","4":"-7.600","5":"-14.663562","6":"-0.5364384","7":"2.802257e-02"},{"1":"treatment:exercise","2":"no:moderate-yes:moderate","3":"0","4":"2.590","5":"-4.473562","6":"9.6535616","7":"8.858965e-01"},{"1":"treatment:exercise","2":"yes:high-yes:moderate","3":"0","4":"-15.030","5":"-22.093562","6":"-7.9664384","7":"8.640930e-07"},{"1":"treatment:exercise","2":"no:high-yes:moderate","3":"0","4":"-4.830","5":"-11.893562","6":"2.2335616","7":"3.447072e-01"},{"1":"treatment:exercise","2":"yes:high-no:moderate","3":"0","4":"-17.620","5":"-24.683562","6":"-10.5564384","7":"1.530739e-08"},{"1":"treatment:exercise","2":"no:high-no:moderate","3":"0","4":"-7.420","5":"-14.483562","6":"-0.3564384","7":"3.417506e-02"},{"1":"treatment:exercise","2":"no:high-yes:high","3":"0","4":"10.200","5":"3.136438","6":"17.2635616","7":"1.086142e-03"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p><code>emmeans</code> objects can also be tidied, e.g. for simple effects tests:</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="broom-tidy.html#cb491-1" tabindex="-1"></a><span class="co"># Simple effects of exercise for every treatment</span></span>
-<span id="cb491-2"><a href="broom-tidy.html#cb491-2" tabindex="-1"></a></span>
-<span id="cb491-3"><a href="broom-tidy.html#cb491-3" tabindex="-1"></a><span class="fu">emmeans</span>(stress_aov, <span class="sc">~</span> exercise, <span class="at">by =</span> <span class="st">&quot;treatment&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb491-4"><a href="broom-tidy.html#cb491-4" tabindex="-1"></a>  <span class="fu">pairs</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb491-5"><a href="broom-tidy.html#cb491-5" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="broom-tidy.html#cb512-1" tabindex="-1"></a><span class="co"># Simple effects of exercise for every treatment</span></span>
+<span id="cb512-2"><a href="broom-tidy.html#cb512-2" tabindex="-1"></a></span>
+<span id="cb512-3"><a href="broom-tidy.html#cb512-3" tabindex="-1"></a><span class="fu">emmeans</span>(stress_aov, <span class="sc">~</span> exercise, <span class="at">by =</span> <span class="st">&quot;treatment&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb512-4"><a href="broom-tidy.html#cb512-4" tabindex="-1"></a>  <span class="fu">pairs</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb512-5"><a href="broom-tidy.html#cb512-5" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["treatment"],"name":[1],"type":["chr"],"align":["left"]},{"label":["term"],"name":[2],"type":["chr"],"align":["left"]},{"label":["contrast"],"name":[3],"type":["chr"],"align":["left"]},{"label":["null.value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["estimate"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["adj.p.value"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"yes","2":"exercise","3":"low - moderate","4":"0","5":"1.04","6":"2.390797","7":"54","8":"0.4350014","9":"9.011514e-01"},{"1":"yes","2":"exercise","3":"low - high","4":"0","5":"16.07","6":"2.390797","7":"54","8":"6.7216074","9":"3.482473e-08"},{"1":"yes","2":"exercise","3":"moderate - high","4":"0","5":"15.03","6":"2.390797","7":"54","8":"6.2866061","9":"1.758614e-07"},{"1":"no","2":"exercise","3":"low - moderate","4":"0","5":"0.18","6":"2.390797","7":"54","8":"0.0752887","9":"9.968800e-01"},{"1":"no","2":"exercise","3":"low - high","4":"0","5":"7.60","6":"2.390797","7":"54","8":"3.1788560","9":"6.807732e-03"},{"1":"no","2":"exercise","3":"moderate - high","4":"0","5":"7.42","6":"2.390797","7":"54","8":"3.1035673","9":"8.411992e-03"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

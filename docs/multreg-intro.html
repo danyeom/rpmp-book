@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-07-07" />
+<meta name="date" content="2024-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -142,7 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="the-general-idea.html"><a href="the-general-idea.html"><i class="fa fa-check"></i><b>1.1</b> The general idea</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
@@ -241,6 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-literature"><i class="fa fa-check"></i><b>4.5.4</b> Confidence intervals in literature</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>II Basic inferential tests</b></span></li>
 <li class="chapter" data-level="5" data-path="chi-squares.html"><a href="chi-squares.html"><i class="fa fa-check"></i><b>5</b> Chi-squares</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html"><i class="fa fa-check"></i><b>5.1</b> Calculating a chi-square</a>
@@ -419,6 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>III Advanced methods</b></span></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
@@ -645,37 +651,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>DFS_Total: a measure of proneness to flow.</li>
 </ul>
 <p>Let’s see if trait anxiety and openness predict flow proneness.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="multreg-intro.html#cb222-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="multreg-intro.html#cb244-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 811 Columns: 6
-## ── Column specification ───────────────────────────────────
+## ── Column specification ──────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (6): id, age, GoldMSI, DFS_Total, trait_anxiety, openness
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>To build a multiple regression model in R, we simply need to add (literally) more terms to <code>lm()</code>:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="multreg-intro.html#cb224-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="multreg-intro.html#cb246-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
 </div>
 <div id="assumption-checks-5" class="section level3 hasAnchor" number="8.8.2">
 <h3><span class="header-section-number">8.8.2</span> Assumption checks<a href="multreg-intro.html#assumption-checks-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Our Durbin-Watson test suggests no issues with independence of observations.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="multreg-intro.html#cb247-1" tabindex="-1"></a><span class="fu">DurbinWatsonTest</span>(w10_flow_lm)</span></code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  w10_flow_lm
+## DW = 1.9456, p-value = 0.2182
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <p>The Shapiro-Wilks test suggests that our normality assumption is violated - though if you look at the relevant Q-Q plot, it doesn’t appear to be very severe.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="multreg-intro.html#cb225-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_flow_lm<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="multreg-intro.html#cb249-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_flow_lm<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  w10_flow_lm$residuals
 ## W = 0.99311, p-value = 0.0008488</code></pre>
 <p>The residuals-fitted plot for our data looks ok - no obvious conical shape, suggesting that the homoscedasticity assumption is intact.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="multreg-intro.html#cb227-1" tabindex="-1"></a><span class="fu">ggplot</span>(w10_flow_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb227-2"><a href="multreg-intro.html#cb227-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-206-1.png" width="672" /></p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="multreg-intro.html#cb251-1" tabindex="-1"></a><span class="fu">ggplot</span>(w10_flow_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb251-2"><a href="multreg-intro.html#cb251-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
 <p>Lastly, our multicollinearity statistics look good - no violations suggested here.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="multreg-intro.html#cb228-1" tabindex="-1"></a><span class="co"># Variance</span></span>
-<span id="cb228-2"><a href="multreg-intro.html#cb228-2" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="multreg-intro.html#cb252-1" tabindex="-1"></a><span class="co"># Variance</span></span>
+<span id="cb252-2"><a href="multreg-intro.html#cb252-2" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## trait_anxiety      openness 
 ##      1.025955      1.025955</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="multreg-intro.html#cb230-1" tabindex="-1"></a><span class="co"># Tolerance</span></span>
-<span id="cb230-2"><a href="multreg-intro.html#cb230-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="multreg-intro.html#cb254-1" tabindex="-1"></a><span class="co"># Tolerance</span></span>
+<span id="cb254-2"><a href="multreg-intro.html#cb254-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## trait_anxiety      openness 
 ##     0.9747012     0.9747012</code></pre>
 </div>
@@ -683,7 +697,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.8.3</span> Output<a href="multreg-intro.html#output-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start as always by taking a look at our output. Our regression explains 13.6 of the variance in flow proneness (R2 = .136), and our overall model is significant (<em>F</em>(2, 808) = 63.81, <em>p</em> &lt; .001).</p>
 <p>With that in mind, let’s turn to our individual predictors. Remember, now we have two predictors to consider - and we need to interpret them individually as well.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="multreg-intro.html#cb232-1" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="multreg-intro.html#cb256-1" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
@@ -703,7 +717,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 3.705 on 808 degrees of freedom
 ## Multiple R-squared:  0.1364, Adjusted R-squared:  0.1343 
 ## F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="multreg-intro.html#cb234-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="multreg-intro.html#cb258-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>##                    2.5 %      97.5 %
 ## (Intercept)   30.4252962 34.87625896
 ## trait_anxiety -0.1362446 -0.08606874
@@ -722,8 +736,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When we do a multiple regression, we can actually identify which of our predictors is the strongest predictor of the outcome.</p>
 <p>Our estimate column alone won’t tell us that, because these are unstandardised coefficients. They are unstandardised because they describe the relationship in terms of the original units of each measure. An increase of 1 unit on trait anxiety is not necessarily the same thing as a 1 unit increase in openness because they are on different scales, so we can’t compare them directly!</p>
 <p>However, if we were to standardise these coefficients, we would then bring them all into the same scale (think back to z-scores!) - which would allow us to directly compare which predictor leads to a greater change in the outcome. These are simply regression coefficients that have been standardised, meaning that they are all on the same scale. Jamovi will calculate a standardised estimate (sometimes called standardised coefficient), which is presented in the rightmost column of the above table. In R, we need to use an extra function to do this. We can call on the <code>lm.beta</code> package:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="multreg-intro.html#cb236-1" tabindex="-1"></a><span class="fu">library</span>(lm.beta)</span>
-<span id="cb236-2"><a href="multreg-intro.html#cb236-2" tabindex="-1"></a><span class="fu">lm.beta</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="multreg-intro.html#cb260-1" tabindex="-1"></a><span class="fu">library</span>(lm.beta)</span>
+<span id="cb260-2"><a href="multreg-intro.html#cb260-2" tabindex="-1"></a><span class="fu">lm.beta</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
@@ -732,17 +746,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   (Intercept) trait_anxiety      openness 
 ##            NA    -0.2879944     0.1899044</code></pre>
 <p>Alternatively, we can simply standardise our predictors before running our regression (which is a lot easier in R than in other programs):</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="multreg-intro.html#cb238-1" tabindex="-1"></a><span class="co"># Standardise predictors</span></span>
-<span id="cb238-2"><a href="multreg-intro.html#cb238-2" tabindex="-1"></a></span>
-<span id="cb238-3"><a href="multreg-intro.html#cb238-3" tabindex="-1"></a>w10_flow_std <span class="ot">&lt;-</span> w10_flow <span class="sc">%&gt;%</span></span>
-<span id="cb238-4"><a href="multreg-intro.html#cb238-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb238-5"><a href="multreg-intro.html#cb238-5" tabindex="-1"></a>    <span class="at">trait_anxiety =</span> <span class="fu">scale</span>(trait_anxiety),</span>
-<span id="cb238-6"><a href="multreg-intro.html#cb238-6" tabindex="-1"></a>    <span class="at">openness =</span> <span class="fu">scale</span>(openness),</span>
-<span id="cb238-7"><a href="multreg-intro.html#cb238-7" tabindex="-1"></a>    <span class="at">DFS_Total =</span> <span class="fu">scale</span>(DFS_Total)</span>
-<span id="cb238-8"><a href="multreg-intro.html#cb238-8" tabindex="-1"></a>  )</span>
-<span id="cb238-9"><a href="multreg-intro.html#cb238-9" tabindex="-1"></a></span>
-<span id="cb238-10"><a href="multreg-intro.html#cb238-10" tabindex="-1"></a>w10_flow_lm_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow_std)</span>
-<span id="cb238-11"><a href="multreg-intro.html#cb238-11" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm_std)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="multreg-intro.html#cb262-1" tabindex="-1"></a><span class="co"># Standardise predictors</span></span>
+<span id="cb262-2"><a href="multreg-intro.html#cb262-2" tabindex="-1"></a></span>
+<span id="cb262-3"><a href="multreg-intro.html#cb262-3" tabindex="-1"></a>w10_flow_std <span class="ot">&lt;-</span> w10_flow <span class="sc">%&gt;%</span></span>
+<span id="cb262-4"><a href="multreg-intro.html#cb262-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb262-5"><a href="multreg-intro.html#cb262-5" tabindex="-1"></a>    <span class="at">trait_anxiety =</span> <span class="fu">scale</span>(trait_anxiety),</span>
+<span id="cb262-6"><a href="multreg-intro.html#cb262-6" tabindex="-1"></a>    <span class="at">openness =</span> <span class="fu">scale</span>(openness),</span>
+<span id="cb262-7"><a href="multreg-intro.html#cb262-7" tabindex="-1"></a>    <span class="at">DFS_Total =</span> <span class="fu">scale</span>(DFS_Total)</span>
+<span id="cb262-8"><a href="multreg-intro.html#cb262-8" tabindex="-1"></a>  )</span>
+<span id="cb262-9"><a href="multreg-intro.html#cb262-9" tabindex="-1"></a></span>
+<span id="cb262-10"><a href="multreg-intro.html#cb262-10" tabindex="-1"></a>w10_flow_lm_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow_std)</span>
+<span id="cb262-11"><a href="multreg-intro.html#cb262-11" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm_std)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow_std)
@@ -762,7 +776,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 0.9304 on 808 degrees of freedom
 ## Multiple R-squared:  0.1364, Adjusted R-squared:  0.1343 
 ## F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="multreg-intro.html#cb240-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm_std)</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="multreg-intro.html#cb264-1" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm_std)</span></code></pre></div>
 <pre><code>##                     2.5 %      97.5 %
 ## (Intercept)   -0.06413295  0.06413295
 ## trait_anxiety -0.35299439 -0.22299437
@@ -772,6 +786,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <!-- </div> -->
+
+
+
             </section>
 
           </div>

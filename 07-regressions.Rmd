@@ -5,6 +5,7 @@ library(tidyverse)
 library(ggpubr)
 library(here)
 library(rstatix)
+library(DescTools)
 
 theme_set(theme_pubr())
 
@@ -86,7 +87,7 @@ data.frame(cor_mat) %>%
 
 The second is a correlation heatmap, which is especially effective with many correlations at once (common when working with huge questionnaires or neuroimaging). As shown by the legend on the right, the colour and shade of each square are determined by the strength of the correlation. This can be easily done by the ``ggcorrplot` package, if you have a correlation matrix formatted in R:
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 library(ggcorrplot)
 ggcorrplot(cor_mat, type = "lower", show.diag = TRUE)
 ```
@@ -175,7 +176,7 @@ The line of best fit sits where the distance between the line and every point is
 
 So, in other words, the line of best fit sits where the residuals are minimised.
 
-```{r fig.align = "center", echo = FALSE}
+```{r fig.align = "center", echo = FALSE, message = FALSE, warning = FALSE}
 set.seed(202306)
 df <- data.frame(MASS::mvrnorm(n = 10, mu = c(5, 8), Sigma = cor))
 
@@ -309,7 +310,21 @@ There are a couple of ways to overcome this, such as either transforming the raw
  
 ### Independence
 
-This one is the same - data points should be independent of each other. Like we have seen with other tests, this should ideally be a feature of good experimental design. In linear regression, a specific issue is autocorrelation - where the residuals between two values of X are not independent. This can distort the relationship between your IV and DV, and is most commonly an issue with time series data. 
+This one is the same - data points should be independent of each other. Like we have seen with other tests, this should ideally be a feature of good experimental design. In linear regression, a specific issue is autocorrelation - where the residuals between two values of X are not independent. If the residuals are *not* independent, your data likely exhibits signs of **autocorrelation** (i.e. it is correlated with itself). This can distort the relationship between your IV and DV, and is most commonly an issue with time series data. 
+
+We can test this using a test called the **Durbin-Watson** test of autocorrelation. The Durbin-Watson test will estimate a coefficient/test statistic that quantifies the degree of autocorrelation (dependence) between observations in the data. The DW test statistic ranges from 0 to 4, with the following interpretations:
+
+-   A DW test statistic of ~2 indicates no autocorrelation.
+-   A DW test statistic of < 2 indicate *positive* autocorrelation - i.e. one data point will positively influence the next.
+-   A DW test statistic of > 2 indicates *negative* autocorrelation.
+
+The general principle of the Durbin-Watson test, therefore, is to have a test statistic close to 2 and (ideally) a non-significant result. The value of the test statistic is generally more useful than the significance of the test alone. A common guideline for interpreting this value is that a DW test statistic below 1 or above 3 is problematic, which we will also use for this subject.
+
+The `DurbinWatsonTest()` function from the DescTools package will let us test this quite easily.
+
+```{r message = FALSE, warning = FALSE}
+DescTools::DurbinWatsonTest(mod_1)
+```
 
  
 ### Normality
@@ -367,6 +382,12 @@ w10_goldmsi %>%
     aes(x = years_training, y = GoldMSI)
   ) +
   geom_point()
+```
+
+Independence: our DW test is significant (*p* = .021), but our test statistic is 1.54. So, even though it's still significant it probably isn't much of a problem.^[Given that this data was randomly generated, it probably is due to a simulation outlier more than anything.]
+
+```{r}
+DurbinWatsonTest(w10_goldmsi_lm)
 ```
 
 
@@ -541,6 +562,7 @@ From here on, much of the same reasoning that we saw in the early pages of this 
 All of the following assumption tests apply:
 
 -    Linearity
+-    Independence
 -    Homoscedasticity
 -    Normality
 -    Multicollinearity
@@ -578,6 +600,13 @@ w10_flow_lm <- lm(DFS_Total ~ trait_anxiety + openness, data = w10_flow)
 
 
 ### Assumption checks
+
+Our Durbin-Watson test suggests no issues with independence of observations.
+
+```{r}
+DurbinWatsonTest(w10_flow_lm)
+```
+
 
 The Shapiro-Wilks test suggests that our normality assumption is violated - though if you look at the relevant Q-Q plot, it doesn't appear to be very severe.
 

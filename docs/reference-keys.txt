@@ -1,7 +1,8 @@
 fig:unnamed-chunk-21
-fig:unnamed-chunk-93
-fig:unnamed-chunk-150
+fig:unnamed-chunk-104
+fig:unnamed-chunk-161
 preface
+the-general-idea
 intro
 basic-syntax
 operators

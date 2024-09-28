@@ -90,6 +90,49 @@ data.frame(
   )
 ```
 
+We can use R to find some of these values, either using straight base R or tidyverse functions. For this page/module only, I will use the `variable_a` mock variable from section 2.2.2:
+
+```{r}
+vector_a <- c(4, 1, 6, 2, 3)
+vector_a
+```
+
+For tidyverse usage, I'll refer to `df_a`, which is just the same but as a one-column dataframe:
+
+```{r echo = FALSE}
+df_a <- data.frame(
+  column_a = c(4, 1, 6, 2, 3)
+)
+```
+
+```{r}
+df_a
+```
+
+
+To find the *count*, or the number of items in a vector, we can use the `length()` function.
+
+```{r}
+length(vector_a)
+```
+To find the minimum and maximum, we can use the `min()` and `max()` functions respectively. Specifying `na.rm = TRUE` will remove any missing data before calculation.
+
+```{r}
+min(vector_a, na.rm = TRUE)
+max(vector_a, na.rm = TRUE)
+```
+In tidyverse fashion, we can wrap this all in `summarise()` as follows:
+
+```{r}
+df_a %>%
+  summarise(
+    n = n(),
+    min = min(column_a, na.rm = TRUE),
+    max = max(column_a, na.rm = TRUE)
+  )
+```
+
+
 ### Central tendencies
 
 While the range can be informative in some sitautions, it usually isn't enough to draw deeper interpretations from raw data. One key way of describing data is in terms of central tendency - or where the 'average' value approximately is. There are three main types of central tendency, summarized in the table below. 
@@ -117,6 +160,29 @@ data.frame(
     col.names = c("Name (APA Symbol)", "Definition", "When to use?", "Things to note")
   )
 ```
+
+To calculate a mean and median, use the `mean()` and `median()` functions respectively. Both functions also take the `na.rm` argument.
+
+```{r}
+mean(vector_a, na.rm = TRUE)
+median(vector_a, na.rm = TRUE)
+```
+
+```{r}
+df_a %>%
+  summarise(
+    mean = mean(column_a, na.rm = TRUE),
+    median = median(column_a, na.rm = TRUE)
+  )
+```
+
+
+Interestingly, R doesn't offer a base function to calculate a mode - if you need this information, you either need to manually work this out or turn to a package that offers it. One such example is the fantastic `DescTools` package, which provides a function called `Mode()`:
+
+```{r}
+DescTools::Mode(vector_a)
+```
+
 
 
 ## Variability
@@ -199,6 +265,19 @@ SD = \sqrt{\frac{\Sigma (x_i - \bar{x} )^2}{n - 1}}
 $$
 
 Standard deviations (SD) should reported alongside means when results are written up (consult an APA guide).
+
+To calculate standard deviations in R, use the `sd()` function. Once again, this has an `na.rm` argument you can specify.
+
+```{r}
+sd(vector_a, na.rm = TRUE)
+
+# Tidyverse form
+df_a %>%
+  summarise(
+    sd = sd(column_a, na.rm = TRUE)
+  )
+```
+
 
 ### Standard error, and the SDoTM
 
@@ -438,6 +517,13 @@ $$
 z = 0.8933
 $$
 A participant with a general sophistication score of 100 would be roughly 0.89 standard deviations away from the mean.
+
+To z-score a vector in R, we use the `scale()` function. The `scale()` function takes two arguments: `center`, which determines whether the data is centered (i.e. subtracts the mean from each value), and `scale`, which essentially scales the data so the SD is 1. By default, both of these arguments are true.
+
+```{r}
+scale(vector_a)
+```
+
 
 ### Comparing across scales
 

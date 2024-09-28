@@ -25,6 +25,8 @@ github-repo: rstudio/bookdown-demo
 
 This is an R adaptation of the statistics content from a subject called Research Process for Music Psychologists (MUSI90252). The subject is an overview of research methods for Masters and PhD students in music psychology at the University of Melbourne.
 
+## The general idea
+
 The subject's statistics material was originally written for Jamovi, given its ease of use and impressive functionality, but we have also encouraged any quantitative-oriented students to consider learning R in the long term. With that in mind, by and large the content is exactly the same as the Jamovi-focused content in the Canvas shell, except:
 
 - Some commentary has either been added or removed for R-specific material (e.g. information on functions).
@@ -32,6 +34,7 @@ The subject's statistics material was originally written for Jamovi, given its e
 - Some content has been reorganised in a minor way because of how R outputs things compared to Jamovi. 
 - The first chapter is a very (*very*) brief overview of how to use core R and tidyverse functions.
 
+The R version of the RPMP content is therefore fairly different to the regular Jamovi version, by virtue of the fact that even though Jamovi is built on R it isn't necessarily built with R users in mind. Rather, Jamovi is built for users of SPSS and other platforms who may be used to a point and click approach. To clarify, there's nothing wrong with this at all - I actually think this is a great thing, and I believe  one of Jamovi's greatest strengths is how easy it is to use. At the same time, for the budding R-using music psychologist - at least for RPMP - it means that the same procedures in R work a little differently to how they function in Jamovi. It's for this reason that the R adaptation of the MUSI90252 content has been written with one key principle in mind: *parity with Jamovi*. R can and will do so much more than what is presented in this book, but again, the subject was originally designed with Jamovi users in mind. 
 
 
 ```{r, eval=FALSE, echo = FALSE}

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-07-07" />
+<meta name="date" content="2024-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -142,7 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="the-general-idea.html"><a href="the-general-idea.html"><i class="fa fa-check"></i><b>1.1</b> The general idea</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
@@ -241,6 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-literature"><i class="fa fa-check"></i><b>4.5.4</b> Confidence intervals in literature</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>II Basic inferential tests</b></span></li>
 <li class="chapter" data-level="5" data-path="chi-squares.html"><a href="chi-squares.html"><i class="fa fa-check"></i><b>5</b> Chi-squares</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html"><i class="fa fa-check"></i><b>5.1</b> Calculating a chi-square</a>
@@ -419,6 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>III Advanced methods</b></span></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
@@ -670,6 +676,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+<p>We can use R to find some of these values, either using straight base R or tidyverse functions. For this page/module only, I will use the <code>variable_a</code> mock variable from section 2.2.2:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="counts-and-central-tendencies.html#cb88-1" tabindex="-1"></a>vector_a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb88-2"><a href="counts-and-central-tendencies.html#cb88-2" tabindex="-1"></a>vector_a</span></code></pre></div>
+<pre><code>## [1] 4 1 6 2 3</code></pre>
+<p>For tidyverse usage, I’ll refer to <code>df_a</code>, which is just the same but as a one-column dataframe:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="counts-and-central-tendencies.html#cb90-1" tabindex="-1"></a>df_a</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["column_a"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"4"},{"1":"1"},{"1":"6"},{"1":"2"},{"1":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>To find the <em>count</em>, or the number of items in a vector, we can use the <code>length()</code> function.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="counts-and-central-tendencies.html#cb91-1" tabindex="-1"></a><span class="fu">length</span>(vector_a)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>To find the minimum and maximum, we can use the <code>min()</code> and <code>max()</code> functions respectively. Specifying <code>na.rm = TRUE</code> will remove any missing data before calculation.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="counts-and-central-tendencies.html#cb93-1" tabindex="-1"></a><span class="fu">min</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="counts-and-central-tendencies.html#cb95-1" tabindex="-1"></a><span class="fu">max</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>In tidyverse fashion, we can wrap this all in <code>summarise()</code> as follows:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="counts-and-central-tendencies.html#cb97-1" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
+<span id="cb97-2"><a href="counts-and-central-tendencies.html#cb97-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb97-3"><a href="counts-and-central-tendencies.html#cb97-3" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb97-4"><a href="counts-and-central-tendencies.html#cb97-4" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb97-5"><a href="counts-and-central-tendencies.html#cb97-5" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-6"><a href="counts-and-central-tendencies.html#cb97-6" tabindex="-1"></a>  )</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["n"],"name":[1],"type":["int"],"align":["right"]},{"label":["min"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"5","2":"1","3":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="central-tendencies" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Central tendencies<a href="counts-and-central-tendencies.html#central-tendencies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -710,6 +747,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+<p>To calculate a mean and median, use the <code>mean()</code> and <code>median()</code> functions respectively. Both functions also take the <code>na.rm</code> argument.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="counts-and-central-tendencies.html#cb98-1" tabindex="-1"></a><span class="fu">mean</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 3.2</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="counts-and-central-tendencies.html#cb100-1" tabindex="-1"></a><span class="fu">median</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="counts-and-central-tendencies.html#cb102-1" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="counts-and-central-tendencies.html#cb102-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb102-3"><a href="counts-and-central-tendencies.html#cb102-3" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb102-4"><a href="counts-and-central-tendencies.html#cb102-4" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb102-5"><a href="counts-and-central-tendencies.html#cb102-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["mean"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"3.2","2":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Interestingly, R doesn’t offer a base function to calculate a mode - if you need this information, you either need to manually work this out or turn to a package that offers it. One such example is the fantastic <code>DescTools</code> package, which provides a function called <code>Mode()</code>:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="counts-and-central-tendencies.html#cb103-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">Mode</span>(vector_a)</span></code></pre></div>
+<pre><code>## [1] NA
+## attr(,&quot;freq&quot;)
+## [1] NA</code></pre>
 </div>
 </div>
             </section>

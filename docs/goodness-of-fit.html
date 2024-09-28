@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2024-07-07" />
+<meta name="date" content="2024-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -142,7 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Research Process for Music Psychologists</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="the-general-idea.html"><a href="the-general-idea.html"><i class="fa fa-check"></i><b>1.1</b> The general idea</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
@@ -241,6 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-literature"><i class="fa fa-check"></i><b>4.5.4</b> Confidence intervals in literature</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>II Basic inferential tests</b></span></li>
 <li class="chapter" data-level="5" data-path="chi-squares.html"><a href="chi-squares.html"><i class="fa fa-check"></i><b>5</b> Chi-squares</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html"><i class="fa fa-check"></i><b>5.1</b> Calculating a chi-square</a>
@@ -419,6 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>III Advanced methods</b></span></li>
 <li class="chapter" data-level="9" data-path="factorial-anovas.html"><a href="factorial-anovas.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
@@ -662,8 +668,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>A chi-square goodness of fit will allow us to test whether the distribution of colours in a sample of M&amp;Ms aligns with the published proportions.</li>
 </ul>
 <p>Here’s our dataset:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="goodness-of-fit.html#cb89-1" tabindex="-1"></a>mnm_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_M&amp;M.csv&quot;</span>))</span>
-<span id="cb89-2"><a href="goodness-of-fit.html#cb89-2" tabindex="-1"></a><span class="fu">head</span>(mnm_data)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="goodness-of-fit.html#cb111-1" tabindex="-1"></a>mnm_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_M&amp;M.csv&quot;</span>))</span>
+<span id="cb111-2"><a href="goodness-of-fit.html#cb111-2" tabindex="-1"></a><span class="fu">head</span>(mnm_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["colour"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"Red"},{"1":"2","2":"Red"},{"1":"3","2":"Red"},{"1":"4","2":"Red"},{"1":"5","2":"Red"},{"1":"6","2":"Red"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -727,30 +733,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \chi^2 = \Sigma \frac{(O-E)^2}{E}
 \]</span></p>
 <p>If we have a look at the observed vs expected values, we might have a good idea of what’s going on already:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 </div>
 <div id="using-r" class="section level3 hasAnchor" number="5.3.4">
 <h3><span class="header-section-number">5.3.4</span> Using R<a href="goodness-of-fit.html#using-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using Jamovi</p>
 <p>By default, the <code>chisq.test()</code> function in R will assume that your categories have an equal chance of happening. However, in this instance we know that the colours are not evenly distributed. To ensure the proper probabilities are set beforehand, this needs to be specified by giving the <code>p</code> argument within <code>chisq.test()</code>. Note that the order of the expected probabilities needs to match the order they appear in the dataset (R will generally order these alphabetically unless told otherwise):</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="goodness-of-fit.html#cb90-1" tabindex="-1"></a><span class="co"># This pulls the relevant variable directly</span></span>
-<span id="cb90-2"><a href="goodness-of-fit.html#cb90-2" tabindex="-1"></a>w7_mnm_table <span class="ot">&lt;-</span> <span class="fu">table</span>(mnm_data<span class="sc">$</span>colour)</span>
-<span id="cb90-3"><a href="goodness-of-fit.html#cb90-3" tabindex="-1"></a></span>
-<span id="cb90-4"><a href="goodness-of-fit.html#cb90-4" tabindex="-1"></a>w7_mnm_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(w7_mnm_table, </span>
-<span id="cb90-5"><a href="goodness-of-fit.html#cb90-5" tabindex="-1"></a>                            <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.24</span>, <span class="fl">0.13</span>, <span class="fl">0.16</span>, <span class="fl">0.20</span>, <span class="fl">0.13</span>, <span class="fl">0.14</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="goodness-of-fit.html#cb112-1" tabindex="-1"></a><span class="co"># This pulls the relevant variable directly</span></span>
+<span id="cb112-2"><a href="goodness-of-fit.html#cb112-2" tabindex="-1"></a>w7_mnm_table <span class="ot">&lt;-</span> <span class="fu">table</span>(mnm_data<span class="sc">$</span>colour)</span>
+<span id="cb112-3"><a href="goodness-of-fit.html#cb112-3" tabindex="-1"></a></span>
+<span id="cb112-4"><a href="goodness-of-fit.html#cb112-4" tabindex="-1"></a>w7_mnm_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(w7_mnm_table, </span>
+<span id="cb112-5"><a href="goodness-of-fit.html#cb112-5" tabindex="-1"></a>                            <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.24</span>, <span class="fl">0.13</span>, <span class="fl">0.16</span>, <span class="fl">0.20</span>, <span class="fl">0.13</span>, <span class="fl">0.14</span>))</span></code></pre></div>
 </div>
 <div id="output" class="section level3 hasAnchor" number="5.3.5">
 <h3><span class="header-section-number">5.3.5</span> Output<a href="goodness-of-fit.html#output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s what our output looks like. First is our table of proportions. This can be really useful in laying out the data and seeing where the differences between observed and expected proportions might lie.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="goodness-of-fit.html#cb91-1" tabindex="-1"></a>w7_mnm_chisq<span class="sc">$</span>observed</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="goodness-of-fit.html#cb113-1" tabindex="-1"></a>w7_mnm_chisq<span class="sc">$</span>observed</span></code></pre></div>
 <pre><code>## 
 ##   Blue  Brown  Green Orange    Red Yellow 
 ##    133     96    139    133    108    103</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="goodness-of-fit.html#cb93-1" tabindex="-1"></a>w7_mnm_chisq<span class="sc">$</span>expected</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="goodness-of-fit.html#cb115-1" tabindex="-1"></a>w7_mnm_chisq<span class="sc">$</span>expected</span></code></pre></div>
 <pre><code>##   Blue  Brown  Green Orange    Red Yellow 
 ## 170.88  92.56 113.92 142.40  92.56  99.68</code></pre>
 <p>Next, here is our test output. The result is significant (<em>p</em> = .004), suggesting that the 2017 bag of M&amp;Ms does not follow the same distribution of colours as the 2008 values. (If you read the rest of Rick’s blog post, it turns out that somewhere between 2008 and 2017 they changed where M&amp;Ms are made, and actually split production across two factories that produce different distributions of colours. Rick eventually found out that his bag most likely came from one of the plants, although Mars has not made these proportions public like they used to.)</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="goodness-of-fit.html#cb95-1" tabindex="-1"></a>w7_mnm_chisq</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="goodness-of-fit.html#cb117-1" tabindex="-1"></a>w7_mnm_chisq</span></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 

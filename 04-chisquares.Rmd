@@ -1,3 +1,5 @@
+# (PART) Basic inferential tests {-}
+
 # Chi-squares
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
