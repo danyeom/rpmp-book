@@ -1,6 +1,6 @@
 # (PART) Introduction {-}
 
-# A very brief introduction to R {#intro}
+# A very brief introduction to R {#intro-to-R}
 
 This chapter is not meant to be an exhaustive be-all end-all to how to use R. It will only go through enough to complete RPMP's content. It will, however, introduce a couple of things that I think make for good starting habits using R - which is never a bad thing!
 
@@ -12,7 +12,7 @@ knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/e5bf2a8f4c787a12f
 
 The original subject was written with this workflow broadly in mind, although it wasn't intended to follow this closely (only to bring awareness to the general idea of modelling). For a far more comprehensive and rigorous overview of how to program in R, there is no better guide than *R 4 Data Science* (R4DS) by Hadley Wickham: <https://r4ds.had.co.nz/>.
 
-## Basic syntax
+## Basic syntax {#R-syntax}
 
 ### Operators
 
@@ -122,7 +122,7 @@ var_d
 
 Of course, in R we don't work with single values (often). We instead work with larger data structures. While there are a number of data structures in R, by and large the main one we will work with are **data frames.**
 
-### Vectors
+### Vectors {#vectors}
 
 Vectors are extremely important in R: so much so that many functions are what we call *vectorised*, meaning that they operate over vectors. Vectors are a data structure that provide an ordered list of values of the same type. Vectors can contain multiple numbers, strings or logical values, as an example.
 
@@ -158,7 +158,7 @@ We can use this to great effect by subsetting multiple values from a vector at o
 vector_a[2:4]
 ```
 
-### Data frames
+### Data frames {#dataframes}
 
 Data frames are flexible, row-column structures that contain data. Data frames can essentially be thought of as several vectors joined together as columns.
 
@@ -495,7 +495,8 @@ penguins %>%
   summarise(
     n_penguins = n(),
     mean_mass = mean(body_mass_g, na.rm = TRUE)
-  )
+  ) %>%
+  ungroup()
 ```
 
 Suddenly this is much more informative - we can now do calculations/operations per year and island, which provides a lot more nuance.
@@ -510,38 +511,46 @@ Note that all of these are `dplyr` functions, so need to be piped from a dataset
 -   `distinct()` will give you all *unique* values in a given column. `distinct(island)`, for instance, will give you each unique island name.
 -   `rename()` will let you rename columns.
 -   \``relocate()` will let you rearrange the column order.
--   The `slice()` set of functions is another way of subsetting rows based on their position.
+-   The `slice()` set of functions will subset rows, but mainly based on positions (e.g. first, last) rather than conditions.
 
 ## Making graphs with ggplot2 {#ggplot}
 
 ### Building the plot
 
-ggplot2 is the tidyverse way of visualising data. The 'gg' in the name ggplot2 stands for grammar of graphics. The idea is that a graph is built by the same few components - a dataset, geoms (visual marks that represent data) and a coordinate system.
+`ggplot2` (henceforth referred to as ggplot) is the tidyverse package for plotting and visualising data. It is an immensely powerful and flexible way of graphing data in R, and is basically the de facto means of creating visualisations for R users.^[Almost all of the graphs in RPMP (in fact, I think it actually is 100%) were made using `ggplot2`.]
 
-A cheatsheet for ggplot2 can be found [here](https://rstudio.github.io/cheatsheets/html/data-visualization.html).
+The 'gg' in the name ggplot stands for **grammar of graphics**. The idea is that a graph is built by *layering* different components of a graph (the graphics) in a structured way (the grammar). The idea was first put forward by Leland Wilkinson, and looks something like this:
 
-To start a plot, we first call the ggplot function. Here, we specify three of the main features of our plot - the dataset that we want to use, the x axis and the y axis. the x and y axes are wrapped within the `aes()` function, which defines our aesthetics. Here, we simply say which columns of our dataset should go on the x and y axes. Using the penguin dataset, we can start to visualise a scatter plot between bill length and bill depth like this:
+```{r echo = FALSE, fig.align = "center"}
+knitr::include_graphics("img/grammar_graphics.webp")
+```
+
+
+
+A cheatsheet for ggplot can be found [here](https://rstudio.github.io/cheatsheets/html/data-visualization.html).
+
+To start a plot, we first call the `ggplot()` function. Here, we specify three of the main features of our plot - the dataset that we want to use, the x axis and the y axis. the x and y axes are wrapped within the `aes()` function, which defines our aesthetics. Here, we simply say which columns of our dataset should go on the x and y axes. Using the `penguin` dataset, we can start to visualise a scatter plot between bill length and bill depth like this:
 
 ```{r}
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm))
 ```
 
-However, notice that the plot is empty. This is because we haven't defined any geoms, or actual plotting methods, in our plot.
+However, notice that the plot is empty. This is because we've only specified the first two layers of our graph: the data and the aesthetics. We haven't defined any geoms, or actual plotting methods, in our plot.
 
 ### Geoms
 
-Geoms are additional layers that define *how* data is plotted. If `ggplot()` provides the basic canvas for the graph (i.e. *what* to plot), geoms are what create the graph (i.e. *how* that is plotted). Different graph types are defined using geoms. The way to think of this is to imagine your graph consists of layers. We add (literally, using `+`) additional layers to our base ggplot call in order to build our graph.
+Geoms (short for geometries) define *how* data is plotted. If `ggplot()` provides the basic canvas for the graph (i.e. *what* to plot), geoms are what create the graph (i.e. *how* it is plotted). Different graph types are defined using geoms. As per the diagram of the grammar of graphics above, we add (literally, using `+`) additional layers to our base `ggplot()` call in order to build our graph.
 
-Refer to the cheatsheet for all of the possible geoms. For now, we will stick to basics. 
+Refer to the cheatsheet for all of the possible geoms. For now, we will stick to some basics. 
 
-A scatter plot can be specified by adding `geom_point()`. This assumes that your x and y variables are continuous:
+A scatter plot can be specified by adding `geom_point()`. This requires that your x and y variables are continuous:
 
 ```{r warning = FALSE}
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
   geom_point()
 ```
 
-`geom_smooth()` will add a line of best fit to a scatterplot. add `geom_smooth(method = "lm")`. Specifying the method is important because by default, `geom_smooth()` will probably fit LOESS curves (local polynomial regressions). Note that this function should be added after using `geom_point()`.
+`geom_smooth()` will add a line of best fit to a scatterplot. You can add this as another geom layer by adding `geom_smooth(method = "lm")`. Specifying the method is important because by default, `geom_smooth()` will probably fit LOESS curves (local polynomial regressions). Note that this function should be added after using `geom_point()`.
 
 By default, the line will also have standard error bands around it. You can turn this off by also specifying `se = FALSE` in the `geom_smooth()` call.
 
@@ -580,7 +589,7 @@ penguins %>%
 
 `geom_histogram()` will plot a histogram, which is useful for visualising distributions. For this, you only need to provide one continuous variable on the x-axis. `geom_density()` will plot the same information but using a smoothed line instead of bins.
 
-```{r warning = FALSE}
+```{r warning = FALSE, message = FALSE}
 ggplot(data = penguins, aes(x = body_mass_g)) + 
   geom_histogram()
 
@@ -595,12 +604,12 @@ This is all well and good, and we already have workable basic graphs using `ggpl
 
 An important aspect of data visualisation is a good use of colour. Colours should be used in both an informative and an aesthetically appealing way. A particularly common but effective use of colour is to use different colours to denote different groups in a plot. 
 
-`ggplot` provides two mechanisms, or *aesthetics*, for controlling colour. Both must typically be included in the `aes()` part of `ggplot()`.
+`ggplot` provides two mechanisms within aesthetics for controlling colour. Both must typically be included in the `aes()` part of `ggplot()`.
 
-- `colour` controls the colouring of points, such as lines and points.
+- `colour` controls the colouring of points and lines. For graphs with shapes, such as boxplots and violin plots, this argument will control the colour of the border.
 - `fill` controls the colouring of anything over an area, such as bar plots, histograms and density/violin plots.
 
-We can tell `gggplot` to colour in aspects of our graph based on another variable in the dataset we are using. If we want to colour the dots by sex (which is a column in the penguins data), we can do so by specifiyng `colour = sex` in our `aes()` function.
+We can tell `gggplot` to colour in aspects of our graph based on another variable in the dataset we are using. For example, if we want to colour a scatterplot between two vraiables by sex (which is a column in the penguins data), we can do so by specifiyng `colour = sex` in our `aes()` function.
 
 ```{r warning = FALSE}
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) +
@@ -608,12 +617,22 @@ ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)
 ```
 
 
-Many graphs allow for control of both colour and fill. In these instances, `fill` controls the colour within the shape while `colour` controls the colour of the shape's edges. For example, here is a boxplot that specifies both `colour` and `fill` to be controlled by the variable `island`. This has the effect of making both the borders and the area within the shape the same colour.
+Many graphs allow for control of both colour and fill. In these instances, as noted above, `fill` controls the colour within the shape while `colour` controls the colour of the shape's edges. For example, here is a density plot that specifies both `colour` and `fill` to be controlled by the variable `island`. This has the effect of making both the borders and the area within the shape the same colour.
 
 ```{r warning = FALSE}
 ggplot(data = penguins, aes(x = body_mass_g, fill = island, colour = island)) + 
   geom_density()
 ```
+
+Now, this is all well and good but in this particular instance the overlapping of curves means that we can't actually see what is going on very well. The data points from Torgersen island, for instance, almost completely overlap with the data points from Dream Island. One way to get past this is to specify another aesthetic called `alpha`, which sets the **transparency** of the fill. 
+
+As we typically only want to change the transparency of one type of geom in a plot, the best place to include an `alpha` argument is within the geom call itself (in this case, within `geom_density()`). `alpha` can range from 0 - 1, where 1 means an object is 100% opaque (i.e. 0% transparent) and 0 means 0% opaqueness (100% transparency). Here, we use `alpha = 0.5` to set the fill to be 50% transparent:
+
+```{r warning = FALSE}
+ggplot(data = penguins, aes(x = body_mass_g, fill = island, colour = island)) + 
+  geom_density(alpha = 0.5)
+```
+Now we can see the outlines of each density curve more clearly! This is great.
 
 `ggplot` also supports the manual specification of colours. R by default comes with a bunch of strings that are recognised as colours during graphing, such as `"black"`, `"blue"` and `"red"`. These can be used to manually set either the colour or the fill of a geom. To use these, you can instead use `colour`/`fill` within the *geom* like so:
 
@@ -624,7 +643,7 @@ ggplot(data = penguins, aes(x = species, y = body_mass_g)) +
 
 You can also provide hexadecimal strings (e.g. "white" corresponds to `"#FFFFFF"`). See [the Appendix](#colours) for a full list of the basic palettes in R.
 
-Every graph needs good axis titles. By default, `ggplot` will use variable names as axis labels, which often aren't very informative as they are. We can change this by adding `labs()`, which is a simple way of specifying x and y labels:
+Every graph needs good axis titles. By default, `ggplot` will use variable names as axis labels, which often aren't very informative by default. We can change this by adding `labs()`, which is a simple way of specifying x and y labels:
 
 ```{r warning = FALSE}
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
@@ -632,14 +651,16 @@ ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
   labs(x = "Bill length (mm)", y = "Bill depth (mm)") 
 ```
 
-
-Finally, if you want to split plots by a certain variable, add `facet_wrap()` to our call. You need to specify what variable/column you want to split by, with a tilde in front. For example, if we wanted to split the scatter plot by year:
+Finally, if you want to split plots by a certain variable, add `facet_wrap()` to your call. You need to specify what variable/column you want to split by, with a tilde in front. For example, if we wanted to split the scatter plot by year:
 
 ```{r warning = FALSE}
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = sex)) + geom_point() +
-  labs(x = "Bill length (mm)", y = "Bill depth (mm)")  + facet_wrap(~year)
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)")  + 
+  facet_wrap(~year)
 ```
+
+You can see that the graph now creates one graph per year, which can be immensely useful for visualising data points between groups. 
 
 From here, there are so many things you can do with ggplot - and it helps to get creative! 
 
-Almost all of the graphs in RPMP (in fact, I think it actually is 100%) were made using `ggplot2`.
+

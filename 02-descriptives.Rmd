@@ -1,4 +1,4 @@
-# Descriptive statistics (Module 5)
+# Descriptive statistics (Module 5) {#descriptives}
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
@@ -59,13 +59,13 @@ Regardless of which graph you use, every good graph should have the basic follow
 <iframe src="https://unimelb.h5p.com/content/1291596978884900599/embed" aria-label="module_5_graphs" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://unimelb.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
 Content made with H5P.
 
-## Counts and central tendencies
+## Counts and central tendencies {#basic-desc}
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
 Once we understand what our data looks like, we can then move to describing the general properties of the data. Such general properties are called descriptive statistics. Reporting descriptive statistics is crucial for many aspects of quantitative research.
 :::
 
-### Basic features
+### Basic features {#count-basics}
 
 There are a couple of basic features of any dataset that should be looked at and noted:
 
@@ -90,10 +90,10 @@ data.frame(
   )
 ```
 
-We can use R to find some of these values, either using straight base R or tidyverse functions. For this page/module only, I will use the `variable_a` mock variable from section 2.2.2:
+We can use R to find some of these values, either using straight base R or tidyverse functions. For this page/module only, I will use the `variable_a` mock variable from [Section 2.2.2](#vectors) with a minor amendment:
 
 ```{r}
-vector_a <- c(4, 1, 6, 2, 3)
+vector_a <- c(4, 1, 6, 2, 3, 4)
 vector_a
 ```
 
@@ -101,7 +101,7 @@ For tidyverse usage, I'll refer to `df_a`, which is just the same but as a one-c
 
 ```{r echo = FALSE}
 df_a <- data.frame(
-  column_a = c(4, 1, 6, 2, 3)
+  column_a = c(4, 1, 6, 2, 3, 4)
 )
 ```
 
@@ -133,7 +133,7 @@ df_a %>%
 ```
 
 
-### Central tendencies
+### Central tendencies {#central-tendency}
 
 While the range can be informative in some sitautions, it usually isn't enough to draw deeper interpretations from raw data. One key way of describing data is in terms of central tendency - or where the 'average' value approximately is. There are three main types of central tendency, summarized in the table below. 
 
@@ -169,6 +169,8 @@ median(vector_a, na.rm = TRUE)
 ```
 
 ```{r}
+# Using summarise() and piping
+
 df_a %>%
   summarise(
     mean = mean(column_a, na.rm = TRUE),
@@ -182,10 +184,9 @@ Interestingly, R doesn't offer a base function to calculate a mode - if you need
 ```{r}
 DescTools::Mode(vector_a)
 ```
+The first number is the value of the mode, while the second number is the number of times the mode occurs (twice, in this case).
 
-
-
-## Variability
+## Variability {#variability}
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
 The other important part of describing data is in how spread out it is. Is our data tightly bunched together, or is it very spread out? This helps us understand where most of our data falls, as well as how it looks.
@@ -236,7 +237,7 @@ You can see that all three graphs peak at around the same point, but *look* very
 
 We saw on the last page that we can quantify how far values are spread apart by finding the range. However, this isn't always a good idea - two datasets with the exact same range can look wildly different. Therefore, we need ways of quantifying how data is spread out as well.
 
-### Standard deviation
+### Standard deviation {#sd}
 
 **Standard deviation** ($\sigma$ or **SD**) describes how spread out our data is within our sample, in standard (i.e. comparable) units. Data that is spread out widely (like the red curve above) will have a large standard deviation; likewise, data that has a narrow spread will have a small standard deviation. We'll touch on this a bit more in the following pages, but for now just remember what a standard deviation is for.
 
@@ -279,7 +280,7 @@ df_a %>%
 ```
 
 
-### Standard error, and the SDoTM
+### Standard error, and the SDoTM {#sderr}
 
 Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample's mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to sampling error. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:
 
@@ -299,13 +300,13 @@ Where SD = standard deviation, and n = sample size.
 
 Practice: You have a dataset of 400 people. You know that the mean of the DV is 760, with a standard deviation of 40. Calculate the standard error for this sample.
 
-## Distributions
+## Distributions {#distributions}
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
 The 'shape' of our data is equally important. What does our data actually look like? Does it even matter what it looks like? The topic of distributions in statistics and probability can make up its own subject (in fact it does), but here we discuss the basics below.
 </div>
 
-### The normal distribution
+### The normal distribution {#normal-dist}
 
 Earlier, we saw a series of graphs overlaid on top of each other. These graphs, while having different variability, were essentially all the same shape - they were symmetrical bell curves. These were all examples of the normal distribution (also called the Gaussian distribution). The classic normal distribution takes on a neat bell-shaped curve:
 
@@ -395,7 +396,7 @@ normdist_2 <- ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "
 cowplot::plot_grid(normdist_1, normdist_2)
 ```
 
-### Skew
+### Skew {#skew}
 
 Skewness, as the name implies, describes whether or not a distribution is symmetrical or skewed. If a distribution is skewed, we would expect numbers to be bunched up at one end of the distribution. Have a look at the three graphs below:
 
@@ -436,7 +437,7 @@ Skewness can also be quantified numerically:
 
 As a general rule, if a distribution has a skew greater than +1 or lower than -1, it is skewed. If your data is skewed then this is a bit of an issue; there's a nice overview of this point and one way of dealing with skew in this blog post.
 
-### Kurtosis
+### Kurtosis {#kurtosis}
 
 Kurtosis refers to the shape of the tails specifically. Are all of the data bunched very tightly around one value, or are the data evenly spread out? The three graphs you saw up above all have different kurtoses.
 
@@ -473,7 +474,7 @@ data.frame(
 ```
 
 
-## z-scores
+## z-scores {#zscores}
 
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}

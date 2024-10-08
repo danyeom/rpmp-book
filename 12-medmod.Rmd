@@ -1,5 +1,11 @@
 # Mediation and Moderation
 
+Sometimes, the hypotheses we want to test are ones where the effect of interest works in a very specific way. In some cases, we might hypothesise that the relationship between two variables is actually best explained by a third variable that acts between them. For instance, we might predict that a relationship between sugar levels in food and happiness is best explained by food intake - we might eat more sugar, and eating more makes us happier (or something like that).^[I'm no dietitian or food psychology expert so I make no claims as to the veracity or accuracy of this statement.] This kind of hypothesis is called a **mediation**, and is common in psychological research as a lot of our work deals with *processes.*  
+
+In other instances, we might expect interaction effects like what we saw in [two-way ANOVA](#interactions), but between continuous predictors. Note that up until this point we have only considered categorical x categorical interactions within an ANOVA context, so now is a good time to explore continuous x continuous interactions. We describe these effects as **moderation** effects.
+
+This chapter will cover both mediation and moderation.
+
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
 library(ggpubr)
@@ -48,10 +54,10 @@ Without a mediator, the indirect effect ab is equal to zero, and so we only have
 ## Mediation: Causal steps
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
-No introduction to mediation is complete without considering the causal steps approach, which held dominance as the main method of testing mediations for a while.
+No introduction to mediation is complete without considering the causal steps approach, which held dominance as the main method of testing mediations for a while. Below is an overview of this approach.
 </div>
 
-The causal steps approach
+### The causal steps approach
 
 The causal steps approach outlined by Baron and Kenny (1986) was one of the first defined ways to test for a mediation. The name refers to a sequence of analytical steps that must be taken in order to apparently demonstrate a mediation, in line with the figure we saw on the previous page:
 
@@ -65,7 +71,7 @@ To illustrate the causal steps approach (and subsequent approaches), we will use
 knitr::include_graphics("img/mediation_3.png")
 ```
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 med_data <- read_csv(here("data", "medmod", "med_grades.csv"))
 ```
 
@@ -105,7 +111,7 @@ If **full mediation** has occurred, the effect of *c'* should be non-significant
 
 In our instance, the estimate of *c'* is 0.0396, with a *p*-value of .719. Given that the *c'* effect is non-significant, we would say that self-esteem **fully mediates** the relationship between grades and happiness.
 
-One final check - also recall that the total effect, *c*, can be broken down into the direct effect *c'* and the indirect effect *ab*. You can manually check the maths here - *ab* (0.561 * 0.6355) = 0.0396 gives us 0.396, which was our initial estimate of *c*.
+One final check - also recall that the total effect, *c*, can be broken down into the direct effect *c'* and the indirect effect *ab*. You can manually check the maths here - *ab* (0.561 * 0.6355) + 0.0396 (the coefficient for *c'*) gives us 0.396, which was our initial estimate of the total effect *c*.
 
  
 ### Problems with the causal steps approach
@@ -280,7 +286,7 @@ To round this module off, here is a worked example of a moderation.
 
 We will use the dataset from Powell et al. (2022) in the Week 10 seminar, which looks at harmonious and obsessive passion in the context of heavy metal music listeners. We'll test a specific question for this example: Do positive experiences predict harmonious passion, and does satisfaction with life moderate this relationship?
 
-```{r}
+```{r warning = FALSE, message = FALSE}
 passion_data <- read_csv(here("data", "week_10", "W10_Powell_2022.csv"))
 ```
 

@@ -145,7 +145,7 @@ ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "transparent") 
   scale_x_continuous(breaks = c(-1.96, 0, 1.96))
 ```
 
-
+We established last week that on a normal distribution, 95% of the data lies within a certain range of values. Obtaining values beyond these thresholds (1.96 standard deviations either side of the mean) account for a relatively small percentage of possible values. In other words, the probability of getting a value beyond these bounds (in the figure above, where the dark green areas are) **is low**.
 
 This is basically the thinking we use when we calculate a p-value. Let's break down the steps:
 
@@ -155,6 +155,8 @@ This is basically the thinking we use when we calculate a p-value. Let's break d
 4.    Once we have a p-value we then compare this against **alpha**, which is our chosen significance level (usually p = .05). If the probability of getting our result is smaller than this (pre-defined) cutoff, it means that it is unlikely assuming the null hypothesis is true, and therefore our result is statistically significant and we **reject the null hypothesis. **
 
 So in essence, if a p-value is p = .05 we're saying that assuming the null is true, there is a 5% chance of observing this result or greater. Likewise, an extremely small p-value (e.g. p = .0000000001) means that assuming the null is true, the probability of getting the data we have is extremely small. The logic, therefore, is that there must be an alternative explanation.
+
+To clarify, the example above is just on a normal distribution - each statistical test we perform has its own (null) distribution, which we will talk about more in future modules. However, the rationale across tests is essentially the same.
 
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
@@ -180,11 +182,25 @@ Both of these scenarios (while hopefully very unlikely!) are obviously forms of 
 
 The same kind of logic applies directly to quantitative research. We want to be sure that when we observe a result, that result is actually likely. We therefore want to minimise the possibility of errors like above. 
 
+We can draw a table to illustrate the possible outcomes when we perform a given hypothesis test:
+
+```{r echo = FALSE}
+data.frame(
+  x = c("The null is true", "The alternative is true"),
+  y = c("Correctly accept the null", "Type II error"),
+  z = c("Type I error", "Correctly reject the null")
+) %>%
+  knitr::kable(
+    col.names = c("", "Accept the null", "Reject the null")
+  )
+```
+
+
 ### Type I error and alpha
 
-A moment ago we talked about alpha, or the significance level, from the previous sections about hypothesis testing and the p-value. Alpha is the same here as it is there - it is the probability of making a Type I error - that we incorrectly reject the null hypothesis when the null hypothesis is actually true. Essentially, alpha is the rate of Type I error we're willing to accept whenever we do a hypothesis test.
+A moment ago we talked about alpha ($\alpha$), or the significance level, from the previous sections about hypothesis testing and the p-value. Alpha is the same here as it is there - it is the probability of making a Type I error - that we incorrectly reject the null hypothesis when the null hypothesis is actually true. Essentially, alpha is the rate of Type I error we're willing to accept whenever we do a hypothesis test.
 
-We generally set alpha as p < .05 out of convention - i.e. most of the time, we're willing to accept a 5% chance of a Type I error rate. However, we can set alpha to anything we want. Sometimes, we may set it lower (more on this in a few weeks' time). 
+We generally set alpha as *p* < .05 out of convention - i.e. most of the time, we're willing to accept a 5% chance of a Type I error rate. However, we can set alpha to anything we want. Sometimes, we may set it lower (more on this in a few weeks' time). 
 
 ## Statistical power
 
@@ -588,4 +604,3 @@ On the page about p-values, I left a brief note around some of the current disco
 
 Again, we won't be taking an especially strong stance either way. That being said, it is now fairly common practice to report 95% confidence intervals alongside the results of significance tests for transparency. Programs like Jamovi will usually calculate these intervals automatically for you.
 </div>
-

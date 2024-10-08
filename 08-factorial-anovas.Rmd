@@ -1,6 +1,6 @@
 # (PART) Advanced methods {-}
 
-# Factorial ANOVAs
+# Factorial ANOVAs {#factorial-anova}
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
@@ -22,7 +22,7 @@ This module covers:
 - TWo-way mixed ANOVA
 - Three-way between-subjects ANOVA
 
-## Introduction
+## Introduction {#factorial-intro}
 
 In Week 9, when we talk about ANOVAs we conduct one-way ANOVAs. These tests from Week 9 are called one-way ANOVAs because there is only one IV with multiple levels being tested. However, in many research designs we will want to test the effect of two or more categorical variables at the same time (for example, experimental conditions or variables that capture important categories, such as participant sex).
 
@@ -42,7 +42,7 @@ When reporting results for factorial designs, it is expected that you report how
 
 The first one is the preferable because it lays out the conditions clearly.
 
-## Interactions
+## Interactions {#interactions}
 
 ### What is an interaction?
 
