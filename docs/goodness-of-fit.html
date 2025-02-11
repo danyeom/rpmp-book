@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-07" />
+<meta name="date" content="2025-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,14 +199,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#normal-dist"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
-<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
-<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#graphing-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Graphing distributions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.3</b> Skew</a></li>
+<li class="chapter" data-level="3.4.4" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.4</b> Kurtosis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a>
+<li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.5.1</b> z-scores</a></li>
-<li class="chapter" data-level="3.5.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.5.2</b> Calculating z-scores</a></li>
-<li class="chapter" data-level="3.5.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.5.3</b> Comparing across scales</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.6.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.6.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.6.3</b> Comparing across scales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
@@ -731,12 +738,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \chi^2 = \Sigma \frac{(O-E)^2}{E}
 \]</span></p>
 <p>If we have a look at the observed vs expected values, we might have a good idea of what’s going on already:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
 </div>
 <div id="using-r" class="section level3 hasAnchor" number="5.3.4">
 <h3><span class="header-section-number">5.3.4</span> Using R<a href="goodness-of-fit.html#using-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Using Jamovi</p>
-<p>By default, the <code>chisq.test()</code> function in R will assume that your categories have an equal chance of happening. However, in this instance we know that the colours are not evenly distributed. To ensure the proper probabilities are set beforehand, this needs to be specified by giving the <code>p</code> argument within <code>chisq.test()</code>. Note that the order of the expected probabilities needs to match the order they appear in the dataset (R will generally order these alphabetically unless told otherwise):</p>
+<p>The relevant function for doing a chi-square test in R is the <code>chisq.test()</code> function.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>By default, the <code>chisq.test()</code> function in R will assume that your categories have an equal chance of happening. However, in this instance we know that the colours are not evenly distributed. To ensure the proper probabilities are set beforehand, this needs to be specified by giving the <code>p</code> argument within <code>chisq.test()</code>. Note that the order of the expected probabilities needs to match the order they appear in the dataset (R will generally order these alphabetically unless told otherwise):<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="goodness-of-fit.html#cb112-1" tabindex="-1"></a><span class="co"># This pulls the relevant variable directly</span></span>
 <span id="cb112-2"><a href="goodness-of-fit.html#cb112-2" tabindex="-1"></a>w7_mnm_table <span class="ot">&lt;-</span> <span class="fu">table</span>(mnm_data<span class="sc">$</span>colour)</span>
 <span id="cb112-3"><a href="goodness-of-fit.html#cb112-3" tabindex="-1"></a></span>
@@ -761,6 +768,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## data:  w7_mnm_table
 ## X-squared = 17.353, df = 5, p-value = 0.003877</code></pre>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>There is an analogous function called <code>chisq_test()</code> in the <code>rstatix</code> package, but the base R <code>chisq.test()</code> is easy enough to learn.<a href="goodness-of-fit.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>If you need to order your variable a certain way, you should use the <code>factor()</code> function. You will need to specify a <code>levels</code> argument, which describes the ordering of the categories/groups, and optionally a <code>labels</code> argument which gives each one a label. Both arguments take vectors, i.e. <code>labels = c("1", "2", "3")</code>.<a href="goodness-of-fit.html#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

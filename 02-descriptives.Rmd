@@ -23,6 +23,12 @@ By the end of this module you should be able to:
 -   Calculate various forms of descriptive statistics
 -   Interpret both graphs and descriptive statistics, and explain what they tell you
 
+```{r echo = FALSE, fig.align = "center", fig.cap = "[xkcd: Statistics](https://xkcd.com/2400/)"}
+knitr::include_graphics("https://imgs.xkcd.com/comics/statistics.png")
+```
+
+
+
 ## Visualising data
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
@@ -33,7 +39,7 @@ When you have data in your hand, it is often tempting to dive straight into plug
 
 > "The greatest value of a picture is when it forces us to notice what we never expected to see." -John W. Tukey
 
-One of the first steps in working with quantitative data is data visualisation, which is the process of graphing it and looking at it. If you work with quantitative data then it should become standard practice for you to graph your data before analysing it.
+One of the first steps in working with quantitative data is **data visualisation**, which is the process of graphing it and looking at it. If you work with quantitative data then it should become standard practice for you to graph your data before analysing it.
 
 It's common for many students learning research methods and statistics to simply take a 'cookie cutter' approach - that is, collect data, run basic tests on it and call it a day. Sadly this is common even at our level, and you will almost certainly see this happen at music psychology conferences that you go to in future. People will present complex analyses that sound impressive - until you pick up on small cues that suggest they don't really understand their data at all.
 
@@ -48,9 +54,9 @@ This series of datasets is called the [Datasaurus Dozen](https://www.research.au
 
 Data visualisation is important because:
 
-1.  It lets you observe patterns in your data.
-2.  It can reveal unexpected structures in your data that would normally be missed otherwise.
-3.  It is an effective way of communicating information. The best graphs tell a reader everything they need to know in one image.
+1.  It lets you **observe patterns in your data**.
+2.  It can **reveal unexpected structures in your data** that would normally be missed otherwise.
+3.  It is an effective way of **communicating information**. The best graphs tell a reader everything they need to know in one image.
 
 In the Canvas version of this subject, there are some general guidelines as to how to make good figures right around this point. For this version of the book, the [section on ggplot](#ggplot) is going to be infinitely better. 
 
@@ -135,7 +141,7 @@ df_a %>%
 
 ### Central tendencies {#central-tendency}
 
-While the range can be informative in some sitautions, it usually isn't enough to draw deeper interpretations from raw data. One key way of describing data is in terms of central tendency - or where the 'average' value approximately is. There are three main types of central tendency, summarized in the table below. 
+While the range can be informative in some sitautions, it usually isn't enough to draw deeper interpretations from raw data. One key way of describing data is in terms of **central tendency** - or where the 'average' value approximately is. There are three main types of central tendency, summarized in the table below. 
 
 ```{r echo = FALSE}
 data.frame(
@@ -194,7 +200,7 @@ The other important part of describing data is in how spread out it is. Is our d
 
 ### The variability of data
 
-The other key way of describing data is in its spread, or distribution. The way data is distributed can give key insights into how that data should be treated.
+The other key way of describing data is in its **spread,** or distribution. The way data is distributed can give key insights into how that data should be treated.
 
 Consider the following graphs below.
 
@@ -239,7 +245,7 @@ We saw on the last page that we can quantify how far values are spread apart by 
 
 ### Standard deviation {#sd}
 
-**Standard deviation** ($\sigma$ or **SD**) describes how spread out our data is within our sample, in standard (i.e. comparable) units. Data that is spread out widely (like the red curve above) will have a large standard deviation; likewise, data that has a narrow spread will have a small standard deviation. We'll touch on this a bit more in the following pages, but for now just remember what a standard deviation is for.
+**Standard deviation** ($\sigma$, or **SD**) describes how spread out our data is within our sample, in standard (i.e. comparable) units. Data that is spread out widely (like the red curve above) will have a large standard deviation; likewise, data that has a narrow spread will have a small standard deviation. We'll touch on this a bit more in the following pages, but for now just remember what a standard deviation is for.
 
 To calculate standard deviation, we first calculate **variance**, which is another measure of spread:
 
@@ -249,10 +255,10 @@ $$
 
 Or, in human terms:
 
--    Take each data point (xi)
+-    Take each data point ($x_i$)
 -    Subtract the mean from each data point (x with the bar) and square that difference
 -    Add them all up together
--    Divide by n - 1
+-    Divide by $n - 1$
 
 And then to calculate standard deviation, we simply take the square root of the variance.
 
@@ -282,11 +288,11 @@ df_a %>%
 
 ### Standard error, and the SDoTM {#sderr}
 
-Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample's mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to sampling error. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:
+Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample's mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to **sampling error**. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:
 
-The spread of these sample means is called the sampling distribution of the mean (SDoTM), shown on the right. This gives us a sense of where the population mean (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.
+The spread of these sample means is called the **sampling distribution of the mean (SDoTM)**, shown on the right. This gives us a sense of where the population mean (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.
 
-The standard error of the mean (standard error; SE) is another measure of variability - this time, it is the spread of sample means across the sampling distribution of the mean. This represents how close our sample mean is to the likely population mean. If our sampling distribution is wide, our standard error will be large - and that means that we won't have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean. 
+The **standard error of the mean** (standard error; SE) is another measure of variability - this time, it is the spread of **sample means** across the sampling distribution of the mean. This represents how close our sample mean is to the likely *population* mean. If our sampling distribution is wide, our standard error will be large - and that means that we won't have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean. 
 
 Standard error is calculated using the below formula:
 
@@ -298,7 +304,7 @@ Where SD = standard deviation, and n = sample size.
 
  
 
-Practice: You have a dataset of 400 people. You know that the mean of the DV is 760, with a standard deviation of 40. Calculate the standard error for this sample.
+**Practice**: You have a dataset of 400 people. You know that the mean of the DV is 760, with a standard deviation of 40. Calculate the standard error for this sample.
 
 ## Distributions {#distributions}
 
@@ -308,7 +314,7 @@ The 'shape' of our data is equally important. What does our data actually look l
 
 ### The normal distribution {#normal-dist}
 
-Earlier, we saw a series of graphs overlaid on top of each other. These graphs, while having different variability, were essentially all the same shape - they were symmetrical bell curves. These were all examples of the normal distribution (also called the Gaussian distribution). The classic normal distribution takes on a neat bell-shaped curve:
+Earlier, we saw a series of graphs overlaid on top of each other. These graphs, while having different **variability**, were essentially all the same **shape** - they were symmetrical bell curves. These were all examples of the **normal distribution** (also called the **Gaussian distribution**). The classic normal distribution takes on a neat bell-shaped curve:
 
 ```{r fig.align = "center", fig.dim = c(4, 4), echo = FALSE}
 set.seed(2024)
@@ -339,9 +345,9 @@ ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "transparent") 
 
 In the normal distribution, the majority of data points cluster in the middle, while all other values are symmetrically distributed from either side from the middle. This is what gives the normal distribution its recognisable bell shape.
 
-The normal distribution is defined by two parameters: the mean and the standard deviation of the data. These two parameters define the overall shape of the bell curve - the mean defines where the peak is, while the standard deviation defines how spread out the tails are.
+The normal distribution is defined by two parameters: the **mean** and the **standard deviation** of the data. These two parameters define the overall shape of the bell curve - the mean defines where the peak is, while the standard deviation defines how spread out the tails are.
 
-An important feature of the normal distribution is where all of the data is spread, regardless of its shape: 95% of the data within the curve falls within 1.96 standard deviations, either side of the mean. This applies to any normal distribution no matter what the scale of the data is. 99.7% of data falls within just below 3 standard deviations.
+An important feature of the normal distribution is where all of the data is spread, regardless of its shape: **95% of the data within the curve** falls within **1.96 standard deviations, either side of the mean**. This applies to any normal distribution no matter what the scale of the data is. 99.7% of data falls within just below 3 standard deviations.
 
 ```{r echo = FALSE, fig.align = "center", fig.dim = c(8, 4), warning = FALSE}
 
@@ -396,9 +402,16 @@ normdist_2 <- ggplot(norm_data, aes(x, y)) + geom_line(linewidth = 1, colour = "
 cowplot::plot_grid(normdist_1, normdist_2)
 ```
 
+
+### Graphing distributions
+
+The slides below demonstrate a couple of ways in which you can graph distributions.
+
+<iframe src="https://unimelb.h5p.com/content/1291497801821478909/embed" aria-label="Graphing spread" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://unimelb.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+
 ### Skew {#skew}
 
-Skewness, as the name implies, describes whether or not a distribution is symmetrical or skewed. If a distribution is skewed, we would expect numbers to be bunched up at one end of the distribution. Have a look at the three graphs below:
+**Skewness**, as the name implies, describes whether or not a distribution is symmetrical or skewed. If a distribution is skewed, we would expect numbers to be bunched up at one end of the distribution. Have a look at the three graphs below:
 
 ```{r fig.align = "center", echo = FALSE}
 x <- seq(0, 1, by = .02)
@@ -426,8 +439,8 @@ cowplot::plot_grid(skew_left, skew_normal, skew_right, ncol = 3)
 
 
 -    The purple graph in the middle is symmetrically distributed, so we say that it has no skew.
--    The red graph has values that are weighted towards the right-hand side of the x-axis, and so we say that it is either skewed left or negatively skewed.
--    The blue graph, on the other hand is skewed right or positively skewed. The left-right refers to which end the tail of the distribution is on.
+-    The red graph has values that are weighted towards the right-hand side of the x-axis, and so we say that it is either **skewed left** or **negatively skewed**.
+-    The blue graph, on the other hand is **skewed right** or **positively skewed**. The left-right refers to which end the tail of the distribution is on.
 
 Skewness can also be quantified numerically:
 
@@ -435,11 +448,11 @@ Skewness can also be quantified numerically:
 -    A positive skew value means that the data is skewed right
 -    A negative skew value means that the data is skewed left
 
-As a general rule, if a distribution has a skew greater than +1 or lower than -1, it is skewed. If your data is skewed then this is a bit of an issue; there's a nice overview of this point and one way of dealing with skew in this blog post.
+As a general rule, if a distribution has a skew greater than +1 or lower than -1, it is skewed. If your data is skewed then this is not the end of the world; it depends on the analysis you are performing, or what you are trying to do with the data. We will touch on this a bit more in coming weeks.
 
 ### Kurtosis {#kurtosis}
 
-Kurtosis refers to the shape of the tails specifically. Are all of the data bunched very tightly around one value, or are the data evenly spread out? The three graphs you saw up above all have different kurtoses.
+**Kurtosis** refers to the shape of the tails specifically. Are all of the data bunched very tightly around one value, or are the data evenly spread out? The three graphs you saw up above all have different kurtoses.
 
 ```{r fig.align = "center", echo = FALSE}
 normal_curve_plots
@@ -449,9 +462,9 @@ The orange graph has most values very close to the peak at 50; therefore, the ta
 
 The different types of excess kurtoses are:
 
--    Leptokurtic (heavy-tailed) - tails are smaller. Kurtosis > 1
--    Mesokurtic - normally distributed. Kurtosis is close to 0
--    Platykurtic (short-tailed) - tails are larger, and the peak is flatter. Kurtosis < -1
+-    **Leptokurtic (heavy-tailed)** - tails are smaller. Kurtosis > 1
+-    **Mesokurtic - normally distributed**. Kurtosis is close to 0
+-    **Platykurtic (short-tailed)** - tails are larger, and the peak is flatter. Kurtosis < -1
 
 Therefore, in the example above the orange curve would be considered leptokurtic, while the red one would be platykurtic.
 
@@ -473,6 +486,42 @@ data.frame(
   )
 ```
 
+
+## Central Limit Theorem {#clt}
+
+::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
+In Module 6, we will cover the foundations of statistical tests. However, in order to understand what those tests tell us and how useful they are, it is important to basically look at what allows them to work in the first place. In comes the Central Limit Theorem, one of the most important concepts in all of statistics. 
+
+You'll want to keep the concept of the **sampling distribution of the mean fresh in mind** for this page, as it all relates to that!
+:::
+
+### What is the Central Limit Theorem?
+
+The Central Limit Theorem (CLT) is a fundamental theorem of probability theory. It states that under the right conditions, the sampling distribution of the mean will converge to a **normal** distribution. This occurs even when the original data are *not* normally distributed.
+
+Why is this important? After all, it's not like this is something we immediately *see* in action most of the time. Put simply, without the CLT we would not be able to do any of the statistics we do. The CLT allows us to make statistical inferences even when we don't know the true nature (i.e. distribution) of our data by using the normal distribution to test hypotheses. The fact that it applies even when we have skewed or non-normal data means that we can still make valuable inferences in these scenarios as well. Therefore, it is critical 'under the hood' to all of the statistical tests we run.
+
+
+### Simulation
+
+To test this for yourself, try the below sample simulator. You can set what distribution you want to draw from, and choose how many samples and simulations you want to run. 
+
+The Population Distribution tab will show you what you are sampling from; the Samples tab is each individual sample and the Sampling Distribution tab shows the distribution of sample means. Try and change the sample size and see how that impacts on the Sampling Distribution.
+
+(You may need to scroll within the app to see the full output.)
+
+```{r echo = FALSE}
+knitr::include_app("https://gallery.shinyapps.io/CLT_mean/", height = "800px")
+```
+
+
+### Some important points
+
+A general rule of thumb for sample sizes is that **n > 30** is sufficient even when the population is skewed. In other words, even if a population is heavily skewed on a variable, taking several samples of n > 30 will still show a normally distributed set of sample means. You can see this for yourself in the simulator above - try set sample size to 5, 10 and then 30, and see what happens in the Sampling Distribution tab.
+
+In addition, remember that with bigger samples, the variability in sample means (i.e. standard error) decreases - and therefore, the sample mean gets closer to the **population mean**. This means that with large samples, we should ideally be getting a really good estimate of the population of interest! Conversely, smaller sample sizes (as is common in music research) are unlikely to be good estimates of populations.
+
+We will touch on the issue of sample size more in Module 6 but this should already also give you an indication of one of the most important things when it comes to statistical tests: **sample size matters**.
 
 ## z-scores {#zscores}
 
@@ -556,9 +605,9 @@ knitr::include_graphics(here("img", "z-table.webp"))
 Here are the steps to read this table:
 
 1.    Choose which table to read first. If you have a negative z-score, read the left one; if you have a positive z-score, read the right one.
-2.    The rows and columns are basically arranged by decimal place. The rows index z-scores to 1dp, while the columns add the second decimal place. So, find the row first that corresponds to your z-score. In our example from above, our z-score was 0.89, so we want to find the row corresponding to 0.8.
-3.    Next, find the column that corresponds to the second decimal place. We want to go all the way to the right-hand column labelled .09, to find the right column for our z-score of 0.89.
-4.    Find the cell that corresponds to the row and column from above - that is the probability of getting a value below our z-score. 
+2.    The rows and columns are basically arranged by **decimal place**. The rows index z-scores to 1dp, while the columns add the second decimal place. So, find the **row** first that corresponds to your z-score. In our example from above, our z-score was 0.89, so we want to find the row corresponding to 0.8.
+3.    Next, find the column that corresponds to the second decimal place. We want to go all the way to the right-hand column labelled **.09**, to find the right column for our z-score of 0.89.
+4.    Find the cell that corresponds to the row and column from above - that is the probability of getting a value **below** our z-score. 
 
 ```{r echo = FALSE, fig.align = "center"}
 knitr::include_graphics(here("img", "ztable_highlight.png"))

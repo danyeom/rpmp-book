@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-07" />
+<meta name="date" content="2025-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,14 +199,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#normal-dist"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
-<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
-<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#graphing-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Graphing distributions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.3</b> Skew</a></li>
+<li class="chapter" data-level="3.4.4" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.4</b> Kurtosis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a>
+<li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.5.1</b> z-scores</a></li>
-<li class="chapter" data-level="3.5.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.5.2</b> Calculating z-scores</a></li>
-<li class="chapter" data-level="3.5.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.5.3</b> Comparing across scales</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.6.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.6.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.6.3</b> Comparing across scales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
@@ -713,7 +720,7 @@ r = \frac{Cov_{xy}}{SD_x \times SD_y}
 <p>The second is a correlation heatmap, which is especially effective with many correlations at once (common when working with huge questionnaires or neuroimaging). As shown by the legend on the right, the colour and shade of each square are determined by the strength of the correlation. This can be easily done by the `<code>ggcorrplot</code> package, if you have a correlation matrix formatted in R:</p>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="correlations.html#cb222-1" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
 <span id="cb222-2"><a href="correlations.html#cb222-2" tabindex="-1"></a><span class="fu">ggcorrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="at">show.diag =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-201-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-203-1.png" width="672" /></p>
 </div>
 </div>
             </section>

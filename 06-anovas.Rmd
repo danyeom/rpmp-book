@@ -519,6 +519,21 @@ group's means, then using that to calculate a critical mean difference.
 Any mean difference that is greater than this critical threshold is
 significant.
 
+<details>
+    <summary>How does the Tukey test work?</summary>
+    Tukey's HSD works very similarly in principle to a *t*-test, although the exact maths involved are slightly different. The test statistic for a Tukey test is called *q* which denotes the Studentized range distribution (a specific distribution). For a given comparison between two group means, the formula for *q* is:
+    
+    $$
+    \Large q = \frac{|M_1 - M_2|}{SE}
+    $$
+    
+    
+  Where $M_1$ and $M_2$ denote the means of groups 1 and 2, and SE denotes the standard error of the sum of the means.
+  The *q*-statistic is then compared to a Studentized range distribution to estimate a <em>p</em>-value for that comparison. The shape of the Studentized range distribution is determined by alpha, *k* (the number of groups being compared) and *df* (in this case, the **error degrees of freedom*</strong>**).
+</details>
+
+
+
 **Bonferroni**
 
 The Bonferroni correction is a method that can be used both within

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-07" />
+<meta name="date" content="2025-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,14 +199,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#normal-dist"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
-<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
-<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#graphing-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Graphing distributions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.3</b> Skew</a></li>
+<li class="chapter" data-level="3.4.4" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.4</b> Kurtosis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a>
+<li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.5.1</b> z-scores</a></li>
-<li class="chapter" data-level="3.5.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.5.2</b> Calculating z-scores</a></li>
-<li class="chapter" data-level="3.5.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.5.3</b> Comparing across scales</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.6.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.6.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.6.3</b> Comparing across scales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
@@ -643,7 +650,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="a-reminder-from-the-previous-module" class="section level3 hasAnchor" number="4.5.1">
 <h3><span class="header-section-number">4.5.1</span> A reminder from the previous module<a href="confidence-intervals.html#a-reminder-from-the-previous-module" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It’s time to force you to remember what the graph below means once again (I promise this is the last time you will see this figure! I think). By now you should be very familiar with what this graph shows; namely, that 95% of the data in a normal distribution lies within 1.96 standard deviations either side of the mean, yada yada.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-100-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-102-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>This sounds all well and good, but this provides us with some useful information. If all that business about values within 1.96 standard deviations is still fresh in your mind, this next statement should be a no-brainer: if 95% of our data on a normal distribution lies within 1.96 SD either side of the mean, that means that there is a certain range of values that 95% of our data falls in.</p>
 <p>For example, say we have a sample of scores on a test, with a mean of 70 and a standard deviation of 4. If we want to know where 95% of the scores lie in this sample, we would do the following calculation:</p>
 <p>Using this formula, we can calculate the values where 95% of the data lie:</p>
@@ -652,7 +659,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="confidence-intervals-1" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Confidence intervals<a href="confidence-intervals.html#confidence-intervals-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use the same principle to make inferences about the true population parameter. When we take a sample, each one will have its own standard error (remember this reflects an estimate of the distance between the sample mean and the true population mean). If we were to repeatedly take samples, in the long run we would expect the true population mean to fall within 95% of all sample means. And, just like the normal distribution, when we look at the sampling distribution of the means below, 95% of all sample means will fall within 1.96 standard errors (thanks to the Central Limit Theorem).</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-103-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>With this important property in mind, we can calculate a 95% confidence interval. This is an estimate of the range of values for our estimate of the parameter. In other words, it is a measure of precision. The formula for a 95% confidence interval, as it turns out, is exactly the same as above with one change:</p>
 <p><span class="math display">\[
 95\% CI = M \pm (1.96 \times SE)
@@ -665,9 +672,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.5.3</span> Confidence<a href="confidence-intervals.html#confidence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The confidence level is a long-run probability that a group of confidence intervals will contain the true population parameter. A 95% confidence level means that if we were to take samples repeatedly and calculate a CI for each one, 95% of those CIs will contain the true population parameter in the long-run.</p>
 <p>Or, say if you were to take 100 samples and calculate a CI for each one, 95 of them would include the true population parameter:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-103-1.png" width="1152" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-105-1.png" width="1152" /></p>
 <p>The 95% long-run probability <strong>does not change</strong> with sample size. What does change, however, is the <strong>precision</strong> of the estimates. This makes sense if you remember the formula for standard error, which divides by the square root of <em>n</em>. A larger <em>n</em> will lead to lower SE, and thus narrower confidence intervals. Below is an example with a much larger sample size. Notice how the confidence intervals are now much smaller:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-104-1.png" width="1152" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-106-1.png" width="1152" /></p>
 <p>The choice of 95% is conventional, like alpha (our significance criterion); we can (but often don’t) change our level of confidence. This changes the relevant formula for calculating the interval, as in the examples below:</p>
 <p><span class="math display">\[
 90\% CI = M \pm (1.645 \times SE)

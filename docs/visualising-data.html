@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-07" />
+<meta name="date" content="2025-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,14 +199,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#normal-dist"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
-<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
-<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#graphing-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Graphing distributions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.3</b> Skew</a></li>
+<li class="chapter" data-level="3.4.4" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.4</b> Kurtosis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a>
+<li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.5.1</b> z-scores</a></li>
-<li class="chapter" data-level="3.5.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.5.2</b> Calculating z-scores</a></li>
-<li class="chapter" data-level="3.5.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.5.3</b> Comparing across scales</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.6.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.6.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.6.3</b> Comparing across scales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
@@ -645,16 +652,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>“The greatest value of a picture is when it forces us to notice what we never expected to see.” -John W. Tukey</p>
 </blockquote>
-<p>One of the first steps in working with quantitative data is data visualisation, which is the process of graphing it and looking at it. If you work with quantitative data then it should become standard practice for you to graph your data before analysing it.</p>
+<p>One of the first steps in working with quantitative data is <strong>data visualisation</strong>, which is the process of graphing it and looking at it. If you work with quantitative data then it should become standard practice for you to graph your data before analysing it.</p>
 <p>It’s common for many students learning research methods and statistics to simply take a ‘cookie cutter’ approach - that is, collect data, run basic tests on it and call it a day. Sadly this is common even at our level, and you will almost certainly see this happen at music psychology conferences that you go to in future. People will present complex analyses that sound impressive - until you pick up on small cues that suggest they don’t really understand their data at all.</p>
 <p>Below is an example of why data visualisation should be a crucial part of the quantitative research process:</p>
 <p><img src="img/datasaurus.gif" /><!-- --></p>
 <p>This series of datasets is called the <a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/">Datasaurus Dozen</a>, which are 12 datasets that look entirely different (including the dinosaur!) but share almost identical summary statistics, as shown by the bold numbers on the right.</p>
 <p>Data visualisation is important because:</p>
 <ol style="list-style-type: decimal">
-<li>It lets you observe patterns in your data.</li>
-<li>It can reveal unexpected structures in your data that would normally be missed otherwise.</li>
-<li>It is an effective way of communicating information. The best graphs tell a reader everything they need to know in one image.</li>
+<li>It lets you <strong>observe patterns in your data</strong>.</li>
+<li>It can <strong>reveal unexpected structures in your data</strong> that would normally be missed otherwise.</li>
+<li>It is an effective way of <strong>communicating information</strong>. The best graphs tell a reader everything they need to know in one image.</li>
 </ol>
 <p>In the Canvas version of this subject, there are some general guidelines as to how to make good figures right around this point. For this version of the book, the <a href="ggplot.html#ggplot">section on ggplot</a> is going to be infinitely better.</p>
 <p>Regardless of which graph you use, every good graph should have the basic following features:</p>

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-07" />
+<meta name="date" content="2025-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,14 +199,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#normal-dist"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
-<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
-<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#graphing-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Graphing distributions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.3</b> Skew</a></li>
+<li class="chapter" data-level="3.4.4" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.4</b> Kurtosis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a>
+<li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.5.1</b> z-scores</a></li>
-<li class="chapter" data-level="3.5.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.5.2</b> Calculating z-scores</a></li>
-<li class="chapter" data-level="3.5.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.5.3</b> Comparing across scales</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.6.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.6.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.6.3</b> Comparing across scales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
@@ -679,7 +686,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## `summarise()` has grouped output by &#39;gender&#39;,
 ## &#39;risk&#39;. You can override using the `.groups`
 ## argument.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-268-1.png" width="672" /></p>
 </div>
 <div id="simple-simple-effects" class="section level3 hasAnchor" number="9.7.3">
 <h3><span class="header-section-number">9.7.3</span> Simple <em>simple</em> effects<a href="three-way-anova.html#simple-simple-effects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -710,7 +717,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb335-6"><a href="three-way-anova.html#cb335-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb335-7"><a href="three-way-anova.html#cb335-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(gender)) <span class="sc">+</span></span>
 <span id="cb335-8"><a href="three-way-anova.html#cb335-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-267-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
 <p>Here’s the second, which plots treatment x gender for each risk level:</p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="three-way-anova.html#cb336-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
 <span id="cb336-2"><a href="three-way-anova.html#cb336-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
@@ -720,7 +727,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb336-6"><a href="three-way-anova.html#cb336-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb336-7"><a href="three-way-anova.html#cb336-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(risk)) <span class="sc">+</span></span>
 <span id="cb336-8"><a href="three-way-anova.html#cb336-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-268-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-270-1.png" width="672" /></p>
 <p>And finally, here is gender and risk by each treatment:</p>
 <div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="three-way-anova.html#cb337-1" tabindex="-1"></a>headache_summary <span class="sc">%&gt;%</span></span>
 <span id="cb337-2"><a href="three-way-anova.html#cb337-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
@@ -730,7 +737,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb337-6"><a href="three-way-anova.html#cb337-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb337-7"><a href="three-way-anova.html#cb337-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">c</span>(treatment)) <span class="sc">+</span></span>
 <span id="cb337-8"><a href="three-way-anova.html#cb337-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-271-1.png" width="672" /></p>
 <p>And then within that, you would also want the main effects.</p>
 </div>
 <div id="assumptions-and-output" class="section level3 hasAnchor" number="9.7.4">
@@ -792,7 +799,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Here, the risk x treatment interaction is significant for men (<em>p</em> = .016). However, for women the interaction is not quite significant (<em>p</em> = .054).</p>
 <p>Let’s break this down for the men by doing simple simple effects. Following the principle of starting with the highest-order factor first, we now need to decompose the two-way risk x treatment interaction for men. Is there a difference between treatments when risk is low?</p>
 <p>Here’s a graph to visualise what comparisons we’re looking at:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-276-1.png" width="672" /></p>
 <p>Here’s one way to run the simple simple effets of treatment (with Holm adjustments by default):</p>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="three-way-anova.html#cb346-1" tabindex="-1"></a><span class="fu">emmeans</span>(threeway_aov, <span class="sc">~</span> treatment <span class="sc">|</span> gender <span class="sc">*</span> risk) <span class="sc">%&gt;%</span></span>
 <span id="cb346-2"><a href="three-way-anova.html#cb346-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>

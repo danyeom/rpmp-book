@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-07" />
+<meta name="date" content="2025-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,14 +199,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#normal-dist"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
-<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
-<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#graphing-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Graphing distributions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.3</b> Skew</a></li>
+<li class="chapter" data-level="3.4.4" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.4</b> Kurtosis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a>
+<li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.5.1</b> z-scores</a></li>
-<li class="chapter" data-level="3.5.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.5.2</b> Calculating z-scores</a></li>
-<li class="chapter" data-level="3.5.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.5.3</b> Comparing across scales</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.6.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.6.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.6.3</b> Comparing across scales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
@@ -642,25 +649,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="the-variability-of-data" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> The variability of data<a href="variability.html#the-variability-of-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The other key way of describing data is in its spread, or distribution. The way data is distributed can give key insights into how that data should be treated.</p>
+<p>The other key way of describing data is in its <strong>spread,</strong> or distribution. The way data is distributed can give key insights into how that data should be treated.</p>
 <p>Consider the following graphs below.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>You can see that all three graphs peak at around the same point, but <em>look</em> very different outside of that. The orange line is narrow, while the red line is considerably more spread out. All of these graphs peak at the same point but still look very different. Therefore, they have very different <strong>spreads</strong>, or <strong>distributions</strong>.</p>
 <p>We saw on the last page that we can quantify how far values are spread apart by finding the range. However, this isn’t always a good idea - two datasets with the exact same range can look wildly different. Therefore, we need ways of quantifying how data is spread out as well.</p>
 </div>
 <div id="sd" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Standard deviation<a href="variability.html#sd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Standard deviation</strong> (<span class="math inline">\(\sigma\)</span> or <strong>SD</strong>) describes how spread out our data is within our sample, in standard (i.e. comparable) units. Data that is spread out widely (like the red curve above) will have a large standard deviation; likewise, data that has a narrow spread will have a small standard deviation. We’ll touch on this a bit more in the following pages, but for now just remember what a standard deviation is for.</p>
+<p><strong>Standard deviation</strong> (<span class="math inline">\(\sigma\)</span>, or <strong>SD</strong>) describes how spread out our data is within our sample, in standard (i.e. comparable) units. Data that is spread out widely (like the red curve above) will have a large standard deviation; likewise, data that has a narrow spread will have a small standard deviation. We’ll touch on this a bit more in the following pages, but for now just remember what a standard deviation is for.</p>
 <p>To calculate standard deviation, we first calculate <strong>variance</strong>, which is another measure of spread:</p>
 <p><span class="math display">\[
 Variance = \frac{\Sigma (x_i - \bar{x} )^2}{n - 1}
 \]</span></p>
 <p>Or, in human terms:</p>
 <ul>
-<li>Take each data point (xi)</li>
+<li>Take each data point (<span class="math inline">\(x_i\)</span>)</li>
 <li>Subtract the mean from each data point (x with the bar) and square that difference</li>
 <li>Add them all up together</li>
-<li>Divide by n - 1</li>
+<li>Divide by <span class="math inline">\(n - 1\)</span></li>
 </ul>
 <p>And then to calculate standard deviation, we simply take the square root of the variance.</p>
 <p><span class="math display">\[
@@ -687,15 +694,15 @@ SD = \sqrt{\frac{\Sigma (x_i - \bar{x} )^2}{n - 1}}
 </div>
 <div id="sderr" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Standard error, and the SDoTM<a href="variability.html#sderr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample’s mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to sampling error. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:</p>
-<p>The spread of these sample means is called the sampling distribution of the mean (SDoTM), shown on the right. This gives us a sense of where the population mean (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.</p>
-<p>The standard error of the mean (standard error; SE) is another measure of variability - this time, it is the spread of sample means across the sampling distribution of the mean. This represents how close our sample mean is to the likely population mean. If our sampling distribution is wide, our standard error will be large - and that means that we won’t have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean.</p>
+<p>Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample’s mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to <strong>sampling error</strong>. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:</p>
+<p>The spread of these sample means is called the <strong>sampling distribution of the mean (SDoTM)</strong>, shown on the right. This gives us a sense of where the population mean (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.</p>
+<p>The <strong>standard error of the mean</strong> (standard error; SE) is another measure of variability - this time, it is the spread of <strong>sample means</strong> across the sampling distribution of the mean. This represents how close our sample mean is to the likely <em>population</em> mean. If our sampling distribution is wide, our standard error will be large - and that means that we won’t have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean.</p>
 <p>Standard error is calculated using the below formula:</p>
 <p><span class="math display">\[
 SE = \frac{SD}{\sqrt n}
 \]</span></p>
 <p>Where SD = standard deviation, and n = sample size.</p>
-<p>Practice: You have a dataset of 400 people. You know that the mean of the DV is 760, with a standard deviation of 40. Calculate the standard error for this sample.</p>
+<p><strong>Practice</strong>: You have a dataset of 400 people. You know that the mean of the DV is 760, with a standard deviation of 40. Calculate the standard error for this sample.</p>
 </div>
 </div>
             </section>

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-07" />
+<meta name="date" content="2025-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,14 +199,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#normal-dist"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
-<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.2</b> Skew</a></li>
-<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.3</b> Kurtosis</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#graphing-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Graphing distributions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.3</b> Skew</a></li>
+<li class="chapter" data-level="3.4.4" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.4</b> Kurtosis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.5</b> z-scores</a>
+<li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.5.1</b> z-scores</a></li>
-<li class="chapter" data-level="3.5.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.5.2</b> Calculating z-scores</a></li>
-<li class="chapter" data-level="3.5.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.5.3</b> Comparing across scales</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.6.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.6.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.6.3</b> Comparing across scales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
@@ -639,20 +646,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Research Process for Music Psychologists</h1>
 <h2 class="subtitle"><em>R version</em></h2>
 <p class="author"><em>Daniel Yeom</em></p>
-<p class="date"><em>2025-02-07</em></p>
+<p class="date"><em>2025-02-11</em></p>
 </div>
 <div id="preface" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is an R adaptation of the statistics content from a subject called Research Process for Music Psychologists (MUSI90252). The subject is an overview of research methods for Masters and PhD students in music psychology at the University of Melbourne.</p>
+<p>This is an R adaptation of the statistics content from a subject called Research Process for Music Psychologists (MUSI90252). The subject is an introduction to research methods for Masters and PhD students in music psychology at the University of Melbourne.</p>
 <p><strong>The general idea</strong></p>
-<p>The subject’s statistics material was originally written for Jamovi, given its ease of use and impressive functionality, but we have also encouraged any quantitative-oriented students to consider learning R in the long term. With that in mind, by and large the content is exactly the same as the Jamovi-focused content in the Canvas shell, except:</p>
+<p>The subject’s statistics material was originally written for Jamovi, given its ease of use and impressive functionality. However, we have also encouraged any quantitative-oriented students to consider learning R in the long term. With that in mind, by and large the content is a very faithful reproduction of the Jamovi-focused content in the Canvas shell, except:</p>
 <ul>
-<li>Some commentary has either been added or removed for R-specific material (e.g. information on functions).</li>
-<li>Embedded content, such as that in Module 7, is not available here (but is Jamovi-specific anyway).</li>
+<li>Some commentary has either been added for R-specific material (e.g. information on functions).</li>
+<li>Some embedded content is not available here (mainly for being Jamovi-specific).</li>
 <li>Some content has been reorganised in a minor way because of how R outputs things compared to Jamovi.</li>
 <li>The first chapter is a very (<em>very</em>) brief overview of how to use core R and tidyverse functions.</li>
 </ul>
-<p>The R version of the RPMP content is therefore fairly different to the regular Jamovi version, by virtue of the fact that even though Jamovi is built on R it isn’t necessarily built with R users in mind. Rather, Jamovi is built for users of SPSS and other platforms who may be used to a point and click approach. To clarify, there’s nothing wrong with this at all - I actually think this is a great thing, and I believe one of Jamovi’s greatest strengths is how easy it is to use. At the same time, for the budding R-using music psychologist - at least for RPMP - it means that the same procedures in R work a little differently to how they function in Jamovi. It’s for this reason that the R adaptation of the MUSI90252 content has been written with one key principle in mind: <em>parity with Jamovi</em>. R can and will do so much more than what is presented in this book, but again, the subject was originally designed with Jamovi users in mind.</p>
+<p>The R version of the RPMP content is therefore a little different to the regular Jamovi version, by virtue of the fact that even though Jamovi is built on R it isn’t necessarily built with R users in mind. Rather, Jamovi is built for users of SPSS and other platforms who may be used to a point and click approach.</p>
+<p>To clarify, there’s nothing wrong with this at all - I actually think this is a great thing, and I believe one of Jamovi’s greatest strengths is how easy it is to use. At the same time, for the budding R-using music psychologist - at least for RPMP - it means that the same procedures in R work a little differently to how they function in Jamovi. For this reason that the R adaptation of the RPMP content has been written with the key principle of <strong>parity with Jamovi</strong> in mind. R can and will do so much more than what is presented in this book, but again, the subject was originally designed with Jamovi users in mind.</p>
 
 </div>
 

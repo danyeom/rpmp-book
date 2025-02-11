@@ -369,10 +369,9 @@ mnm_data %>%
 
 ### Using R
 
+The relevant function for doing a chi-square test in R is the `chisq.test()` function.^[There is an analogous function called `chisq_test()` in the `rstatix` package, but the base R `chisq.test()` is easy enough to learn.]
 
-Using Jamovi
-
-By default, the `chisq.test()` function in R will assume that your categories have an equal chance of happening. However, in this instance we know that the colours are not evenly distributed. To ensure the proper probabilities are set beforehand, this needs to be specified by giving the `p` argument within `chisq.test()`. Note that the order of the expected probabilities needs to match the order they appear in the dataset (R will generally order these alphabetically unless told otherwise):
+By default, the `chisq.test()` function in R will assume that your categories have an equal chance of happening. However, in this instance we know that the colours are not evenly distributed. To ensure the proper probabilities are set beforehand, this needs to be specified by giving the `p` argument within `chisq.test()`. Note that the order of the expected probabilities needs to match the order they appear in the dataset (R will generally order these alphabetically unless told otherwise):^[If you need to order your variable a certain way, you should use the `factor()` function. You will need to specify a `levels` argument, which describes the ordering of the categories/groups, and optionally a `labels` argument which gives each one a label. Both arguments take vectors, i.e. `labels = c("1", "2", "3")`.]
 
 ```{r}
 # This pulls the relevant variable directly
@@ -480,8 +479,6 @@ Next is our chi-square test output. As you can see, our test of independence sug
 ```{r}
 w7_inst_chisq
 ```
-
-Lastly we have this output. Hold onto this for now - we'll look at this in more detail over the next page.
 
 
 

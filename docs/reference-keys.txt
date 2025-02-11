@@ -1,6 +1,7 @@
 fig:unnamed-chunk-21
-fig:unnamed-chunk-107
-fig:unnamed-chunk-164
+fig:unnamed-chunk-66
+fig:unnamed-chunk-109
+fig:unnamed-chunk-166
 preface
 intro-to-R
 R-syntax
@@ -37,8 +38,13 @@ sd
 sderr
 distributions
 normal-dist
+graphing-distributions
 skew
 kurtosis
+clt
+what-is-the-central-limit-theorem
+simulation
+some-important-points
 zscores
 z-scores
 calculating-z-scores
