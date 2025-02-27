@@ -192,11 +192,11 @@ output-6
 comparing-predictive-strength
 factorial-anova
 factorial-intro
-conventions-for-factorial-designs
-interactions
+factorial-designs
 what-is-an-interaction
 testing-for-interactions
 simple-effects-tests
+simple-effects-tests-1
 r-specific-considerations
 the-afex-package
 writing-interactions-in-r
