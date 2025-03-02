@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-27" />
+<meta name="date" content="2025-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -475,13 +475,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8.3" data-path="three-way-anova.html"><a href="three-way-anova.html#simple-simple-effects"><i class="fa fa-check"></i><b>9.8.3</b> Simple <em>simple</em> effects</a></li>
 <li class="chapter" data-level="9.8.4" data-path="three-way-anova.html"><a href="three-way-anova.html#assumptions-and-output"><i class="fa fa-check"></i><b>9.8.4</b> Assumptions and output</a></li>
 </ul></li>
+<li class="chapter" data-level="9.9" data-path="planned-comparisons.html"><a href="planned-comparisons.html"><i class="fa fa-check"></i><b>9.9</b> Planned comparisons</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="planned-comparisons.html"><a href="planned-comparisons.html#introduction-4"><i class="fa fa-check"></i><b>9.9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.9.2" data-path="planned-comparisons.html"><a href="planned-comparisons.html#planned-comparisons-1"><i class="fa fa-check"></i><b>9.9.2</b> Planned comparisons</a></li>
+<li class="chapter" data-level="9.9.3" data-path="planned-comparisons.html"><a href="planned-comparisons.html#linear-contrasts"><i class="fa fa-check"></i><b>9.9.3</b> Linear contrasts</a></li>
+<li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
 <li class="chapter" data-level="10.2" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.2</b> ANCOVAs</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-4"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
 <li class="chapter" data-level="10.2.2" data-path="ancovas.html"><a href="ancovas.html#example-6"><i class="fa fa-check"></i><b>10.2.2</b> Example</a></li>
 <li class="chapter" data-level="10.2.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.2.3</b> One-way ANCOVA</a></li>
 <li class="chapter" data-level="10.2.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.2.4</b> Assumptions</a></li>
@@ -509,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html"><i class="fa fa-check"></i><b>11.2</b> Theory of logistic regression</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-5"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-6"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
 <li class="chapter" data-level="11.2.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#modelling-probabilities-sort-of"><i class="fa fa-check"></i><b>11.2.2</b> Modelling probabilities (sort of)</a></li>
 <li class="chapter" data-level="11.2.3" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#the-logistic-model"><i class="fa fa-check"></i><b>11.2.3</b> The logistic model</a></li>
 </ul></li>
@@ -656,7 +663,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For this example, we’ll take a look at a simple interventions study. Participants were asked to answer a short list of questions relating to how they were feeling, once before an intervention and once afterwards. Higher scores represent better emotional states. The intervention was a series of self-regulation classes and exercises that the participants took twice a week. We’re interested in seeing whether the intervention was effective.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="paired-samples-t-test.html#cb163-1" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_symptoms.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 32 Columns: 2
-## ── Column specification ────────────────────────────
+## ── Column specification ──────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (2): before, after
 ## 

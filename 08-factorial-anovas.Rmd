@@ -837,3 +837,165 @@ emmeans(threeway_aov, ~ treatment * gender * risk) %>%
 From this we can infer the following:
 -   For *high risk* men, there was a significant difference in treatment between X and Y (*p* = .004), a significant difference between X and Z (*p* = .001) but no difference between X and Z (*p* = .347)
 -   No significant difference between treatments for **low risk** men
+
+
+
+## Planned comparisons
+
+### Introduction
+
+Up until now, the typical process for testing an ANOVA has been something like this:
+
+-    Determine null and alternative hypotheses
+-    Run an omnibus ANOVA
+-    Run post-hocs to unpack any significant effects
+
+The last point here is of interest to us. Recall that the omnibus ANOVA generally tells us that there is a difference between the means somewhere in our potential list of comparisons. We don't know where that difference may be ahead of time. Post-hoc tests like Tukey tests allow us to 'unpack' these significant differences further. However, post-hocs by definition are *a-posteriori* - they are only done after a significant result/test, meaning that they are strictly **exploratory**.
+
+Sometimes, however, we may actually have *a-priori* (i.e. before the test) hypotheses about specific comparisons we want to make. Often, these are specific predictions based on literature that we want to test in our own data. In these instances, we now move into the possibility of doing planned comparisons.
+
+
+### Planned comparisons
+
+As mentioned above, we use **planned comparisons** when we have **specific hypotheses** we want to test. For instance, you may want to compare two specific groups out of four for a hypothetical reason. Or, alternatively, you may wish to compare one group against all of the others at once. These kinds of scenarios can be vital for testing specific hypotheses.
+
+The benefit of planned comparisons is twofold. Firstly, good planned comparisons should be based in either existing theory or on specific hypotheses, meaning that you are generally aiming to test a specific effect for (hopefully) a scientifically sound reason. Secondly, planned comparisons reduce the number of comparisons that need to be made, thereby reducing the overall family-wise Type I error rate. In essence, we only conduct the tests required to evaluate our original research question(s).
+
+### Linear contrasts
+
+In planned comparisons, we typically compare two specific means with each other. With that in mind, it may be tempting to simply default to running a t-test or something similar to compare just the two groups you want. However, this would not properly test the planned comparison, because in some instances we must average over the other groups in the comparisons. To correctly set up planned comparisons, we must set up **linear contrasts**. In essence, these allow to specify how the various groups in an ANOVA should be compared.
+
+Here's an intuitive way of thinking about these contrasts. Imagine we want to compare one superstar soccer player (e.g. maybe Messi) to a given football team of 15. To make the comparison fair, we would *weight* each person in the team of 15 (i.e. make each person's average worth 1/15), in order for the team's average to be comparable to the superstar player.
+
+In essence, this is what we do when defining linear contrasts, and we do this via defining a contrast matrix. This **contrast matrix** is a way that lets us weight the categories in a variable to create contrasts. While there are several forms of standard contrasts (which is slightly beyond the scope, but [here is a good overview](https://stats.oarc.ucla.edu/r/library/r-library-contrast-coding-systems-for-categorical-variables/).
+
+We assign a positive or negative number to each level in a variable in order to define a contrast. Here, the direction (positive vs negative) matters; any value with a positive contrast coefficient will be on one side of the comparison, and any value with a negative coefficient will be on the other side of the comparison. The linear contrasts **must sum to** zero, meaning that the total on each side must be the same.
+
+Below are three examples of specific contrasts, and their coefficients:
+
+```{r echo = FALSE}
+data.frame(
+  a = c("", "Group A - Group B", "Group B - Group C", "Group A - (Group B and C)"),
+  b = c("Group A", "1", "0", "2"),
+  c = c("Group B", "-1", "1", "-1"),
+  d = c("Group C", "0", "-1", "-1")
+) %>%
+  knitr::kable()
+```
+
+
+It doesn't really matter what numbers you use to enter these contrasts, so long as they sum to zero. For example, we could also write the first contrast using 0.5 and -0.5 in place of the 1s.
+
+### An example
+
+Let's revisit the one-way ANOVA we ran in 9.5 One way ANOVA:
+
+>    Below is another simple example, comparing taste ratings across three different types of slices: caramel slices, vanilla slices and lemon slices. Participants were randomly allocated to taste one of the three slices blindfolded, and were then asked to verbally rate its taste on a scale from 1-10 (10 being super tasty).
+
+Now, pretend that this time we have a specific hypothesis we want to test. Namely, pretend that we are only interested in two comparisons:
+
+1.    Vanilla - caramel slices
+2.    Vanilla - caramel and lemon slices
+
+Here's the original ANOVA output for your reference, though we don't need to do anything with this:
+
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+w9_slices <- read_csv(here("data", "week_9", "w9_slices.csv"))
+
+# Create factor
+w9_slices$group <- factor(w9_slices$group)
+
+# Build aov model and output summary
+
+w9_slices_aov <- aov(rating ~ group, data = w9_slices)
+summary(w9_slices_aov)
+```
+We need to define the contrast coefficients for our two planned contrasts. In R, there are two ways you can do this: either define contrasts at the *aov* level, or use `emmeans`. We will do the latter.
+
+```{r echo = FALSE}
+data.frame(
+  a = c("", "Caramel - Vanilla", "Vanilla - (Caramel and Lemon)"),
+  b = c("Caramel", "1", "-1"),
+  c = c("Lemon", "0", "-1"),
+  d = c("Vanilla", "-1", "2")
+) %>%
+  knitr::kable()
+```
+
+
+To set up the contrasts, we first need to know the exact order of our group variable/
+
+```{r}
+# IDentify levels
+
+levels(w9_slices$group)
+```
+
+Once we know that, we need to create new variables that will contain the contrasts. To do this, we will create a vector of length *k*, where *k* is the total number of groups in the independent/categorical variable. In this case, becasue we have three slice flavours, we need to create vectors of length 3.
+
+The value of each vector item corresponds to the level of the factor. For `emmeans`, all we need to do is use a 1 for the group of interest, and 0 of others; `emmeans` will build the correct contrast coefficients later depending on what we give it.
+
+```{r}
+# Define contrasts
+
+lemon <- c(0, 1, 0)
+caramel <- c(1, 0, 0)
+vanilla <- c(0, 0, 1)
+```
+
+
+Finally, we can perform our contrasts. We start with the same call to `emmeans()`, so we must first give it our aov`/ANOVA object and indicate our grouping variable.
+
+```{r}
+emmeans(w9_slices_aov, ~ group) 
+
+```
+Next, we use the `contrast()` function to perform the pairwise comparisons. (`pairs()`, which we saw earlier, is just a shorthand form of `contrast()`.) Here is where we give the function the speicifc contrasts that we want to run. We do this by supplying the `methods` argument in `contrast()`. This argument takes a **list** of comparisons we want to run, expressed in `A - B` form (where A and B are the variables of *contrast coefficients* representing the groups we want to compare). 
+
+For example, if we want to compare our caramel and vanilla slices, we simply need to give `caramel - vanilla` - both of which we defined just above - to a list in `contrast()`. This will generate the following set of output. 
+
+```{r}
+emmeans(w9_slices_aov, ~ group) %>%
+  contrast(
+    method = list(
+      caramel - vanilla
+    )
+  )
+
+```
+
+
+
+The output is a little hard to read through, but we can fix that by assigning a name to the list item:
+
+```{r}
+emmeans(w9_slices_aov, ~ group) %>%
+  contrast(
+    method = list(
+      "Caramel - vanilla" = caramel - vanilla
+    )
+  )
+```
+Unlike Jamovi and gamlj, which can only display one given comparison at a time, `emmeans()` can display multiple. Here, for example, is how we would define our second contrast - that is, vanilla vs the other two slices:
+
+```
+list("Vanilla vs others" = vanilla - (caramel + lemon)/2
+```
+
+Note here that we take the average of 'caramel' and 'lemon', by adding them up and dividing by 2. This will have the same effect of making their contrast coefficients half the weight of the vanilla level (i.e. it does the maths of calculating the correct contrast coefficient so that it sums to zero). 
+
+Instead of making this a whole new `emmeans()` call, we can simply add that list term to the `list()` part of our code in the main call.
+
+```{r}
+emmeans(w9_slices_aov, ~ group) %>%
+  contrast(
+    method = list(
+      "Caramel - vanilla" = caramel - vanilla,
+      "Vanilla - others" = vanilla - (lemon + caramel)/2
+    )
+  )
+
+```
+
+Using this output, we can see that the comparison between caramel slices and vanilla slices is significant (*t* = 2.43, *p* = .018). Likewise, the comparison between the vanilla slices and the other slices is significant (*t* = 3.51, *p* < .001).

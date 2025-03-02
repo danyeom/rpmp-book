@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-27" />
+<meta name="date" content="2025-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -475,13 +475,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8.3" data-path="three-way-anova.html"><a href="three-way-anova.html#simple-simple-effects"><i class="fa fa-check"></i><b>9.8.3</b> Simple <em>simple</em> effects</a></li>
 <li class="chapter" data-level="9.8.4" data-path="three-way-anova.html"><a href="three-way-anova.html#assumptions-and-output"><i class="fa fa-check"></i><b>9.8.4</b> Assumptions and output</a></li>
 </ul></li>
+<li class="chapter" data-level="9.9" data-path="planned-comparisons.html"><a href="planned-comparisons.html"><i class="fa fa-check"></i><b>9.9</b> Planned comparisons</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="planned-comparisons.html"><a href="planned-comparisons.html#introduction-4"><i class="fa fa-check"></i><b>9.9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.9.2" data-path="planned-comparisons.html"><a href="planned-comparisons.html#planned-comparisons-1"><i class="fa fa-check"></i><b>9.9.2</b> Planned comparisons</a></li>
+<li class="chapter" data-level="9.9.3" data-path="planned-comparisons.html"><a href="planned-comparisons.html#linear-contrasts"><i class="fa fa-check"></i><b>9.9.3</b> Linear contrasts</a></li>
+<li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
 <li class="chapter" data-level="10.2" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.2</b> ANCOVAs</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-4"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
 <li class="chapter" data-level="10.2.2" data-path="ancovas.html"><a href="ancovas.html#example-6"><i class="fa fa-check"></i><b>10.2.2</b> Example</a></li>
 <li class="chapter" data-level="10.2.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.2.3</b> One-way ANCOVA</a></li>
 <li class="chapter" data-level="10.2.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.2.4</b> Assumptions</a></li>
@@ -509,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html"><i class="fa fa-check"></i><b>11.2</b> Theory of logistic regression</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-5"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-6"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
 <li class="chapter" data-level="11.2.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#modelling-probabilities-sort-of"><i class="fa fa-check"></i><b>11.2.2</b> Modelling probabilities (sort of)</a></li>
 <li class="chapter" data-level="11.2.3" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#the-logistic-model"><i class="fa fa-check"></i><b>11.2.3</b> The logistic model</a></li>
 </ul></li>
@@ -662,17 +669,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The type of rotation - for now set this to “none”, as we’ll talk about this later</li>
 <li>The factoring method, <code>fm</code> - as above. <code>"ml"</code> stands for maximum likelihood, <code>"pa"</code> stands for principal axis factoring and <code>"minres"</code> stands for minimum residuals.</li>
 </ul>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="interpreting-output.html#cb438-1" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
-<span id="cb438-2"><a href="interpreting-output.html#cb438-2" tabindex="-1"></a>  saq,</span>
-<span id="cb438-3"><a href="interpreting-output.html#cb438-3" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
-<span id="cb438-4"><a href="interpreting-output.html#cb438-4" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>,</span>
-<span id="cb438-5"><a href="interpreting-output.html#cb438-5" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">&quot;ml&quot;</span></span>
-<span id="cb438-6"><a href="interpreting-output.html#cb438-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="interpreting-output.html#cb451-1" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
+<span id="cb451-2"><a href="interpreting-output.html#cb451-2" tabindex="-1"></a>  saq,</span>
+<span id="cb451-3"><a href="interpreting-output.html#cb451-3" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
+<span id="cb451-4"><a href="interpreting-output.html#cb451-4" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb451-5"><a href="interpreting-output.html#cb451-5" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">&quot;ml&quot;</span></span>
+<span id="cb451-6"><a href="interpreting-output.html#cb451-6" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="interpreting-output-1" class="section level3 hasAnchor" number="12.5.2">
 <h3><span class="header-section-number">12.5.2</span> Interpreting output<a href="interpreting-output.html#interpreting-output-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is the main output of our EFA. This is what we call a factor matrix:</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="interpreting-output.html#cb439-1" tabindex="-1"></a>saq_efa</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="interpreting-output.html#cb452-1" tabindex="-1"></a>saq_efa</span></code></pre></div>
 <pre><code>## Factor Analysis using method =  ml
 ## Call: fa(r = saq, nfactors = 3, rotate = &quot;none&quot;, fm = &quot;ml&quot;)
 ## Standardized loadings (pattern matrix) based upon correlation matrix
@@ -716,8 +723,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R square of scores with factors          0.79  0.43  0.35
 ## Minimum correlation of possible factor scores     0.59 -0.15 -0.31</code></pre>
 <p>What do these numbers mean? Firstly, each value in each factor column (labelled <code>ML1</code>, <code>ML2</code> etc) gives us our loadings. Note that as per the common factor model we described before, we estimate a loading for every variable on every factor. However, this can be a bit gross to interpret, so we generally choose to suppress (not remove) loadings below a certain threshold. By default, Jamovi will hide loadings below 0.3. We can also sort the items based on their loadings. To do this, we use the <code>fa.sort()</code> function and feed in our EFA object. We can then use <code>print()</code> to clean up this output with two arguments: <code>digits</code> to show rounding, and <code>cut</code> to suppress values below a certain size. This gives us a nicer output:</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="interpreting-output.html#cb441-1" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa.sort</span>(saq_efa) </span>
-<span id="cb441-2"><a href="interpreting-output.html#cb441-2" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> .<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="interpreting-output.html#cb454-1" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa.sort</span>(saq_efa) </span>
+<span id="cb454-2"><a href="interpreting-output.html#cb454-2" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> .<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## Factor Analysis using method =  ml
 ## Call: fa(r = saq, nfactors = 3, rotate = &quot;none&quot;, fm = &quot;ml&quot;)
 ## Standardized loadings (pattern matrix) based upon correlation matrix
@@ -768,13 +775,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 h^2 = .631^2 + -.116^2 + .0963^2
 \]</span></p>
 <p>Which gives us an answer of approximately 0.420:</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="interpreting-output.html#cb443-1" tabindex="-1"></a>.<span class="dv">631</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="sc">-</span>.<span class="dv">116</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> .<span class="dv">0963</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="interpreting-output.html#cb456-1" tabindex="-1"></a>.<span class="dv">631</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="sc">-</span>.<span class="dv">116</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> .<span class="dv">0963</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 0.4208907</code></pre>
 </div>
 <div id="total-variance-explained" class="section level3 hasAnchor" number="12.5.3">
 <h3><span class="header-section-number">12.5.3</span> Total variance explained<a href="interpreting-output.html#total-variance-explained" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The output of <code>psych</code> will also give you a brief table of the total amount of variance explained by each factor. This is shown in the output of <code>fa</code>, but can also be accessed again below. It is generally useful to at least report the total cumulative variance explained by all factors. In this case, the three factors collectively explain 35.1% of the total variance in the data (shown by the row saying “Cumulative var”).</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="interpreting-output.html#cb445-1" tabindex="-1"></a>saq_efa<span class="sc">$</span>Vaccounted</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="interpreting-output.html#cb458-1" tabindex="-1"></a>saq_efa<span class="sc">$</span>Vaccounted</span></code></pre></div>
 <pre><code>##                             ML1        ML2        ML3
 ## SS loadings           2.3325379 0.47409809 0.35202983
 ## Proportion Var        0.2591709 0.05267757 0.03911443

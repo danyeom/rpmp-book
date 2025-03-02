@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-27" />
+<meta name="date" content="2025-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -475,13 +475,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8.3" data-path="three-way-anova.html"><a href="three-way-anova.html#simple-simple-effects"><i class="fa fa-check"></i><b>9.8.3</b> Simple <em>simple</em> effects</a></li>
 <li class="chapter" data-level="9.8.4" data-path="three-way-anova.html"><a href="three-way-anova.html#assumptions-and-output"><i class="fa fa-check"></i><b>9.8.4</b> Assumptions and output</a></li>
 </ul></li>
+<li class="chapter" data-level="9.9" data-path="planned-comparisons.html"><a href="planned-comparisons.html"><i class="fa fa-check"></i><b>9.9</b> Planned comparisons</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="planned-comparisons.html"><a href="planned-comparisons.html#introduction-4"><i class="fa fa-check"></i><b>9.9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.9.2" data-path="planned-comparisons.html"><a href="planned-comparisons.html#planned-comparisons-1"><i class="fa fa-check"></i><b>9.9.2</b> Planned comparisons</a></li>
+<li class="chapter" data-level="9.9.3" data-path="planned-comparisons.html"><a href="planned-comparisons.html#linear-contrasts"><i class="fa fa-check"></i><b>9.9.3</b> Linear contrasts</a></li>
+<li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
 <li class="chapter" data-level="10.2" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.2</b> ANCOVAs</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-4"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
 <li class="chapter" data-level="10.2.2" data-path="ancovas.html"><a href="ancovas.html#example-6"><i class="fa fa-check"></i><b>10.2.2</b> Example</a></li>
 <li class="chapter" data-level="10.2.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.2.3</b> One-way ANCOVA</a></li>
 <li class="chapter" data-level="10.2.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.2.4</b> Assumptions</a></li>
@@ -509,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html"><i class="fa fa-check"></i><b>11.2</b> Theory of logistic regression</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-5"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-6"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
 <li class="chapter" data-level="11.2.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#modelling-probabilities-sort-of"><i class="fa fa-check"></i><b>11.2.2</b> Modelling probabilities (sort of)</a></li>
 <li class="chapter" data-level="11.2.3" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#the-logistic-model"><i class="fa fa-check"></i><b>11.2.3</b> The logistic model</a></li>
 </ul></li>
@@ -649,11 +656,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">10.4.1</span> Comparing <span class="math inline">\(R^2\)</span><a href="comparing-models.html#comparing-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The most commonly cited method of comparing between regression models is to examine their <span class="math inline">\(R^2\)</span> values, which you may recall is a measure of how much variance in the outcome is explained by the predictors.</p>
 <p>This is easy enough to do visually. You can see the <span class="math inline">\(R^2\)</span> values in the output. We can extract this easily using the following code. Whenever we use <code>summary()</code> on an <code>lm()</code> model, the summary object will contain a variable for the <span class="math inline">\(R^2\)</span> that we can easily pull:</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="comparing-models.html#cb369-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block1)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="comparing-models.html#cb382-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block1)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.211779</code></pre>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="comparing-models.html#cb371-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block2)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="comparing-models.html#cb384-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block2)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.22278</code></pre>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="comparing-models.html#cb373-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block3)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="comparing-models.html#cb386-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block3)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.2971018</code></pre>
 <p>We can see that Block 3 has the highest <span class="math inline">\(R^2\)</span> at .297, meaning that the Block 3 model explains about 29.7% of the variance in the outcome. Block 2 explains 22.3% while Block 1 explains 21.2%. Therefore, based on this alone we might say that Block 2 explains only a little bit of extra variance in flow proneness than Block 1, while Block 3 explains substantially more - therefore, we should go with Block 3. However… <span class="math inline">\(R^2\)</span> will <em>always</em> increase with more predictors! The very fact that each additional predictor will explain more variance - even if only a tiny amount at a time - means that selecting based on <span class="math inline">\(R^2\)</span> alone will naturally favour models with more predictors. This isn’t necessarily a useful thing!</p>
 </div>
@@ -662,14 +669,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This is a slightly more ‘formal’ test of whether a more complex model leads to a significant change in fit. This works by comparing <strong>nested</strong> models. Imagine model A and model B, two linear regressions fit on the same dataset. Model A has three predictors, and is the ‘full’ model of the thing we’re trying to the estimate. Model B drops one of the predictors from Model A, but keeps the other two. Model B is considered a <em>nested</em> model of Model A.</p>
 <p>The principle of this test is based on the idea of seeing whether a nested (reduced) model is a significantly better fit than a full model. If a nested model is a better fit, the residual sums of squares will <em>decrease</em> - less residuals indicate better fit. The <code>anova()</code> test works on this principle, but in a sort of reverse way. Because we’re testing whether a model with <em>additional</em> predictors is a better fit, naturally we should expect that the ‘nested’ model (in this case, our original model) will be a <em>worse</em> fit than the new model. In that case, a significant result indicates that the more complex model is the better fit.</p>
 <p>Nested model tests can be done with the <code>anova()</code> function from base R by simply giving it two model names in order. Let’s start by comparing Blocks 1 and 2:</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="comparing-models.html#cb375-1" tabindex="-1"></a><span class="fu">anova</span>(flow_block1, flow_block2)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="comparing-models.html#cb388-1" tabindex="-1"></a><span class="fu">anova</span>(flow_block1, flow_block2)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"809","2":"10124.204","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"808","2":"9982.903","3":"1","4":"141.3011","5":"11.43668","6":"0.0007546911","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>And now between Blocks 2 and 3:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="comparing-models.html#cb376-1" tabindex="-1"></a><span class="fu">anova</span>(flow_block2, flow_block3)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="comparing-models.html#cb389-1" tabindex="-1"></a><span class="fu">anova</span>(flow_block2, flow_block3)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"808","2":"9982.903","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"807","2":"9028.287","3":"1","4":"954.6163","5":"85.32908","6":"2.18656e-19","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -690,13 +697,13 @@ BIC = k ln(n) - 2 ln (\hat L)
 \]</span></p>
 <p><span class="math inline">\(\hat L\)</span> is called the <strong>likelihood</strong>, which is a whole thing that we won’t dive too much into. However, <span class="math inline">\(2 ln (\hat L)\)</span> - or -2LL, or minus two log likelihood - goes by the name of <strong>deviance</strong> (as in deviation). Deviance is essentially the residual sum of squares, and thus serves as a measure of model fit.</p>
 <p>R provides some really neat functions called - you guessed it - <code>AIC()</code> and <code>BIC()</code>. These will calculate the AIC and BIC values for every model name you give it. So, we can enter all of our values at once:</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="comparing-models.html#cb377-1" tabindex="-1"></a><span class="fu">AIC</span>(flow_block1, flow_block2, flow_block3)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="comparing-models.html#cb390-1" tabindex="-1"></a><span class="fu">AIC</span>(flow_block1, flow_block2, flow_block3)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["AIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"3","2":"4354.820","_rn_":"flow_block1"},{"1":"4","2":"4345.421","_rn_":"flow_block2"},{"1":"5","2":"4265.907","_rn_":"flow_block3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="comparing-models.html#cb378-1" tabindex="-1"></a><span class="fu">BIC</span>(flow_block1, flow_block2, flow_block3)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="comparing-models.html#cb391-1" tabindex="-1"></a><span class="fu">BIC</span>(flow_block1, flow_block2, flow_block3)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"3","2":"4368.915","_rn_":"flow_block1"},{"1":"4","2":"4364.214","_rn_":"flow_block2"},{"1":"5","2":"4289.398","_rn_":"flow_block3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

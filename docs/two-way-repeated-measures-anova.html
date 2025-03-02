@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-02-27" />
+<meta name="date" content="2025-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -475,13 +475,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8.3" data-path="three-way-anova.html"><a href="three-way-anova.html#simple-simple-effects"><i class="fa fa-check"></i><b>9.8.3</b> Simple <em>simple</em> effects</a></li>
 <li class="chapter" data-level="9.8.4" data-path="three-way-anova.html"><a href="three-way-anova.html#assumptions-and-output"><i class="fa fa-check"></i><b>9.8.4</b> Assumptions and output</a></li>
 </ul></li>
+<li class="chapter" data-level="9.9" data-path="planned-comparisons.html"><a href="planned-comparisons.html"><i class="fa fa-check"></i><b>9.9</b> Planned comparisons</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="planned-comparisons.html"><a href="planned-comparisons.html#introduction-4"><i class="fa fa-check"></i><b>9.9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.9.2" data-path="planned-comparisons.html"><a href="planned-comparisons.html#planned-comparisons-1"><i class="fa fa-check"></i><b>9.9.2</b> Planned comparisons</a></li>
+<li class="chapter" data-level="9.9.3" data-path="planned-comparisons.html"><a href="planned-comparisons.html#linear-contrasts"><i class="fa fa-check"></i><b>9.9.3</b> Linear contrasts</a></li>
+<li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="revisiting-multiple-regression.html"><a href="revisiting-multiple-regression.html"><i class="fa fa-check"></i><b>10.1</b> Revisiting multiple regression</a></li>
 <li class="chapter" data-level="10.2" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.2</b> ANCOVAs</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-4"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.2.1</b> Introduction</a></li>
 <li class="chapter" data-level="10.2.2" data-path="ancovas.html"><a href="ancovas.html#example-6"><i class="fa fa-check"></i><b>10.2.2</b> Example</a></li>
 <li class="chapter" data-level="10.2.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.2.3</b> One-way ANCOVA</a></li>
 <li class="chapter" data-level="10.2.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.2.4</b> Assumptions</a></li>
@@ -509,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html"><i class="fa fa-check"></i><b>11.2</b> Theory of logistic regression</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-5"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-6"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
 <li class="chapter" data-level="11.2.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#modelling-probabilities-sort-of"><i class="fa fa-check"></i><b>11.2.2</b> Modelling probabilities (sort of)</a></li>
 <li class="chapter" data-level="11.2.3" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#the-logistic-model"><i class="fa fa-check"></i><b>11.2.3</b> The logistic model</a></li>
 </ul></li>
@@ -666,7 +673,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Every participant therefore does 6 maths exams: easy-happy, easy-sad, medium-happy, medium-sad, hard-happy and hard-sad. The dependent variable of interest is their exam score. We’re interested in whether the difficulty and the music type have an effect on exam performance. Because our two IVs are within-subject variables, we will want to use a two-way repeated measures ANOVA.</p>
 <div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="two-way-repeated-measures-anova.html#cb292-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_rmanova_long.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 120 Columns: 4
-## ── Column specification ────────────────────────────
+## ── Column specification ──────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (2): difficulty, music
 ## dbl (2): ptcpt, grade
@@ -683,8 +690,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb295-3"><a href="two-way-repeated-measures-anova.html#cb295-3" tabindex="-1"></a>    <span class="at">difficulty =</span> <span class="fu">factor</span>(difficulty, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;easy&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;hard&quot;</span>))</span>
 <span id="cb295-4"><a href="two-way-repeated-measures-anova.html#cb295-4" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Let’s start with the usual descriptives and graphs:</p>
-<pre><code>## `summarise()` has grouped output by &#39;difficulty&#39;.
-## You can override using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;difficulty&#39;. You
+## can override using the `.groups` argument.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
 <p>Eyeballing the graph, we can see that there might be some sort of effect happening. Unsurprisingly, it looks like the easy maths exams are, well. easier, because people are scoring better on them. There might be an effect of music, because in both easy and hard conditions it looks like people do better with happy music compared to sad music. But the interaction plot tells us there’s something clearly going on, and it paints a really interesting story on its own. It appears that there’s almost a ‘plateau’-ing effect with medium difficulty, in that both happy and sad hit the same point in exam scores. However, it looks like for happy music, harder exams see no further decrease in performance - but there is a sharp drop again for sad music.</p>
 </div>

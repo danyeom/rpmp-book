@@ -221,10 +221,15 @@ introduction-3
 example-5
 simple-simple-effects
 assumptions-and-output
+planned-comparisons
+introduction-4
+planned-comparisons-1
+linear-contrasts
+an-example-1
 multiple-regression-continued
 revisiting-multiple-regression
 ancovas
-introduction-4
+introduction-5
 example-6
 one-way-ancova
 assumptions-2
@@ -242,7 +247,7 @@ reminder-of-probabilities
 odds
 odds-ratios
 theory-of-logistic-regression
-introduction-5
+introduction-6
 modelling-probabilities-sort-of
 the-logistic-model
 example-8
