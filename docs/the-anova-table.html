@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -920,7 +920,7 @@ variance into between and within-groups variance.</p>
 <p>Now that we have our observed F-value, we can now consult an <em>F</em>-table and
 use our two degrees of freedom to find out what our critical <em>F</em>-value is
 (setting alpha = .05):</p>
-<p><img src="img/w9_f-table.png" /><!-- --></p>
+<p><img src="img/w9_f-table.png" width="1072" /></p>
 <p>Reading the column for df1 = 2, and the row for df2 = 9, we get a
 critical F-statistic of 4.2565. Now we can say that because our observed
 test statistic (15.75) is greater than this critical value, our ANOVA is
@@ -931,7 +931,7 @@ the associated probability of getting that value or greater. Our
 software will do all of this stuff for us, but it helps to know exactly
 how an ANOVA works!</p>
 <p>If you want to calculate the <em>p</em>-value manurally in R though, this is entirely possible using the <code>pf()</code> function:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="the-anova-table.html#cb186-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fl">15.75</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">9</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="the-anova-table.html#cb189-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fl">15.75</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">9</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.001149592</code></pre>
 </div>
 </div>

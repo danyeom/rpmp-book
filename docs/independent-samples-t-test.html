@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -659,39 +659,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-data-1" class="section level3 hasAnchor" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> Example data<a href="independent-samples-t-test.html#example-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For this example we’ll use a contrived but really simple example. A group of self-reported professional and amateur musicians were asked how many years of training they had on their primary instrument.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="independent-samples-t-test.html#cb149-1" tabindex="-1"></a>w8_training <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_training.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="independent-samples-t-test.html#cb152-1" tabindex="-1"></a>w8_training <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_training.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 60 Columns: 3
-## ── Column specification ──────────────────────────────
+## ── Column specification ───────
 ## Delimiter: &quot;,&quot;
 ## chr (1): Group
 ## dbl (2): Participant, Years_training
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="independent-samples-t-test.html#cb151-1" tabindex="-1"></a><span class="fu">head</span>(w8_training)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="independent-samples-t-test.html#cb154-1" tabindex="-1"></a><span class="fu">head</span>(w8_training)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Participant"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Years_training"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Group"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"8","3":"Professional"},{"1":"2","2":"9","3":"Professional"},{"1":"3","2":"4","3":"Professional"},{"1":"4","2":"7","3":"Professional"},{"1":"5","2":"9","3":"Professional"},{"1":"6","2":"6","3":"Professional"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Let us start with a nice plot:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="independent-samples-t-test.html#cb152-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
-<span id="cb152-2"><a href="independent-samples-t-test.html#cb152-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
-<span id="cb152-3"><a href="independent-samples-t-test.html#cb152-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb152-4"><a href="independent-samples-t-test.html#cb152-4" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(Years_training, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb152-5"><a href="independent-samples-t-test.html#cb152-5" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(Years_training, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb152-6"><a href="independent-samples-t-test.html#cb152-6" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span><span class="fu">n</span>()</span>
-<span id="cb152-7"><a href="independent-samples-t-test.html#cb152-7" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb152-8"><a href="independent-samples-t-test.html#cb152-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb152-9"><a href="independent-samples-t-test.html#cb152-9" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> mean)</span>
-<span id="cb152-10"><a href="independent-samples-t-test.html#cb152-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb152-11"><a href="independent-samples-t-test.html#cb152-11" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb152-12"><a href="independent-samples-t-test.html#cb152-12" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(</span>
-<span id="cb152-13"><a href="independent-samples-t-test.html#cb152-13" tabindex="-1"></a>    <span class="at">ymin =</span> mean <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se,</span>
-<span id="cb152-14"><a href="independent-samples-t-test.html#cb152-14" tabindex="-1"></a>    <span class="at">ymax =</span> mean <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
-<span id="cb152-15"><a href="independent-samples-t-test.html#cb152-15" tabindex="-1"></a>  ), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb152-16"><a href="independent-samples-t-test.html#cb152-16" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-142-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="independent-samples-t-test.html#cb155-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb155-2"><a href="independent-samples-t-test.html#cb155-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
+<span id="cb155-3"><a href="independent-samples-t-test.html#cb155-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb155-4"><a href="independent-samples-t-test.html#cb155-4" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(Years_training, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb155-5"><a href="independent-samples-t-test.html#cb155-5" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(Years_training, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb155-6"><a href="independent-samples-t-test.html#cb155-6" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span><span class="fu">n</span>()</span>
+<span id="cb155-7"><a href="independent-samples-t-test.html#cb155-7" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb155-8"><a href="independent-samples-t-test.html#cb155-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb155-9"><a href="independent-samples-t-test.html#cb155-9" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> mean)</span>
+<span id="cb155-10"><a href="independent-samples-t-test.html#cb155-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb155-11"><a href="independent-samples-t-test.html#cb155-11" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb155-12"><a href="independent-samples-t-test.html#cb155-12" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(</span>
+<span id="cb155-13"><a href="independent-samples-t-test.html#cb155-13" tabindex="-1"></a>    <span class="at">ymin =</span> mean <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se,</span>
+<span id="cb155-14"><a href="independent-samples-t-test.html#cb155-14" tabindex="-1"></a>    <span class="at">ymax =</span> mean <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb155-15"><a href="independent-samples-t-test.html#cb155-15" tabindex="-1"></a>  ), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb155-16"><a href="independent-samples-t-test.html#cb155-16" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-141-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="assumption-checks-1" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Assumption checks<a href="independent-samples-t-test.html#assumption-checks-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -700,8 +700,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Data must be independent of each other - in other words, one person’s response should not be influenced by another. This should come as a feature of good experimental design.</li>
 <li>The equality of variance (homoscedasticity) assumption. The classical t-test assumes that each group has the same variance (homoscedasticity). We can test this using a significant test called Levene’s test. If the test is significant (<em>p</em> &lt; .05), the assumption is violated. In our data, this assumption seems to be intact (<em>F</em>(1, 58) = .114, <em>p</em> = .737).</li>
 </ul>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="independent-samples-t-test.html#cb153-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
-<span id="cb153-2"><a href="independent-samples-t-test.html#cb153-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="independent-samples-t-test.html#cb156-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb156-2"><a href="independent-samples-t-test.html#cb156-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to
 ## factor.</code></pre>
 <div data-pagedtable="false">
@@ -712,7 +712,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the Shapiro-Wilks (SW) test. Like Levene’s test, if the result of this test is significant it suggests that the normality assumption is violated. In our data, this appears to be the case (<em>W</em> = .946, <em>p</em> = .011).</li>
 </ul>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="independent-samples-t-test.html#cb155-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_training<span class="sc">$</span>Years_training)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="independent-samples-t-test.html#cb158-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_training<span class="sc">$</span>Years_training)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -723,7 +723,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.3.4</span> Output<a href="independent-samples-t-test.html#output-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In reality, it’s rare that any of these assumptions are fully met even when tests say they are (the tests we just mentioned can be biased). This is especially true for classical t-tests, which are very sensitive to violations. A consistently better alternative is to use the Welch t-test, which assumes the equality of variance assumption is not met. Welch t-tests are also fairly robust against the normality assumption, and so are more flexible without sacrificing accuracy.</p>
 <p>Here’s our output from R. Note that this is from a Welch t-test - R will do this by default.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="independent-samples-t-test.html#cb157-1" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="independent-samples-t-test.html#cb160-1" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -735,8 +735,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##      mean in group Amateur mean in group Professional 
 ##                   4.387097                   7.310345</code></pre>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="independent-samples-t-test.html#cb159-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
-<span id="cb159-2"><a href="independent-samples-t-test.html#cb159-2" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="independent-samples-t-test.html#cb162-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb162-2"><a href="independent-samples-t-test.html#cb162-2" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["estimate1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["estimate2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":[".y."],"name":[4],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[6],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[7],"type":["int"],"align":["right"]},{"label":["n2"],"name":[8],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[14],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[15],"type":["chr"],"align":["left"]}],"data":[{"1":"-2.923248","2":"4.387097","3":"7.310345","4":"Years_training","5":"Amateur","6":"Professional","7":"31","8":"29","9":"-5.858572","10":"2.33e-07","11":"57.98903","12":"-3.922048","13":"-1.924448","14":"T-test","15":"two.sided","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -745,7 +745,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>From this, we can see that the two groups do significantly differ on years of training (<em>t</em>(57.99) = 5.86, <em>p</em> &lt; .001). We can use the mean difference value to see, well… the difference in means between the two groups. In this case, professionals have 2.92 more years of training (on average; 95% CI = [1.92, 3.92]) compared to amateurs.</p>
 <p>(n.b. the signs for t and the mean difference don’t overly matter so long as they are interpreted in the right way. The output above calculates amateurs - professionals, which is why the values for both are negative; but if you were to force the test to run the other way round, the values would be the same with the signs flipped. Hence why descriptives and graphs are super important too!</p>
 <p>If for some reason you do want R to run a Student’s <em>t</em>-test, you need to specify <code>var.equal = TRUE</code>. This tells R that we assume equality of variances.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="independent-samples-t-test.html#cb160-1" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="independent-samples-t-test.html#cb163-1" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -757,8 +757,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##      mean in group Amateur mean in group Professional 
 ##                   4.387097                   7.310345</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="independent-samples-t-test.html#cb162-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
-<span id="cb162-2"><a href="independent-samples-t-test.html#cb162-2" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="independent-samples-t-test.html#cb165-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb165-2"><a href="independent-samples-t-test.html#cb165-2" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["estimate1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["estimate2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":[".y."],"name":[4],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[6],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[7],"type":["int"],"align":["right"]},{"label":["n2"],"name":[8],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[14],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[15],"type":["chr"],"align":["left"]}],"data":[{"1":"-2.923248","2":"4.387097","3":"7.310345","4":"Years_training","5":"Amateur","6":"Professional","7":"31","8":"29","9":"-5.842418","10":"2.48e-07","11":"58","12":"-3.924805","13":"-1.921691","14":"T-test","15":"two.sided","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

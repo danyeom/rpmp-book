@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -657,12 +657,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-chi-square-distribution-1" class="section level3 hasAnchor" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> The chi-square distribution<a href="the-chi-square-distribution.html#the-chi-square-distribution-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Recall from Week 6 about how hypothesis tests work - we calculate a test statistic that conforms to a particular distribution, and we assess how likely our observed test statistic is (or greater) on this distribution, assuming the null hypothesis is true. This gives us the p-value for that test. With that in mind, the chi-square distribution that underlies the chi-square test looks something like this:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <p>The shape of the chi-square distribution is only dependent on the degrees of freedom (<em>df</em>). We’ll look at how to calculate degrees of freedom for various tests, including the family of chi-square tests, as we move along the subject.</p>
 <p>Here is the same set of lines above, but shown in their own plot this time:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <p>As you can hopefully see, the chi-square distribution is very heavily skewed at lower degrees of freedom (and therefore in smaller sample sizes). As degrees of freedom increase though, it approximates a normal distribution. For instance, here’s what the chi-square distribution looks like when <em>df</em> = 100:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 </div>
 <div id="hypothesis-testing-in-chi-squares" class="section level3 hasAnchor" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Hypothesis testing in chi-squares<a href="the-chi-square-distribution.html#hypothesis-testing-in-chi-squares" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -687,10 +687,10 @@ a. Or, alternatively, establish a critical chi-square value - the value that mus
 <li>Each column provides critical chi-squares at different alpha levels. We want to find the column that says .05.</li>
 <li>The number at both of these points tells us the critical chi-square value.</li>
 </ul>
-<p><img src="img/w7_chisq_table.png" /><!-- --></p>
+<p><img src="img/w7_chisq_table.png" width="573" /></p>
 <p>So, for a <em>df</em> = 5 and an <span class="math inline">\(\alpha\)</span> = .05, the critical chi-square value is 11.07. If our own chi-square value is greater than this, the probability of that value or greater occurring (assuming the null) will be less than 5%; i.e. the boundary for statistical significance.</p>
 <p>In picture form:</p>
-<p><img src="img/w7_chisq_df_5.png" /><!-- --></p>
+<p><img src="img/w7_chisq_df_5.png" width="900" /></p>
 <p>Hopefully that makes sense - this kind of logic is pretty much identical to the other tests that we will cover in the coming weeks!</p>
 </div>
 </div>

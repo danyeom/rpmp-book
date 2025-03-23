@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -686,13 +686,13 @@ SD = \sqrt{\frac{\Sigma (x_i - \bar{x} )^2}{n - 1}}
 \]</span></p>
 <p>Standard deviations (SD) should reported alongside means when results are written up (consult an APA guide).</p>
 <p>To calculate standard deviations in R, use the <code>sd()</code> function. Once again, this has an <code>na.rm</code> argument you can specify.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="variability.html#cb105-1" tabindex="-1"></a><span class="fu">sd</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="variability.html#cb106-1" tabindex="-1"></a><span class="fu">sd</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 1.75119</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="variability.html#cb107-1" tabindex="-1"></a><span class="co"># Tidyverse form</span></span>
-<span id="cb107-2"><a href="variability.html#cb107-2" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
-<span id="cb107-3"><a href="variability.html#cb107-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb107-4"><a href="variability.html#cb107-4" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb107-5"><a href="variability.html#cb107-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="variability.html#cb108-1" tabindex="-1"></a><span class="co"># Tidyverse form</span></span>
+<span id="cb108-2"><a href="variability.html#cb108-2" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
+<span id="cb108-3"><a href="variability.html#cb108-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb108-4"><a href="variability.html#cb108-4" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb108-5"><a href="variability.html#cb108-5" tabindex="-1"></a>  )</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sd"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"1.75119"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -702,6 +702,7 @@ SD = \sqrt{\frac{\Sigma (x_i - \bar{x} )^2}{n - 1}}
 <div id="sderr" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Standard error, and the SDoTM<a href="variability.html#sderr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample’s mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to <strong>sampling error</strong>. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:</p>
+<p><img src="img/w5_sdotm.svg" /><!-- --></p>
 <p>The spread of these sample means is called the <strong>sampling distribution of the mean (SDoTM)</strong>, shown on the right. This gives us a sense of where the population mean (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.</p>
 <p>The <strong>standard error of the mean</strong> (standard error; SE) is another measure of variability - this time, it is the spread of <strong>sample means</strong> across the sampling distribution of the mean. This represents how close our sample mean is to the likely <em>population</em> mean. If our sampling distribution is wide, our standard error will be large - and that means that we won’t have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean.</p>
 <p>Standard error is calculated using the below formula:</p>

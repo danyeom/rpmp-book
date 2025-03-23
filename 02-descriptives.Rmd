@@ -39,7 +39,7 @@ When you have data in your hand, it is often tempting to dive straight into plug
 
 > "The greatest value of a picture is when it forces us to notice what we never expected to see." -John W. Tukey
 
-One of the first steps in working with quantitative data is **data visualisation**, which is the process of graphing it and looking at it. If you work with quantitative data then it should become standard practice for you to graph your data before analysing it.
+One of the first steps in working with quantitative data is **data visualisation**, which is the process of graphing it and looking at it. If you work with quantitative data then it should become standard practice for you to graph your data: specifically, *after* you've defined your research questions and methods of analysis, but *before* you actually analyse it.
 
 It's common for many students learning research methods and statistics to simply take a 'cookie cutter' approach - that is, collect data, run basic tests on it and call it a day. Sadly this is common even at our level, and you will almost certainly see this happen at music psychology conferences that you go to in future. People will present complex analyses that sound impressive - until you pick up on small cues that suggest they don't really understand their data at all.
 
@@ -137,6 +137,8 @@ df_a %>%
     max = max(column_a, na.rm = TRUE)
   )
 ```
+
+Note here that rather than using `length()`, we use a function called `n()`. This function only works within `summarise()` and `mutate()`, but is essentially shorthand for `length()`.
 
 
 ### Central tendencies {#central-tendency}
@@ -289,6 +291,11 @@ df_a %>%
 ### Standard error, and the SDoTM {#sderr}
 
 Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample's mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to **sampling error**. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:
+
+```{r echo = FALSE}
+knitr::include_graphics(here("img", "w5_sdotm.svg"))
+```
+
 
 The spread of these sample means is called the **sampling distribution of the mean (SDoTM)**, shown on the right. This gives us a sense of where the population mean (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.
 
@@ -614,3 +621,12 @@ knitr::include_graphics(here("img", "ztable_highlight.png"))
 ```
 
 In this instance, our z-score of 0.89 has an associated probability of .8133, meaning that 81.3% of scores are below this z-score. 
+
+R, however, has a way of finding probabilities (percentiles) for z-scores for you. The `pnorm()` function calculates the probability of a specified value on a normal distribution. Given that z-scores follow the normal distribution, we can use `pnorm()` to calculate a given z-score's associated probability.
+
+The function is simple: it requires you to give the z-score (as argument `q`), the mean and standard deviation of the normal distribution you are interested in. By default, the mean is set to 0 and the SD set to 1, which is what we want for a z-score.
+
+```{r}
+pnorm(0.89)
+```
+

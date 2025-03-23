@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -653,14 +653,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">B.2</span> The <code>glance()</code> function<a href="broom-glance.html#broom-glance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>glance()</code> function will generate model fit summaries from models. It works primarily with <code>lm()</code> and other models, and returns several indices of model fit (depending on the original object).</p>
 <p>For <code>lm()</code> objects, importantly, it returns <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span>. IT also returns estimates for the AIC and BIC, as well as some other fit statistics.</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="broom-glance.html#cb509-1" tabindex="-1"></a><span class="fu">glance</span>(marketing_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="broom-glance.html#cb512-1" tabindex="-1"></a><span class="fu">glance</span>(marketing_lm)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["r.squared"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["adj.r.squared"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sigma"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["logLik"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["AIC"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["deviance"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["df.residual"],"name":[11],"type":["int"],"align":["right"]},{"label":["nobs"],"name":[12],"type":["int"],"align":["right"]}],"data":[{"1":"0.8972106","2":"0.8956373","3":"2.022612","4":"570.2707","5":"1.575227e-96","6":"3","7":"-422.6454","8":"855.2909","9":"871.7824","10":"801.8284","11":"196","12":"200"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p><code>glance()</code> also works for <code>aov()</code> objects, but is perhaps less useful.</p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="broom-glance.html#cb510-1" tabindex="-1"></a><span class="fu">glance</span>(stress_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="broom-glance.html#cb513-1" tabindex="-1"></a><span class="fu">glance</span>(stress_aov)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["logLik"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["AIC"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["deviance"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["nobs"],"name":[5],"type":["int"],"align":["right"]},{"label":["r.squared"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"-182.5562","2":"379.1125","3":"393.7729","4":"1543.296","5":"60","6":"0.603089"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

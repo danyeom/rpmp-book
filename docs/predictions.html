@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -665,7 +665,7 @@ y = \beta_0 + \beta_1x + \epsilon_i
 <div id="building-a-regression-equation" class="section level3 hasAnchor" number="8.6.2">
 <h3><span class="header-section-number">8.6.2</span> Building a regression equation<a href="predictions.html#building-a-regression-equation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s the coefficient table from the previous page:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="predictions.html#cb241-1" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="predictions.html#cb244-1" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = GoldMSI ~ years_training, data = w10_goldmsi)
@@ -698,8 +698,9 @@ GoldMSI = 53.901 + (4.858 \times Years)
 <div id="an-example-prediction" class="section level3 hasAnchor" number="8.6.3">
 <h3><span class="header-section-number">8.6.3</span> An example prediction<a href="predictions.html#an-example-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Participant 47, highlighted in green below, has 5 years of musical training. What would their predicted Gold-MSI score to be?</p>
-<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
+<pre><code>## `geom_smooth()` using formula
+## = &#39;y ~ x&#39;</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-219-1.png" width="672" /></p>
 <p>We can use the equation we just built to calculate a predicted score:</p>
 <p>Therefore, we would predict someone with 5 years of musical training to have a Gold-MSI score of 78.191. This is where the line sits. Notice however, that the predicted value is noticeably different to the participant’s actual value (which in this instance is 56). The difference between the predicted and the actual value is called the residual - precisely the same residual that we aim to minimise when we fit a regression line to begin with (as well as the same residuals we do assumption tests on).</p>
 <p><span class="math inline">\(GoldMSI = 53.901 + (4.858 \times Years)\)</span>

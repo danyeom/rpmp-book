@@ -1,7 +1,8 @@
 fig:unnamed-chunk-21
 fig:unnamed-chunk-66
-fig:unnamed-chunk-109
-fig:unnamed-chunk-166
+fig:unnamed-chunk-94
+fig:unnamed-chunk-108
+fig:unnamed-chunk-165
 preface
 intro-to-R
 R-syntax

@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -663,7 +663,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="z-scores" class="section level3 hasAnchor" number="3.6.1">
 <h3><span class="header-section-number">3.6.1</span> z-scores<a href="zscores.html#z-scores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>z-scores</strong> (z), sometimes called <strong>standard scores</strong>, are a measure that describe how many standard deviations a single data point is from the mean. If you recall the figure of the normal distribution from the previous page, notice how we quantify how much data is captured in terms of the number of standard deviations. z-scores are essentially this number - in other words, 95% of your data lies between z = -1.96 and z = 1.96.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
 <p>The process of calculating z-scores is called standardisation. The primary utility of converting data into z-scores is that it becomes possible to compare data on different scales. Many statistical analyses employ some form of standardisation for a variety of reasons - some of which we’ll see in this subject.</p>
 </div>
 <div id="calculating-z-scores" class="section level3 hasAnchor" number="3.6.2">
@@ -682,7 +682,7 @@ z = 0.8933
 \]</span>
 A participant with a general sophistication score of 100 would be roughly 0.89 standard deviations away from the mean.</p>
 <p>To z-score a vector in R, we use the <code>scale()</code> function. The <code>scale()</code> function takes two arguments: <code>center</code>, which determines whether the data is centered (i.e. subtracts the mean from each value), and <code>scale</code>, which essentially scales the data so the SD is 1. By default, both of these arguments are true.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="zscores.html#cb108-1" tabindex="-1"></a><span class="fu">scale</span>(vector_a)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="zscores.html#cb109-1" tabindex="-1"></a><span class="fu">scale</span>(vector_a)</span></code></pre></div>
 <pre><code>##            [,1]
 ## [1,]  0.3806935
 ## [2,] -1.3324272
@@ -718,8 +718,12 @@ A participant with a general sophistication score of 100 would be roughly 0.89 s
 <li>Next, find the column that corresponds to the second decimal place. We want to go all the way to the right-hand column labelled <strong>.09</strong>, to find the right column for our z-score of 0.89.</li>
 <li>Find the cell that corresponds to the row and column from above - that is the probability of getting a value <strong>below</strong> our z-score.</li>
 </ol>
-<p><img src="img/ztable_highlight.png" style="display: block; margin: auto;" /></p>
+<p><img src="img/ztable_highlight.png" width="470" style="display: block; margin: auto;" /></p>
 <p>In this instance, our z-score of 0.89 has an associated probability of .8133, meaning that 81.3% of scores are below this z-score.</p>
+<p>R, however, has a way of finding probabilities (percentiles) for z-scores for you. The <code>pnorm()</code> function calculates the probability of a specified value on a normal distribution. Given that z-scores follow the normal distribution, we can use <code>pnorm()</code> to calculate a given z-score’s associated probability.</p>
+<p>The function is simple: it requires you to give the z-score (as argument <code>q</code>), the mean and standard deviation of the normal distribution you are interested in. By default, the mean is set to 0 and the SD set to 1, which is what we want for a z-score.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="zscores.html#cb111-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.89</span>)</span></code></pre></div>
+<pre><code>## [1] 0.8132671</code></pre>
 
 </div>
 </div>

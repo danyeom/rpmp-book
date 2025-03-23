@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -670,13 +670,13 @@ V = \sqrt{\frac{\chi^2}{n(k-1)}}
 \]</span>
 Here, <em>k</em> refers to the number of groups in the variable with the lowest number of groups. So for example, in a 2x3 design, one variable has 2 levels and the other has 3; <em>k</em> = 2 in this instance.</p>
 <p>Phi and Cramer’s <em>V</em> can both be calculated in R with the following functions from the <code>effectsize</code> package, a handy package that will calculate many common effect size measures. Like <code>chisq.test()</code>, both functions will work if you give them a contingency table. Helpfully, both functions calculate 95% CIs.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="effect-sizes-for-chi-squares.html#cb130-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="effect-sizes-for-chi-squares.html#cb132-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["phi"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.1993439","2":"0.95","3":"0","4":"0.3767907"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="effect-sizes-for-chi-squares.html#cb131-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="effect-sizes-for-chi-squares.html#cb133-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cramers_v"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.1993439","2":"0.95","3":"0","4":"0.3767907"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

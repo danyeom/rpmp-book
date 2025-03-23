@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -655,7 +655,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="what-is-cohens-d" class="section level3 hasAnchor" number="6.5.1">
 <h3><span class="header-section-number">6.5.1</span> What is Cohen’s <em>d</em>?<a href="cohens-d.html#what-is-cohens-d" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Cohen’s d is a measure of effect size that is used when comparing between two means (i.e. in a t-test). It essentially is a measure of the distance between the two means. See below for three pairs of means:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-155-1.png" width="768" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-154-1.png" width="768" /></p>
 <p>If two groups aren’t all that different (e.g. panel A), then any effect of group will be small or negligible. If the two groups are further apart, however (like panel C), there is a more obvious effect of group - and so the size of the effect itself will be larger. Cohen’s <em>d</em> essentially is a measure of this ‘distance’.</p>
 <p>The basic formula for calculating Cohen’s d is:
 <span class="math display">\[
@@ -693,27 +693,27 @@ d = \frac{M_1 - M_2}{\sigma_{pooled}}
 <h3><span class="header-section-number">6.5.3</span> Calculating Cohen’s <em>d</em> in R<a href="cohens-d.html#calculating-cohens-d-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>cohens_d()</code> function from <code>effectsize</code> can handle the calculation of effect sizes for all three variants of t-tests. One thing that’s quite nice about this function is that the required syntax for <code>cohens_d()</code> is nearly identical to that for <code>t.test()</code> - meaning that the correct type of Cohen’s <em>d</em> (one-sample, independent samples, paired) will be calculated based on what you put in.</p>
 <p>For a one-sample t-test, for instance, you can write the syntax exactly as you would for <code>t.test()</code>:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="cohens-d.html#cb177-1" tabindex="-1"></a><span class="co"># One-sample</span></span>
-<span id="cb177-2"><a href="cohens-d.html#cb177-2" tabindex="-1"></a><span class="co"># t.test(w8_grades$grade, mu = 72)</span></span>
-<span id="cb177-3"><a href="cohens-d.html#cb177-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="cohens-d.html#cb180-1" tabindex="-1"></a><span class="co"># One-sample</span></span>
+<span id="cb180-2"><a href="cohens-d.html#cb180-2" tabindex="-1"></a><span class="co"># t.test(w8_grades$grade, mu = 72)</span></span>
+<span id="cb180-3"><a href="cohens-d.html#cb180-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cohens_d"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.9141264","2":"0.95","3":"-1.11929","4":"-0.7063802"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>The alternate way of specifying a one-sample t-test, the <code>var ~ 1</code> format, also works. <code>cohens_d()</code> will recognise both.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="cohens-d.html#cb178-1" tabindex="-1"></a><span class="co"># One-sample - alternate</span></span>
-<span id="cb178-2"><a href="cohens-d.html#cb178-2" tabindex="-1"></a><span class="co"># t.test(grade ~ 1, data = w8_grades, mu = 72)</span></span>
-<span id="cb178-3"><a href="cohens-d.html#cb178-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_grades, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="cohens-d.html#cb181-1" tabindex="-1"></a><span class="co"># One-sample - alternate</span></span>
+<span id="cb181-2"><a href="cohens-d.html#cb181-2" tabindex="-1"></a><span class="co"># t.test(grade ~ 1, data = w8_grades, mu = 72)</span></span>
+<span id="cb181-3"><a href="cohens-d.html#cb181-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_grades, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cohens_d"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.9141264","2":"0.95","3":"-1.11929","4":"-0.7063802"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>For an independent samples t-test, you can give it <em>almost</em> the same. The only change is that by default, <code>cohens_d()</code> will calculate Cohen’s <em>d</em> assuming equal variance. In order for our value of <em>d</em> to match a Welch-samples t-test, we need to set <code>pooled_sd = FALSE</code> (which makes the syntax slightly different to <code>t.test()</code>).</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="cohens-d.html#cb179-1" tabindex="-1"></a><span class="co"># Independent samples</span></span>
-<span id="cb179-2"><a href="cohens-d.html#cb179-2" tabindex="-1"></a><span class="co"># t.test(Years_training ~ Group, data = w8_training)</span></span>
-<span id="cb179-3"><a href="cohens-d.html#cb179-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">pooled_sd =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="cohens-d.html#cb182-1" tabindex="-1"></a><span class="co"># Independent samples</span></span>
+<span id="cb182-2"><a href="cohens-d.html#cb182-2" tabindex="-1"></a><span class="co"># t.test(Years_training ~ Group, data = w8_training)</span></span>
+<span id="cb182-3"><a href="cohens-d.html#cb182-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">pooled_sd =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cohens_d"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-1.511462","2":"0.95","3":"-2.081722","4":"-0.9310339"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -725,16 +725,16 @@ d = \frac{M_1 - M_2}{\sigma_{pooled}}
 <li><code>adjust = FALSE</code>: calculates Hedges’ G, which is an alternative effect size that corrects for small sample bias. We won’t worry about this here, so we will set this to <code>FALSE</code>.</li>
 </ul>
 <p>Note that like the other functions, you can either provide the arguments in <code>Pairs() ~ 1</code> or by subsetting the columns (<code>x = x$1, y = x$2</code>).</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="cohens-d.html#cb180-1" tabindex="-1"></a><span class="co"># Paired sample - works with wide data</span></span>
-<span id="cb180-2"><a href="cohens-d.html#cb180-2" tabindex="-1"></a><span class="co"># t.test(Pair(before, after) ~ 1, data = w8_symptoms)</span></span>
-<span id="cb180-3"><a href="cohens-d.html#cb180-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms, <span class="at">method =</span> <span class="st">&quot;z&quot;</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="cohens-d.html#cb183-1" tabindex="-1"></a><span class="co"># Paired sample - works with wide data</span></span>
+<span id="cb183-2"><a href="cohens-d.html#cb183-2" tabindex="-1"></a><span class="co"># t.test(Pair(before, after) ~ 1, data = w8_symptoms)</span></span>
+<span id="cb183-3"><a href="cohens-d.html#cb183-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms, <span class="at">method =</span> <span class="st">&quot;z&quot;</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["d_z"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.5215067","2":"0.95","3":"-0.8907897","4":"-0.1522237"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="cohens-d.html#cb181-1" tabindex="-1"></a><span class="co"># t.test(x = w8_symptoms$before, y = w8_symptoms$after, paired = TRUE)</span></span>
-<span id="cb181-2"><a href="cohens-d.html#cb181-2" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">method =</span> <span class="st">&quot;z&quot;</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="cohens-d.html#cb184-1" tabindex="-1"></a><span class="co"># t.test(x = w8_symptoms$before, y = w8_symptoms$after, paired = TRUE)</span></span>
+<span id="cb184-2"><a href="cohens-d.html#cb184-2" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">method =</span> <span class="st">&quot;z&quot;</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["d_z"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.5215067","2":"0.95","3":"-0.8907897","4":"-0.1522237"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -745,24 +745,24 @@ d = \frac{M_1 - M_2}{\sigma_{pooled}}
 <h3><span class="header-section-number">6.5.4</span> Alternative using <code>rstatix</code><a href="cohens-d.html#alternative-using-rstatix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Alternatively, you can use the <code>rstatix</code> package. This will give the same values, but the confidence intervals generated by <code>effectsize</code> are traditional confidence intervals, whereas <code>rstaix</code> uses a different method (which we need not concern ourselves with). In any case, the actual width of the intervals should be similar. Just note that for paired samples Cohen’s <em>d</em>, long data is required (as is the case with t-tests in <code>rstatix</code>).</p>
 <p>For a one-sample t-test, the formula once again needs to be in <code>var ~ 1</code> format and <code>mu</code> must be specified:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="cohens-d.html#cb182-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span> </span>
-<span id="cb182-2"><a href="cohens-d.html#cb182-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="cohens-d.html#cb185-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span> </span>
+<span id="cb185-2"><a href="cohens-d.html#cb185-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>) </span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["effsize"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[5],"type":["int"],"align":["right"]},{"label":["conf.low"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["magnitude"],"name":[8],"type":["ord"],"align":["right"]}],"data":[{"1":"grade","2":"1","3":"null model","4":"-0.9141264","5":"128","6":"-1.1","7":"-0.71","8":"large","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>For an independent-samples t-test:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="cohens-d.html#cb183-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
-<span id="cb183-2"><a href="cohens-d.html#cb183-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="cohens-d.html#cb186-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb186-2"><a href="cohens-d.html#cb186-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["effsize"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["n1"],"name":[5],"type":["int"],"align":["right"]},{"label":["n2"],"name":[6],"type":["int"],"align":["right"]},{"label":["conf.low"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["magnitude"],"name":[9],"type":["ord"],"align":["right"]}],"data":[{"1":"Years_training","2":"Amateur","3":"Professional","4":"-1.511462","5":"31","6":"29","7":"-2.07","8":"-0.87","9":"large","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>For a paired-samples t-test, <code>paired = TRUE</code> must be selected:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="cohens-d.html#cb184-1" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
-<span id="cb184-2"><a href="cohens-d.html#cb184-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="cohens-d.html#cb187-1" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
+<span id="cb187-2"><a href="cohens-d.html#cb187-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["effsize"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["n1"],"name":[5],"type":["int"],"align":["right"]},{"label":["n2"],"name":[6],"type":["int"],"align":["right"]},{"label":["conf.low"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["magnitude"],"name":[9],"type":["ord"],"align":["right"]}],"data":[{"1":"symptom_score","2":"after","3":"before","4":"0.5215067","5":"32","6":"32","7":"0.09","8":"0.9","9":"moderate","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

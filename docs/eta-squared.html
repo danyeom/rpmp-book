@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -675,8 +675,8 @@ Variance_{total} = Variance_{between} + Variance_{within}
 you have more than one IV) it will give a more precise estimate of each variable’s effect size.</p>
 <p>One more variant you will see is <em>generalised</em> eta-squared, which is similar to the partial variant. While partial eta-squared is great, it is sensitive to design - in other words, what variables are included in the analysis will influence the calculation of <span class="math inline">\(\eta^2_p\)</span>, meaning that it is only really comparable across studies of similar design. However, not every design will manipulate every predictor (e.g. gender), and so generalised eta-squared (<span class="math inline">\(\eta^2_G\)</span>) can handle this. This effect size is best used in meta-analyses.</p>
 <p>By default, <code>anova_test()</code> (and other ANOVA-related packages in R) will calculate <em>generalised</em> eta squared (labelled <code>ges</code> in the output). If you want partial eta-squared, you just need to give <code>anova_test()</code> the extra argument <code>effect.size = "pes</code> as follows:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="eta-squared.html#cb217-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb217-2"><a href="eta-squared.html#cb217-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="eta-squared.html#cb220-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb220-2"><a href="eta-squared.html#cb220-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
 <pre><code>## ANOVA Table (type III tests)
 ## 
 ## $ANOVA
@@ -693,7 +693,7 @@ you have more than one IV) it will give a more precise estimate of each variable
 ##   p[HF]&lt;.05
 ## 1         *</code></pre>
 <p>Otherwise, our trusty <code>effectsize</code> package provides functions for calculating effect sizes in R. We use a function called - you guessed it - <code>eta_squared()</code>. This function works in very much the same way as the other <code>effectsize</code> family of functions do - you need to give them an anova model to calculate effect sizes for.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="eta-squared.html#cb219-1" tabindex="-1"></a><span class="fu">eta_squared</span>(w9_slices_aov, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="eta-squared.html#cb222-1" tabindex="-1"></a><span class="fu">eta_squared</span>(w9_slices_aov, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <pre><code>## For one-way between subjects designs, partial eta squared is equivalent
 ##   to eta squared. Returning eta squared.</code></pre>
 <div data-pagedtable="false">
@@ -702,7 +702,7 @@ you have more than one IV) it will give a more precise estimate of each variable
   </script>
 </div>
 <p>For repeated-measures ANOVAs, the best way to calculate eta-squared using this function is to first create a <code>car::Anova()</code> model using the syntax described above, and then passing the resulting model to the function.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="eta-squared.html#cb221-1" tabindex="-1"></a><span class="fu">eta_squared</span>(w9_memory_alternate, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="eta-squared.html#cb224-1" tabindex="-1"></a><span class="fu">eta_squared</span>(w9_memory_alternate, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Eta2_partial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"time","2":"0.5852187","3":"0.95","4":"0.4988523","5":"0.6528865","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

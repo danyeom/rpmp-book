@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -664,12 +664,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="a-brief-probability-primer-and-how-this-relates-to-p-values" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> A brief probability primer, and how this relates to p-values<a href="p-values.html#a-brief-probability-primer-and-how-this-relates-to-p-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To start with, a p-value is a probability. A probability, of course, ranges from 0 to 1; 0 (0%) representing an impossible result, and 1 (100%) representing a certain result. Probabilities can be conditional, meaning that they are dependent on a certain condition being true. A p-value is a conditional probability. Specifically, a p-value refers to the probability of getting a particular result, assuming the null hypothesis. To illustrate what I mean, consider the two graphs below, showing some example data as points.</p>
+<p>To start with, a p-value is a probability. A probability, of course, ranges from 0 to 1; 0 (0%) representing an impossible result, and 1 (100%) representing a certain result. Probabilities can be conditional, meaning that they are dependent on a certain condition being true. A p-value is a conditional probability. Specifically, a p-value refers to the probability of getting a particular result, assuming the null hypothesis. To illustrate what we mean, consider the two graphs below, showing some example data as points.</p>
+<p><img src="img/null_alt.svg" /><!-- --></p>
 <p>On the right is an example of what one possible alternative hypothesis might look like - that this data is meaningfully represented by two underlying distributions or groups, and that there is a difference between these two groups (shown as the blue and red curves). Contrast that with the left graph, where we hypothesise that there is no difference - in other words, that the data can be captured by the one distribution. This graph on the left is a representation of our null hypothesis, and as per the definition of the p-value, this is the distribution we focus on.</p>
 <p><img src="img/prob_dist.svg" /><!-- --></p>
 <p>The area shaded blue represents the probability of getting that specific result. In the left example, the area shaded represents the probability of getting a value lower than x = 1. You can see that the blue area is quite big, so the probability of getting a value lower than 1 is quite high. On the right hand side is another example, which represents the probability of getting a value of x higher than 2. Here, the shaded area is small, so the associated probability is low.</p>
 <p>Now, recall the following figure from last week:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We established last week that on a normal distribution, 95% of the data lies within a certain range of values. Obtaining values beyond these thresholds (1.96 standard deviations either side of the mean) account for a relatively small percentage of possible values. In other words, the probability of getting a value beyond these bounds (in the figure above, where the dark green areas are) <strong>is low</strong>.</p>
 <p>This is basically the thinking we use when we calculate a p-value. Let’s break down the steps:</p>
 <ol style="list-style-type: decimal">

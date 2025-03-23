@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -725,9 +725,9 @@ r = \frac{Cov_{xy}}{SD_x \times SD_y}
 </tbody>
 </table>
 <p>The second is a correlation heatmap, which is especially effective with many correlations at once (common when working with huge questionnaires or neuroimaging). As shown by the legend on the right, the colour and shade of each square are determined by the strength of the correlation. This can be easily done by the `<code>ggcorrplot</code> package, if you have a correlation matrix formatted in R:</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="correlations.html#cb222-1" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
-<span id="cb222-2"><a href="correlations.html#cb222-2" tabindex="-1"></a><span class="fu">ggcorrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="at">show.diag =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-203-1.png" width="672" /></p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="correlations.html#cb225-1" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb225-2"><a href="correlations.html#cb225-2" tabindex="-1"></a><span class="fu">ggcorrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="at">show.diag =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-202-1.png" width="672" /></p>
 </div>
 </div>
             </section>

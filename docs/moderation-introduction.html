@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -667,7 +667,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="moderation" class="section level3 hasAnchor" number="13.4.2">
 <h3><span class="header-section-number">13.4.2</span> Moderation<a href="moderation-introduction.html#moderation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Moderation</strong> occurs when one variable influences the relationship between a predictor (X) and an outcome (Y). In contrast to a mediator, which we denote as M, we typically denote a moderator using W. Put simply, the existence of a moderator implies that the effect of X on Y depends on the value of W.</p>
-<p><img src="img/moderation_1.png" style="display: block; margin: auto;" /></p>
+<p><img src="img/moderation_1.png" width="420" style="display: block; margin: auto;" /></p>
 <p>That might sound familiar… and for good reason! If you thought that just sounds like an interaction effect, you’d be absolutely right. At a statistical/mathematical level, a moderation is simply an interaction between two continuous predictors, and thus you can think of moderation and interaction as the same thing. That means that we can define a moderation using a regression formula as follows:</p>
 <p><span class="math display">\[
 y = \beta_0 + \beta_1x + \beta_2w + \beta_3(xw) + \epsilon_i
@@ -687,7 +687,7 @@ y = \beta_0 + \beta_1x + \beta_2w + \beta_3(xw) + \epsilon_i
 <p>A critique of the simple slopes, or “pick-a-point” approach is that the selected points are relatively arbitrary. While +/- 1SD make sense as cutpoints, we tend to choose those in the absence of anything especially meaningful or precise. A second technique for probing a continuous interaction/moderation is called the <strong>Johnson-Neyman</strong> (JN) technique. The basic idea of the Johnson-Neyman technique is that it identifies the point at which the <strong>moderator</strong> no longer significantly interacts with the predictor.</p>
 <p>The exact maths behind this is complex, but in short it aims to identify the values of W that are equal to or below a critical <em>t</em> value for a significant interaction effect.</p>
 <p>We visualise the results of the Johnson-Neyman technique with a plot, which plots values of the moderator (W) on the x-axis against the <em>slope</em> of the predictor on the y-axis. Here’s an example (from the help docs for the interactions package in R:</p>
-<p><img src="img/j-n-plot-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="img/j-n-plot-1.png" width="975" style="display: block; margin: auto;" /></p>
 <p>The red shaded region indicates where the moderation is non-significant. So, in this instance, values of the moderator between ~ 3.8 and 5.9 (as an eyeball guess) do not significantly moderate the relationship between the predictor and outcome. Values above or below this, however, do indicate significant moderation. Using the PROCESS macro in SPSS/R, it’s possible to get the exact values for where this range starts and ends.</p>
 </div>
 </div>

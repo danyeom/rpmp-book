@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-02" />
+<meta name="date" content="2025-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -762,9 +762,9 @@ p_b = p_c
 <div id="example-1" class="section level3 hasAnchor" number="5.6.3">
 <h3><span class="header-section-number">5.6.3</span> Example<a href="bonus-mcnemars-test.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is a fictional dataset from 70 registered voters in a fictional country. The 70 voters were asked whether they intended to vote for the current government twice: before event X happened in the government and after event X. Their responses were recorded as simple Yes-No answers.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="bonus-mcnemars-test.html#cb132-1" tabindex="-1"></a>w7_voting <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_voting.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="bonus-mcnemars-test.html#cb134-1" tabindex="-1"></a>w7_voting <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_voting.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 71 Columns: 3
-## ── Column specification ──────────────────────────────
+## ── Column specification ───────
 ## Delimiter: &quot;,&quot;
 ## chr (2): before, after
 ## dbl (1): id
@@ -772,10 +772,10 @@ p_b = p_c
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Here is a contingency table of our data:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="bonus-mcnemars-test.html#cb134-1" tabindex="-1"></a>w7_voting_table <span class="ot">&lt;-</span> <span class="fu">table</span>(w7_voting<span class="sc">$</span>before, w7_voting<span class="sc">$</span>after) </span>
-<span id="cb134-2"><a href="bonus-mcnemars-test.html#cb134-2" tabindex="-1"></a></span>
-<span id="cb134-3"><a href="bonus-mcnemars-test.html#cb134-3" tabindex="-1"></a>w7_voting_table <span class="sc">%&gt;%</span></span>
-<span id="cb134-4"><a href="bonus-mcnemars-test.html#cb134-4" tabindex="-1"></a>  <span class="fu">addmargins</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="bonus-mcnemars-test.html#cb136-1" tabindex="-1"></a>w7_voting_table <span class="ot">&lt;-</span> <span class="fu">table</span>(w7_voting<span class="sc">$</span>before, w7_voting<span class="sc">$</span>after) </span>
+<span id="cb136-2"><a href="bonus-mcnemars-test.html#cb136-2" tabindex="-1"></a></span>
+<span id="cb136-3"><a href="bonus-mcnemars-test.html#cb136-3" tabindex="-1"></a>w7_voting_table <span class="sc">%&gt;%</span></span>
+<span id="cb136-4"><a href="bonus-mcnemars-test.html#cb136-4" tabindex="-1"></a>  <span class="fu">addmargins</span>()</span></code></pre></div>
 <pre><code>##      
 ##       No Yes Sum
 ##   No  18  28  46
@@ -795,9 +795,9 @@ p_b = p_c
 \chi^2 = 7.41
 \]</span></p>
 <p>If we were doing this fully by hand, we could consult a chi-squared table and see what the relevant p-value would be with this chi-squared value and a df = 1. However, we’ll skip straight to Jamovi. A McNemar test can be run in R using the <code>mcnemar.test()</code> function in base R:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="bonus-mcnemars-test.html#cb136-1" tabindex="-1"></a>w7_voting_mcn <span class="ot">&lt;-</span> <span class="fu">mcnemar.test</span>(w7_voting_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb136-2"><a href="bonus-mcnemars-test.html#cb136-2" tabindex="-1"></a></span>
-<span id="cb136-3"><a href="bonus-mcnemars-test.html#cb136-3" tabindex="-1"></a>w7_voting_mcn</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="bonus-mcnemars-test.html#cb138-1" tabindex="-1"></a>w7_voting_mcn <span class="ot">&lt;-</span> <span class="fu">mcnemar.test</span>(w7_voting_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb138-2"><a href="bonus-mcnemars-test.html#cb138-2" tabindex="-1"></a></span>
+<span id="cb138-3"><a href="bonus-mcnemars-test.html#cb138-3" tabindex="-1"></a>w7_voting_mcn</span></code></pre></div>
 <pre><code>## 
 ##  McNemar&#39;s Chi-squared test
 ## 

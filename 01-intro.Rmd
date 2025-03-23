@@ -4,6 +4,8 @@
 
 This chapter is not meant to be an exhaustive be-all end-all to how to use R. It will only go through enough to complete RPMP's content. It will, however, introduce a couple of things that I think make for good starting habits using R - which is never a bad thing!
 
+Naturally, if you are reading this version of the RPMP material and are interested in using R, you will need to download [R](https://www.r-project.org/) and [RStudio](https://posit.co/download/rstudio-desktop/).
+
 In general, I am a huge proponent of the 'tidy' workflow of data analysis. While it was originally designed for data science in mind, I think it's a valuable model for psychological science as well:
 
 ```{r echo = FALSE, fig.align = "center"}
@@ -40,7 +42,7 @@ We can do basic maths in R using the following symbols:
 24/6
 ```
 
-R will recognise brackets and perform calculations appropriately, following BEDMAS. As you normally would with a written equation, R will perform calculations left to right.
+R will recognise brackets and perform calculations appropriately, following BEDMAS (or PEMDAS). As you normally would with a written equation, R will perform calculations left to right.
 
 ```{r}
 (6 + 2) * 3/4
@@ -48,7 +50,7 @@ R will recognise brackets and perform calculations appropriately, following BEDM
 
 ### Assignment and naming
 
-When you type something in R, you almost always have the option of *assigning* that value to a variable to give it a name. In R, assigning values/strings etc. to variables is slightly different to other programming languages. Instead of using equals signs, we use a left arrow `<-` for assignment. For example:
+When you type something in R, you almost always have the option of *assigning* that value to an object/variable to give it a name. In R, assigning values/strings etc. to objects is slightly different to other programming languages. Instead of using equals signs, we use a left arrow `<-` for assignment. For example:
 
 ```{r}
 # Use this
@@ -71,25 +73,27 @@ variable.name
 VariableName
 
 # no spaces are allowed
-variable name # This will give you an error
+variable name # This will give you an error, as R will think this is two separate variables
 
 # some heathens use camel case
 variableName
 
 ```
 
-To view what has been assigned to a variable, you can simply write the variable name:
+To view what has been assigned to an object, you can simply write the variable name:
 
 ```{r}
 # This is the variable we named earlier
 x
 ```
 
+In general, it is good practice to use variable names that are **clear** but **concise**. In other words, avoid naming your variables something like `x1`, `x2` etc. Instead, use the name of the measure/thing the data represents directly, e.g. `scale_total`.
+
 ### Variable types
 
 Like many programming languages, R works by manipulating different types of variables. Knowing how to work with these different variables is fairly essential to using R, so here is a brief overview.
 
-First, we have our most basic classes of variables. The first is **numeric**:
+First, we have our most basic classes of variables. The first is **numeric**, which is as it says on the tin (i.e. it stores numbers):
 
 ```{r}
 var_a <- 5.25
@@ -103,11 +107,13 @@ var_b <- 6
 var_b
 ```
 
-The second is **character**, which is used for text (or strings in programming language). Characters must be enclosed with speech marks:
+The second is **character**, which is used for text (named **strings** in programming language). Strings in character variables must be enclosed with speech marks:
 
 ```{r}
 var_c <- "This is a string"
 var_c
+
+# "This" and "is" would be treated by R as two separate strings
 ```
 
 Finally, we have **logical** variables, which can take on the form of `TRUE` or `FALSE`. `TRUE` and `FALSE` (or alternatively `T` or `F`) are special values in R that, as their names suggest, are used to indicate when a certain value is true or false.
@@ -120,13 +126,13 @@ var_d
 
 ## Data structures
 
-Of course, in R we don't work with single values (often). We instead work with larger data structures. While there are a number of data structures in R, by and large the main one we will work with are **data frames.**
+Of course, in R we don't usually work with single values. We instead work with larger data structures. While there are a number of data structures in R, by and large the main one we will work with are **data frames.**
 
 ### Vectors {#vectors}
 
 Vectors are extremely important in R: so much so that many functions are what we call *vectorised*, meaning that they operate over vectors. Vectors are a data structure that provide an ordered list of values of the same type. Vectors can contain multiple numbers, strings or logical values, as an example.
 
-To create a vector, the `c()` function is used. Below is a vector containing 5 numbers:
+To create a vector, the `c()` function is used. Below is a vector containing 5 numbers, thereby making it a vector of numerics:
 
 ```{r}
 vector_a <- c(4, 1, 6, 2, 3)
@@ -346,13 +352,13 @@ We won't get into project-oriented workflows for RPMP. However, imagine you have
 
 Normally, to locate a file on a disk you would generally have to give the entire pathway to that file. That could be something like `"C:\Users\Dan\Documents\Subjects\RPMP\data\w1_dataset.csv"` - which is immensely unwieldy if we want to read in data - and won't work the moment I give my script to someone else, as their folder structure could be completely different!
 
-The alternative with here could be as simple as:
+The alternative with `here()` could be as simple as:
 
 ```{r eval = FALSE}
 here("data", "w1_dataset.csv")
 ```
 
-This tells R that I'm looking for something *here* in the data folder, specifically a file named `w1_dataset.csv`. As long as the relative positions are correct - i.e. the `.csv` file is in the `data` folder - R will know where to locate the file.
+This tells R that I'm looking for something `here` in the `data` folder, specifically a file named `w1_dataset.csv`. As long as the relative positions are correct - i.e. the `.csv` file is in the `data` folder - R will know where to locate the file.
 
 You will see a lot of `here()` in this version of the RPMP guide because as you may appreciate, there are a lot of data files stored in all manner of folders.
 
@@ -509,8 +515,8 @@ Note that all of these are `dplyr` functions, so need to be piped from a dataset
 
 -   `arrange()` will sort your rows by a variable you specify. For example, if you wanted to sort the penguins dataset by island, you could use `arrange(island)` (or `arrange(desc(island))` for descending order).
 -   `distinct()` will give you all *unique* values in a given column. `distinct(island)`, for instance, will give you each unique island name.
--   `rename()` will let you rename columns.
--   \``relocate()` will let you rearrange the column order.
+-   `rename()` will let you rename columns. 
+-   `relocate()` will let you rearrange the column order.
 -   The `slice()` set of functions will subset rows, but mainly based on positions (e.g. first, last) rather than conditions.
 
 ## Making graphs with ggplot2 {#ggplot}
