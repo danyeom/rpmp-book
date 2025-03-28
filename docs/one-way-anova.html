@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.4 One-way ANOVA | Research Process for Music Psychologists</title>
+  <title>7.5 One-way ANOVA | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.4 One-way ANOVA | Research Process for Music Psychologists" />
+  <meta property="og:title" content="7.5 One-way ANOVA | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.4 One-way ANOVA | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="7.5 One-way ANOVA | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Daniel Yeom" />
 
 
-<meta name="date" content="2025-03-24" />
+<meta name="date" content="2025-03-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="multiple-comparisons.html"/>
+<link rel="prev" href="eta-squared.html"/>
 <link rel="next" href="one-way-repeated-measures-anova.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -294,48 +294,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-tests</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html"><i class="fa fa-check"></i><b>6.1</b> t-tests and the t-distribution</a>
+<li class="chapter" data-level="6.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html"><i class="fa fa-check"></i><b>6.1</b> <em>t</em>-tests and the <em>t</em>-distribution</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#what-is-a-t-test"><i class="fa fa-check"></i><b>6.1.1</b> What is a <em>t</em>-test?</a></li>
-<li class="chapter" data-level="6.1.2" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-statistic"><i class="fa fa-check"></i><b>6.1.2</b> The t-statistic</a></li>
-<li class="chapter" data-level="6.1.3" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-distribution"><i class="fa fa-check"></i><b>6.1.3</b> The t-distribution</a></li>
-<li class="chapter" data-level="6.1.4" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-table"><i class="fa fa-check"></i><b>6.1.4</b> The t-table</a></li>
+<li class="chapter" data-level="6.1.2" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-statistic"><i class="fa fa-check"></i><b>6.1.2</b> The <em>t</em>-statistic</a></li>
+<li class="chapter" data-level="6.1.3" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-distribution"><i class="fa fa-check"></i><b>6.1.3</b> The <em>t</em>-distribution</a></li>
+<li class="chapter" data-level="6.1.4" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-table"><i class="fa fa-check"></i><b>6.1.4</b> The <em>t</em>-table</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html"><i class="fa fa-check"></i><b>6.2</b> One-sample t-test</a>
+<li class="chapter" data-level="6.2" data-path="cohens-d.html"><a href="cohens-d.html"><i class="fa fa-check"></i><b>6.2</b> Cohen’s <em>d</em></a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#one-sample-t-test-1"><i class="fa fa-check"></i><b>6.2.1</b> One-sample t-test</a></li>
-<li class="chapter" data-level="6.2.2" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#example-data"><i class="fa fa-check"></i><b>6.2.2</b> Example data</a></li>
-<li class="chapter" data-level="6.2.3" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#assumption-checks"><i class="fa fa-check"></i><b>6.2.3</b> Assumption checks</a></li>
-<li class="chapter" data-level="6.2.4" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#output-2"><i class="fa fa-check"></i><b>6.2.4</b> Output</a></li>
+<li class="chapter" data-level="6.2.1" data-path="cohens-d.html"><a href="cohens-d.html#what-is-cohens-d"><i class="fa fa-check"></i><b>6.2.1</b> What is Cohen’s <em>d</em>?</a></li>
+<li class="chapter" data-level="6.2.2" data-path="cohens-d.html"><a href="cohens-d.html#interpreting-cohens-d"><i class="fa fa-check"></i><b>6.2.2</b> Interpreting Cohen’s <em>d</em></a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html"><i class="fa fa-check"></i><b>6.3</b> Independent samples t-test</a>
+<li class="chapter" data-level="6.3" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html"><i class="fa fa-check"></i><b>6.3</b> One-sample <em>t</em>-test</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#independent-samples"><i class="fa fa-check"></i><b>6.3.1</b> Independent samples</a></li>
-<li class="chapter" data-level="6.3.2" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#example-data-1"><i class="fa fa-check"></i><b>6.3.2</b> Example data</a></li>
-<li class="chapter" data-level="6.3.3" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#assumption-checks-1"><i class="fa fa-check"></i><b>6.3.3</b> Assumption checks</a></li>
-<li class="chapter" data-level="6.3.4" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#output-3"><i class="fa fa-check"></i><b>6.3.4</b> Output</a></li>
+<li class="chapter" data-level="6.3.1" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#one-sample-t-test-1"><i class="fa fa-check"></i><b>6.3.1</b> One-sample <em>t</em>-test</a></li>
+<li class="chapter" data-level="6.3.2" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#example-data"><i class="fa fa-check"></i><b>6.3.2</b> Example data</a></li>
+<li class="chapter" data-level="6.3.3" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#assumption-checks"><i class="fa fa-check"></i><b>6.3.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.3.4" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#output-2"><i class="fa fa-check"></i><b>6.3.4</b> Output</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html"><i class="fa fa-check"></i><b>6.4</b> Paired-samples t-test</a>
+<li class="chapter" data-level="6.4" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html"><i class="fa fa-check"></i><b>6.4</b> Independent samples t-test</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#paired-samples"><i class="fa fa-check"></i><b>6.4.1</b> Paired-samples</a></li>
-<li class="chapter" data-level="6.4.2" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#example-data-2"><i class="fa fa-check"></i><b>6.4.2</b> Example data</a></li>
-<li class="chapter" data-level="6.4.3" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#assumption-checks-2"><i class="fa fa-check"></i><b>6.4.3</b> Assumption checks</a></li>
-<li class="chapter" data-level="6.4.4" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#output-4"><i class="fa fa-check"></i><b>6.4.4</b> Output</a></li>
+<li class="chapter" data-level="6.4.1" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#independent-samples"><i class="fa fa-check"></i><b>6.4.1</b> Independent samples</a></li>
+<li class="chapter" data-level="6.4.2" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#example-data-1"><i class="fa fa-check"></i><b>6.4.2</b> Example data</a></li>
+<li class="chapter" data-level="6.4.3" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#assumption-checks-1"><i class="fa fa-check"></i><b>6.4.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.4.4" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#output-3"><i class="fa fa-check"></i><b>6.4.4</b> Output</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="cohens-d.html"><a href="cohens-d.html"><i class="fa fa-check"></i><b>6.5</b> Cohen’s d</a>
+<li class="chapter" data-level="6.5" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html"><i class="fa fa-check"></i><b>6.5</b> Paired-samples <em>t</em>-test</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="cohens-d.html"><a href="cohens-d.html#what-is-cohens-d"><i class="fa fa-check"></i><b>6.5.1</b> What is Cohen’s <em>d</em>?</a></li>
-<li class="chapter" data-level="6.5.2" data-path="cohens-d.html"><a href="cohens-d.html#interpreting-cohens-d"><i class="fa fa-check"></i><b>6.5.2</b> Interpreting Cohen’s <em>d</em></a></li>
-<li class="chapter" data-level="6.5.3" data-path="cohens-d.html"><a href="cohens-d.html#calculating-cohens-d-in-r"><i class="fa fa-check"></i><b>6.5.3</b> Calculating Cohen’s <em>d</em> in R</a></li>
-<li class="chapter" data-level="6.5.4" data-path="cohens-d.html"><a href="cohens-d.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>6.5.4</b> Alternative using <code>rstatix</code></a></li>
+<li class="chapter" data-level="6.5.1" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#paired-samples"><i class="fa fa-check"></i><b>6.5.1</b> Paired-samples</a></li>
+<li class="chapter" data-level="6.5.2" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#example-data-2"><i class="fa fa-check"></i><b>6.5.2</b> Example data</a></li>
+<li class="chapter" data-level="6.5.3" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#assumption-checks-2"><i class="fa fa-check"></i><b>6.5.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.5.4" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#output-4"><i class="fa fa-check"></i><b>6.5.4</b> Output</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="anovas.html"><a href="anovas.html"><i class="fa fa-check"></i><b>7</b> ANOVAs</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html"><i class="fa fa-check"></i><b>7.1</b> Anovas and the F-distribution</a>
+<li class="chapter" data-level="7.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html"><i class="fa fa-check"></i><b>7.1</b> Anovas and the <em>F</em>-distribution</a>
 <ul>
 <li class="chapter" data-level="7.1.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-basic-logic-of-anovas"><i class="fa fa-check"></i><b>7.1.1</b> The basic logic of ANOVAs</a></li>
-<li class="chapter" data-level="7.1.2" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-f-distribution"><i class="fa fa-check"></i><b>7.1.2</b> The F-distribution</a></li>
+<li class="chapter" data-level="7.1.2" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-f-distribution"><i class="fa fa-check"></i><b>7.1.2</b> The <em>F</em>-distribution</a></li>
 <li class="chapter" data-level="7.1.3" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#f-statistic-tables"><i class="fa fa-check"></i><b>7.1.3</b> <em>F</em>-statistic tables</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="the-anova-table.html"><a href="the-anova-table.html"><i class="fa fa-check"></i><b>7.2</b> The ANOVA table</a>
@@ -346,7 +344,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2.4" data-path="the-anova-table.html"><a href="the-anova-table.html#mean-squares"><i class="fa fa-check"></i><b>7.2.4</b> Mean squares</a></li>
 <li class="chapter" data-level="7.2.5" data-path="the-anova-table.html"><a href="the-anova-table.html#calculating-f"><i class="fa fa-check"></i><b>7.2.5</b> Calculating <em>F</em></a></li>
 <li class="chapter" data-level="7.2.6" data-path="the-anova-table.html"><a href="the-anova-table.html#putting-it-all-together"><i class="fa fa-check"></i><b>7.2.6</b> Putting it all together</a></li>
-<li class="chapter" data-level="7.2.7" data-path="the-anova-table.html"><a href="the-anova-table.html#consulting-the-f-table"><i class="fa fa-check"></i><b>7.2.7</b> Consulting the F-table</a></li>
+<li class="chapter" data-level="7.2.7" data-path="the-anova-table.html"><a href="the-anova-table.html#consulting-the-f-table"><i class="fa fa-check"></i><b>7.2.7</b> Consulting the <em>F</em>-table</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html"><i class="fa fa-check"></i><b>7.3</b> Multiple comparisons</a>
 <ul>
@@ -354,28 +352,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="one-way-anova.html"><a href="one-way-anova.html"><i class="fa fa-check"></i><b>7.4</b> One-way ANOVA</a>
+<li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="one-way-anova.html"><a href="one-way-anova.html#the-basic-one-way-anova"><i class="fa fa-check"></i><b>7.4.1</b> The basic one-way ANOVA</a></li>
-<li class="chapter" data-level="7.4.2" data-path="one-way-anova.html"><a href="one-way-anova.html#example-data-3"><i class="fa fa-check"></i><b>7.4.2</b> Example data</a></li>
-<li class="chapter" data-level="7.4.3" data-path="one-way-anova.html"><a href="one-way-anova.html#assumption-checks-3"><i class="fa fa-check"></i><b>7.4.3</b> Assumption checks</a></li>
-<li class="chapter" data-level="7.4.4" data-path="one-way-anova.html"><a href="one-way-anova.html#output-5"><i class="fa fa-check"></i><b>7.4.4</b> Output</a></li>
-<li class="chapter" data-level="7.4.5" data-path="one-way-anova.html"><a href="one-way-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>7.4.5</b> Post-hoc tests</a></li>
+<li class="chapter" data-level="7.4.1" data-path="eta-squared.html"><a href="eta-squared.html#eta-squared-and-variance"><i class="fa fa-check"></i><b>7.4.1</b> Eta-squared and variance</a></li>
+<li class="chapter" data-level="7.4.2" data-path="eta-squared.html"><a href="eta-squared.html#an-example"><i class="fa fa-check"></i><b>7.4.2</b> An example</a></li>
+<li class="chapter" data-level="7.4.3" data-path="eta-squared.html"><a href="eta-squared.html#interpreting-eta-squared"><i class="fa fa-check"></i><b>7.4.3</b> Interpreting eta-squared</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>7.5</b> One-way repeated measures ANOVA</a>
+<li class="chapter" data-level="7.5" data-path="one-way-anova.html"><a href="one-way-anova.html"><i class="fa fa-check"></i><b>7.5</b> One-way ANOVA</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#repeated-measures-anovas"><i class="fa fa-check"></i><b>7.5.1</b> Repeated measures ANOVAs</a></li>
-<li class="chapter" data-level="7.5.2" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#example-data-4"><i class="fa fa-check"></i><b>7.5.2</b> Example data</a></li>
-<li class="chapter" data-level="7.5.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.5.3</b> Assumption checks</a></li>
-<li class="chapter" data-level="7.5.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.5.4</b> ANOVA output</a></li>
-<li class="chapter" data-level="7.5.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.5.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.5.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.5.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.5.1" data-path="one-way-anova.html"><a href="one-way-anova.html#the-basic-one-way-anova"><i class="fa fa-check"></i><b>7.5.1</b> The basic one-way ANOVA</a></li>
+<li class="chapter" data-level="7.5.2" data-path="one-way-anova.html"><a href="one-way-anova.html#example-data-3"><i class="fa fa-check"></i><b>7.5.2</b> Example data</a></li>
+<li class="chapter" data-level="7.5.3" data-path="one-way-anova.html"><a href="one-way-anova.html#assumption-checks-3"><i class="fa fa-check"></i><b>7.5.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="7.5.4" data-path="one-way-anova.html"><a href="one-way-anova.html#output-5"><i class="fa fa-check"></i><b>7.5.4</b> Output</a></li>
+<li class="chapter" data-level="7.5.5" data-path="one-way-anova.html"><a href="one-way-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>7.5.5</b> Post-hoc tests</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.6</b> Eta-squared</a>
+<li class="chapter" data-level="7.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>7.6</b> One-way repeated measures ANOVA</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="eta-squared.html"><a href="eta-squared.html#eta-squared-and-variance"><i class="fa fa-check"></i><b>7.6.1</b> Eta-squared and variance</a></li>
-<li class="chapter" data-level="7.6.2" data-path="eta-squared.html"><a href="eta-squared.html#an-example"><i class="fa fa-check"></i><b>7.6.2</b> An example</a></li>
-<li class="chapter" data-level="7.6.3" data-path="eta-squared.html"><a href="eta-squared.html#interpreting-eta-squared"><i class="fa fa-check"></i><b>7.6.3</b> Interpreting eta-squared</a></li>
+<li class="chapter" data-level="7.6.1" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#repeated-measures-anovas"><i class="fa fa-check"></i><b>7.6.1</b> Repeated measures ANOVAs</a></li>
+<li class="chapter" data-level="7.6.2" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#example-data-4"><i class="fa fa-check"></i><b>7.6.2</b> Example data</a></li>
+<li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
+<li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -407,6 +405,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.5.1" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#scenario"><i class="fa fa-check"></i><b>8.5.1</b> Scenario</a></li>
 <li class="chapter" data-level="8.5.2" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#assumptions"><i class="fa fa-check"></i><b>8.5.2</b> Assumptions</a></li>
+<li class="chapter" data-level="8.5.3" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#output-6"><i class="fa fa-check"></i><b>8.5.3</b> Output</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="predictions.html"><a href="predictions.html"><i class="fa fa-check"></i><b>8.6</b> Predictions</a>
 <ul>
@@ -424,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.8.1" data-path="multreg-intro.html"><a href="multreg-intro.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
 <li class="chapter" data-level="8.8.2" data-path="multreg-intro.html"><a href="multreg-intro.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
-<li class="chapter" data-level="8.8.3" data-path="multreg-intro.html"><a href="multreg-intro.html#output-6"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
+<li class="chapter" data-level="8.8.3" data-path="multreg-intro.html"><a href="multreg-intro.html#output-7"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
 <li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
 </ul></li>
 </ul></li>
@@ -452,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5.1" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#introduction"><i class="fa fa-check"></i><b>9.5.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.5.2" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#example-2"><i class="fa fa-check"></i><b>9.5.2</b> Example</a></li>
 <li class="chapter" data-level="9.5.3" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#assumption-testing"><i class="fa fa-check"></i><b>9.5.3</b> Assumption testing</a></li>
-<li class="chapter" data-level="9.5.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#output-7"><i class="fa fa-check"></i><b>9.5.4</b> Output</a></li>
+<li class="chapter" data-level="9.5.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#output-8"><i class="fa fa-check"></i><b>9.5.4</b> Output</a></li>
 <li class="chapter" data-level="9.5.5" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#write-up"><i class="fa fa-check"></i><b>9.5.5</b> Write-up</a></li>
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>9.6</b> Two-way repeated measures ANOVA</a>
@@ -460,13 +459,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6.1" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#introduction-1"><i class="fa fa-check"></i><b>9.6.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.6.2" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#example-3"><i class="fa fa-check"></i><b>9.6.2</b> Example</a></li>
 <li class="chapter" data-level="9.6.3" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#assumptions-1"><i class="fa fa-check"></i><b>9.6.3</b> Assumptions</a></li>
-<li class="chapter" data-level="9.6.4" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#output-8"><i class="fa fa-check"></i><b>9.6.4</b> Output</a></li>
+<li class="chapter" data-level="9.6.4" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#output-9"><i class="fa fa-check"></i><b>9.6.4</b> Output</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html"><i class="fa fa-check"></i><b>9.7</b> Two-way mixed ANOVA</a>
 <ul>
 <li class="chapter" data-level="9.7.1" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#introduction-2"><i class="fa fa-check"></i><b>9.7.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.7.2" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#example-4"><i class="fa fa-check"></i><b>9.7.2</b> Example</a></li>
-<li class="chapter" data-level="9.7.3" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#output-9"><i class="fa fa-check"></i><b>9.7.3</b> Output</a></li>
+<li class="chapter" data-level="9.7.3" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#output-10"><i class="fa fa-check"></i><b>9.7.3</b> Output</a></li>
 </ul></li>
 <li class="chapter" data-level="9.8" data-path="three-way-anova.html"><a href="three-way-anova.html"><i class="fa fa-check"></i><b>9.8</b> Three-way ANOVA</a>
 <ul>
@@ -607,7 +606,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="13.5.1" data-path="moderation-example.html"><a href="moderation-example.html#example-scenario-1"><i class="fa fa-check"></i><b>13.5.1</b> Example scenario</a></li>
 <li class="chapter" data-level="13.5.2" data-path="moderation-example.html"><a href="moderation-example.html#setting-up-in-r"><i class="fa fa-check"></i><b>13.5.2</b> Setting up in R</a></li>
-<li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-10"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
+<li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -649,8 +648,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="one-way-anova" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> One-way ANOVA<a href="one-way-anova.html#one-way-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="one-way-anova" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> One-way ANOVA<a href="one-way-anova.html#one-way-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
 <p>In the previous section, we looked at how to compare differences between
 either two groups, or two points in time. But how do we compare more
@@ -659,8 +658,8 @@ most common general statistical models for hypothesis testing. If you do
 some statistical testing as part of your thesis, the ANOVA is likely
 going to be one of your most useful tools to have.</p>
 </div>
-<div id="the-basic-one-way-anova" class="section level3 hasAnchor" number="7.4.1">
-<h3><span class="header-section-number">7.4.1</span> The basic one-way ANOVA<a href="one-way-anova.html#the-basic-one-way-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-basic-one-way-anova" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> The basic one-way ANOVA<a href="one-way-anova.html#the-basic-one-way-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The between-groups one-way ANOVA is the most basic form of ANOVA, which
 aims to test differences between two or more groups. (Typically, ANOVAs
 are used when there are three or more groups, but can easily be used in
@@ -674,51 +673,51 @@ they are again:</p>
 (i.e.<span class="math inline">\(\mu_1 \neq \mu_2 \neq ... \mu_k\)</span>)</li>
 </ul>
 </div>
-<div id="example-data-3" class="section level3 hasAnchor" number="7.4.2">
-<h3><span class="header-section-number">7.4.2</span> Example data<a href="one-way-anova.html#example-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="example-data-3" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> Example data<a href="one-way-anova.html#example-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the seminar, we talk about an example from Watts et al. (2003). Below
 is another simple example, comparing taste ratings across three
 different types of slices: caramel slices, vanilla slices and lemon
 slices. Participants were randomly allocated to taste one of the three
 slices blindfolded, and were then asked to verbally rate its taste on a
 scale from 1-10 (10 being super tasty).</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="one-way-anova.html#cb191-1" tabindex="-1"></a>w9_slices <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_9&quot;</span>, <span class="st">&quot;w9_slices.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="one-way-anova.html#cb196-1" tabindex="-1"></a>w9_slices <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_9&quot;</span>, <span class="st">&quot;w9_slices.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 63 Columns: 2
-## ── Column specification ───────
+## ── Column specification ───────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): group
 ## dbl (1): rating
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="one-way-anova.html#cb193-1" tabindex="-1"></a><span class="co"># Create factor</span></span>
-<span id="cb193-2"><a href="one-way-anova.html#cb193-2" tabindex="-1"></a>w9_slices<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(w9_slices<span class="sc">$</span>group)</span>
-<span id="cb193-3"><a href="one-way-anova.html#cb193-3" tabindex="-1"></a></span>
-<span id="cb193-4"><a href="one-way-anova.html#cb193-4" tabindex="-1"></a><span class="fu">head</span>(w9_slices)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="one-way-anova.html#cb198-1" tabindex="-1"></a><span class="co"># Create factor</span></span>
+<span id="cb198-2"><a href="one-way-anova.html#cb198-2" tabindex="-1"></a>w9_slices<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(w9_slices<span class="sc">$</span>group)</span>
+<span id="cb198-3"><a href="one-way-anova.html#cb198-3" tabindex="-1"></a></span>
+<span id="cb198-4"><a href="one-way-anova.html#cb198-4" tabindex="-1"></a><span class="fu">head</span>(w9_slices)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["group"],"name":[1],"type":["fct"],"align":["left"]},{"label":["rating"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"caramel","2":"6"},{"1":"vanilla","2":"8"},{"1":"lemon","2":"4"},{"1":"caramel","2":"6"},{"1":"vanilla","2":"6"},{"1":"lemon","2":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
-<div id="assumption-checks-3" class="section level3 hasAnchor" number="7.4.3">
-<h3><span class="header-section-number">7.4.3</span> Assumption checks<a href="one-way-anova.html#assumption-checks-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="assumption-checks-3" class="section level3 hasAnchor" number="7.5.3">
+<h3><span class="header-section-number">7.5.3</span> Assumption checks<a href="one-way-anova.html#assumption-checks-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, to test assumptions we need to run the ANOVA <em>first</em>. This is because some assumptions rely on values that are calculated when the ANOVA is run. Other programs, such as Jamovi and SPSS, will hide this manual work and present the information to you automatically. This is not quite the case in R, but that’s ok!</p>
 <p>The basic function for running an ANOVA in R is the <code>aov()</code> function, which takes a formula input (much like <code>t.test()</code>). Anything created using <code>aov()</code> should be assigned to a new variable so that we can use it later. This creates an <code>aov</code> object that will a) test our main effects and b) let us check some of our assumptions.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="one-way-anova.html#cb194-1" tabindex="-1"></a>w9_slices_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(rating <span class="sc">~</span> group, <span class="at">data =</span> w9_slices)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="one-way-anova.html#cb199-1" tabindex="-1"></a>w9_slices_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(rating <span class="sc">~</span> group, <span class="at">data =</span> w9_slices)</span></code></pre></div>
 <p>There are four main assumptions for a basic ANOVA.</p>
 <ul>
 <li>Data must be independent of each other - in other words, one
 person’s response should not be influenced by another. This should
 come as a feature of good experimental design.</li>
 <li>The residuals should be normally distributed. We can assess this
-using the same methods as t-tests: either a QQ plot or a normality
+using the same methods as <em>t</em>-tests: either a QQ plot or a normality
 test (e.g. Shapiro-Wilks). You can access the residuals from the
 <code>aov</code> object directly like this:</li>
 </ul>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="one-way-anova.html#cb195-1" tabindex="-1"></a>w9_slices_aov<span class="sc">$</span>residuals</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="one-way-anova.html#cb200-1" tabindex="-1"></a>w9_slices_aov<span class="sc">$</span>residuals</span></code></pre></div>
 <p>This lets us do the SW test:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="one-way-anova.html#cb196-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w9_slices_aov<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="one-way-anova.html#cb201-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w9_slices_aov<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -731,11 +730,11 @@ test (e.g. Shapiro-Wilks). You can access the residuals from the
 <li>The equality of variance (homoscedasticity) assumption.</li>
 </ul>
 <p>This means that the variances within each group are the same. We test this using Levene’s test, using the <code>levene_test()</code> function. Helpfully, <code>levene_test()</code> is flexible enough to work with either a formula <em>or</em> an <code>aov</code> object we have already fitted:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="one-way-anova.html#cb198-1" tabindex="-1"></a><span class="co"># Either one of these will work</span></span>
-<span id="cb198-2"><a href="one-way-anova.html#cb198-2" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
-<span id="cb198-3"><a href="one-way-anova.html#cb198-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(rating <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span>
-<span id="cb198-4"><a href="one-way-anova.html#cb198-4" tabindex="-1"></a></span>
-<span id="cb198-5"><a href="one-way-anova.html#cb198-5" tabindex="-1"></a><span class="fu">levene_test</span>(w9_slices_aov, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="one-way-anova.html#cb203-1" tabindex="-1"></a><span class="co"># Either one of these will work</span></span>
+<span id="cb203-2"><a href="one-way-anova.html#cb203-2" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
+<span id="cb203-3"><a href="one-way-anova.html#cb203-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(rating <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span>
+<span id="cb203-4"><a href="one-way-anova.html#cb203-4" tabindex="-1"></a></span>
+<span id="cb203-5"><a href="one-way-anova.html#cb203-5" tabindex="-1"></a><span class="fu">levene_test</span>(w9_slices_aov, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"60","3":"0.720662","4":"0.4905921"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -745,10 +744,10 @@ test (e.g. Shapiro-Wilks). You can access the residuals from the
 might consider using a Welch’s ANOVA, which can be done with <code>welch_anova_test()</code> from <code>rstatix</code>.</p>
 <p>For now though, we’ll press ahead.</p>
 </div>
-<div id="output-5" class="section level3 hasAnchor" number="7.4.4">
-<h3><span class="header-section-number">7.4.4</span> Output<a href="one-way-anova.html#output-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="output-5" class="section level3 hasAnchor" number="7.5.4">
+<h3><span class="header-section-number">7.5.4</span> Output<a href="one-way-anova.html#output-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s our main output from the ANOVA, generated using the <code>summary()</code> function. This is called an omnibus, because it is a general test of the hypotheses:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="one-way-anova.html#cb199-1" tabindex="-1"></a><span class="fu">summary</span>(w9_slices_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="one-way-anova.html#cb204-1" tabindex="-1"></a><span class="fu">summary</span>(w9_slices_aov)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 ## group        2  22.22  11.111   6.897 0.00201 **
 ## Residuals   60  96.67   1.611                   
@@ -756,11 +755,11 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Our main results suggest that there is a significant difference between means (<em>F</em>(2, 60) = 6.90, <em>p</em> = .002).</p>
 </div>
-<div id="post-hoc-tests-1" class="section level3 hasAnchor" number="7.4.5">
-<h3><span class="header-section-number">7.4.5</span> Post-hoc tests<a href="one-way-anova.html#post-hoc-tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="post-hoc-tests-1" class="section level3 hasAnchor" number="7.5.5">
+<h3><span class="header-section-number">7.5.5</span> Post-hoc tests<a href="one-way-anova.html#post-hoc-tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The output above told us that we could reject our basic null hypothesis - that there was no difference between means. However, remember that it doesn’t tell us where those differences are. To figure out where they are, we need to follow up that ANOVA with post-hoc tests.</p>
 <p>To generate post-hocs, there are a couple of ways. Tukey tests can be calculated with <code>TukeyHSD()</code> or <code>tukey_hsd()</code>:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="one-way-anova.html#cb201-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(w9_slices_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="one-way-anova.html#cb206-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(w9_slices_aov)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -771,12 +770,12 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 ## lemon-caramel   -0.4761905 -1.4175618 0.4651809 0.4486738
 ## vanilla-caramel  0.9523810  0.0110096 1.8937523 0.0467882
 ## vanilla-lemon    1.4285714  0.4872001 2.3699428 0.0015928</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="one-way-anova.html#cb203-1" tabindex="-1"></a><span class="co"># These will give the same output</span></span>
-<span id="cb203-2"><a href="one-way-anova.html#cb203-2" tabindex="-1"></a></span>
-<span id="cb203-3"><a href="one-way-anova.html#cb203-3" tabindex="-1"></a><span class="fu">tukey_hsd</span>(w9_slices_aov)</span>
-<span id="cb203-4"><a href="one-way-anova.html#cb203-4" tabindex="-1"></a></span>
-<span id="cb203-5"><a href="one-way-anova.html#cb203-5" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
-<span id="cb203-6"><a href="one-way-anova.html#cb203-6" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(rating <span class="sc">~</span> group)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="one-way-anova.html#cb208-1" tabindex="-1"></a><span class="co"># These will give the same output</span></span>
+<span id="cb208-2"><a href="one-way-anova.html#cb208-2" tabindex="-1"></a></span>
+<span id="cb208-3"><a href="one-way-anova.html#cb208-3" tabindex="-1"></a><span class="fu">tukey_hsd</span>(w9_slices_aov)</span>
+<span id="cb208-4"><a href="one-way-anova.html#cb208-4" tabindex="-1"></a></span>
+<span id="cb208-5"><a href="one-way-anova.html#cb208-5" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
+<span id="cb208-6"><a href="one-way-anova.html#cb208-6" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(rating <span class="sc">~</span> group)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["null.value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["estimate"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p.adj"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p.adj.signif"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"group","2":"caramel","3":"lemon","4":"0","5":"-0.4761905","6":"-1.4175618","7":"0.4651809","8":"0.44900","9":"ns","_rn_":"1"},{"1":"group","2":"caramel","3":"vanilla","4":"0","5":"0.9523810","6":"0.0110096","7":"1.8937523","8":"0.04680","9":"*","_rn_":"2"},{"1":"group","2":"lemon","3":"vanilla","4":"0","5":"1.4285714","6":"0.4872001","7":"2.3699428","8":"0.00159","9":"**","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -788,8 +787,8 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 <li>There is a (marginal) significant difference between caramel and vanilla slices; participants rated vanilla slices higher than caramel slices (MD = .95, <em>p</em> = .047).</li>
 <li>There is a significant difference between lemon and vanilla slices, in that participants preferred vanilla slices (MD = 1.43, <em>p</em> = .002).</li>
 </ul>
-<p>To generate Bonferroni or Holm-corrected p-values, you need to use the <code>pairwise.t.test()</code> function:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="one-way-anova.html#cb204-1" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> w9_slices<span class="sc">$</span>rating, <span class="at">g =</span> w9_slices<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<p>To generate Bonferroni or Holm-corrected <em>p</em>-values, you need to use the <code>pairwise.t.test()</code> function:</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="one-way-anova.html#cb209-1" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> w9_slices<span class="sc">$</span>rating, <span class="at">g =</span> w9_slices<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 
@@ -801,14 +800,17 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 ## 
 ## P value adjustment method: bonferroni</code></pre>
 <p><code>rstatix::pairwise_t_test()</code> will also work, and looks like this:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="one-way-anova.html#cb206-1" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
-<span id="cb206-2"><a href="one-way-anova.html#cb206-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(rating <span class="sc">~</span> group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="one-way-anova.html#cb211-1" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
+<span id="cb211-2"><a href="one-way-anova.html#cb211-2" tabindex="-1"></a>  <span class="fu">pairwise_t_test</span>(rating <span class="sc">~</span> group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[4],"type":["int"],"align":["right"]},{"label":["n2"],"name":[5],"type":["int"],"align":["right"]},{"label":["p"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p.signif"],"name":[7],"type":["chr"],"align":["left"]},{"label":["p.adj"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p.adj.signif"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"rating","2":"caramel","3":"lemon","4":"21","5":"21","6":"0.229000","7":"ns","8":"0.68700","9":"ns","_rn_":"1"},{"1":"rating","2":"caramel","3":"vanilla","4":"21","5":"21","6":"0.018000","7":"*","8":"0.05410","9":"ns","_rn_":"2"},{"1":"rating","2":"lemon","3":"vanilla","4":"21","5":"21","6":"0.000557","7":"***","8":"0.00167","9":"**","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>In both instances, you must provide <code>p.adjust.method</code> as an argument. By default, both versions will use Holm corrections.</p>
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+<p>A one-way ANOVA was conducted to examine whether there were differences in preferences for types of slices. There was a significant large main effect of slice type (<em>F</em>(2, 60) = 6.90, <em>p</em> = .002, <span class="math inline">\(\eta^2\)</span> = .187). Post-hoc tests with Tukey HSD corrections showed that participants rated vanilla slices higher than caramel slices (mean difference, <em>MD</em> = .95, <em>p</em> = .047), as well as significantly higher than lemon slices (<em>MD</em> = 1.43, <em>p</em> = .002). However, there was no significant differencce between caramel and lemon slices (<em>p</em> = .449).</p>
+</div>
 </div>
 </div>
             </section>
@@ -816,7 +818,7 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
           </div>
         </div>
       </div>
-<a href="multiple-comparisons.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="eta-squared.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="one-way-repeated-measures-anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

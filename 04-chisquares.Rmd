@@ -397,6 +397,12 @@ Next, here is our test output. The result is significant (*p* = .004), suggestin
 w7_mnm_chisq
 ```
 
+Here is an example write-up of these results:
+
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+A chi-square test of goodness of fit was conducted to see whether the number of M&Ms aligned with the expected proportions published in 2008. There was a significant difference between the observed and expected proportions ($chi^2$(5, *N* = 712) = 17.35, *p* = .004). There were more green M&Ms and less blue M&Ms than expected.
+</div>
+
 ## Tests of independence
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
@@ -480,7 +486,13 @@ Next is our chi-square test output. As you can see, our test of independence sug
 w7_inst_chisq
 ```
 
+Like the previous page, here's an example write-up of our results:
 
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+A chi-square test of association was conducted to examine whether there was an association between sex and instrument choice. A significant association was observed ($\chi^2$(1, *N* = 122) = 4.85, *p* = .028; Cramer's *V* = .199). There were more male drummers and less female drummers than expected.
+</div>
+
+Note that as part of the write-up above, you would also include a brief interpretation of the effect size - but we will discuss this on the next page.
 
 ## Effect sizes for chi-squares
 
@@ -502,7 +514,7 @@ Essentially, it is the chi-square test statistic divided by the sample size, whi
 
 ### Cramer's V
 
-Cramer's V is another effect size for chi-squares, but one that can be used for anything beyond a 2x2 design as well. The formula for Cramer's *V* is similar:
+Cramer's *V* is another effect size for chi-squares, but one that can be used for anything beyond a 2x2 design as well. The formula for Cramer's *V* is similar:
 
 
 $$
@@ -615,7 +627,7 @@ $$
 \chi^2 = \frac{(b-c)^2}{b+c}
 $$
 
-And then from here on, the process of deriving a p-value is identical to a regular chi-square test, with the exception that the df is always df = 1 (remember we have a 2 x 2 table, and the formula for a df in a two-way chi-square test is to subtract 1 from each and multiply them together).
+And then from here on, the process of deriving a *p*-value is identical to a regular chi-square test, with the exception that the df is always df = 1 (remember we have a 2 x 2 table, and the formula for a df in a two-way chi-square test is to subtract 1 from each and multiply them together).
 
  
 ### Example
@@ -655,7 +667,7 @@ $$
 \chi^2 = 7.41
 $$
 
-If we were doing this fully by hand, we could consult a chi-squared table and see what the relevant p-value would be with this chi-squared value and a df = 1. However, we'll skip straight to Jamovi. A McNemar test can be run in R using the `mcnemar.test()` function in base R:
+If we were doing this fully by hand, we could consult a chi-squared table and see what the relevant *p*-value would be with this chi-squared value and a df = 1. However, we'll skip straight to Jamovi. A McNemar test can be run in R using the `mcnemar.test()` function in base R:
 
 ```{r}
 w7_voting_mcn <- mcnemar.test(w7_voting_table, correct = FALSE)

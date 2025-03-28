@@ -24,6 +24,11 @@ By the end of this module you should be able to:
 -    Make predictions based on the output of a linear regression
 -    Run and interpret a multiple regression
 
+```{r echo = FALSE, fig.align='center', fig.cap="[xkcd: Linear Regression](https://xkcd.com/1725/)"}
+knitr::include_graphics("https://imgs.xkcd.com/comics/linear_regression.png")
+```
+
+
 ## Correlations
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
@@ -172,9 +177,9 @@ df %>%
 
 You might have some good guesses, and there's every chance that you've drawn a line that fits the data points pretty well. But for this data, it's pretty obvious where the line would sit, and the data that we do work with won't always be as clear cut. 
 
-The line of best fit sits where the distance between the line and every point is minimised. See the example below, where we have 10 data points to illustrate. Each dot represents a single data point, while the solid blue line is our line of best fit. The dashed lines represent the difference between the blue line (which is what we predict - more on this later) and the actual data point. This difference is called a residual. 
+The line of best fit sits where **the distance between the line and every point is minimised**. See the example below, where we have 10 data points to illustrate. Each dot represents a single data point, while the solid blue line is our line of best fit. The dashed lines represent the difference between the blue line (which is what we *predict* - more on this later) and the actual data point. This difference is called a **residual**. 
 
-So, in other words, the line of best fit sits where the residuals are minimised.
+So, in other words, the line of best fit sits where the *residuals* are minimised.
 
 ```{r fig.align = "center", echo = FALSE, message = FALSE, warning = FALSE}
 set.seed(202306)
@@ -198,7 +203,7 @@ df %>%
 
 ```
 
-We do this using the least squares principle. In essence, we calculate a squared deviation for each residual using the formula below - it might be familiar...
+We do this using the **least squares** principle. In essence, we calculate a **squared deviation** for each residual using the formula below - it might be familiar...
 
 $$
 SS_{res} = \Sigma (y_i - \bar y_i)^2
@@ -206,9 +211,13 @@ $$
 
 Where $y_i$ is each individual (ith) value on the y-axis, and $\bar y_i$ is the predicted y-value (i.e. the regression line). Essentially, we calculate the residual for each data point, square it and add it all up. 
 
-The actual minimising part is something we won't concern ourselves with for this subject (or at all), because quite frankly it's complicated - the key here is to understand how a regression line is fit to the data.
+The actual *minimising* part is something we won't concern ourselves with for this subject (or at all), because quite frankly it's complicated - the key here is to understand how a regression line is fit to the data.
 
 ## Assumption tests
+
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+As usual, there are several assumptions that we need to test for regressions. Some people call these **regression diagnostics** - they mean the same as assumption testing.
+</div>
 
 ### Linearity
 
@@ -254,9 +263,9 @@ If the data shows no clear linear relationship between your IV and DV, it is lik
  
 ### Homoscedasticity
 
-The homoscedasticity assumption is one that we've seen before - it is essentially a version of the equality of variance test. In a linear regression context, however, this assumption works a little bit differently; if this assumption is met, then the variance should be equal at all levels of our predictor (i.e. the x-axis).
+The **homoscedasticity** assumption is one that we've seen before - it is essentially a version of the equality of variance test. In a linear regression context, however, this assumption works a little bit differently; if this assumption is met, then the variance should be equal at all levels of our predictor (i.e. the x-axis).
 
-The easiest way to test this is to create a fitted vs residuals graph. As the name implies, we take the fitted values for each level of the predictor in our data, and plot that against the residuals (fitted - actual). Here are some fitted vs residual plots for two sets of data. The data on the left has an even spread of variance as X increases, meaning that it is homoscedastic; the data on the right, on the other hand, spreads out like a cone. The data on the right therefore is likely heteroscedastic. 
+The easiest way to test this is to create a **fitted vs residuals** graph. As the name implies, we take the fitted values for each level of the predictor in our data, and plot that against the residuals (fitted - actual). Here are some fitted vs residual plots for two sets of data. The data on the left has an even spread of variance as X increases, meaning that it is homoscedastic; the data on the right, on the other hand, spreads out like a cone. The data on the right therefore is likely *heteroscedastic.* 
 
 ```{r fig.align = "center", fig.dim = c(8, 3), echo = FALSE}
 set.seed(202305)
@@ -310,7 +319,7 @@ There are a couple of ways to overcome this, such as either transforming the raw
  
 ### Independence
 
-This one is the same - data points should be independent of each other. Like we have seen with other tests, this should ideally be a feature of good experimental design. In linear regression, a specific issue is autocorrelation - where the residuals between two values of X are not independent. If the residuals are *not* independent, your data likely exhibits signs of **autocorrelation** (i.e. it is correlated with itself). This can distort the relationship between your IV and DV, and is most commonly an issue with time series data. 
+This one is the same - data points should be independent of each other. Like we have seen with other tests, this should ideally be a feature of good experimental design. In linear regression, a specific issue is autocorrelation - where the residuals between two values of X are not independent. If the residuals are *not* independent, your data likely exhibits signs of **autocorrelation** (i.e. it is correlated with itself). This can distort the relationship between your IV and DV, and indicates that your data are connected through time.
 
 We can test this using a test called the **Durbin-Watson** test of autocorrelation. The Durbin-Watson test will estimate a coefficient/test statistic that quantifies the degree of autocorrelation (dependence) between observations in the data. The DW test statistic ranges from 0 to 4, with the following interpretations:
 
@@ -329,22 +338,27 @@ DescTools::DurbinWatsonTest(mod_1)
  
 ### Normality
 
-The normality assumption is the same here as it has been elsewhere - the residuals must be normally distributed. Here, it's a little bit easier to visualise what these 'residuals' are because we can calculate and see them. That being said, the way we test for these are exactly the same - either use a Q-Q plot or a Shapiro-Wilks test.
+The **normality** assumption is the same here as it has been elsewhere - the residuals must be normally distributed. Here, it's a little bit easier to visualise what these 'residuals' are because we can calculate and see them. That being said, the way we test for these are exactly the same - either use a Q-Q plot or a Shapiro-Wilks test.
 
  
 ### Multicollinearity
 
-The multicollinearity (sometimes just called collinearity) assumption only applies to multiple regressions, where you have more than one predictor in your test. multicollinearity occurs when two predictors are too similar to one another (i.e. they are highly correlated with each other. This becomes a problem at the individual predictor level, because what happens is that the effect of predictor A becomes muddled by predictor B - in other words, if two predictors are collinear, it becomes impossible to tell apart which one is contributing what to the regression.
+The **multicollinearity** (sometimes just called collinearity) assumption only applies to **multiple regressions**, where you have more than one predictor in your test. multicollinearity occurs when two predictors are too similar to one another (i.e. they are highly correlated with each other. This becomes a problem at the individual predictor level, because what happens is that the effect of predictor A becomes muddled by predictor B - in other words, if two predictors are collinear, it becomes impossible to tell apart which one is contributing what to the regression.
 
 There are three basic ways you can assess this.
 
 -    The simplest is to test a correlation between the two predictors. If they are very highly correlated (use r = .80 as a rule of thumb), this is likely to be a problem.
--    The variance inflation factor (VIF) is a more formal measure of multicollinearity. It is a single number, and a higher value means greater collinearity. If a VIF is greater than 5 this suggests an issue.
--    Tolerance is a related value to VIF - in fact, it is just 1 divided by the FID - and works in much the same way - except smaller values mean greater collinearity. As a rule of thumb, if tolerance is smaller than 0.20 this suggests an issue.
+-    The **variance inflation factor (VIF)** is a more formal measure of multicollinearity. It is a single number, and a higher value means greater collinearity. If a VIF is **greater than 5** this suggests an issue.
+-    **Tolerance** is a related value to VIF - in fact, it is just 1 divided by the FID - and works in much the same way - except smaller values mean greater collinearity. As a rule of thumb, if tolerance is smaller than 0.20 this suggests an issue.
 
 To calculate VIF, you can use the `VIF()` function from the `DescTools` package - more on the relevant page.
 
 ## Linear regressions in R
+
+::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
+Let's now turn to an example of how to do a linear regression in R.
+:::
+
 
 ### Scenario
 
@@ -413,7 +427,7 @@ shapiro.test(w10_goldmsi_lm$residuals)
 ```
 
 
-Output
+### Output
 
 The output that R gives us for a linear regression comes in two parts: a test of the overall model, and a breakdown of the predictors and their slopes.
 
@@ -424,12 +438,12 @@ summary(w10_goldmsi_lm)
 
 Let's start with the overall model. This tells us whether the regression model as a whole is significant. A couple of things to note here.
 
--    R2 is called the coefficient of determination. This value tells how much variance in the outcome is explained by the predictor. Our value is .202, which means that 20.2% of the variance in Gold-MSI scores is explained by years of training.
+-    $R^2$ is called the coefficient of determination. This value tells how much variance in the outcome is explained by the predictor. Our value is .202, which means that 20.2% of the variance in Gold-MSI scores is explained by years of training.
 -    The overall model test is essentially an ANOVA (we won't go too deep into why just yet!), which tells us whether the model is significant. In this case, it is (*F*(1, 72) = 18.24, *p* < .001).
 
 Now we can look at the middle of the output, which gives the model coefficients. This part of the output tells us whether the predictors are significant. (Given the overall model is, with one predictor we'd expect this to be significant as well!). 
 
-The Estimate column gives us the B coefficient, which is our slope. This tells us how much our outcome increases when our predictor increases by 1 unit.
+The Estimate column gives us the *B* coefficient, which is our slope. This tells us how much our outcome increases when our predictor increases by 1 unit.
 
 From this, we can see that years of training is a significant predictor of Gold-MSI scores (*t* = 4.27, *p* < .001); for every year of training, Gold-MSI scores increase by 4.86 (given by the value under Estimate, next to our predictor variable).
 
@@ -439,6 +453,13 @@ Finally, we can use the `confint` function to return 95% confidence intervals on
 confint(w10_goldmsi_lm)
 ```
 Therefore, the 95% CI around the estimated regression coefficient of 4.86 is [2.59, 7.13].
+
+Here is how we can write up these results. Note that for a regression, it is important to discuss both the overall model fit and the specific effect of the predictor.
+
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+We conducted a simple linear regression to examine whether years of training predicted Gold-MSI scores. The overall model was significant (*F*(1, 72) = 18.24, *p* < .001), with years of training explaining 20.2% of the variance in Gold-MSI scores ($R^2$ = .202). Years of training was a significant positive predictor of Gold-MSI scores (*B* = 4.86, *t* = 4.27, *p* < .001).
+</div>
+
 
 ## Predictions
 
@@ -632,7 +653,7 @@ DescTools::VIF(w10_flow_lm)
 ```
 ### Output
 
-Let's start as always by taking a look at our output. Our regression explains 13.6 of the variance in flow proneness (R2 = .136), and our overall model is significant (*F*(2, 808) = 63.81, *p* < .001).
+Let's start as always by taking a look at our output. Our regression explains 13.6 of the variance in flow proneness ($R^2$ = .136), and our overall model is significant (*F*(2, 808) = 63.81, *p* < .001).
 
 With that in mind, let's turn to our individual predictors. Remember, now we have two predictors to consider - and we need to interpret them individually as well.
 
@@ -649,10 +670,10 @@ We can see that both trait anxiety and openness are significant predictors of fl
 
 Therefore, we can conclude that both are significant predictors and have opposite effects to each other. We can write this up as follows:
 
-
-
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
 We ran a multiple regression with trait anxiety and openness as predictors, and flow proneness as an outcome. The overall regression model was significant (*F*(2, 808) = 63.81, *p* < .001), and explained 13.6% of the variance in flow proneness. Trait anxiety significantly predicted flow proneness (*B* = -.11, 95% CI = [-.14, -.09], *t* = -8.70, *p* < .001); higher trait anxiety predicted lower flow proneness. Openness was also a significant predictor (*B* = .83, 95% CI = [.55, 1.12], *t* = 5.74, *p* < .001); higher openness predicted higher flow proneness.
- 
+</div>
+
 
 But there's one more thing we can consider here...
 
@@ -661,9 +682,13 @@ But there's one more thing we can consider here...
 
 When we do a multiple regression, we can actually identify which of our predictors is the strongest predictor of the outcome. 
 
-Our estimate column alone won't tell us that, because these are unstandardised coefficients. They are unstandardised because they describe the relationship in terms of the original units of each measure. An increase of 1 unit on trait anxiety is not necessarily the same thing as a 1 unit increase in openness because they are on different scales, so we can't compare them directly!
+Our estimate column alone won't tell us that, because these are **unstandardised coefficients**. They are unstandardised because they describe the relationship in terms of the original units of each measure. An increase of 1 unit on trait anxiety is not necessarily the same thing as a 1 unit increase in openness because they are on different scales, so we can't compare them directly!
 
-However, if we were to standardise these coefficients, we would then bring them all into the same scale (think back to z-scores!) - which would allow us to directly compare which predictor leads to a greater change in the outcome. These are simply regression coefficients that have been standardised, meaning that they are all on the same scale. Jamovi will calculate a standardised estimate (sometimes called standardised coefficient), which is presented in the rightmost column of the above table. In R, we need to use an extra function to do this. We can call on the `lm.beta` package:
+However, if we were to **standardise** these coefficients, we would then bring them all into the same scale (think back to z-scores!) - which would allow us to directly compare which predictor leads to a greater change in the outcome. These are simply regression coefficients that have been standardised, meaning that they are all on the same scale. Jamovi will calculate a **standardised estimate** (sometimes called **standardised coefficient**), which is presented in the rightmost column of the above table. Standardised estimates are denoted as **beta** ($\beta$), and thus are sometimes called **standard betas**.
+
+Standard betas allow us to interpret our coefficients in terms of changes in **standard deviations**; namely, a 1 SD increase in predictor X leads to a $\beta$ SD change in predictor Y.
+
+In R, we need to use an extra function to calculate standard betas. We can call on the `lm.beta` package:
 
 ```{r}
 library(lm.beta)
@@ -686,4 +711,5 @@ summary(w10_flow_lm_std)
 
 confint(w10_flow_lm_std)
 ```
-This means that we can just compare the numbers of the standardised estimates (ignoring positive/negative signs) to see which one is the greatest predictor of the outcome. In the example above, trait anxiety has a standard coefficient of .288, whereas openness has a standard coefficient of .190. Trait anxiety is therefore a stronger predictor of flow proneness, because a 1 standard unit increase in trait anxiety leads to a greater increase in flow proneness.
+
+This means that we can just compare the numbers of the standardised estimates (ignoring positive/negative signs) to see which one is the greatest predictor of the outcome. In the example above, trait anxiety has a standard coefficient of .288, whereas openness has a standard coefficient of .190. Trait anxiety is therefore a stronger predictor of flow proneness, because a 1 standard deviation increase in trait anxiety leads to a greater increase in flow proneness - namely, a change of .288 standard deviations.

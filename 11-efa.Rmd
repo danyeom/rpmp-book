@@ -8,9 +8,13 @@ library(psych)
 library(EFA.dimensions)
 ```
 
+Many of the *things* we are interested in psychological research are things that are both *unobservable* and not *directly* measurable. Consider, for instance, someone's height: this is an observable and directly measurable quantity, in that we can a) see how tall they are and b) take a tape measure to them and get a direct, precise measurement of their height. In contrast, consider the things that we are often interested in when it comes to psychological constructs: motivations, wellbeing attitudes, beliefs, cognitive abilities, values, personality features... 
+
+None of these kinds of constructs are directly measurable or even tangible. We can't take a rule to measure how much someone enjoys listening to music, for example, or identify the extent to which they believe that listening to certain genres is healthy or unhealthy for you. However, we might be able to observe *behaviours* that might relate to these constructs, or people may respond to questions in ways that are indicative of said constructs. 
+
+In this module we talk about **factor analysis**, which is one method of using statistics to identify these **latent constructs**. Specifically, we will focus on **exploratory factor analysis**, which aims to take a series of variables and identify the latent constructs that may underlie these variables.
+
 ## Introduction to EFA
-
-
 
 We generally conduct a survey because we're interested in how different people hold different attitudes, ideas or beliefs about things. All of the standard statistical tools that you learned in Modules 5 and 6 are useful in this regard, and can absolutely be used with survey data. But given how highly dimensional survey data is, it opens up a new way of analysing data - exploratory factor analysis.
 
