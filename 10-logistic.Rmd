@@ -193,7 +193,7 @@ In the formula above, $f(Y)$ is used to describe the link function. In our insta
 The logistic function is characterised by a very obvious S-shaped curve:
 
 ```{r echo = FALSE}
-knitr::include_graphics("https://en.wikipedia.org/wiki/Logistic_function#/media/File:Logistic-curve.svg")
+knitr::include_graphics(here("img", "logistic_curve.svg"))
 ```
 
 
@@ -296,6 +296,19 @@ This coefficient does *not* mean the following:
 - The odds increase by 1.12 for every unit of x - remember, only the *log odds* are linearly related to the predictor. The odds are non-linearly related.
 - The probability increases by 1.12 - same deal as above, the probability isn't linearly related to the predictors.
 
+
+We can get confidence intervals around our estimated coefficients using `confint()`, just like we have previously. We can do this either on the original coefficients, or the exponentiated ones. The confidence interval around the exponentiated coefficients gives us a 95% CI for our odds ratio.This is probably more useful in terms of interpretation than the log odds coefficients, so we have chosen them here. 
+
+```{r}
+confint(sleep_glm)
+```
+```{r}
+exp(confint(sleep_glm))
+```
+
+Thus, we can say that the OR of a sleep disorder is 1.12 (95% CI = [1.09, 1.16]).
+
+
 ### Predictions
 
 Now recall that we can convert from odds to probabilities in the following manner:
@@ -342,16 +355,6 @@ age_range %>%
   theme_pubr()
 ```
 
-
-We can get confidence intervals around our estimated coefficients using `confint()`, just like we have previously. We can do this either on the original coefficients, or the exponentiated ones. The confidence interval around the exponentiated coefficients gives us a 95% CI for our odds ratio.
-
-```{r}
-confint(sleep_glm)
-```
-```{r}
-exp(confint(sleep_glm))
-```
-Thus, we can say that the OR of a sleep disorder is 1.12 (95% CI = [1.09, 1.16]).
 
 
 ### Logistic regression with multiple predictors
@@ -458,6 +461,13 @@ PseudoR2(sleep_glm, which = "CoxSnell")
 ```{r}
 PseudoR2(sleep_glm, which = "Nagelkerke")
 ```
+
+Finally, **Tjur's $R^2$** is a relatively new pseudo-$R^2$. It is calculated by first calculating the average predicted probabilities of the outcomes, and then taking the differences between those two probabilities. It is bounded between 0-1 and is also roughly analogous to a normal $R^2$.
+
+```{r}
+PseudoR2(sleep_glm, which = "Tjur")
+```
+
 
 ### When do you report it?
 

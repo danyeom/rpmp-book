@@ -69,8 +69,22 @@ In this subject we won't expect you to calculate a correlation coefficient by ha
 
 Statistical programs like Jamovi and R will allow us to not only quantify a correlation between two variables, but test whether this correlation is significant. Generally, when working with continuous data it never hurts to run a basic correlation. 
 
-This can easily be done in R by using the `cor.test()` function. You simply need to give it two 
+Here is an example using a simple dataset containing the gender, height and speed (the fastest they had ever driven).
 
+```{r}
+w10_speed <- read_csv(here("data", "week_10", "W10_speed.csv"))
+```
+
+Let's correlate height and speed. This can easily be done in R by using the `cor.test()` function. You simply need to give it the names of the two columns you want to correlate. By default, this function will run a Pearson's correlation.
+
+```{r}
+cor.test(w10_speed$height, w10_speed$speed)
+```
+We can see that our correlation is *r* = .249, which is a relatively weak to moderate correlation. This correlation is also significant (*p* < .001). We also get a confidence interval around the size of the correlation, which is great for showing the range of possible values. So we might write this up as something like:
+
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+There was a significant weak positive correlation between students' heights and their fastest ever driving speed (*r*(1300) = .25, *p* < .001; 95% CI [.20, .30]).
+</div>
 
 If you need to run multiple correlations at once, there are two ways to visualise them. Below are two types, using fictional questionnaire data.
 

@@ -1,0 +1,1091 @@
+...1,nr,year,school,exper,union,ethn,married,health,wage,industry,occupation,residence
+1,13,1980,14,1,no,other,no,no,3.31,Business_and_Repair_Service,Service_Workers,north_east
+8,13,1987,14,8,no,other,no,no,5.31,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",north_east
+9,17,1980,13,4,no,other,no,no,5.34,Trade,"Managers, Officials_and_Proprietors",north_east
+16,17,1987,13,11,no,other,no,no,6.17,Construction,"Craftsmen, Foremen_and_kindred",north_east
+17,18,1980,12,4,no,other,yes,no,4.55,Trade,Clerical_and_kindred,NA
+24,18,1987,12,11,no,other,yes,no,17.69,Trade,Sales_Workers,NA
+25,45,1980,12,2,yes,other,no,no,6.65,Transportation,Laborers_and_farmers,north_east
+32,45,1987,12,9,no,other,yes,no,8.46,Construction,Clerical_and_kindred,north_east
+33,110,1980,12,5,yes,other,no,no,7.02,Professional_and_Related Service,Clerical_and_kindred,north_east
+40,110,1987,12,12,no,other,yes,no,8.27,Finance,Clerical_and_kindred,north_east
+41,120,1980,10,2,no,other,no,no,1.3,Trade,Service_Workers,north_east
+48,120,1987,10,9,no,other,no,no,8.57,Business_and_Repair_Service,Clerical_and_kindred,north_east
+49,126,1980,13,2,no,other,no,no,5.68,Trade,Sales_Workers,north_east
+56,126,1987,13,9,no,other,yes,no,11.19,Trade,"Managers, Officials_and_Proprietors",north_east
+57,150,1980,12,2,no,other,no,no,3.35,Business_and_Repair_Service,Operatives_and_kindred,north_east
+64,150,1987,12,9,yes,other,no,no,2.3,Business_and_Repair_Service,Service_Workers,north_east
+65,162,1980,11,2,yes,other,no,no,1.65,Trade,Clerical_and_kindred,north_east
+72,162,1987,11,9,no,other,no,no,8.66,Professional_and_Related Service,"Managers, Officials_and_Proprietors",south
+73,166,1980,10,2,yes,other,no,no,2.73,Trade,Laborers_and_farmers,north_east
+80,166,1987,10,9,no,other,yes,no,6.37,Trade,"Craftsmen, Foremen_and_kindred",nothern_central
+81,189,1980,14,2,no,other,no,no,3.1,Trade,Clerical_and_kindred,north_east
+88,189,1987,14,9,no,other,no,no,5.78,Manufacturing,Clerical_and_kindred,north_east
+89,193,1980,14,2,no,other,no,no,4.79,Manufacturing,"Professional, Technical_and_kindred",north_east
+96,193,1987,14,9,no,other,yes,no,11.35,Manufacturing,"Professional, Technical_and_kindred",north_east
+97,209,1980,11,3,no,other,no,no,6.81,Trade,Service_Workers,north_east
+104,209,1987,11,10,no,other,no,no,8.91,Entertainment,"Managers, Officials_and_Proprietors",north_east
+105,212,1980,11,2,no,other,no,no,5.96,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+112,212,1987,11,9,yes,other,yes,no,9.41,Manufacturing,Operatives_and_kindred,north_east
+113,218,1980,15,2,no,other,no,no,7.49,Professional_and_Related Service,"Professional, Technical_and_kindred",north_east
+120,218,1987,15,9,no,other,yes,no,21.44,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",north_east
+121,243,1980,12,4,no,other,no,no,4.78,Transportation,"Craftsmen, Foremen_and_kindred",north_east
+128,243,1987,12,11,no,other,yes,no,5.97,Transportation,"Managers, Officials_and_Proprietors",north_east
+129,259,1980,12,3,yes,other,yes,no,8.23,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+136,259,1987,12,10,no,other,yes,no,4.28,Trade,Operatives_and_kindred,north_east
+137,260,1980,11,2,yes,other,no,no,5.1,Trade,Clerical_and_kindred,north_east
+144,260,1987,11,9,no,other,yes,no,11.26,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+145,309,1980,12,3,no,other,no,no,5.97,Business_and_Repair_Service,Operatives_and_kindred,south
+152,309,1987,12,10,no,other,yes,no,11.9,Manufacturing,Operatives_and_kindred,north_east
+153,351,1980,12,3,no,other,no,no,5.17,Finance,Clerical_and_kindred,north_east
+160,351,1987,12,10,no,other,yes,no,5.46,Professional_and_Related Service,"Professional, Technical_and_kindred",north_east
+161,353,1980,12,3,no,other,no,no,6.29,Manufacturing,Operatives_and_kindred,north_east
+168,353,1987,12,10,no,other,no,no,6.43,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",north_east
+169,383,1980,12,2,no,black,no,no,4.32,Manufacturing,Operatives_and_kindred,north_east
+176,383,1987,12,9,no,black,no,no,7.04,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+177,408,1980,11,2,no,other,no,no,5.22,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+184,408,1987,11,9,yes,other,yes,no,7.92,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+185,424,1980,12,5,no,other,yes,no,8.72,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+192,424,1987,12,12,no,other,yes,no,13.17,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+193,464,1980,13,2,no,other,no,no,2.64,Trade,"Managers, Officials_and_Proprietors",north_east
+200,464,1987,13,9,no,other,yes,no,6.69,Trade,Sales_Workers,north_east
+201,483,1980,12,5,no,other,no,no,5.38,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+208,483,1987,12,12,no,other,no,no,5.62,Manufacturing,Operatives_and_kindred,nothern_central
+209,556,1980,14,2,no,other,no,no,6.95,Trade,Service_Workers,nothern_central
+216,556,1987,14,9,no,other,no,no,13.22,Transportation,"Managers, Officials_and_Proprietors",nothern_central
+217,560,1980,12,2,no,other,no,no,4,Transportation,Service_Workers,NA
+224,560,1987,12,9,no,other,no,no,5.15,Entertainment,"Professional, Technical_and_kindred",NA
+225,569,1980,12,2,no,other,no,no,1.98,Trade,"Managers, Officials_and_Proprietors",nothern_central
+232,569,1987,12,9,no,other,no,no,1.37,Trade,"Professional, Technical_and_kindred",nothern_central
+233,583,1980,12,4,no,other,no,no,5.09,Trade,"Managers, Officials_and_Proprietors",nothern_central
+240,583,1987,12,11,no,other,no,no,7.28,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+241,647,1980,12,2,yes,other,no,no,4.04,Manufacturing,Operatives_and_kindred,nothern_central
+248,647,1987,12,9,yes,other,yes,no,7.57,Public_Administration,Clerical_and_kindred,nothern_central
+249,658,1980,12,4,yes,other,no,no,5.65,Manufacturing,Clerical_and_kindred,nothern_central
+256,658,1987,12,11,no,other,no,no,7.43,Trade,Clerical_and_kindred,nothern_central
+257,684,1980,12,2,no,other,no,no,16.81,Manufacturing,Operatives_and_kindred,nothern_central
+264,684,1987,12,9,no,other,yes,no,11.08,Trade,"Professional, Technical_and_kindred",nothern_central
+265,711,1980,11,2,no,other,no,no,3.43,Trade,Laborers_and_farmers,nothern_central
+272,711,1987,11,9,no,other,no,no,1.67,Trade,Sales_Workers,nothern_central
+273,729,1980,13,2,yes,other,yes,no,7.1,Construction,Laborers_and_farmers,nothern_central
+280,729,1987,13,9,no,other,yes,no,8.63,Manufacturing,Sales_Workers,NA
+281,731,1980,12,4,no,other,no,no,5.24,Trade,"Managers, Officials_and_Proprietors",south
+288,731,1987,12,11,no,other,no,no,8.49,Manufacturing,Operatives_and_kindred,south
+289,732,1980,12,3,no,other,no,no,4.47,Manufacturing,Operatives_and_kindred,south
+296,732,1987,12,10,no,other,no,no,5.82,Manufacturing,Operatives_and_kindred,south
+297,793,1980,14,2,no,other,no,no,2.44,Personal_Service,Clerical_and_kindred,nothern_central
+304,793,1987,14,9,no,other,no,no,4.78,Transportation,Service_Workers,nothern_central
+305,797,1980,10,3,no,other,no,no,2.7,Professional_and_Related Service,Laborers_and_farmers,nothern_central
+312,797,1987,10,10,yes,other,yes,no,11.2,Agricultural,Operatives_and_kindred,nothern_central
+313,800,1980,11,2,yes,other,no,no,4.89,Professional_and_Related Service,Service_Workers,nothern_central
+320,800,1987,11,9,yes,other,yes,no,7.32,Professional_and_Related Service,"Craftsmen, Foremen_and_kindred",nothern_central
+321,813,1980,13,2,no,other,no,no,4.74,Professional_and_Related Service,Laborers_and_farmers,nothern_central
+328,813,1987,13,9,no,other,no,no,4.68,Business_and_Repair_Service,"Professional, Technical_and_kindred",nothern_central
+329,823,1980,10,3,no,other,no,no,0.69,Trade,Service_Workers,nothern_central
+336,823,1987,10,10,no,other,no,no,3.24,Trade,Sales_Workers,south
+337,827,1980,12,2,no,other,no,no,2.42,Professional_and_Related Service,"Craftsmen, Foremen_and_kindred",nothern_central
+344,827,1987,12,9,no,other,yes,no,13.86,Professional_and_Related Service,Sales_Workers,nothern_central
+345,847,1980,14,1,yes,black,no,no,4.77,Professional_and_Related Service,Service_Workers,nothern_central
+352,847,1987,14,8,yes,black,yes,no,5.41,Public_Administration,Clerical_and_kindred,north_east
+353,851,1980,12,2,no,other,no,no,6.53,Manufacturing,Operatives_and_kindred,nothern_central
+360,851,1987,12,9,yes,other,no,no,7.23,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+361,863,1980,12,2,no,other,no,no,4.81,Construction,"Professional, Technical_and_kindred",nothern_central
+368,863,1987,12,9,no,other,yes,no,6.73,Trade,"Professional, Technical_and_kindred",nothern_central
+369,873,1980,10,2,yes,other,no,no,1.82,Manufacturing,Service_Workers,nothern_central
+376,873,1987,10,9,yes,other,no,no,6.57,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+377,891,1980,12,2,yes,other,no,no,7.39,Trade,Operatives_and_kindred,nothern_central
+384,891,1987,12,9,no,other,no,no,6.11,Trade,"Professional, Technical_and_kindred",NA
+385,908,1980,10,2,yes,other,no,no,2.71,Entertainment,Service_Workers,nothern_central
+392,908,1987,10,9,no,other,yes,no,3.97,Agricultural,Laborers_and_farmers,nothern_central
+393,910,1980,13,2,no,black,no,no,6.46,Construction,Operatives_and_kindred,nothern_central
+400,910,1987,13,9,no,black,no,no,6.63,Construction,"Professional, Technical_and_kindred",north_east
+401,916,1980,13,2,no,other,no,no,3.24,Manufacturing,Operatives_and_kindred,nothern_central
+408,916,1987,13,9,no,other,no,no,9.8,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+409,919,1980,12,3,no,other,yes,no,4.8,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+416,919,1987,12,10,yes,other,yes,no,5.05,Professional_and_Related Service,Service_Workers,nothern_central
+417,922,1980,12,2,no,other,no,no,4.97,Trade,"Managers, Officials_and_Proprietors",nothern_central
+424,922,1987,12,9,no,other,yes,no,8.91,Trade,"Craftsmen, Foremen_and_kindred",nothern_central
+425,924,1980,11,1,no,other,no,no,2.35,Professional_and_Related Service,"Professional, Technical_and_kindred",nothern_central
+432,924,1987,11,8,no,other,yes,no,5.46,Finance,Clerical_and_kindred,nothern_central
+433,925,1980,15,2,no,other,no,no,8.46,Manufacturing,"Professional, Technical_and_kindred",nothern_central
+440,925,1987,15,9,no,other,yes,no,13.78,Manufacturing,"Professional, Technical_and_kindred",nothern_central
+441,944,1980,13,2,no,other,no,no,2.27,Trade,Clerical_and_kindred,nothern_central
+448,944,1987,13,9,no,other,no,no,3.31,Trade,Clerical_and_kindred,nothern_central
+449,945,1980,14,1,no,other,no,no,2.83,Trade,Laborers_and_farmers,nothern_central
+456,945,1987,14,8,no,other,no,no,4,Professional_and_Related Service,"Professional, Technical_and_kindred",nothern_central
+457,947,1980,13,3,yes,other,no,no,9.36,Manufacturing,Operatives_and_kindred,nothern_central
+464,947,1987,13,10,no,other,yes,no,9.8,Business_and_Repair_Service,Clerical_and_kindred,nothern_central
+465,955,1980,12,4,yes,other,no,no,7.93,Manufacturing,"Professional, Technical_and_kindred",nothern_central
+472,955,1987,12,11,yes,other,no,no,9.19,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+473,965,1980,12,5,no,other,no,no,4.13,Trade,Clerical_and_kindred,nothern_central
+480,965,1987,12,12,no,other,yes,no,3.98,Trade,Clerical_and_kindred,nothern_central
+481,996,1980,11,2,no,other,yes,no,4.75,Trade,"Craftsmen, Foremen_and_kindred",south
+488,996,1987,11,9,no,other,yes,no,9.38,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+489,1007,1980,12,4,no,other,no,no,4.25,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+496,1007,1987,12,11,no,other,yes,no,13.16,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+497,1054,1980,10,3,no,other,no,no,2.06,Personal_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+504,1054,1987,10,10,yes,other,yes,no,3.7,Agricultural,Farm_Laborers_and_Foreman,north_east
+505,1064,1980,12,4,no,other,yes,yes,6.71,Transportation,Laborers_and_farmers,nothern_central
+512,1064,1987,12,11,no,other,yes,no,6.89,Transportation,Clerical_and_kindred,nothern_central
+513,1081,1980,10,2,no,other,no,no,2.97,Finance,"Craftsmen, Foremen_and_kindred",south
+520,1081,1987,10,9,no,other,no,no,7.39,Trade,"Craftsmen, Foremen_and_kindred",south
+521,1085,1980,12,1,no,other,no,no,6.6,Trade,"Craftsmen, Foremen_and_kindred",south
+528,1085,1987,12,8,no,other,no,no,7.52,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+529,1091,1980,9,6,yes,other,no,no,3.04,Trade,Laborers_and_farmers,NA
+536,1091,1987,9,13,no,other,yes,no,4.04,Transportation,Laborers_and_farmers,NA
+537,1094,1980,12,3,no,other,yes,no,3.83,Construction,"Craftsmen, Foremen_and_kindred",NA
+544,1094,1987,12,10,no,other,yes,no,8.81,Construction,Operatives_and_kindred,NA
+545,1096,1980,11,6,no,other,no,no,3.54,Agricultural,"Craftsmen, Foremen_and_kindred",south
+552,1096,1987,11,13,yes,other,yes,no,4.09,Agricultural,"Craftsmen, Foremen_and_kindred",NA
+553,1098,1980,14,1,no,other,no,no,4.72,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+560,1098,1987,14,8,no,other,yes,no,9.8,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+561,1102,1980,13,3,no,other,no,no,2.41,Professional_and_Related Service,Clerical_and_kindred,south
+568,1102,1987,13,10,no,other,no,no,17.32,Manufacturing,Sales_Workers,NA
+569,1107,1980,12,5,no,other,no,no,4.68,Construction,"Craftsmen, Foremen_and_kindred",south
+576,1107,1987,12,12,no,other,yes,no,7.66,Construction,"Craftsmen, Foremen_and_kindred",NA
+577,1142,1980,14,2,no,hisp,no,no,4.11,Trade,Service_Workers,south
+584,1142,1987,14,9,no,hisp,yes,no,10.39,Finance,"Managers, Officials_and_Proprietors",south
+585,1156,1980,12,5,no,black,no,no,3.68,Trade,Service_Workers,south
+592,1156,1987,12,12,no,black,no,no,6.92,Trade,Service_Workers,south
+593,1180,1980,13,2,no,other,no,no,6.38,Construction,"Professional, Technical_and_kindred",south
+600,1180,1987,13,9,no,other,yes,no,9.19,Construction,Clerical_and_kindred,south
+601,1190,1980,12,2,no,black,no,no,4.53,Manufacturing,Operatives_and_kindred,south
+608,1190,1987,12,9,no,black,yes,no,3.98,Manufacturing,Operatives_and_kindred,south
+609,1204,1980,8,5,no,other,no,no,5.07,Trade,Operatives_and_kindred,south
+616,1204,1987,8,12,yes,other,no,no,9.49,Mining,"Professional, Technical_and_kindred",south
+617,1249,1980,11,5,no,other,no,no,4.62,Manufacturing,Operatives_and_kindred,south
+624,1249,1987,11,12,no,other,no,no,4.24,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+625,1272,1980,12,3,no,other,yes,no,5.76,Trade,Laborers_and_farmers,south
+632,1272,1987,12,10,no,other,yes,no,6.74,Public_Administration,Laborers_and_farmers,south
+633,1311,1980,15,2,no,other,no,no,1.75,Trade,"Managers, Officials_and_Proprietors",south
+640,1311,1987,15,9,no,other,no,no,7.84,Mining,Laborers_and_farmers,south
+641,1316,1980,8,4,no,other,no,no,4.68,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+648,1316,1987,8,11,no,other,yes,no,6.74,Trade,"Craftsmen, Foremen_and_kindred",NA
+649,1318,1980,8,8,no,other,no,no,2.89,Construction,Laborers_and_farmers,NA
+656,1318,1987,8,15,no,other,no,no,3.62,Agricultural,Laborers_and_farmers,NA
+657,1345,1980,12,4,no,other,no,no,5.84,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+664,1345,1987,12,11,no,other,yes,no,4.87,Trade,"Craftsmen, Foremen_and_kindred",south
+665,1397,1980,12,5,yes,other,no,no,5.87,Manufacturing,Operatives_and_kindred,south
+672,1397,1987,12,12,yes,other,no,no,5.82,Manufacturing,Operatives_and_kindred,south
+673,1434,1980,10,2,no,other,no,no,1.23,Construction,Laborers_and_farmers,south
+680,1434,1987,10,9,no,other,yes,no,4.55,Professional_and_Related Service,Service_Workers,south
+681,1492,1980,13,4,no,other,no,no,7.66,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+688,1492,1987,13,11,no,other,yes,no,4.49,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+689,1496,1980,12,1,yes,other,no,no,3.25,Trade,Service_Workers,NA
+696,1496,1987,12,8,no,other,no,no,6.41,Transportation,Sales_Workers,south
+697,1506,1980,12,3,no,other,no,no,2.65,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+704,1506,1987,12,10,no,other,no,no,2.53,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+705,1515,1980,10,2,no,other,no,no,2.81,Trade,Sales_Workers,south
+712,1515,1987,10,9,no,other,yes,no,6.11,Transportation,Operatives_and_kindred,NA
+713,1520,1980,12,5,yes,black,yes,no,3.96,Manufacturing,Operatives_and_kindred,south
+720,1520,1987,12,12,yes,black,yes,no,5.13,Trade,Laborers_and_farmers,south
+721,1528,1980,10,4,yes,black,no,no,2.66,Trade,Service_Workers,south
+728,1528,1987,10,11,no,black,no,no,4.05,Professional_and_Related Service,Service_Workers,NA
+729,1554,1980,12,2,no,other,no,no,3.71,Manufacturing,Operatives_and_kindred,south
+736,1554,1987,12,9,no,other,yes,no,5.66,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+737,1575,1980,13,3,no,other,no,no,4.84,Finance,Sales_Workers,NA
+744,1575,1987,13,10,no,other,yes,no,7.35,Finance,"Managers, Officials_and_Proprietors",NA
+745,1576,1980,11,2,no,other,yes,no,3.76,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+752,1576,1987,11,9,no,other,no,no,6.33,Construction,"Craftsmen, Foremen_and_kindred",NA
+753,1628,1980,12,3,no,other,no,no,3.24,Trade,Operatives_and_kindred,NA
+760,1628,1987,12,10,no,other,no,no,6.43,Public_Administration,"Managers, Officials_and_Proprietors",nothern_central
+761,1641,1980,12,4,no,hisp,no,no,8.26,Trade,"Managers, Officials_and_Proprietors",NA
+768,1641,1987,12,11,no,hisp,yes,no,6.51,Finance,Sales_Workers,NA
+769,1644,1980,12,1,yes,hisp,no,no,1.75,Entertainment,"Managers, Officials_and_Proprietors",NA
+776,1644,1987,12,8,no,hisp,yes,no,7.91,Finance,Clerical_and_kindred,NA
+777,1653,1980,15,2,yes,other,no,no,0.68,Trade,Clerical_and_kindred,NA
+784,1653,1987,15,9,no,other,no,no,16.33,Finance,Sales_Workers,NA
+785,1654,1980,11,4,no,other,no,no,5.08,Manufacturing,"Managers, Officials_and_Proprietors",NA
+792,1654,1987,11,11,no,other,yes,no,8.88,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+793,1721,1980,11,5,no,hisp,no,no,5.96,Trade,Laborers_and_farmers,NA
+800,1721,1987,11,12,no,hisp,no,no,18.37,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+801,1742,1980,12,2,yes,other,no,no,4.31,Transportation,Clerical_and_kindred,NA
+808,1742,1987,12,9,no,other,no,no,11.94,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+809,1744,1980,11,2,yes,other,no,no,5.11,Construction,Laborers_and_farmers,NA
+816,1744,1987,11,9,yes,other,no,no,10.18,Construction,"Craftsmen, Foremen_and_kindred",NA
+817,1763,1980,11,1,no,hisp,no,no,1.9,Personal_Service,Operatives_and_kindred,NA
+824,1763,1987,11,8,no,hisp,no,no,4.03,Trade,Service_Workers,NA
+825,1777,1980,15,1,no,other,no,no,4.01,Trade,"Professional, Technical_and_kindred",NA
+832,1777,1987,15,8,no,other,no,no,5.69,Professional_and_Related Service,Service_Workers,nothern_central
+833,1843,1980,15,2,no,other,yes,no,10.64,Manufacturing,"Professional, Technical_and_kindred",NA
+840,1843,1987,15,9,no,other,yes,no,15.94,Manufacturing,"Professional, Technical_and_kindred",NA
+841,1891,1980,12,2,yes,other,no,no,2.55,Trade,Operatives_and_kindred,north_east
+848,1891,1987,12,9,no,other,no,no,3.67,Trade,Service_Workers,nothern_central
+849,1895,1980,13,2,no,other,no,no,5.23,Trade,Operatives_and_kindred,north_east
+856,1895,1987,13,9,yes,other,yes,no,9.8,Public_Administration,Service_Workers,nothern_central
+857,1899,1980,12,3,no,other,no,no,4.25,Manufacturing,Laborers_and_farmers,north_east
+864,1899,1987,12,10,no,other,yes,no,3.91,Trade,Clerical_and_kindred,nothern_central
+865,1925,1980,11,2,no,other,no,no,2.73,Trade,"Managers, Officials_and_Proprietors",nothern_central
+872,1925,1987,11,9,no,other,yes,no,7.02,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+873,1930,1980,11,2,no,other,no,no,2.93,Professional_and_Related Service,Service_Workers,north_east
+880,1930,1987,11,9,no,other,yes,no,8.57,Finance,Sales_Workers,north_east
+881,1961,1980,12,4,no,other,yes,no,3.21,Trade,"Craftsmen, Foremen_and_kindred",nothern_central
+888,1961,1987,12,11,no,other,yes,no,9.96,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+889,1963,1980,11,2,no,other,no,no,4.52,Manufacturing,Operatives_and_kindred,nothern_central
+896,1963,1987,11,9,no,other,yes,no,5.74,Manufacturing,Sales_Workers,nothern_central
+897,1979,1980,12,4,yes,other,yes,no,7.57,Manufacturing,Operatives_and_kindred,nothern_central
+904,1979,1987,12,11,yes,other,yes,no,7.37,Manufacturing,Operatives_and_kindred,nothern_central
+905,1988,1980,12,2,no,other,no,no,0.78,Construction,Laborers_and_farmers,nothern_central
+912,1988,1987,12,9,no,other,no,no,7.19,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+913,2000,1980,11,3,yes,other,no,no,6.72,Manufacturing,Operatives_and_kindred,south
+920,2000,1987,11,10,yes,other,yes,no,5.81,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+921,2014,1980,12,2,yes,other,no,no,10.58,Mining,"Craftsmen, Foremen_and_kindred",nothern_central
+928,2014,1987,12,9,no,other,no,no,4.71,Trade,Operatives_and_kindred,nothern_central
+929,2025,1980,13,2,no,other,no,no,4.41,Trade,"Managers, Officials_and_Proprietors",nothern_central
+936,2025,1987,13,9,yes,other,yes,no,3.73,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+937,2038,1980,10,2,no,other,no,no,2.45,Entertainment,Service_Workers,nothern_central
+944,2038,1987,10,9,no,other,no,no,9.19,Business_and_Repair_Service,"Professional, Technical_and_kindred",nothern_central
+945,2075,1980,12,5,yes,other,yes,no,7.43,Manufacturing,Operatives_and_kindred,south
+952,2075,1987,12,12,no,other,yes,no,9.25,Manufacturing,"Professional, Technical_and_kindred",south
+953,2101,1980,12,3,no,other,no,no,7.45,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+960,2101,1987,12,10,no,other,yes,no,12.07,Transportation,"Craftsmen, Foremen_and_kindred",NA
+961,2106,1980,12,4,yes,other,no,no,5.35,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+968,2106,1987,12,11,yes,other,yes,no,6.12,Business_and_Repair_Service,Clerical_and_kindred,south
+969,2107,1980,10,2,no,other,no,no,3.66,Trade,Operatives_and_kindred,south
+976,2107,1987,10,9,no,other,yes,no,7.66,Public_Administration,Service_Workers,south
+977,2108,1980,12,2,no,other,no,no,4.34,Manufacturing,Operatives_and_kindred,nothern_central
+984,2108,1987,12,9,yes,other,yes,no,11.64,Manufacturing,"Professional, Technical_and_kindred",south
+985,2147,1980,11,2,no,other,no,no,0.98,Trade,Service_Workers,NA
+992,2147,1987,11,9,no,other,no,no,2.14,Trade,Service_Workers,NA
+993,2157,1980,11,5,no,other,no,yes,4.31,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+1000,2157,1987,11,12,no,other,yes,yes,1.64,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",NA
+1001,2163,1980,12,4,yes,other,yes,no,8.74,Mining,Operatives_and_kindred,NA
+1008,2163,1987,12,11,yes,other,yes,no,10.21,Trade,Operatives_and_kindred,NA
+1009,2173,1980,12,2,no,other,no,no,3.83,Business_and_Repair_Service,Operatives_and_kindred,NA
+1016,2173,1987,12,9,no,other,yes,no,5.21,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+1017,2180,1980,10,2,no,other,no,no,3.28,Manufacturing,Operatives_and_kindred,NA
+1024,2180,1987,10,9,no,other,yes,no,7.21,Manufacturing,Operatives_and_kindred,NA
+1025,2183,1980,13,1,no,other,no,no,4,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+1032,2183,1987,13,8,no,other,yes,no,8.4,Manufacturing,"Managers, Officials_and_Proprietors",south
+1033,2216,1980,12,1,no,other,yes,no,5.19,Construction,"Craftsmen, Foremen_and_kindred",NA
+1040,2216,1987,12,8,no,other,yes,no,7.51,Construction,"Craftsmen, Foremen_and_kindred",south
+1041,2220,1980,14,2,yes,other,no,no,7.08,Transportation,Clerical_and_kindred,south
+1048,2220,1987,14,9,no,other,yes,no,11.02,Public_Administration,"Professional, Technical_and_kindred",south
+1049,2227,1980,12,3,no,other,yes,no,2.98,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+1056,2227,1987,12,10,yes,other,yes,no,4.9,Construction,"Craftsmen, Foremen_and_kindred",NA
+1057,2264,1980,12,2,no,black,no,no,2.88,Manufacturing,Operatives_and_kindred,NA
+1064,2264,1987,12,9,yes,black,yes,no,5.21,Trade,Operatives_and_kindred,south
+1065,2306,1980,9,3,no,other,no,no,5.21,Agricultural,Laborers_and_farmers,south
+1072,2306,1987,9,10,no,other,yes,no,5.51,Construction,"Craftsmen, Foremen_and_kindred",south
+1073,2312,1980,13,2,no,other,yes,no,5.14,Construction,Clerical_and_kindred,south
+1080,2312,1987,13,9,no,other,no,no,10.41,Business_and_Repair_Service,"Professional, Technical_and_kindred",south
+1081,2314,1980,12,5,no,other,no,yes,7.66,Professional_and_Related Service,"Craftsmen, Foremen_and_kindred",south
+1088,2314,1987,12,12,yes,other,yes,no,7.81,Public_Administration,"Craftsmen, Foremen_and_kindred",NA
+1089,2329,1980,14,1,no,other,yes,no,3.97,Trade,Operatives_and_kindred,south
+1096,2329,1987,14,8,no,other,yes,no,6.13,Trade,"Craftsmen, Foremen_and_kindred",south
+1097,2335,1980,12,5,no,other,no,no,4.8,Trade,Sales_Workers,south
+1104,2335,1987,12,12,no,other,yes,no,3.67,Transportation,Clerical_and_kindred,south
+1105,2341,1980,11,2,no,other,no,no,2.46,Trade,Sales_Workers,south
+1112,2341,1987,11,9,yes,other,no,no,10.59,Transportation,Clerical_and_kindred,south
+1113,2351,1980,11,2,no,black,no,no,3.4,Construction,Laborers_and_farmers,south
+1120,2351,1987,11,9,no,black,no,no,4.46,Construction,"Craftsmen, Foremen_and_kindred",south
+1121,2386,1980,10,2,yes,hisp,no,no,3.31,Finance,Clerical_and_kindred,NA
+1128,2386,1987,10,9,no,hisp,yes,no,4.61,Finance,"Managers, Officials_and_Proprietors",NA
+1129,2401,1980,12,5,yes,other,yes,no,3.28,Construction,Laborers_and_farmers,NA
+1136,2401,1987,12,12,no,other,no,yes,7.44,Mining,"Craftsmen, Foremen_and_kindred",NA
+1137,2413,1980,12,4,yes,other,no,no,8.9,Trade,Clerical_and_kindred,NA
+1144,2413,1987,12,11,yes,other,yes,no,9.8,Trade,Clerical_and_kindred,NA
+1145,2421,1980,12,3,no,other,no,no,3.97,Agricultural,Farm_Laborers_and_Foreman,south
+1152,2421,1987,12,10,no,other,yes,no,2.91,Trade,Farm_Laborers_and_Foreman,south
+1153,2445,1980,12,4,yes,other,yes,no,4.32,Manufacturing,Laborers_and_farmers,south
+1160,2445,1987,12,11,no,other,yes,no,5.96,Business_and_Repair_Service,Operatives_and_kindred,NA
+1161,2451,1980,12,2,no,other,yes,no,4.96,Trade,"Managers, Officials_and_Proprietors",south
+1168,2451,1987,12,9,no,other,yes,no,6.89,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1169,2494,1980,13,4,no,other,no,no,1.4,Trade,Service_Workers,south
+1176,2494,1987,13,11,yes,other,yes,no,7.31,Public_Administration,Service_Workers,nothern_central
+1177,2508,1980,13,3,no,other,no,no,6.81,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+1184,2508,1987,13,10,no,other,yes,no,7.98,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+1185,2535,1980,12,4,yes,other,yes,no,5.54,Trade,Laborers_and_farmers,south
+1192,2535,1987,12,11,no,other,yes,no,5.05,Manufacturing,Operatives_and_kindred,south
+1193,2540,1980,10,2,no,other,no,no,2.58,Agricultural,Farm_Laborers_and_Foreman,south
+1200,2540,1987,10,9,no,other,yes,no,4.23,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1201,2685,1980,13,2,no,other,no,no,6.3,Professional_and_Related Service,"Professional, Technical_and_kindred",NA
+1208,2685,1987,13,9,no,other,no,no,13.17,Finance,"Professional, Technical_and_kindred",south
+1209,2711,1980,12,2,yes,other,yes,no,3.39,Trade,Operatives_and_kindred,NA
+1216,2711,1987,12,9,yes,other,no,no,4.9,Manufacturing,Operatives_and_kindred,NA
+1217,2718,1980,11,3,yes,black,yes,no,8.51,Transportation,Operatives_and_kindred,NA
+1224,2718,1987,11,10,yes,black,no,no,10.11,Mining,Operatives_and_kindred,NA
+1225,2721,1980,9,6,no,other,yes,no,4.68,Construction,Laborers_and_farmers,south
+1232,2721,1987,9,13,no,other,yes,no,2.78,Construction,Operatives_and_kindred,NA
+1233,2733,1980,12,4,no,black,no,no,2.13,Trade,Operatives_and_kindred,NA
+1240,2733,1987,12,11,no,black,yes,no,2.47,Manufacturing,Operatives_and_kindred,NA
+1241,2741,1980,12,5,no,other,yes,no,4.25,Trade,Operatives_and_kindred,NA
+1248,2741,1987,12,12,no,other,yes,no,5.36,Trade,Operatives_and_kindred,NA
+1249,2745,1980,12,3,no,other,no,no,5.98,Trade,"Managers, Officials_and_Proprietors",NA
+1256,2745,1987,12,10,no,other,no,no,5.82,Trade,Clerical_and_kindred,NA
+1257,2751,1980,12,4,yes,black,no,no,4.96,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+1264,2751,1987,12,11,yes,black,yes,no,7.04,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+1265,2774,1980,14,3,no,other,yes,no,7.23,Construction,"Craftsmen, Foremen_and_kindred",NA
+1272,2774,1987,14,10,no,other,yes,no,6.74,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+1273,2801,1980,10,2,yes,other,no,no,3.03,Trade,Laborers_and_farmers,NA
+1280,2801,1987,10,9,yes,other,yes,no,4.59,Finance,"Managers, Officials_and_Proprietors",south
+1281,2813,1980,13,2,no,other,yes,no,1.87,Professional_and_Related Service,"Craftsmen, Foremen_and_kindred",south
+1288,2813,1987,13,9,no,other,yes,no,5.11,Agricultural,Farm_Laborers_and_Foreman,NA
+1289,2833,1980,12,2,no,other,yes,no,6.63,Trade,Operatives_and_kindred,north_east
+1296,2833,1987,12,9,no,other,yes,no,6.26,Trade,Operatives_and_kindred,north_east
+1297,2839,1980,13,3,no,other,no,no,4.73,Business_and_Repair_Service,"Professional, Technical_and_kindred",north_east
+1304,2839,1987,13,10,no,other,no,no,7.2,Business_and_Repair_Service,"Professional, Technical_and_kindred",north_east
+1305,2842,1980,13,4,no,other,no,no,4.39,Trade,Service_Workers,north_east
+1312,2842,1987,13,11,no,other,no,no,11.15,Construction,Sales_Workers,north_east
+1313,2866,1980,9,3,no,other,no,yes,3.81,Public_Administration,Operatives_and_kindred,north_east
+1320,2866,1987,9,10,no,other,yes,yes,6.94,Business_and_Repair_Service,Laborers_and_farmers,north_east
+1321,2868,1980,13,3,yes,other,no,no,9.91,Trade,Laborers_and_farmers,north_east
+1328,2868,1987,13,10,no,other,yes,no,7.94,Trade,Sales_Workers,north_east
+1329,2874,1980,9,4,no,hisp,no,no,1.46,Trade,Laborers_and_farmers,north_east
+1336,2874,1987,9,11,no,hisp,no,no,4.09,Trade,"Craftsmen, Foremen_and_kindred",north_east
+1337,2916,1980,12,2,no,other,no,no,3.27,Business_and_Repair_Service,Operatives_and_kindred,north_east
+1344,2916,1987,12,9,no,other,no,no,5.19,Manufacturing,"Managers, Officials_and_Proprietors",north_east
+1345,2951,1980,9,6,no,black,no,no,3.2,Manufacturing,Operatives_and_kindred,north_east
+1352,2951,1987,9,13,no,black,no,no,3.98,Professional_and_Related Service,Laborers_and_farmers,north_east
+1353,2980,1980,15,2,no,other,yes,no,5.29,Professional_and_Related Service,"Professional, Technical_and_kindred",nothern_central
+1360,2980,1987,15,9,no,other,yes,no,7.1,Professional_and_Related Service,"Professional, Technical_and_kindred",nothern_central
+1361,2994,1980,12,3,no,other,no,no,3.69,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",north_east
+1368,2994,1987,12,10,no,other,yes,no,7,Manufacturing,Clerical_and_kindred,north_east
+1369,2997,1980,12,3,no,other,no,no,4.06,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+1376,2997,1987,12,10,no,other,yes,no,7.72,Trade,"Craftsmen, Foremen_and_kindred",north_east
+1377,3017,1980,14,1,yes,other,no,no,4.3,Trade,Laborers_and_farmers,north_east
+1384,3017,1987,14,8,no,other,yes,no,13.8,Finance,"Professional, Technical_and_kindred",north_east
+1385,3037,1980,12,4,yes,other,no,no,7.91,Public_Administration,Clerical_and_kindred,north_east
+1392,3037,1987,12,11,yes,other,yes,no,9.75,Public_Administration,Clerical_and_kindred,north_east
+1393,3059,1980,12,5,yes,other,no,no,6.45,Agricultural,Laborers_and_farmers,north_east
+1400,3059,1987,12,12,yes,other,yes,no,5.57,Agricultural,"Craftsmen, Foremen_and_kindred",north_east
+1401,3062,1980,15,2,no,other,no,no,8.51,Manufacturing,"Professional, Technical_and_kindred",north_east
+1408,3062,1987,15,9,no,other,no,no,14.15,Transportation,Sales_Workers,north_east
+1409,3100,1980,12,4,no,other,yes,no,4.55,Public_Administration,"Professional, Technical_and_kindred",north_east
+1416,3100,1987,12,11,yes,other,yes,no,8.88,Public_Administration,Service_Workers,north_east
+1417,3102,1980,12,1,no,other,no,no,1.81,Trade,Service_Workers,nothern_central
+1424,3102,1987,12,8,no,other,no,no,5.6,Professional_and_Related Service,Service_Workers,south
+1425,3127,1980,10,2,no,other,no,no,1.62,Trade,Operatives_and_kindred,north_east
+1432,3127,1987,10,9,no,other,yes,no,3.67,Manufacturing,Sales_Workers,north_east
+1433,3136,1980,12,3,yes,other,no,no,5.11,Transportation,Service_Workers,north_east
+1440,3136,1987,12,10,yes,other,no,no,7.66,Public_Administration,Laborers_and_farmers,north_east
+1441,3137,1980,14,2,no,other,no,no,7.23,Trade,Sales_Workers,north_east
+1448,3137,1987,14,9,no,other,no,yes,10.11,Business_and_Repair_Service,Sales_Workers,north_east
+1449,3138,1980,12,4,yes,other,no,no,4.97,Construction,Operatives_and_kindred,nothern_central
+1456,3138,1987,12,11,yes,other,no,no,10.75,Construction,Laborers_and_farmers,north_east
+1457,3140,1980,13,3,no,other,no,no,5.7,Trade,Clerical_and_kindred,north_east
+1464,3140,1987,13,10,no,other,yes,no,9.45,Trade,"Managers, Officials_and_Proprietors",north_east
+1465,3193,1980,11,2,no,other,no,no,2.5,Trade,Service_Workers,north_east
+1472,3193,1987,11,9,no,other,yes,no,9.8,Business_and_Repair_Service,"Professional, Technical_and_kindred",north_east
+1473,3196,1980,12,3,yes,other,no,no,7.23,Trade,"Managers, Officials_and_Proprietors",north_east
+1480,3196,1987,12,10,no,other,no,no,4.73,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1481,3200,1980,8,7,yes,other,no,no,4.47,Manufacturing,Operatives_and_kindred,north_east
+1488,3200,1987,8,14,no,other,yes,no,6.69,Construction,"Craftsmen, Foremen_and_kindred",nothern_central
+1489,3202,1980,12,3,yes,other,no,no,6,Manufacturing,Operatives_and_kindred,north_east
+1496,3202,1987,12,10,yes,other,yes,no,6.32,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1497,3207,1980,12,4,no,other,yes,no,5.45,Trade,Clerical_and_kindred,north_east
+1504,3207,1987,12,11,no,other,yes,no,5.03,Trade,Clerical_and_kindred,north_east
+1505,3208,1980,12,3,yes,other,no,no,6.53,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+1512,3208,1987,12,10,no,other,yes,no,9.97,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+1513,3210,1980,10,2,yes,other,no,no,5.19,Trade,Service_Workers,north_east
+1520,3210,1987,10,9,no,other,no,no,5.81,Manufacturing,Operatives_and_kindred,north_east
+1521,3215,1980,12,4,no,other,no,no,5.16,Transportation,Laborers_and_farmers,north_east
+1528,3215,1987,12,11,yes,other,no,no,5.36,Business_and_Repair_Service,Laborers_and_farmers,north_east
+1529,3219,1980,11,2,no,other,no,no,3.74,Public_Administration,"Craftsmen, Foremen_and_kindred",north_east
+1536,3219,1987,11,9,no,other,no,no,5.42,Business_and_Repair_Service,"Professional, Technical_and_kindred",north_east
+1537,3226,1980,13,3,no,other,no,no,3.34,Business_and_Repair_Service,"Professional, Technical_and_kindred",north_east
+1544,3226,1987,13,10,no,other,yes,no,10.32,Manufacturing,"Professional, Technical_and_kindred",north_east
+1545,3235,1980,12,2,no,other,no,no,3.43,Manufacturing,Operatives_and_kindred,north_east
+1552,3235,1987,12,9,no,other,yes,no,5.86,Manufacturing,Operatives_and_kindred,north_east
+1553,3239,1980,11,1,no,black,no,no,3.35,Professional_and_Related Service,Clerical_and_kindred,north_east
+1560,3239,1987,11,8,yes,black,no,no,5.38,Entertainment,"Professional, Technical_and_kindred",north_east
+1561,3271,1980,7,6,yes,other,no,no,5.15,Construction,Laborers_and_farmers,north_east
+1568,3271,1987,7,13,no,other,no,no,6.89,Construction,Laborers_and_farmers,north_east
+1569,3275,1980,12,1,no,other,no,no,4.02,Manufacturing,Operatives_and_kindred,north_east
+1576,3275,1987,12,8,no,other,no,no,28.31,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",north_east
+1577,3282,1980,10,3,no,hisp,no,no,3.89,Construction,Laborers_and_farmers,north_east
+1584,3282,1987,10,10,yes,hisp,no,no,11.13,Professional_and_Related Service,Service_Workers,north_east
+1585,3289,1980,15,1,no,other,no,no,3.43,Entertainment,Service_Workers,north_east
+1592,3289,1987,15,8,no,other,yes,no,9.8,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",nothern_central
+1593,3290,1980,12,1,no,other,no,no,3.45,Trade,Laborers_and_farmers,north_east
+1600,3290,1987,12,8,no,other,yes,no,9.19,Personal_Service,Clerical_and_kindred,north_east
+1601,3307,1980,14,3,yes,black,no,no,7.2,Finance,Clerical_and_kindred,north_east
+1608,3307,1987,14,10,yes,black,no,no,16.66,Finance,Clerical_and_kindred,north_east
+1609,3333,1980,12,1,no,other,no,no,1.68,Agricultural,Laborers_and_farmers,nothern_central
+1616,3333,1987,12,8,no,other,yes,no,6.14,Business_and_Repair_Service,Service_Workers,nothern_central
+1617,3353,1980,10,3,no,other,no,yes,3.88,Trade,Service_Workers,nothern_central
+1624,3353,1987,10,10,no,other,no,no,5.2,Business_and_Repair_Service,Operatives_and_kindred,nothern_central
+1625,3380,1980,12,2,no,other,no,no,4.27,Manufacturing,Operatives_and_kindred,nothern_central
+1632,3380,1987,12,9,no,other,yes,no,6.91,Manufacturing,Operatives_and_kindred,nothern_central
+1633,3381,1980,10,2,no,other,no,no,3.41,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1640,3381,1987,10,9,no,other,yes,no,8.17,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1641,3389,1980,12,3,no,other,no,no,4.82,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1648,3389,1987,12,10,no,other,yes,no,11.76,Finance,"Managers, Officials_and_Proprietors",nothern_central
+1649,3394,1980,15,2,no,black,no,no,6.92,Finance,Laborers_and_farmers,nothern_central
+1656,3394,1987,15,9,no,black,yes,no,3.22,Manufacturing,"Managers, Officials_and_Proprietors",nothern_central
+1657,3401,1980,11,2,no,other,no,no,3.25,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1664,3401,1987,11,9,no,other,yes,no,8.27,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1665,3414,1980,16,1,no,other,no,no,3.81,Transportation,Operatives_and_kindred,NA
+1672,3414,1987,16,8,no,other,yes,no,8.98,Manufacturing,"Professional, Technical_and_kindred",nothern_central
+1673,3420,1980,13,2,no,other,no,no,8.35,Trade,Service_Workers,south
+1680,3420,1987,13,9,no,other,no,no,7.66,Entertainment,Service_Workers,NA
+1681,3440,1980,11,2,no,other,no,no,1.29,Manufacturing,Laborers_and_farmers,nothern_central
+1688,3440,1987,11,9,yes,other,yes,no,4.59,Public_Administration,Service_Workers,nothern_central
+1689,3461,1980,11,2,no,other,no,no,3.29,Trade,Service_Workers,nothern_central
+1696,3461,1987,11,9,no,other,no,no,7.98,Public_Administration,Service_Workers,south
+1697,3468,1980,14,1,no,other,no,no,4.96,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1704,3468,1987,14,8,no,other,no,no,5.46,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",NA
+1705,3482,1980,13,3,no,other,no,no,8.42,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1712,3482,1987,13,10,no,other,yes,no,12.83,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1713,3495,1980,12,5,yes,other,no,no,5.36,Manufacturing,Operatives_and_kindred,south
+1720,3495,1987,12,12,yes,other,yes,no,4.7,Trade,Clerical_and_kindred,nothern_central
+1721,3503,1980,12,4,yes,other,no,no,8.72,Finance,"Craftsmen, Foremen_and_kindred",south
+1728,3503,1987,12,11,no,other,yes,no,7.66,Finance,"Professional, Technical_and_kindred",south
+1729,3525,1980,14,1,yes,other,no,no,2.54,Personal_Service,Service_Workers,nothern_central
+1736,3525,1987,14,8,no,other,no,no,20.41,Business_and_Repair_Service,"Professional, Technical_and_kindred",south
+1737,3526,1980,12,4,no,other,no,no,5.53,Trade,Operatives_and_kindred,nothern_central
+1744,3526,1987,12,11,yes,other,yes,no,7.04,Transportation,Service_Workers,nothern_central
+1745,3538,1980,12,5,yes,black,yes,no,7.87,Trade,Laborers_and_farmers,nothern_central
+1752,3538,1987,12,12,no,black,no,no,6.83,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1753,3563,1980,11,3,yes,other,no,no,5.32,Manufacturing,Operatives_and_kindred,nothern_central
+1760,3563,1987,11,10,yes,other,yes,no,7.4,Manufacturing,Operatives_and_kindred,nothern_central
+1761,3575,1980,12,4,no,other,no,no,7.13,Manufacturing,Operatives_and_kindred,nothern_central
+1768,3575,1987,12,11,no,other,yes,no,8.57,Manufacturing,Operatives_and_kindred,nothern_central
+1769,3580,1980,12,2,no,other,no,no,4.23,Trade,Clerical_and_kindred,nothern_central
+1776,3580,1987,12,9,no,other,yes,no,4.21,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+1777,3581,1980,14,2,no,other,no,no,3.08,Transportation,"Managers, Officials_and_Proprietors",south
+1784,3581,1987,14,9,no,other,yes,no,12.31,Manufacturing,Operatives_and_kindred,nothern_central
+1785,3589,1980,12,2,yes,other,yes,no,5.32,Manufacturing,Operatives_and_kindred,nothern_central
+1792,3589,1987,12,9,yes,other,yes,no,7.64,Manufacturing,Operatives_and_kindred,nothern_central
+1793,3591,1980,12,2,no,other,no,no,3.06,Trade,Laborers_and_farmers,nothern_central
+1800,3591,1987,12,9,yes,other,no,no,9.75,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1801,3598,1980,12,3,no,other,no,no,5.85,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1808,3598,1987,12,10,yes,other,yes,no,8.42,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1809,3602,1980,12,5,yes,other,no,no,7.47,Manufacturing,Operatives_and_kindred,south
+1816,3602,1987,12,12,yes,other,yes,no,8.68,Manufacturing,"Professional, Technical_and_kindred",nothern_central
+1817,3607,1980,10,7,no,other,no,no,2.48,Trade,Operatives_and_kindred,nothern_central
+1824,3607,1987,10,14,no,other,no,no,5.35,Entertainment,"Professional, Technical_and_kindred",nothern_central
+1825,3621,1980,12,4,no,other,no,yes,4.52,Manufacturing,Operatives_and_kindred,nothern_central
+1832,3621,1987,12,11,no,other,no,yes,5.41,Manufacturing,Laborers_and_farmers,nothern_central
+1833,3628,1980,14,3,no,other,yes,no,6.31,Trade,Clerical_and_kindred,nothern_central
+1840,3628,1987,14,10,no,other,yes,no,11.72,Manufacturing,"Managers, Officials_and_Proprietors",NA
+1841,3653,1980,12,2,no,other,yes,no,5.32,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1848,3653,1987,12,9,no,other,yes,no,6.38,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1849,3706,1980,13,4,no,other,no,no,5.34,Professional_and_Related Service,"Professional, Technical_and_kindred",nothern_central
+1856,3706,1987,13,11,no,other,yes,no,6.12,Professional_and_Related Service,Clerical_and_kindred,NA
+1857,3707,1980,13,2,no,other,no,no,0.33,Professional_and_Related Service,Clerical_and_kindred,nothern_central
+1864,3707,1987,13,9,no,other,yes,no,15.31,Manufacturing,"Managers, Officials_and_Proprietors",nothern_central
+1865,3708,1980,12,1,no,other,no,no,5.37,Manufacturing,Clerical_and_kindred,nothern_central
+1872,3708,1987,12,8,yes,other,no,no,8.57,Public_Administration,Service_Workers,nothern_central
+1873,3743,1980,11,1,no,other,no,no,3.51,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+1880,3743,1987,11,8,no,other,yes,no,8.68,Manufacturing,"Managers, Officials_and_Proprietors",nothern_central
+1881,3777,1980,12,2,yes,other,yes,no,7.02,Trade,Laborers_and_farmers,nothern_central
+1888,3777,1987,12,9,yes,other,yes,no,7.37,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1889,3831,1980,11,3,no,other,no,no,3.23,Trade,Service_Workers,nothern_central
+1896,3831,1987,11,10,no,other,yes,no,3.79,Trade,Service_Workers,nothern_central
+1897,3844,1980,11,3,no,other,no,no,4.22,Manufacturing,Operatives_and_kindred,NA
+1904,3844,1987,11,10,no,other,no,no,5,Manufacturing,"Managers, Officials_and_Proprietors",NA
+1905,3847,1980,12,3,yes,other,no,no,9.48,Construction,"Craftsmen, Foremen_and_kindred",nothern_central
+1912,3847,1987,12,10,yes,other,yes,no,11.64,Construction,"Craftsmen, Foremen_and_kindred",nothern_central
+1913,3848,1980,12,2,no,other,no,no,7.37,Trade,Clerical_and_kindred,nothern_central
+1920,3848,1987,12,9,no,other,yes,no,7.84,Trade,"Managers, Officials_and_Proprietors",nothern_central
+1921,3882,1980,15,1,yes,other,no,no,1.81,Trade,Service_Workers,NA
+1928,3882,1987,15,8,no,other,no,no,5.24,Manufacturing,"Professional, Technical_and_kindred",NA
+1929,3937,1980,11,3,no,black,no,no,4.25,Public_Administration,Clerical_and_kindred,south
+1936,3937,1987,11,10,yes,black,yes,no,7.26,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+1937,4000,1980,7,9,no,other,no,no,5.01,Construction,"Craftsmen, Foremen_and_kindred",south
+1944,4000,1987,7,16,no,other,yes,no,4.59,Construction,"Craftsmen, Foremen_and_kindred",NA
+1945,4004,1980,12,4,no,other,no,no,7.45,Transportation,"Professional, Technical_and_kindred",south
+1952,4004,1987,12,11,no,other,yes,no,7.66,Transportation,Clerical_and_kindred,south
+1953,4025,1980,9,2,no,other,no,no,2.36,Construction,"Craftsmen, Foremen_and_kindred",south
+1960,4025,1987,9,9,no,other,no,no,7.72,Construction,"Craftsmen, Foremen_and_kindred",south
+1961,4032,1980,11,1,yes,other,no,no,3.72,Entertainment,Laborers_and_farmers,south
+1968,4032,1987,11,8,no,other,yes,no,6.14,Manufacturing,Operatives_and_kindred,south
+1969,4046,1980,9,6,no,other,yes,no,4.21,Trade,"Craftsmen, Foremen_and_kindred",south
+1976,4046,1987,9,13,no,other,yes,no,4.41,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+1977,4088,1980,13,4,no,other,no,no,9.06,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+1984,4088,1987,13,11,no,other,yes,no,14.35,Trade,"Managers, Officials_and_Proprietors",south
+1985,4091,1980,12,3,yes,other,yes,no,12.99,Manufacturing,Operatives_and_kindred,NA
+1992,4091,1987,12,10,yes,other,yes,no,9.8,Manufacturing,Laborers_and_farmers,NA
+1993,4122,1980,16,0,no,other,yes,no,5.91,Professional_and_Related Service,"Professional, Technical_and_kindred",north_east
+2000,4122,1987,16,7,no,other,yes,no,8.57,Professional_and_Related Service,"Professional, Technical_and_kindred",north_east
+2001,4127,1980,10,2,no,other,no,yes,3.23,Personal_Service,Service_Workers,south
+2008,4127,1987,10,9,no,other,no,no,4.26,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+2009,4128,1980,12,4,yes,other,no,no,2.7,Construction,"Craftsmen, Foremen_and_kindred",south
+2016,4128,1987,12,11,yes,other,no,no,4.16,Construction,Laborers_and_farmers,south
+2017,4159,1980,11,2,yes,other,no,no,5.37,Transportation,Clerical_and_kindred,south
+2024,4159,1987,11,9,no,other,yes,no,4.01,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+2025,4204,1980,11,4,yes,black,no,no,3.31,Personal_Service,Service_Workers,south
+2032,4204,1987,11,11,yes,black,no,no,3.92,Trade,"Craftsmen, Foremen_and_kindred",south
+2033,4229,1980,12,2,no,other,no,yes,4.3,Trade,Service_Workers,south
+2040,4229,1987,12,9,no,other,no,no,3.35,Trade,"Managers, Officials_and_Proprietors",south
+2041,4258,1980,12,2,yes,other,no,no,8.31,Trade,Laborers_and_farmers,south
+2048,4258,1987,12,9,yes,other,no,no,5.54,Trade,Laborers_and_farmers,south
+2049,4261,1980,6,9,no,other,yes,no,6.39,Construction,"Craftsmen, Foremen_and_kindred",south
+2056,4261,1987,6,16,no,other,no,no,4.5,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+2057,4264,1980,10,4,no,hisp,yes,no,3.42,Manufacturing,Operatives_and_kindred,south
+2064,4264,1987,10,11,no,hisp,no,no,2.81,Trade,Service_Workers,south
+2065,4278,1980,12,3,no,other,yes,no,6.06,Construction,"Craftsmen, Foremen_and_kindred",south
+2072,4278,1987,12,10,no,other,yes,no,6.05,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+2073,4297,1980,12,2,yes,other,no,no,8.27,Manufacturing,Operatives_and_kindred,south
+2080,4297,1987,12,9,no,other,yes,no,5.5,Manufacturing,Sales_Workers,south
+2081,4302,1980,11,2,no,other,no,no,2.89,Trade,Clerical_and_kindred,south
+2088,4302,1987,11,9,no,other,yes,no,5.56,Professional_and_Related Service,"Professional, Technical_and_kindred",NA
+2089,4321,1980,11,1,no,hisp,no,no,5.59,Trade,Operatives_and_kindred,NA
+2096,4321,1987,11,8,yes,hisp,yes,no,8.88,Transportation,Clerical_and_kindred,NA
+2097,4328,1980,12,4,no,other,no,no,5.71,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+2104,4328,1987,12,11,no,other,no,no,3.71,Entertainment,Laborers_and_farmers,NA
+2105,4332,1980,12,2,no,other,no,no,1.5,Professional_and_Related Service,"Professional, Technical_and_kindred",NA
+2112,4332,1987,12,9,no,other,no,no,3.85,Trade,"Managers, Officials_and_Proprietors",NA
+2113,4335,1980,11,3,no,other,yes,no,4.68,Manufacturing,Operatives_and_kindred,NA
+2120,4335,1987,11,10,no,other,yes,no,5.51,Public_Administration,Operatives_and_kindred,NA
+2121,4357,1980,12,3,yes,other,no,no,8.51,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+2128,4357,1987,12,10,yes,other,yes,no,6.78,Professional_and_Related Service,"Craftsmen, Foremen_and_kindred",nothern_central
+2129,4365,1980,11,2,no,other,no,no,0.97,Construction,"Craftsmen, Foremen_and_kindred",south
+2136,4365,1987,11,9,no,other,yes,no,3.08,Transportation,Operatives_and_kindred,south
+2137,4380,1980,13,4,yes,other,no,no,6.12,Construction,"Craftsmen, Foremen_and_kindred",NA
+2144,4380,1987,13,11,no,other,no,no,7.1,Construction,"Craftsmen, Foremen_and_kindred",NA
+2145,4394,1980,11,2,no,other,no,no,5.11,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+2152,4394,1987,11,9,no,other,no,no,4.59,Manufacturing,Operatives_and_kindred,NA
+2153,4510,1980,13,2,no,other,no,yes,3.69,Manufacturing,Operatives_and_kindred,NA
+2160,4510,1987,13,9,no,other,yes,no,10.38,Public_Administration,"Professional, Technical_and_kindred",NA
+2161,4559,1980,12,5,no,other,no,no,3.76,Manufacturing,Operatives_and_kindred,NA
+2168,4559,1987,12,12,no,other,yes,no,4.95,Construction,"Craftsmen, Foremen_and_kindred",NA
+2169,4563,1980,11,1,yes,other,no,no,2.44,Agricultural,Farm_Laborers_and_Foreman,NA
+2176,4563,1987,11,8,yes,other,yes,no,5.54,Construction,"Craftsmen, Foremen_and_kindred",NA
+2177,4569,1980,12,1,yes,other,no,no,9.65,Trade,Laborers_and_farmers,NA
+2184,4569,1987,12,8,yes,other,yes,no,7.66,Trade,"Managers, Officials_and_Proprietors",NA
+2185,4603,1980,11,2,yes,other,no,no,7.81,Trade,Laborers_and_farmers,NA
+2192,4603,1987,11,9,yes,other,no,no,6.38,Trade,"Managers, Officials_and_Proprietors",NA
+2193,4607,1980,13,2,no,other,no,no,0.5,Construction,"Craftsmen, Foremen_and_kindred",NA
+2200,4607,1987,13,9,yes,other,yes,no,7.02,Construction,"Craftsmen, Foremen_and_kindred",NA
+2201,4633,1980,12,3,no,other,no,no,5.81,Trade,Sales_Workers,NA
+2208,4633,1987,12,10,yes,other,yes,no,12.93,Construction,Operatives_and_kindred,NA
+2209,4676,1980,10,2,no,other,no,no,1.89,Trade,Service_Workers,north_east
+2216,4676,1987,10,9,no,other,no,no,6.54,Manufacturing,"Craftsmen, Foremen_and_kindred",north_east
+2217,4701,1980,12,2,no,other,no,no,4.93,Finance,Clerical_and_kindred,north_east
+2224,4701,1987,12,9,no,other,yes,no,13.47,Transportation,"Managers, Officials_and_Proprietors",north_east
+2225,4716,1980,12,3,no,other,yes,no,2.56,Agricultural,Farm_Laborers_and_Foreman,north_east
+2232,4716,1987,12,10,yes,other,yes,no,5.51,Public_Administration,"Craftsmen, Foremen_and_kindred",north_east
+2233,4720,1980,12,5,yes,other,yes,no,8.08,Transportation,"Craftsmen, Foremen_and_kindred",nothern_central
+2240,4720,1987,12,12,yes,other,yes,no,9.19,Transportation,Service_Workers,south
+2241,4759,1980,12,4,yes,other,no,no,5.99,Manufacturing,Operatives_and_kindred,nothern_central
+2248,4759,1987,12,11,no,other,yes,no,7.04,Construction,Operatives_and_kindred,south
+2249,4791,1980,12,5,yes,other,yes,no,7.11,Manufacturing,Operatives_and_kindred,nothern_central
+2256,4791,1987,12,12,yes,other,yes,no,5.86,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+2257,4811,1980,12,2,no,other,no,no,2.08,Trade,Operatives_and_kindred,nothern_central
+2264,4811,1987,12,9,yes,other,no,no,6.92,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+2265,4828,1980,11,2,no,other,no,no,2.69,Professional_and_Related Service,Service_Workers,nothern_central
+2272,4828,1987,11,9,no,other,yes,no,3.06,Personal_Service,Service_Workers,nothern_central
+2273,4857,1980,14,3,no,other,no,no,3.13,Trade,Service_Workers,nothern_central
+2280,4857,1987,14,10,no,other,yes,no,4.59,Trade,Clerical_and_kindred,nothern_central
+2281,4858,1980,12,2,no,other,no,no,3.62,Trade,Clerical_and_kindred,south
+2288,4858,1987,12,9,no,other,yes,no,13.17,Transportation,"Craftsmen, Foremen_and_kindred",south
+2289,4859,1980,12,2,no,other,no,no,3.77,Trade,Service_Workers,nothern_central
+2296,4859,1987,12,9,no,other,no,no,3.83,Entertainment,"Craftsmen, Foremen_and_kindred",nothern_central
+2297,4866,1980,14,2,yes,other,no,no,5.45,Transportation,"Professional, Technical_and_kindred",nothern_central
+2304,4866,1987,14,9,yes,other,no,no,11.64,Transportation,Clerical_and_kindred,nothern_central
+2305,4881,1980,14,2,no,other,yes,no,3.95,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",nothern_central
+2312,4881,1987,14,9,no,other,yes,no,6.66,Finance,Clerical_and_kindred,south
+2313,4884,1980,12,4,no,other,no,no,4.83,Trade,"Craftsmen, Foremen_and_kindred",nothern_central
+2320,4884,1987,12,11,yes,other,yes,no,5.82,Public_Administration,"Craftsmen, Foremen_and_kindred",nothern_central
+2321,4888,1980,12,2,yes,other,no,no,4.34,Manufacturing,Operatives_and_kindred,nothern_central
+2328,4888,1987,12,9,no,other,yes,no,4.1,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+2329,4901,1980,11,4,yes,other,yes,no,3.22,Manufacturing,Operatives_and_kindred,NA
+2336,4901,1987,11,11,yes,other,no,no,4.65,Construction,Operatives_and_kindred,NA
+2337,4917,1980,12,4,no,other,no,no,3.32,Professional_and_Related Service,Service_Workers,NA
+2344,4917,1987,12,11,no,other,no,no,3.77,Professional_and_Related Service,Service_Workers,NA
+2345,4926,1980,12,4,yes,other,no,no,5.22,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+2352,4926,1987,12,11,yes,other,yes,no,6.43,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+2353,4982,1980,9,4,no,other,no,no,2.43,Business_and_Repair_Service,Laborers_and_farmers,south
+2360,4982,1987,9,11,no,other,yes,no,2.89,Business_and_Repair_Service,Laborers_and_farmers,south
+2361,5017,1980,13,1,no,other,no,no,6.6,Construction,Laborers_and_farmers,south
+2368,5017,1987,13,8,no,other,yes,no,12.74,Manufacturing,"Professional, Technical_and_kindred",south
+2369,5033,1980,12,2,no,other,no,no,7.02,Construction,Laborers_and_farmers,south
+2376,5033,1987,12,9,no,other,yes,no,11.64,Transportation,Laborers_and_farmers,south
+2377,5048,1980,11,3,no,other,no,no,1.67,Trade,Sales_Workers,south
+2384,5048,1987,11,10,no,other,no,no,10.43,Trade,"Managers, Officials_and_Proprietors",south
+2385,5122,1980,12,3,no,other,yes,no,2.4,Transportation,"Craftsmen, Foremen_and_kindred",south
+2392,5122,1987,12,10,no,other,yes,no,6.42,Transportation,"Craftsmen, Foremen_and_kindred",south
+2393,5141,1980,12,2,no,hisp,yes,no,8.62,Construction,Operatives_and_kindred,rural_area
+2400,5141,1987,12,9,no,hisp,yes,no,10.49,Construction,Operatives_and_kindred,NA
+2401,5147,1980,12,4,yes,hisp,yes,no,7.81,Transportation,Operatives_and_kindred,rural_area
+2408,5147,1987,12,11,yes,hisp,no,no,11.79,Transportation,Operatives_and_kindred,NA
+2409,5158,1980,11,3,no,other,no,no,6.19,Business_and_Repair_Service,Operatives_and_kindred,NA
+2416,5158,1987,11,10,no,other,no,no,8.81,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+2417,5221,1980,14,3,no,hisp,no,no,3.95,Agricultural,Farm_Laborers_and_Foreman,rural_area
+2424,5221,1987,14,10,no,hisp,no,no,10.62,Transportation,"Craftsmen, Foremen_and_kindred",rural_area
+2425,5223,1980,12,3,no,other,no,no,4.67,Trade,Clerical_and_kindred,rural_area
+2432,5223,1987,12,10,no,other,no,no,3.11,Trade,Clerical_and_kindred,NA
+2433,5227,1980,12,5,no,other,no,no,14.75,Manufacturing,"Craftsmen, Foremen_and_kindred",rural_area
+2440,5227,1987,12,12,no,other,yes,no,6.74,Manufacturing,Laborers_and_farmers,rural_area
+2441,5248,1980,14,2,no,other,no,no,3.12,Agricultural,Farm_Laborers_and_Foreman,rural_area
+2448,5248,1987,14,9,no,other,yes,no,6.73,Manufacturing,Operatives_and_kindred,NA
+2449,5252,1980,10,2,no,other,no,no,1.51,Business_and_Repair_Service,Operatives_and_kindred,rural_area
+2456,5252,1987,10,9,no,other,yes,no,5.31,Agricultural,"Craftsmen, Foremen_and_kindred",rural_area
+2457,5263,1980,14,3,no,other,no,no,5.11,Trade,Laborers_and_farmers,rural_area
+2464,5263,1987,14,10,no,other,yes,no,4.62,Trade,"Managers, Officials_and_Proprietors",rural_area
+2465,5274,1980,12,2,no,other,no,no,5.29,Manufacturing,Operatives_and_kindred,south
+2472,5274,1987,12,9,yes,other,yes,no,27.45,Trade,Sales_Workers,south
+2473,5335,1980,12,3,no,other,no,no,4.25,Trade,Laborers_and_farmers,south
+2480,5335,1987,12,10,yes,other,yes,no,4.41,Trade,"Managers, Officials_and_Proprietors",south
+2481,5345,1980,12,2,no,other,no,no,4.55,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+2488,5345,1987,12,9,no,other,yes,no,7.13,Business_and_Repair_Service,Clerical_and_kindred,south
+2489,5359,1980,12,4,no,other,no,no,1.28,Trade,Operatives_and_kindred,south
+2496,5359,1987,12,11,no,other,no,no,3.07,Trade,Operatives_and_kindred,south
+2497,5368,1980,12,1,no,other,no,no,3.06,Trade,Laborers_and_farmers,nothern_central
+2504,5368,1987,12,8,no,other,yes,no,4.51,Manufacturing,"Managers, Officials_and_Proprietors",nothern_central
+2505,5377,1980,12,2,no,other,no,no,4.61,Manufacturing,Clerical_and_kindred,south
+2512,5377,1987,12,9,no,other,no,no,4.59,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+2513,5390,1980,14,2,no,other,yes,no,4.95,Trade,"Craftsmen, Foremen_and_kindred",south
+2520,5390,1987,14,9,no,other,yes,no,4.99,Personal_Service,"Craftsmen, Foremen_and_kindred",south
+2521,5419,1980,11,2,no,other,no,no,1.92,Professional_and_Related Service,Clerical_and_kindred,nothern_central
+2528,5419,1987,11,9,yes,other,yes,no,7.45,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+2529,5435,1980,11,2,no,other,no,no,3.06,Trade,Operatives_and_kindred,south
+2536,5435,1987,11,9,no,other,yes,no,3.67,Manufacturing,Clerical_and_kindred,south
+2537,5437,1980,12,2,no,other,yes,no,4.77,Agricultural,Farm_Laborers_and_Foreman,nothern_central
+2544,5437,1987,12,9,no,other,yes,no,6.24,Manufacturing,"Managers, Officials_and_Proprietors",nothern_central
+2545,5497,1980,12,2,no,other,yes,no,3.82,Trade,Clerical_and_kindred,NA
+2552,5497,1987,12,9,no,other,yes,no,4.02,Trade,"Managers, Officials_and_Proprietors",NA
+2553,5525,1980,8,5,no,other,no,no,2.99,Trade,Laborers_and_farmers,NA
+2560,5525,1987,8,12,no,other,yes,no,4.78,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+2561,5529,1980,10,4,no,other,yes,no,3.54,Manufacturing,Laborers_and_farmers,NA
+2568,5529,1987,10,11,no,other,yes,no,7.66,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+2569,5531,1980,12,5,no,other,no,no,5.2,Trade,Sales_Workers,NA
+2576,5531,1987,12,12,no,other,yes,no,8.82,Trade,"Managers, Officials_and_Proprietors",NA
+2577,5579,1980,10,2,no,other,no,no,3.63,Professional_and_Related Service,Clerical_and_kindred,NA
+2584,5579,1987,10,9,no,other,yes,no,5.1,Construction,"Craftsmen, Foremen_and_kindred",south
+2585,5588,1980,9,8,no,other,no,no,4.11,Transportation,Laborers_and_farmers,NA
+2592,5588,1987,9,15,yes,other,yes,no,3.93,Transportation,Operatives_and_kindred,NA
+2593,5599,1980,14,2,no,other,no,no,7.37,Personal_Service,Clerical_and_kindred,NA
+2600,5599,1987,14,9,no,other,yes,no,6.19,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+2601,5650,1980,11,2,no,other,no,no,3.25,Trade,Laborers_and_farmers,south
+2608,5650,1987,11,9,yes,other,yes,no,4.86,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+2609,5660,1980,12,2,no,other,yes,no,6.33,Trade,"Craftsmen, Foremen_and_kindred",NA
+2616,5660,1987,12,9,no,other,no,no,7.62,Finance,Sales_Workers,south
+2617,5665,1980,14,3,no,other,no,no,4.18,Trade,Sales_Workers,south
+2624,5665,1987,14,10,yes,other,no,no,3.58,Business_and_Repair_Service,Operatives_and_kindred,south
+2625,5666,1980,14,1,no,other,no,no,5.35,Agricultural,"Craftsmen, Foremen_and_kindred",south
+2632,5666,1987,14,8,no,other,yes,no,8.94,Finance,Sales_Workers,south
+2633,5698,1980,12,4,no,other,no,no,5.55,Construction,Clerical_and_kindred,NA
+2640,5698,1987,12,11,yes,other,yes,no,8.27,Transportation,Clerical_and_kindred,NA
+2641,5699,1980,13,2,no,other,no,no,6.23,Trade,Clerical_and_kindred,NA
+2648,5699,1987,13,9,no,other,yes,no,8.57,Transportation,Clerical_and_kindred,NA
+2649,5731,1980,11,3,yes,hisp,yes,no,3.34,Trade,Operatives_and_kindred,south
+2656,5731,1987,11,10,yes,hisp,yes,no,4.9,Trade,Laborers_and_farmers,south
+2657,5750,1980,11,5,yes,hisp,yes,no,2.85,Manufacturing,Operatives_and_kindred,south
+2664,5750,1987,11,12,no,hisp,yes,no,7.96,Finance,"Managers, Officials_and_Proprietors",nothern_central
+2665,5755,1980,10,4,yes,hisp,yes,no,3.68,Professional_and_Related Service,Service_Workers,south
+2672,5755,1987,10,11,no,hisp,yes,no,6.74,Transportation,"Craftsmen, Foremen_and_kindred",south
+2673,5772,1980,9,4,no,hisp,yes,no,0.41,Mining,Operatives_and_kindred,south
+2680,5772,1987,9,11,no,hisp,yes,no,4.8,Manufacturing,Operatives_and_kindred,south
+2681,5816,1980,12,3,no,hisp,no,no,3.56,Construction,Operatives_and_kindred,south
+2688,5816,1987,12,10,no,hisp,yes,no,4.29,Personal_Service,"Craftsmen, Foremen_and_kindred",south
+2689,5823,1980,11,3,no,hisp,no,no,3.09,Trade,Laborers_and_farmers,NA
+2696,5823,1987,11,10,no,hisp,no,no,3.36,Trade,Operatives_and_kindred,NA
+2697,5851,1980,13,1,no,hisp,no,no,0.33,Construction,Laborers_and_farmers,NA
+2704,5851,1987,13,8,no,hisp,no,no,7.04,Construction,Laborers_and_farmers,NA
+2705,5857,1980,12,2,no,hisp,no,no,1.54,Business_and_Repair_Service,Operatives_and_kindred,NA
+2712,5857,1987,12,9,no,hisp,no,no,6.56,Public_Administration,Operatives_and_kindred,NA
+2713,5859,1980,15,2,no,other,yes,no,3.4,Professional_and_Related Service,"Professional, Technical_and_kindred",NA
+2720,5859,1987,15,9,no,other,yes,no,5.94,Trade,"Managers, Officials_and_Proprietors",south
+2721,6016,1980,12,2,no,hisp,no,no,6.4,Manufacturing,Operatives_and_kindred,south
+2728,6016,1987,12,9,no,hisp,no,no,8.57,Manufacturing,Clerical_and_kindred,south
+2729,6020,1980,10,4,no,black,no,no,1.97,Trade,Operatives_and_kindred,south
+2736,6020,1987,10,11,no,black,no,yes,2.85,Trade,Clerical_and_kindred,south
+2737,6025,1980,10,3,no,black,no,no,2.17,Trade,Service_Workers,south
+2744,6025,1987,10,10,yes,black,no,no,0.83,Transportation,Operatives_and_kindred,south
+2745,6056,1980,12,2,no,black,no,no,2.98,Trade,Clerical_and_kindred,south
+2752,6056,1987,12,9,no,black,no,no,3.98,Transportation,Clerical_and_kindred,south
+2753,6094,1980,13,4,yes,black,no,no,5.82,Trade,"Managers, Officials_and_Proprietors",south
+2760,6094,1987,13,11,no,black,yes,no,4.64,Trade,"Managers, Officials_and_Proprietors",south
+2761,6186,1980,12,2,no,black,no,no,3.29,Manufacturing,Operatives_and_kindred,south
+2768,6186,1987,12,9,no,black,yes,no,7.35,Transportation,"Professional, Technical_and_kindred",south
+2769,6395,1980,9,7,no,black,no,no,3.78,Agricultural,Farm_Laborers_and_Foreman,NA
+2776,6395,1987,9,14,no,black,yes,no,7.2,Manufacturing,Operatives_and_kindred,NA
+2777,6430,1980,11,5,no,black,no,no,3.52,Transportation,Operatives_and_kindred,nothern_central
+2784,6430,1987,11,12,yes,black,no,no,5.51,Manufacturing,Operatives_and_kindred,nothern_central
+2785,6446,1980,11,2,yes,other,yes,no,5.11,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+2792,6446,1987,11,9,yes,other,yes,no,7.96,Manufacturing,"Professional, Technical_and_kindred",NA
+2793,6463,1980,5,7,no,other,no,no,3.42,Construction,"Craftsmen, Foremen_and_kindred",south
+2800,6463,1987,5,14,no,other,yes,no,4.89,Construction,"Craftsmen, Foremen_and_kindred",NA
+2801,6558,1980,15,2,yes,other,no,no,8.94,Manufacturing,"Managers, Officials_and_Proprietors",south
+2808,6558,1987,15,9,no,other,yes,no,8.57,Manufacturing,"Managers, Officials_and_Proprietors",south
+2809,6559,1980,15,2,no,other,no,no,4.36,Construction,Clerical_and_kindred,NA
+2816,6559,1987,15,9,no,other,yes,no,8.27,Manufacturing,Clerical_and_kindred,NA
+2817,6561,1980,15,2,no,other,no,no,6,Transportation,"Professional, Technical_and_kindred",south
+2824,6561,1987,15,9,no,other,yes,no,12.12,Manufacturing,"Professional, Technical_and_kindred",south
+2825,6574,1980,12,4,yes,black,no,no,4.06,Manufacturing,Operatives_and_kindred,nothern_central
+2832,6574,1987,12,11,yes,black,yes,no,3.5,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+2833,6648,1980,12,2,yes,black,no,no,10.61,Manufacturing,Operatives_and_kindred,north_east
+2840,6648,1987,12,9,yes,black,no,no,4.5,Manufacturing,Operatives_and_kindred,NA
+2841,6813,1980,12,3,yes,black,no,no,3.83,Professional_and_Related Service,Service_Workers,north_east
+2848,6813,1987,12,10,yes,black,no,no,5.21,Professional_and_Related Service,Service_Workers,north_east
+2849,6824,1980,12,4,yes,hisp,yes,no,2.83,Manufacturing,Clerical_and_kindred,north_east
+2856,6824,1987,12,11,yes,hisp,no,no,6.43,Manufacturing,Laborers_and_farmers,north_east
+2857,6888,1980,10,7,no,hisp,no,no,2.52,Business_and_Repair_Service,Service_Workers,north_east
+2864,6888,1987,10,14,no,hisp,yes,no,5.48,Manufacturing,Service_Workers,north_east
+2865,6942,1980,10,3,yes,hisp,no,no,3.71,Manufacturing,Service_Workers,north_east
+2872,6942,1987,10,10,no,hisp,yes,no,7.04,Transportation,"Managers, Officials_and_Proprietors",north_east
+2873,6954,1980,13,2,no,hisp,yes,no,6.43,Manufacturing,Operatives_and_kindred,north_east
+2880,6954,1987,13,9,no,hisp,yes,no,5.89,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",north_east
+2881,6955,1980,11,3,yes,hisp,no,yes,3.29,Trade,Service_Workers,north_east
+2888,6955,1987,11,10,no,hisp,yes,no,5.85,Business_and_Repair_Service,"Professional, Technical_and_kindred",north_east
+2889,6964,1980,8,5,yes,black,no,no,3.97,Professional_and_Related Service,Clerical_and_kindred,north_east
+2896,6964,1987,8,12,yes,black,yes,no,6.05,Trade,"Craftsmen, Foremen_and_kindred",north_east
+2897,6987,1980,15,2,no,other,no,no,11.77,Trade,"Managers, Officials_and_Proprietors",north_east
+2904,6987,1987,15,9,no,other,yes,no,9.35,Trade,Sales_Workers,north_east
+2905,7025,1980,12,4,yes,hisp,no,no,5.54,Trade,Laborers_and_farmers,nothern_central
+2912,7025,1987,12,11,yes,hisp,yes,no,8.72,Transportation,Operatives_and_kindred,nothern_central
+2913,7043,1980,12,2,no,other,no,no,3.86,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+2920,7043,1987,12,9,no,other,yes,no,5.51,Manufacturing,Operatives_and_kindred,south
+2921,7060,1980,12,2,no,other,no,no,6.81,Construction,Laborers_and_farmers,nothern_central
+2928,7060,1987,12,9,yes,other,no,no,5.82,Construction,Operatives_and_kindred,nothern_central
+2929,7087,1980,11,2,no,black,no,no,1.75,Trade,Service_Workers,nothern_central
+2936,7087,1987,11,9,no,black,no,no,2.9,Trade,"Managers, Officials_and_Proprietors",nothern_central
+2937,7238,1980,6,8,yes,hisp,no,no,3.83,Trade,Operatives_and_kindred,nothern_central
+2944,7238,1987,6,15,no,hisp,yes,no,6.74,Trade,Sales_Workers,NA
+2945,7279,1980,12,4,yes,black,no,no,3.77,Manufacturing,Operatives_and_kindred,nothern_central
+2952,7279,1987,12,11,yes,black,no,no,4.9,Manufacturing,Clerical_and_kindred,nothern_central
+2953,7342,1980,12,5,no,other,no,no,3.96,Construction,"Craftsmen, Foremen_and_kindred",nothern_central
+2960,7342,1987,12,12,no,other,no,no,3.66,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+2961,7343,1980,15,1,no,other,no,no,3.86,Trade,Service_Workers,nothern_central
+2968,7343,1987,15,8,yes,other,yes,no,6.92,Transportation,"Craftsmen, Foremen_and_kindred",south
+2969,7411,1980,12,2,yes,black,no,no,3.16,Personal_Service,Operatives_and_kindred,north_east
+2976,7411,1987,12,9,yes,black,yes,no,4.9,Public_Administration,"Craftsmen, Foremen_and_kindred",south
+2977,7424,1980,11,1,no,hisp,no,no,3.63,Trade,Laborers_and_farmers,south
+2984,7424,1987,11,8,yes,hisp,no,no,11.07,Public_Administration,Operatives_and_kindred,south
+2985,7429,1980,8,6,no,other,yes,no,6.95,Trade,Operatives_and_kindred,south
+2992,7429,1987,8,13,no,other,no,no,4.32,Manufacturing,Operatives_and_kindred,south
+2993,7454,1980,15,2,no,black,no,no,3.98,Business_and_Repair_Service,Sales_Workers,south
+3000,7454,1987,15,9,no,black,no,no,8.76,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+3001,7472,1980,10,3,yes,hisp,no,no,3.73,Manufacturing,Operatives_and_kindred,south
+3008,7472,1987,10,10,yes,hisp,yes,no,7.66,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+3009,7474,1980,12,2,no,black,no,no,3.82,Manufacturing,Laborers_and_farmers,south
+3016,7474,1987,12,9,yes,black,yes,no,7.04,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+3017,7509,1980,11,5,yes,black,yes,no,4.08,Manufacturing,Operatives_and_kindred,south
+3024,7509,1987,11,12,yes,black,yes,no,6.74,Manufacturing,Operatives_and_kindred,south
+3025,7539,1980,12,1,no,hisp,no,no,3.25,Trade,Operatives_and_kindred,south
+3032,7539,1987,12,8,yes,hisp,no,no,3.25,Public_Administration,Service_Workers,south
+3033,7769,1980,14,2,no,other,yes,no,5.8,Business_and_Repair_Service,Service_Workers,south
+3040,7769,1987,14,9,no,other,yes,no,7.89,Professional_and_Related Service,Service_Workers,nothern_central
+3041,7783,1980,12,3,no,other,no,no,4.12,Trade,Service_Workers,south
+3048,7783,1987,12,10,no,other,no,no,4.55,Trade,Service_Workers,nothern_central
+3049,7784,1980,11,1,no,other,no,no,6.01,Public_Administration,Service_Workers,south
+3056,7784,1987,11,8,no,other,no,no,22.12,Finance,Sales_Workers,south
+3057,7801,1980,13,1,no,black,no,no,2.47,Personal_Service,Service_Workers,south
+3064,7801,1987,13,8,no,black,no,no,4.19,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",south
+3065,7824,1980,12,2,yes,hisp,no,no,5.73,Manufacturing,Operatives_and_kindred,south
+3072,7824,1987,12,9,no,hisp,yes,no,8.2,Manufacturing,"Managers, Officials_and_Proprietors",south
+3073,7874,1980,15,2,no,other,no,no,9.08,Manufacturing,"Professional, Technical_and_kindred",nothern_central
+3080,7874,1987,15,9,no,other,no,no,9.72,Manufacturing,"Professional, Technical_and_kindred",NA
+3081,7887,1980,12,4,no,other,no,no,4.38,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",NA
+3088,7887,1987,12,11,no,other,yes,no,7.52,Manufacturing,Clerical_and_kindred,NA
+3089,7923,1980,12,5,no,black,yes,no,9.23,Public_Administration,Service_Workers,south
+3096,7923,1987,12,12,yes,black,yes,no,10.56,Public_Administration,Service_Workers,nothern_central
+3097,7926,1980,12,5,yes,hisp,yes,no,6.3,Trade,Service_Workers,NA
+3104,7926,1987,12,12,yes,hisp,yes,no,5.66,Trade,Service_Workers,NA
+3105,8021,1980,15,2,no,other,no,no,4.04,Professional_and_Related Service,"Professional, Technical_and_kindred",NA
+3112,8021,1987,15,9,no,other,no,no,14.62,Professional_and_Related Service,"Managers, Officials_and_Proprietors",NA
+3113,8087,1980,12,3,no,hisp,no,no,7.66,Manufacturing,"Professional, Technical_and_kindred",NA
+3120,8087,1987,12,10,no,hisp,no,no,4.98,Business_and_Repair_Service,"Professional, Technical_and_kindred",NA
+3121,8089,1980,12,3,no,other,no,no,4.85,Finance,Clerical_and_kindred,NA
+3128,8089,1987,12,10,no,other,yes,no,8.08,Finance,"Professional, Technical_and_kindred",NA
+3129,8090,1980,14,2,no,other,no,no,5.67,Finance,Clerical_and_kindred,NA
+3136,8090,1987,14,9,no,other,yes,no,22.12,Finance,"Managers, Officials_and_Proprietors",NA
+3137,8096,1980,6,11,yes,hisp,no,no,5.45,Trade,Service_Workers,NA
+3144,8096,1987,6,18,no,hisp,no,no,5.06,Trade,Service_Workers,NA
+3145,8106,1980,8,9,yes,hisp,no,no,4.89,Manufacturing,Operatives_and_kindred,NA
+3152,8106,1987,8,16,no,hisp,no,no,5.25,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3153,8107,1980,3,11,no,hisp,no,no,3.02,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3160,8107,1987,3,18,no,hisp,no,no,5.52,Manufacturing,Operatives_and_kindred,NA
+3161,8142,1980,11,2,no,hisp,no,no,3.45,Finance,Clerical_and_kindred,NA
+3168,8142,1987,11,9,no,hisp,no,no,3.87,Finance,"Managers, Officials_and_Proprietors",NA
+3169,8168,1980,11,2,yes,hisp,no,no,6.78,Trade,Clerical_and_kindred,NA
+3176,8168,1987,11,9,yes,hisp,yes,no,10.7,Manufacturing,Operatives_and_kindred,NA
+3177,8173,1980,8,9,no,hisp,yes,no,4.25,Trade,Service_Workers,NA
+3184,8173,1987,8,16,no,hisp,yes,no,4.1,Trade,Service_Workers,NA
+3185,8203,1980,14,2,no,hisp,yes,no,9.38,Manufacturing,Operatives_and_kindred,NA
+3192,8203,1987,14,9,no,hisp,yes,no,25.08,Personal_Service,"Managers, Officials_and_Proprietors",NA
+3193,8211,1980,8,6,yes,hisp,no,no,1.53,Manufacturing,Operatives_and_kindred,NA
+3200,8211,1987,8,13,no,hisp,no,no,2.64,Trade,Laborers_and_farmers,NA
+3201,8224,1980,12,5,no,black,no,no,7.03,Manufacturing,Operatives_and_kindred,NA
+3208,8224,1987,12,12,yes,black,no,no,7.94,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3209,8272,1980,10,3,no,hisp,yes,no,6.2,Manufacturing,Operatives_and_kindred,NA
+3216,8272,1987,10,10,no,hisp,yes,no,10.43,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3217,8300,1980,12,0,no,hisp,no,no,4.23,Business_and_Repair_Service,"Professional, Technical_and_kindred",NA
+3224,8300,1987,12,7,yes,hisp,no,no,5.33,Professional_and_Related Service,"Professional, Technical_and_kindred",NA
+3225,8304,1980,12,2,no,hisp,no,no,5.93,Agricultural,Operatives_and_kindred,NA
+3232,8304,1987,12,9,yes,hisp,yes,no,6.26,Manufacturing,"Managers, Officials_and_Proprietors",NA
+3233,8364,1980,11,3,no,hisp,no,no,4.12,Business_and_Repair_Service,Operatives_and_kindred,rural_area
+3240,8364,1987,11,10,no,hisp,yes,no,4.59,Public_Administration,Laborers_and_farmers,NA
+3241,8370,1980,12,3,no,other,no,no,7.13,Manufacturing,"Craftsmen, Foremen_and_kindred",rural_area
+3248,8370,1987,12,10,yes,other,yes,no,7.04,Construction,"Craftsmen, Foremen_and_kindred",NA
+3249,8381,1980,10,2,no,hisp,no,no,2.8,Trade,Laborers_and_farmers,NA
+3256,8381,1987,10,9,no,hisp,no,no,7.03,Trade,Operatives_and_kindred,NA
+3257,8388,1980,8,8,no,hisp,yes,no,4.02,Agricultural,Operatives_and_kindred,NA
+3264,8388,1987,8,15,no,hisp,yes,no,4.8,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+3265,8406,1980,8,6,yes,hisp,yes,no,3.65,Agricultural,Farm_Laborers_and_Foreman,NA
+3272,8406,1987,8,13,no,hisp,yes,no,5.51,Public_Administration,"Craftsmen, Foremen_and_kindred",NA
+3273,8415,1980,10,2,no,black,no,no,3.23,Agricultural,Farm_Laborers_and_Foreman,south
+3280,8415,1987,10,9,yes,black,yes,no,7.04,Manufacturing,Operatives_and_kindred,south
+3281,8496,1980,12,2,no,black,no,no,3.86,Trade,Laborers_and_farmers,south
+3288,8496,1987,12,9,no,black,yes,no,3.37,Trade,Sales_Workers,south
+3289,8501,1980,10,5,no,black,no,no,2.62,Trade,Clerical_and_kindred,south
+3296,8501,1987,10,12,no,black,no,no,2.76,Trade,Service_Workers,south
+3297,8518,1980,12,5,yes,other,no,no,6.4,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3304,8518,1987,12,12,no,other,yes,no,6.6,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+3305,8520,1980,15,2,no,other,no,no,1.74,Professional_and_Related Service,"Professional, Technical_and_kindred",nothern_central
+3312,8520,1987,15,9,no,other,yes,no,3.92,Agricultural,Laborers_and_farmers,nothern_central
+3313,8524,1980,11,1,no,other,yes,no,3.31,Trade,"Craftsmen, Foremen_and_kindred",NA
+3320,8524,1987,11,8,yes,other,yes,no,4.86,Agricultural,Laborers_and_farmers,NA
+3321,8548,1980,8,3,no,other,no,no,3.3,Trade,Service_Workers,NA
+3328,8548,1987,8,10,no,other,no,no,2.91,Trade,Operatives_and_kindred,south
+3329,8556,1980,11,2,no,other,no,no,5.15,Manufacturing,Operatives_and_kindred,NA
+3336,8556,1987,11,9,no,other,yes,no,7.66,Manufacturing,Service_Workers,NA
+3337,8564,1980,11,1,no,other,no,no,2.25,Trade,Sales_Workers,NA
+3344,8564,1987,11,8,no,other,yes,no,4.59,Public_Administration,Clerical_and_kindred,NA
+3345,8581,1980,12,3,no,black,no,no,3.41,Trade,Service_Workers,NA
+3352,8581,1987,12,10,no,black,no,no,2.11,Trade,Operatives_and_kindred,NA
+3353,8586,1980,12,3,no,black,no,no,0.47,Manufacturing,Operatives_and_kindred,NA
+3360,8586,1987,12,10,no,black,no,no,5.35,Manufacturing,Laborers_and_farmers,NA
+3361,8587,1980,11,3,yes,black,no,no,2.7,Manufacturing,Operatives_and_kindred,NA
+3368,8587,1987,11,10,no,black,no,no,2.21,Manufacturing,Operatives_and_kindred,NA
+3369,8597,1980,10,6,yes,black,no,no,4.58,Manufacturing,Service_Workers,NA
+3376,8597,1987,10,13,yes,black,no,no,7.04,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3377,8656,1980,12,2,no,other,no,no,3.4,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+3384,8656,1987,12,9,no,other,yes,no,2.28,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+3385,8722,1980,12,4,no,hisp,no,no,5.48,Manufacturing,Operatives_and_kindred,nothern_central
+3392,8722,1987,12,11,no,hisp,no,no,5.41,Manufacturing,Operatives_and_kindred,south
+3393,8743,1980,12,3,no,other,yes,no,5.03,Construction,Service_Workers,south
+3400,8743,1987,12,10,no,other,yes,no,4.7,Mining,"Craftsmen, Foremen_and_kindred",south
+3401,8749,1980,8,9,no,black,yes,no,5.26,Manufacturing,Operatives_and_kindred,south
+3408,8749,1987,8,16,no,black,yes,no,5.74,Construction,"Craftsmen, Foremen_and_kindred",south
+3409,8758,1980,12,3,no,other,yes,no,4.16,Construction,Operatives_and_kindred,nothern_central
+3416,8758,1987,12,10,no,other,yes,no,4.8,Transportation,Operatives_and_kindred,south
+3417,8796,1980,13,2,yes,other,no,no,2.74,Transportation,Laborers_and_farmers,nothern_central
+3424,8796,1987,13,9,yes,other,no,no,9.22,Transportation,Laborers_and_farmers,nothern_central
+3425,8838,1980,12,3,no,other,no,no,4.62,Trade,Service_Workers,nothern_central
+3432,8838,1987,12,10,no,other,yes,no,6.43,Entertainment,Service_Workers,rural_area
+3433,8842,1980,11,2,no,other,no,yes,3.47,Transportation,Laborers_and_farmers,nothern_central
+3440,8842,1987,11,9,no,other,yes,no,4.65,Transportation,Laborers_and_farmers,nothern_central
+3441,8846,1980,12,2,yes,other,yes,no,3.66,Personal_Service,Service_Workers,nothern_central
+3448,8846,1987,12,9,yes,other,yes,no,5.09,Professional_and_Related Service,Clerical_and_kindred,nothern_central
+3449,8860,1980,13,4,yes,hisp,no,no,3.42,Trade,Service_Workers,south
+3456,8860,1987,13,11,no,hisp,yes,no,3.06,Trade,Sales_Workers,south
+3457,8862,1980,13,2,no,hisp,no,no,3.55,Trade,Sales_Workers,south
+3464,8862,1987,13,9,no,hisp,no,no,6.63,Trade,"Managers, Officials_and_Proprietors",south
+3465,8880,1980,12,4,no,hisp,no,no,7.84,Professional_and_Related Service,Clerical_and_kindred,south
+3472,8880,1987,12,11,yes,hisp,yes,no,12.49,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+3473,8886,1980,12,5,no,hisp,no,no,4.18,Trade,"Craftsmen, Foremen_and_kindred",south
+3480,8886,1987,12,12,no,hisp,no,no,8.32,Trade,"Craftsmen, Foremen_and_kindred",south
+3481,8903,1980,11,2,no,hisp,no,no,2.67,Trade,Service_Workers,south
+3488,8903,1987,11,9,no,hisp,yes,no,1.58,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+3489,8908,1980,12,2,yes,hisp,no,no,3.46,Trade,Laborers_and_farmers,south
+3496,8908,1987,12,9,yes,hisp,yes,no,3.18,Trade,"Managers, Officials_and_Proprietors",south
+3497,8911,1980,12,4,no,hisp,no,no,2.85,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+3504,8911,1987,12,11,no,hisp,no,no,3.06,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",south
+3505,8917,1980,11,4,no,hisp,yes,no,4.74,Mining,Operatives_and_kindred,NA
+3512,8917,1987,11,11,no,hisp,no,no,6.96,Mining,Operatives_and_kindred,NA
+3513,8991,1980,11,3,no,black,no,no,4.27,Trade,"Managers, Officials_and_Proprietors",south
+3520,8991,1987,11,10,yes,black,yes,no,7.96,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+3521,8997,1980,14,2,yes,black,no,no,6.13,Transportation,Laborers_and_farmers,south
+3528,8997,1987,14,9,yes,black,no,no,9.8,Transportation,Clerical_and_kindred,south
+3529,9014,1980,12,4,no,black,no,no,6.23,Professional_and_Related Service,Clerical_and_kindred,south
+3536,9014,1987,12,11,no,black,yes,no,6.12,Transportation,Clerical_and_kindred,south
+3537,9015,1980,9,7,no,black,no,no,4.05,Trade,Clerical_and_kindred,south
+3544,9015,1987,9,14,yes,black,yes,no,3.68,Trade,Clerical_and_kindred,south
+3545,9027,1980,12,3,no,other,no,no,4.85,Trade,"Managers, Officials_and_Proprietors",south
+3552,9027,1987,12,10,yes,other,no,no,10.07,Manufacturing,Operatives_and_kindred,NA
+3553,9066,1980,11,1,yes,black,no,no,4.96,Trade,Service_Workers,south
+3560,9066,1987,11,8,yes,black,no,no,5.63,Trade,Service_Workers,south
+3561,9082,1980,8,4,no,other,no,no,0.93,Agricultural,Farm_Laborers_and_Foreman,NA
+3568,9082,1987,8,11,no,other,yes,no,5.51,Construction,Laborers_and_farmers,NA
+3569,9131,1980,5,9,no,other,no,no,3.02,Construction,"Craftsmen, Foremen_and_kindred",NA
+3576,9131,1987,5,16,no,other,yes,no,4.3,Construction,Laborers_and_farmers,NA
+3577,9132,1980,6,7,no,other,yes,no,3.4,Construction,"Craftsmen, Foremen_and_kindred",NA
+3584,9132,1987,6,14,yes,other,yes,no,6.43,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3585,9154,1980,15,2,yes,other,no,no,12.99,Transportation,Service_Workers,NA
+3592,9154,1987,15,9,yes,other,no,no,13.49,Transportation,Service_Workers,south
+3593,9158,1980,12,4,no,other,yes,no,4.49,Trade,Operatives_and_kindred,south
+3600,9158,1987,12,11,no,other,yes,no,2.99,Trade,Operatives_and_kindred,south
+3601,9184,1980,11,3,no,other,yes,no,3.69,Trade,Operatives_and_kindred,south
+3608,9184,1987,11,10,no,other,yes,no,8.12,Manufacturing,Sales_Workers,south
+3609,9230,1980,11,1,no,black,no,no,2.97,Trade,Service_Workers,north_east
+3616,9230,1987,11,8,yes,black,no,no,7.96,Public_Administration,Service_Workers,north_east
+3617,9265,1980,11,1,no,hisp,no,no,3.44,Trade,"Managers, Officials_and_Proprietors",north_east
+3624,9265,1987,11,8,no,hisp,no,no,9.65,Trade,"Craftsmen, Foremen_and_kindred",north_east
+3625,9367,1980,11,2,no,black,no,no,2.54,Entertainment,"Professional, Technical_and_kindred",north_east
+3632,9367,1987,11,9,no,black,no,no,6.82,Business_and_Repair_Service,"Professional, Technical_and_kindred",north_east
+3633,9390,1980,12,4,no,black,no,no,0.41,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",north_east
+3640,9390,1987,12,11,yes,black,no,no,8.95,Construction,"Craftsmen, Foremen_and_kindred",north_east
+3641,9391,1980,11,3,no,black,no,no,3.75,Manufacturing,Operatives_and_kindred,north_east
+3648,9391,1987,11,10,no,black,no,no,4.81,Construction,Operatives_and_kindred,north_east
+3649,9418,1980,15,2,no,black,no,no,8.44,Manufacturing,"Professional, Technical_and_kindred",north_east
+3656,9418,1987,15,9,no,black,yes,no,15.72,Trade,"Professional, Technical_and_kindred",north_east
+3657,9424,1980,12,3,yes,hisp,no,no,7.66,Manufacturing,Operatives_and_kindred,north_east
+3664,9424,1987,12,10,yes,hisp,yes,no,9.76,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+3665,9447,1980,14,3,no,other,no,no,2.86,Trade,Clerical_and_kindred,north_east
+3672,9447,1987,14,10,no,other,yes,no,7.15,Trade,"Managers, Officials_and_Proprietors",NA
+3673,9449,1980,15,2,no,other,no,no,2.72,Trade,Service_Workers,north_east
+3680,9449,1987,15,9,yes,other,yes,no,7.55,Manufacturing,Sales_Workers,north_east
+3681,9453,1980,15,2,yes,other,no,no,7.71,Professional_and_Related Service,"Professional, Technical_and_kindred",north_east
+3688,9453,1987,15,9,no,other,yes,no,7.74,Manufacturing,"Managers, Officials_and_Proprietors",north_east
+3689,9468,1980,16,1,no,other,no,no,4.14,Trade,Service_Workers,north_east
+3696,9468,1987,16,8,no,other,yes,no,8.71,Trade,"Managers, Officials_and_Proprietors",NA
+3697,9502,1980,12,5,yes,other,yes,no,7.96,Manufacturing,Operatives_and_kindred,nothern_central
+3704,9502,1987,12,12,no,other,yes,no,5.05,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+3705,9505,1980,8,5,no,other,no,no,3.06,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+3712,9505,1987,8,12,no,other,no,no,2.51,Manufacturing,Operatives_and_kindred,nothern_central
+3713,9603,1980,10,7,no,other,yes,no,3.29,Trade,Operatives_and_kindred,nothern_central
+3720,9603,1987,10,14,no,other,no,no,3.36,Trade,"Craftsmen, Foremen_and_kindred",south
+3721,9643,1980,12,2,no,hisp,no,no,5.94,Trade,Service_Workers,south
+3728,9643,1987,12,9,no,hisp,no,no,4.6,Trade,Service_Workers,south
+3729,9667,1980,13,1,no,hisp,no,no,4.75,Professional_and_Related Service,Clerical_and_kindred,south
+3736,9667,1987,13,8,no,hisp,yes,no,20.85,Trade,Clerical_and_kindred,south
+3737,9683,1980,12,5,no,black,no,no,2.02,Trade,Operatives_and_kindred,south
+3744,9683,1987,12,12,yes,black,no,no,6.12,Manufacturing,Laborers_and_farmers,south
+3745,9694,1980,15,1,no,other,no,no,5.21,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+3752,9694,1987,15,8,no,other,yes,no,10.41,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+3753,9710,1980,12,4,no,other,no,no,6.5,Trade,Clerical_and_kindred,south
+3760,9710,1987,12,11,no,other,no,no,4.81,Trade,"Managers, Officials_and_Proprietors",south
+3761,9718,1980,13,1,no,other,no,no,3,Professional_and_Related Service,Clerical_and_kindred,south
+3768,9718,1987,13,8,no,other,yes,no,13.78,Manufacturing,"Professional, Technical_and_kindred",south
+3769,9725,1980,13,1,no,other,no,no,2.83,Trade,Clerical_and_kindred,south
+3776,9725,1987,13,8,no,other,no,no,6.12,Trade,"Managers, Officials_and_Proprietors",south
+3777,9744,1980,15,2,yes,other,no,no,5.11,Public_Administration,"Professional, Technical_and_kindred",south
+3784,9744,1987,15,9,yes,other,yes,no,8.21,Transportation,"Professional, Technical_and_kindred",south
+3785,9752,1980,15,2,no,other,no,no,9.45,Manufacturing,"Professional, Technical_and_kindred",nothern_central
+3792,9752,1987,15,9,no,other,yes,no,22.91,Manufacturing,Sales_Workers,NA
+3793,9776,1980,11,3,no,hisp,no,no,9.79,Transportation,Operatives_and_kindred,south
+3800,9776,1987,11,10,yes,hisp,yes,no,9.19,Transportation,Operatives_and_kindred,south
+3801,9786,1980,12,2,yes,hisp,no,no,5.29,Manufacturing,Laborers_and_farmers,NA
+3808,9786,1987,12,9,no,hisp,no,no,8.16,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3809,9791,1980,15,1,no,other,no,no,2.27,Construction,"Craftsmen, Foremen_and_kindred",NA
+3816,9791,1987,15,8,no,other,yes,no,12.4,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",NA
+3817,9794,1980,12,3,no,other,no,no,4.59,Professional_and_Related Service,Service_Workers,NA
+3824,9794,1987,12,10,yes,other,yes,no,8.85,Professional_and_Related Service,"Craftsmen, Foremen_and_kindred",NA
+3825,9810,1980,11,2,no,hisp,no,no,3.49,Agricultural,Farm_Laborers_and_Foreman,NA
+3832,9810,1987,11,9,no,hisp,no,no,4.02,Trade,"Craftsmen, Foremen_and_kindred",NA
+3833,9846,1980,12,3,no,hisp,yes,no,8.15,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3840,9846,1987,12,10,yes,hisp,yes,no,10.11,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3841,9859,1980,12,4,yes,hisp,no,no,4.25,Professional_and_Related Service,Laborers_and_farmers,NA
+3848,9859,1987,12,11,yes,hisp,no,no,5.82,Professional_and_Related Service,Service_Workers,NA
+3849,9868,1980,11,2,no,hisp,no,no,3.4,Trade,Sales_Workers,NA
+3856,9868,1987,11,9,yes,hisp,yes,no,3.93,Trade,Clerical_and_kindred,NA
+3857,9876,1980,13,4,no,hisp,yes,no,5.91,Trade,Sales_Workers,NA
+3864,9876,1987,13,11,no,hisp,yes,no,8.45,Manufacturing,"Managers, Officials_and_Proprietors",NA
+3865,9883,1980,12,2,yes,hisp,no,no,7.87,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3872,9883,1987,12,9,no,hisp,yes,no,12.17,Manufacturing,"Professional, Technical_and_kindred",NA
+3873,9889,1980,14,2,no,other,yes,no,6.81,Business_and_Repair_Service,"Professional, Technical_and_kindred",NA
+3880,9889,1987,14,9,no,other,yes,no,14.3,Business_and_Repair_Service,"Professional, Technical_and_kindred",NA
+3881,9901,1980,12,4,no,hisp,no,no,7.38,Trade,Service_Workers,NA
+3888,9901,1987,12,11,no,hisp,no,no,7.56,Manufacturing,"Professional, Technical_and_kindred",NA
+3889,9936,1980,12,3,no,hisp,no,no,4.66,Trade,"Managers, Officials_and_Proprietors",NA
+3896,9936,1987,12,10,yes,hisp,yes,no,16.23,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3897,9964,1980,9,4,no,hisp,no,no,2.36,Trade,Sales_Workers,NA
+3904,9964,1987,9,11,no,hisp,no,no,4.98,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+3905,10043,1980,12,4,no,hisp,no,no,4.37,Agricultural,"Craftsmen, Foremen_and_kindred",rural_area
+3912,10043,1987,12,11,no,hisp,yes,no,4.29,Construction,"Craftsmen, Foremen_and_kindred",NA
+3913,10067,1980,11,2,no,hisp,no,no,3.91,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+3920,10067,1987,11,9,no,hisp,yes,no,5.74,Construction,"Craftsmen, Foremen_and_kindred",NA
+3921,10091,1980,12,5,no,other,yes,no,4.33,Mining,Laborers_and_farmers,south
+3928,10091,1987,12,12,no,other,yes,no,5.55,Construction,"Craftsmen, Foremen_and_kindred",NA
+3929,10120,1980,13,2,no,other,no,no,0.79,Trade,Sales_Workers,NA
+3936,10120,1987,13,9,no,other,yes,no,7.04,Professional_and_Related Service,"Professional, Technical_and_kindred",NA
+3937,10121,1980,11,2,no,other,no,no,3.4,Manufacturing,Operatives_and_kindred,NA
+3944,10121,1987,11,9,no,other,no,no,6.64,Manufacturing,Service_Workers,NA
+3945,10167,1980,12,4,yes,black,no,no,4.25,Manufacturing,Operatives_and_kindred,NA
+3952,10167,1987,12,11,yes,black,no,no,7.35,Manufacturing,Operatives_and_kindred,NA
+3953,10209,1980,10,3,no,other,no,no,3.44,Trade,"Craftsmen, Foremen_and_kindred",nothern_central
+3960,10209,1987,10,10,no,other,yes,no,4.03,Manufacturing,"Craftsmen, Foremen_and_kindred",rural_area
+3961,10230,1980,10,5,no,other,yes,no,5.3,Manufacturing,Operatives_and_kindred,nothern_central
+3968,10230,1987,10,12,no,other,no,no,6.43,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+3969,10265,1980,14,2,yes,other,no,no,8.4,Transportation,Laborers_and_farmers,nothern_central
+3976,10265,1987,14,9,no,other,yes,no,10.89,Trade,Sales_Workers,south
+3977,10274,1980,14,1,no,other,no,no,1.12,Trade,Service_Workers,north_east
+3984,10274,1987,14,8,no,other,yes,no,8.42,Public_Administration,Service_Workers,NA
+3985,10311,1980,11,2,no,hisp,no,no,5.11,Finance,Laborers_and_farmers,north_east
+3992,10311,1987,11,9,no,hisp,yes,no,2.58,Trade,Service_Workers,north_east
+3993,10392,1980,8,4,no,hisp,no,no,1.19,Trade,Operatives_and_kindred,north_east
+4000,10392,1987,8,11,no,hisp,no,no,3.98,Personal_Service,Laborers_and_farmers,south
+4001,10425,1980,13,2,no,black,yes,no,5.11,Trade,Operatives_and_kindred,nothern_central
+4008,10425,1987,13,9,no,black,yes,no,7.15,Trade,Laborers_and_farmers,nothern_central
+4009,10441,1980,14,2,no,other,no,no,3.53,Personal_Service,Service_Workers,south
+4016,10441,1987,14,9,no,other,yes,no,4.92,Personal_Service,Service_Workers,south
+4017,10457,1980,13,2,no,other,no,no,1.66,Trade,Service_Workers,south
+4024,10457,1987,13,9,no,other,yes,no,8.8,Manufacturing,"Managers, Officials_and_Proprietors",NA
+4025,10469,1980,12,3,yes,black,no,no,8.59,Transportation,Operatives_and_kindred,NA
+4032,10469,1987,12,10,no,black,no,no,5.51,Entertainment,Clerical_and_kindred,NA
+4033,10524,1980,11,4,no,hisp,no,no,2.85,Agricultural,"Professional, Technical_and_kindred",rural_area
+4040,10524,1987,11,11,no,hisp,no,no,3.26,Agricultural,Operatives_and_kindred,rural_area
+4041,10552,1980,9,3,no,hisp,no,no,3.36,Trade,Laborers_and_farmers,NA
+4048,10552,1987,9,10,no,hisp,no,no,3.98,Manufacturing,Operatives_and_kindred,NA
+4049,10553,1980,13,4,no,hisp,yes,no,4.46,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+4056,10553,1987,13,11,no,hisp,yes,no,9.58,Public_Administration,"Craftsmen, Foremen_and_kindred",NA
+4057,10570,1980,11,3,no,other,no,no,2.88,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+4064,10570,1987,11,10,no,other,yes,no,2.83,Manufacturing,"Craftsmen, Foremen_and_kindred",nothern_central
+4065,10593,1980,9,6,no,other,yes,no,3.38,Business_and_Repair_Service,"Managers, Officials_and_Proprietors",nothern_central
+4072,10593,1987,9,13,no,other,yes,no,3.27,Manufacturing,Operatives_and_kindred,nothern_central
+4073,10666,1980,11,3,yes,black,yes,no,2.98,Professional_and_Related Service,Service_Workers,south
+4080,10666,1987,11,10,no,black,no,no,2,Trade,Clerical_and_kindred,south
+4081,11275,1980,12,3,no,other,no,no,2.6,Trade,Service_Workers,nothern_central
+4088,11275,1987,12,10,no,other,no,yes,4.95,Manufacturing,Clerical_and_kindred,south
+4089,11328,1980,12,5,no,other,no,no,5.69,Professional_and_Related Service,Clerical_and_kindred,nothern_central
+4096,11328,1987,12,12,no,other,no,no,8.31,Finance,Clerical_and_kindred,nothern_central
+4097,11750,1980,10,2,no,other,no,no,3.19,Business_and_Repair_Service,Operatives_and_kindred,south
+4104,11750,1987,10,9,no,other,no,no,10.7,Manufacturing,Sales_Workers,north_east
+4105,11821,1980,15,2,no,other,no,no,3.21,Trade,Service_Workers,nothern_central
+4112,11821,1987,15,9,no,other,no,no,9.73,Manufacturing,Sales_Workers,NA
+4113,11857,1980,12,3,yes,other,no,no,4.91,Transportation,Operatives_and_kindred,south
+4120,11857,1987,12,10,yes,other,yes,no,7.26,Transportation,Operatives_and_kindred,south
+4121,11887,1980,12,3,no,other,no,yes,6.97,Trade,Laborers_and_farmers,NA
+4128,11887,1987,12,10,no,other,yes,no,3.92,Trade,Clerical_and_kindred,NA
+4129,11890,1980,6,10,no,hisp,yes,no,3.55,Trade,Service_Workers,NA
+4136,11890,1987,6,17,no,hisp,yes,no,5.61,Trade,Service_Workers,NA
+4137,11892,1980,11,4,no,black,no,no,6.16,Manufacturing,Operatives_and_kindred,NA
+4144,11892,1987,11,11,no,black,no,no,9.38,Public_Administration,"Managers, Officials_and_Proprietors",NA
+4145,11924,1980,12,2,no,other,no,no,4.17,Manufacturing,"Craftsmen, Foremen_and_kindred",south
+4152,11924,1987,12,9,no,other,yes,no,5.13,Manufacturing,Clerical_and_kindred,south
+4153,11925,1980,10,2,no,other,no,no,3.22,Agricultural,Farm_Laborers_and_Foreman,south
+4160,11925,1987,10,9,no,other,yes,no,6.14,Manufacturing,Laborers_and_farmers,south
+4161,11957,1980,13,4,yes,other,no,no,1.01,Professional_and_Related Service,"Craftsmen, Foremen_and_kindred",south
+4168,11957,1987,13,11,no,other,no,no,3.98,Trade,Clerical_and_kindred,south
+4169,11973,1980,12,4,no,other,no,no,4.25,Trade,"Managers, Officials_and_Proprietors",north_east
+4176,11973,1987,12,11,no,other,no,no,7.66,Public_Administration,Operatives_and_kindred,north_east
+4177,11990,1980,14,2,no,other,no,no,5.16,Transportation,Operatives_and_kindred,north_east
+4184,11990,1987,14,9,no,other,yes,no,9.8,Manufacturing,"Professional, Technical_and_kindred",south
+4185,12012,1980,13,1,no,other,no,no,1.51,Trade,Service_Workers,nothern_central
+4192,12012,1987,13,8,no,other,yes,no,8.8,Transportation,"Craftsmen, Foremen_and_kindred",nothern_central
+4193,12013,1980,10,2,no,other,no,no,1.95,Trade,Operatives_and_kindred,nothern_central
+4200,12013,1987,10,9,no,other,no,no,6.12,Trade,"Craftsmen, Foremen_and_kindred",NA
+4201,12045,1980,16,1,no,other,no,no,3.15,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+4208,12045,1987,16,8,no,other,yes,no,6.13,Agricultural,"Managers, Officials_and_Proprietors",south
+4209,12055,1980,12,3,no,other,no,no,6.98,Trade,Laborers_and_farmers,south
+4216,12055,1987,12,10,yes,other,yes,no,8.11,Trade,Operatives_and_kindred,south
+4217,12084,1980,12,5,no,other,no,no,0.69,Entertainment,Laborers_and_farmers,nothern_central
+4224,12084,1987,12,12,no,other,no,no,5.29,Manufacturing,Laborers_and_farmers,rural_area
+4225,12088,1980,12,2,no,other,no,no,3.23,Public_Administration,Service_Workers,nothern_central
+4232,12088,1987,12,9,no,other,no,no,6.12,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+4233,12122,1980,8,9,no,other,yes,no,2.58,Agricultural,Farm_Laborers_and_Foreman,south
+4240,12122,1987,8,16,no,other,yes,no,5.59,Construction,Laborers_and_farmers,south
+4241,12179,1980,10,3,yes,hisp,no,no,4.51,Trade,Service_Workers,north_east
+4248,12179,1987,10,10,no,hisp,no,no,7,Personal_Service,Clerical_and_kindred,north_east
+4249,12182,1980,13,1,no,hisp,no,no,4.36,Trade,Service_Workers,north_east
+4256,12182,1987,13,8,yes,hisp,no,no,8.94,Trade,Service_Workers,north_east
+4257,12220,1980,12,2,no,hisp,no,no,4.67,Trade,"Managers, Officials_and_Proprietors",south
+4264,12220,1987,12,9,yes,hisp,yes,no,9.19,Transportation,"Craftsmen, Foremen_and_kindred",south
+4265,12221,1980,11,6,no,other,no,no,2.37,Agricultural,Farm_Laborers_and_Foreman,NA
+4272,12221,1987,11,13,no,other,yes,no,3.33,Manufacturing,Operatives_and_kindred,NA
+4273,12245,1980,14,1,no,other,no,no,1.87,Transportation,"Professional, Technical_and_kindred",south
+4280,12245,1987,14,8,no,other,no,no,3.94,Trade,"Managers, Officials_and_Proprietors",south
+4281,12276,1980,12,4,no,other,no,no,4.68,Trade,Operatives_and_kindred,NA
+4288,12276,1987,12,11,no,other,no,no,6.62,Manufacturing,Operatives_and_kindred,NA
+4289,12385,1980,12,5,no,other,no,no,4.17,Business_and_Repair_Service,"Craftsmen, Foremen_and_kindred",NA
+4296,12385,1987,12,12,no,other,no,no,7.35,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+4297,12410,1980,12,3,yes,other,no,no,0.44,Manufacturing,Operatives_and_kindred,NA
+4304,12410,1987,12,10,no,other,yes,no,3.32,Transportation,"Professional, Technical_and_kindred",NA
+4305,12420,1980,12,3,no,other,yes,no,1,Mining,"Craftsmen, Foremen_and_kindred",NA
+4312,12420,1987,12,10,no,other,yes,no,11.22,Manufacturing,"Professional, Technical_and_kindred",NA
+4313,12433,1980,15,2,no,other,no,no,5.3,Transportation,"Professional, Technical_and_kindred",south
+4320,12433,1987,15,9,yes,other,no,no,7.2,Public_Administration,Service_Workers,south
+4321,12451,1980,14,2,no,other,no,no,2.91,Manufacturing,Operatives_and_kindred,south
+4328,12451,1987,14,9,no,other,yes,no,6.53,Professional_and_Related Service,"Professional, Technical_and_kindred",south
+4329,12477,1980,12,4,yes,other,no,no,9.15,Manufacturing,Operatives_and_kindred,north_east
+4336,12477,1987,12,11,yes,other,yes,no,9.05,Manufacturing,Service_Workers,north_east
+4337,12500,1980,12,4,no,other,yes,no,2.64,Trade,"Managers, Officials_and_Proprietors",NA
+4344,12500,1987,12,11,no,other,yes,no,3.69,Manufacturing,"Craftsmen, Foremen_and_kindred",NA
+4345,12534,1980,11,2,no,other,no,no,6.3,Construction,"Craftsmen, Foremen_and_kindred",NA
+4352,12534,1987,11,9,no,other,yes,no,10.41,Construction,"Craftsmen, Foremen_and_kindred",NA
+4353,12548,1980,9,5,no,other,no,no,3.1,Construction,Laborers_and_farmers,NA
+4360,12548,1987,9,12,yes,other,yes,no,4.33,Public_Administration,"Craftsmen, Foremen_and_kindred",NA
