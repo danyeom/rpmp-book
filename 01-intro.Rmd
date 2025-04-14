@@ -327,7 +327,7 @@ output_3 <- function_3(output_2, avoid = "that")
 
 Throughout this book you will see a lot of tidyverse!
 
-### The `here()` package
+### The `here` package
 
 Another staple bit of code you will see throughout RPMP is the `here` package. The official vignette for `here` summarises what this package does:
 
@@ -339,7 +339,7 @@ Alternatively, read the below quote from R goddess Jenny Bryan:
 
 In short, `here()` allows us to locate files in a *relative* manner as opposed to an *absolute* one. This is super super useful for sharing your code and data with other people, and ensuring that your scripts will run no matter where they are.
 
-We won't get into project-oriented workflows for RPMP. However, imagine you have a folder structure like this:
+We won't get too into project-oriented workflows for RPMP. However, imagine you have a folder structure like this:
 
 ```         
 |-code
@@ -360,7 +360,118 @@ here("data", "w1_dataset.csv")
 
 This tells R that I'm looking for something `here` in the `data` folder, specifically a file named `w1_dataset.csv`. As long as the relative positions are correct - i.e. the `.csv` file is in the `data` folder - R will know where to locate the file.
 
-You will see a lot of `here()` in this version of the RPMP guide because as you may appreciate, there are a lot of data files stored in all manner of folders.
+You will see a lot of `here()` in this version of the RPMP guide because as you may appreciate, there are a lot of data files stored in all manner of folders. We will talk specifically about using this function to read in data on the next page!
+
+## Loading data into R
+
+Naturally, we cannot do any statistical analyses without reading in data. R can flexibly read in a number of data formats.
+
+### Setting up R projects
+
+Before we continue, it's worth taking a moment here to pick up on the project workflow we mentioned on the previous page. By default, R will operate out of your `Documents` folder on both Windows and macOS. If you make an **R project**, you can essentially create an instance of R that starts from the folder you place your R project in. This can be really useful for keeping all of your files related to one project in one place!
+
+There are several guides online on how to initialise R projects, so we will not try to reinvent the wheel here. However, the basic idea is something like this:L
+
+  1. Create a new R project.
+  2. While creating the new project, either create a new folder for it or assign it to the existing folder. This will create an **.rproj** file in that folder.
+  3. When working on a project, **open the .rproj** file. This will open RStudio in that *project*, which you can think of as an instance of R Studio.
+  4. Work away!
+  
+An example basic project structure might look like this:
+
+```         
+|-Documents
+|---RPMP (this is the folder for the project)
+|-----RPMP.rproj
+```
+
+The .rproj file will sit within the folder you specify, meaning that all your files and filepaths will be indexed relative to that folder. For `here`, this means that you will now start from the *RPMP* folder, and not `Documents`. As we will touch on below, this is really useful for easily finding files!
+
+At a basic level, we recommend a simple file structure like this:
+
+```         
+|-Documents
+|---RPMP (this is the folder for the project)
+|-----RPMP.rproj
+|-----code
+|-----data
+|-----output
+```
+
+The `code` folder in your project is your place for storing code, the `data` folder is for storing data and `output` is useful for saving any outputs you generate.
+
+### csv files
+
+By and large, the most common file format for R is the **.csv** file format. .csv stands for **comma separated values**, and is basically a file format that stores your data in text form, separated by commas. The commas indicate where your data's *columns* are, and thus
+
+The basic structure of a .csv file is identical to that of a regular dataframe in R. The first column should typically indicate the column name/heading, and each row should contain values. 
+
+.csvs can be easily created using Excel. If you have a dataset in Excel format, you can export an Excel spreadsheet as a .csv file by going File -> Export. However, as .csv files are stored as plain text, they will not retain any special formatting that you might be accustomed to in an Excel spreadsheet. They will only store data in plain text.
+
+To read a .csv file in R, the `read_csv()` function from `tidyverse` or `read.csv()` from base R will work equally as well. Both functions require you to specify where your .csv file can be found.
+
+
+```{r eval = FALSE}
+dataset <- read_csv("Insert your file path here.csv")
+```
+
+### Text files
+
+R can also read in plain text files in .txt format. This is very similar to the .csv format, in that your text file will typically have column headers in the first row, each row with one participant/observation's values, and each column separated by spaces.
+
+`tidyverse` provides a function called `read_tsv()` to read in these files.
+
+```{r eval = FALSE}
+dataset <- read_tsv("Insert your file path here.txt")
+```
+
+
+If, however, you are working with a file that has a different type of character between each column - for example, a slash (/) - then you can use the function `read_delim()`, which is a more generic form of the two above. With this function, you must specify the **delimiter** - i.e. what separates the columns in the files. This can be done using the `delim = ` argument.
+
+```{r eval = FALSE}
+dataset <- read_delim("Insert your file path here.txt", delim = "/")
+```
+
+
+### SPSS files
+
+SPSS is still a popular program of choice in psychological sciences, and so a lot of the datasets you may come across may be in SPSS format. SPSS data files are in **.sav** format.
+
+Base R cannot natively read these files. However, the `haven` package provides a function called `read_spss()` that will read these files in for you.
+
+```{r eval = FALSE}
+library(haven)
+dataset <- read_spss("Insert your file path here.sav")
+```
+
+### Using `here` to read data
+
+On the previous page, we talked about the `here` package, and how it enables easy pathing. `here` becomes really useful for reading in data, and it becomes even easier if you have an R project set up.
+
+If you have a project structure like the example below:
+
+```         
+|-RPMP
+|---code
+|-----rpmp_week1.Rmd
+|---data
+|-----w1_dataset.csv
+|---output
+|---RPMP.rproj
+```
+
+Then you can use `here()` in conjunction with any of the data-reading functions above. As the data-reading functions primarily only need a filepath, you can use `here()` to create that filepath and point to the right place.
+
+Here is an example:
+
+```{r eval = FALSE}
+dataset <- read_csv(here("data", "w1_dataset.csv"))
+```
+
+The `here()` call tells R to look in the `data` folder, and then look for `w1_dataset.csv`. Remember, in an R project, every file is indexed relative to the *project* folder. This means that we don't need to faff around with finding out where our RPMP folder is on our computer, because essentially that's where we start! The filepath to this file will then be used as the argument for `read_csv()`.
+
+Even if you are not using a project structure (although we highly recommend you do), you can still use `here()` - so long as the file can be located relative to your current working directory, which can be obtained using `setwd()`. However, it's usually worth saving yourself the hassle and creating a new R project for substantive bits of work, and saving files as folders within that project's folder. 
+
 
 ## Wrangling data with dplyr and others
 
