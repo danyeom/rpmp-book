@@ -726,9 +726,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>wage: Hourly wage, log-transformed</li>
 <li>industry, occupation, residence: Demographic and descriptive variables</li>
 </ul>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="mann-whitney-u-tests.html#cb512-1" tabindex="-1"></a>wages <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;wages.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="mann-whitney-u-tests.html#cb511-1" tabindex="-1"></a>wages <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;wages.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 1090 Columns: 13
-## ── Column specification ────────────────────────────
+## ── Column specification ────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (7): union, ethn, married, health, industry, occupation, residence
 ## dbl (6): ...1, nr, year, school, exper, wage
@@ -737,19 +737,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Consider the following question: In 1980, were wages higher for union members than non-union members?</p>
 <p>Let’s take a look at the data in R first. First, let’s filter our dataset so that we only have cases from 1980.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="mann-whitney-u-tests.html#cb514-1" tabindex="-1"></a>wages_1980 <span class="ot">&lt;-</span> wages <span class="sc">%&gt;%</span></span>
-<span id="cb514-2"><a href="mann-whitney-u-tests.html#cb514-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1980</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="mann-whitney-u-tests.html#cb513-1" tabindex="-1"></a>wages_1980 <span class="ot">&lt;-</span> wages <span class="sc">%&gt;%</span></span>
+<span id="cb513-2"><a href="mann-whitney-u-tests.html#cb513-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1980</span>)</span></code></pre></div>
 <p>Pretend that we run our assumption checks on the wage data and obtain the following:</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="mann-whitney-u-tests.html#cb515-1" tabindex="-1"></a>wages_1980 <span class="sc">%&gt;%</span></span>
-<span id="cb515-2"><a href="mann-whitney-u-tests.html#cb515-2" tabindex="-1"></a>  <span class="fu">group_by</span>(union) <span class="sc">%&gt;%</span></span>
-<span id="cb515-3"><a href="mann-whitney-u-tests.html#cb515-3" tabindex="-1"></a>  <span class="fu">shapiro_test</span>(wage)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="mann-whitney-u-tests.html#cb514-1" tabindex="-1"></a>wages_1980 <span class="sc">%&gt;%</span></span>
+<span id="cb514-2"><a href="mann-whitney-u-tests.html#cb514-2" tabindex="-1"></a>  <span class="fu">group_by</span>(union) <span class="sc">%&gt;%</span></span>
+<span id="cb514-3"><a href="mann-whitney-u-tests.html#cb514-3" tabindex="-1"></a>  <span class="fu">shapiro_test</span>(wage)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["union"],"name":[1],"type":["chr"],"align":["left"]},{"label":["variable"],"name":[2],"type":["chr"],"align":["left"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"no","2":"wage","3":"0.9320920","4":"1.139292e-12"},{"1":"yes","2":"wage","3":"0.9764972","4":"1.808434e-02"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="mann-whitney-u-tests.html#cb516-1" tabindex="-1"></a>wages_1980 <span class="sc">%&gt;%</span></span>
-<span id="cb516-2"><a href="mann-whitney-u-tests.html#cb516-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(wage <span class="sc">~</span> union, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="mann-whitney-u-tests.html#cb515-1" tabindex="-1"></a>wages_1980 <span class="sc">%&gt;%</span></span>
+<span id="cb515-2"><a href="mann-whitney-u-tests.html#cb515-2" tabindex="-1"></a>  <span class="fu">levene_test</span>(wage <span class="sc">~</span> union, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to
 ## factor.</code></pre>
 <div data-pagedtable="false">
@@ -762,7 +762,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="output-12" class="section level3 hasAnchor" number="14.3.4">
 <h3><span class="header-section-number">14.3.4</span> Output<a href="mann-whitney-u-tests.html#output-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>TO run a Mann-Whitney U test, we use the <code>wilcox.test()</code> function in R. The <code>wilcox.test()</code> function behaves just like the regular <code>t.test()</code> function for both independent and paired-samples <em>t</em>-tests, down to the same notation. So, we can use the same notation for a independent-samples <em>t</em>-test as we have done so in the past:</p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="mann-whitney-u-tests.html#cb518-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(wage <span class="sc">~</span> union, <span class="at">data =</span> wages_1980)</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="mann-whitney-u-tests.html#cb517-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(wage <span class="sc">~</span> union, <span class="at">data =</span> wages_1980)</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
@@ -771,7 +771,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 <p>Here is our output above. We can see that the <em>p</em>-value is significant, and so therefore these two samples (union vs non-union) do not appear to come from the same underlying distribution (Mann-Whitney <em>U</em> = 19767, <em>p</em> &lt; .001). We can then use descriptives as per normal to figure out where the difference is (the median and mean wages for union members are higher than non-members).</p>
 <p>We also want to calculate our effect size for this test, called the <strong>rank biserial correlation</strong>. We won’t worry too much about the maths here, but we can broadly interpret this along similar lines to Pearson’s r (weak to medium in this instance). To do this, we can use the <code>rank_biserial()</code> function in the <code>effectsize</code> package, which works like its <code>cohens_d()</code> counterpart:</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="mann-whitney-u-tests.html#cb520-1" tabindex="-1"></a><span class="fu">rank_biserial</span>(wage <span class="sc">~</span> union, <span class="at">data =</span> wages_1980)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="mann-whitney-u-tests.html#cb519-1" tabindex="-1"></a><span class="fu">rank_biserial</span>(wage <span class="sc">~</span> union, <span class="at">data =</span> wages_1980)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["r_rank_biserial"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.2927401","2":"0.95","3":"-0.3913554","4":"-0.1874775"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

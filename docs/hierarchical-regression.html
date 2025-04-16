@@ -715,9 +715,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>DFS_Total: a measure of proneness to flow.</li>
 <li>age: participant’s age.</li>
 </ul>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="hierarchical-regression.html#cb386-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="hierarchical-regression.html#cb385-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 811 Columns: 6
-## ── Column specification ────────────────────────────
+## ── Column specification ────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (6): id, age, GoldMSI, DFS_Total, trait_anxiety, openness
 ## 
@@ -734,13 +734,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="building-blocks-and-output" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> Building blocks and output<a href="hierarchical-regression.html#building-blocks-and-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start by building block 1. We can do this with <code>lm()</code> as per normal. I will call this <code>flow_block1</code>:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="hierarchical-regression.html#cb388-1" tabindex="-1"></a>flow_block1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="hierarchical-regression.html#cb387-1" tabindex="-1"></a>flow_block1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI, <span class="at">data =</span> w10_flow)</span></code></pre></div>
 <p>To build block 2, we simply need to create a new regression model with both predictors, as if we were running this in one go:</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="hierarchical-regression.html#cb389-1" tabindex="-1"></a>flow_block2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="hierarchical-regression.html#cb388-1" tabindex="-1"></a>flow_block2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
 <p>Finally, we do the same thing for block 3:</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="hierarchical-regression.html#cb390-1" tabindex="-1"></a>flow_block3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> openness <span class="sc">+</span> trait_anxiety, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="hierarchical-regression.html#cb389-1" tabindex="-1"></a>flow_block3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> openness <span class="sc">+</span> trait_anxiety, <span class="at">data =</span> w10_flow)</span></code></pre></div>
 <p>Now let’s print the summary of each model. We can see in block 1 that Gold MSI scores significantly predict proneness to flow:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="hierarchical-regression.html#cb391-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block1)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="hierarchical-regression.html#cb390-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ GoldMSI, data = w10_flow)
@@ -760,7 +760,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.2118, Adjusted R-squared:  0.2108 
 ## F-statistic: 217.4 on 1 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>In Block 2, both the Gold MSI and openness are significant predictors of flow proneness.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="hierarchical-regression.html#cb393-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block2)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="hierarchical-regression.html#cb392-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ GoldMSI + openness, data = w10_flow)
@@ -781,7 +781,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.2228, Adjusted R-squared:  0.2209 
 ## F-statistic: 115.8 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Finally, in block 3 we can see that all three remain significant predictors. However, the effect of openness to experience has changed slightly (an unreliable heuristic for this is that the p-value has increased):</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="hierarchical-regression.html#cb395-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block3)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="hierarchical-regression.html#cb394-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ GoldMSI + openness + trait_anxiety, 

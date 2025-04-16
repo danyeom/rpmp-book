@@ -715,8 +715,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.4.2</span> Homoscedasticity<a href="assumption-tests.html#homoscedasticity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <strong>homoscedasticity</strong> assumption is one that we’ve seen before - it is essentially a version of the equality of variance test. In a linear regression context, however, this assumption works a little bit differently; if this assumption is met, then the variance should be equal at all levels of our predictor (i.e. the x-axis).</p>
 <p>The easiest way to test this is to create a <strong>fitted vs residuals</strong> graph. As the name implies, we take the fitted values for each level of the predictor in our data, and plot that against the residuals (fitted - actual). Here are some fitted vs residual plots for two sets of data. The data on the left has an even spread of variance as X increases, meaning that it is homoscedastic; the data on the right, on the other hand, spreads out like a cone. The data on the right therefore is likely <em>heteroscedastic.</em></p>
-<pre><code>## Warning: Removed 7 rows containing missing values or values
-## outside the scale range (`geom_point()`).</code></pre>
+<pre><code>## Warning: Removed 7 rows containing missing values or
+## values outside the scale range
+## (`geom_point()`).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-217-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>There are a couple of ways to overcome this, such as either transforming the raw variables or weighting them.</p>
 </div>
@@ -731,7 +732,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The general principle of the Durbin-Watson test, therefore, is to have a test statistic close to 2 and (ideally) a non-significant result. The value of the test statistic is generally more useful than the significance of the test alone. A common guideline for interpreting this value is that a DW test statistic below 1 or above 3 is problematic, which we will also use for this subject.</p>
 <p>The <code>DurbinWatsonTest()</code> function from the DescTools package will let us test this quite easily.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="assumption-tests.html#cb239-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">DurbinWatsonTest</span>(mod_1)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="assumption-tests.html#cb238-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">DurbinWatsonTest</span>(mod_1)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 

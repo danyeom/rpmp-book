@@ -707,7 +707,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For this example we’ll use a contrived but really simple example. A group of self-reported professional and amateur musicians were asked how many years of training they had on their primary instrument.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="independent-samples-t-test.html#cb163-1" tabindex="-1"></a>w8_training <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_8&quot;</span>, <span class="st">&quot;W8_training.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 60 Columns: 3
-## ── Column specification ────────────────────────────
+## ── Column specification ────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): Group
 ## dbl (2): Participant, Years_training
@@ -756,20 +756,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 <ul>
-<li>The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the Shapiro-Wilks (SW) test. Like Levene’s test, if the result of this test is significant it suggests that the normality assumption is violated. In our data, this appears to be the case (<em>W</em> = .946, <em>p</em> = .011).</li>
+<li>The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the <strong>Shapiro-Wilks (SW)</strong> test, which is usually done using <code>shapiro.test()</code>. Like Levene’s test, if the result of this test is significant it suggests that the normality assumption is violated. The result that Jamovi gives is not super clear in terms of what values exactly have been used to run the SW-test, so we will turn to another method.</li>
 </ul>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="independent-samples-t-test.html#cb169-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_training<span class="sc">$</span>Years_training)</span></code></pre></div>
-<pre><code>## 
-##  Shapiro-Wilk normality test
-## 
-## data:  w8_training$Years_training
-## W = 0.94685, p-value = 0.0111</code></pre>
+<p>For an independent t-test specifically, another way of testing this assumption is to simply see whether the dependent variable is normally distributed in <strong>both groups separately</strong>. In other words, we perform a Shapiro-Wilks test on years of training in both amateurs and professionals.</p>
+<p><code>rstatix</code> provides its own version of the SW-test (<code>shapiro_test</code>) that is compatible with <code>group_by()</code> and general tidyverse notation. Thus, we can first group using <code>group_by()</code>, and then run a SW-test on each group:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="independent-samples-t-test.html#cb169-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb169-2"><a href="independent-samples-t-test.html#cb169-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
+<span id="cb169-3"><a href="independent-samples-t-test.html#cb169-3" tabindex="-1"></a>  <span class="fu">shapiro_test</span>(Years_training)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Group"],"name":[1],"type":["chr"],"align":["left"]},{"label":["variable"],"name":[2],"type":["chr"],"align":["left"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Amateur","2":"Years_training","3":"0.9009976","4":"0.007634212"},{"1":"Professional","2":"Years_training","3":"0.9381324","4":"0.089592734"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>We can therefore see that for professionals our data is normally distribution (<em>W</em> = .94, <em>p</em> = .090), but not for amateurs (<em>W</em> = .90, <em>p</em> = .008).</p>
 </div>
 <div id="output-3" class="section level3 hasAnchor" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> Output<a href="independent-samples-t-test.html#output-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In reality, it’s rare that any of these assumptions are fully met even when tests say they are (the tests we just mentioned can be biased). This is especially true for classical <em>t</em>-tests, which are very sensitive to violations. A consistently better alternative is to use the Welch <em>t</em>-test, which assumes the equality of variance assumption is not met. Welch <em>t</em>-tests are also fairly robust against the normality assumption, and so are more flexible without sacrificing accuracy.</p>
 <p>Here’s our output from R. Note that this is from a Welch <em>t</em>-test - R will do this by default.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="independent-samples-t-test.html#cb171-1" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="independent-samples-t-test.html#cb170-1" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -781,25 +786,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##      mean in group Amateur mean in group Professional 
 ##                   4.387097                   7.310345</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="independent-samples-t-test.html#cb173-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
-<span id="cb173-2"><a href="independent-samples-t-test.html#cb173-2" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="independent-samples-t-test.html#cb172-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb172-2"><a href="independent-samples-t-test.html#cb172-2" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["estimate1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["estimate2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":[".y."],"name":[4],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[6],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[7],"type":["int"],"align":["right"]},{"label":["n2"],"name":[8],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[14],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[15],"type":["chr"],"align":["left"]}],"data":[{"1":"-2.923248","2":"4.387097","3":"7.310345","4":"Years_training","5":"Amateur","6":"Professional","7":"31","8":"29","9":"-5.858572","10":"2.33e-07","11":"57.98903","12":"-3.922048","13":"-1.924448","14":"T-test","15":"two.sided","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Now for the effect size. For an independent samples <em>t</em>-test, you can give it <em>almost</em> the same as the regular <code>t.test()</code> function. The only change is that by default, <code>cohens_d()</code> will calculate Cohen’s <em>d</em> assuming equal variance. In order for our value of <em>d</em> to match a Welch-samples <em>t</em>-test, we need to set <code>pooled_sd = FALSE</code> (which makes the syntax slightly different to <code>t.test()</code>).</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="independent-samples-t-test.html#cb174-1" tabindex="-1"></a><span class="co"># Independent samples</span></span>
-<span id="cb174-2"><a href="independent-samples-t-test.html#cb174-2" tabindex="-1"></a><span class="co"># t.test(Years_training ~ Group, data = w8_training)</span></span>
-<span id="cb174-3"><a href="independent-samples-t-test.html#cb174-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">pooled_sd =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="independent-samples-t-test.html#cb173-1" tabindex="-1"></a><span class="co"># Independent samples</span></span>
+<span id="cb173-2"><a href="independent-samples-t-test.html#cb173-2" tabindex="-1"></a><span class="co"># t.test(Years_training ~ Group, data = w8_training)</span></span>
+<span id="cb173-3"><a href="independent-samples-t-test.html#cb173-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">pooled_sd =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cohens_d"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-1.511462","2":"0.95","3":"-2.081722","4":"-0.9310339"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Or again, we can alternatively use the <code>cohen_d()</code> function from <code>rstatix</code>:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="independent-samples-t-test.html#cb175-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
-<span id="cb175-2"><a href="independent-samples-t-test.html#cb175-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="independent-samples-t-test.html#cb174-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb174-2"><a href="independent-samples-t-test.html#cb174-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["effsize"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["n1"],"name":[5],"type":["int"],"align":["right"]},{"label":["n2"],"name":[6],"type":["int"],"align":["right"]},{"label":["conf.low"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["magnitude"],"name":[9],"type":["ord"],"align":["right"]}],"data":[{"1":"Years_training","2":"Amateur","3":"Professional","4":"-1.511462","5":"31","6":"29","7":"-2.07","8":"-0.87","9":"large","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -811,7 +816,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>(n.b. the signs for <em>t</em> and the mean difference don’t overly matter so long as they are interpreted in the right way. The output above calculates amateurs - professionals, which is why the values for both are negative; but if you were to force the test to run the other way round, the values would be the same with the signs flipped. Hence why descriptives and graphs are super important too!</p>
 <p>If for some reason you do want R to run a Student’s <em>t</em>-test, you need to specify <code>var.equal = TRUE</code>. This tells R that we assume equality of variances.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="independent-samples-t-test.html#cb176-1" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="independent-samples-t-test.html#cb175-1" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -823,8 +828,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##      mean in group Amateur mean in group Professional 
 ##                   4.387097                   7.310345</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="independent-samples-t-test.html#cb178-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
-<span id="cb178-2"><a href="independent-samples-t-test.html#cb178-2" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="independent-samples-t-test.html#cb177-1" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb177-2"><a href="independent-samples-t-test.html#cb177-2" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["estimate1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["estimate2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":[".y."],"name":[4],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[6],"type":["chr"],"align":["left"]},{"label":["n1"],"name":[7],"type":["int"],"align":["right"]},{"label":["n2"],"name":[8],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[14],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[15],"type":["chr"],"align":["left"]}],"data":[{"1":"-2.923248","2":"4.387097","3":"7.310345","4":"Years_training","5":"Amateur","6":"Professional","7":"31","8":"29","9":"-5.842418","10":"2.48e-07","11":"58","12":"-3.924805","13":"-1.921691","14":"T-test","15":"two.sided","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

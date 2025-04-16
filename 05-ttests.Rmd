@@ -347,11 +347,19 @@ w8_training %>%
   levene_test(Years_training ~ Group, center = "mean")
 ```
 
--   The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the Shapiro-Wilks (SW) test. Like Levene's test, if the result of this test is significant it suggests that the normality assumption is violated. In our data, this appears to be the case (*W* = .946, *p* = .011).
+-   The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the **Shapiro-Wilks (SW)** test, which is usually done using `shapiro.test()`. Like Levene's test, if the result of this test is significant it suggests that the normality assumption is violated. The result that Jamovi gives is not super clear in terms of what values exactly have been used to run the SW-test, so we will turn to another method.
+
+For an independent t-test specifically, another way of testing this assumption is to simply see whether the dependent variable is normally distributed in **both groups separately**. In other words, we perform a Shapiro-Wilks test on years of training in both amateurs and professionals.
+
+`rstatix` provides its own version of the SW-test (`shapiro_test`) that is compatible with `group_by()` and general tidyverse notation. Thus, we can first group using `group_by()`, and then run a SW-test on each group:
 
 ```{r}
-shapiro.test(w8_training$Years_training)
+w8_training %>%
+  group_by(Group) %>%
+  shapiro_test(Years_training)
 ```
+
+We can therefore see that for professionals our data is normally distribution (*W* = .94, *p* = .090), but not for amateurs (*W* = .90, *p* = .008).
 
 ### Output
 
