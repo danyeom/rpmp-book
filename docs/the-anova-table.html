@@ -418,6 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
 <li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
 <li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+<li class="chapter" data-level="8.6.4" data-path="predictions.html"><a href="predictions.html#a-warning"><i class="fa fa-check"></i><b>8.6.4</b> A warning</a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
 <ul>
@@ -977,7 +978,7 @@ the associated probability of getting that value or greater. Our
 software will do all of this stuff for us, but it helps to know exactly
 how an ANOVA works!</p>
 <p>If you want to calculate the <em>p</em>-value manurally in R though, this is entirely possible using the <code>pf()</code> function:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="the-anova-table.html#cb196-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fl">15.75</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">9</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="the-anova-table.html#cb197-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fl">15.75</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">9</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.001149592</code></pre>
 </div>
 </div>

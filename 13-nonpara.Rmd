@@ -332,7 +332,7 @@ rank_epsilon_squared(vsae ~ sicdegp, data = autism)
 
 Here, our non-parametric effect size is epsilon squared, $\epsilon^2$. It is not commonly seen so can be hard to interpret, but people have made various guidelines of their own.
 
-For posthocs, Jamovi uses Dwass-Steel-Critchlow-Fligner tests (phew!), or simply DCSF tests, for 'post hoc' pairwise comparisons. We'll use the same here for compatibility with Jamovi. The only thing you really need to know about these comparisons is that they have an in-built correction for the family-wise error rate, so do not need adjusting after the analyses have been run.
+Jamovi uses Dwass-Steel-Critchlow-Fligner tests (phew!), or simply DCSF tests, for 'post hoc' pairwise comparisons. We'll use the same here for compatibility with Jamovi. The only thing you really need to know about these comparisons is that they have an in-built correction for the family-wise error rate, so do not need adjusting after the analyses have been run.
 
 To run these tests, we need a new package called `PMCMRplus`. Within this package is a function called `dscfAllPairsTest()`, which will give us the *p*-values for each pairwise comparison. The required code is exactly the same as we have used above:
 
@@ -395,7 +395,7 @@ Although Jamovi does not give an effect size for a Friedman ANOVA, there actuall
 kendalls_w(vsae ~ age2 | childid, data = autism)
 ```
 
-Of course, we still need to do post-hoc pairwise comparisons. The post-hocs that Jamovi provides are called Durbin-Conover pairwise comparisons, which are simply called Durbin tests elsewhere. The `PMCMRplus` package we mentioned earlier provides a function called `durbinAllPairsTest()` to conduct these posthocs. Note that although the function can be run without assignment, this will only give *p*-values; to get the proper output, we will want to assign the function's output to a variable and then run `summary()` on this.
+Of course, we still need to do post-hoc pairwise comparisons. The post-hocs that Jamovi provides are called Durbin-Conover pairwise comparisons, which are simply called Durbin tests elsewhere. The `PMCMRplus` package we mentioned earlier provides a function called `durbinAllPairsTest()` to conduct these posthocs. Note that although the function can be run without assigning the output to a new object, this will only give *p*-values; to get the proper output, we will want to assign the function's output to a variable and then run `summary()` on this.
 
 This function will also allow you to use *p*-value adjustment methods. Holm adjusted *p* values are the default, which we will run with.
 

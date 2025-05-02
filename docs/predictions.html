@@ -418,6 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
 <li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
 <li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+<li class="chapter" data-level="8.6.4" data-path="predictions.html"><a href="predictions.html#a-warning"><i class="fa fa-check"></i><b>8.6.4</b> A warning</a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
 <ul>
@@ -711,7 +712,7 @@ y = \beta_0 + \beta_1x + \epsilon_i
 <div id="building-a-regression-equation" class="section level3 hasAnchor" number="8.6.2">
 <h3><span class="header-section-number">8.6.2</span> Building a regression equation<a href="predictions.html#building-a-regression-equation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s the coefficient table from the previous page:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="predictions.html#cb255-1" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="predictions.html#cb257-1" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = GoldMSI ~ years_training, data = w10_goldmsi)
@@ -745,20 +746,20 @@ GoldMSI = 53.901 + (4.858 \times Years)
 <h3><span class="header-section-number">8.6.3</span> An example prediction<a href="predictions.html#an-example-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Participant 47, highlighted in green below, has 5 years of musical training. What would their predicted Gold-MSI score to be?</p>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
 <p>We can use the equation we just built to calculate a predicted score:</p>
+<p><span class="math display">\[GoldMSI = 53.901 + (4.858 \times Years)\]</span>
+<span class="math display">\[GoldMSI = 53.901 + (4.858 \times 5)\]</span>
+<span class="math display">\[=78.191\]</span></p>
 <p>Therefore, we would predict someone with 5 years of musical training to have a Gold-MSI score of 78.191. This is where the line sits. Notice however, that the predicted value is noticeably different to the participant’s actual value (which in this instance is 56). The difference between the predicted and the actual value is called the residual - precisely the same residual that we aim to minimise when we fit a regression line to begin with (as well as the same residuals we do assumption tests on).</p>
-<p><span class="math inline">\(GoldMSI = 53.901 + (4.858 \times Years)\)</span>
-<span class="math inline">\(GoldMSI = 53.901 + (4.858 \times 5)\)</span>
-<span class="math inline">\(=78.191\)</span></p>
-<div style="background-color: #f5f5f5;  padding: 1.75rem;">
-<p>A warning</p>
+</div>
+<div id="a-warning" class="section level3 hasAnchor" style="background-color: #f5f5f5;  padding: 1.75rem;" number="8.6.4">
+<h3><span class="header-section-number">8.6.4</span> A warning<a href="predictions.html#a-warning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>While these predictions can be useful, there are two warnings that should be kept in mind.</p>
 <ul>
 <li><strong>Extrapolation is dangerous</strong>. While we might get data that appears linear, there is nothing to say that this data will remain linear outside of the bounds of our data. Extrapolating data refers to making inferences beyond the available range, and should be avoided.</li>
 <li><strong>Don’t forget that some data have logical boundaries</strong>. For example, the Gold-MSI’s maximum possible score is 126 across all scales. Any preditions that are higher than this are therefore quite easily nonsensical.</li>
 </ul>
-</div>
 </div>
 </div>
             </section>

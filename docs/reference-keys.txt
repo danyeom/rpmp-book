@@ -3,8 +3,8 @@ fig:unnamed-chunk-71
 fig:unnamed-chunk-99
 fig:unnamed-chunk-113
 fig:unnamed-chunk-137
-fig:unnamed-chunk-171
-fig:unnamed-chunk-207
+fig:unnamed-chunk-172
+fig:unnamed-chunk-208
 preface
 intro-to-R
 R-syntax
@@ -189,6 +189,7 @@ predictions
 revisiting-the-linear-regression-equation
 building-a-regression-equation
 an-example-prediction
+a-warning
 multiple-regression-theory
 multiple-regression
 the-regression-equation-once-again

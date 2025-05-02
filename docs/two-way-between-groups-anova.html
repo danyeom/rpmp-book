@@ -418,6 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
 <li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
 <li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+<li class="chapter" data-level="8.6.4" data-path="predictions.html"><a href="predictions.html#a-warning"><i class="fa fa-check"></i><b>8.6.4</b> A warning</a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
 <ul>
@@ -720,23 +721,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>2 x 2 ANOVA: more specifically, 2 (beer, wine) x 2 (country, classical) ANOVA between alcohol type and genre</li>
 </ul>
 <p>We’d use a two-way ANOVA to model the effects of two IVs on one dependent variable. Let’s start by generating descriptives and a graph to visualise what we’re looking at:</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="two-way-between-groups-anova.html#cb291-1" tabindex="-1"></a>twoway_alcohol <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_bganova.csv&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="two-way-between-groups-anova.html#cb292-1" tabindex="-1"></a>twoway_alcohol <span class="sc">%&gt;%</span></span>
-<span id="cb292-2"><a href="two-way-between-groups-anova.html#cb292-2" tabindex="-1"></a>  <span class="fu">group_by</span>(alcohol_type, genre) <span class="sc">%&gt;%</span></span>
-<span id="cb292-3"><a href="two-way-between-groups-anova.html#cb292-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb292-4"><a href="two-way-between-groups-anova.html#cb292-4" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb292-5"><a href="two-way-between-groups-anova.html#cb292-5" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(spend), <span class="at">na.rm =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb292-6"><a href="two-way-between-groups-anova.html#cb292-6" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(spend, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb292-7"><a href="two-way-between-groups-anova.html#cb292-7" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span>n</span>
-<span id="cb292-8"><a href="two-way-between-groups-anova.html#cb292-8" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb292-9"><a href="two-way-between-groups-anova.html#cb292-9" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb292-10"><a href="two-way-between-groups-anova.html#cb292-10" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb292-11"><a href="two-way-between-groups-anova.html#cb292-11" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> alcohol_type, <span class="at">y =</span> mean, <span class="at">colour =</span> genre, <span class="at">group =</span> genre)</span>
-<span id="cb292-12"><a href="two-way-between-groups-anova.html#cb292-12" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb292-13"><a href="two-way-between-groups-anova.html#cb292-13" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb292-14"><a href="two-way-between-groups-anova.html#cb292-14" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb292-15"><a href="two-way-between-groups-anova.html#cb292-15" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se, <span class="at">ymax =</span> mean <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se), <span class="at">width =</span> <span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="two-way-between-groups-anova.html#cb294-1" tabindex="-1"></a>twoway_alcohol <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_bganova.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="two-way-between-groups-anova.html#cb295-1" tabindex="-1"></a>twoway_alcohol <span class="sc">%&gt;%</span></span>
+<span id="cb295-2"><a href="two-way-between-groups-anova.html#cb295-2" tabindex="-1"></a>  <span class="fu">group_by</span>(alcohol_type, genre) <span class="sc">%&gt;%</span></span>
+<span id="cb295-3"><a href="two-way-between-groups-anova.html#cb295-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb295-4"><a href="two-way-between-groups-anova.html#cb295-4" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb295-5"><a href="two-way-between-groups-anova.html#cb295-5" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(spend), <span class="at">na.rm =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb295-6"><a href="two-way-between-groups-anova.html#cb295-6" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(spend, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb295-7"><a href="two-way-between-groups-anova.html#cb295-7" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span>n</span>
+<span id="cb295-8"><a href="two-way-between-groups-anova.html#cb295-8" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb295-9"><a href="two-way-between-groups-anova.html#cb295-9" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb295-10"><a href="two-way-between-groups-anova.html#cb295-10" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb295-11"><a href="two-way-between-groups-anova.html#cb295-11" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> alcohol_type, <span class="at">y =</span> mean, <span class="at">colour =</span> genre, <span class="at">group =</span> genre)</span>
+<span id="cb295-12"><a href="two-way-between-groups-anova.html#cb295-12" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb295-13"><a href="two-way-between-groups-anova.html#cb295-13" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb295-14"><a href="two-way-between-groups-anova.html#cb295-14" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb295-15"><a href="two-way-between-groups-anova.html#cb295-15" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se, <span class="at">ymax =</span> mean <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se), <span class="at">width =</span> <span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 </div>
 <div id="assumption-testing" class="section level3 hasAnchor" number="9.5.3">
 <h3><span class="header-section-number">9.5.3</span> Assumption testing<a href="two-way-between-groups-anova.html#assumption-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -745,10 +746,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The data should be independent of each other.</li>
 <li>Equality of variance: Look at Levene’s test:</li>
 </ul>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="two-way-between-groups-anova.html#cb293-1" tabindex="-1"></a>twoway_alcohol_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(spend <span class="sc">~</span> alcohol_type <span class="sc">*</span> genre, <span class="at">data =</span> twoway_alcohol)</span>
-<span id="cb293-2"><a href="two-way-between-groups-anova.html#cb293-2" tabindex="-1"></a></span>
-<span id="cb293-3"><a href="two-way-between-groups-anova.html#cb293-3" tabindex="-1"></a>twoway_alcohol <span class="sc">%&gt;%</span></span>
-<span id="cb293-4"><a href="two-way-between-groups-anova.html#cb293-4" tabindex="-1"></a>  <span class="fu">levene_test</span>(spend <span class="sc">~</span> alcohol_type <span class="sc">*</span> genre)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="two-way-between-groups-anova.html#cb296-1" tabindex="-1"></a>twoway_alcohol_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(spend <span class="sc">~</span> alcohol_type <span class="sc">*</span> genre, <span class="at">data =</span> twoway_alcohol)</span>
+<span id="cb296-2"><a href="two-way-between-groups-anova.html#cb296-2" tabindex="-1"></a></span>
+<span id="cb296-3"><a href="two-way-between-groups-anova.html#cb296-3" tabindex="-1"></a>twoway_alcohol <span class="sc">%&gt;%</span></span>
+<span id="cb296-4"><a href="two-way-between-groups-anova.html#cb296-4" tabindex="-1"></a>  <span class="fu">levene_test</span>(spend <span class="sc">~</span> alcohol_type <span class="sc">*</span> genre)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"3","2":"196","3":"0.05033434","4":"0.9850352"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -757,7 +758,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Normality of residuals: Look at the Shapiro-Wilk test (on the residuals) or a Q-Q plot:</li>
 </ul>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="two-way-between-groups-anova.html#cb294-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(twoway_alcohol_aov<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="two-way-between-groups-anova.html#cb297-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(twoway_alcohol_aov<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -775,17 +776,17 @@ Note that here, we use the <code>aov_ez()</code> function from the <code>afex</c
 <li>There is a main effect for genre (<em>p</em> &lt; .001),</li>
 <li>Importantly, there is a significant interaction effect for alcohol x genre (<em>p</em> &lt; .001).</li>
 </ul>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="two-way-between-groups-anova.html#cb296-1" tabindex="-1"></a>twoway_alcohol_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
-<span id="cb296-2"><a href="two-way-between-groups-anova.html#cb296-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_alcohol,</span>
-<span id="cb296-3"><a href="two-way-between-groups-anova.html#cb296-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;ptcpt&quot;</span>,</span>
-<span id="cb296-4"><a href="two-way-between-groups-anova.html#cb296-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;spend&quot;</span>,</span>
-<span id="cb296-5"><a href="two-way-between-groups-anova.html#cb296-5" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;alcohol_type&quot;</span>, <span class="st">&quot;genre&quot;</span>),</span>
-<span id="cb296-6"><a href="two-way-between-groups-anova.html#cb296-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
-<span id="cb296-7"><a href="two-way-between-groups-anova.html#cb296-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
-<span id="cb296-8"><a href="two-way-between-groups-anova.html#cb296-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="two-way-between-groups-anova.html#cb299-1" tabindex="-1"></a>twoway_alcohol_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb299-2"><a href="two-way-between-groups-anova.html#cb299-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_alcohol,</span>
+<span id="cb299-3"><a href="two-way-between-groups-anova.html#cb299-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;ptcpt&quot;</span>,</span>
+<span id="cb299-4"><a href="two-way-between-groups-anova.html#cb299-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;spend&quot;</span>,</span>
+<span id="cb299-5"><a href="two-way-between-groups-anova.html#cb299-5" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;alcohol_type&quot;</span>, <span class="st">&quot;genre&quot;</span>),</span>
+<span id="cb299-6"><a href="two-way-between-groups-anova.html#cb299-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
+<span id="cb299-7"><a href="two-way-between-groups-anova.html#cb299-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb299-8"><a href="two-way-between-groups-anova.html#cb299-8" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Converting to factor: alcohol_type, genre</code></pre>
 <pre><code>## Contrasts set to contr.sum for the following variables: alcohol_type, genre</code></pre>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="two-way-between-groups-anova.html#cb299-1" tabindex="-1"></a>twoway_alcohol_aov</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="two-way-between-groups-anova.html#cb302-1" tabindex="-1"></a>twoway_alcohol_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: spend
@@ -796,7 +797,7 @@ Note that here, we use the <code>aov_ez()</code> function from the <code>afex</c
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Because we have a significant interaction term, we now need to turn to conducting <strong>simple effects tests</strong> to decompose where this effect is. You might want to use something like <code>tukey_hsd()</code> to generate every possible pairwise comparison, like so:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="two-way-between-groups-anova.html#cb301-1" tabindex="-1"></a><span class="fu">tukey_hsd</span>(twoway_alcohol_aov<span class="sc">$</span>aov)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="two-way-between-groups-anova.html#cb304-1" tabindex="-1"></a><span class="fu">tukey_hsd</span>(twoway_alcohol_aov<span class="sc">$</span>aov)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["null.value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["estimate"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p.adj"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p.adj.signif"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"alcohol_type","2":"beer","3":"wine","4":"0","5":"-0.104200","6":"-0.3860699","7":"0.1776699","8":"4.67e-01","9":"ns","_rn_":"1"},{"1":"genre","2":"classical","3":"country","4":"0","5":"-9.367320","6":"-9.6494153","7":"-9.0852241","8":"7.57e-14","9":"****","_rn_":"2"},{"1":"alcohol_type:genre","2":"beer:classical","3":"wine:classical","4":"0","5":"3.476188","6":"2.9415168","7":"4.0108584","8":"7.57e-14","9":"****","_rn_":"3"},{"1":"alcohol_type:genre","2":"beer:classical","3":"beer:country","4":"0","5":"-6.113938","6":"-6.6377969","7":"-5.5900782","8":"7.57e-14","9":"****","_rn_":"4"},{"1":"alcohol_type:genre","2":"beer:classical","3":"wine:country","4":"0","5":"-9.162484","6":"-9.6814772","7":"-8.6434901","8":"7.57e-14","9":"****","_rn_":"5"},{"1":"alcohol_type:genre","2":"wine:classical","3":"beer:country","4":"0","5":"-9.590125","6":"-10.1196384","7":"-9.0606119","8":"7.57e-14","9":"****","_rn_":"6"},{"1":"alcohol_type:genre","2":"wine:classical","3":"wine:country","4":"0","5":"-12.638671","6":"-13.1633711","7":"-12.1139713","8":"7.57e-14","9":"****","_rn_":"7"},{"1":"alcohol_type:genre","2":"beer:country","3":"wine:country","4":"0","5":"-3.048546","6":"-3.5622247","7":"-2.5348675","8":"7.57e-14","9":"****","_rn_":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -814,8 +815,8 @@ Note that here, we use the <code>aov_ez()</code> function from the <code>afex</c
 <li>Wine country - wine classical</li>
 </ul>
 <p>Conveniently, this is captured in the very top and bottom rows of our post-hoc output table. Let’s also run our simple effects tests using <code>emmeans</code>:</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="two-way-between-groups-anova.html#cb302-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_alcohol_aov, <span class="sc">~</span> genre, <span class="at">by =</span> <span class="st">&quot;alcohol_type&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb302-2"><a href="two-way-between-groups-anova.html#cb302-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="two-way-between-groups-anova.html#cb305-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_alcohol_aov, <span class="sc">~</span> genre, <span class="at">by =</span> <span class="st">&quot;alcohol_type&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb305-2"><a href="two-way-between-groups-anova.html#cb305-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## alcohol_type = beer:
 ##  contrast            estimate    SE  df lower.CL upper.CL t.ratio p.value
 ##  classical - country     6.11 0.202 196     5.72     6.51  30.242  &lt;.0001
@@ -831,8 +832,8 @@ Note that here, we use the <code>aov_ez()</code> function from the <code>afex</c
 <li>For <strong>country</strong>, wine vs beer (wine country - beer country): <em>t</em> = 15.34, <em>p</em> &lt; .001</li>
 <li>For <strong>classical</strong>, wine vs beer (wine classical - beer classical): <em>t</em> = 16.85, <em>p</em> &lt; .001</li>
 </ul>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="two-way-between-groups-anova.html#cb304-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_alcohol_aov, <span class="sc">~</span> alcohol_type, <span class="at">by =</span> <span class="st">&quot;genre&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb304-2"><a href="two-way-between-groups-anova.html#cb304-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="two-way-between-groups-anova.html#cb307-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_alcohol_aov, <span class="sc">~</span> alcohol_type, <span class="at">by =</span> <span class="st">&quot;genre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb307-2"><a href="two-way-between-groups-anova.html#cb307-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
 <pre><code>## genre = classical:
 ##  contrast    estimate    SE  df lower.CL upper.CL t.ratio p.value
 ##  beer - wine    -3.48 0.206 196    -3.88    -3.07 -16.847  &lt;.0001

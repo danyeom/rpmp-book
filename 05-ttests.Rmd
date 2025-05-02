@@ -215,12 +215,22 @@ A significant *p*-value on the SW test suggests that the data is non-normal. Tha
 shapiro.test(w8_grades$grade)
 ```
 
-The second way is through a QQ plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.
+The second way is through a Q-Q plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.
 
 ```{r echo = FALSE}
 knitr::include_graphics("img/w8_qqplots.svg")
 ```
 
+To draw a Q-Q plot in R, the base functions `qqnorm()` and `qqline()` can be used. `qqnorm()` will draw the basic Q-Q plot, while `qqline()` will draw a straight line through the graph. Note that `qqnorm()` must be run first before `qqline()` can be used.
+
+In this case, since we want to draw a Q-Q plot of a single variable, we just need to give the name of the column/variable we are interested in using `data$variable` format.
+
+```{r}
+qqnorm(w8_grades$grade)
+qqline(w8_grades$grade)
+```
+
+In our case, most of the points fall quite close to the main line, so we seem to be ok here - in line with our Shapiro-Wilks test (though this won't always be the case).
 
 ### Output
 
@@ -396,7 +406,7 @@ An independent samples *t*-test was conducted to examine whether professionals a
 </div>
 
 
-(n.b. the signs for *t* and the mean difference don't overly matter so long as they are interpreted in the right way. The output above calculates amateurs - professionals, which is why the values for both are negative; but if you were to force the test to run the other way round, the values would be the same with the signs flipped. Hence why descriptives and graphs are super important too!
+(n.b. the signs for *t* and the mean difference don't overly matter so long as they are interpreted in the right way. The output above calculates amateurs - professionals, which is why the values for both are negative; but if you were to force the test to run the other way round, the values would be the same with the signs flipped. Hence why descriptives and graphs are super important too!)
 
 If for some reason you do want R to run a Student's *t*-test, you need to specify `var.equal = TRUE`. This tells R that we assume equality of variances.
 

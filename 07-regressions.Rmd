@@ -354,6 +354,8 @@ DescTools::DurbinWatsonTest(mod_1)
 
 The **normality** assumption is the same here as it has been elsewhere - the residuals must be normally distributed. Here, it's a little bit easier to visualise what these 'residuals' are because we can calculate and see them. That being said, the way we test for these are exactly the same - either use a Q-Q plot or a Shapiro-Wilks test.
 
+
+
  
 ### Multicollinearity
 
@@ -434,11 +436,19 @@ ggplot(w10_goldmsi_lm, aes(x = .fitted, y = .resid)) +
 ```
  
 
-Normality: our SW test is non-significant, so this assumption is not violated. Like `aov` models, residuals in `lm` models can be accessed using the $ operator.
+Normality of residuals: Like `aov` models, you can access the residuals from a given `lm()` model, by using the name of the `lm` object, followed by `$residuals`. This is useful for doing e.g. a Shapiro-Wilks test on the residuals, or a Q-Q plot of residuals:
 
 ```{r}
 shapiro.test(w10_goldmsi_lm$residuals)
 ```
+
+```{r}
+qqnorm(w10_goldmsi_lm$residuals)
+qqline(w10_goldmsi_lm$residuals)
+```
+
+Our SW test is non-significant and our Q-Q plot looks ok, so this assumption is not violated. 
+
 
 
 ### Output
@@ -535,14 +545,16 @@ w10_goldmsi %>%
 
 We can use the equation we just built to calculate a predicted score:
 
+$$GoldMSI = 53.901 + (4.858 \times Years)$$
+$$GoldMSI = 53.901 + (4.858 \times 5)$$
+$$=78.191$$
+
 Therefore, we would predict someone with 5 years of musical training to have a Gold-MSI score of 78.191. This is where the line sits. Notice however, that the predicted value is noticeably different to the participant's actual value (which in this instance is 56). The difference between the predicted and the actual value is called the residual - precisely the same residual that we aim to minimise when we fit a regression line to begin with (as well as the same residuals we do assumption tests on).
 
-$GoldMSI = 53.901 + (4.858 \times Years)$
-$GoldMSI = 53.901 + (4.858 \times 5)$
-$=78.191$
+
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
-A warning
+### A warning
 
 While these predictions can be useful, there are two warnings that should be kept in mind.
 
@@ -679,13 +691,13 @@ confint(w10_flow_lm)
 
 We can see that both trait anxiety and openness are significant predictors of flow proneness, but interpreting the direction is also really important here. For that, we turn to our estimates:
 
--    The estimate for trait anxiety is *B* = -.111 (95% CI = [-.136, .086]), suggesting that higher trait anxiety predicts lower flow proneness (*p* < .001)
--    On the other hand, the estimate for openness is *B* = .834 (95% CI = [.548, 1.119]), suggesting that higher openness predicts higher flow proneness (*p* < .001).
+-    The estimate for trait anxiety is *B* = -.111 (95% CI [-.136, .086]), suggesting that higher trait anxiety predicts lower flow proneness (*p* < .001)
+-    On the other hand, the estimate for openness is *B* = .834 (95% CI [.548, 1.119]), suggesting that higher openness predicts higher flow proneness (*p* < .001).
 
 Therefore, we can conclude that both are significant predictors and have opposite effects to each other. We can write this up as follows:
 
 <div style="background-color: #cce3c8;  padding: 1.75rem;">
-We ran a multiple regression with trait anxiety and openness as predictors, and flow proneness as an outcome. The overall regression model was significant (*F*(2, 808) = 63.81, *p* < .001), and explained 13.6% of the variance in flow proneness. Trait anxiety significantly predicted flow proneness (*B* = -.11, 95% CI = [-.14, -.09], *t* = -8.70, *p* < .001); higher trait anxiety predicted lower flow proneness. Openness was also a significant predictor (*B* = .83, 95% CI = [.55, 1.12], *t* = 5.74, *p* < .001); higher openness predicted higher flow proneness.
+We ran a multiple regression with trait anxiety and openness as predictors, and flow proneness as an outcome. The overall regression model was significant (*F*(2, 808) = 63.81, *p* < .001), and explained 13.6% of the variance in flow proneness. Trait anxiety significantly predicted flow proneness (*B* = -.11, 95% CI [-.14, -.09], *t* = -8.70, *p* < .001); higher trait anxiety predicted lower flow proneness. Openness was also a significant predictor (*B* = .83, 95% CI [.55, 1.12], *t* = 5.74, *p* < .001); higher openness predicted higher flow proneness.
 </div>
 
 
@@ -702,12 +714,18 @@ However, if we were to **standardise** these coefficients, we would then bring t
 
 Standard betas allow us to interpret our coefficients in terms of changes in **standard deviations**; namely, a 1 SD increase in predictor X leads to a $\beta$ SD change in predictor Y.
 
-In R, we need to use an extra function to calculate standard betas. We can call on the `lm.beta` package:
+In R, we need to use an extra function to calculate standard betas. We can call on the `StdCoef()` function from the `DescTools` package:
 
 ```{r}
-library(lm.beta)
-lm.beta(w10_flow_lm)
+StdCoef(w10_flow_lm)
 ```
+If you want confidence intervals around the standardised coefficients, the `standardize_parameters()` function from the `effectsize` package will do this for you:
+
+```{r}
+library(effectsize)
+standardize_parameters(w10_flow_lm)
+```
+
 Alternatively, we can simply standardise our predictors before running our regression (which is a lot easier in R than in other programs): 
 
 ```{r}

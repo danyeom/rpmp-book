@@ -418,6 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
 <li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
 <li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+<li class="chapter" data-level="8.6.4" data-path="predictions.html"><a href="predictions.html#a-warning"><i class="fa fa-check"></i><b>8.6.4</b> A warning</a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
 <ul>
@@ -737,19 +738,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## data:  w8_grades$grade
 ## W = 0.98652, p-value = 0.2395</code></pre>
-<p>The second way is through a QQ plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.</p>
+<p>The second way is through a Q-Q plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.</p>
 <p><img src="img/w8_qqplots.svg" /><!-- --></p>
+<p>To draw a Q-Q plot in R, the base functions <code>qqnorm()</code> and <code>qqline()</code> can be used. <code>qqnorm()</code> will draw the basic Q-Q plot, while <code>qqline()</code> will draw a straight line through the graph. Note that <code>qqnorm()</code> must be run first before <code>qqline()</code> can be used.</p>
+<p>In this case, since we want to draw a Q-Q plot of a single variable, we just need to give the name of the column/variable we are interested in using <code>data$variable</code> format.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="one-sample-t-test.html#cb154-1" tabindex="-1"></a><span class="fu">qqnorm</span>(w8_grades<span class="sc">$</span>grade)</span>
+<span id="cb154-2"><a href="one-sample-t-test.html#cb154-2" tabindex="-1"></a><span class="fu">qqline</span>(w8_grades<span class="sc">$</span>grade)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<p>In our case, most of the points fall quite close to the main line, so we seem to be ok here - in line with our Shapiro-Wilks test (though this won’t always be the case).</p>
 </div>
 <div id="output-2" class="section level3 hasAnchor" number="6.3.4">
 <h3><span class="header-section-number">6.3.4</span> Output<a href="one-sample-t-test.html#output-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here are our descriptive statistics. They alone might already tell us something is going on:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="one-sample-t-test.html#cb154-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
-<span id="cb154-2"><a href="one-sample-t-test.html#cb154-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb154-3"><a href="one-sample-t-test.html#cb154-3" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb154-4"><a href="one-sample-t-test.html#cb154-4" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb154-5"><a href="one-sample-t-test.html#cb154-5" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb154-6"><a href="one-sample-t-test.html#cb154-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb154-7"><a href="one-sample-t-test.html#cb154-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="one-sample-t-test.html#cb155-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
+<span id="cb155-2"><a href="one-sample-t-test.html#cb155-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb155-3"><a href="one-sample-t-test.html#cb155-3" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb155-4"><a href="one-sample-t-test.html#cb155-4" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb155-5"><a href="one-sample-t-test.html#cb155-5" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb155-6"><a href="one-sample-t-test.html#cb155-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb155-7"><a href="one-sample-t-test.html#cb155-7" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -769,7 +776,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To run a one-sample <em>t</em>-test, the basic function is the <code>t.test()</code> function. For a one-sample <em>t</em>-test, you must provide the argument <code>x</code> (the data) and <code>mu</code>, which is the hypothesised population mean.</p>
 <p>Below is our output from the one-sample <em>t</em>-test. Our result tells us that there is a significant difference between the mean of the sample (<em>M</em> = 67.09) and the hypothesised mean of 72 (<em>p</em> &lt; .001). The mean difference here is calculated as Sample - Hypothesis; therefore, a difference of -4.91 means that the sample mean is 4.91 units <em>lower</em> than the population mean (which hopefully would have been evident from the descriptives anyway). This means that for some reason, last year’s cohort are performing worse than the expected average.</p>
 <p>R Note: Jamovi will give you a 95% confidence interval around the mean difference as 95% CI = [-5.85, -3.97]. R however will give you a CI around the actual <em>mean</em>. In this case, the 95% confidence interval for the group mean is [66.15, 68.03]. Really though, this is giving us the same information; 72 - 5.85 = 66.15, and 72 - 3.97 = 68.03. So the only difference is in what value is presented for the 95% CI, but the actual inference itself doesn’t change.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="one-sample-t-test.html#cb155-1" tabindex="-1"></a><span class="fu">t.test</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="one-sample-t-test.html#cb156-1" tabindex="-1"></a><span class="fu">t.test</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -782,7 +789,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## mean of x 
 ##  67.08594</code></pre>
 <p>Anoter way of writing a one-sample <em>t</em>-test is to use <code>variable ~ 1</code> formula notation. The <code>~ 1</code> is used to indicate that we are running a one-sample <em>t</em>-test. We still need to define <code>mu = 72</code> to set our hypothesised population mean.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="one-sample-t-test.html#cb157-1" tabindex="-1"></a><span class="fu">t.test</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_grades, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="one-sample-t-test.html#cb158-1" tabindex="-1"></a><span class="fu">t.test</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_grades, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -795,8 +802,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## mean of x 
 ##  67.08594</code></pre>
 <p>Alternatively, you can use the <code>t_test()</code> function in <code>rstatix</code>. This function also requires formula notation. <code>detailed = TRUE</code> will print a detailed output that will give the 95% CI for the mean as well:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="one-sample-t-test.html#cb159-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
-<span id="cb159-2"><a href="one-sample-t-test.html#cb159-2" tabindex="-1"></a>  <span class="fu">t_test</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="one-sample-t-test.html#cb160-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
+<span id="cb160-2"><a href="one-sample-t-test.html#cb160-2" tabindex="-1"></a>  <span class="fu">t_test</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":[".y."],"name":[2],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[3],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[4],"type":["chr"],"align":["left"]},{"label":["n"],"name":[5],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[11],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[12],"type":["chr"],"align":["left"]}],"data":[{"1":"67.08594","2":"grade","3":"1","4":"null model","5":"128","6":"-10.34216","7":"1.47e-18","8":"127","9":"66.1457","10":"68.02617","11":"T-test","12":"two.sided","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -804,18 +811,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>As we have previously done for chi-square tests, we will want to calculate an effect size for our <em>t</em>-test. The <code>cohens_d()</code> function from <code>effectsize</code> can handle the calculation of effect sizes for all three variants of <em>t</em>-tests. One thing that’s quite nice about this function is that the required syntax for <code>cohens_d()</code> is nearly identical to that for <code>t.test()</code> - meaning that the correct type of Cohen’s <em>d</em> (one-sample, independent samples, paired) will be calculated based on what you put in.</p>
 <p>For a one-sample t-test, for instance, you can write the syntax exactly as you would for <code>t.test()</code>:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="one-sample-t-test.html#cb160-1" tabindex="-1"></a><span class="co"># One-sample</span></span>
-<span id="cb160-2"><a href="one-sample-t-test.html#cb160-2" tabindex="-1"></a><span class="co"># t.test(w8_grades$grade, mu = 72)</span></span>
-<span id="cb160-3"><a href="one-sample-t-test.html#cb160-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="one-sample-t-test.html#cb161-1" tabindex="-1"></a><span class="co"># One-sample</span></span>
+<span id="cb161-2"><a href="one-sample-t-test.html#cb161-2" tabindex="-1"></a><span class="co"># t.test(w8_grades$grade, mu = 72)</span></span>
+<span id="cb161-3"><a href="one-sample-t-test.html#cb161-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cohens_d"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.9141264","2":"0.95","3":"-1.11929","4":"-0.7063802"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>The alternate way of specifying a one-sample <em>t</em>-test, the <code>var ~ 1</code> format, also works. <code>cohens_d()</code> will recognise both.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="one-sample-t-test.html#cb161-1" tabindex="-1"></a><span class="co"># One-sample - alternate</span></span>
-<span id="cb161-2"><a href="one-sample-t-test.html#cb161-2" tabindex="-1"></a><span class="co"># t.test(grade ~ 1, data = w8_grades, mu = 72)</span></span>
-<span id="cb161-3"><a href="one-sample-t-test.html#cb161-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_grades, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="one-sample-t-test.html#cb162-1" tabindex="-1"></a><span class="co"># One-sample - alternate</span></span>
+<span id="cb162-2"><a href="one-sample-t-test.html#cb162-2" tabindex="-1"></a><span class="co"># t.test(grade ~ 1, data = w8_grades, mu = 72)</span></span>
+<span id="cb162-3"><a href="one-sample-t-test.html#cb162-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_grades, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cohens_d"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.9141264","2":"0.95","3":"-1.11929","4":"-0.7063802"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -823,8 +830,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Alternatively, you can use the <code>rstatix</code> package. This will give the same values, but the confidence intervals generated by <code>effectsize</code> are traditional confidence intervals, whereas <code>rstaix</code> uses a different method (which we need not concern ourselves with). In any case, the actual width of the intervals should be similar. Just note that for paired samples Cohen’s <em>d</em>, long data is required (as is the case with <em>t</em>-tests in <code>rstatix</code>).</p>
 <p>For a one-sample <em>t</em>-test, the formula once again needs to be in <code>var ~ 1</code> format and <code>mu</code> must be specified:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="one-sample-t-test.html#cb162-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span> </span>
-<span id="cb162-2"><a href="one-sample-t-test.html#cb162-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="one-sample-t-test.html#cb163-1" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span> </span>
+<span id="cb163-2"><a href="one-sample-t-test.html#cb163-2" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">&quot;norm&quot;</span>) </span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":[".y."],"name":[1],"type":["chr"],"align":["left"]},{"label":["group1"],"name":[2],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[3],"type":["chr"],"align":["left"]},{"label":["effsize"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[5],"type":["int"],"align":["right"]},{"label":["conf.low"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["magnitude"],"name":[8],"type":["ord"],"align":["right"]}],"data":[{"1":"grade","2":"1","3":"null model","4":"-0.9141264","5":"128","6":"-1.1","7":"-0.71","8":"large","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

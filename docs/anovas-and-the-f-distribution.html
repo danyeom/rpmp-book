@@ -418,6 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
 <li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
 <li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+<li class="chapter" data-level="8.6.4" data-path="predictions.html"><a href="predictions.html#a-warning"><i class="fa fa-check"></i><b>8.6.4</b> A warning</a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
 <ul>
@@ -716,7 +717,7 @@ means between groups are significantly different, i.e.:</p>
 we have data that we categorise into different groups, we end up with
 two key sources of variability, or variance: variance that exists
 between groups, and variance that exists within groups:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-172-1.png" width="768" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-173-1.png" width="768" /></p>
 <p>Pretend that the three curves above represent data covering three
 different groups, and that we’ve hypothesised that there are three
 different means. Collectively, this data has a certain amount of
@@ -761,7 +762,7 @@ within-groups variance. One thing to note here is the terminology in the
 headers of each graph: the first number in the brackets refers to the
 between-groups variance, while the second number refers to the
 within-groups variance.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
 </div>
 <div id="f-statistic-tables" class="section level3 hasAnchor" number="7.1.3">
 <h3><span class="header-section-number">7.1.3</span> <em>F</em>-statistic tables<a href="anovas-and-the-f-distribution.html#f-statistic-tables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -771,7 +772,7 @@ two degrees of freedom the process is a little bit more complicated.
 Most <em>F</em>-stat tables actually provide multiple tables, corresponding to
 different alpha levels. For now, we will always use the table
 corresponding to alpha = 0.05, a snippet of which is below:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="anovas-and-the-f-distribution.html#cb195-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="anovas-and-the-f-distribution.html#cb196-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>))</span></code></pre></div>
 <p><img src="img/w9_f-table.png" width="1072" /></p>
 <p>To read this table, you need to know both degrees of freedom (more on
 how to find that on the next page). The columns, marked df1, refer to

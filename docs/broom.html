@@ -418,6 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
 <li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
 <li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+<li class="chapter" data-level="8.6.4" data-path="predictions.html"><a href="predictions.html#a-warning"><i class="fa fa-check"></i><b>8.6.4</b> A warning</a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
 <ul>
@@ -699,9 +700,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">B</span> The <code>broom()</code> package<a href="broom.html#broom" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The <code>broom()</code> package provides a couple of helper functions for tidying up output from numerous R functions for running tests. This can be useful in a couple of instances, particularly for either a) accessing certain aspects of models that are not immediately accessible or b) simply for neater manipulation for multiple models.</p>
 <p>While <code>broom</code> is a part of the tidyverse, it is not one of the tidyverse’s default packages. Therefore, to use the package you need to manually call it:</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="broom.html#cb559-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="broom.html#cb562-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
 <p>For the examples on this page, we will use datasets from the <code>datarium</code> package (which we have seen before), just because it provides a nice set of datasets for demonstrating how these functions work. So let’s go ahead and load that too:</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="broom.html#cb560-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="broom.html#cb563-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span></code></pre></div>
 <p>The main functions in <code>broom</code> are generic functions with what R calls several <em>methods</em> - i.e. ways that the function handles different types of data or objects. Every method comes with a different set of arguments that can change the output, depending on what object the function is run on. For example, if you use <code>tidy()</code> on an <code>lm</code> object, you get different optional arguments than for an <code>aov()</code> object, and so on. The next page gives examples using the <code>datarium</code> datasets.</p>
 </div>
             </section>

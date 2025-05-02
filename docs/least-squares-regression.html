@@ -418,6 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
 <li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
 <li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+<li class="chapter" data-level="8.6.4" data-path="predictions.html"><a href="predictions.html#a-warning"><i class="fa fa-check"></i><b>8.6.4</b> A warning</a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
 <ul>
@@ -703,11 +704,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-regression-line" class="section level3 hasAnchor" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> The regression line<a href="least-squares-regression.html#the-regression-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>See if you can take a guess where we should draw a line of best fit on the plot below:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-214-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-215-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>You might have some good guesses, and there’s every chance that you’ve drawn a line that fits the data points pretty well. But for this data, it’s pretty obvious where the line would sit, and the data that we do work with won’t always be as clear cut.</p>
 <p>The line of best fit sits where <strong>the distance between the line and every point is minimised</strong>. See the example below, where we have 10 data points to illustrate. Each dot represents a single data point, while the solid blue line is our line of best fit. The dashed lines represent the difference between the blue line (which is what we <em>predict</em> - more on this later) and the actual data point. This difference is called a <strong>residual</strong>.</p>
 <p>So, in other words, the line of best fit sits where the <em>residuals</em> are minimised.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-215-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-216-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We do this using the <strong>least squares</strong> principle. In essence, we calculate a <strong>squared deviation</strong> for each residual using the formula below - it might be familiar…</p>
 <p><span class="math display">\[
 SS_{res} = \Sigma (y_i - \bar y_i)^2
