@@ -4,7 +4,7 @@ fig:unnamed-chunk-99
 fig:unnamed-chunk-113
 fig:unnamed-chunk-137
 fig:unnamed-chunk-172
-fig:unnamed-chunk-208
+fig:unnamed-chunk-209
 preface
 intro-to-R
 R-syntax

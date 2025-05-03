@@ -711,10 +711,10 @@ Note that while we mainly talk about factors on this page, the same consideratio
 <div id="the-kaiser-guttman-rule" class="section level3 hasAnchor" number="12.4.2">
 <h3><span class="header-section-number">12.4.2</span> The Kaiser-Guttman rule<a href="how-many-factorscomponents.html#the-kaiser-guttman-rule" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The Kaiser-Guttman, Kaiser or simply the “eigenvalue &gt; 1” rule states that we should simply keep any factor with an eigenvalue above 1. To do this, we first need a correlation matrix from our data. We then feed this to the <code>eigen()</code> function in base R, which will calculate eigenvalues. I’ve piped it here, but you can also go straight to <code>eigen(cor(saq))</code>. Our data suggests that we retain 2 factors using this rule.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="how-many-factorscomponents.html#cb465-1" tabindex="-1"></a>saq_eigen <span class="ot">&lt;-</span> <span class="fu">cor</span>(saq) <span class="sc">%&gt;%</span></span>
-<span id="cb465-2"><a href="how-many-factorscomponents.html#cb465-2" tabindex="-1"></a>  <span class="fu">eigen</span>()</span>
-<span id="cb465-3"><a href="how-many-factorscomponents.html#cb465-3" tabindex="-1"></a></span>
-<span id="cb465-4"><a href="how-many-factorscomponents.html#cb465-4" tabindex="-1"></a>saq_eigen<span class="sc">$</span>values</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="how-many-factorscomponents.html#cb466-1" tabindex="-1"></a>saq_eigen <span class="ot">&lt;-</span> <span class="fu">cor</span>(saq) <span class="sc">%&gt;%</span></span>
+<span id="cb466-2"><a href="how-many-factorscomponents.html#cb466-2" tabindex="-1"></a>  <span class="fu">eigen</span>()</span>
+<span id="cb466-3"><a href="how-many-factorscomponents.html#cb466-3" tabindex="-1"></a></span>
+<span id="cb466-4"><a href="how-many-factorscomponents.html#cb466-4" tabindex="-1"></a>saq_eigen<span class="sc">$</span>values</span></code></pre></div>
 <pre><code>## [1] 2.9515869 1.2029159 0.9339932 0.7897083 0.7671243 0.6453702 0.6078335
 ## [8] 0.5663971 0.5350707</code></pre>
 </div>
@@ -723,15 +723,15 @@ Note that while we mainly talk about factors on this page, the same consideratio
 <p>The scree plot is a plot of each factor’s eigenvalue. This method relies on visual inspection - namely, you want to identify the ‘elbow’ of the line, or the point where the graph levels off. This is the point where the amount of variance explained by additional factors reaches that diminishing returns phase.</p>
 <p><code>psych</code> will plot two sets of eigenvalues - one ‘component’-based set (which is what we calculated above), and one ‘factor’-based set (which is what Jamovi gives you).</p>
 <p>This is inherently a bit subjective, and sometimes isn’t very clear. On our scree plot below, it looks like four factors is the point where the diminishing returns begin, so we would go with retaining four factors. However, a more conservative interpreter could reasonably argue that we should only retain 2 factors.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="how-many-factorscomponents.html#cb467-1" tabindex="-1"></a><span class="fu">scree</span>(saq)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-356-1.png" width="672" /></p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="how-many-factorscomponents.html#cb468-1" tabindex="-1"></a><span class="fu">scree</span>(saq)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-357-1.png" width="672" /></p>
 </div>
 <div id="parallel-analysis" class="section level3 hasAnchor" number="12.4.4">
 <h3><span class="header-section-number">12.4.4</span> Parallel analysis<a href="how-many-factorscomponents.html#parallel-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Parallel analysis (Horn, 1965) is a sophisticated technique that involves simulating random datasets of the same size as our actual dataset, and comparing our dataset’s eigenvalues against the random dataset’s eigenvalues. Parallel analysis is generally demonstrated using a scree plot with an additional scree line for the simulated datasets. The <code>fa.parallel()</code> function will run this for us.</p>
 <p>The number of factors to retain is determined by the number of factors where our actual data’s eigenvalue exceeds the simulated dataset’s eigenvalue. In this instance, we would choose to retain three factors, as the actual data eigenvalues clearly drop below the simulated data at four factors.</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="how-many-factorscomponents.html#cb468-1" tabindex="-1"></a><span class="fu">fa.parallel</span>(saq)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-357-1.png" width="672" /></p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="how-many-factorscomponents.html#cb469-1" tabindex="-1"></a><span class="fu">fa.parallel</span>(saq)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-358-1.png" width="672" /></p>
 <pre><code>## Parallel analysis suggests that the number of factors =  3  and the number of components =  2</code></pre>
 </div>
 <div id="how-to-decide" class="section level3 hasAnchor" number="12.4.5">

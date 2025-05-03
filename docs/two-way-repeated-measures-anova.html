@@ -718,7 +718,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Background music (2 levels: happy or sad)</li>
 </ol>
 <p>Every participant therefore does 6 maths exams: easy-happy, easy-sad, medium-happy, medium-sad, hard-happy and hard-sad. The dependent variable of interest is their exam score. We’re interested in whether the difficulty and the music type have an effect on exam performance. Because our two IVs are within-subject variables, we will want to use a two-way repeated measures ANOVA.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="two-way-repeated-measures-anova.html#cb309-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_rmanova_long.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="two-way-repeated-measures-anova.html#cb310-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_rmanova_long.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 120 Columns: 4
 ## ── Column specification ────────────────────
 ## Delimiter: &quot;,&quot;
@@ -730,17 +730,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>R will generally treat character variables as factors, but will order the factors alphabetically. In our instance, because we have a specific order for the categories that is not alphabetical and we want our graph to reflect this, we will need to tell R what order our levels are. This is simple to do with the <code>factor()</code> function, which will create factors from columns in your data. <code>factor()</code> first needs to know what column you are wanting to create factors in, and then it will want to know the specific order of the factors. The order is set with the <code>levels</code> argument.</p>
 <p>We will recode both the difficulty and the music type variables for completion’s sake, and there are two ways to go about doing this.</p>
 <p>First, you can just use base R functions like so:</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="two-way-repeated-measures-anova.html#cb311-1" tabindex="-1"></a>twoway_exam<span class="sc">$</span>music <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_exam<span class="sc">$</span>music, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;happy&quot;</span>, <span class="st">&quot;sad&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="two-way-repeated-measures-anova.html#cb312-1" tabindex="-1"></a>twoway_exam<span class="sc">$</span>music <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_exam<span class="sc">$</span>music, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;happy&quot;</span>, <span class="st">&quot;sad&quot;</span>))</span></code></pre></div>
 <p>Or you can use <code>factor()</code> within mutate and largely identical syntax:</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="two-way-repeated-measures-anova.html#cb312-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> twoway_exam <span class="sc">%&gt;%</span></span>
-<span id="cb312-2"><a href="two-way-repeated-measures-anova.html#cb312-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb312-3"><a href="two-way-repeated-measures-anova.html#cb312-3" tabindex="-1"></a>    <span class="at">difficulty =</span> <span class="fu">factor</span>(difficulty, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;easy&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;hard&quot;</span>))</span>
-<span id="cb312-4"><a href="two-way-repeated-measures-anova.html#cb312-4" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="two-way-repeated-measures-anova.html#cb313-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> twoway_exam <span class="sc">%&gt;%</span></span>
+<span id="cb313-2"><a href="two-way-repeated-measures-anova.html#cb313-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb313-3"><a href="two-way-repeated-measures-anova.html#cb313-3" tabindex="-1"></a>    <span class="at">difficulty =</span> <span class="fu">factor</span>(difficulty, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;easy&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;hard&quot;</span>))</span>
+<span id="cb313-4"><a href="two-way-repeated-measures-anova.html#cb313-4" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Let’s start with the usual descriptives and graphs:</p>
 <pre><code>## `summarise()` has grouped output by
 ## &#39;difficulty&#39;. You can override using the
 ## `.groups` argument.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-267-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-268-1.png" width="672" /></p>
 <p>Eyeballing the graph, we can see that there might be some sort of effect happening. Unsurprisingly, it looks like the easy maths exams are, well. easier, because people are scoring better on them. There might be an effect of music, because in both easy and hard conditions it looks like people do better with happy music compared to sad music. But the interaction plot tells us there’s something clearly going on, and it paints a really interesting story on its own. It appears that there’s almost a ‘plateau’-ing effect with medium difficulty, in that both happy and sad hit the same point in exam scores. However, it looks like for happy music, harder exams see no further decrease in performance - but there is a sharp drop again for sad music.</p>
 </div>
 <div id="assumptions-1" class="section level3 hasAnchor" number="9.6.3">
@@ -754,27 +754,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As is the case with one-way repeated measures ANOVAs, the assumption of sphericity is only tested when there are three or more levels; with only two levels, the assumption is always met. The output is below with the main ANOVA output. The sphericity for all of our effects is intact, so we don’t have any issues here, but if we did the same principle would apply - we would apply our corrections depending on the value of epsilon.</p>
 <p>Let’s also see if our variables are normally distributed:</p>
 <p>R-Note: For a repeated measures ANOVA, for some reason the closest I can get to generating what Jamovi does is to build an <code>aov()</code> model without an explicit <code>Error()</code> term - as would be the case for a fully between-subjects ANOVA. You can then use the standardised residuals to create a Q-Q plot using the below code. Note that <code>broom:augment()</code> is just a helper function that nicely extracts the residuals:</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="two-way-repeated-measures-anova.html#cb314-1" tabindex="-1"></a><span class="fu">aov</span>(grade <span class="sc">~</span> difficulty <span class="sc">*</span> music, <span class="at">data =</span> twoway_exam) <span class="sc">%&gt;%</span></span>
-<span id="cb314-2"><a href="two-way-repeated-measures-anova.html#cb314-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb314-3"><a href="two-way-repeated-measures-anova.html#cb314-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
-<span id="cb314-4"><a href="two-way-repeated-measures-anova.html#cb314-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb314-5"><a href="two-way-repeated-measures-anova.html#cb314-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-268-1.png" width="672" /></p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="two-way-repeated-measures-anova.html#cb315-1" tabindex="-1"></a><span class="fu">aov</span>(grade <span class="sc">~</span> difficulty <span class="sc">*</span> music, <span class="at">data =</span> twoway_exam) <span class="sc">%&gt;%</span></span>
+<span id="cb315-2"><a href="two-way-repeated-measures-anova.html#cb315-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb315-3"><a href="two-way-repeated-measures-anova.html#cb315-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
+<span id="cb315-4"><a href="two-way-repeated-measures-anova.html#cb315-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb315-5"><a href="two-way-repeated-measures-anova.html#cb315-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
 <p>It’s not… great but for the purposes of demonstration, we’ll run with it anyway.</p>
 </div>
 <div id="output-9" class="section level3 hasAnchor" number="9.6.4">
 <h3><span class="header-section-number">9.6.4</span> Output<a href="two-way-repeated-measures-anova.html#output-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s our output from R:</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="two-way-repeated-measures-anova.html#cb315-1" tabindex="-1"></a>twoway_exam_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
-<span id="cb315-2"><a href="two-way-repeated-measures-anova.html#cb315-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_exam,</span>
-<span id="cb315-3"><a href="two-way-repeated-measures-anova.html#cb315-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;ptcpt&quot;</span>,</span>
-<span id="cb315-4"><a href="two-way-repeated-measures-anova.html#cb315-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;grade&quot;</span>,</span>
-<span id="cb315-5"><a href="two-way-repeated-measures-anova.html#cb315-5" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;difficulty&quot;</span>, <span class="st">&quot;music&quot;</span>),</span>
-<span id="cb315-6"><a href="two-way-repeated-measures-anova.html#cb315-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
-<span id="cb315-7"><a href="two-way-repeated-measures-anova.html#cb315-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
-<span id="cb315-8"><a href="two-way-repeated-measures-anova.html#cb315-8" tabindex="-1"></a>)</span>
-<span id="cb315-9"><a href="two-way-repeated-measures-anova.html#cb315-9" tabindex="-1"></a></span>
-<span id="cb315-10"><a href="two-way-repeated-measures-anova.html#cb315-10" tabindex="-1"></a>twoway_exam_aov</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="two-way-repeated-measures-anova.html#cb316-1" tabindex="-1"></a>twoway_exam_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb316-2"><a href="two-way-repeated-measures-anova.html#cb316-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_exam,</span>
+<span id="cb316-3"><a href="two-way-repeated-measures-anova.html#cb316-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;ptcpt&quot;</span>,</span>
+<span id="cb316-4"><a href="two-way-repeated-measures-anova.html#cb316-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;grade&quot;</span>,</span>
+<span id="cb316-5"><a href="two-way-repeated-measures-anova.html#cb316-5" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;difficulty&quot;</span>, <span class="st">&quot;music&quot;</span>),</span>
+<span id="cb316-6"><a href="two-way-repeated-measures-anova.html#cb316-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
+<span id="cb316-7"><a href="two-way-repeated-measures-anova.html#cb316-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb316-8"><a href="two-way-repeated-measures-anova.html#cb316-8" tabindex="-1"></a>)</span>
+<span id="cb316-9"><a href="two-way-repeated-measures-anova.html#cb316-9" tabindex="-1"></a></span>
+<span id="cb316-10"><a href="two-way-repeated-measures-anova.html#cb316-10" tabindex="-1"></a>twoway_exam_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: grade
@@ -786,9 +786,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1
 ## 
 ## Sphericity correction method: GG</code></pre>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="two-way-repeated-measures-anova.html#cb317-1" tabindex="-1"></a><span class="co"># To get sphericity output</span></span>
-<span id="cb317-2"><a href="two-way-repeated-measures-anova.html#cb317-2" tabindex="-1"></a></span>
-<span id="cb317-3"><a href="two-way-repeated-measures-anova.html#cb317-3" tabindex="-1"></a><span class="fu">summary</span>(twoway_exam_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="two-way-repeated-measures-anova.html#cb318-1" tabindex="-1"></a><span class="co"># To get sphericity output</span></span>
+<span id="cb318-2"><a href="two-way-repeated-measures-anova.html#cb318-2" tabindex="-1"></a></span>
+<span id="cb318-3"><a href="two-way-repeated-measures-anova.html#cb318-3" tabindex="-1"></a><span class="fu">summary</span>(twoway_exam_aov)</span></code></pre></div>
 <pre><code>## 
 ## Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
 ## 
@@ -822,8 +822,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## difficulty:music 0.8936983 4.903345e-04</code></pre>
 <p>Once again this is quite a busy table! We can see that there is a significant main effect of difficulty (<em>F</em>(2, 38) = 189.61, <em>p</em> &lt; .001), as well as a significant main effect of music type (<em>F</em>(1, 19) = 18.39, <em>p</em> &lt; .001). There is also a significant interaction effect of difficulty and music (<em>F</em>(2, 38) = 10.29, <em>p</em> &lt; .001). We can also see our sphericity output here; neither the difficulty variable (<em>W</em> = .880) nor the difficulty x music interaction (<em>W</em> = .788) terms show significant violation of sphericity (<em>p</em> &gt; .05). Therefore we have not corrected for anything in our main ANOVA output. Note that because music only has two levels, there is no sphericity test for it.</p>
 <p>To decompose this, we’ll do our usual simple effects tests - holding one variable constant and running pairwise comparisons with the other. For this example, we’ll just hold the difficulty constant and compare music genres. We can absolutely reverse the simple effects, but for the sake of simplicity we’ll just do it the one way round for this example.</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="two-way-repeated-measures-anova.html#cb319-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> music, <span class="at">by =</span> <span class="st">&quot;difficulty&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb319-2"><a href="two-way-repeated-measures-anova.html#cb319-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="two-way-repeated-measures-anova.html#cb320-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> music, <span class="at">by =</span> <span class="st">&quot;difficulty&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb320-2"><a href="two-way-repeated-measures-anova.html#cb320-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <pre><code>## difficulty = easy:
 ##  contrast    estimate   SE df lower.CL upper.CL t.ratio p.value
 ##  happy - sad      4.4 1.78 19    0.682     8.12   2.477  0.0228
@@ -839,8 +839,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Confidence level used: 0.95</code></pre>
 <p>From this we can see that for easy exams, on average people scored 4.4 points higher with happy music compared to sad music (p = .023). On medium exams, there was no difference between happy and sad music (p = .900). Lastly, for harder exams people who listened to happy music scored, on average, 11.7 points higher than people who listened to sad music (<em>p</em> &lt; .001). This suggests overall that happy music is probably better for completing exams than sad music, though the medium difficulty exam is a strange one here.</p>
 <p>If, instead, we wanted to hold music type constant and test differences in difficulty, we would get this output.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="two-way-repeated-measures-anova.html#cb321-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> difficulty, <span class="at">by =</span> <span class="st">&quot;music&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb321-2"><a href="two-way-repeated-measures-anova.html#cb321-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="two-way-repeated-measures-anova.html#cb322-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> difficulty, <span class="at">by =</span> <span class="st">&quot;music&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb322-2"><a href="two-way-repeated-measures-anova.html#cb322-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <pre><code>## music = happy:
 ##  contrast      estimate   SE df lower.CL upper.CL t.ratio p.value
 ##  easy - medium     21.1 1.76 19    17.42    24.78  12.005  &lt;.0001

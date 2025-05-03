@@ -705,7 +705,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-scenario-3" class="section level3 hasAnchor" number="14.6.2">
 <h3><span class="header-section-number">14.6.2</span> Example scenario<a href="friedman-anovas.html#example-scenario-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will take a look at the autism dataset again, albeit with a new version called <code>autism_wide.csv</code>. In this scenario, we now want to see how expressive language changes over time. Note that the variables relating to age are referenced/centered to 2 years old. That is, a value of <code>age2</code> of 0 indicates the child is 2 years old; a value of 1 refers to 3 years old and a value of 3 refers to 5 years old.</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="friedman-anovas.html#cb545-1" tabindex="-1"></a>autism_wide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;autism_wide.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="friedman-anovas.html#cb546-1" tabindex="-1"></a>autism_wide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;autism_wide.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 63 Columns: 9
 ## ── Column specification ────────────────────
 ## Delimiter: &quot;,&quot;
@@ -714,24 +714,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="friedman-anovas.html#cb547-1" tabindex="-1"></a><span class="co"># Reshape into long format</span></span>
-<span id="cb547-2"><a href="friedman-anovas.html#cb547-2" tabindex="-1"></a></span>
-<span id="cb547-3"><a href="friedman-anovas.html#cb547-3" tabindex="-1"></a>autism <span class="ot">&lt;-</span> autism_wide <span class="sc">%&gt;%</span></span>
-<span id="cb547-4"><a href="friedman-anovas.html#cb547-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb547-5"><a href="friedman-anovas.html#cb547-5" tabindex="-1"></a>    <span class="at">cols =</span> age_0<span class="sc">:</span>age_7,</span>
-<span id="cb547-6"><a href="friedman-anovas.html#cb547-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;age2&quot;</span>,</span>
-<span id="cb547-7"><a href="friedman-anovas.html#cb547-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;vsae&quot;</span>,</span>
-<span id="cb547-8"><a href="friedman-anovas.html#cb547-8" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;age_&quot;</span></span>
-<span id="cb547-9"><a href="friedman-anovas.html#cb547-9" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb547-10"><a href="friedman-anovas.html#cb547-10" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb547-11"><a href="friedman-anovas.html#cb547-11" tabindex="-1"></a>    <span class="at">age2 =</span> <span class="fu">factor</span>(age2)</span>
-<span id="cb547-12"><a href="friedman-anovas.html#cb547-12" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="friedman-anovas.html#cb548-1" tabindex="-1"></a><span class="co"># Reshape into long format</span></span>
+<span id="cb548-2"><a href="friedman-anovas.html#cb548-2" tabindex="-1"></a></span>
+<span id="cb548-3"><a href="friedman-anovas.html#cb548-3" tabindex="-1"></a>autism <span class="ot">&lt;-</span> autism_wide <span class="sc">%&gt;%</span></span>
+<span id="cb548-4"><a href="friedman-anovas.html#cb548-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb548-5"><a href="friedman-anovas.html#cb548-5" tabindex="-1"></a>    <span class="at">cols =</span> age_0<span class="sc">:</span>age_7,</span>
+<span id="cb548-6"><a href="friedman-anovas.html#cb548-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;age2&quot;</span>,</span>
+<span id="cb548-7"><a href="friedman-anovas.html#cb548-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;vsae&quot;</span>,</span>
+<span id="cb548-8"><a href="friedman-anovas.html#cb548-8" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;age_&quot;</span></span>
+<span id="cb548-9"><a href="friedman-anovas.html#cb548-9" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb548-10"><a href="friedman-anovas.html#cb548-10" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb548-11"><a href="friedman-anovas.html#cb548-11" tabindex="-1"></a>    <span class="at">age2 =</span> <span class="fu">factor</span>(age2)</span>
+<span id="cb548-12"><a href="friedman-anovas.html#cb548-12" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
 <div id="checking-assumptions-normal-anova-1" class="section level3 hasAnchor" number="14.6.3">
 <h3><span class="header-section-number">14.6.3</span> Checking assumptions (normal ANOVA)<a href="friedman-anovas.html#checking-assumptions-normal-anova-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Like last time, let’s examine our assumptions using a normal repeated-measures ANOVA. We can see that our sphericity assumption is violated (<em>p</em> &lt; .001), and very severely so; recall that the W statistic in Mauchly’s test is a deviation from 1, so our test statistic of <em>W</em> = .047 is very low! This might be one instance where we would legitimately consider running a Friedman ANOVA, if we weren’t keen on applying such a strong Greenhouse-Geisser correction to our ANOVA.</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="friedman-anovas.html#cb548-1" tabindex="-1"></a>autism <span class="sc">%&gt;%</span></span>
-<span id="cb548-2"><a href="friedman-anovas.html#cb548-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> vsae, <span class="at">within =</span> age2, <span class="at">wid =</span> childid)</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="friedman-anovas.html#cb549-1" tabindex="-1"></a>autism <span class="sc">%&gt;%</span></span>
+<span id="cb549-2"><a href="friedman-anovas.html#cb549-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> vsae, <span class="at">within =</span> age2, <span class="at">wid =</span> childid)</span></code></pre></div>
 <pre><code>## ANOVA Table (type III tests)
 ## 
 ## $ANOVA
@@ -751,7 +751,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="running-a-friedman-anova" class="section level3 hasAnchor" number="14.6.4">
 <h3><span class="header-section-number">14.6.4</span> Running a Friedman ANOVA<a href="friedman-anovas.html#running-a-friedman-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Friedman ANOVAs are available in R with the <code>friedman.test()</code> function. This function requires long data, and by and large even uses the same formula notation that we are used to. The only difference is that because this is repeated measures data, we must tweak the formula slightly to account for this. The formula needs to take <code>outcome ~ predictor | id</code> notation, where <code>id</code> needs to point to a column in the dataset that simply indicates each participant’s unique ID. Otherwise, the formula is much as you would expect:</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="friedman-anovas.html#cb550-1" tabindex="-1"></a><span class="fu">friedman.test</span>(vsae <span class="sc">~</span> age2 <span class="sc">|</span> childid, <span class="at">data =</span> autism)</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="friedman-anovas.html#cb551-1" tabindex="-1"></a><span class="fu">friedman.test</span>(vsae <span class="sc">~</span> age2 <span class="sc">|</span> childid, <span class="at">data =</span> autism)</span></code></pre></div>
 <pre><code>## 
 ##  Friedman rank sum test
 ## 
@@ -759,7 +759,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Friedman chi-squared = 133.51, df = 3, p-value &lt; 2.2e-16</code></pre>
 <p>Also like the Kruskal-Wallis ANOVA, R will report a chi-square as the test statistic. This is for the same reason as before; the actual test statistic <em>Q</em> approximates a chi-square distribution with large enough samples (e.g. n &gt; 15). We can see that our omnibus result is significant (<span class="math inline">\(\chi^2\)</span>(3) = 133.51, <em>p</em> &lt; .001).</p>
 <p>Although Jamovi does not give an effect size for a Friedman ANOVA, there actually is one called Kendall’s <em>W</em>. The <code>effectsize</code> package provides a function called - you guessed it - <code>kendalls_w()</code> to calculate this. The notation is the same as <code>friedman.test()</code>.</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="friedman-anovas.html#cb552-1" tabindex="-1"></a><span class="fu">kendalls_w</span>(vsae <span class="sc">~</span> age2 <span class="sc">|</span> childid, <span class="at">data =</span> autism)</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="friedman-anovas.html#cb553-1" tabindex="-1"></a><span class="fu">kendalls_w</span>(vsae <span class="sc">~</span> age2 <span class="sc">|</span> childid, <span class="at">data =</span> autism)</span></code></pre></div>
 <pre><code>## Warning: 9 block(s) contain ties.</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -768,8 +768,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Of course, we still need to do post-hoc pairwise comparisons. The post-hocs that Jamovi provides are called Durbin-Conover pairwise comparisons, which are simply called Durbin tests elsewhere. The <code>PMCMRplus</code> package we mentioned earlier provides a function called <code>durbinAllPairsTest()</code> to conduct these posthocs. Note that although the function can be run without assigning the output to a new object, this will only give <em>p</em>-values; to get the proper output, we will want to assign the function’s output to a variable and then run <code>summary()</code> on this.</p>
 <p>This function will also allow you to use <em>p</em>-value adjustment methods. Holm adjusted <em>p</em> values are the default, which we will run with.</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="friedman-anovas.html#cb554-1" tabindex="-1"></a>autism_posthoc <span class="ot">&lt;-</span> PMCMRplus<span class="sc">::</span><span class="fu">durbinAllPairsTest</span>(<span class="at">y =</span> autism<span class="sc">$</span>vsae, <span class="at">groups =</span> autism<span class="sc">$</span>age2, <span class="at">blocks =</span> autism<span class="sc">$</span>childid)</span>
-<span id="cb554-2"><a href="friedman-anovas.html#cb554-2" tabindex="-1"></a><span class="fu">summary</span>(autism_posthoc)</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="friedman-anovas.html#cb555-1" tabindex="-1"></a>autism_posthoc <span class="ot">&lt;-</span> PMCMRplus<span class="sc">::</span><span class="fu">durbinAllPairsTest</span>(<span class="at">y =</span> autism<span class="sc">$</span>vsae, <span class="at">groups =</span> autism<span class="sc">$</span>age2, <span class="at">blocks =</span> autism<span class="sc">$</span>childid)</span>
+<span id="cb555-2"><a href="friedman-anovas.html#cb555-2" tabindex="-1"></a><span class="fu">summary</span>(autism_posthoc)</span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using Durbin&#39;s all-pairs test for a two-way balanced incomplete block design</code></pre>
 <pre><code>## data: autism$vsae, autism$age2 and autism$childid</code></pre>

@@ -825,7 +825,7 @@ effect of time is significant (<em>F</em>(1.92, 180.72) = 132.63, <em>p</em> &lt
 <li><p><code>name$idesign</code>: this creates a formula-style notation specifying
 what the within-subjects IV(s) are</p></li>
 </ul>
-<p>We then just need to feed this to <code>car::Anova()</code> as follows. Setting <code>type = 3</code> isn’t strictly necessary here (this is more relevant for factorial ANOVAs):</p>
+<p>We then just need to feed this to <code>car::Anova()</code> exactly as follows. Setting <code>type = 3</code> isn’t strictly necessary here (this is more relevant for factorial ANOVAs):</p>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="one-way-repeated-measures-anova.html#cb230-1" tabindex="-1"></a>w9_memory_alternate <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(</span>
 <span id="cb230-2"><a href="one-way-repeated-measures-anova.html#cb230-2" tabindex="-1"></a>  <span class="at">mod =</span> w9_memory_design<span class="sc">$</span>model,</span>
 <span id="cb230-3"><a href="one-way-repeated-measures-anova.html#cb230-3" tabindex="-1"></a>  <span class="at">idata =</span> w9_memory_design<span class="sc">$</span>idata,</span>
@@ -860,6 +860,13 @@ what the within-subjects IV(s) are</p></li>
 ## 
 ##         HF eps   Pr(&gt;F[HF])
 ## time 0.9612827 2.447568e-35</code></pre>
+<p>A benefit of doing a repeated-measures ANOVA this way is that this model is compatible with the <code>effectsize</code> functions, including <code>eta_squared()</code>:</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="one-way-repeated-measures-anova.html#cb233-1" tabindex="-1"></a><span class="fu">eta_squared</span>(w9_memory_alternate, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Eta2_partial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"time","2":"0.5852187","3":"0.95","4":"0.4988523","5":"0.6528865","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 </div>
 </div>

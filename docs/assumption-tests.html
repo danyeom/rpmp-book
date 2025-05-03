@@ -705,7 +705,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.4.1</span> Linearity<a href="assumption-tests.html#linearity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Believe it or not, for a linear regression your data should be… linear. Wild, right?</p>
 <p>Bitter sarcasm aside, linearity is an important assumption that needs to be met before conducting a linear regression. Not all data will follow a linear pattern; some data may instead sit on a curve. Compare the two examples below, where one is clearly non-linear:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-217-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-218-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>If the data shows no clear linear relationship between your IV and DV, it is likely because the two are weakly correlated (and so a linear regression would not be useful anyway). If instead the data lies on a very obvious curve, you can either:</p>
 <ul>
 <li>Transform the data to make it linear (but you must be clear about what this represents)</li>
@@ -719,7 +719,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Warning: Removed 7 rows containing missing values or
 ## values outside the scale range
 ## (`geom_point()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-218-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-219-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>There are a couple of ways to overcome this, such as either transforming the raw variables or weighting them.</p>
 </div>
 <div id="independence" class="section level3 hasAnchor" number="8.4.3">
@@ -733,7 +733,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The general principle of the Durbin-Watson test, therefore, is to have a test statistic close to 2 and (ideally) a non-significant result. The value of the test statistic is generally more useful than the significance of the test alone. A common guideline for interpreting this value is that a DW test statistic below 1 or above 3 is problematic, which we will also use for this subject.</p>
 <p>The <code>DurbinWatsonTest()</code> function from the DescTools package will let us test this quite easily.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="assumption-tests.html#cb239-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">DurbinWatsonTest</span>(mod_1)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="assumption-tests.html#cb240-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">DurbinWatsonTest</span>(mod_1)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 

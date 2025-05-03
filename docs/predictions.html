@@ -712,7 +712,7 @@ y = \beta_0 + \beta_1x + \epsilon_i
 <div id="building-a-regression-equation" class="section level3 hasAnchor" number="8.6.2">
 <h3><span class="header-section-number">8.6.2</span> Building a regression equation<a href="predictions.html#building-a-regression-equation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s the coefficient table from the previous page:</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="predictions.html#cb257-1" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="predictions.html#cb258-1" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = GoldMSI ~ years_training, data = w10_goldmsi)
@@ -746,7 +746,7 @@ GoldMSI = 53.901 + (4.858 \times Years)
 <h3><span class="header-section-number">8.6.3</span> An example prediction<a href="predictions.html#an-example-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Participant 47, highlighted in green below, has 5 years of musical training. What would their predicted Gold-MSI score to be?</p>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
 <p>We can use the equation we just built to calculate a predicted score:</p>
 <p><span class="math display">\[GoldMSI = 53.901 + (4.858 \times Years)\]</span>
 <span class="math display">\[GoldMSI = 53.901 + (4.858 \times 5)\]</span>
