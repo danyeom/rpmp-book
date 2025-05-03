@@ -629,7 +629,7 @@ $$
 
 This partitioning allows for a simple but important way of calculating effect sizes for ANOVAs. If we're interested in the effect of our IV (group, which is between-subject variance), we simply need to know how much of the total variance is explained by this variable.
 
-This is essentially eta-squared ($\eta^2$), our effect size for ANOVAs. Eta-squared gives us a percentage of how much variance can be attributed to the main effect. So an eta-squared of .778 means that 77.8% of the total variance is because of the effect. It is calculated as follows:
+This is **eta-squared** ($\eta^2$), our effect size for ANOVAs. Eta-squared gives us a **percentage of how much variance in the DV can be attributed to the IV**. So an eta-squared of .778 means that 77.8% of the total variance in the outcome variable/DV is because of the IV variable/main effect. It is calculated as follows:
 
 $$
 \eta^2 = \frac{SS_{effect}}{SS_t}
@@ -637,7 +637,7 @@ $$
 
 In other words, we divide the sum of squares for the main effect by the total sum of squares. For repeated-measures ANOVAs, the formula is the same in practice (i.e. divide the SS in the top row in the ANOVA table by the total).
 
-A related version of this is **partial eta-squared** ($\eta^2_p$). This describes the effect of the IV *after* accounting for the variance explained by other factors. This is not so relevant for one-way designs - regular and partial eta-squared will give the same answer - but becomes more relevant when you move into factorial designs.
+A related version of this is **partial eta-squared** ($\eta^2_p$). This describes the effect of the IV *after* accounting for the variance explained by other factors. This is not so relevant for one-way designs - regular and partial eta-squared will give the same answer - but becomes more relevant when you move into factorial designs where you have more than one IV.
 
 The formula for partial eta-squared is:
 
@@ -645,10 +645,9 @@ $$
 \eta^2_p = \frac{SS_{effect}}{SS_{effect} + SS_{error}}
 $$
 
-Where $SS_{error}$ is the sums of squares for the error/residual term in an ANOVA. In general, it's good practice to default to at least reporting partial eta-squared. Again, in a one-way ANOVA this will give the same answer as regular eta-squared, but in a factorial design (where
-you have more than one IV) it will give a more precise estimate of each variable's effect size.
+Where $SS_{error}$ is the sums of squares for the error/residual term in an ANOVA. In general, it's good practice to default to at least reporting partial eta-squared. Again, in a one-way ANOVA this will give the same answer as regular eta-squared, but in a factorial design (where you have more than one IV) it will give a more precise estimate of each variable's effect size.
 
-One more variant you will see is *generalised* eta-squared, which is similar to the partial variant. While partial eta-squared is great, it is sensitive to design - in other words, what variables are included in the analysis will influence the calculation of $\eta^2_p$, meaning that it is only really comparable across studies of similar design. However, not every design will manipulate every predictor (e.g. gender), and so generalised eta-squared ($\eta^2_G$) can handle this. This effect size is best used in meta-analyses.
+One more variant you will see is *generalised* eta-squared $\eta^2_g$, which is similar to the partial variant. While partial eta-squared is great, it is sensitive to design - in other words, what variables are included in the analysis will influence the calculation of $\eta^2_p$, meaning that it is only really comparable across studies of similar design. However, not every design will manipulate every predictor (e.g. gender), and so generalised eta-squared ($\eta^2_G$) can handle this. This effect size is best used in meta-analyses.
 
 By default, `anova_test()` (and other ANOVA-related packages in R) will calculate *generalised* eta squared (labelled `ges` in the output). If you want partial eta-squared, you just need to give `anova_test()` the extra argument `effect.size = "pes"` as follows:
 
@@ -703,7 +702,7 @@ Cohen (1988) provided the following guidelines for interpreting eta-squared:
 
 With these guidelines (which aren't perfect), a $\eta^2$ of .778 is astronomically huge.
 
-To give yourself a bit of practice, go back into Sections 9.5 and 9.6, find the eta-squared values for each in the outputs (they're in the omnibus tables) and interpret them a) as percentages of total variance and b) using Cohen's (1988) guidelines.
+Alternatively, when it comes to eta-squared you can avoid using benchmarks entirely and interpret them as the amount of variance (as a percentage) explained in the DV by the IV, as described above.
 
 
 ## One-way ANOVA
