@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="comparing-models.html"/>
+<link rel="prev" href="outliers.html"/>
 <link rel="next" href="probability-and-odds.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -511,6 +511,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="outliers.html"><a href="outliers.html"><i class="fa fa-check"></i><b>10.5</b> Outliers</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="outliers.html"><a href="outliers.html#cooks-distance"><i class="fa fa-check"></i><b>10.5.1</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.5.2" data-path="outliers.html"><a href="outliers.html#mahalanobis-distance-d2"><i class="fa fa-check"></i><b>10.5.2</b> Mahalanobis’ distance, <span class="math inline">\(D^2\)</span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="outliers.html"><a href="outliers.html#what-happens-if-there-is-an-outlier"><i class="fa fa-check"></i><b>10.5.3</b> What happens if there is an outlier?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
 <ul>
@@ -616,12 +622,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
+<li class="chapter" data-level="14" data-path="nonpara.html"><a href="nonpara.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html"><i class="fa fa-check"></i><b>14.1</b> Parametric vs non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#introduction-7"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
-<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests-1"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html"><i class="fa fa-check"></i><b>14.2</b> Spearman’s rho</a>
 <ul>
@@ -706,7 +712,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="comparing-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="outliers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="probability-and-odds.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

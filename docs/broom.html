@@ -511,6 +511,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="outliers.html"><a href="outliers.html"><i class="fa fa-check"></i><b>10.5</b> Outliers</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="outliers.html"><a href="outliers.html#cooks-distance"><i class="fa fa-check"></i><b>10.5.1</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.5.2" data-path="outliers.html"><a href="outliers.html#mahalanobis-distance-d2"><i class="fa fa-check"></i><b>10.5.2</b> Mahalanobis’ distance, <span class="math inline">\(D^2\)</span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="outliers.html"><a href="outliers.html#what-happens-if-there-is-an-outlier"><i class="fa fa-check"></i><b>10.5.3</b> What happens if there is an outlier?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
 <ul>
@@ -616,12 +622,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
+<li class="chapter" data-level="14" data-path="nonpara.html"><a href="nonpara.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html"><i class="fa fa-check"></i><b>14.1</b> Parametric vs non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#introduction-7"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
-<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests-1"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html"><i class="fa fa-check"></i><b>14.2</b> Spearman’s rho</a>
 <ul>
@@ -700,9 +706,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">B</span> The <code>broom()</code> package<a href="broom.html#broom" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The <code>broom()</code> package provides a couple of helper functions for tidying up output from numerous R functions for running tests. This can be useful in a couple of instances, particularly for either a) accessing certain aspects of models that are not immediately accessible or b) simply for neater manipulation for multiple models.</p>
 <p>While <code>broom</code> is a part of the tidyverse, it is not one of the tidyverse’s default packages. Therefore, to use the package you need to manually call it:</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="broom.html#cb563-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="broom.html#cb596-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
 <p>For the examples on this page, we will use datasets from the <code>datarium</code> package (which we have seen before), just because it provides a nice set of datasets for demonstrating how these functions work. So let’s go ahead and load that too:</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="broom.html#cb564-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="broom.html#cb597-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span></code></pre></div>
 <p>The main functions in <code>broom</code> are generic functions with what R calls several <em>methods</em> - i.e. ways that the function handles different types of data or objects. Every method comes with a different set of arguments that can change the output, depending on what object the function is run on. For example, if you use <code>tidy()</code> on an <code>lm</code> object, you get different optional arguments than for an <code>aov()</code> object, and so on. The next page gives examples using the <code>datarium</code> datasets.</p>
 </div>
             </section>

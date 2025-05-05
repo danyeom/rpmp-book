@@ -511,6 +511,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="outliers.html"><a href="outliers.html"><i class="fa fa-check"></i><b>10.5</b> Outliers</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="outliers.html"><a href="outliers.html#cooks-distance"><i class="fa fa-check"></i><b>10.5.1</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.5.2" data-path="outliers.html"><a href="outliers.html#mahalanobis-distance-d2"><i class="fa fa-check"></i><b>10.5.2</b> Mahalanobis’ distance, <span class="math inline">\(D^2\)</span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="outliers.html"><a href="outliers.html#what-happens-if-there-is-an-outlier"><i class="fa fa-check"></i><b>10.5.3</b> What happens if there is an outlier?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
 <ul>
@@ -616,12 +622,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
+<li class="chapter" data-level="14" data-path="nonpara.html"><a href="nonpara.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html"><i class="fa fa-check"></i><b>14.1</b> Parametric vs non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#introduction-7"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
-<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests-1"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html"><i class="fa fa-check"></i><b>14.2</b> Spearman’s rho</a>
 <ul>
@@ -702,7 +708,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">14.2.1</span> Introduction<a href="spearmans-rho.html#introduction-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Spearman’s rho (<span class="math inline">\(\rho\)</span>) is a non-parametric correlation coefficient, broadly equivalent in interpretation with Pearson’s correlation coefficient. It is used to calculate a correlation in instances where Pearson’s r would not be appropriate; namely, when data is not linear.</p>
 <p>Spearman’s rho can be used when data is monotonic. Monotonic data is data where as X changes, Y changes in one direction. Below is a visualisation of monotonic versus non-monotonic data:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-394-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-412-1.png" width="672" /></p>
 <p>In the linear and monotonic examples, the line of best fit follows one direction - up. In the rightmost graph, however, there is a decrease and then an increase in the predicted values of y. This is an example of a non-monotonic function.</p>
 </div>
 <div id="understanding-ranks" class="section level3 hasAnchor" number="14.2.2">
@@ -714,7 +720,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-9" class="section level3 hasAnchor" number="14.2.3">
 <h3><span class="header-section-number">14.2.3</span> Example<a href="spearmans-rho.html#example-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is a simple example of a correlation between two variables where non-linearity may be important. Singing accuracy is naturally skewed heavily, and develops non-linearly throughout life.</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="spearmans-rho.html#cb509-1" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;singing_data.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="spearmans-rho.html#cb542-1" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;singing_data.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 284 Columns: 2
 ## ── Column specification ────────────────────
 ## Delimiter: &quot;,&quot;
@@ -723,15 +729,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>The relevant dataset contains just two variables: accuracy (measured in cents) and age (participant age). The scatterplot below shows the relationship between these two variables:</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="spearmans-rho.html#cb511-1" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
-<span id="cb511-2"><a href="spearmans-rho.html#cb511-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb511-3"><a href="spearmans-rho.html#cb511-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
-<span id="cb511-4"><a href="spearmans-rho.html#cb511-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb511-5"><a href="spearmans-rho.html#cb511-5" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb511-6"><a href="spearmans-rho.html#cb511-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-396-1.png" width="672" /></p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="spearmans-rho.html#cb544-1" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
+<span id="cb544-2"><a href="spearmans-rho.html#cb544-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb544-3"><a href="spearmans-rho.html#cb544-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
+<span id="cb544-4"><a href="spearmans-rho.html#cb544-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb544-5"><a href="spearmans-rho.html#cb544-5" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb544-6"><a href="spearmans-rho.html#cb544-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-414-1.png" width="672" /></p>
 <p>To calculate Spearman’s rho, the steps are much the same as the way they are for normal correlations - we use the same <code>cor.test()</code> function that we saw earlier. The main difference is that we now must specify the <code>method</code> argument to equal to <code>"spearman"</code>, which will calculate Spearman’s rho instead.. Here, we see results consistent with a Pearson’s correlation; a significant, positive association between age and accuracy (<span class="math inline">\(\rho\)</span> = .53, <em>p</em> &lt; .001).</p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="spearmans-rho.html#cb512-1" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="spearmans-rho.html#cb545-1" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in cor.test.default(singing$accuracy, singing$age, method =
 ## &quot;spearman&quot;): Cannot compute exact p-value with ties</code></pre>
 <pre><code>## 

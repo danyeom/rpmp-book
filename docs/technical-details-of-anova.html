@@ -511,6 +511,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="outliers.html"><a href="outliers.html"><i class="fa fa-check"></i><b>10.5</b> Outliers</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="outliers.html"><a href="outliers.html#cooks-distance"><i class="fa fa-check"></i><b>10.5.1</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.5.2" data-path="outliers.html"><a href="outliers.html#mahalanobis-distance-d2"><i class="fa fa-check"></i><b>10.5.2</b> Mahalanobis’ distance, <span class="math inline">\(D^2\)</span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="outliers.html"><a href="outliers.html#what-happens-if-there-is-an-outlier"><i class="fa fa-check"></i><b>10.5.3</b> What happens if there is an outlier?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
 <ul>
@@ -616,12 +622,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
+<li class="chapter" data-level="14" data-path="nonpara.html"><a href="nonpara.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html"><i class="fa fa-check"></i><b>14.1</b> Parametric vs non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#introduction-7"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
-<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests-1"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html"><i class="fa fa-check"></i><b>14.2</b> Spearman’s rho</a>
 <ul>
@@ -738,52 +744,52 @@ F = \frac{MS_{comp}}{MS_{a}}
 <li><span class="math inline">\(df_a\)</span> is 808</li>
 </ul>
 <p>So we end up with a test statistic of <span class="math inline">\(F(1, 808) = 11.455\)</span>. We can use this to calculate a p-value by calculating the probability of getting a value of at least 11.455, on an F distribution with degrees of freedom parameters described above. We can visualise this below. Note that because the values for F are so infinitesimally small with these parameters and at this F-value, I’ve zoomed in the plot to visualise the highlighted area:</p>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="technical-details-of-anova.html#cb588-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb588-2"><a href="technical-details-of-anova.html#cb588-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> .<span class="dv">5</span>),</span>
-<span id="cb588-3"><a href="technical-details-of-anova.html#cb588-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>)</span>
-<span id="cb588-4"><a href="technical-details-of-anova.html#cb588-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb588-5"><a href="technical-details-of-anova.html#cb588-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb588-6"><a href="technical-details-of-anova.html#cb588-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb588-7"><a href="technical-details-of-anova.html#cb588-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb588-8"><a href="technical-details-of-anova.html#cb588-8" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb588-9"><a href="technical-details-of-anova.html#cb588-9" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb588-10"><a href="technical-details-of-anova.html#cb588-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">11.455</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb588-11"><a href="technical-details-of-anova.html#cb588-11" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">12</span>, <span class="at">y =</span> <span class="fl">0.0024</span>, <span class="at">label =</span> <span class="st">&quot;F = 11.455&quot;</span>) <span class="sc">+</span></span>
-<span id="cb588-12"><a href="technical-details-of-anova.html#cb588-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> df, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>), </span>
-<span id="cb588-13"><a href="technical-details-of-anova.html#cb588-13" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">11.455</span>, <span class="dv">15</span>),</span>
-<span id="cb588-14"><a href="technical-details-of-anova.html#cb588-14" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb588-15"><a href="technical-details-of-anova.html#cb588-15" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
-<span id="cb588-16"><a href="technical-details-of-anova.html#cb588-16" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.003</span>)) <span class="sc">+</span></span>
-<span id="cb588-17"><a href="technical-details-of-anova.html#cb588-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;F-value&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="technical-details-of-anova.html#cb621-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb621-2"><a href="technical-details-of-anova.html#cb621-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> .<span class="dv">5</span>),</span>
+<span id="cb621-3"><a href="technical-details-of-anova.html#cb621-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>)</span>
+<span id="cb621-4"><a href="technical-details-of-anova.html#cb621-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb621-5"><a href="technical-details-of-anova.html#cb621-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb621-6"><a href="technical-details-of-anova.html#cb621-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb621-7"><a href="technical-details-of-anova.html#cb621-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb621-8"><a href="technical-details-of-anova.html#cb621-8" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb621-9"><a href="technical-details-of-anova.html#cb621-9" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb621-10"><a href="technical-details-of-anova.html#cb621-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">11.455</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;royalblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb621-11"><a href="technical-details-of-anova.html#cb621-11" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">12</span>, <span class="at">y =</span> <span class="fl">0.0024</span>, <span class="at">label =</span> <span class="st">&quot;F = 11.455&quot;</span>) <span class="sc">+</span></span>
+<span id="cb621-12"><a href="technical-details-of-anova.html#cb621-12" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> df, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">809</span>), </span>
+<span id="cb621-13"><a href="technical-details-of-anova.html#cb621-13" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">11.455</span>, <span class="dv">15</span>),</span>
+<span id="cb621-14"><a href="technical-details-of-anova.html#cb621-14" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb621-15"><a href="technical-details-of-anova.html#cb621-15" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
+<span id="cb621-16"><a href="technical-details-of-anova.html#cb621-16" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.003</span>)) <span class="sc">+</span></span>
+<span id="cb621-17"><a href="technical-details-of-anova.html#cb621-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;F-value&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Computation failed in `stat_function()`.
 ## Caused by error in `fun()`:
 ## ! could not find function &quot;fun&quot;</code></pre>
 <pre><code>## Warning: Removed 20 rows containing missing values
 ## or values outside the scale range
 ## (`geom_line()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-444-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-462-1.png" width="672" /></p>
 <p>R can manually calculate a p-value with the <code>pf()</code> function. <code>pf()</code> will calculate the probability of a value on the F distribution, given the two degrees of freedom parameters to characterise the distribution. <code>lower.tail = FALSE</code> is used to indicate that we want to calculate the probability of getting something <em>above</em> our critical F-value; <code>lower.tail = TRUE</code> would calculuate the probability <em>below</em> it.</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="technical-details-of-anova.html#cb591-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="fl">11.45514</span>, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">808</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="technical-details-of-anova.html#cb624-1" tabindex="-1"></a><span class="fu">pf</span>(<span class="fl">11.45514</span>, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">808</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.0007473355</code></pre>
 <p>Note that our p-value isn’t exactly the same as the value in the table - this is because we’ve used rounded values. The code below extracts the unrounded values and uses them in the calculations. As you can see we get the exact p-value in the table.</p>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="technical-details-of-anova.html#cb593-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">anova</span>(flow_block1, flow_block2)</span>
-<span id="cb593-2"><a href="technical-details-of-anova.html#cb593-2" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="technical-details-of-anova.html#cb626-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">anova</span>(flow_block1, flow_block2)</span>
+<span id="cb626-2"><a href="technical-details-of-anova.html#cb626-2" tabindex="-1"></a>x</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"809","2":"10124.204","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"808","2":"9982.903","3":"1","4":"141.3011","5":"11.43668","6":"0.0007546911","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="technical-details-of-anova.html#cb594-1" tabindex="-1"></a><span class="co"># Using the output from anova() to manually calculate p-value</span></span>
-<span id="cb594-2"><a href="technical-details-of-anova.html#cb594-2" tabindex="-1"></a>SSb <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">1</span>]</span>
-<span id="cb594-3"><a href="technical-details-of-anova.html#cb594-3" tabindex="-1"></a>SSa <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">2</span>]</span>
-<span id="cb594-4"><a href="technical-details-of-anova.html#cb594-4" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block2))</span>
-<span id="cb594-5"><a href="technical-details-of-anova.html#cb594-5" tabindex="-1"></a>pb <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block1))</span>
-<span id="cb594-6"><a href="technical-details-of-anova.html#cb594-6" tabindex="-1"></a>dfa <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pa</span>
-<span id="cb594-7"><a href="technical-details-of-anova.html#cb594-7" tabindex="-1"></a>dfb <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pb</span>
-<span id="cb594-8"><a href="technical-details-of-anova.html#cb594-8" tabindex="-1"></a></span>
-<span id="cb594-9"><a href="technical-details-of-anova.html#cb594-9" tabindex="-1"></a>f_val <span class="ot">&lt;-</span> ((SSb<span class="sc">-</span>SSa)<span class="sc">/</span>(pa<span class="sc">-</span>pb))<span class="sc">/</span>(SSa<span class="sc">/</span>dfa)</span>
-<span id="cb594-10"><a href="technical-details-of-anova.html#cb594-10" tabindex="-1"></a></span>
-<span id="cb594-11"><a href="technical-details-of-anova.html#cb594-11" tabindex="-1"></a><span class="fu">pf</span>(f_val, <span class="at">df1 =</span> dfb<span class="sc">-</span>dfa, <span class="at">df2 =</span> dfa, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="technical-details-of-anova.html#cb627-1" tabindex="-1"></a><span class="co"># Using the output from anova() to manually calculate p-value</span></span>
+<span id="cb627-2"><a href="technical-details-of-anova.html#cb627-2" tabindex="-1"></a>SSb <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">1</span>]</span>
+<span id="cb627-3"><a href="technical-details-of-anova.html#cb627-3" tabindex="-1"></a>SSa <span class="ot">&lt;-</span> x<span class="sc">$</span>RSS[<span class="dv">2</span>]</span>
+<span id="cb627-4"><a href="technical-details-of-anova.html#cb627-4" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block2))</span>
+<span id="cb627-5"><a href="technical-details-of-anova.html#cb627-5" tabindex="-1"></a>pb <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(flow_block1))</span>
+<span id="cb627-6"><a href="technical-details-of-anova.html#cb627-6" tabindex="-1"></a>dfa <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pa</span>
+<span id="cb627-7"><a href="technical-details-of-anova.html#cb627-7" tabindex="-1"></a>dfb <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w10_flow) <span class="sc">-</span> pb</span>
+<span id="cb627-8"><a href="technical-details-of-anova.html#cb627-8" tabindex="-1"></a></span>
+<span id="cb627-9"><a href="technical-details-of-anova.html#cb627-9" tabindex="-1"></a>f_val <span class="ot">&lt;-</span> ((SSb<span class="sc">-</span>SSa)<span class="sc">/</span>(pa<span class="sc">-</span>pb))<span class="sc">/</span>(SSa<span class="sc">/</span>dfa)</span>
+<span id="cb627-10"><a href="technical-details-of-anova.html#cb627-10" tabindex="-1"></a></span>
+<span id="cb627-11"><a href="technical-details-of-anova.html#cb627-11" tabindex="-1"></a><span class="fu">pf</span>(f_val, <span class="at">df1 =</span> dfb<span class="sc">-</span>dfa, <span class="at">df2 =</span> dfa, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.0007546911</code></pre>
 
 </div>

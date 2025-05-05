@@ -511,6 +511,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="outliers.html"><a href="outliers.html"><i class="fa fa-check"></i><b>10.5</b> Outliers</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="outliers.html"><a href="outliers.html#cooks-distance"><i class="fa fa-check"></i><b>10.5.1</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.5.2" data-path="outliers.html"><a href="outliers.html#mahalanobis-distance-d2"><i class="fa fa-check"></i><b>10.5.2</b> Mahalanobis’ distance, <span class="math inline">\(D^2\)</span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="outliers.html"><a href="outliers.html#what-happens-if-there-is-an-outlier"><i class="fa fa-check"></i><b>10.5.3</b> What happens if there is an outlier?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
 <ul>
@@ -616,12 +622,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
+<li class="chapter" data-level="14" data-path="nonpara.html"><a href="nonpara.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html"><i class="fa fa-check"></i><b>14.1</b> Parametric vs non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#introduction-7"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
-<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests-1"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html"><i class="fa fa-check"></i><b>14.2</b> Spearman’s rho</a>
 <ul>
@@ -705,7 +711,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">13.3.1</span> Running mediations in R<a href="mediation-sobels-test-and-bootstrapping.html#running-mediations-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are many packages available to run mediations in R, including the well-known package <code>mediation</code> package. One of the most popular software tools for running mediations (and moderations), particularly for SPSS users, is the <a href="https://processmacro.org/index.html">PROCESS macro by Andrew Hayes</a>. PROCESS is essentially a set of code that can run a series of what we call <em>conditional process models</em> - including mediation and moderation.</p>
 <p>Note that due to copyright reasons, the R version of process isn’t available on this book’s corresponding GitHub repo; however, it can be downloaded for free from the official site using the link above. Detailed documentation is available in Hayes (2022). Loading PROCESS is not quite like loading a package in R as it isn’t available in package form. To load it, you must use the <code>source()</code> function in base R, which will run another R script. Place the <code>process.R</code> file somewhere you can find it, and pass the file path to <code>source()</code>. It will take a little bit to load depending on your computer’s specs, but if it has loaded correctly then you should see the following:</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb496-1" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;process.R&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb529-1" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;process.R&quot;</span>))</span></code></pre></div>
 <pre><code>## 
 ## ********************* PROCESS for R Version 4.3.1 ********************* 
 ##  
@@ -734,15 +740,15 @@ t_{ab} = \frac{ab}{SE_{ab}}
 - <code>x</code>, <code>y</code> and <code>m</code> specify the predictor, outcome and mediator respectively.
 - <code>model = 4</code> specifies that we want to run a mediation. (PROCESS comes with 20-odd different model types!)
 - <code>normal = 1</code> and <code>boot = 0</code> specifies that we only want a Sobel test for the indirect effect.</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-1" tabindex="-1"></a>med_sobel <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
-<span id="cb498-2"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-2" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
-<span id="cb498-3"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;happiness&quot;</span>,</span>
-<span id="cb498-4"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;grade&quot;</span>,</span>
-<span id="cb498-5"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-5" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">&quot;self_esteem&quot;</span>,</span>
-<span id="cb498-6"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
-<span id="cb498-7"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-7" tabindex="-1"></a>  <span class="at">normal =</span> <span class="dv">1</span>,</span>
-<span id="cb498-8"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-8" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">0</span></span>
-<span id="cb498-9"><a href="mediation-sobels-test-and-bootstrapping.html#cb498-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-1" tabindex="-1"></a>med_sobel <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
+<span id="cb531-2"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-2" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
+<span id="cb531-3"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;happiness&quot;</span>,</span>
+<span id="cb531-4"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;grade&quot;</span>,</span>
+<span id="cb531-5"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-5" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">&quot;self_esteem&quot;</span>,</span>
+<span id="cb531-6"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
+<span id="cb531-7"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-7" tabindex="-1"></a>  <span class="at">normal =</span> <span class="dv">1</span>,</span>
+<span id="cb531-8"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-8" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">0</span></span>
+<span id="cb531-9"><a href="mediation-sobels-test-and-bootstrapping.html#cb531-9" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## 
 ## ********************* PROCESS for R Version 4.3.1 ********************* 
 ##  
@@ -814,16 +820,16 @@ t_{ab} = \frac{ab}{SE_{ab}}
 <li><code>boot = 1000</code> means that we want to bootstrap/resample 1000 times. While this is ok for now (and relatively fast), depending on the data you may want to up this to 10000 or higher.</li>
 <li><code>seed = 2024</code> sets a <em>seed</em> for this run. Because bootstrapping involves random sampling, every run will give slightly different results (which isn’t good for replicability/transparency). Setting a seed locks R into generating the same values on every run.</li>
 </ul>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-1" tabindex="-1"></a>med_bootstrap <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
-<span id="cb500-2"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-2" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
-<span id="cb500-3"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;happiness&quot;</span>,</span>
-<span id="cb500-4"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;grade&quot;</span>,</span>
-<span id="cb500-5"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-5" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">&quot;self_esteem&quot;</span>,</span>
-<span id="cb500-6"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
-<span id="cb500-7"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-7" tabindex="-1"></a>  <span class="at">bc =</span> <span class="dv">1</span>,</span>
-<span id="cb500-8"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-8" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">1000</span>,</span>
-<span id="cb500-9"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-9" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">2024</span></span>
-<span id="cb500-10"><a href="mediation-sobels-test-and-bootstrapping.html#cb500-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-1" tabindex="-1"></a>med_bootstrap <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
+<span id="cb533-2"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-2" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
+<span id="cb533-3"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;happiness&quot;</span>,</span>
+<span id="cb533-4"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;grade&quot;</span>,</span>
+<span id="cb533-5"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-5" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">&quot;self_esteem&quot;</span>,</span>
+<span id="cb533-6"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
+<span id="cb533-7"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-7" tabindex="-1"></a>  <span class="at">bc =</span> <span class="dv">1</span>,</span>
+<span id="cb533-8"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-8" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">1000</span>,</span>
+<span id="cb533-9"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-9" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">2024</span></span>
+<span id="cb533-10"><a href="mediation-sobels-test-and-bootstrapping.html#cb533-10" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## 
 ## ********************* PROCESS for R Version 4.3.1 ********************* 
 ##  

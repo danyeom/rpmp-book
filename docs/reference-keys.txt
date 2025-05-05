@@ -250,6 +250,10 @@ comparing-models
 comparing-r2
 nested-model-tests
 fit-indices
+outliers
+cooks-distance
+mahalanobis-distance-d2
+what-happens-if-there-is-an-outlier
 logistic-regression
 probability-and-odds
 reminder-of-probabilities
@@ -318,10 +322,10 @@ moderation-example
 example-scenario-1
 setting-up-in-r
 output-11
-non-parametric-tests
+nonpara
 parametric-vs-non-parametric-tests
 introduction-7
-non-parametric-tests-1
+non-parametric-tests
 spearmans-rho
 introduction-8
 understanding-ranks

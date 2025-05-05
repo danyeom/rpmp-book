@@ -511,6 +511,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="outliers.html"><a href="outliers.html"><i class="fa fa-check"></i><b>10.5</b> Outliers</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="outliers.html"><a href="outliers.html#cooks-distance"><i class="fa fa-check"></i><b>10.5.1</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.5.2" data-path="outliers.html"><a href="outliers.html#mahalanobis-distance-d2"><i class="fa fa-check"></i><b>10.5.2</b> Mahalanobis’ distance, <span class="math inline">\(D^2\)</span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="outliers.html"><a href="outliers.html#what-happens-if-there-is-an-outlier"><i class="fa fa-check"></i><b>10.5.3</b> What happens if there is an outlier?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
 <ul>
@@ -616,12 +622,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
+<li class="chapter" data-level="14" data-path="nonpara.html"><a href="nonpara.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html"><i class="fa fa-check"></i><b>14.1</b> Parametric vs non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#introduction-7"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
-<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests-1"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html"><i class="fa fa-check"></i><b>14.2</b> Spearman’s rho</a>
 <ul>
@@ -717,10 +723,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>bestest2 - Diagnosis at age 2. Two levels: autism and PDD (pervasive developmental disorder).</li>
 </ul>
 <p>We will take a look at the first autism dataset (“autism_kw”). In this dataset, we want to conduct an ANOVA comparing socialisation age equivalents (VSAE) between children with varying levels of expressive language development.</p>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="kruskal-wallis-anova.html#cb531-1" tabindex="-1"></a>autism <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;autism_long.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb531-2"><a href="kruskal-wallis-anova.html#cb531-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb531-3"><a href="kruskal-wallis-anova.html#cb531-3" tabindex="-1"></a>    <span class="at">sicdegp =</span> <span class="fu">factor</span>(sicdegp)</span>
-<span id="cb531-4"><a href="kruskal-wallis-anova.html#cb531-4" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="kruskal-wallis-anova.html#cb564-1" tabindex="-1"></a>autism <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;autism_long.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb564-2"><a href="kruskal-wallis-anova.html#cb564-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb564-3"><a href="kruskal-wallis-anova.html#cb564-3" tabindex="-1"></a>    <span class="at">sicdegp =</span> <span class="fu">factor</span>(sicdegp)</span>
+<span id="cb564-4"><a href="kruskal-wallis-anova.html#cb564-4" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## Rows: 63 Columns: 7
 ## ── Column specification ────────────────────
 ## Delimiter: &quot;,&quot;
@@ -733,40 +739,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="checking-assumptions-normal-anova" class="section level3 hasAnchor" number="14.5.3">
 <h3><span class="header-section-number">14.5.3</span> Checking assumptions (normal ANOVA)<a href="kruskal-wallis-anova.html#checking-assumptions-normal-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s what a regular ANOVA would look like on this data - specifically, the assumption checks. We can see that both assumptions are violated; Levene’s test is significant (<em>F</em>(2, 60) = 4.57, <em>p</em> =. 014), and the Shaprio-Wilks test is too (backed up by a funky looking Q-Q plot; <em>W</em> = .86, <em>p</em> &lt; .001).</p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="kruskal-wallis-anova.html#cb533-1" tabindex="-1"></a>autism_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="kruskal-wallis-anova.html#cb534-1" tabindex="-1"></a><span class="co"># levene&#39;s test</span></span>
-<span id="cb534-2"><a href="kruskal-wallis-anova.html#cb534-2" tabindex="-1"></a></span>
-<span id="cb534-3"><a href="kruskal-wallis-anova.html#cb534-3" tabindex="-1"></a>autism <span class="sc">%&gt;%</span></span>
-<span id="cb534-4"><a href="kruskal-wallis-anova.html#cb534-4" tabindex="-1"></a>  <span class="fu">levene_test</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="kruskal-wallis-anova.html#cb566-1" tabindex="-1"></a>autism_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="kruskal-wallis-anova.html#cb567-1" tabindex="-1"></a><span class="co"># levene&#39;s test</span></span>
+<span id="cb567-2"><a href="kruskal-wallis-anova.html#cb567-2" tabindex="-1"></a></span>
+<span id="cb567-3"><a href="kruskal-wallis-anova.html#cb567-3" tabindex="-1"></a>autism <span class="sc">%&gt;%</span></span>
+<span id="cb567-4"><a href="kruskal-wallis-anova.html#cb567-4" tabindex="-1"></a>  <span class="fu">levene_test</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"60","3":"4.573272","4":"0.01417174"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="kruskal-wallis-anova.html#cb535-1" tabindex="-1"></a><span class="co"># Shapiro-wilks</span></span>
-<span id="cb535-2"><a href="kruskal-wallis-anova.html#cb535-2" tabindex="-1"></a></span>
-<span id="cb535-3"><a href="kruskal-wallis-anova.html#cb535-3" tabindex="-1"></a><span class="fu">shapiro.test</span>(autism_aov<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="kruskal-wallis-anova.html#cb568-1" tabindex="-1"></a><span class="co"># Shapiro-wilks</span></span>
+<span id="cb568-2"><a href="kruskal-wallis-anova.html#cb568-2" tabindex="-1"></a></span>
+<span id="cb568-3"><a href="kruskal-wallis-anova.html#cb568-3" tabindex="-1"></a><span class="fu">shapiro.test</span>(autism_aov<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  autism_aov$residuals
 ## W = 0.86118, p-value = 4.232e-06</code></pre>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="kruskal-wallis-anova.html#cb537-1" tabindex="-1"></a>autism_aov <span class="sc">%&gt;%</span></span>
-<span id="cb537-2"><a href="kruskal-wallis-anova.html#cb537-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb537-3"><a href="kruskal-wallis-anova.html#cb537-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb537-4"><a href="kruskal-wallis-anova.html#cb537-4" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)</span>
-<span id="cb537-5"><a href="kruskal-wallis-anova.html#cb537-5" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb537-6"><a href="kruskal-wallis-anova.html#cb537-6" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb537-7"><a href="kruskal-wallis-anova.html#cb537-7" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb537-8"><a href="kruskal-wallis-anova.html#cb537-8" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-412-1.png" width="672" /></p>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="kruskal-wallis-anova.html#cb570-1" tabindex="-1"></a>autism_aov <span class="sc">%&gt;%</span></span>
+<span id="cb570-2"><a href="kruskal-wallis-anova.html#cb570-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb570-3"><a href="kruskal-wallis-anova.html#cb570-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb570-4"><a href="kruskal-wallis-anova.html#cb570-4" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)</span>
+<span id="cb570-5"><a href="kruskal-wallis-anova.html#cb570-5" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb570-6"><a href="kruskal-wallis-anova.html#cb570-6" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb570-7"><a href="kruskal-wallis-anova.html#cb570-7" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb570-8"><a href="kruskal-wallis-anova.html#cb570-8" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-430-1.png" width="672" /></p>
 <p>Now, these aren’t too bad in general, but let’s assume for the sake of practice that these violations are severe enough that we would consider using non-parametrics instead.</p>
 </div>
 <div id="output-14" class="section level3 hasAnchor" number="14.5.4">
 <h3><span class="header-section-number">14.5.4</span> Output<a href="kruskal-wallis-anova.html#output-14" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To conduct a Kruskal-Wallis ANOVA in R, we can use the <code>kruskal.test()</code> function. This function works very similarly to <code>aov()</code>, meaning that we can provide the same notation as we normally would:</p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="kruskal-wallis-anova.html#cb538-1" tabindex="-1"></a>autism_kw <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span>
-<span id="cb538-2"><a href="kruskal-wallis-anova.html#cb538-2" tabindex="-1"></a>autism_kw</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="kruskal-wallis-anova.html#cb571-1" tabindex="-1"></a>autism_kw <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span>
+<span id="cb571-2"><a href="kruskal-wallis-anova.html#cb571-2" tabindex="-1"></a>autism_kw</span></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
@@ -774,7 +780,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Kruskal-Wallis chi-squared = 28.474, df = 2, p-value = 6.562e-07</code></pre>
 <p>Note here that the test statistic in a Kruskal-Wallis is a chi-square distribution, with a df of <em>g</em> - 1 (where <em>g</em> = number of groups). This is sometimes called <em>H</em>, but is mathematically equivalent to the chi-square we are familiar with. Our overall result is significant (<span class="math inline">\(\chi^2\)</span>(2) = 28.47, <em>p</em> &lt; .001).</p>
 <p>The same notation is used for calculating effect sizes, using the <code>rank_epsilon_squared()</code> function from <code>effectsize</code>:</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="kruskal-wallis-anova.html#cb540-1" tabindex="-1"></a><span class="fu">rank_epsilon_squared</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="kruskal-wallis-anova.html#cb573-1" tabindex="-1"></a><span class="fu">rank_epsilon_squared</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["rank_epsilon_squared"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.4592533","2":"0.95","3":"0.3473419","4":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -783,7 +789,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Here, our non-parametric effect size is epsilon squared, <span class="math inline">\(\epsilon^2\)</span>. It is not commonly seen so can be hard to interpret, but people have made various guidelines of their own.</p>
 <p>Jamovi uses Dwass-Steel-Critchlow-Fligner tests (phew!), or simply DCSF tests, for ‘post hoc’ pairwise comparisons. We’ll use the same here for compatibility with Jamovi. The only thing you really need to know about these comparisons is that they have an in-built correction for the family-wise error rate, so do not need adjusting after the analyses have been run.</p>
 <p>To run these tests, we need a new package called <code>PMCMRplus</code>. Within this package is a function called <code>dscfAllPairsTest()</code>, which will give us the <em>p</em>-values for each pairwise comparison. The required code is exactly the same as we have used above:</p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="kruskal-wallis-anova.html#cb541-1" tabindex="-1"></a>PMCMRplus<span class="sc">::</span><span class="fu">dscfAllPairsTest</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="kruskal-wallis-anova.html#cb574-1" tabindex="-1"></a>PMCMRplus<span class="sc">::</span><span class="fu">dscfAllPairsTest</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using Dwass-Steele-Critchlow-Fligner all-pairs test</code></pre>
 <pre><code>## data: vsae by sicdegp</code></pre>

@@ -1,4 +1,4 @@
-# Non-parametric tests
+# Non-parametric tests {#nonpara}
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)

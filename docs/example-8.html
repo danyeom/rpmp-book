@@ -511,6 +511,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.4.2</b> Nested model tests</a></li>
 <li class="chapter" data-level="10.4.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.4.3</b> Fit indices</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="outliers.html"><a href="outliers.html"><i class="fa fa-check"></i><b>10.5</b> Outliers</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="outliers.html"><a href="outliers.html#cooks-distance"><i class="fa fa-check"></i><b>10.5.1</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.5.2" data-path="outliers.html"><a href="outliers.html#mahalanobis-distance-d2"><i class="fa fa-check"></i><b>10.5.2</b> Mahalanobis’ distance, <span class="math inline">\(D^2\)</span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="outliers.html"><a href="outliers.html#what-happens-if-there-is-an-outlier"><i class="fa fa-check"></i><b>10.5.3</b> What happens if there is an outlier?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
 <ul>
@@ -616,12 +622,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
+<li class="chapter" data-level="14" data-path="nonpara.html"><a href="nonpara.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html"><i class="fa fa-check"></i><b>14.1</b> Parametric vs non-parametric tests</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#introduction-7"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
-<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests-1"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html"><i class="fa fa-check"></i><b>14.2</b> Spearman’s rho</a>
 <ul>
@@ -712,7 +718,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>heart_rate: Resting heart rate of the participant, in bpm</li>
 <li>sleep_disorder: Whether the participant has a sleep disorder or not (0 = No, 1 = Yes)</li>
 </ul>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="example-8.html#cb415-1" tabindex="-1"></a>sleep <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;logistic&quot;</span>, <span class="st">&quot;sleep_data.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="example-8.html#cb448-1" tabindex="-1"></a>sleep <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;logistic&quot;</span>, <span class="st">&quot;sleep_data.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 374 Columns: 11
 ## ── Column specification ────────────────────
 ## Delimiter: &quot;,&quot;
@@ -741,11 +747,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.3.2</span> Building the model<a href="example-8.html#building-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here is where things start to change a little from what we’re used to. Because we are not building a linear model but a <em>generalised</em> linear model, we now need to use the <code>glm()</code> function in R. <code>glm()</code>, by and large, works exactly the same way as you have seen with <code>lm()</code>; you need to give it arguments in the form of <code>outcome ~ predictor</code>, and once you have run the function you need to call the results using <code>summary()</code>. The first thing that changes is that by virtue of the fact that we are using the GLM, we must specify what link function we are working with. This can be set using the <code>family</code> argument.</p>
 <p>In the instance of logistic regression, the relevant family is <code>binomial</code>, and specifically <code>binomial(link = "logit")</code>:</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="example-8.html#cb417-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> data, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="example-8.html#cb450-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> data, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>))</span></code></pre></div>
 <p>The formula is a little strange, but <code>binomial()</code> is essentially a function that takes the argument <code>link</code>, for which we set the value as <code>"logit"</code>. The <code>logit</code> argument is the default for this function though, so we can simply shorten this down to <code>family = binomial</code> specifically for logistic regressions. (For other binomial-based GLMs, you must specify the link.)</p>
 <p>With that in mind, we can build our logistic regression models. In the first instance, let’s see if age predicts whether someone has a sleep disorder.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="example-8.html#cb418-1" tabindex="-1"></a>sleep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
-<span id="cb418-2"><a href="example-8.html#cb418-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="example-8.html#cb451-1" tabindex="-1"></a>sleep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
+<span id="cb451-2"><a href="example-8.html#cb451-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
@@ -766,7 +772,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>Note that our output table is a little bit different than what we’re used to; this is because of the change in procedure mentioned on the previous page (from least squares to maximum likelihood). However, we can still largely read this output the same way as we have. We can see that age is a significant predictor (<em>p</em> &lt; .001).</p>
 <p>The coefficient for age is .115. We can get the coefficients seperately by using the <code>coef()</code> function on our model:</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="example-8.html#cb420-1" tabindex="-1"></a><span class="fu">coef</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="example-8.html#cb453-1" tabindex="-1"></a><span class="fu">coef</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## (Intercept)         age 
 ##  -5.2802414   0.1154897</code></pre>
 <p>What does this mean? It means that for every 1 unit increase in age, the <em>log odds</em> increase by .115. This is important because remember that we’re modelling against <em>log odds</em>, not odds or probability! In essence, we have estimated the following:</p>
@@ -778,7 +784,7 @@ log(Odds) = -5.280 + (0.115 \times x_1)
 Odds = e^{\beta_0 + \beta_1 x_1 + \epsilon_i}
 \]</span></p>
 <p>To obtain the odds, as discussed on the previous page, we need to exponentiate our coefficients:</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="example-8.html#cb422-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm))</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="example-8.html#cb455-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm))</span></code></pre></div>
 <pre><code>## (Intercept)         age 
 ## 0.005091201 1.122423009</code></pre>
 <p>The exponentiated coefficient gives us our <strong>odds ratio.</strong> This describes the <em>multiplied</em> change in odds for every 1 unit increase of our predictor. In this instance, for every 1 year increase in age, the predicted odds of having a sleep disorder are multiplied by 1.12. Another way to describe this is that the predicted odds of having a sleep disorder increase by a <em>factor of</em> 1.12.</p>
@@ -788,12 +794,12 @@ Odds = e^{\beta_0 + \beta_1 x_1 + \epsilon_i}
 <li>The probability increases by 1.12 - same deal as above, the probability isn’t linearly related to the predictors.</li>
 </ul>
 <p>We can get confidence intervals around our estimated coefficients using <code>confint()</code>, just like we have previously. We can do this either on the original coefficients, or the exponentiated ones. The confidence interval around the exponentiated coefficients gives us a 95% CI for our odds ratio.This is probably more useful in terms of interpretation than the log odds coefficients, so we have chosen them here.</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="example-8.html#cb424-1" tabindex="-1"></a><span class="fu">confint</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="example-8.html#cb457-1" tabindex="-1"></a><span class="fu">confint</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                   2.5 %     97.5 %
 ## (Intercept) -6.60646431 -4.0395789
 ## age          0.08712071  0.1457569</code></pre>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="example-8.html#cb427-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm))</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="example-8.html#cb460-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm))</span></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                   2.5 %     97.5 %
 ## (Intercept) 0.001351603 0.01760488
@@ -817,25 +823,25 @@ P(Y = 1) = \frac{1}{1 + e^{-(-5.280 + (0.115 \times 50)}}
 P(Y = 1) = \frac{1}{1 + e^{-0.47}}
 \]</span></p>
 <p>We can use R to do the calculation for us:</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="example-8.html#cb430-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.47</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="example-8.html#cb463-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.47</span>))</span></code></pre></div>
 <pre><code>## [1] 0.6153838</code></pre>
 <p>Thus, a 50 year old person has a 61.5% chance of having a sleep disorder (note that this has been rounded).</p>
 <p>We can actually plot the expected probabilities across a range of values for age by first asking R to predict the probabilities across a range of ages. This will draw the characteristic S-shaped curve of the logistic model. We use the <code>predict()</code> function to calculate the predicted probabilities of each value of our predictor. The <code>type = response</code> argument is used here to tell R to predict the probabilities (and not the log odds).</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="example-8.html#cb432-1" tabindex="-1"></a>age_range <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb432-2"><a href="example-8.html#cb432-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">70</span></span>
-<span id="cb432-3"><a href="example-8.html#cb432-3" tabindex="-1"></a>) </span>
-<span id="cb432-4"><a href="example-8.html#cb432-4" tabindex="-1"></a></span>
-<span id="cb432-5"><a href="example-8.html#cb432-5" tabindex="-1"></a>age_range<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(sleep_glm, age_range, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb432-6"><a href="example-8.html#cb432-6" tabindex="-1"></a></span>
-<span id="cb432-7"><a href="example-8.html#cb432-7" tabindex="-1"></a>age_range <span class="sc">%&gt;%</span></span>
-<span id="cb432-8"><a href="example-8.html#cb432-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb432-9"><a href="example-8.html#cb432-9" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> predicted)</span>
-<span id="cb432-10"><a href="example-8.html#cb432-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb432-11"><a href="example-8.html#cb432-11" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> binomial), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb432-12"><a href="example-8.html#cb432-12" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="example-8.html#cb465-1" tabindex="-1"></a>age_range <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb465-2"><a href="example-8.html#cb465-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">70</span></span>
+<span id="cb465-3"><a href="example-8.html#cb465-3" tabindex="-1"></a>) </span>
+<span id="cb465-4"><a href="example-8.html#cb465-4" tabindex="-1"></a></span>
+<span id="cb465-5"><a href="example-8.html#cb465-5" tabindex="-1"></a>age_range<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(sleep_glm, age_range, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb465-6"><a href="example-8.html#cb465-6" tabindex="-1"></a></span>
+<span id="cb465-7"><a href="example-8.html#cb465-7" tabindex="-1"></a>age_range <span class="sc">%&gt;%</span></span>
+<span id="cb465-8"><a href="example-8.html#cb465-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb465-9"><a href="example-8.html#cb465-9" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> predicted)</span>
+<span id="cb465-10"><a href="example-8.html#cb465-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb465-11"><a href="example-8.html#cb465-11" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> binomial), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb465-12"><a href="example-8.html#cb465-12" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial glm!</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-337-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-355-1.png" width="672" /></p>
 </div>
 <div id="logistic-regression-with-multiple-predictors" class="section level3 hasAnchor" number="11.3.4">
 <h3><span class="header-section-number">11.3.4</span> Logistic regression with multiple predictors<a href="example-8.html#logistic-regression-with-multiple-predictors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -848,8 +854,8 @@ log(Odds) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 ... \beta_n x_n + \epsilon_i
 Odds = e^{\beta_0 + \beta_1 x_1 + \beta_2 x_2 ... \beta_n x_n + \epsilon_i}
 \]</span>
 And so on so forth with our probability formula. Really, this is just an extension of what we have already seen in multiple regression, but applied to a logistic regression context. Let’s see what this looks like in R with the below code:</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="example-8.html#cb435-1" tabindex="-1"></a>sleep_glm2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age <span class="sc">+</span> stress, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
-<span id="cb435-2"><a href="example-8.html#cb435-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm2)</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="example-8.html#cb468-1" tabindex="-1"></a>sleep_glm2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age <span class="sc">+</span> stress, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
+<span id="cb468-2"><a href="example-8.html#cb468-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = sleep_disorder ~ age + stress, family = binomial, 
@@ -872,11 +878,11 @@ And so on so forth with our probability formula. Really, this is just an extensi
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>What do we see here? Well, we can see that age is a significant predictor of the presence of a sleep disorder (<em>p</em> &lt; .001), and stress is as well (<em>p</em> &lt; .001). Namely, for every year increase in age, the log odds of a sleep disorder increase by 0.205, holding stress constant. Likewise, for every 1 point increase in stress, the log odds increase by .776, holding age constant.</p>
 <p>To convert this into odds ratios, we exponentiate the coefficients:</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="example-8.html#cb437-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm2))</span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="example-8.html#cb470-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm2))</span></code></pre></div>
 <pre><code>##  (Intercept)          age       stress 
 ## 1.739856e-06 1.227649e+00 2.172449e+00</code></pre>
 <p>And let’s generate confidence intervals for our odds ratios too:</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="example-8.html#cb439-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm2))</span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="example-8.html#cb472-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm2))</span></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                    2.5 %       97.5 %
 ## (Intercept) 9.083049e-08 0.0000240461
