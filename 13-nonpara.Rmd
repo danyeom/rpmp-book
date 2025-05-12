@@ -1,12 +1,13 @@
 # Non-parametric tests {#nonpara}
 
-```{r warning = FALSE, message = FALSE, echo = FALSE}
+```{r 13_packages, warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
 library(ggpubr)
 library(here)
 library(rstatix)
 library(effectsize)
 library(DescTools)
+library(PMCMRplus)
 ```
 
 ## Parametric vs non-parametric tests

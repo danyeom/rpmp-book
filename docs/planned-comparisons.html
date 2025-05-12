@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.9 Planned comparisons | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.9 Planned comparisons | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -814,19 +815,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>To set up the contrasts, we first need to know the exact order of our group variable/</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="planned-comparisons.html#cb354-1" tabindex="-1"></a><span class="co"># IDentify levels</span></span>
-<span id="cb354-2"><a href="planned-comparisons.html#cb354-2" tabindex="-1"></a></span>
-<span id="cb354-3"><a href="planned-comparisons.html#cb354-3" tabindex="-1"></a><span class="fu">levels</span>(w9_slices<span class="sc">$</span>group)</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="planned-comparisons.html#cb379-1" tabindex="-1"></a><span class="co"># IDentify levels</span></span>
+<span id="cb379-2"><a href="planned-comparisons.html#cb379-2" tabindex="-1"></a></span>
+<span id="cb379-3"><a href="planned-comparisons.html#cb379-3" tabindex="-1"></a><span class="fu">levels</span>(w9_slices<span class="sc">$</span>group)</span></code></pre></div>
 <pre><code>## [1] &quot;caramel&quot; &quot;lemon&quot;   &quot;vanilla&quot;</code></pre>
 <p>Once we know that, we need to create new variables that will contain the contrasts. To do this, we will create a vector of length <em>k</em>, where <em>k</em> is the total number of groups in the independent/categorical variable. In this case, becasue we have three slice flavours, we need to create vectors of length 3.</p>
 <p>The value of each vector item corresponds to the level of the factor. For <code>emmeans</code>, all we need to do is use a 1 for the group of interest, and 0 of others; <code>emmeans</code> will build the correct contrast coefficients later depending on what we give it.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="planned-comparisons.html#cb356-1" tabindex="-1"></a><span class="co"># Define contrasts</span></span>
-<span id="cb356-2"><a href="planned-comparisons.html#cb356-2" tabindex="-1"></a></span>
-<span id="cb356-3"><a href="planned-comparisons.html#cb356-3" tabindex="-1"></a>lemon <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb356-4"><a href="planned-comparisons.html#cb356-4" tabindex="-1"></a>caramel <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb356-5"><a href="planned-comparisons.html#cb356-5" tabindex="-1"></a>vanilla <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="planned-comparisons.html#cb381-1" tabindex="-1"></a><span class="co"># Define contrasts</span></span>
+<span id="cb381-2"><a href="planned-comparisons.html#cb381-2" tabindex="-1"></a></span>
+<span id="cb381-3"><a href="planned-comparisons.html#cb381-3" tabindex="-1"></a>lemon <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb381-4"><a href="planned-comparisons.html#cb381-4" tabindex="-1"></a>caramel <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb381-5"><a href="planned-comparisons.html#cb381-5" tabindex="-1"></a>vanilla <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
 <p>Finally, we can perform our contrasts. We start with the same call to <code>emmeans()</code>, so we must first give it our aov`/ANOVA object and indicate our grouping variable.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="planned-comparisons.html#cb357-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) </span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="planned-comparisons.html#cb382-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) </span></code></pre></div>
 <pre><code>##  group   emmean    SE df lower.CL upper.CL
 ##  caramel   5.62 0.277 60     5.06     6.17
 ##  lemon     5.14 0.277 60     4.59     5.70
@@ -835,34 +836,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Confidence level used: 0.95</code></pre>
 <p>Next, we use the <code>contrast()</code> function to perform the pairwise comparisons. (<code>pairs()</code>, which we saw earlier, is just a shorthand form of <code>contrast()</code>.) Here is where we give the function the speicifc contrasts that we want to run. We do this by supplying the <code>methods</code> argument in <code>contrast()</code>. This argument takes a <strong>list</strong> of comparisons we want to run, expressed in <code>A - B</code> form (where A and B are the variables of <em>contrast coefficients</em> representing the groups we want to compare).</p>
 <p>For example, if we want to compare our caramel and vanilla slices, we simply need to give <code>caramel - vanilla</code> - both of which we defined just above - to a list in <code>contrast()</code>. This will generate the following set of output.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="planned-comparisons.html#cb359-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
-<span id="cb359-2"><a href="planned-comparisons.html#cb359-2" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
-<span id="cb359-3"><a href="planned-comparisons.html#cb359-3" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
-<span id="cb359-4"><a href="planned-comparisons.html#cb359-4" tabindex="-1"></a>      caramel <span class="sc">-</span> vanilla</span>
-<span id="cb359-5"><a href="planned-comparisons.html#cb359-5" tabindex="-1"></a>    )</span>
-<span id="cb359-6"><a href="planned-comparisons.html#cb359-6" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="planned-comparisons.html#cb384-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
+<span id="cb384-2"><a href="planned-comparisons.html#cb384-2" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
+<span id="cb384-3"><a href="planned-comparisons.html#cb384-3" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
+<span id="cb384-4"><a href="planned-comparisons.html#cb384-4" tabindex="-1"></a>      caramel <span class="sc">-</span> vanilla</span>
+<span id="cb384-5"><a href="planned-comparisons.html#cb384-5" tabindex="-1"></a>    )</span>
+<span id="cb384-6"><a href="planned-comparisons.html#cb384-6" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>##  contrast    estimate    SE df t.ratio p.value
 ##  c(1, 0, -1)   -0.952 0.392 60  -2.431  0.0180</code></pre>
 <p>The output is a little hard to read through, but we can fix that by assigning a name to the list item:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="planned-comparisons.html#cb361-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
-<span id="cb361-2"><a href="planned-comparisons.html#cb361-2" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
-<span id="cb361-3"><a href="planned-comparisons.html#cb361-3" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
-<span id="cb361-4"><a href="planned-comparisons.html#cb361-4" tabindex="-1"></a>      <span class="st">&quot;Caramel - vanilla&quot;</span> <span class="ot">=</span> caramel <span class="sc">-</span> vanilla</span>
-<span id="cb361-5"><a href="planned-comparisons.html#cb361-5" tabindex="-1"></a>    )</span>
-<span id="cb361-6"><a href="planned-comparisons.html#cb361-6" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="planned-comparisons.html#cb386-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
+<span id="cb386-2"><a href="planned-comparisons.html#cb386-2" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
+<span id="cb386-3"><a href="planned-comparisons.html#cb386-3" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
+<span id="cb386-4"><a href="planned-comparisons.html#cb386-4" tabindex="-1"></a>      <span class="st">&quot;Caramel - vanilla&quot;</span> <span class="ot">=</span> caramel <span class="sc">-</span> vanilla</span>
+<span id="cb386-5"><a href="planned-comparisons.html#cb386-5" tabindex="-1"></a>    )</span>
+<span id="cb386-6"><a href="planned-comparisons.html#cb386-6" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>##  contrast          estimate    SE df t.ratio p.value
 ##  Caramel - vanilla   -0.952 0.392 60  -2.431  0.0180</code></pre>
 <p>Unlike Jamovi and gamlj, which can only display one given comparison at a time, <code>emmeans()</code> can display multiple. Here, for example, is how we would define our second contrast - that is, vanilla vs the other two slices:</p>
 <pre><code>list(&quot;Vanilla vs others&quot; = vanilla - (caramel + lemon)/2</code></pre>
 <p>Note here that we take the average of ‘caramel’ and ‘lemon’, by adding them up and dividing by 2. This will have the same effect of making their contrast coefficients half the weight of the vanilla level (i.e. it does the maths of calculating the correct contrast coefficient so that it sums to zero).</p>
 <p>Instead of making this a whole new <code>emmeans()</code> call, we can simply add that list term to the <code>list()</code> part of our code in the main call.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="planned-comparisons.html#cb364-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
-<span id="cb364-2"><a href="planned-comparisons.html#cb364-2" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
-<span id="cb364-3"><a href="planned-comparisons.html#cb364-3" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
-<span id="cb364-4"><a href="planned-comparisons.html#cb364-4" tabindex="-1"></a>      <span class="st">&quot;Caramel - vanilla&quot;</span> <span class="ot">=</span> caramel <span class="sc">-</span> vanilla,</span>
-<span id="cb364-5"><a href="planned-comparisons.html#cb364-5" tabindex="-1"></a>      <span class="st">&quot;Vanilla - others&quot;</span> <span class="ot">=</span> vanilla <span class="sc">-</span> (lemon <span class="sc">+</span> caramel)<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb364-6"><a href="planned-comparisons.html#cb364-6" tabindex="-1"></a>    )</span>
-<span id="cb364-7"><a href="planned-comparisons.html#cb364-7" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="planned-comparisons.html#cb389-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
+<span id="cb389-2"><a href="planned-comparisons.html#cb389-2" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
+<span id="cb389-3"><a href="planned-comparisons.html#cb389-3" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
+<span id="cb389-4"><a href="planned-comparisons.html#cb389-4" tabindex="-1"></a>      <span class="st">&quot;Caramel - vanilla&quot;</span> <span class="ot">=</span> caramel <span class="sc">-</span> vanilla,</span>
+<span id="cb389-5"><a href="planned-comparisons.html#cb389-5" tabindex="-1"></a>      <span class="st">&quot;Vanilla - others&quot;</span> <span class="ot">=</span> vanilla <span class="sc">-</span> (lemon <span class="sc">+</span> caramel)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb389-6"><a href="planned-comparisons.html#cb389-6" tabindex="-1"></a>    )</span>
+<span id="cb389-7"><a href="planned-comparisons.html#cb389-7" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>##  contrast          estimate    SE df t.ratio p.value
 ##  Caramel - vanilla   -0.952 0.392 60  -2.431  0.0180
 ##  Vanilla - others     1.190 0.339 60   3.509  0.0009</code></pre>

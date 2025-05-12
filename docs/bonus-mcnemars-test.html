@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.6 Bonus: McNemar’s Test | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.6 Bonus: McNemar’s Test | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -815,9 +816,9 @@ p_b = p_c
 <div id="example-1" class="section level3 hasAnchor" number="5.6.3">
 <h3><span class="header-section-number">5.6.3</span> Example<a href="bonus-mcnemars-test.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is a fictional dataset from 70 registered voters in a fictional country. The 70 voters were asked whether they intended to vote for the current government twice: before event X happened in the government and after event X. Their responses were recorded as simple Yes-No answers.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="bonus-mcnemars-test.html#cb142-1" tabindex="-1"></a>w7_voting <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_voting.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="bonus-mcnemars-test.html#cb145-1" tabindex="-1"></a>w7_voting <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_voting.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 71 Columns: 3
-## ── Column specification ────────────────────
+## ── Column specification ─────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (2): before, after
 ## dbl (1): id
@@ -825,10 +826,10 @@ p_b = p_c
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Here is a contingency table of our data:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="bonus-mcnemars-test.html#cb144-1" tabindex="-1"></a>w7_voting_table <span class="ot">&lt;-</span> <span class="fu">table</span>(w7_voting<span class="sc">$</span>before, w7_voting<span class="sc">$</span>after) </span>
-<span id="cb144-2"><a href="bonus-mcnemars-test.html#cb144-2" tabindex="-1"></a></span>
-<span id="cb144-3"><a href="bonus-mcnemars-test.html#cb144-3" tabindex="-1"></a>w7_voting_table <span class="sc">%&gt;%</span></span>
-<span id="cb144-4"><a href="bonus-mcnemars-test.html#cb144-4" tabindex="-1"></a>  <span class="fu">addmargins</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="bonus-mcnemars-test.html#cb147-1" tabindex="-1"></a>w7_voting_table <span class="ot">&lt;-</span> <span class="fu">table</span>(w7_voting<span class="sc">$</span>before, w7_voting<span class="sc">$</span>after) </span>
+<span id="cb147-2"><a href="bonus-mcnemars-test.html#cb147-2" tabindex="-1"></a></span>
+<span id="cb147-3"><a href="bonus-mcnemars-test.html#cb147-3" tabindex="-1"></a>w7_voting_table <span class="sc">%&gt;%</span></span>
+<span id="cb147-4"><a href="bonus-mcnemars-test.html#cb147-4" tabindex="-1"></a>  <span class="fu">addmargins</span>()</span></code></pre></div>
 <pre><code>##      
 ##       No Yes Sum
 ##   No  18  28  46
@@ -848,9 +849,9 @@ p_b = p_c
 \chi^2 = 7.41
 \]</span></p>
 <p>If we were doing this fully by hand, we could consult a chi-squared table and see what the relevant <em>p</em>-value would be with this chi-squared value and a df = 1. However, we’ll skip straight to Jamovi. A McNemar test can be run in R using the <code>mcnemar.test()</code> function in base R:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="bonus-mcnemars-test.html#cb146-1" tabindex="-1"></a>w7_voting_mcn <span class="ot">&lt;-</span> <span class="fu">mcnemar.test</span>(w7_voting_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb146-2"><a href="bonus-mcnemars-test.html#cb146-2" tabindex="-1"></a></span>
-<span id="cb146-3"><a href="bonus-mcnemars-test.html#cb146-3" tabindex="-1"></a>w7_voting_mcn</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="bonus-mcnemars-test.html#cb149-1" tabindex="-1"></a>w7_voting_mcn <span class="ot">&lt;-</span> <span class="fu">mcnemar.test</span>(w7_voting_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb149-2"><a href="bonus-mcnemars-test.html#cb149-2" tabindex="-1"></a></span>
+<span id="cb149-3"><a href="bonus-mcnemars-test.html#cb149-3" tabindex="-1"></a>w7_voting_mcn</span></code></pre></div>
 <pre><code>## 
 ##  McNemar&#39;s Chi-squared test
 ## 

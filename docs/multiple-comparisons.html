@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.3 Multiple comparisons | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.3 Multiple comparisons | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -747,7 +748,7 @@ scenario, the Type I error rate will stack with each new comparison,
 meaning that our overall Type I error rate will climb higher and higher.
 This means that the chance of finding a false positive will increase
 (see graph below).</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-180-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-181-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>This overall rate of Type I errors is called the family-wise error rate
 (FWER). ‘Family’ in this context refers to a family of comparisons -
 like the comparison across A to E that we saw above.</p>
@@ -829,6 +830,48 @@ your adjusted <em>p</em>-values:</p>
 overcorrect (and subsequently reject too many); the Holm correction
 still corrects the overall FWER without also increasing the overall Type
 II rate as well.</p>
+</div>
+<div id="post-hocs-in-r" class="section level3 hasAnchor" number="7.3.4">
+<h3><span class="header-section-number">7.3.4</span> Post-hocs in R<a href="multiple-comparisons.html#post-hocs-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To just get adjusted <em>p</em>-values, we can use the function <code>pairwise.t.test()</code>. This needs three arguments:</p>
+<ol style="list-style-type: decimal">
+<li><code>x</code> refers to the column of data for the outcome, expressed as <code>data$x</code>.</li>
+<li><code>g</code> refers to the group/IV, again as <code>data$g</code>.</li>
+<li><code>p.adjust.method</code> refers to the adjustment method. Note this argument does not allow Tukey adjustments: only Bonferroni and Holm are allowed.</li>
+</ol>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="multiple-comparisons.html#cb202-1" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> w9_slices<span class="sc">$</span>rating, <span class="at">g =</span> w9_slices<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  w9_slices$rating and w9_slices$group 
+## 
+##         caramel lemon 
+## lemon   0.6866  -     
+## vanilla 0.0541  0.0017
+## 
+## P value adjustment method: bonferroni</code></pre>
+<p>A more powerful and flexible method is using the <code>emmeans</code> package. <code>emmeans</code> stands for estimated marginal means, which are model-derived estimates of each group’s mean. Simple effects tests are generally run on the estimate marginal means, and thus this package allows us a handy way to run these comparisons.</p>
+<p>There are two steps to using <code>emmeans</code>:</p>
+<ol style="list-style-type: decimal">
+<li>Define the estimated marginal means for the post-hocs.</li>
+</ol>
+<p>This is simple to do. We call the <code>emmeans()</code> function, which will set up all comparisons for the post-hoc. This function needs two arguments at minimum:</p>
+<ul>
+<li>The <code>aov</code> model name, and</li>
+<li>The variable (i.e. the groups) from which you are comparing levels against. This is given as <code>~ group</code>, where group denotes our IV.</li>
+</ul>
+<p>Imagine an ANOVA model named <code>model_aov</code>, with variable <code>A</code> that defines the groups in our ANOVA. Our first step would be to set up the comparisons using <code>emmeans()</code> like below:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="multiple-comparisons.html#cb204-1" tabindex="-1"></a>model_em <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Generate pairwise comparisons for the post-hoc.</li>
+</ol>
+<p>Continuing on from the example above, we can use the <code>pairs()</code> function on our EM object, <code>model_em</code>, to run the post-hocs. <code>infer = TRUE</code> will generate confidence intervals for the difference in EM means. By default this will be set at 95% confidence, which is typically what we want.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="multiple-comparisons.html#cb205-1" tabindex="-1"></a><span class="fu">pairs</span>(model_em, <span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>If we want to adjust the <em>p</em>-values at this stage, we can give <code>pairs()</code> an additional argument <code>adjust</code>, with the name of the adjustment method as a string. <code>pairs()</code> will let you use Tukey, Bonferroni and Holm adjustments.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="multiple-comparisons.html#cb206-1" tabindex="-1"></a><span class="fu">pairs</span>(model_em, <span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<p>Optionally, to do this all in one go we could simply pipe from <code>emmeans()</code> to <code>pairs()</code> as follows:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="multiple-comparisons.html#cb207-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A) <span class="sc">%&gt;%</span></span>
+<span id="cb207-2"><a href="multiple-comparisons.html#cb207-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.3 Hierarchical regression | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.3 Hierarchical regression | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -722,9 +723,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>DFS_Total: a measure of proneness to flow.</li>
 <li>age: participant’s age.</li>
 </ul>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="hierarchical-regression.html#cb389-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="hierarchical-regression.html#cb414-1" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;w10_flow.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 811 Columns: 6
-## ── Column specification ────────────────────
+## ── Column specification ─────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (6): id, age, GoldMSI, DFS_Total, trait_anxiety, openness
 ## 
@@ -741,13 +742,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="building-blocks-and-output" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> Building blocks and output<a href="hierarchical-regression.html#building-blocks-and-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start by building block 1. We can do this with <code>lm()</code> as per normal. I will call this <code>flow_block1</code>:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="hierarchical-regression.html#cb391-1" tabindex="-1"></a>flow_block1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="hierarchical-regression.html#cb416-1" tabindex="-1"></a>flow_block1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI, <span class="at">data =</span> w10_flow)</span></code></pre></div>
 <p>To build block 2, we simply need to create a new regression model with both predictors, as if we were running this in one go:</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="hierarchical-regression.html#cb392-1" tabindex="-1"></a>flow_block2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="hierarchical-regression.html#cb417-1" tabindex="-1"></a>flow_block2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div>
 <p>Finally, we do the same thing for block 3:</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="hierarchical-regression.html#cb393-1" tabindex="-1"></a>flow_block3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> openness <span class="sc">+</span> trait_anxiety, <span class="at">data =</span> w10_flow)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="hierarchical-regression.html#cb418-1" tabindex="-1"></a>flow_block3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> openness <span class="sc">+</span> trait_anxiety, <span class="at">data =</span> w10_flow)</span></code></pre></div>
 <p>Now let’s print the summary of each model. We can see in block 1 that Gold MSI scores significantly predict proneness to flow:</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="hierarchical-regression.html#cb394-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block1)</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="hierarchical-regression.html#cb419-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ GoldMSI, data = w10_flow)
@@ -767,7 +768,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.2118, Adjusted R-squared:  0.2108 
 ## F-statistic: 217.4 on 1 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>In Block 2, both the Gold MSI and openness are significant predictors of flow proneness.</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="hierarchical-regression.html#cb396-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block2)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="hierarchical-regression.html#cb421-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ GoldMSI + openness, data = w10_flow)
@@ -788,7 +789,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.2228, Adjusted R-squared:  0.2209 
 ## F-statistic: 115.8 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Finally, in block 3 we can see that all three remain significant predictors. However, the effect of openness to experience has changed slightly (an unreliable heuristic for this is that the p-value has increased):</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="hierarchical-regression.html#cb398-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block3)</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="hierarchical-regression.html#cb423-1" tabindex="-1"></a><span class="fu">summary</span>(flow_block3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ GoldMSI + openness + trait_anxiety, 

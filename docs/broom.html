@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B The broom() package | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B The broom() package | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -706,9 +707,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">B</span> The <code>broom()</code> package<a href="broom.html#broom" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The <code>broom()</code> package provides a couple of helper functions for tidying up output from numerous R functions for running tests. This can be useful in a couple of instances, particularly for either a) accessing certain aspects of models that are not immediately accessible or b) simply for neater manipulation for multiple models.</p>
 <p>While <code>broom</code> is a part of the tidyverse, it is not one of the tidyverse’s default packages. Therefore, to use the package you need to manually call it:</p>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="broom.html#cb596-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="broom.html#cb621-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div>
 <p>For the examples on this page, we will use datasets from the <code>datarium</code> package (which we have seen before), just because it provides a nice set of datasets for demonstrating how these functions work. So let’s go ahead and load that too:</p>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="broom.html#cb597-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span></code></pre></div>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="broom.html#cb622-1" tabindex="-1"></a><span class="fu">library</span>(datarium)</span></code></pre></div>
 <p>The main functions in <code>broom</code> are generic functions with what R calls several <em>methods</em> - i.e. ways that the function handles different types of data or objects. Every method comes with a different set of arguments that can change the output, depending on what object the function is run on. For example, if you use <code>tidy()</code> on an <code>lm</code> object, you get different optional arguments than for an <code>aov()</code> object, and so on. The next page gives examples using the <code>datarium</code> datasets.</p>
 </div>
             </section>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.1 Anovas and the F-distribution | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.1 Anovas and the F-distribution | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -705,8 +706,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="anovas-and-the-f-distribution" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Anovas and the <em>F</em>-distribution<a href="anovas-and-the-f-distribution.html#anovas-and-the-f-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
-<p>Just as we’ve done so for chi-squares and <em>t</em>-tests, let’s begin with an
-overview of the mathematical and conceptual underpinnings of the ANOVA.</p>
+<p>Just as we’ve done so for chi-squares and <em>t</em>-tests, let’s begin with an overview of the mathematical and conceptual underpinnings of the ANOVA.</p>
 </div>
 <div id="the-basic-logic-of-anovas" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> The basic logic of ANOVAs<a href="anovas-and-the-f-distribution.html#the-basic-logic-of-anovas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -778,7 +778,7 @@ two degrees of freedom the process is a little bit more complicated.
 Most <em>F</em>-stat tables actually provide multiple tables, corresponding to
 different alpha levels. For now, we will always use the table
 corresponding to alpha = 0.05, a snippet of which is below:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="anovas-and-the-f-distribution.html#cb196-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="anovas-and-the-f-distribution.html#cb199-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;img/w9_f-table.png&quot;</span>))</span></code></pre></div>
 <p><img src="img/w9_f-table.png" width="1072" /></p>
 <p>To read this table, you need to know both degrees of freedom (more on
 how to find that on the next page). The columns, marked df1, refer to

@@ -1,6 +1,6 @@
 # Exploratory factor analysis 
 
-```{r warning = FALSE, message = FALSE, echo = FALSE}
+```{r 11_packages, warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
 library(ggpubr)
 library(here)

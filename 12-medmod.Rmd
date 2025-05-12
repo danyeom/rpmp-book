@@ -6,7 +6,7 @@ In other instances, we might expect interaction effects like what we saw in [two
 
 This chapter will cover both mediation and moderation.
 
-```{r warning = FALSE, message = FALSE, echo = FALSE}
+```{r 12_packages, warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
 library(ggpubr)
 library(here)

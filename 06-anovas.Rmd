@@ -12,30 +12,16 @@ library(ggpubr)
 library(here)
 library(rstatix)
 library(effectsize)
+library(emmeans)
 
 # i_am("code/bookdown/06-anovas.Rmd")
 ```
 
-*t*-tests, as we saw last week, were a simple way of comparing a
-continuous outcome between two groups or conditions (i.e. one
-categorical variable with two levels). However, it's also common to
-compare across three or more groups when doing real research. To test
-this kind of hypothesis where we have three or more groups, we need to
-turn to a different method - the ANOVA. ANOVAs are useful when you have
-one categorical IV with 3+ levels, and one continuous DV.
+*t*-tests, as we saw last week, were a simple way of comparing a continuous outcome between two groups or conditions (i.e. one categorical variable with two levels). However, it's also common to compare across three or more groups when doing real research. To test this kind of hypothesis where we have three or more groups, we need to turn to a different method - the ANOVA. ANOVAs are useful when you have one categorical IV with 3+ levels, and one continuous DV.
 
-The ANOVA is perhaps one of the most common statistical tests you will
-see in music psychology literature, in part because they generalise to a
-lot of research designs. In many respects, this week is fairly important
-in terms of knowing how to conduct an ANOVA and when. We'll only be
-stepping through the basics this week, but there are some really
-important fundamentals to cover here.
+The ANOVA is perhaps one of the most common statistical tests you will see in music psychology literature, in part because they generalise to a lot of research designs. In many respects, this week is fairly important in terms of knowing how to conduct an ANOVA and when. We'll only be stepping through the basics this week, but there are some really important fundamentals to cover here.
 
-It's also common to analyse two independent variables against one
-dependent variable. These too can be done using ANOVAs. While we won't
-go into this in this module, there will be an Extension Module that
-deals with this separately - check it out sometime around Week 10/11 if
-you're interested.
+It's also common to analyse two independent variables against one dependent variable. These too can be done using ANOVAs. While we won't go into this in this module, there will be an Extension Module that deals with this separately - check it out sometime around Week 10/11 if you're interested.
 
 By the end of this module you should be able to:
 
@@ -54,8 +40,7 @@ knitr::include_graphics("https://imgs.xkcd.com/comics/third_way_2x.png")
 ## Anovas and the *F*-distribution
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
-Just as we've done so for chi-squares and *t*-tests, let's begin with an
-overview of the mathematical and conceptual underpinnings of the ANOVA.
+Just as we've done so for chi-squares and *t*-tests, let's begin with an overview of the mathematical and conceptual underpinnings of the ANOVA.
 :::
 
 ### The basic logic of ANOVAs
@@ -432,6 +417,40 @@ pf(q = 15.75, df1 = 2, df2 = 9, lower.tail = FALSE)
 
 ## Multiple comparisons
 
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+w9_memory <- read_csv(here("data", "Week_9", "w9_playing_from_memory.csv"))
+w9_slices <- read_csv(here("data", "week_9", "w9_slices.csv"))
+
+w9_memory_wide <- w9_memory
+
+w9_memory <- w9_memory %>%
+  pivot_longer(
+    cols = PFM_97:PFM_99,
+    names_to = "time",
+    values_to = "memory_score"
+  )
+
+w9_slices_aov <- aov(rating ~ group, data = w9_slices)
+
+w9_memory_aov <- w9_memory %>%
+  anova_test(dv = memory_score, wid = Participant, within = time) 
+
+w9_memory_design <- factorial_design(
+  data = w9_memory,
+  dv = memory_score,
+  within = time,
+  wid = Participant
+)
+
+w9_memory_alternate <- car::Anova(
+  mod = w9_memory_design$model,
+  idata = w9_memory_design$idata,
+  idesign = w9_memory_design$idesign,
+  type = 3
+)
+```
+
+
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
 On this page we talk about what happens after a significant ANOVA
 result, as well as some more detail about the multiple comparisons
@@ -579,41 +598,59 @@ overcorrect (and subsequently reject too many); the Holm correction
 still corrects the overall FWER without also increasing the overall Type
 II rate as well.
 
-## Eta-squared
+### Post-hocs in R
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
-w9_memory <- read_csv(here("data", "Week_9", "w9_playing_from_memory.csv"))
-w9_slices <- read_csv(here("data", "week_9", "w9_slices.csv"))
+To just get adjusted *p*-values, we can use the function `pairwise.t.test()`. This needs three arguments: 
 
-w9_memory_wide <- w9_memory
+1. `x` refers to the column of data for the outcome, expressed as `data$x`.
+2. `g` refers to the group/IV, again as `data$g`.
+3. `p.adjust.method` refers to the adjustment method. Note this argument does not allow Tukey adjustments: only Bonferroni and Holm are allowed.
 
-w9_memory <- w9_memory %>%
-  pivot_longer(
-    cols = PFM_97:PFM_99,
-    names_to = "time",
-    values_to = "memory_score"
-  )
-
-w9_slices_aov <- aov(rating ~ group, data = w9_slices)
-
-w9_memory_aov <- w9_memory %>%
-  anova_test(dv = memory_score, wid = Participant, within = time) 
-
-w9_memory_design <- factorial_design(
-  data = w9_memory,
-  dv = memory_score,
-  within = time,
-  wid = Participant
-)
-
-w9_memory_alternate <- car::Anova(
-  mod = w9_memory_design$model,
-  idata = w9_memory_design$idata,
-  idesign = w9_memory_design$idesign,
-  type = 3
-)
+```{r}
+pairwise.t.test(x = w9_slices$rating, g = w9_slices$group, p.adjust.method = "bonferroni")
 ```
 
+A more powerful and flexible method is using the `emmeans` package. `emmeans` stands for estimated marginal means, which are model-derived estimates of each group's mean. Simple effects tests are generally run on the estimate marginal means, and thus this package allows us a handy way to run these comparisons. 
+
+There are two steps to using `emmeans`:
+
+1. Define the estimated marginal means for the post-hocs.
+
+This is simple to do. We call the `emmeans()` function, which will set up all comparisons for the post-hoc. This function needs two arguments at minimum: 
+
+- The `aov` model name, and
+- The variable (i.e. the groups) from which you are comparing levels against. This is given as `~ group`, where group denotes our IV.
+
+Imagine an ANOVA model named `model_aov`, with variable `A` that defines the groups in our ANOVA. Our first step would be to set up the comparisons using `emmeans()` like below:
+
+```{r eval = FALSE}
+model_em <- emmeans(model_aov, ~ A)
+```
+
+2. Generate pairwise comparisons for the post-hoc.
+
+Continuing on from the example above, we can use the `pairs()` function on our EM object, `model_em`, to run the post-hocs. `infer = TRUE` will generate confidence intervals for the difference in EM means. By default this will be set at 95% confidence, which is typically what we want.
+
+```{r eval = FALSE}
+pairs(model_em, infer = TRUE)
+```
+
+If we want to adjust the *p*-values at this stage, we can give `pairs()` an additional argument `adjust`, with the name of the adjustment method as a string. `pairs()` will let you use Tukey, Bonferroni and Holm adjustments.
+
+```{r eval = FALSE}
+pairs(model_em, infer = TRUE, adjust = "holm")
+```
+
+Optionally, to do this all in one go we could simply pipe from `emmeans()` to `pairs()` as follows:
+
+```{r eval = FALSE}
+emmeans(model_aov, ~ A) %>%
+  pairs(infer = TRUE, adjust = "holm")
+```
+
+
+
+## Eta-squared
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
 Time to go over a new effect size measure! This time, we use eta-squared ($\eta^2$) as an effect size for ANOVAs.
@@ -664,11 +701,6 @@ Here is an example with a one-way ANOVA, which we will look at on the next page:
 ```{r}
 eta_squared(w9_slices_aov, alternative = "two.sided")
 ```
-For repeated-measures ANOVAs, the easiest way to calculate eta-squared using this function is to use `anova_test()` using the syntax described above. You can also use `eta_squared()` with a model built using `car::Anova()`. As both methods are a little involved, we'll deal with them in more detail on the page relating to repeated-measures ANOVAs.
-
-```{r}
-eta_squared(w9_memory_alternate, alternative = "two.sided")
-```
 
 ### An example
 
@@ -712,23 +744,15 @@ Alternatively, when it comes to eta-squared you can avoid using benchmarks entir
 ## One-way ANOVA
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
-In the previous section, we looked at how to compare differences between
-either two groups, or two points in time. But how do we compare more
-than that? The answer is the ANOVA (analysis of variance) - one of the
-most common general statistical models for hypothesis testing. If you do
-some statistical testing as part of your thesis, the ANOVA is likely
-going to be one of your most useful tools to have.
+In the previous section, we looked at how to compare differences between either two groups, or two points in time. But how do we compare more than that? The answer is the ANOVA (analysis of variance) - one of the most common general statistical models for hypothesis testing. If you do some statistical testing as part of your thesis, the ANOVA is likely going to be one of your most useful tools to have.
 :::
 
 ### The basic one-way ANOVA
 
-The between-groups one-way ANOVA is the most basic form of ANOVA, which
-aims to test differences between two or more groups. (Typically, ANOVAs
-are used when there are three or more groups, but can easily be used in
-situations where there are only two groups.)
+The between-groups one-way ANOVA is the most basic form of ANOVA, which aims to test differences between two or more groups. (Typically, ANOVAs
+are used when there are three or more groups, but can easily be used in situations where there are only two groups.)
 
-We've briefly mentioned the general hypotheses for all ANOVAs, but here
-they are again:
+We've briefly mentioned the general hypotheses for all ANOVAs, but here they are again:
 
 -   $H_0$: The means between groups are not significantly different.
     (i.e. $\mu_1 = \mu_2 = ... \mu_k$)
@@ -737,12 +761,7 @@ they are again:
 
 ### Example data
 
-In the seminar, we talk about an example from Watts et al. (2003). Below
-is another simple example, comparing taste ratings across three
-different types of slices: caramel slices, vanilla slices and lemon
-slices. Participants were randomly allocated to taste one of the three
-slices blindfolded, and were then asked to verbally rate its taste on a
-scale from 1-10 (10 being super tasty).
+In the seminar, we talk about an example from Watts et al. (2003). Below is another simple example, comparing taste ratings across three different types of slices: caramel slices, vanilla slices and lemon slices. Participants were randomly allocated to taste one of the three slices blindfolded, and were then asked to verbally rate its taste on a scale from 1-10 (10 being super tasty).
 
 ```{r}
 w9_slices <- read_csv(here("data", "week_9", "w9_slices.csv"))
@@ -823,25 +842,16 @@ Our main results suggest that there is a significant difference between means (*
 
 The output above told us that we could reject our basic null hypothesis - that there was no difference between means. However, remember that it doesn't tell us where those differences are. To figure out where they are, we need to follow up that ANOVA with post-hoc tests.
 
-To generate post-hocs, there are a couple of ways. Tukey tests can be calculated with `TukeyHSD()` or `tukey_hsd()`:
+To generate post-hocs, there are a couple of ways. Tukey tests can be calculated with `TukeyHSD()` or `emmeans()`:
 
 ```{r}
 TukeyHSD(w9_slices_aov)
 ```
 
-```{r eval = FALSE}
-# These will give the same output
-
-tukey_hsd(w9_slices_aov)
-
-w9_slices %>%
-  tukey_hsd(rating ~ group)
+```{r}
+emmeans(w9_slices_aov, ~ group) %>%
+  pairs(infer = TRUE, adjust = "tukey")
 ```
-
-```{r echo = FALSE}
-tukey_hsd(w9_slices_aov)
-```
-
 Here, you can see that we run a test for caramel vs lemon, caramel vs vanilla and lemon vs vanilla. For post-hocs in one-way ANOVAs, it is ok to stick to the Tukey-adjusted *p*-values. We can see that:
 
 -   There is no significant difference between ratings of caramel and lemon slices (mean difference, MD = .48; *p* = .449).
@@ -851,18 +861,15 @@ Here, you can see that we run a test for caramel vs lemon, caramel vs vanilla an
 To generate Bonferroni or Holm-corrected *p*-values, you need to use the `pairwise.t.test()` function:
 
 ```{r}
-pairwise.t.test(x = w9_slices$rating, g = w9_slices$group, p.adjust.method = "bonferroni")
+pairwise.t.test(x = w9_slices$rating, g = w9_slices$group, p.adjust.method = "holm")
 ```
-
-`rstatix::pairwise_t_test()` will also work, and looks like this:
+In this case, you must provide `p.adjust.method` as an argument. By default, this function will use Holm corrections. Alternatively, just change your `emmeans()` call:
 
 ```{r}
-w9_slices %>%
-  pairwise_t_test(rating ~ group, p.adjust.method = "bonferroni")
+emmeans(w9_slices_aov, ~ group) %>%
+  pairs(infer = TRUE, adjust = "holm")
 ```
-
-In both instances, you must provide `p.adjust.method` as an argument. By default, both versions will use Holm corrections.
-
+Here is how a write-up might look:
 
 <div style="background-color: #cce3c8;  padding: 1.75rem;">
 A one-way ANOVA was conducted to examine whether there were differences in preferences for types of slices. There was a significant large main effect of slice type (*F*(2, 60) = 6.90, *p* = .002, $\eta^2$ = .187). Post-hoc tests with Tukey HSD corrections showed that participants rated vanilla slices higher than caramel slices (mean difference, *MD* = .95, *p* = .047), as well as significantly higher than lemon slices (*MD* = 1.43, *p* = .002). However, there was no significant differencce between caramel and lemon slices (*p* = .449).
@@ -942,30 +949,77 @@ In R, most main packages will test the sphericity assumption along with the main
 
 ### ANOVA output
 
-R-Note: Repeated measures ANOVAs in R are *not* trivial in the slightest, and adapting this was a genuine challenge. To some extent this probably reflects the differences in approach between point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make many assumptions about what's going on along the way. Below is the easiest way to run this analysis.
+R-Note: Repeated measures ANOVAs in R are *not* trivial in the slightest, and adapting this was a genuine challenge. To some extent this probably reflects the differences in approach between point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make many assumptions about what's going on along the way. 
 
-Here's our overall output from the ANOVA. It looks (and reads) pretty much the same as our previous example, but just bear in mind that the top row in the within-subjects effect (i.e. the effect of interest). In addition, this time you can see that there are now three rows to be
-read:
+For that reason, now is a good time to introduce the `afex` package, which stands for "analysis of factorial experiments". The `aov_ez()` function will let us specify a repeated measures ANOVA in a very easy way. See below for an alternative using `rstatix`, although this is less flexible than the `afex` version.
+
+At a minimum, you must give the following arguments to `aov_ez()`:
+
+- `id`: The name of the column that identifies each participant
+- `dv`: The dependent variable/outcome
+- `data`: The name of the dataset
+- `within`: The name of the within-subjects IV/predictor
+
 
 ```{r}
-w9_memory_aov <- w9_memory %>%
-  anova_test(dv = memory_score, wid = Participant, within = time) 
+library(afex)
 
+w9_memory_aov <- aov_ez(
+  id = "Participant",
+  dv = "memory_score",
+  data = w9_memory,
+  within = "time",
+  type = 3,
+  anova_table = list(
+    correction = "HF",
+    es = "pes"
+  )
+)
+```
+
+Also worth noting is the `anova_table` argument, which specifies options for the main output. This argument takes a `list()` as the argument, and we can set multiple options within this list. Here, we have set two:
+
+- `correction = "HF"` specifies Huynh-Felt corrections. We can also ask for Greenhouse-Geisser corrections using `correction = "GG"`.
+- `es = "pes"` specifies partial eta-squared for effect size. This is ok for a one-way ANOVA; recall that for a one-way setting, normal and partial eta-squared are the same. 
+
+Now that we've built our ANOVA model we can ask for the output like so. This will also print out the sphericity test.
+
+Here's our overall output from the ANOVA. It looks (and reads) pretty much the same as our previous example, albeit with some minor differences.
+
+To see the full output, including the sphericity test, call `summary()` on your ANOVA object:
+
+```{r}
+summary(w9_memory_aov)
+```
+
+Here, our *p*-value for Mauchly's test is almost significant (*p* = .054); rather than going by a strict arbitrary cutoff, let's assume that it has been violated (both for teaching and for methodological purposes). Here, our epsilon value is high (~.95), so let's apply the Hyunh-Feldt correction. The associated epsilon value is $\epsilon = .943$; when reporting the repeated measures ANOVA we need to look at the rows corresponding to the Huynh-Feldt correction.
+
+`afex` will print out the *corrected* version of the test if you just print the object without using `summary()`. 
+
+```{r}
 w9_memory_aov
 ```
 
-Knowing which row to read is crucial here, as each one corresponds to a correction (or the original ANOVA). Here, our *p*-value is almost significant (*p* = .054); rather than going by a strict arbitrary cutoff, let's assume that it has been violated (both for teaching and for methodological purposes). Here, our epsilon value is high (~.95), so let's apply the Hyunh-Feldt correction. The associated epsilon value is $\epsilon = .943$; when reporting the repeated measures ANOVA we need to look at the rows corresponding to the Huynh-Feldt correction.
+Thus, with the corrected output we can see our effect of time is significant (*F*(1.92, 180.72) = 132.63, *p* < .001).
 
-The two columns to look for are the ones labelled `DF[HF]` - this gives the adjusted degrees of freedom with the Huynh-Feldt corrections (`DF[GG]` would give Greenhouse-Geisser dfs) - and `p[HF]`, which gives the adjusted *p*-value. Thus, with the corrected output we can see our
-effect of time is significant (*F*(1.92, 180.72) = 132.63, *p* < .001).
+A benefit of doing a repeated-measures ANOVA this way is that this model is compatible with the `effectsize` functions, including `eta_squared()`:
+
+```{r}
+eta_squared(w9_memory_aov, alternative = "two.sided")
+```
 
 ### Post-hoc tests
 
-As per usual, we follow up a significant overall ANOVA with a series of post-hoc comparisons (note this time we set `paired = TRUE`:
+As per usual, we follow up a significant overall ANOVA with a series of post-hoc comparisons:
 
 ```{r}
-w9_memory %>%
-  pairwise_t_test(memory_score ~ time, paired = TRUE, p.adjust.method = "bonferroni")
+emmeans(w9_memory_aov, ~ time) %>%
+  pairs(infer = TRUE, adjust = "holm")
+```
+As an alternative, we can use `pairwise.t.test()`. Note this time we set `paired = TRUE`.
+
+```{r}
+pairwise.t.test(w9_memory$memory_score, w9_memory$time, paired = TRUE)
 ```
 
 From this, we can see that all three means are significantly different from each other (*p* < .001, for brevity's sake). Scores increased year on year, i.e. 1997 < 1998 < 1999.
@@ -975,50 +1029,26 @@ A one-way repeated measures ANOVA was conducted to examine whether scores for pl
 </div>
 
 
-### Alternative using `car::Anova()`
+### Alternative using `rstatix`
 
-Below is an alternative way of running a repeated measures ANOVA, this time using the `car` package. The function `factorial_design()` from the `rstatix` package is a useful helper function that can generate the necessary arguments to `Anova()` for repeated measures tests.
+As mentioned above, repeated measures ANOVAs in R are not trivial at all. The solution using `rstatix` above is good, although it is not fully ideal. 
+
+Below is an alternative way of running a repeated measures ANOVA, this time using the `rstatix` package. It even uses similar arguments to the `afex` version above.
 
 ```{r}
-
-w9_memory_design <- factorial_design(
-  data = w9_memory,
-  dv = memory_score,
-  within = time,
-  wid = Participant
-)
+w9_memory_aov2 <- w9_memory %>%
+  anova_test(dv = memory_score, wid = Participant, within = time) 
 ```
 
-The important things that are generated by this function are:
-
--   `name$model`: this essentially creates an ANOVA model
-
--   `name$idata`: this specifies the levels of the within-subject
-    (repeated measures) factor
-
--   `name$idesign`: this creates a formula-style notation specifying
-    what the within-subjects IV(s) are
-
-We then just need to feed this to `car::Anova()` exactly as follows. Setting `type = 3` isn't strictly necessary here (this is more relevant for factorial ANOVAs):
-
 ```{r}
-w9_memory_alternate <- car::Anova(
-  mod = w9_memory_design$model,
-  idata = w9_memory_design$idata,
-  idesign = w9_memory_design$idesign,
-  type = 3
-)
+w9_memory_aov2
 ```
+The two columns to look for are the ones labelled `DF[HF]` - this gives the adjusted degrees of freedom with the Huynh-Feldt corrections (`DF[GG]` would give Greenhouse-Geisser dfs) - and `p[HF]`, which gives the adjusted *p*-value. 
 
-Now that we've built our ANOVA model we can ask for the output like so. `multivariate = FALSE` is just an argument to specify that we're doing a univariate analysis (i.e. one dependent outcome).
-
-```{r}
-summary(w9_memory_alternate, multivariate = FALSE)
-```
-
-A benefit of doing a repeated-measures ANOVA this way is that this model is compatible with the `effectsize` functions, including `eta_squared()`:
+Note that the `rstatix` version is not compatible with either `eta_squared()` (from the `effectsize` package) or `emmeans`. If you want post-hocs, you will need to use the `pairwise.t.test()` function or its `rstatix` equivalent. However, this does mean that it is not possible to do Tukey adjustments.
 
 ```{r}
-eta_squared(w9_memory_alternate, alternative = "two.sided")
+w9_memory %>%
+  pairwise_t_test(memory_score ~ time, paired = TRUE, p.adjust.method = "holm")
 ```
 

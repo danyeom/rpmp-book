@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.3 Goodness of fit | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.3 Goodness of fit | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -733,8 +734,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>A chi-square goodness of fit will allow us to test whether the distribution of colours in a sample of M&amp;Ms aligns with the published proportions.</li>
 </ul>
 <p>Here’s our dataset:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="goodness-of-fit.html#cb121-1" tabindex="-1"></a>mnm_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_M&amp;M.csv&quot;</span>))</span>
-<span id="cb121-2"><a href="goodness-of-fit.html#cb121-2" tabindex="-1"></a><span class="fu">head</span>(mnm_data)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="goodness-of-fit.html#cb124-1" tabindex="-1"></a>mnm_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_M&amp;M.csv&quot;</span>))</span>
+<span id="cb124-2"><a href="goodness-of-fit.html#cb124-2" tabindex="-1"></a><span class="fu">head</span>(mnm_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["colour"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"Red"},{"1":"2","2":"Red"},{"1":"3","2":"Red"},{"1":"4","2":"Red"},{"1":"5","2":"Red"},{"1":"6","2":"Red"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -804,24 +805,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.3.4</span> Using R<a href="goodness-of-fit.html#using-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The relevant function for doing a chi-square test in R is the <code>chisq.test()</code> function.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>By default, the <code>chisq.test()</code> function in R will assume that your categories have an equal chance of happening. However, in this instance we know that the colours are not evenly distributed. To ensure the proper probabilities are set beforehand, this needs to be specified by giving the <code>p</code> argument within <code>chisq.test()</code>. Note that the order of the expected probabilities needs to match the order they appear in the dataset (R will generally order these alphabetically unless told otherwise):<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="goodness-of-fit.html#cb122-1" tabindex="-1"></a><span class="co"># This pulls the relevant variable directly</span></span>
-<span id="cb122-2"><a href="goodness-of-fit.html#cb122-2" tabindex="-1"></a>w7_mnm_table <span class="ot">&lt;-</span> <span class="fu">table</span>(mnm_data<span class="sc">$</span>colour)</span>
-<span id="cb122-3"><a href="goodness-of-fit.html#cb122-3" tabindex="-1"></a></span>
-<span id="cb122-4"><a href="goodness-of-fit.html#cb122-4" tabindex="-1"></a>w7_mnm_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(w7_mnm_table, </span>
-<span id="cb122-5"><a href="goodness-of-fit.html#cb122-5" tabindex="-1"></a>                            <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.24</span>, <span class="fl">0.13</span>, <span class="fl">0.16</span>, <span class="fl">0.20</span>, <span class="fl">0.13</span>, <span class="fl">0.14</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="goodness-of-fit.html#cb125-1" tabindex="-1"></a><span class="co"># This pulls the relevant variable directly</span></span>
+<span id="cb125-2"><a href="goodness-of-fit.html#cb125-2" tabindex="-1"></a>w7_mnm_table <span class="ot">&lt;-</span> <span class="fu">table</span>(mnm_data<span class="sc">$</span>colour)</span>
+<span id="cb125-3"><a href="goodness-of-fit.html#cb125-3" tabindex="-1"></a></span>
+<span id="cb125-4"><a href="goodness-of-fit.html#cb125-4" tabindex="-1"></a>w7_mnm_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(w7_mnm_table, </span>
+<span id="cb125-5"><a href="goodness-of-fit.html#cb125-5" tabindex="-1"></a>                            <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.24</span>, <span class="fl">0.13</span>, <span class="fl">0.16</span>, <span class="fl">0.20</span>, <span class="fl">0.13</span>, <span class="fl">0.14</span>))</span></code></pre></div>
 </div>
 <div id="output" class="section level3 hasAnchor" number="5.3.5">
 <h3><span class="header-section-number">5.3.5</span> Output<a href="goodness-of-fit.html#output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s what our output looks like. First is our table of proportions. This can be really useful in laying out the data and seeing where the differences between observed and expected proportions might lie.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="goodness-of-fit.html#cb123-1" tabindex="-1"></a>w7_mnm_chisq<span class="sc">$</span>observed</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="goodness-of-fit.html#cb126-1" tabindex="-1"></a>w7_mnm_chisq<span class="sc">$</span>observed</span></code></pre></div>
 <pre><code>## 
 ##   Blue  Brown  Green Orange    Red Yellow 
 ##    133     96    139    133    108    103</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="goodness-of-fit.html#cb125-1" tabindex="-1"></a>w7_mnm_chisq<span class="sc">$</span>expected</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="goodness-of-fit.html#cb128-1" tabindex="-1"></a>w7_mnm_chisq<span class="sc">$</span>expected</span></code></pre></div>
 <pre><code>##   Blue  Brown  Green Orange    Red Yellow 
 ## 170.88  92.56 113.92 142.40  92.56  99.68</code></pre>
 <p>Next, here is our test output. The result is significant (<em>p</em> = .004), suggesting that the 2017 bag of M&amp;Ms does not follow the same distribution of colours as the 2008 values. (If you read the rest of Rick’s blog post, it turns out that somewhere between 2008 and 2017 they changed where M&amp;Ms are made, and actually split production across two factories that produce different distributions of colours. Rick eventually found out that his bag most likely came from one of the plants, although Mars has not made these proportions public like they used to.)</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="goodness-of-fit.html#cb127-1" tabindex="-1"></a>w7_mnm_chisq</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="goodness-of-fit.html#cb130-1" tabindex="-1"></a>w7_mnm_chisq</span></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.4 Eta-squared | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.4 Eta-squared | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -727,8 +728,8 @@ Variance_{total} = Variance_{between} + Variance_{within}
 <p>Where <span class="math inline">\(SS_{error}\)</span> is the sums of squares for the error/residual term in an ANOVA. In general, it’s good practice to default to at least reporting partial eta-squared. Again, in a one-way ANOVA this will give the same answer as regular eta-squared, but in a factorial design (where you have more than one IV) it will give a more precise estimate of each variable’s effect size.</p>
 <p>One more variant you will see is <em>generalised</em> eta-squared <span class="math inline">\(\eta^2_g\)</span>, which is similar to the partial variant. While partial eta-squared is great, it is sensitive to design - in other words, what variables are included in the analysis will influence the calculation of <span class="math inline">\(\eta^2_p\)</span>, meaning that it is only really comparable across studies of similar design. However, not every design will manipulate every predictor (e.g. gender), and so generalised eta-squared (<span class="math inline">\(\eta^2_G\)</span>) can handle this. This effect size is best used in meta-analyses.</p>
 <p>To calculate eta-squared using R, there are two ways as per usual. The first is by using tthe <code>anova_test()</code> function in <code>rstatix</code>. By default, <code>anova_test()</code> (and other ANOVA-related packages in R) will calculate <em>generalised</em> eta squared (labelled <code>ges</code> in the output). If you want partial eta-squared, you just need to give <code>anova_test()</code> the extra argument <code>effect.size = "pes"</code> as follows:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="eta-squared.html#cb199-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
-<span id="cb199-2"><a href="eta-squared.html#cb199-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="eta-squared.html#cb208-1" tabindex="-1"></a>w9_memory <span class="sc">%&gt;%</span></span>
+<span id="cb208-2"><a href="eta-squared.html#cb208-2" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> memory_score, <span class="at">wid =</span> Participant, <span class="at">within =</span> time, <span class="at">effect.size =</span> <span class="st">&quot;pes&quot;</span>) </span></code></pre></div>
 <pre><code>## ANOVA Table (type III tests)
 ## 
 ## $ANOVA
@@ -747,19 +748,12 @@ Variance_{total} = Variance_{between} + Variance_{within}
 <p>Note that as mentioned above, partial eta-squared and regular eta-squared are equivalent in a one-way ANOVA of any kind, so using this is ok.</p>
 <p>Otherwise, our trusty <code>effectsize</code> package provides functions for calculating effect sizes in R. We use a function called - you guessed it - <code>eta_squared()</code>. This function works in very much the same way as the other <code>effectsize</code> family of functions do - you need to give them an anova model to calculate effect sizes for.</p>
 <p>Here is an example with a one-way ANOVA, which we will look at on the next page:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="eta-squared.html#cb201-1" tabindex="-1"></a><span class="fu">eta_squared</span>(w9_slices_aov, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="eta-squared.html#cb210-1" tabindex="-1"></a><span class="fu">eta_squared</span>(w9_slices_aov, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <pre><code>## For one-way between subjects designs, partial eta squared is equivalent
 ##   to eta squared. Returning eta squared.</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Eta2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"group","2":"0.1869159","3":"0.95","4":"0.03182258","5":"0.3482719"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<p>For repeated-measures ANOVAs, the easiest way to calculate eta-squared using this function is to use <code>anova_test()</code> using the syntax described above. You can also use <code>eta_squared()</code> with a model built using <code>car::Anova()</code>. As both methods are a little involved, we’ll deal with them in more detail on the page relating to repeated-measures ANOVAs.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="eta-squared.html#cb203-1" tabindex="-1"></a><span class="fu">eta_squared</span>(w9_memory_alternate, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Eta2_partial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"time","2":"0.5852187","3":"0.95","4":"0.4988523","5":"0.6528865","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>

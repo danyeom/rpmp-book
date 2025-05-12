@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.4 Loading data into R | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.4 Loading data into R | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -735,22 +736,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The basic structure of a .csv file is identical to that of a regular dataframe in R. The first column should typically indicate the column name/heading, and each row should contain values.</p>
 <p>.csvs can be easily created using Excel. If you have a dataset in Excel format, you can export an Excel spreadsheet as a .csv file by going File -&gt; Export. However, as .csv files are stored as plain text, they will not retain any special formatting that you might be accustomed to in an Excel spreadsheet. They will only store data in plain text.</p>
 <p>To read a .csv file in R, the <code>read_csv()</code> function from <code>tidyverse</code> or <code>read.csv()</code> from base R will work equally as well. Both functions require you to specify where your .csv file can be found.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="loading-data-into-r.html#cb63-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Insert your file path here.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="loading-data-into-r.html#cb66-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Insert your file path here.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="text-files" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Text files<a href="loading-data-into-r.html#text-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R can also read in plain text files in .txt format. This is very similar to the .csv format, in that your text file will typically have column headers in the first row, each row with one participant/observation’s values, and each column separated by spaces.</p>
 <p><code>tidyverse</code> provides a function called <code>read_tsv()</code> to read in these files.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="loading-data-into-r.html#cb64-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;Insert your file path here.txt&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="loading-data-into-r.html#cb67-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;Insert your file path here.txt&quot;</span>)</span></code></pre></div>
 <p>If, however, you are working with a file that has a different type of character between each column - for example, a slash (/) - then you can use the function <code>read_delim()</code>, which is a more generic form of the two above. With this function, you must specify the <strong>delimiter</strong> - i.e. what separates the columns in the files. This can be done using the <code>delim =</code> argument.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="loading-data-into-r.html#cb65-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;Insert your file path here.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="loading-data-into-r.html#cb68-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;Insert your file path here.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;/&quot;</span>)</span></code></pre></div>
 </div>
 <div id="spss-files" class="section level3 hasAnchor" number="2.4.4">
 <h3><span class="header-section-number">2.4.4</span> SPSS files<a href="loading-data-into-r.html#spss-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>SPSS is still a popular program of choice in psychological sciences, and so a lot of the datasets you may come across may be in SPSS format. SPSS data files are in <strong>.sav</strong> format.</p>
 <p>Base R cannot natively read these files. However, the <code>haven</code> package provides a function called <code>read_spss()</code> that will read these files in for you.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="loading-data-into-r.html#cb66-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb66-2"><a href="loading-data-into-r.html#cb66-2" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">&quot;Insert your file path here.sav&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="loading-data-into-r.html#cb69-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb69-2"><a href="loading-data-into-r.html#cb69-2" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">&quot;Insert your file path here.sav&quot;</span>)</span></code></pre></div>
 </div>
 <div id="using-here-to-read-data" class="section level3 hasAnchor" number="2.4.5">
 <h3><span class="header-section-number">2.4.5</span> Using <code>here</code> to read data<a href="loading-data-into-r.html#using-here-to-read-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -765,7 +766,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 |---RPMP.rproj</code></pre>
 <p>Then you can use <code>here()</code> in conjunction with any of the data-reading functions above. As the data-reading functions primarily only need a filepath, you can use <code>here()</code> to create that filepath and point to the right place.</p>
 <p>Here is an example:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="loading-data-into-r.html#cb68-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w1_dataset.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="loading-data-into-r.html#cb71-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w1_dataset.csv&quot;</span>))</span></code></pre></div>
 <p>The <code>here()</code> call tells R to look in the <code>data</code> folder, and then look for <code>w1_dataset.csv</code>. Remember, in an R project, every file is indexed relative to the <em>project</em> folder. This means that we don’t need to faff around with finding out where our RPMP folder is on our computer, because essentially that’s where we start! The filepath to this file will then be used as the argument for <code>read_csv()</code>.</p>
 <p>Even if you are not using a project structure (although we highly recommend you do), you can still use <code>here()</code> - so long as the file can be located relative to your current working directory, which can be obtained using <code>setwd()</code>. However, it’s usually worth saving yourself the hassle and creating a new R project for substantive bits of work, and saving files as folders within that project’s folder.</p>
 </div>

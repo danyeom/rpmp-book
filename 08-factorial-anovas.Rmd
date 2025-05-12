@@ -2,7 +2,7 @@
 
 # Factorial ANOVAs {#factorial-anova}
 
-```{r warning = FALSE, message = FALSE, echo = FALSE}
+```{r 08-packages, warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
 library(ggpubr)
 library(here)
@@ -176,7 +176,7 @@ In the sections on one-way ANOVAs we largely stuck to using base R's `aov()` fun
 
 To use an example, a 2 x 2 ANOVA where each of the four possibilities (e.g. Level 1 Variable A + Level 1 Variable B...) has 20 participants is a balanced design. In contrast, if A1-B2 had 40 participants and the other possibilities had 20 participants, this would be an unbalanced design. Unbalanced designs introduce several complexities for ANOVAs.
 
-For that reason, now is a good time to introduce the `afex` package, which stands for "analysis of factorial experiments". 
+
 
 The `afex` package is designed for factorial ANOVAs in particular. It provides a very nice and convenient way of running factorial ANOVAs in a way that's not too hard, while still being flexible enough for more hardcore R users.
 
@@ -217,40 +217,30 @@ For what we do in this section, this is ok - but you may find in certain circums
 
 Simple effects tests, weirdly, are difficult to do in Jamovi - the gamlj module in Jamovi will do simple effects tests for linear models (which includes ANOVAs), but it's  difficult to do so for anything other than a two-way between-groups ANOVA without some prerequisite knowledge on linear mixed models. 
 
-In R, simple effects are relatively easy to estimate through the use of the `emmeans` package. `emmeans` stands for estimated marginal means, which are model-derived estimates of each group's mean. Simple effects tests are generally run on the estimate marginal means, and thus this package allows us a handy way to run these comparisons. 
+In R, simple effects are relatively easy to estimate through the use of the `emmeans` package. All we need to do is just extend our `emmeans` calls that we have been using for one-way ANOVAs to incorporate a second variable. 
 
-There are two steps to using `emmeans`:
-
-1. Define the estimated marginal means for the simple effects test you wish to run.
-
-Imagine an ANOVA model named `model_aov` and two predictors named `A` and `B`. If we wanted to run a simple effects test between each level of A for every level of B, we can define the following:
+Imagine an ANOVA model named `model_aov` and two predictors named `A` and `B. Recall the basic syntax for generating comparisons for a one-way ANOVA:
 
 ```{r eval = FALSE}
-model_em <- emmeans(model_aov, ~ A, by = "B")
+emmeans(model_aov, ~ A)
 ```
 
-This will estimate the EM means for every level of A, at each level of B. We assign this to a variable called `model_em`, as we will use this later.
-
-2. Generate pairwise comparisons for the simple effects test.
-
-Continuing on from the example above, we can use the `pairs()` function on our EM object, `model_em`, to run the simple effects test. `infer = TRUE` will generate confidence intervals for the difference in EM means. By default this will be set at 95% confidence, which is typically what we want.
+To run this as a simple effects test, we simply need to tell `emmeans` to conduct these comparisons by another variable. This can be easily done by specifying the `by` argument in `emmeans`:
 
 ```{r eval = FALSE}
-pairs(model_em, infer = TRUE)
+emmeans(model_aov, ~ A, by = "B")
 ```
 
-If we want to adjust the *p*-values at this stage, we can give `pairs()` an additional argument `adjust`, with the name of the adjustment method as a string (e.g. `pairs(x, adjust = "holm"`.))
+This will estimate the EM means for every level of A, at each level of B. To run simple effects tests for variable two, the variable names simply need to be swapped. 
 
-To run simple effects tests for variable two, the variable names simply need to be swapped. 
-
-Optionally, to do this all in one go we could simply pipe from `emmeans()` to `pairs` as follows:
+Just like before, we can pipe from from `emmeans()` to `pairs()`:
 
 ```{r eval = FALSE}
 emmeans(model_aov, ~ A, by = "B") %>%
   pairs(infer = TRUE)
 ```
 
-Final note on this matter: Rstatix does provide a function called `emmeans_test` to perform a similar test. However, using the original `emmeans` package and its functions give you much greater flexibility, so it helps to learn how to use this as is. 
+Final note on this matter: Rstatix does provide a function called `emmeans_test()` to perform a similar test. However, using the original `emmeans` package and its functions give you much greater flexibility, so it helps to learn how to use this as is. 
 
 ## Two-way between groups ANOVA
 

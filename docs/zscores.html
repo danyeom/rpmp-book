@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.6 z-scores | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.6 z-scores | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -735,7 +736,7 @@ z = 0.8933
 \]</span>
 A participant with a general sophistication score of 100 would be roughly 0.89 standard deviations away from the mean.</p>
 <p>To z-score a vector in R, we use the <code>scale()</code> function. The <code>scale()</code> function takes two arguments: <code>center</code>, which determines whether the data is centered (i.e. subtracts the mean from each value), and <code>scale</code>, which essentially scales the data so the SD is 1. By default, both of these arguments are true.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="zscores.html#cb117-1" tabindex="-1"></a><span class="fu">scale</span>(vector_a)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="zscores.html#cb120-1" tabindex="-1"></a><span class="fu">scale</span>(vector_a)</span></code></pre></div>
 <pre><code>##            [,1]
 ## [1,]  0.3806935
 ## [2,] -1.3324272
@@ -775,7 +776,7 @@ A participant with a general sophistication score of 100 would be roughly 0.89 s
 <p>In this instance, our z-score of 0.89 has an associated probability of .8133, meaning that 81.3% of scores are below this z-score.</p>
 <p>R, however, has a way of finding probabilities (percentiles) for z-scores for you. The <code>pnorm()</code> function calculates the probability of a specified value on a normal distribution. Given that z-scores follow the normal distribution, we can use <code>pnorm()</code> to calculate a given z-score’s associated probability.</p>
 <p>The function is simple: it requires you to give the z-score (as argument <code>q</code>), the mean and standard deviation of the normal distribution you are interested in. By default, the mean is set to 0 and the SD set to 1, which is what we want for a z-score.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="zscores.html#cb119-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.89</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="zscores.html#cb122-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.89</span>)</span></code></pre></div>
 <pre><code>## [1] 0.8132671</code></pre>
 
 </div>

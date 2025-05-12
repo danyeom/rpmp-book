@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12.3 Initial considerations for EFA | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12.3 Initial considerations for EFA | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -711,7 +712,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Many guides and sources will often mention a n:p rule of thumb, where n is sample size and p is number of variables (which is the number of parameters that needs to be estimated). The idea is that an ideal EFA sample size will have n participants for every variable you are analysing. These can range from as low as 3:1 to 20:1, with a typical ‘ok’ range being from 10-20:1. However, there is no clear support for these rules, and no minimum is truly sufficient (Hogarty et al. 2005).</p>
 <p>In general - the bigger the better, and the more variables you have the more participants you need. Aim for at least 300+ no matter the circumstance (this is a very blunt rule of thumb!).</p>
 <p>Below are our descriptives. While we can use a bit of tidyverse to get descriptives, the <code>describe()</code> function from the <code>psych</code> package is also convenient for getting basic descriptives for every column in a dataset. We can see that we have n = 2571, which should be more than adequate.</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="initial-considerations-for-efa.html#cb489-1" tabindex="-1"></a><span class="fu">describe</span>(saq)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="initial-considerations-for-efa.html#cb514-1" tabindex="-1"></a><span class="fu">describe</span>(saq)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["vars"],"name":[1],"type":["int"],"align":["right"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["trimmed"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mad"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["min"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["range"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["skew"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kurtosis"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"2571","3":"2.374173","4":"0.8280221","5":"2","6":"2.336898","7":"0.0000","8":"1","9":"5","10":"4","11":"0.65456004","12":"0.6055246","13":"0.01633018","_rn_":"q01"},{"1":"2","2":"2571","3":"1.623493","4":"0.8510787","5":"1","6":"1.460865","7":"0.0000","8":"1","9":"5","10":"4","11":"1.48767803","12":"2.0367054","13":"0.01678490","_rn_":"q02"},{"1":"3","2":"2571","3":"2.786075","4":"0.9485482","5":"3","6":"2.741857","7":"1.4826","8":"1","9":"5","10":"4","11":"0.38517992","12":"-0.2878337","13":"0.01870718","_rn_":"q04"},{"1":"4","2":"2571","3":"2.722287","4":"0.9646904","5":"3","6":"2.675741","7":"1.4826","8":"1","9":"5","10":"4","11":"0.45564247","12":"-0.4418064","13":"0.01902554","_rn_":"q05"},{"1":"5","2":"2571","3":"2.227149","4":"1.1220023","5":"2","6":"2.087992","7":"1.4826","8":"1","9":"5","10":"4","11":"0.92666201","12":"0.1507951","13":"0.02212803","_rn_":"q06"},{"1":"6","2":"2571","3":"2.876313","4":"0.9985724","5":"3","6":"2.836169","7":"1.4826","8":"1","9":"5","10":"4","11":"0.29366080","12":"-0.3563454","13":"0.01969375","_rn_":"q14"},{"1":"7","2":"2571","3":"2.766239","4":"1.0093935","5":"3","6":"2.718522","7":"1.4826","8":"1","9":"5","10":"4","11":"0.42969018","12":"-0.4450235","13":"0.01990717","_rn_":"q15"},{"1":"8","2":"2571","3":"2.292104","4":"1.1014016","5":"2","6":"2.210987","7":"1.4826","8":"1","9":"5","10":"4","11":"0.48059829","12":"-0.7202466","13":"0.02172174","_rn_":"q19"},{"1":"9","2":"2571","3":"2.887981","4":"1.0407530","5":"3","6":"2.928051","7":"1.4826","8":"1","9":"5","10":"4","11":"-0.06517382","12":"-0.6762664","13":"0.02052564","_rn_":"q22"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -736,7 +737,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Correlations</li>
 </ol>
 <p>A simple matrix of correlations can give us a first-pass indication of factorability. If most items correlate with each other, this can indicate that there are underlying latent factors. There is no hard and fast rule for what counts as ‘acceptable’, but if most variables are not significantly correlated that indicates that the data may not be factorable. In our SAQ-9 data, we can see that all correlations between variables are significant, which is generally a good sign.</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="initial-considerations-for-efa.html#cb490-1" tabindex="-1"></a><span class="fu">cor</span>(saq)</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="initial-considerations-for-efa.html#cb515-1" tabindex="-1"></a><span class="fu">cor</span>(saq)</span></code></pre></div>
 <pre><code>##             q01         q02         q04        q05         q06        q14
 ## q01  1.00000000 -0.09872403  0.43586018  0.4024399  0.21673399  0.3378797
 ## q02 -0.09872403  1.00000000 -0.11185965 -0.1193466 -0.07420968 -0.1646999
@@ -757,9 +758,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## q15  1.0000000 -0.2098023 -0.16790617
 ## q19 -0.2098023  1.0000000  0.23392259
 ## q22 -0.1679062  0.2339226  1.00000000</code></pre>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="initial-considerations-for-efa.html#cb492-1" tabindex="-1"></a><span class="co"># Alternatively, the lowerCor() fucntion from psych prints this more nicely</span></span>
-<span id="cb492-2"><a href="initial-considerations-for-efa.html#cb492-2" tabindex="-1"></a></span>
-<span id="cb492-3"><a href="initial-considerations-for-efa.html#cb492-3" tabindex="-1"></a><span class="fu">lowerCor</span>(saq)</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="initial-considerations-for-efa.html#cb517-1" tabindex="-1"></a><span class="co"># Alternatively, the lowerCor() fucntion from psych prints this more nicely</span></span>
+<span id="cb517-2"><a href="initial-considerations-for-efa.html#cb517-2" tabindex="-1"></a></span>
+<span id="cb517-3"><a href="initial-considerations-for-efa.html#cb517-3" tabindex="-1"></a><span class="fu">lowerCor</span>(saq)</span></code></pre></div>
 <pre><code>##     q01   q02   q04   q05   q06   q14   q15   q19   q22  
 ## q01  1.00                                                
 ## q02 -0.10  1.00                                          
@@ -775,7 +776,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Bartlett’s test of sphericity tests the null hypothesis that all correlations between variables are zero at the population level. In other words, if Bartlett’s test is non-significant it suggests that all of the indicator variables are not correlated. As a result, Bartlett’s test is pretty much always significant as it is very sensitive to sample size. Unsurprisingly, then, our Bartlett’s test result is significant.</p>
 <p>To run this, we use the <code>cortest.bartlett()</code> function from <code>psych</code>. Note that base R does include a function called <code>bartlett.test()</code>, but this is not the same test! (same Bartlett, though.)</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="initial-considerations-for-efa.html#cb494-1" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(saq)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="initial-considerations-for-efa.html#cb519-1" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(saq)</span></code></pre></div>
 <pre><code>## R was not square, finding R from data</code></pre>
 <pre><code>## $chisq
 ## [1] 3674.737
@@ -791,7 +792,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This test is often referred to as the KMO Test or Kaiser’s MSA, but both respectively mean the same thing. It is a measure of how much variance among all variables might be due to common variance. Higher KMO/MSA values indicate that more variance is likely due to common factors, thus indicating suitability for factor analysis.</p>
 <p>Kaiser (1974) provided the following (hilarious) interpretations of MSA values:</p>
 <p>MSA values are typically calculated for each variable, and for overall. It helps to report both. The <code>KMO()</code> function in <code>psych</code> will calculate both sets of measures of sampling adequacy. Here are our variables below. Overall they are generally in the meritorious range (except for one):</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="initial-considerations-for-efa.html#cb497-1" tabindex="-1"></a><span class="fu">KMO</span>(saq)</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="initial-considerations-for-efa.html#cb522-1" tabindex="-1"></a><span class="fu">KMO</span>(saq)</span></code></pre></div>
 <pre><code>## Kaiser-Meyer-Olkin factor adequacy
 ## Call: KMO(r = saq)
 ## Overall MSA =  0.82

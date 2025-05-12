@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.2 Counts and central tendencies | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.2 Counts and central tendencies | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -742,31 +743,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>We can use R to find some of these values, either using straight base R or tidyverse functions. For this page/module only, I will use the <code>variable_a</code> mock variable from <a href="data-structures.html#vectors">Section 2.2.2</a> with a minor amendment:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="basic-desc.html#cb97-1" tabindex="-1"></a>vector_a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb97-2"><a href="basic-desc.html#cb97-2" tabindex="-1"></a>vector_a</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="basic-desc.html#cb100-1" tabindex="-1"></a>vector_a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb100-2"><a href="basic-desc.html#cb100-2" tabindex="-1"></a>vector_a</span></code></pre></div>
 <pre><code>## [1] 4 1 6 2 3 4</code></pre>
 <p>For tidyverse usage, I’ll refer to <code>df_a</code>, which is just the same but as a one-column dataframe:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="basic-desc.html#cb99-1" tabindex="-1"></a>df_a</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="basic-desc.html#cb102-1" tabindex="-1"></a>df_a</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["column_a"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"4"},{"1":"1"},{"1":"6"},{"1":"2"},{"1":"3"},{"1":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>To find the <em>count</em>, or the number of items in a vector, we can use the <code>length()</code> function.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="basic-desc.html#cb100-1" tabindex="-1"></a><span class="fu">length</span>(vector_a)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="basic-desc.html#cb103-1" tabindex="-1"></a><span class="fu">length</span>(vector_a)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>To find the minimum and maximum, we can use the <code>min()</code> and <code>max()</code> functions respectively. Specifying <code>na.rm = TRUE</code> will remove any missing data before calculation.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="basic-desc.html#cb102-1" tabindex="-1"></a><span class="fu">min</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="basic-desc.html#cb105-1" tabindex="-1"></a><span class="fu">min</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="basic-desc.html#cb104-1" tabindex="-1"></a><span class="fu">max</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="basic-desc.html#cb107-1" tabindex="-1"></a><span class="fu">max</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>In tidyverse fashion, we can wrap this all in <code>summarise()</code> as follows:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="basic-desc.html#cb106-1" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
-<span id="cb106-2"><a href="basic-desc.html#cb106-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb106-3"><a href="basic-desc.html#cb106-3" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb106-4"><a href="basic-desc.html#cb106-4" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb106-5"><a href="basic-desc.html#cb106-5" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb106-6"><a href="basic-desc.html#cb106-6" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="basic-desc.html#cb109-1" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
+<span id="cb109-2"><a href="basic-desc.html#cb109-2" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb109-3"><a href="basic-desc.html#cb109-3" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb109-4"><a href="basic-desc.html#cb109-4" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb109-5"><a href="basic-desc.html#cb109-5" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-6"><a href="basic-desc.html#cb109-6" tabindex="-1"></a>  )</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["n"],"name":[1],"type":["int"],"align":["right"]},{"label":["min"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"6","2":"1","3":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -814,24 +815,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>To calculate a mean and median, use the <code>mean()</code> and <code>median()</code> functions respectively. Both functions also take the <code>na.rm</code> argument.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="basic-desc.html#cb107-1" tabindex="-1"></a><span class="fu">mean</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="basic-desc.html#cb110-1" tabindex="-1"></a><span class="fu">mean</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 3.333333</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="basic-desc.html#cb109-1" tabindex="-1"></a><span class="fu">median</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="basic-desc.html#cb112-1" tabindex="-1"></a><span class="fu">median</span>(vector_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 3.5</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="basic-desc.html#cb111-1" tabindex="-1"></a><span class="co"># Using summarise() and piping</span></span>
-<span id="cb111-2"><a href="basic-desc.html#cb111-2" tabindex="-1"></a></span>
-<span id="cb111-3"><a href="basic-desc.html#cb111-3" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
-<span id="cb111-4"><a href="basic-desc.html#cb111-4" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb111-5"><a href="basic-desc.html#cb111-5" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb111-6"><a href="basic-desc.html#cb111-6" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb111-7"><a href="basic-desc.html#cb111-7" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="basic-desc.html#cb114-1" tabindex="-1"></a><span class="co"># Using summarise() and piping</span></span>
+<span id="cb114-2"><a href="basic-desc.html#cb114-2" tabindex="-1"></a></span>
+<span id="cb114-3"><a href="basic-desc.html#cb114-3" tabindex="-1"></a>df_a <span class="sc">%&gt;%</span></span>
+<span id="cb114-4"><a href="basic-desc.html#cb114-4" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb114-5"><a href="basic-desc.html#cb114-5" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb114-6"><a href="basic-desc.html#cb114-6" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(column_a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb114-7"><a href="basic-desc.html#cb114-7" tabindex="-1"></a>  )</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["mean"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"3.333333","2":"3.5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Interestingly, R doesn’t offer a base function to calculate a mode - if you need this information, you either need to manually work this out or turn to a package that offers it. One such example is the fantastic <code>DescTools</code> package, which provides a function called <code>Mode()</code>:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="basic-desc.html#cb112-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">Mode</span>(vector_a)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="basic-desc.html#cb115-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">Mode</span>(vector_a)</span></code></pre></div>
 <pre><code>## [1] 4
 ## attr(,&quot;freq&quot;)
 ## [1] 2</code></pre>

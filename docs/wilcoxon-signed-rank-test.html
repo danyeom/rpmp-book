@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14.4 Wilcoxon signed rank test | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14.4 Wilcoxon signed rank test | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -717,16 +718,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-11" class="section level3 hasAnchor" number="14.4.2">
 <h3><span class="header-section-number">14.4.2</span> Example<a href="wilcoxon-signed-rank-test.html#example-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the wages dataset, there are wages between 1980 and 1987. Did the median wage change between these two years? Here are our descriptives:</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="wilcoxon-signed-rank-test.html#cb557-1" tabindex="-1"></a>wages_wide <span class="ot">&lt;-</span> wages <span class="sc">%&gt;%</span></span>
-<span id="cb557-2"><a href="wilcoxon-signed-rank-test.html#cb557-2" tabindex="-1"></a>  <span class="fu">select</span>(nr, year, wage) <span class="sc">%&gt;%</span></span>
-<span id="cb557-3"><a href="wilcoxon-signed-rank-test.html#cb557-3" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb557-4"><a href="wilcoxon-signed-rank-test.html#cb557-4" tabindex="-1"></a>    <span class="at">id_cols =</span> nr,</span>
-<span id="cb557-5"><a href="wilcoxon-signed-rank-test.html#cb557-5" tabindex="-1"></a>    <span class="at">names_from =</span> year,</span>
-<span id="cb557-6"><a href="wilcoxon-signed-rank-test.html#cb557-6" tabindex="-1"></a>    <span class="at">values_from =</span> wage,</span>
-<span id="cb557-7"><a href="wilcoxon-signed-rank-test.html#cb557-7" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;wage_&quot;</span></span>
-<span id="cb557-8"><a href="wilcoxon-signed-rank-test.html#cb557-8" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="wilcoxon-signed-rank-test.html#cb582-1" tabindex="-1"></a>wages_wide <span class="ot">&lt;-</span> wages <span class="sc">%&gt;%</span></span>
+<span id="cb582-2"><a href="wilcoxon-signed-rank-test.html#cb582-2" tabindex="-1"></a>  <span class="fu">select</span>(nr, year, wage) <span class="sc">%&gt;%</span></span>
+<span id="cb582-3"><a href="wilcoxon-signed-rank-test.html#cb582-3" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb582-4"><a href="wilcoxon-signed-rank-test.html#cb582-4" tabindex="-1"></a>    <span class="at">id_cols =</span> nr,</span>
+<span id="cb582-5"><a href="wilcoxon-signed-rank-test.html#cb582-5" tabindex="-1"></a>    <span class="at">names_from =</span> year,</span>
+<span id="cb582-6"><a href="wilcoxon-signed-rank-test.html#cb582-6" tabindex="-1"></a>    <span class="at">values_from =</span> wage,</span>
+<span id="cb582-7"><a href="wilcoxon-signed-rank-test.html#cb582-7" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;wage_&quot;</span></span>
+<span id="cb582-8"><a href="wilcoxon-signed-rank-test.html#cb582-8" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Recall that in a paired-samples <em>t</em>-test, the normality assumption refers to whether the differences between the two conditions are normally distributed. We can test this in the usual two ways: 1) with a normality significance test, and 2) by assessing a Q-Q plot. Here is the former, to show what a non-normal dataset might look like:</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="wilcoxon-signed-rank-test.html#cb558-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(wages_wide<span class="sc">$</span>wage_1980 <span class="sc">-</span> wages_wide<span class="sc">$</span>wage_1987)</span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="wilcoxon-signed-rank-test.html#cb583-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(wages_wide<span class="sc">$</span>wage_1980 <span class="sc">-</span> wages_wide<span class="sc">$</span>wage_1987)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -737,7 +738,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="output-13" class="section level3 hasAnchor" number="14.4.3">
 <h3><span class="header-section-number">14.4.3</span> Output<a href="wilcoxon-signed-rank-test.html#output-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The setup for a signed-rank test in R again uses the same syntax as the regular <code>t.test()</code> function for a paired test - meaning that we can either give it the two separate columns with <code>paired = TRUE</code>, or use <code>Pairs(a, b) ~ 1</code> notation. For simplicity we’ll just do the former:</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="wilcoxon-signed-rank-test.html#cb560-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(wages_wide<span class="sc">$</span>wage_1980, wages_wide<span class="sc">$</span>wage_1987, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="wilcoxon-signed-rank-test.html#cb585-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(wages_wide<span class="sc">$</span>wage_1980, wages_wide<span class="sc">$</span>wage_1987, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon signed rank test with continuity correction
 ## 
@@ -745,7 +746,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## V = 15096, p-value &lt; 2.2e-16
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 <p>As mentioned on the previous page, we can also use our <code>rank_biserial()</code> function the same way to calculate an effect size for this paired test:</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="wilcoxon-signed-rank-test.html#cb562-1" tabindex="-1"></a><span class="fu">rank_biserial</span>(wages_wide<span class="sc">$</span>wage_1980, wages_wide<span class="sc">$</span>wage_1987, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="wilcoxon-signed-rank-test.html#cb587-1" tabindex="-1"></a><span class="fu">rank_biserial</span>(wages_wide<span class="sc">$</span>wage_1980, wages_wide<span class="sc">$</span>wage_1987, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["r_rank_biserial"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"-0.796337","2":"0.95","3":"-0.8291525","4":"-0.7580522"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

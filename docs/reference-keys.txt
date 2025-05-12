@@ -4,7 +4,7 @@ fig:unnamed-chunk-99
 fig:unnamed-chunk-113
 fig:unnamed-chunk-137
 fig:unnamed-chunk-172
-fig:unnamed-chunk-209
+fig:unnamed-chunk-215
 preface
 intro-to-R
 R-syntax
@@ -148,6 +148,7 @@ multiple-comparisons
 post-hoc-tests
 the-multiple-comparisons-problem
 correction-methods
+post-hocs-in-r
 eta-squared
 eta-squared-and-variance
 an-example
@@ -164,7 +165,7 @@ example-data-4
 assumption-checks-4
 anova-output
 post-hoc-tests-2
-alternative-using-caranova
+alternative-using-rstatix
 linear-relationships
 correlations
 correlation-coefficients

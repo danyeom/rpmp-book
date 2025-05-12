@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14.2 Spearman’s rho | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14.2 Spearman’s rho | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -708,7 +709,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">14.2.1</span> Introduction<a href="spearmans-rho.html#introduction-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Spearman’s rho (<span class="math inline">\(\rho\)</span>) is a non-parametric correlation coefficient, broadly equivalent in interpretation with Pearson’s correlation coefficient. It is used to calculate a correlation in instances where Pearson’s r would not be appropriate; namely, when data is not linear.</p>
 <p>Spearman’s rho can be used when data is monotonic. Monotonic data is data where as X changes, Y changes in one direction. Below is a visualisation of monotonic versus non-monotonic data:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-412-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-414-1.png" width="672" /></p>
 <p>In the linear and monotonic examples, the line of best fit follows one direction - up. In the rightmost graph, however, there is a decrease and then an increase in the predicted values of y. This is an example of a non-monotonic function.</p>
 </div>
 <div id="understanding-ranks" class="section level3 hasAnchor" number="14.2.2">
@@ -720,24 +721,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-9" class="section level3 hasAnchor" number="14.2.3">
 <h3><span class="header-section-number">14.2.3</span> Example<a href="spearmans-rho.html#example-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is a simple example of a correlation between two variables where non-linearity may be important. Singing accuracy is naturally skewed heavily, and develops non-linearly throughout life.</p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="spearmans-rho.html#cb542-1" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;singing_data.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="spearmans-rho.html#cb567-1" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;singing_data.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 284 Columns: 2
-## ── Column specification ────────────────────
+## ── Column specification ─────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (2): accuracy, age
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>The relevant dataset contains just two variables: accuracy (measured in cents) and age (participant age). The scatterplot below shows the relationship between these two variables:</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="spearmans-rho.html#cb544-1" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
-<span id="cb544-2"><a href="spearmans-rho.html#cb544-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb544-3"><a href="spearmans-rho.html#cb544-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
-<span id="cb544-4"><a href="spearmans-rho.html#cb544-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb544-5"><a href="spearmans-rho.html#cb544-5" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb544-6"><a href="spearmans-rho.html#cb544-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-414-1.png" width="672" /></p>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="spearmans-rho.html#cb569-1" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
+<span id="cb569-2"><a href="spearmans-rho.html#cb569-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb569-3"><a href="spearmans-rho.html#cb569-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
+<span id="cb569-4"><a href="spearmans-rho.html#cb569-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb569-5"><a href="spearmans-rho.html#cb569-5" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb569-6"><a href="spearmans-rho.html#cb569-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-416-1.png" width="672" /></p>
 <p>To calculate Spearman’s rho, the steps are much the same as the way they are for normal correlations - we use the same <code>cor.test()</code> function that we saw earlier. The main difference is that we now must specify the <code>method</code> argument to equal to <code>"spearman"</code>, which will calculate Spearman’s rho instead.. Here, we see results consistent with a Pearson’s correlation; a significant, positive association between age and accuracy (<span class="math inline">\(\rho\)</span> = .53, <em>p</em> &lt; .001).</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="spearmans-rho.html#cb545-1" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="spearmans-rho.html#cb570-1" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in cor.test.default(singing$accuracy, singing$age, method =
 ## &quot;spearman&quot;): Cannot compute exact p-value with ties</code></pre>
 <pre><code>## 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.3 Packages and functions | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.3 Packages and functions | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -357,6 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
 <li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
 <ul>
@@ -379,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
 <li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
 <li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
-<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-caranova"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>car::Anova()</code></a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
@@ -708,19 +709,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.3.1</span> Functions<a href="packages-and-functions.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R works primarily with <strong>functions</strong>, which take one or more inputs and return an output. Functions in R are always defined in <code>name()</code> format, i.e. the name of the function followed by brackets. Every function generally serves a very specific purpose, such as performing a specific calculation, manipulation of data or otherwise. Therefore, working with R requires us to use lots and lots of functions.</p>
 <p>Most functions will have at least one, if not multiple <strong>arguments.</strong> Arguments define the options for a given function. For example, the <code>class()</code> function, which comes in base R, tells us the type of a variable. <code>class()</code> has one main argument, <code>x</code> - which is simply the name of the variable we want to know about. As an example, let us say we wanted to know what type of variable <code>var_a</code> was. We could write the following:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="packages-and-functions.html#cb43-1" tabindex="-1"></a><span class="fu">class</span>(<span class="at">x =</span> var_a)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="packages-and-functions.html#cb46-1" tabindex="-1"></a><span class="fu">class</span>(<span class="at">x =</span> var_a)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>More simply, because <code>class()</code> only has one argument we can optionally write:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="packages-and-functions.html#cb45-1" tabindex="-1"></a><span class="fu">class</span>(var_a)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="packages-and-functions.html#cb48-1" tabindex="-1"></a><span class="fu">class</span>(var_a)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>Functions may either have mandatory or optional arguments. Mandatory arguments are ones that you need to provide in order for the function to run. Optional arguments are often defaults that can be changed if needed. Many functions in R will have multiple arguments that are typically a mix of both. A key point arises here though: functions in R define arguments in specific orders. In other words, R expects you to input arguments in specific orders unless you explicitly define each argument’s value, as we did for the first instance of <code>class()</code>.</p>
 <p>The easiest way to find out information about what a function does and the arguments it requires is to type a question mark, <code>?</code>, with the name of the function immediately afterwards. e.g. </p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="packages-and-functions.html#cb47-1" tabindex="-1"></a>?class</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="packages-and-functions.html#cb50-1" tabindex="-1"></a>?class</span></code></pre></div>
 <p>A basic function is the <code>round()</code> function, which - as the name suggests - rounds a value you give it. <code>round()</code> has two arguments: <code>x</code>, which is the number or the name of an object we want to round, and <code>digits</code>, which specifies the number of digits we want to round to. <code>x</code> is a mandatory argument, but <code>digits</code> is optional and has a preset value of 0. Therefore, if we type in the following you can see what we get:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="packages-and-functions.html#cb48-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">4.326</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="packages-and-functions.html#cb51-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">4.326</span>)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>If we want to round to 2dp, for instance, we would need to explicitly define the <code>digits</code> argument and set it to a different value.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="packages-and-functions.html#cb50-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">4.326</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="packages-and-functions.html#cb53-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">4.326</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 4.33</code></pre>
 </div>
 <div id="packages" class="section level3 hasAnchor" number="2.3.2">
@@ -729,25 +730,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When you start a new R session, the first thing that you’ll want to do is load the packages that you need to use.</p>
 <p>For now, we’ll load two packages for functions: <code>tidyverse</code> and <code>rstatix</code>. <code>tidyverse</code> is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. <code>rstatix</code> allows for simple statistical tests to be performed in an easy way. <code>palmerpenguins</code> comes with a dataset for practicing on. <code>palmerpenguins</code> loads a dataset named <code>penguins</code> that contains basic info on 3 species of penguins across 3 different islands.</p>
 <p>To load a package, call the <code>library()</code> function and enter the name of the package in brackets:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="packages-and-functions.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching core tidyverse packages ───────
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="packages-and-functions.html#cb55-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ────────────────────
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
 ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.2     
-## ── Conflicts ────── tidyverse_conflicts() ──
+## ✔ purrr     1.0.4     
+## ── Conflicts ─────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="packages-and-functions.html#cb54-1" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="packages-and-functions.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;rstatix&#39;
 ## 
 ## The following object is masked from &#39;package:stats&#39;:
 ## 
 ##     filter</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="packages-and-functions.html#cb56-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="packages-and-functions.html#cb59-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code></pre></div>
 </div>
 <div id="tidyverse" class="section level3 hasAnchor" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Tidyverse<a href="packages-and-functions.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -761,19 +762,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The tidyverse is probably the single most popular suite of packages for R because of the functionality it provides. All of the tidyverse packages are written in consistent syntax, generally use very easy language that has an emphasis on verbs (i.e. you’re telling R to <em>do</em> something) and integrate seamlessly with each other and R. The tidyverse is a philosophy of R just as much as it is a suite of functions, and is part of what makes R so powerful today.</p>
 <p>Many aspects of the tidyverse are reliant on the pipe operator, <code>%&gt;%</code>. This basically tells R to take a dataframe or output and pass it onto a function that comes directly afterwards. Any function that takes a data frame as its first argument can (theoretically) be piped, meaning that we can chain strings of functions together in one run in a readable way. See the example below:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="packages-and-functions.html#cb57-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a href="packages-and-functions.html#cb57-2" tabindex="-1"></a>  <span class="fu">function_1</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb57-3"><a href="packages-and-functions.html#cb57-3" tabindex="-1"></a>  <span class="fu">function_2</span>(<span class="at">do =</span> <span class="st">&quot;this&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb57-4"><a href="packages-and-functions.html#cb57-4" tabindex="-1"></a>  <span class="fu">function_3</span>(<span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="packages-and-functions.html#cb60-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a href="packages-and-functions.html#cb60-2" tabindex="-1"></a>  <span class="fu">function_1</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="packages-and-functions.html#cb60-3" tabindex="-1"></a>  <span class="fu">function_2</span>(<span class="at">do =</span> <span class="st">&quot;this&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb60-4"><a href="packages-and-functions.html#cb60-4" tabindex="-1"></a>  <span class="fu">function_3</span>(<span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
 <p>in the hypothetical example above, we first take <code>data</code>, and pass it to function 1. We then take the output of function 1 and pass that to function 2, which has the argument <code>do = "this"</code>. Afterwards, we take the output of function 2 and pass it to function 3.</p>
 <p>There are a number of clear benefits to the tidyverse way of doing things. These include:</p>
 <ul>
 <li>Functions are generally stated as <em>verbs</em>, which means that you’re always <em>doing</em> something with a function (and it’s clear what that something is)</li>
 <li>Piping avoids the cyclical hell of creating intermediate variables. Consider a non-tidyverse version of the code example above, written down below. This code is not only a bit of a pain to read, but is also clunky in that it generates several intermediate variables that aren’t all that useful (a lot of the time).</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="packages-and-functions.html#cb58-1" tabindex="-1"></a>output_1 <span class="ot">&lt;-</span> <span class="fu">function_1</span>(data)</span>
-<span id="cb58-2"><a href="packages-and-functions.html#cb58-2" tabindex="-1"></a>output_2 <span class="ot">&lt;-</span> <span class="fu">function_2</span>(output_1, <span class="at">do =</span> <span class="st">&quot;this&quot;</span>)</span>
-<span id="cb58-3"><a href="packages-and-functions.html#cb58-3" tabindex="-1"></a>output_3 <span class="ot">&lt;-</span> <span class="fu">function_3</span>(output_2, <span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="packages-and-functions.html#cb61-1" tabindex="-1"></a>output_1 <span class="ot">&lt;-</span> <span class="fu">function_1</span>(data)</span>
+<span id="cb61-2"><a href="packages-and-functions.html#cb61-2" tabindex="-1"></a>output_2 <span class="ot">&lt;-</span> <span class="fu">function_2</span>(output_1, <span class="at">do =</span> <span class="st">&quot;this&quot;</span>)</span>
+<span id="cb61-3"><a href="packages-and-functions.html#cb61-3" tabindex="-1"></a>output_3 <span class="ot">&lt;-</span> <span class="fu">function_3</span>(output_2, <span class="at">avoid =</span> <span class="st">&quot;that&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Piped code is generally quite easy to read.</li>
 <li><code>tidyverse</code> also provides a consistent syntax for <em>other</em> packages! It provides a quasi-philosophy and style guide for developers to write their own packages to write ‘tidy’ packages. <code>rstatix</code> is a great example of this.</li>
@@ -800,7 +801,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 |-RPMP.rproj</code></pre>
 <p>Normally, to locate a file on a disk you would generally have to give the entire pathway to that file. That could be something like <code>"C:\Users\Dan\Documents\Subjects\RPMP\data\w1_dataset.csv"</code> - which is immensely unwieldy if we want to read in data - and won’t work the moment I give my script to someone else, as their folder structure could be completely different!</p>
 <p>The alternative with <code>here()</code> could be as simple as:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="packages-and-functions.html#cb60-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w1_dataset.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="packages-and-functions.html#cb63-1" tabindex="-1"></a><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w1_dataset.csv&quot;</span>)</span></code></pre></div>
 <p>This tells R that I’m looking for something <code>here</code> in the <code>data</code> folder, specifically a file named <code>w1_dataset.csv</code>. As long as the relative positions are correct - i.e. the <code>.csv</code> file is in the <code>data</code> folder - R will know where to locate the file.</p>
 <p>You will see a lot of <code>here()</code> in this version of the RPMP guide because as you may appreciate, there are a lot of data files stored in all manner of folders. We will talk specifically about using this function to read in data on the next page!</p>
 </div>
