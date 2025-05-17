@@ -121,19 +121,13 @@ knitr::include_graphics("img/common_factor_2.svg")
  
 ### Partial correlations
 
-In Module 10, we talked about the concept of correlation - i.e. how related two variables are. Recall that correlation coefficients are scaled from -1 to 1. Now we move to the concept of partial correlation - the relationship between two variables while controlling for a third.
+In Module 10, we talked about the concept of **correlation** - i.e. how related two variables are. Recall that correlation coefficients are scaled from -1 to 1. In Extension Module 3 we also talked about the concept of **partial correlation** - the relationship between two variables while controlling for a third, as denoted using the below formula:
 
-Let's come back to the flow data in Week 10. Imagine we want to test the correlation between Gold MSI scores and flow proneness. However, we might suspect that openness to experience may play a role in the relationship between these variables. One thing we could do is to calculate a partial correlation between MSI scores and flow proneness while controlling for openness.
+$$
+r_{xy.z} = \frac{r_{xy} - (r_{xz} \times r_{yz})}{\sqrt{(1-r^2_{xz})(1-{r^2_{yz}})}}
+$$
 
-If we know the correlation between:
-
--    MSI scores and flow proneness,
--    MSI scores and openness,
--    Flow proneness and openness,
-
-We could calculate the partial correlation between Gold-MSI and flow proneness, controlling for openness, using the below formula:
-
-Both PCA and EFA rely on estimating partial correlations. Specifically, factor analysis aims to estimate latent factors that minimise the partial correlations among observed variables. If a latent factor perfectly explains the relationship between two variables, the partial correlations between the observed variables should be zero. A lot of the 'under the hood' maths, which we won't touch on, essentially relates to identifying the latent factors that maximise the amount of variance explained in each variable by the factor solutions. 
+Both PCA and EFA rely on estimating partial correlations. Specifically, factor analysis aims to estimate latent factors that **minimise the partial correlations** among **observed** variables. If a latent factor perfectly explains the relationship between two variables, the partial correlations between the observed variables should be zero. A lot of the 'under the hood' maths, which we won't touch on, essentially relates to identifying the latent factors that maximise the **amount of variance** explained in each variable by the factor solutions. 
 
 ## Initial considerations for EFA
 

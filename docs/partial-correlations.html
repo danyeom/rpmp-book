@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10.5 Partial correlations | Research Process for Music Psychologists</title>
+  <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10.5 Partial correlations | Research Process for Music Psychologists" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10.5 Partial correlations | Research Process for Music Psychologists" />
+  
+  <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="outliers.html"/>
+<link rel="next" href="semipartial-correlations.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Research Process for Music Psychologists</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="2" data-path="intro-to-R.html"><a href="intro-to-R.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
+<li class="chapter" data-level="2.1.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.1.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
+<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
+<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.4</b> Loading data into R</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.4.1</b> Setting up R projects</a></li>
+<li class="chapter" data-level="2.4.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.4.2</b> csv files</a></li>
+<li class="chapter" data-level="2.4.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.4.3</b> Text files</a></li>
+<li class="chapter" data-level="2.4.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.4.4</b> SPSS files</a></li>
+<li class="chapter" data-level="2.4.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.4.5</b> Using <code>here</code> to read data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.5</b> Wrangling data with dplyr and others</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.5.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.5.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.5.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.5.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.5.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.5.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.5.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.5.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.5.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.6</b> Making graphs with ggplot2</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.6.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.6.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.6.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.6.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.6.3</b> Making the graph look better</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visualising-data.html"><a href="visualising-data.html"><i class="fa fa-check"></i><b>3.1</b> Visualising data</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="visualising-data.html"><a href="visualising-data.html#why-visualise-data"><i class="fa fa-check"></i><b>3.1.1</b> Why visualise data?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-desc.html"><a href="basic-desc.html"><i class="fa fa-check"></i><b>3.2</b> Counts and central tendencies</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-desc.html"><a href="basic-desc.html#count-basics"><i class="fa fa-check"></i><b>3.2.1</b> Basic features</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-desc.html"><a href="basic-desc.html#central-tendency"><i class="fa fa-check"></i><b>3.2.2</b> Central tendencies</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="distributions.html"><a href="distributions.html#normal-dist"><i class="fa fa-check"></i><b>3.4.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="3.4.2" data-path="distributions.html"><a href="distributions.html#graphing-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Graphing distributions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="distributions.html"><a href="distributions.html#skew"><i class="fa fa-check"></i><b>3.4.3</b> Skew</a></li>
+<li class="chapter" data-level="3.4.4" data-path="distributions.html"><a href="distributions.html#kurtosis"><i class="fa fa-check"></i><b>3.4.4</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="zscores.html"><a href="zscores.html#z-scores"><i class="fa fa-check"></i><b>3.6.1</b> z-scores</a></li>
+<li class="chapter" data-level="3.6.2" data-path="zscores.html"><a href="zscores.html#calculating-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Calculating z-scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="zscores.html"><a href="zscores.html#comparing-across-scales"><i class="fa fa-check"></i><b>3.6.3</b> Comparing across scales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferential-statistics.html"><a href="inferential-statistics.html"><i class="fa fa-check"></i><b>4</b> Inferential statistics</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html"><i class="fa fa-check"></i><b>4.1</b> The logic of hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html#revisiting-the-hypotheses"><i class="fa fa-check"></i><b>4.1.1</b> Revisiting the hypotheses</a></li>
+<li class="chapter" data-level="4.1.2" data-path="the-logic-of-hypothesis-testing.html"><a href="the-logic-of-hypothesis-testing.html#the-issue-of-tails"><i class="fa fa-check"></i><b>4.1.2</b> The issue of tails</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="p-values.html"><a href="p-values.html"><i class="fa fa-check"></i><b>4.2</b> p-values</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="p-values.html"><a href="p-values.html#the-definition-of-the-p-value"><i class="fa fa-check"></i><b>4.2.1</b> The definition of the p-value</a></li>
+<li class="chapter" data-level="4.2.2" data-path="p-values.html"><a href="p-values.html#a-brief-probability-primer-and-how-this-relates-to-p-values"><i class="fa fa-check"></i><b>4.2.2</b> A brief probability primer, and how this relates to p-values</a></li>
+<li class="chapter" data-level="4.2.3" data-path="p-values.html"><a href="p-values.html#the-debate-around-p-values"><i class="fa fa-check"></i><b>4.2.3</b> The debate around p-values</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="types-of-error.html"><a href="types-of-error.html"><i class="fa fa-check"></i><b>4.3</b> Types of error</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="types-of-error.html"><a href="types-of-error.html#statistical-error"><i class="fa fa-check"></i><b>4.3.1</b> Statistical error</a></li>
+<li class="chapter" data-level="4.3.2" data-path="types-of-error.html"><a href="types-of-error.html#type-i-error-and-alpha"><i class="fa fa-check"></i><b>4.3.2</b> Type I error and alpha</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="statistical-power.html"><a href="statistical-power.html"><i class="fa fa-check"></i><b>4.4</b> Statistical power</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="statistical-power.html"><a href="statistical-power.html#statistical-power-1"><i class="fa fa-check"></i><b>4.4.1</b> Statistical power</a></li>
+<li class="chapter" data-level="4.4.2" data-path="statistical-power.html"><a href="statistical-power.html#factors-that-affect-power"><i class="fa fa-check"></i><b>4.4.2</b> Factors that affect power</a></li>
+<li class="chapter" data-level="4.4.3" data-path="statistical-power.html"><a href="statistical-power.html#power-analyses"><i class="fa fa-check"></i><b>4.4.3</b> Power analyses</a></li>
+<li class="chapter" data-level="4.4.4" data-path="statistical-power.html"><a href="statistical-power.html#post-hoc-power-analyses"><i class="fa fa-check"></i><b>4.4.4</b> Post-hoc power analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>4.5</b> Confidence intervals</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#a-reminder-from-the-previous-module"><i class="fa fa-check"></i><b>4.5.1</b> A reminder from the previous module</a></li>
+<li class="chapter" data-level="4.5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-1"><i class="fa fa-check"></i><b>4.5.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="4.5.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence"><i class="fa fa-check"></i><b>4.5.3</b> Confidence</a></li>
+<li class="chapter" data-level="4.5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-literature"><i class="fa fa-check"></i><b>4.5.4</b> Confidence intervals in literature</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Basic inferential tests</b></span></li>
+<li class="chapter" data-level="5" data-path="chi-squares.html"><a href="chi-squares.html"><i class="fa fa-check"></i><b>5</b> Chi-squares</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html"><i class="fa fa-check"></i><b>5.1</b> Calculating a chi-square</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html#categorical-data"><i class="fa fa-check"></i><b>5.1.1</b> Categorical data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="calculating-a-chi-square.html"><a href="calculating-a-chi-square.html#the-chi-square-formula"><i class="fa fa-check"></i><b>5.1.2</b> The chi-square formula</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html"><i class="fa fa-check"></i><b>5.2</b> The chi-square distribution</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#the-chi-square-distribution-1"><i class="fa fa-check"></i><b>5.2.1</b> The chi-square distribution</a></li>
+<li class="chapter" data-level="5.2.2" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#hypothesis-testing-in-chi-squares"><i class="fa fa-check"></i><b>5.2.2</b> Hypothesis testing in chi-squares</a></li>
+<li class="chapter" data-level="5.2.3" data-path="the-chi-square-distribution.html"><a href="the-chi-square-distribution.html#calculating-significance"><i class="fa fa-check"></i><b>5.2.3</b> Calculating significance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html"><i class="fa fa-check"></i><b>5.3</b> Goodness of fit</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>5.3.1</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="5.3.2" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#example"><i class="fa fa-check"></i><b>5.3.2</b> Example</a></li>
+<li class="chapter" data-level="5.3.3" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#calculating-chi2"><i class="fa fa-check"></i><b>5.3.3</b> Calculating <span class="math inline">\(\\\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.3.4" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#using-r"><i class="fa fa-check"></i><b>5.3.4</b> Using R</a></li>
+<li class="chapter" data-level="5.3.5" data-path="goodness-of-fit.html"><a href="goodness-of-fit.html#output"><i class="fa fa-check"></i><b>5.3.5</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="tests-of-independence.html"><a href="tests-of-independence.html"><i class="fa fa-check"></i><b>5.4</b> Tests of independence</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="tests-of-independence.html"><a href="tests-of-independence.html#example-scenario"><i class="fa fa-check"></i><b>5.4.1</b> Example scenario</a></li>
+<li class="chapter" data-level="5.4.2" data-path="tests-of-independence.html"><a href="tests-of-independence.html#contingency-tables"><i class="fa fa-check"></i><b>5.4.2</b> Contingency tables</a></li>
+<li class="chapter" data-level="5.4.3" data-path="tests-of-independence.html"><a href="tests-of-independence.html#expected-frequencies"><i class="fa fa-check"></i><b>5.4.3</b> Expected frequencies</a></li>
+<li class="chapter" data-level="5.4.4" data-path="tests-of-independence.html"><a href="tests-of-independence.html#output-1"><i class="fa fa-check"></i><b>5.4.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html"><i class="fa fa-check"></i><b>5.5</b> Effect sizes for chi-squares</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#phi"><i class="fa fa-check"></i><b>5.5.1</b> Phi</a></li>
+<li class="chapter" data-level="5.5.2" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#cramers-v"><i class="fa fa-check"></i><b>5.5.2</b> Cramer’s V</a></li>
+<li class="chapter" data-level="5.5.3" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#interpretation"><i class="fa fa-check"></i><b>5.5.3</b> Interpretation</a></li>
+<li class="chapter" data-level="5.5.4" data-path="effect-sizes-for-chi-squares.html"><a href="effect-sizes-for-chi-squares.html#practice"><i class="fa fa-check"></i><b>5.5.4</b> Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="bonus-mcnemars-test.html"><a href="bonus-mcnemars-test.html"><i class="fa fa-check"></i><b>5.6</b> Bonus: McNemar’s Test</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="bonus-mcnemars-test.html"><a href="bonus-mcnemars-test.html#mcnemars-test"><i class="fa fa-check"></i><b>5.6.1</b> McNemar’s test</a></li>
+<li class="chapter" data-level="5.6.2" data-path="bonus-mcnemars-test.html"><a href="bonus-mcnemars-test.html#mathematical-basis"><i class="fa fa-check"></i><b>5.6.2</b> Mathematical basis</a></li>
+<li class="chapter" data-level="5.6.3" data-path="bonus-mcnemars-test.html"><a href="bonus-mcnemars-test.html#example-1"><i class="fa fa-check"></i><b>5.6.3</b> Example</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-tests</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html"><i class="fa fa-check"></i><b>6.1</b> <em>t</em>-tests and the <em>t</em>-distribution</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#what-is-a-t-test"><i class="fa fa-check"></i><b>6.1.1</b> What is a <em>t</em>-test?</a></li>
+<li class="chapter" data-level="6.1.2" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-statistic"><i class="fa fa-check"></i><b>6.1.2</b> The <em>t</em>-statistic</a></li>
+<li class="chapter" data-level="6.1.3" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-distribution"><i class="fa fa-check"></i><b>6.1.3</b> The <em>t</em>-distribution</a></li>
+<li class="chapter" data-level="6.1.4" data-path="t-tests-and-the-t-distribution.html"><a href="t-tests-and-the-t-distribution.html#the-t-table"><i class="fa fa-check"></i><b>6.1.4</b> The <em>t</em>-table</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="cohens-d.html"><a href="cohens-d.html"><i class="fa fa-check"></i><b>6.2</b> Cohen’s <em>d</em></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="cohens-d.html"><a href="cohens-d.html#what-is-cohens-d"><i class="fa fa-check"></i><b>6.2.1</b> What is Cohen’s <em>d</em>?</a></li>
+<li class="chapter" data-level="6.2.2" data-path="cohens-d.html"><a href="cohens-d.html#interpreting-cohens-d"><i class="fa fa-check"></i><b>6.2.2</b> Interpreting Cohen’s <em>d</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html"><i class="fa fa-check"></i><b>6.3</b> One-sample <em>t</em>-test</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#one-sample-t-test-1"><i class="fa fa-check"></i><b>6.3.1</b> One-sample <em>t</em>-test</a></li>
+<li class="chapter" data-level="6.3.2" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#example-data"><i class="fa fa-check"></i><b>6.3.2</b> Example data</a></li>
+<li class="chapter" data-level="6.3.3" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#assumption-checks"><i class="fa fa-check"></i><b>6.3.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.3.4" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html#output-2"><i class="fa fa-check"></i><b>6.3.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html"><i class="fa fa-check"></i><b>6.4</b> Independent samples t-test</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#independent-samples"><i class="fa fa-check"></i><b>6.4.1</b> Independent samples</a></li>
+<li class="chapter" data-level="6.4.2" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#example-data-1"><i class="fa fa-check"></i><b>6.4.2</b> Example data</a></li>
+<li class="chapter" data-level="6.4.3" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#assumption-checks-1"><i class="fa fa-check"></i><b>6.4.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.4.4" data-path="independent-samples-t-test.html"><a href="independent-samples-t-test.html#output-3"><i class="fa fa-check"></i><b>6.4.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html"><i class="fa fa-check"></i><b>6.5</b> Paired-samples <em>t</em>-test</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#paired-samples"><i class="fa fa-check"></i><b>6.5.1</b> Paired-samples</a></li>
+<li class="chapter" data-level="6.5.2" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#example-data-2"><i class="fa fa-check"></i><b>6.5.2</b> Example data</a></li>
+<li class="chapter" data-level="6.5.3" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#assumption-checks-2"><i class="fa fa-check"></i><b>6.5.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="6.5.4" data-path="paired-samples-t-test.html"><a href="paired-samples-t-test.html#output-4"><i class="fa fa-check"></i><b>6.5.4</b> Output</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="anovas.html"><a href="anovas.html"><i class="fa fa-check"></i><b>7</b> ANOVAs</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html"><i class="fa fa-check"></i><b>7.1</b> Anovas and the <em>F</em>-distribution</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-basic-logic-of-anovas"><i class="fa fa-check"></i><b>7.1.1</b> The basic logic of ANOVAs</a></li>
+<li class="chapter" data-level="7.1.2" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#the-f-distribution"><i class="fa fa-check"></i><b>7.1.2</b> The <em>F</em>-distribution</a></li>
+<li class="chapter" data-level="7.1.3" data-path="anovas-and-the-f-distribution.html"><a href="anovas-and-the-f-distribution.html#f-statistic-tables"><i class="fa fa-check"></i><b>7.1.3</b> <em>F</em>-statistic tables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="the-anova-table.html"><a href="the-anova-table.html"><i class="fa fa-check"></i><b>7.2</b> The ANOVA table</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="the-anova-table.html"><a href="the-anova-table.html#the-anova-table-1"><i class="fa fa-check"></i><b>7.2.1</b> The ANOVA table</a></li>
+<li class="chapter" data-level="7.2.2" data-path="the-anova-table.html"><a href="the-anova-table.html#sums-of-squares"><i class="fa fa-check"></i><b>7.2.2</b> Sums of squares</a></li>
+<li class="chapter" data-level="7.2.3" data-path="the-anova-table.html"><a href="the-anova-table.html#degrees-of-freedom"><i class="fa fa-check"></i><b>7.2.3</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="7.2.4" data-path="the-anova-table.html"><a href="the-anova-table.html#mean-squares"><i class="fa fa-check"></i><b>7.2.4</b> Mean squares</a></li>
+<li class="chapter" data-level="7.2.5" data-path="the-anova-table.html"><a href="the-anova-table.html#calculating-f"><i class="fa fa-check"></i><b>7.2.5</b> Calculating <em>F</em></a></li>
+<li class="chapter" data-level="7.2.6" data-path="the-anova-table.html"><a href="the-anova-table.html#putting-it-all-together"><i class="fa fa-check"></i><b>7.2.6</b> Putting it all together</a></li>
+<li class="chapter" data-level="7.2.7" data-path="the-anova-table.html"><a href="the-anova-table.html#consulting-the-f-table"><i class="fa fa-check"></i><b>7.2.7</b> Consulting the <em>F</em>-table</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html"><i class="fa fa-check"></i><b>7.3</b> Multiple comparisons</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hoc-tests"><i class="fa fa-check"></i><b>7.3.1</b> Post-hoc tests</a></li>
+<li class="chapter" data-level="7.3.2" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#the-multiple-comparisons-problem"><i class="fa fa-check"></i><b>7.3.2</b> The multiple comparisons problem</a></li>
+<li class="chapter" data-level="7.3.3" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#correction-methods"><i class="fa fa-check"></i><b>7.3.3</b> Correction methods</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multiple-comparisons.html"><a href="multiple-comparisons.html#post-hocs-in-r"><i class="fa fa-check"></i><b>7.3.4</b> Post-hocs in R</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="eta-squared.html"><a href="eta-squared.html"><i class="fa fa-check"></i><b>7.4</b> Eta-squared</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="eta-squared.html"><a href="eta-squared.html#eta-squared-and-variance"><i class="fa fa-check"></i><b>7.4.1</b> Eta-squared and variance</a></li>
+<li class="chapter" data-level="7.4.2" data-path="eta-squared.html"><a href="eta-squared.html#an-example"><i class="fa fa-check"></i><b>7.4.2</b> An example</a></li>
+<li class="chapter" data-level="7.4.3" data-path="eta-squared.html"><a href="eta-squared.html#interpreting-eta-squared"><i class="fa fa-check"></i><b>7.4.3</b> Interpreting eta-squared</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="one-way-anova.html"><a href="one-way-anova.html"><i class="fa fa-check"></i><b>7.5</b> One-way ANOVA</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="one-way-anova.html"><a href="one-way-anova.html#the-basic-one-way-anova"><i class="fa fa-check"></i><b>7.5.1</b> The basic one-way ANOVA</a></li>
+<li class="chapter" data-level="7.5.2" data-path="one-way-anova.html"><a href="one-way-anova.html#example-data-3"><i class="fa fa-check"></i><b>7.5.2</b> Example data</a></li>
+<li class="chapter" data-level="7.5.3" data-path="one-way-anova.html"><a href="one-way-anova.html#assumption-checks-3"><i class="fa fa-check"></i><b>7.5.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="7.5.4" data-path="one-way-anova.html"><a href="one-way-anova.html#output-5"><i class="fa fa-check"></i><b>7.5.4</b> Output</a></li>
+<li class="chapter" data-level="7.5.5" data-path="one-way-anova.html"><a href="one-way-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>7.5.5</b> Post-hoc tests</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>7.6</b> One-way repeated measures ANOVA</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#repeated-measures-anovas"><i class="fa fa-check"></i><b>7.6.1</b> Repeated measures ANOVAs</a></li>
+<li class="chapter" data-level="7.6.2" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#example-data-4"><i class="fa fa-check"></i><b>7.6.2</b> Example data</a></li>
+<li class="chapter" data-level="7.6.3" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#assumption-checks-4"><i class="fa fa-check"></i><b>7.6.3</b> Assumption checks</a></li>
+<li class="chapter" data-level="7.6.4" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#anova-output"><i class="fa fa-check"></i><b>7.6.4</b> ANOVA output</a></li>
+<li class="chapter" data-level="7.6.5" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>7.6.5</b> Post-hoc tests</a></li>
+<li class="chapter" data-level="7.6.6" data-path="one-way-repeated-measures-anova.html"><a href="one-way-repeated-measures-anova.html#alternative-using-rstatix"><i class="fa fa-check"></i><b>7.6.6</b> Alternative using <code>rstatix</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="linear-relationships.html"><a href="linear-relationships.html"><i class="fa fa-check"></i><b>8</b> Linear relationships</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>8.1</b> Correlations</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="correlations.html"><a href="correlations.html#correlation-coefficients"><i class="fa fa-check"></i><b>8.1.1</b> Correlation coefficients</a></li>
+<li class="chapter" data-level="8.1.2" data-path="correlations.html"><a href="correlations.html#activity"><i class="fa fa-check"></i><b>8.1.2</b> Activity</a></li>
+<li class="chapter" data-level="8.1.3" data-path="correlations.html"><a href="correlations.html#testing-correlations-in-r"><i class="fa fa-check"></i><b>8.1.3</b> Testing correlations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html"><i class="fa fa-check"></i><b>8.2</b> Regression hypotheses</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html#terminology"><i class="fa fa-check"></i><b>8.2.1</b> Terminology</a></li>
+<li class="chapter" data-level="8.2.2" data-path="regression-hypotheses.html"><a href="regression-hypotheses.html#hypothesis-testing-in-regressions"><i class="fa fa-check"></i><b>8.2.2</b> Hypothesis testing in regressions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="least-squares-regression.html"><a href="least-squares-regression.html"><i class="fa fa-check"></i><b>8.3</b> Least squares regression</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="least-squares-regression.html"><a href="least-squares-regression.html#the-regression-line"><i class="fa fa-check"></i><b>8.3.1</b> The regression line</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="assumption-tests.html"><a href="assumption-tests.html"><i class="fa fa-check"></i><b>8.4</b> Assumption tests</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="assumption-tests.html"><a href="assumption-tests.html#linearity"><i class="fa fa-check"></i><b>8.4.1</b> Linearity</a></li>
+<li class="chapter" data-level="8.4.2" data-path="assumption-tests.html"><a href="assumption-tests.html#homoscedasticity"><i class="fa fa-check"></i><b>8.4.2</b> Homoscedasticity</a></li>
+<li class="chapter" data-level="8.4.3" data-path="assumption-tests.html"><a href="assumption-tests.html#independence"><i class="fa fa-check"></i><b>8.4.3</b> Independence</a></li>
+<li class="chapter" data-level="8.4.4" data-path="assumption-tests.html"><a href="assumption-tests.html#normality"><i class="fa fa-check"></i><b>8.4.4</b> Normality</a></li>
+<li class="chapter" data-level="8.4.5" data-path="assumption-tests.html"><a href="assumption-tests.html#multicollinearity"><i class="fa fa-check"></i><b>8.4.5</b> Multicollinearity</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html"><i class="fa fa-check"></i><b>8.5</b> Linear regressions in R</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#scenario"><i class="fa fa-check"></i><b>8.5.1</b> Scenario</a></li>
+<li class="chapter" data-level="8.5.2" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#assumptions"><i class="fa fa-check"></i><b>8.5.2</b> Assumptions</a></li>
+<li class="chapter" data-level="8.5.3" data-path="linear-regressions-in-r.html"><a href="linear-regressions-in-r.html#output-6"><i class="fa fa-check"></i><b>8.5.3</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="predictions.html"><a href="predictions.html"><i class="fa fa-check"></i><b>8.6</b> Predictions</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="predictions.html"><a href="predictions.html#revisiting-the-linear-regression-equation"><i class="fa fa-check"></i><b>8.6.1</b> Revisiting the linear regression equation</a></li>
+<li class="chapter" data-level="8.6.2" data-path="predictions.html"><a href="predictions.html#building-a-regression-equation"><i class="fa fa-check"></i><b>8.6.2</b> Building a regression equation</a></li>
+<li class="chapter" data-level="8.6.3" data-path="predictions.html"><a href="predictions.html#an-example-prediction"><i class="fa fa-check"></i><b>8.6.3</b> An example prediction</a></li>
+<li class="chapter" data-level="8.6.4" data-path="predictions.html"><a href="predictions.html#a-warning"><i class="fa fa-check"></i><b>8.6.4</b> A warning</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html"><i class="fa fa-check"></i><b>8.7</b> Multiple regression: Theory</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#multiple-regression"><i class="fa fa-check"></i><b>8.7.1</b> Multiple regression</a></li>
+<li class="chapter" data-level="8.7.2" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#the-regression-equation-once-again"><i class="fa fa-check"></i><b>8.7.2</b> The regression equation, once again</a></li>
+<li class="chapter" data-level="8.7.3" data-path="multiple-regression-theory.html"><a href="multiple-regression-theory.html#assumption-testing-in-multiple-regressions"><i class="fa fa-check"></i><b>8.7.3</b> Assumption testing in multiple regressions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="multreg-intro.html"><a href="multreg-intro.html"><i class="fa fa-check"></i><b>8.8</b> Multiple regressions in R</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="multreg-intro.html"><a href="multreg-intro.html#example-data-5"><i class="fa fa-check"></i><b>8.8.1</b> Example data</a></li>
+<li class="chapter" data-level="8.8.2" data-path="multreg-intro.html"><a href="multreg-intro.html#assumption-checks-5"><i class="fa fa-check"></i><b>8.8.2</b> Assumption checks</a></li>
+<li class="chapter" data-level="8.8.3" data-path="multreg-intro.html"><a href="multreg-intro.html#output-7"><i class="fa fa-check"></i><b>8.8.3</b> Output</a></li>
+<li class="chapter" data-level="8.8.4" data-path="multreg-intro.html"><a href="multreg-intro.html#comparing-predictive-strength"><i class="fa fa-check"></i><b>8.8.4</b> Comparing predictive strength</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Advanced methods</b></span></li>
+<li class="chapter" data-level="9" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVAs</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="factorial-intro.html"><a href="factorial-intro.html"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs.html"><a href="factorial-designs.html"><i class="fa fa-check"></i><b>9.2</b> Factorial designs</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="factorial-designs.html"><a href="factorial-designs.html#what-is-an-interaction"><i class="fa fa-check"></i><b>9.2.1</b> What is an interaction?</a></li>
+<li class="chapter" data-level="9.2.2" data-path="factorial-designs.html"><a href="factorial-designs.html#testing-for-interactions"><i class="fa fa-check"></i><b>9.2.2</b> Testing for interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="simple-effects-tests.html"><a href="simple-effects-tests.html"><i class="fa fa-check"></i><b>9.3</b> Simple effects tests</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="simple-effects-tests.html"><a href="simple-effects-tests.html#simple-effects-tests-1"><i class="fa fa-check"></i><b>9.3.1</b> Simple effects tests</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html"><i class="fa fa-check"></i><b>9.4</b> R-specific considerations</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#the-afex-package"><i class="fa fa-check"></i><b>9.4.1</b> The <code>afex</code> package</a></li>
+<li class="chapter" data-level="9.4.2" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#writing-interactions-in-r"><i class="fa fa-check"></i><b>9.4.2</b> Writing interactions in R</a></li>
+<li class="chapter" data-level="9.4.3" data-path="r-specific-considerations.html"><a href="r-specific-considerations.html#simple-effects-tests-in-r"><i class="fa fa-check"></i><b>9.4.3</b> Simple effects tests in R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html"><i class="fa fa-check"></i><b>9.5</b> Two-way between groups ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#introduction"><i class="fa fa-check"></i><b>9.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.5.2" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#example-2"><i class="fa fa-check"></i><b>9.5.2</b> Example</a></li>
+<li class="chapter" data-level="9.5.3" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#assumption-testing"><i class="fa fa-check"></i><b>9.5.3</b> Assumption testing</a></li>
+<li class="chapter" data-level="9.5.4" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#output-8"><i class="fa fa-check"></i><b>9.5.4</b> Output</a></li>
+<li class="chapter" data-level="9.5.5" data-path="two-way-between-groups-anova.html"><a href="two-way-between-groups-anova.html#write-up"><i class="fa fa-check"></i><b>9.5.5</b> Write-up</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html"><i class="fa fa-check"></i><b>9.6</b> Two-way repeated measures ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#introduction-1"><i class="fa fa-check"></i><b>9.6.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.6.2" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#example-3"><i class="fa fa-check"></i><b>9.6.2</b> Example</a></li>
+<li class="chapter" data-level="9.6.3" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#assumptions-1"><i class="fa fa-check"></i><b>9.6.3</b> Assumptions</a></li>
+<li class="chapter" data-level="9.6.4" data-path="two-way-repeated-measures-anova.html"><a href="two-way-repeated-measures-anova.html#output-9"><i class="fa fa-check"></i><b>9.6.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html"><i class="fa fa-check"></i><b>9.7</b> Two-way mixed ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#introduction-2"><i class="fa fa-check"></i><b>9.7.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.7.2" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#example-4"><i class="fa fa-check"></i><b>9.7.2</b> Example</a></li>
+<li class="chapter" data-level="9.7.3" data-path="two-way-mixed-anova.html"><a href="two-way-mixed-anova.html#output-10"><i class="fa fa-check"></i><b>9.7.3</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="three-way-anova.html"><a href="three-way-anova.html"><i class="fa fa-check"></i><b>9.8</b> Three-way ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="three-way-anova.html"><a href="three-way-anova.html#introduction-3"><i class="fa fa-check"></i><b>9.8.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.8.2" data-path="three-way-anova.html"><a href="three-way-anova.html#example-5"><i class="fa fa-check"></i><b>9.8.2</b> Example</a></li>
+<li class="chapter" data-level="9.8.3" data-path="three-way-anova.html"><a href="three-way-anova.html#simple-simple-effects"><i class="fa fa-check"></i><b>9.8.3</b> Simple <em>simple</em> effects</a></li>
+<li class="chapter" data-level="9.8.4" data-path="three-way-anova.html"><a href="three-way-anova.html#assumptions-and-output"><i class="fa fa-check"></i><b>9.8.4</b> Assumptions and output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="planned-comparisons.html"><a href="planned-comparisons.html"><i class="fa fa-check"></i><b>9.9</b> Planned comparisons</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="planned-comparisons.html"><a href="planned-comparisons.html#introduction-4"><i class="fa fa-check"></i><b>9.9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.9.2" data-path="planned-comparisons.html"><a href="planned-comparisons.html#planned-comparisons-1"><i class="fa fa-check"></i><b>9.9.2</b> Planned comparisons</a></li>
+<li class="chapter" data-level="9.9.3" data-path="planned-comparisons.html"><a href="planned-comparisons.html#linear-contrasts"><i class="fa fa-check"></i><b>9.9.3</b> Linear contrasts</a></li>
+<li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.1</b> ANCOVAs</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="ancovas.html"><a href="ancovas.html#introduction-5"><i class="fa fa-check"></i><b>10.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.1.2" data-path="ancovas.html"><a href="ancovas.html#example-6"><i class="fa fa-check"></i><b>10.1.2</b> Example</a></li>
+<li class="chapter" data-level="10.1.3" data-path="ancovas.html"><a href="ancovas.html#one-way-ancova"><i class="fa fa-check"></i><b>10.1.3</b> One-way ANCOVA</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ancovas.html"><a href="ancovas.html#assumptions-2"><i class="fa fa-check"></i><b>10.1.4</b> Assumptions</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ancovas.html"><a href="ancovas.html#linearity-of-the-covariate"><i class="fa fa-check"></i><b>10.1.5</b> Linearity of the covariate</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html"><i class="fa fa-check"></i><b>10.2</b> Hierarchical regression</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#example-7"><i class="fa fa-check"></i><b>10.2.1</b> Example</a></li>
+<li class="chapter" data-level="10.2.2" data-path="hierarchical-regression.html"><a href="hierarchical-regression.html#building-blocks-and-output"><i class="fa fa-check"></i><b>10.2.2</b> Building blocks and output</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="comparing-models.html"><a href="comparing-models.html"><i class="fa fa-check"></i><b>10.3</b> Comparing models</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="comparing-models.html"><a href="comparing-models.html#comparing-r2"><i class="fa fa-check"></i><b>10.3.1</b> Comparing <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="10.3.2" data-path="comparing-models.html"><a href="comparing-models.html#nested-model-tests"><i class="fa fa-check"></i><b>10.3.2</b> Nested model tests</a></li>
+<li class="chapter" data-level="10.3.3" data-path="comparing-models.html"><a href="comparing-models.html#fit-indices"><i class="fa fa-check"></i><b>10.3.3</b> Fit indices</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="outliers.html"><a href="outliers.html"><i class="fa fa-check"></i><b>10.4</b> Outliers</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="outliers.html"><a href="outliers.html#cooks-distance"><i class="fa fa-check"></i><b>10.4.1</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.4.2" data-path="outliers.html"><a href="outliers.html#mahalanobis-distance-d2"><i class="fa fa-check"></i><b>10.4.2</b> Mahalanobis’ distance, <span class="math inline">\(D^2\)</span></a></li>
+<li class="chapter" data-level="10.4.3" data-path="outliers.html"><a href="outliers.html#what-happens-if-there-is-an-outlier"><i class="fa fa-check"></i><b>10.4.3</b> What happens if there is an outlier?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="partial-correlations.html"><a href="partial-correlations.html"><i class="fa fa-check"></i><b>10.5</b> Partial correlations</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="partial-correlations.html"><a href="partial-correlations.html#introduction-6"><i class="fa fa-check"></i><b>10.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.5.2" data-path="partial-correlations.html"><a href="partial-correlations.html#partial-correlations-1"><i class="fa fa-check"></i><b>10.5.2</b> Partial correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="semipartial-correlations.html"><a href="semipartial-correlations.html"><i class="fa fa-check"></i><b>10.6</b> Semipartial correlations</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="semipartial-correlations.html"><a href="semipartial-correlations.html#semipartial-correlations-sr"><i class="fa fa-check"></i><b>10.6.1</b> Semipartial correlations (<em>sr</em>)</a></li>
+<li class="chapter" data-level="10.6.2" data-path="semipartial-correlations.html"><a href="semipartial-correlations.html#example-8"><i class="fa fa-check"></i><b>10.6.2</b> Example</a></li>
+<li class="chapter" data-level="10.6.3" data-path="semipartial-correlations.html"><a href="semipartial-correlations.html#calculating-all-sr2-values"><i class="fa fa-check"></i><b>10.6.3</b> Calculating all <span class="math inline">\(sr^2\)</span> values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Logistic regression</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="probability-and-odds.html"><a href="probability-and-odds.html"><i class="fa fa-check"></i><b>11.1</b> Probability and odds</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="probability-and-odds.html"><a href="probability-and-odds.html#reminder-of-probabilities"><i class="fa fa-check"></i><b>11.1.1</b> Reminder of probabilities</a></li>
+<li class="chapter" data-level="11.1.2" data-path="probability-and-odds.html"><a href="probability-and-odds.html#odds"><i class="fa fa-check"></i><b>11.1.2</b> Odds</a></li>
+<li class="chapter" data-level="11.1.3" data-path="probability-and-odds.html"><a href="probability-and-odds.html#odds-ratios"><i class="fa fa-check"></i><b>11.1.3</b> Odds ratios</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html"><i class="fa fa-check"></i><b>11.2</b> Theory of logistic regression</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#introduction-7"><i class="fa fa-check"></i><b>11.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2.2" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#modelling-probabilities-sort-of"><i class="fa fa-check"></i><b>11.2.2</b> Modelling probabilities (sort of)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="theory-of-logistic-regression.html"><a href="theory-of-logistic-regression.html#the-logistic-model"><i class="fa fa-check"></i><b>11.2.3</b> The logistic model</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="example-9.html"><a href="example-9.html"><i class="fa fa-check"></i><b>11.3</b> Example</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="example-9.html"><a href="example-9.html#assumptions-3"><i class="fa fa-check"></i><b>11.3.1</b> Assumptions</a></li>
+<li class="chapter" data-level="11.3.2" data-path="example-9.html"><a href="example-9.html#building-the-model"><i class="fa fa-check"></i><b>11.3.2</b> Building the model</a></li>
+<li class="chapter" data-level="11.3.3" data-path="example-9.html"><a href="example-9.html#predictions-1"><i class="fa fa-check"></i><b>11.3.3</b> Predictions</a></li>
+<li class="chapter" data-level="11.3.4" data-path="example-9.html"><a href="example-9.html#logistic-regression-with-multiple-predictors"><i class="fa fa-check"></i><b>11.3.4</b> Logistic regression with multiple predictors</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="pseudo-r2.html"><a href="pseudo-r2.html"><i class="fa fa-check"></i><b>11.4</b> Pseudo <span class="math inline">\(R^2\)</span></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="pseudo-r2.html"><a href="pseudo-r2.html#regular-r2"><i class="fa fa-check"></i><b>11.4.1</b> Regular <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="11.4.2" data-path="pseudo-r2.html"><a href="pseudo-r2.html#calculating-pseudo-r2-measures"><i class="fa fa-check"></i><b>11.4.2</b> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures</a></li>
+<li class="chapter" data-level="11.4.3" data-path="pseudo-r2.html"><a href="pseudo-r2.html#when-do-you-report-it"><i class="fa fa-check"></i><b>11.4.3</b> When do you report it?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="exploratory-factor-analysis.html"><a href="exploratory-factor-analysis.html"><i class="fa fa-check"></i><b>12</b> Exploratory factor analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html"><i class="fa fa-check"></i><b>12.1</b> Introduction to EFA</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#dimension-reduction"><i class="fa fa-check"></i><b>12.1.1</b> Dimension reduction</a></li>
+<li class="chapter" data-level="12.1.2" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#factor-analysis"><i class="fa fa-check"></i><b>12.1.2</b> Factor analysis</a></li>
+<li class="chapter" data-level="12.1.3" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#the-steps-of-exploratory-factor-analysis"><i class="fa fa-check"></i><b>12.1.3</b> The steps of exploratory factor analysis</a></li>
+<li class="chapter" data-level="12.1.4" data-path="introduction-to-efa.html"><a href="introduction-to-efa.html#example-dataset"><i class="fa fa-check"></i><b>12.1.4</b> Example dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html"><i class="fa fa-check"></i><b>12.2</b> Theory of EFA</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="theory-of-efa.html"><a href="theory-of-efa.html#pca-vs-efa"><i class="fa fa-check"></i><b>12.2.1</b> PCA vs EFA</a></li>
+<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.2</b> Partial correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html"><i class="fa fa-check"></i><b>12.3</b> Initial considerations for EFA</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#sample-size"><i class="fa fa-check"></i><b>12.3.1</b> Sample size</a></li>
+<li class="chapter" data-level="12.3.2" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#assumptions-4"><i class="fa fa-check"></i><b>12.3.2</b> Assumptions</a></li>
+<li class="chapter" data-level="12.3.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html#factorability"><i class="fa fa-check"></i><b>12.3.3</b> Factorability</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html"><i class="fa fa-check"></i><b>12.4</b> How many factors/components?</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#deciding-on-the-number-of-factors"><i class="fa fa-check"></i><b>12.4.1</b> Deciding on the number of factors</a></li>
+<li class="chapter" data-level="12.4.2" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#the-kaiser-guttman-rule"><i class="fa fa-check"></i><b>12.4.2</b> The Kaiser-Guttman rule</a></li>
+<li class="chapter" data-level="12.4.3" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#the-scree-plot"><i class="fa fa-check"></i><b>12.4.3</b> The scree plot</a></li>
+<li class="chapter" data-level="12.4.4" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#parallel-analysis"><i class="fa fa-check"></i><b>12.4.4</b> Parallel analysis</a></li>
+<li class="chapter" data-level="12.4.5" data-path="how-many-factorscomponents.html"><a href="how-many-factorscomponents.html#how-to-decide"><i class="fa fa-check"></i><b>12.4.5</b> How to decide?</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="interpreting-output.html"><a href="interpreting-output.html"><i class="fa fa-check"></i><b>12.5</b> Interpreting output</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="interpreting-output.html"><a href="interpreting-output.html#extraction-methods"><i class="fa fa-check"></i><b>12.5.1</b> Extraction methods</a></li>
+<li class="chapter" data-level="12.5.2" data-path="interpreting-output.html"><a href="interpreting-output.html#interpreting-output-1"><i class="fa fa-check"></i><b>12.5.2</b> Interpreting output</a></li>
+<li class="chapter" data-level="12.5.3" data-path="interpreting-output.html"><a href="interpreting-output.html#total-variance-explained"><i class="fa fa-check"></i><b>12.5.3</b> Total variance explained</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html"><i class="fa fa-check"></i><b>12.6</b> Rotation, and interpreting output again</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html#rotations"><i class="fa fa-check"></i><b>12.6.1</b> Rotations</a></li>
+<li class="chapter" data-level="12.6.2" data-path="rotation-and-interpreting-output-again.html"><a href="rotation-and-interpreting-output-again.html#rotated-factor-solution"><i class="fa fa-check"></i><b>12.6.2</b> Rotated factor solution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="mediation-and-moderation.html"><a href="mediation-and-moderation.html"><i class="fa fa-check"></i><b>13</b> Mediation and Moderation</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="mediation-intro.html"><a href="mediation-intro.html"><i class="fa fa-check"></i><b>13.1</b> Mediation: Intro</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="mediation-intro.html"><a href="mediation-intro.html#introduction-to-mediation"><i class="fa fa-check"></i><b>13.1.1</b> Introduction to mediation</a></li>
+<li class="chapter" data-level="13.1.2" data-path="mediation-intro.html"><a href="mediation-intro.html#in-mathematical-terms"><i class="fa fa-check"></i><b>13.1.2</b> In mathematical terms</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="mediation-causal-steps.html"><a href="mediation-causal-steps.html"><i class="fa fa-check"></i><b>13.2</b> Mediation: Causal steps</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="mediation-causal-steps.html"><a href="mediation-causal-steps.html#the-causal-steps-approach"><i class="fa fa-check"></i><b>13.2.1</b> The causal steps approach</a></li>
+<li class="chapter" data-level="13.2.2" data-path="mediation-causal-steps.html"><a href="mediation-causal-steps.html#step-1-test-the-direct-effect-c"><i class="fa fa-check"></i><b>13.2.2</b> Step 1: Test the direct effect (c)</a></li>
+<li class="chapter" data-level="13.2.3" data-path="mediation-causal-steps.html"><a href="mediation-causal-steps.html#step-2-test-the-predictor-and-mediator-a"><i class="fa fa-check"></i><b>13.2.3</b> Step 2: Test the predictor and mediator (a)</a></li>
+<li class="chapter" data-level="13.2.4" data-path="mediation-causal-steps.html"><a href="mediation-causal-steps.html#step-3-test-the-predictor-and-mediator-on-the-outcome-b"><i class="fa fa-check"></i><b>13.2.4</b> Step 3: Test the predictor and mediator on the outcome (b)</a></li>
+<li class="chapter" data-level="13.2.5" data-path="mediation-causal-steps.html"><a href="mediation-causal-steps.html#step-4-decide-the-extent-of-mediation"><i class="fa fa-check"></i><b>13.2.5</b> Step 4: Decide the extent of mediation</a></li>
+<li class="chapter" data-level="13.2.6" data-path="mediation-causal-steps.html"><a href="mediation-causal-steps.html#problems-with-the-causal-steps-approach"><i class="fa fa-check"></i><b>13.2.6</b> Problems with the causal steps approach</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="mediation-sobels-test-and-bootstrapping.html"><a href="mediation-sobels-test-and-bootstrapping.html"><i class="fa fa-check"></i><b>13.3</b> Mediation: Sobel’s test and bootstrapping</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="mediation-sobels-test-and-bootstrapping.html"><a href="mediation-sobels-test-and-bootstrapping.html#running-mediations-in-r"><i class="fa fa-check"></i><b>13.3.1</b> Running mediations in R</a></li>
+<li class="chapter" data-level="13.3.2" data-path="mediation-sobels-test-and-bootstrapping.html"><a href="mediation-sobels-test-and-bootstrapping.html#sobels-test"><i class="fa fa-check"></i><b>13.3.2</b> Sobel’s test</a></li>
+<li class="chapter" data-level="13.3.3" data-path="mediation-sobels-test-and-bootstrapping.html"><a href="mediation-sobels-test-and-bootstrapping.html#bootstrapping"><i class="fa fa-check"></i><b>13.3.3</b> Bootstrapping</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="moderation-introduction.html"><a href="moderation-introduction.html"><i class="fa fa-check"></i><b>13.4</b> Moderation: Introduction</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="moderation-introduction.html"><a href="moderation-introduction.html#refresher-on-interactions"><i class="fa fa-check"></i><b>13.4.1</b> Refresher on interactions</a></li>
+<li class="chapter" data-level="13.4.2" data-path="moderation-introduction.html"><a href="moderation-introduction.html#moderation"><i class="fa fa-check"></i><b>13.4.2</b> Moderation</a></li>
+<li class="chapter" data-level="13.4.3" data-path="moderation-introduction.html"><a href="moderation-introduction.html#simple-slopes"><i class="fa fa-check"></i><b>13.4.3</b> Simple slopes</a></li>
+<li class="chapter" data-level="13.4.4" data-path="moderation-introduction.html"><a href="moderation-introduction.html#the-johnson-neyman-technique"><i class="fa fa-check"></i><b>13.4.4</b> The Johnson-Neyman technique</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="moderation-example.html"><a href="moderation-example.html"><i class="fa fa-check"></i><b>13.5</b> Moderation: Example</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="moderation-example.html"><a href="moderation-example.html#example-scenario-1"><i class="fa fa-check"></i><b>13.5.1</b> Example scenario</a></li>
+<li class="chapter" data-level="13.5.2" data-path="moderation-example.html"><a href="moderation-example.html#setting-up-in-r"><i class="fa fa-check"></i><b>13.5.2</b> Setting up in R</a></li>
+<li class="chapter" data-level="13.5.3" data-path="moderation-example.html"><a href="moderation-example.html#output-11"><i class="fa fa-check"></i><b>13.5.3</b> Output</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="nonpara.html"><a href="nonpara.html"><i class="fa fa-check"></i><b>14</b> Non-parametric tests</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html"><i class="fa fa-check"></i><b>14.1</b> Parametric vs non-parametric tests</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#introduction-8"><i class="fa fa-check"></i><b>14.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.1.2" data-path="parametric-vs-non-parametric-tests.html"><a href="parametric-vs-non-parametric-tests.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.1.2</b> Non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html"><i class="fa fa-check"></i><b>14.2</b> Spearman’s rho</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="spearmans-rho.html"><a href="spearmans-rho.html#introduction-9"><i class="fa fa-check"></i><b>14.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.2.2" data-path="spearmans-rho.html"><a href="spearmans-rho.html#understanding-ranks"><i class="fa fa-check"></i><b>14.2.2</b> Understanding ranks</a></li>
+<li class="chapter" data-level="14.2.3" data-path="spearmans-rho.html"><a href="spearmans-rho.html#example-10"><i class="fa fa-check"></i><b>14.2.3</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="mann-whitney-u-tests.html"><a href="mann-whitney-u-tests.html"><i class="fa fa-check"></i><b>14.3</b> Mann-Whitney U tests</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="mann-whitney-u-tests.html"><a href="mann-whitney-u-tests.html#introduction-10"><i class="fa fa-check"></i><b>14.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.3.2" data-path="mann-whitney-u-tests.html"><a href="mann-whitney-u-tests.html#hypotheses"><i class="fa fa-check"></i><b>14.3.2</b> Hypotheses</a></li>
+<li class="chapter" data-level="14.3.3" data-path="mann-whitney-u-tests.html"><a href="mann-whitney-u-tests.html#example-11"><i class="fa fa-check"></i><b>14.3.3</b> Example</a></li>
+<li class="chapter" data-level="14.3.4" data-path="mann-whitney-u-tests.html"><a href="mann-whitney-u-tests.html#output-12"><i class="fa fa-check"></i><b>14.3.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html"><i class="fa fa-check"></i><b>14.4</b> Wilcoxon signed rank test</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html#introduction-11"><i class="fa fa-check"></i><b>14.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.4.2" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html#example-12"><i class="fa fa-check"></i><b>14.4.2</b> Example</a></li>
+<li class="chapter" data-level="14.4.3" data-path="wilcoxon-signed-rank-test.html"><a href="wilcoxon-signed-rank-test.html#output-13"><i class="fa fa-check"></i><b>14.4.3</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="kruskal-wallis-anova.html"><a href="kruskal-wallis-anova.html"><i class="fa fa-check"></i><b>14.5</b> Kruskal-Wallis ANOVA</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="kruskal-wallis-anova.html"><a href="kruskal-wallis-anova.html#introduction-12"><i class="fa fa-check"></i><b>14.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.5.2" data-path="kruskal-wallis-anova.html"><a href="kruskal-wallis-anova.html#example-scenario-2"><i class="fa fa-check"></i><b>14.5.2</b> Example scenario</a></li>
+<li class="chapter" data-level="14.5.3" data-path="kruskal-wallis-anova.html"><a href="kruskal-wallis-anova.html#checking-assumptions-normal-anova"><i class="fa fa-check"></i><b>14.5.3</b> Checking assumptions (normal ANOVA)</a></li>
+<li class="chapter" data-level="14.5.4" data-path="kruskal-wallis-anova.html"><a href="kruskal-wallis-anova.html#output-14"><i class="fa fa-check"></i><b>14.5.4</b> Output</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="friedman-anovas.html"><a href="friedman-anovas.html"><i class="fa fa-check"></i><b>14.6</b> Friedman ANOVAs</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="friedman-anovas.html"><a href="friedman-anovas.html#introduction-13"><i class="fa fa-check"></i><b>14.6.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.6.2" data-path="friedman-anovas.html"><a href="friedman-anovas.html#example-scenario-3"><i class="fa fa-check"></i><b>14.6.2</b> Example scenario</a></li>
+<li class="chapter" data-level="14.6.3" data-path="friedman-anovas.html"><a href="friedman-anovas.html#checking-assumptions-normal-anova-1"><i class="fa fa-check"></i><b>14.6.3</b> Checking assumptions (normal ANOVA)</a></li>
+<li class="chapter" data-level="14.6.4" data-path="friedman-anovas.html"><a href="friedman-anovas.html#running-a-friedman-anova"><i class="fa fa-check"></i><b>14.6.4</b> Running a Friedman ANOVA</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="colours.html"><a href="colours.html"><i class="fa fa-check"></i><b>A</b> R colour palettes</a></li>
+<li class="chapter" data-level="B" data-path="broom.html"><a href="broom.html"><i class="fa fa-check"></i><b>B</b> The <code>broom()</code> package</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="broom-tidy.html"><a href="broom-tidy.html"><i class="fa fa-check"></i><b>B.1</b> The <code>tidy()</code> function</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="broom-tidy.html"><a href="broom-tidy.html#correlations-1"><i class="fa fa-check"></i><b>B.1.1</b> Correlations</a></li>
+<li class="chapter" data-level="B.1.2" data-path="broom-tidy.html"><a href="broom-tidy.html#chi-squares-1"><i class="fa fa-check"></i><b>B.1.2</b> Chi-squares</a></li>
+<li class="chapter" data-level="B.1.3" data-path="broom-tidy.html"><a href="broom-tidy.html#t-tests-1"><i class="fa fa-check"></i><b>B.1.3</b> t-tests</a></li>
+<li class="chapter" data-level="B.1.4" data-path="broom-tidy.html"><a href="broom-tidy.html#anova-objects"><i class="fa fa-check"></i><b>B.1.4</b> ANOVA objects</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="broom-glance.html"><a href="broom-glance.html"><i class="fa fa-check"></i><b>B.2</b> The <code>glance()</code> function</a></li>
+<li class="chapter" data-level="B.3" data-path="broom-augment.html"><a href="broom-augment.html"><i class="fa fa-check"></i><b>B.3</b> The <code>augment()</code> function</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="broom-augment.html"><a href="broom-augment.html#chi-square-tests"><i class="fa fa-check"></i><b>B.3.1</b> Chi-square tests</a></li>
+<li class="chapter" data-level="B.3.2" data-path="broom-augment.html"><a href="broom-augment.html#regressions"><i class="fa fa-check"></i><b>B.3.2</b> Regressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="technical-details-of-anova.html"><a href="technical-details-of-anova.html"><i class="fa fa-check"></i><b>C</b> Technical details of <code>anova()</code></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Research Process for Music Psychologists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="partial-correlations" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Partial correlations<a href="partial-correlations.html#partial-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction-6" class="section level3 hasAnchor" number="10.5.1">
+<h3><span class="header-section-number">10.5.1</span> Introduction<a href="partial-correlations.html#introduction-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall that a correlation coefficient quantifies the strength of the relationship between two variables. That is a standard (zero-order) Pearson’s correlation coefficient, which is ubiquitous in just about any statistical analysis involving continuous variables.</p>
+<p>There are many more types of correlation coefficients out there, some of which we talk about in this subject and others which we won’t touch. On this page, we’ll look at two extensions of Pearson’s correlation coefficent in particular: <strong>partial correlations</strong> and <strong>semipartial correlations</strong>. Both measures are useful specifically in regression contexts. On this page, we will start with partial correlations only, and move onto semipartials in the next.</p>
+</div>
+<div id="partial-correlations-1" class="section level3 hasAnchor" number="10.5.2">
+<h3><span class="header-section-number">10.5.2</span> Partial correlations<a href="partial-correlations.html#partial-correlations-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A <strong>partial correlation</strong> quantifies the relationship between variables X and Y, while controlling for variable Z. In essence, you can imagine that the effect of Z is ‘partialled out’ - or removed - from the correlation between X and Y. This is useful in situations just like the one described above - when you want to control for the effect of a certain variable when calculating a correlation coefficient.</p>
+<p>The formula for a partial correlation is:</p>
+<p><span class="math display">\[
+r_{xy.z} = \frac{r_{xy} - (r_{xz} \times r_{yz})}{\sqrt{(1-r^2_{xz})(1-{r^2_{yz}})}}
+\]</span></p>
+<p>That is, you need to know the standard correlation between variables X and Y (<span class="math inline">\(r_{xy}\)</span>), the correlation between X and Z (<span class="math inline">\(r_{xz}\)</span>) and the correlation between Y and Z (<span class="math inline">\(r_{yz}\)</span>), and then plug them into the formula above.</p>
+<p>Let’s come back to the flow data in Week 10 once again. Imagine we want to test the correlation between Gold MSI scores and flow proneness. However, we might suspect that openness to experience may play a role in the relationship between these variables - in other words, we expect openness to experience to affect both Gold-MSI scores and flow proneness. One thing we could do is to calculate a partial correlation between MSI scores and flow proneness while controlling for openness.</p>
+<p>If we know the correlation between:</p>
+<ul>
+<li>MSI scores and flow proneness,</li>
+<li>MSI scores and openness,</li>
+<li>Flow proneness and openness,</li>
+</ul>
+<p>Then we can calculate partial correlations between MSI scores and flow proneness, controlling for openness.</p>
+<p>In R, we can calculate both partial and semi-partial correlations using the <code>ppcor</code> package. For demonstration’s sake, we will filter the dataset so it only contains the three variables we are interested in here - Gold-MSI scores, openness and flow proneness - though it is not necessary to do this.</p>
+<p>To calculate a partial correlation with a significant test, we can use the <code>pcor.test()</code> function. The function needs three arguments:</p>
+<ul>
+<li><code>x</code>: The first variable to correlate.</li>
+<li><code>y</code>: The second variable to correlate.</li>
+<li><code>z</code>: The control variable.</li>
+</ul>
+<p>The output will look something like this. This looks similar enough to a standard correlation output, and you can interpret it as such. The output shows the relationship between X (Gold-MSI) and Y (DFS Total, flow proneness), while controlling for the effect of openness to experience.</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="partial-correlations.html#cb468-1" tabindex="-1"></a><span class="fu">library</span>(ppcor)</span>
+<span id="cb468-2"><a href="partial-correlations.html#cb468-2" tabindex="-1"></a><span class="fu">pcor.test</span>(</span>
+<span id="cb468-3"><a href="partial-correlations.html#cb468-3" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
+<span id="cb468-4"><a href="partial-correlations.html#cb468-4" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>DFS_Total,</span>
+<span id="cb468-5"><a href="partial-correlations.html#cb468-5" tabindex="-1"></a>  <span class="at">z =</span> flow_data<span class="sc">$</span>openness</span>
+<span id="cb468-6"><a href="partial-correlations.html#cb468-6" tabindex="-1"></a>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]},{"label":["gp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Method"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"0.4207818","2":"4.274538e-36","3":"13.18493","4":"811","5":"1","6":"pearson"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Compare this to the standard correlation call below - we can see that even after controlling for openness the correlation is still significant, and doesn’t decrease by a huge amount (partial <em>r</em>(809) = .42, <em>p</em> &lt; .001).</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="partial-correlations.html#cb469-1" tabindex="-1"></a><span class="co"># Standard correlation</span></span>
+<span id="cb469-2"><a href="partial-correlations.html#cb469-2" tabindex="-1"></a><span class="fu">cor.test</span>(</span>
+<span id="cb469-3"><a href="partial-correlations.html#cb469-3" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
+<span id="cb469-4"><a href="partial-correlations.html#cb469-4" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>DFS_Total</span>
+<span id="cb469-5"><a href="partial-correlations.html#cb469-5" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  flow_data$GoldMSI and flow_data$DFS_Total
+## t = 14.743, df = 809, p-value &lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.4041563 0.5127911
+## sample estimates:
+##       cor 
+## 0.4601945</code></pre>
+<p>To run multiple partial correlations, between variables, the <code>pcor()</code> function will compute these given a dataset. This will calculate partial correlations between pairs of variables, controlling for every other variable included in the call to <code>pcor()</code>. In the example below, we fuse <code>select()</code> to pull only the variables we are interested in and pipe this to <code>pcor()</code> - basically, we are giving <code>pcor()</code> a data frame with only the three variables of interest<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="partial-correlations.html#cb471-1" tabindex="-1"></a>flow_data <span class="sc">%&gt;%</span></span>
+<span id="cb471-2"><a href="partial-correlations.html#cb471-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(GoldMSI, openness, DFS_Total) <span class="sc">%&gt;%</span></span>
+<span id="cb471-3"><a href="partial-correlations.html#cb471-3" tabindex="-1"></a>  <span class="fu">pcor</span>()</span></code></pre></div>
+<pre><code>## $estimate
+##             GoldMSI  openness DFS_Total
+## GoldMSI   1.0000000 0.2154726 0.4207818
+## openness  0.2154726 1.0000000 0.1181387
+## DFS_Total 0.4207818 0.1181387 1.0000000
+## 
+## $p.value
+##                GoldMSI     openness    DFS_Total
+## GoldMSI   0.000000e+00 5.794901e-10 4.274538e-36
+## openness  5.794901e-10 0.000000e+00 7.546911e-04
+## DFS_Total 4.274538e-36 7.546911e-04 0.000000e+00
+## 
+## $statistic
+##             GoldMSI openness DFS_Total
+## GoldMSI    0.000000 6.272218 13.184932
+## openness   6.272218 0.000000  3.381816
+## DFS_Total 13.184932 3.381816  0.000000
+## 
+## $n
+## [1] 811
+## 
+## $gp
+## [1] 1
+## 
+## $method
+## [1] &quot;pearson&quot;</code></pre>
+<p>The way to read this table is to look at the <code>$estimate</code> part of the output for the correlations, and the <code>$p.value</code> for the corresponding <em>p</em>-value. We can see that the partial correlation between Gold-MSI scores and flow proneness is where the rows/columns for DFS_Total and GoldMSI meet.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>Note that <code>ppcor</code> loads a package called <code>MASS</code>, which is used for a number of advanced statistical functions. <code>MASS</code> has its own <code>select()</code> function, which has a quirk of overwriting the tidyverse <code>select()</code> if <code>MASS</code>/<code>ppcor</code> is loaded after tidyverse; that is, any <code>select()</code> call you make might actually be <code>MASS::select()</code> (which won’t work for what you probably want to do) instead of <code>dplyr::select()</code> (which is the column selector). The solution is to either load <code>tidyverse</code> after everything else (if you’re sure this won’t break some other package’s function), or make explicit calls to <code>dplyr</code> using <code>dplyr::select()</code>, which is what I’ve done here.<a href="partial-correlations.html#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="outliers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="semipartial-correlations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

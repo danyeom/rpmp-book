@@ -18,8 +18,6 @@ This section deals with some more advanced topics in ANOVAs and regression. It s
 
 This module won't cover continuous interactions because they are often considered under the topic of moderation - for which there will be a separate module. 
 
-## Revisiting multiple regression
-
 Recall that the basic multiple regression looks something like this:
 
 $$
@@ -220,7 +218,7 @@ Let's return to the proneness to flow example introduced in the multiple regress
 -   age: participant's age.
 
 ```{r}
-w10_flow <- read_csv(here("data", "week_10", "w10_flow.csv"))
+flow_data <- read_csv(here("data", "week_10", "w10_flow.csv"))
 ```
 
 In the first regressions module, we simply ran everything in one go as a multiple regression. Now let's imagine we want to run this as a hierarchical regression, with the following blocks:
@@ -237,19 +235,19 @@ The assumption tests in multiple regressions are identical for hierarchical regr
 Let's start by building block 1. We can do this with `lm()` as per normal. I will call this `flow_block1`:
 
 ```{r}
-flow_block1 <- lm(DFS_Total ~ GoldMSI, data = w10_flow)
+flow_block1 <- lm(DFS_Total ~ GoldMSI, data = flow_data)
 ```
 
 To build block 2, we simply need to create a new regression model with both predictors, as if we were running this in one go:
 
 ```{r}
-flow_block2 <- lm(DFS_Total ~ GoldMSI + openness, data = w10_flow)
+flow_block2 <- lm(DFS_Total ~ GoldMSI + openness, data = flow_data)
 ```
 
 Finally, we do the same thing for block 3:
 
 ```{r}
-flow_block3 <- lm(DFS_Total ~ GoldMSI + openness + trait_anxiety, data = w10_flow)
+flow_block3 <- lm(DFS_Total ~ GoldMSI + openness + trait_anxiety, data = flow_data)
 ```
 
 Now let's print the summary of each model. We can see in block 1 that Gold MSI scores significantly predict proneness to flow:
@@ -472,10 +470,10 @@ In this case, as we are working with three predictors in this model - Gold-MSI s
 
 
 ```{r}
-w10_flow <- w10_flow %>%
+flow_data <- flow_data %>%
   mahalanobis_distance(GoldMSI, trait_anxiety, openness)
 
-w10_flow
+flow_data
 ```
 
 Note that this function will automatically flag whether a datapoint is an outlier. This is essentially done by calculating a critical Mahalanobis distance at *p* < .001. Any datapoint that sits above this critical Mahalanobis distance is flagged as an outlier (see expanded details below under "How do Mahalanobis distances work?")
@@ -483,7 +481,7 @@ Note that this function will automatically flag whether a datapoint is an outlie
 We can view which datapoints are flagged as outliers by simply filtering our dataset using `filter()`:
 
 ```{r}
-w10_flow %>%
+flow_data %>%
   filter(is.outlier == TRUE)
 ```
 
@@ -495,7 +493,7 @@ Here, we can see that participants 378 and 528 are multivariate outliers, and th
 To calculate Mahalanobis distances by hand, you can use the `mahalanobis()` function from base R. To do this, you need to give the function a dataframe with just the predictors in it.
 
 ```{r}
-flow_temp <- w10_flow %>%
+flow_temp <- flow_data %>%
   select(GoldMSI, trait_anxiety, openness)
 
 head(flow_temp)
@@ -542,7 +540,7 @@ The aim is to see whether the effect(s) of interest change as a result of exclud
 Let's see an example of this using the same model as before. Here is the original `flow_block3` model, just under a different name now:
 
 ```{r}
-flow_lm1 <- lm(DFS_Total ~ GoldMSI + trait_anxiety + openness, data = w10_flow)
+flow_lm1 <- lm(DFS_Total ~ GoldMSI + trait_anxiety + openness, data = flow_data)
 summary(flow_lm1)
 ```
 
@@ -557,7 +555,7 @@ The code below lets us remove specific rows. Let's break down what this does:
 However, since all of that is preceded with the exclamation mark, the code is actually telling R to filter all the rows that are *not* `id` = 378 or 528 - in essence, it filters these rows *out*. It's a bit complex, but it's good to know as it applies to many scenarios!
 
 ```{r}
-flow_no_outliers <- w10_flow %>%
+flow_no_outliers <- flow_data %>%
   filter(!id %in% c(378, 528))
 ```
 
@@ -577,3 +575,153 @@ There are other methods that you could consider:
 - Transforming the data to 'un-outlier' the outliers - this can be tricky to interpret
 
 Regardless, it is a good idea to report both versions of the model - with and without outliers - for transparency, to show that you have actively considered these residuals.
+
+## Partial correlations 
+
+### Introduction
+
+Recall that a correlation coefficient quantifies the strength of the relationship between two variables. That is a standard (zero-order) Pearson's correlation coefficient, which is ubiquitous in just about any statistical analysis involving continuous variables.
+
+There are many more types of correlation coefficients out there, some of which we talk about in this subject and others which we won't touch. On this page, we'll look at two extensions of Pearson's correlation coefficent in particular: **partial correlations** and **semipartial correlations**. Both measures are useful specifically in regression contexts. On this page, we will start with partial correlations only, and move onto semipartials in the next.
+
+### Partial correlations 
+
+A **partial correlation** quantifies the relationship between variables X and Y, while controlling for variable Z. In essence, you can imagine that the effect of Z is 'partialled out' - or removed - from the correlation between X and Y. This is useful in situations just like the one described above - when you want to control for the effect of a certain variable when calculating a correlation coefficient. 
+
+The formula for a partial correlation is:
+
+$$
+r_{xy.z} = \frac{r_{xy} - (r_{xz} \times r_{yz})}{\sqrt{(1-r^2_{xz})(1-{r^2_{yz}})}}
+$$
+
+That is, you need to know the standard correlation between variables X and Y ($r_{xy}$), the correlation between X and Z ($r_{xz}$) and the correlation between Y and Z ($r_{yz}$), and then plug them into the formula above.
+
+Let's come back to the flow data in Week 10 once again. Imagine we want to test the correlation between Gold MSI scores and flow proneness. However, we might suspect that openness to experience may play a role in the relationship between these variables - in other words, we expect openness to experience to affect both Gold-MSI scores and flow proneness. One thing we could do is to calculate a partial correlation between MSI scores and flow proneness while controlling for openness.
+
+If we know the correlation between:
+
+- MSI scores and flow proneness,
+- MSI scores and openness,
+- Flow proneness and openness,
+
+Then we can calculate partial correlations between MSI scores and flow proneness, controlling for openness.
+
+In R, we can calculate both partial and semi-partial correlations using the `ppcor` package. For demonstration's sake, we will filter the dataset so it only contains the three variables we are interested in here - Gold-MSI scores, openness and flow proneness - though it is not necessary to do this.
+
+To calculate a partial correlation with a significant test, we can use the `pcor.test()` function. The function needs three arguments:
+
+- `x`: The first variable to correlate.
+- `y`: The second variable to correlate.
+- `z`: The control variable.
+
+The output will look something like this. This looks similar enough to a standard correlation output, and you can interpret it as such. The output shows the relationship between X (Gold-MSI) and Y (DFS Total, flow proneness), while controlling for the effect of openness to experience.
+
+```{r message = FALSE}
+library(ppcor)
+pcor.test(
+  x = flow_data$GoldMSI,
+  y = flow_data$DFS_Total,
+  z = flow_data$openness
+)
+```
+
+Compare this to the standard correlation call below - we can see that even after controlling for openness the correlation is still significant, and doesn't decrease by a huge amount (partial *r*(809) = .42, *p* < .001).
+
+```{r}
+# Standard correlation
+cor.test(
+  x = flow_data$GoldMSI,
+  y = flow_data$DFS_Total
+)
+```
+To run multiple partial correlations, between variables, the `pcor()` function will compute these given a dataset. This will calculate partial correlations between pairs of variables, controlling for every other variable included in the call to `pcor()`. In the example below, we fuse `select()` to pull only the variables we are interested in and pipe this to `pcor()` - basically, we are giving `pcor()` a data frame with only the three variables of interest^[Note that `ppcor` loads a package called `MASS`, which is used for a number of advanced statistical functions. `MASS` has its own `select()` function, which has a quirk of overwriting the tidyverse `select()` if `MASS`/`ppcor` is loaded after tidyverse; that is, any `select()` call you make might actually be `MASS::select()` (which won't work for what you probably want to do) instead of `dplyr::select()` (which is the column selector). The solution is to either load `tidyverse` after everything else (if you're sure this won't break some other package's function), or make explicit calls to `dplyr` using `dplyr::select()`, which is what I've done here.].
+
+
+
+```{r}
+flow_data %>%
+  dplyr::select(GoldMSI, openness, DFS_Total) %>%
+  pcor()
+```
+The way to read this table is to look at the `$estimate` part of the output for the correlations, and the `$p.value` for the corresponding *p*-value. We can see that the partial correlation between Gold-MSI scores and flow proneness is where the rows/columns for DFS_Total and GoldMSI meet.
+
+
+## Semipartial correlations
+
+### Semipartial correlations (*sr*)
+
+**Semipartial correlations** are similar in nature to partial correlations, with one key difference: the effect of the control variable Z is removed from X or Y, but not *both.* In other words, the controlling/partialling out of the effect of Z happens on only one of the two variables in the correlation. 
+
+This property of semipartial correlations makes it particularly useful in multiple regressions. Imagine we have a multiple regression with outcome Y and two predictors X and Z. The amount of variance explained in Y  - this is $R^2$ - is a combination of the effects of individual predictors, and the relationship between predictors. Each predictor will contribute *unique* explained variance to that total amount of explained variance, and there will be some shared variance due to the relationship between predictors. 
+
+In other words, the $R^2$ for a given multiple regression can be broken down into:
+
+- The unique variance explained by each predictor
+- The shared variance between predictors, due to the relationship between the predictors
+
+If we wanted to find out how much X *uniquely* contributes to outcome Y, we could first calculate a semipartial correlation between X and Y, controlling for Z's effect on X. In essence, by removing Z's effect on X only, we are isolating any effect of X on Y specifically, allowing us to examine how much X is contributing on its own. Likewise, if we wanted to find out the unique variance explained by Z, we would run another semipartial between Z and Y, controlling for X's effect on Z.
+
+**Squaring each sr value** (i.e. calculate $sr^2$), will give the **unique amount of variance** explained by predictor X, after controlling for all other variables. If $sr^2$ for variable X is 0.1, for instance, this means that **10% of the variance in Y is uniquely estimated/contributed by X**. In turn, if we calculate $sr^2$ values for each predictor, controlling for all other predictors, and subtract this from $R^2$, this will give us the shared variance.
+
+The diagram below summarises this info (shoutout to [UQ](https://uq.pressbooks.pub/psychological-research-methods-workbook/chapter/activity-5-standard-and-hierarchical-multiple-regression-in-jamovi/):
+
+```{r echo = FALSE}
+knitr::include_graphics("https://uq.pressbooks.pub/app/uploads/sites/108/2024/01/activity-5-figure-5.1-update.png")
+```
+
+### Example
+
+As an example, let's look at a regression where Gold-MSI scores, openness to experience and trait anxiety predict flow proneness. In this model, $R^2$ is .297, meaning that 29.7% of the variance is explained by all three predictors together. 
+
+The `ppcor` package provides a function called `spcor.test()`, which works just like its `pcor.test()` cousin. The only difference is that because we are now partialling the effect of control variables from the *predictor* only, the order in which we enter `x` and `y` matters.
+
+Namely, `x` must be the *outcome* variable, and `y` must be the *predictor* we are interested in controlling. This ensures that the control variables are correctly being removed from the predictor variable and not the outcome:
+
+
+```{r}
+spcor.test(
+  x = flow_data$DFS_Total,
+  y = flow_data$GoldMSI,
+  z = flow_data[, c("openness", "trait_anxiety")]
+)
+```
+
+
+Note that `flow_data[, c("openness", "trait_anxiety")]` is simply base R notation for selecting the columns named "openness" and "trait_anxiety" from the `flow_data` dataframe. 
+
+The semipartial correlation *sr* between Gold-MSI and flow proneness, controlling for the other two predictors (openness and trait anxiety) is *sr* = .401, *p* < .001. 
+
+To calculate $sr2$ you will need to square the *sr* value above, which is thankfully easy enough in R:
+
+```{r}
+0.4008732^2
+```
+
+
+Squaring *sr* = .401 gives us $sr^2$ = 0.1697; this means that Gold-MSI scores uniquely explain 17% of the variance in flow proneness.
+
+### Calculating all $sr^2$ values
+
+We could continue to use the `spcor.test()` function to calculate the other semipartial correlations for the other predictor and the outcome. However, just like `pcor()` we have an analogous function called `spcor()` that will calculate multiple semipartials in one go, using all of the variables in a provided dataframe. Like `pcor()`, the semipartials between two variables will be controlled for all other variables in the dataframe. In the output below, for example, the semipartial between DFS_Total and GoldMSI controls for both openness and trait_anxiety:
+
+```{r}
+flow_data %>%
+  dplyr::select(GoldMSI, trait_anxiety, openness, DFS_Total) %>%
+  spcor()
+```
+
+Recall that for a semipartial, we are interested in controlling the effect of other variables on the *predictor* and not the outcome. To obtain the corresponding values, we read across the row labelled with the *outcome* - i.e. `DFS_Total` - because this shows the semipartial correlation with each *predictor* in the columns.
+
+We can see that the semipartial correlation between flow proneness and openness is not significant (*sr* = .07, *p* = .067), but the semipartial correlation with trait anxiety is (*sr* = -.27, *p* < .001). Squaring these values respectively gives us the following values:
+
+- $sr^2$ for openness: 0.004 (i.e. 0.4% of variance in flow proneness)
+- $sr^2$ for trait anxiety: 0.075 (i.e. 7.5% of variance in flow proneness)
+
+If we now add all of our $sr^2$ values together, we get 0.161 + 0.004 + 0.075 = 0.249, which means that **24%** of the variance in flow proneness is due to the unique effects of the individual predictors. Subtracting this number from the value for $R^2$ gives us 0.296 - 0.24 = `r 0.296 - 0.24`, meaning that **5.6%** of the variance in flow proneness is explained by the shared variance of all three predictors.
+
+Sometimes, it is useful to present $sr^2$ values for each predictor as part of a standard multiple regression table. This allows a reader to see how much each predictor is contributing to the variance in the outcome. in our case, we can say that Gold MSI scores explain the most variance in the outcome, while openness accounts for very little on its own.
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+select <- dplyr::select
+```
+
