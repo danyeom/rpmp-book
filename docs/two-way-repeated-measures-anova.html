@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -144,45 +145,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro-to-R.html"><a href="intro-to-R.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
+<li class="chapter" data-level="2.1" data-path="R-Studio.html"><a href="R-Studio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating RStudio</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
-<li class="chapter" data-level="2.1.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
-<li class="chapter" data-level="2.1.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.1" data-path="R-Studio.html"><a href="R-Studio.html#the-four-panes"><i class="fa fa-check"></i><b>2.1.1</b> The four panes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="R-Studio.html"><a href="R-Studio.html#projects"><i class="fa fa-check"></i><b>2.1.2</b> Projects</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
+<li class="chapter" data-level="2.2" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.2</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
+<li class="chapter" data-level="2.2.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.2.1</b> Operators</a></li>
+<li class="chapter" data-level="2.2.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.2.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.2.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.2.3</b> Variable types</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.3</b> Data structures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.4</b> Loading data into R</a>
+<li class="chapter" data-level="2.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.4</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.4.1</b> Setting up R projects</a></li>
-<li class="chapter" data-level="2.4.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.4.2</b> csv files</a></li>
-<li class="chapter" data-level="2.4.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.4.3</b> Text files</a></li>
-<li class="chapter" data-level="2.4.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.4.4</b> SPSS files</a></li>
-<li class="chapter" data-level="2.4.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.4.5</b> Using <code>here</code> to read data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.4.1</b> Functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.4.2</b> Packages</a></li>
+<li class="chapter" data-level="2.4.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-tidyverse"><i class="fa fa-check"></i><b>2.4.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.4.4</b> The <code>here</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.5</b> Wrangling data with dplyr and others</a>
+<li class="chapter" data-level="2.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.5</b> Loading data into R</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.5.1</b> Selecting columns with <code>select()</code></a></li>
-<li class="chapter" data-level="2.5.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.5.2</b> Filtering rows with <code>filter()</code></a></li>
-<li class="chapter" data-level="2.5.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.5.3</b> Creating new columns with <code>mutate()</code></a></li>
-<li class="chapter" data-level="2.5.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.5.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
-<li class="chapter" data-level="2.5.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.5.5</b> Some other handy tidyverse functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.5.1</b> Setting up R projects</a></li>
+<li class="chapter" data-level="2.5.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.5.2</b> csv files</a></li>
+<li class="chapter" data-level="2.5.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.5.3</b> Text files</a></li>
+<li class="chapter" data-level="2.5.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.5.4</b> SPSS files</a></li>
+<li class="chapter" data-level="2.5.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.5.5</b> Using <code>here</code> to read data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.6</b> Making graphs with ggplot2</a>
+<li class="chapter" data-level="2.6" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.6</b> Wrangling data with <code>dplyr</code> and others</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.6.1</b> Building the plot</a></li>
-<li class="chapter" data-level="2.6.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.6.2</b> Geoms</a></li>
-<li class="chapter" data-level="2.6.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.6.3</b> Making the graph look better</a></li>
+<li class="chapter" data-level="2.6.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.6.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.6.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.6.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.6.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.6.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.6.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.6.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.6.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.7</b> Making graphs with <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.7.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.7.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.7.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.7.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.7.3</b> Making the graph look better</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
@@ -735,9 +741,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Background music (2 levels: happy or sad)</li>
 </ol>
 <p>Every participant therefore does 6 maths exams: easy-happy, easy-sad, medium-happy, medium-sad, hard-happy and hard-sad. The dependent variable of interest is their exam score. We’re interested in whether the difficulty and the music type have an effect on exam performance. Because our two IVs are within-subject variables, we will want to use a two-way repeated measures ANOVA.</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="two-way-repeated-measures-anova.html#cb335-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_rmanova_long.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="two-way-repeated-measures-anova.html#cb336-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_rmanova_long.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 120 Columns: 4
-## ── Column specification ────────────────────────
+## ── Column specification ───────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (2): difficulty, music
 ## dbl (2): ptcpt, grade
@@ -747,17 +753,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>R will generally treat character variables as factors, but will order the factors alphabetically. In our instance, because we have a specific order for the categories that is not alphabetical and we want our graph to reflect this, we will need to tell R what order our levels are. This is simple to do with the <code>factor()</code> function, which will create factors from columns in your data. <code>factor()</code> first needs to know what column you are wanting to create factors in, and then it will want to know the specific order of the factors. The order is set with the <code>levels</code> argument.</p>
 <p>We will recode both the difficulty and the music type variables for completion’s sake, and there are two ways to go about doing this.</p>
 <p>First, you can just use base R functions like so:</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="two-way-repeated-measures-anova.html#cb337-1" tabindex="-1"></a>twoway_exam<span class="sc">$</span>music <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_exam<span class="sc">$</span>music, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;happy&quot;</span>, <span class="st">&quot;sad&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="two-way-repeated-measures-anova.html#cb338-1" tabindex="-1"></a>twoway_exam<span class="sc">$</span>music <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_exam<span class="sc">$</span>music, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;happy&quot;</span>, <span class="st">&quot;sad&quot;</span>))</span></code></pre></div>
 <p>Or you can use <code>factor()</code> within mutate and largely identical syntax:</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="two-way-repeated-measures-anova.html#cb338-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> twoway_exam <span class="sc">%&gt;%</span></span>
-<span id="cb338-2"><a href="two-way-repeated-measures-anova.html#cb338-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb338-3"><a href="two-way-repeated-measures-anova.html#cb338-3" tabindex="-1"></a>    <span class="at">difficulty =</span> <span class="fu">factor</span>(difficulty, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;easy&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;hard&quot;</span>))</span>
-<span id="cb338-4"><a href="two-way-repeated-measures-anova.html#cb338-4" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="two-way-repeated-measures-anova.html#cb339-1" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> twoway_exam <span class="sc">%&gt;%</span></span>
+<span id="cb339-2"><a href="two-way-repeated-measures-anova.html#cb339-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb339-3"><a href="two-way-repeated-measures-anova.html#cb339-3" tabindex="-1"></a>    <span class="at">difficulty =</span> <span class="fu">factor</span>(difficulty, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;easy&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;hard&quot;</span>))</span>
+<span id="cb339-4"><a href="two-way-repeated-measures-anova.html#cb339-4" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Let’s start with the usual descriptives and graphs:</p>
-<pre><code>## `summarise()` has grouped output by
-## &#39;difficulty&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-273-1.png" width="672" /></p>
+<pre><code>## `summarise()` has grouped output by &#39;difficulty&#39;. You can
+## override using the `.groups` argument.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
 <p>Eyeballing the graph, we can see that there might be some sort of effect happening. Unsurprisingly, it looks like the easy maths exams are, well. easier, because people are scoring better on them. There might be an effect of music, because in both easy and hard conditions it looks like people do better with happy music compared to sad music. But the interaction plot tells us there’s something clearly going on, and it paints a really interesting story on its own. It appears that there’s almost a ‘plateau’-ing effect with medium difficulty, in that both happy and sad hit the same point in exam scores. However, it looks like for happy music, harder exams see no further decrease in performance - but there is a sharp drop again for sad music.</p>
 </div>
 <div id="assumptions-1" class="section level3 hasAnchor" number="9.6.3">
@@ -771,27 +776,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As is the case with one-way repeated measures ANOVAs, the assumption of sphericity is only tested when there are three or more levels; with only two levels, the assumption is always met. The output is below with the main ANOVA output. The sphericity for all of our effects is intact, so we don’t have any issues here, but if we did the same principle would apply - we would apply our corrections depending on the value of epsilon.</p>
 <p>Let’s also see if our variables are normally distributed:</p>
 <p>R-Note: For a repeated measures ANOVA, for some reason the closest I can get to generating what Jamovi does is to build an <code>aov()</code> model without an explicit <code>Error()</code> term - as would be the case for a fully between-subjects ANOVA. You can then use the standardised residuals to create a Q-Q plot using the below code. Note that <code>broom:augment()</code> is just a helper function that nicely extracts the residuals:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="two-way-repeated-measures-anova.html#cb340-1" tabindex="-1"></a><span class="fu">aov</span>(grade <span class="sc">~</span> difficulty <span class="sc">*</span> music, <span class="at">data =</span> twoway_exam) <span class="sc">%&gt;%</span></span>
-<span id="cb340-2"><a href="two-way-repeated-measures-anova.html#cb340-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb340-3"><a href="two-way-repeated-measures-anova.html#cb340-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
-<span id="cb340-4"><a href="two-way-repeated-measures-anova.html#cb340-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb340-5"><a href="two-way-repeated-measures-anova.html#cb340-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="two-way-repeated-measures-anova.html#cb341-1" tabindex="-1"></a><span class="fu">aov</span>(grade <span class="sc">~</span> difficulty <span class="sc">*</span> music, <span class="at">data =</span> twoway_exam) <span class="sc">%&gt;%</span></span>
+<span id="cb341-2"><a href="two-way-repeated-measures-anova.html#cb341-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb341-3"><a href="two-way-repeated-measures-anova.html#cb341-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
+<span id="cb341-4"><a href="two-way-repeated-measures-anova.html#cb341-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb341-5"><a href="two-way-repeated-measures-anova.html#cb341-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
 <p>It’s not… great but for the purposes of demonstration, we’ll run with it anyway.</p>
 </div>
 <div id="output-9" class="section level3 hasAnchor" number="9.6.4">
 <h3><span class="header-section-number">9.6.4</span> Output<a href="two-way-repeated-measures-anova.html#output-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s our output from R:</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="two-way-repeated-measures-anova.html#cb341-1" tabindex="-1"></a>twoway_exam_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
-<span id="cb341-2"><a href="two-way-repeated-measures-anova.html#cb341-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_exam,</span>
-<span id="cb341-3"><a href="two-way-repeated-measures-anova.html#cb341-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;ptcpt&quot;</span>,</span>
-<span id="cb341-4"><a href="two-way-repeated-measures-anova.html#cb341-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;grade&quot;</span>,</span>
-<span id="cb341-5"><a href="two-way-repeated-measures-anova.html#cb341-5" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;difficulty&quot;</span>, <span class="st">&quot;music&quot;</span>),</span>
-<span id="cb341-6"><a href="two-way-repeated-measures-anova.html#cb341-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
-<span id="cb341-7"><a href="two-way-repeated-measures-anova.html#cb341-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
-<span id="cb341-8"><a href="two-way-repeated-measures-anova.html#cb341-8" tabindex="-1"></a>)</span>
-<span id="cb341-9"><a href="two-way-repeated-measures-anova.html#cb341-9" tabindex="-1"></a></span>
-<span id="cb341-10"><a href="two-way-repeated-measures-anova.html#cb341-10" tabindex="-1"></a>twoway_exam_aov</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="two-way-repeated-measures-anova.html#cb342-1" tabindex="-1"></a>twoway_exam_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb342-2"><a href="two-way-repeated-measures-anova.html#cb342-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_exam,</span>
+<span id="cb342-3"><a href="two-way-repeated-measures-anova.html#cb342-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;ptcpt&quot;</span>,</span>
+<span id="cb342-4"><a href="two-way-repeated-measures-anova.html#cb342-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;grade&quot;</span>,</span>
+<span id="cb342-5"><a href="two-way-repeated-measures-anova.html#cb342-5" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;difficulty&quot;</span>, <span class="st">&quot;music&quot;</span>),</span>
+<span id="cb342-6"><a href="two-way-repeated-measures-anova.html#cb342-6" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>),</span>
+<span id="cb342-7"><a href="two-way-repeated-measures-anova.html#cb342-7" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb342-8"><a href="two-way-repeated-measures-anova.html#cb342-8" tabindex="-1"></a>)</span>
+<span id="cb342-9"><a href="two-way-repeated-measures-anova.html#cb342-9" tabindex="-1"></a></span>
+<span id="cb342-10"><a href="two-way-repeated-measures-anova.html#cb342-10" tabindex="-1"></a>twoway_exam_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: grade
@@ -803,9 +808,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1
 ## 
 ## Sphericity correction method: GG</code></pre>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="two-way-repeated-measures-anova.html#cb343-1" tabindex="-1"></a><span class="co"># To get sphericity output</span></span>
-<span id="cb343-2"><a href="two-way-repeated-measures-anova.html#cb343-2" tabindex="-1"></a></span>
-<span id="cb343-3"><a href="two-way-repeated-measures-anova.html#cb343-3" tabindex="-1"></a><span class="fu">summary</span>(twoway_exam_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="two-way-repeated-measures-anova.html#cb344-1" tabindex="-1"></a><span class="co"># To get sphericity output</span></span>
+<span id="cb344-2"><a href="two-way-repeated-measures-anova.html#cb344-2" tabindex="-1"></a></span>
+<span id="cb344-3"><a href="two-way-repeated-measures-anova.html#cb344-3" tabindex="-1"></a><span class="fu">summary</span>(twoway_exam_aov)</span></code></pre></div>
 <pre><code>## 
 ## Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
 ## 
@@ -839,8 +844,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## difficulty:music 0.8936983 4.903345e-04</code></pre>
 <p>Once again this is quite a busy table! We can see that there is a significant main effect of difficulty (<em>F</em>(2, 38) = 189.61, <em>p</em> &lt; .001), as well as a significant main effect of music type (<em>F</em>(1, 19) = 18.39, <em>p</em> &lt; .001). There is also a significant interaction effect of difficulty and music (<em>F</em>(2, 38) = 10.29, <em>p</em> &lt; .001). We can also see our sphericity output here; neither the difficulty variable (<em>W</em> = .880) nor the difficulty x music interaction (<em>W</em> = .788) terms show significant violation of sphericity (<em>p</em> &gt; .05). Therefore we have not corrected for anything in our main ANOVA output. Note that because music only has two levels, there is no sphericity test for it.</p>
 <p>To decompose this, we’ll do our usual simple effects tests - holding one variable constant and running pairwise comparisons with the other. For this example, we’ll just hold the difficulty constant and compare music genres. We can absolutely reverse the simple effects, but for the sake of simplicity we’ll just do it the one way round for this example.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="two-way-repeated-measures-anova.html#cb345-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> music, <span class="at">by =</span> <span class="st">&quot;difficulty&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb345-2"><a href="two-way-repeated-measures-anova.html#cb345-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="two-way-repeated-measures-anova.html#cb346-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> music, <span class="at">by =</span> <span class="st">&quot;difficulty&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb346-2"><a href="two-way-repeated-measures-anova.html#cb346-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <pre><code>## difficulty = easy:
 ##  contrast    estimate   SE df lower.CL upper.CL t.ratio p.value
 ##  happy - sad      4.4 1.78 19    0.682     8.12   2.477  0.0228
@@ -856,8 +861,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Confidence level used: 0.95</code></pre>
 <p>From this we can see that for easy exams, on average people scored 4.4 points higher with happy music compared to sad music (p = .023). On medium exams, there was no difference between happy and sad music (p = .900). Lastly, for harder exams people who listened to happy music scored, on average, 11.7 points higher than people who listened to sad music (<em>p</em> &lt; .001). This suggests overall that happy music is probably better for completing exams than sad music, though the medium difficulty exam is a strange one here.</p>
 <p>If, instead, we wanted to hold music type constant and test differences in difficulty, we would get this output.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="two-way-repeated-measures-anova.html#cb347-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> difficulty, <span class="at">by =</span> <span class="st">&quot;music&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb347-2"><a href="two-way-repeated-measures-anova.html#cb347-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="two-way-repeated-measures-anova.html#cb348-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> difficulty, <span class="at">by =</span> <span class="st">&quot;music&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb348-2"><a href="two-way-repeated-measures-anova.html#cb348-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <pre><code>## music = happy:
 ##  contrast      estimate   SE df lower.CL upper.CL t.ratio p.value
 ##  easy - medium     21.1 1.76 19    17.42    24.78  12.005  &lt;.0001

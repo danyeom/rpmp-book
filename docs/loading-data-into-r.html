@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.4 Loading data into R | Research Process for Music Psychologists</title>
+  <title>2.5 Loading data into R | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.4 Loading data into R | Research Process for Music Psychologists" />
+  <meta property="og:title" content="2.5 Loading data into R | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.4 Loading data into R | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="2.5 Loading data into R | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -144,45 +145,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro-to-R.html"><a href="intro-to-R.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
+<li class="chapter" data-level="2.1" data-path="R-Studio.html"><a href="R-Studio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating RStudio</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
-<li class="chapter" data-level="2.1.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
-<li class="chapter" data-level="2.1.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.1" data-path="R-Studio.html"><a href="R-Studio.html#the-four-panes"><i class="fa fa-check"></i><b>2.1.1</b> The four panes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="R-Studio.html"><a href="R-Studio.html#projects"><i class="fa fa-check"></i><b>2.1.2</b> Projects</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
+<li class="chapter" data-level="2.2" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.2</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
+<li class="chapter" data-level="2.2.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.2.1</b> Operators</a></li>
+<li class="chapter" data-level="2.2.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.2.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.2.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.2.3</b> Variable types</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.3</b> Data structures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.4</b> Loading data into R</a>
+<li class="chapter" data-level="2.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.4</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.4.1</b> Setting up R projects</a></li>
-<li class="chapter" data-level="2.4.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.4.2</b> csv files</a></li>
-<li class="chapter" data-level="2.4.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.4.3</b> Text files</a></li>
-<li class="chapter" data-level="2.4.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.4.4</b> SPSS files</a></li>
-<li class="chapter" data-level="2.4.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.4.5</b> Using <code>here</code> to read data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.4.1</b> Functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.4.2</b> Packages</a></li>
+<li class="chapter" data-level="2.4.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-tidyverse"><i class="fa fa-check"></i><b>2.4.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.4.4</b> The <code>here</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.5</b> Wrangling data with dplyr and others</a>
+<li class="chapter" data-level="2.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.5</b> Loading data into R</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.5.1</b> Selecting columns with <code>select()</code></a></li>
-<li class="chapter" data-level="2.5.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.5.2</b> Filtering rows with <code>filter()</code></a></li>
-<li class="chapter" data-level="2.5.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.5.3</b> Creating new columns with <code>mutate()</code></a></li>
-<li class="chapter" data-level="2.5.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.5.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
-<li class="chapter" data-level="2.5.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.5.5</b> Some other handy tidyverse functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.5.1</b> Setting up R projects</a></li>
+<li class="chapter" data-level="2.5.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.5.2</b> csv files</a></li>
+<li class="chapter" data-level="2.5.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.5.3</b> Text files</a></li>
+<li class="chapter" data-level="2.5.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.5.4</b> SPSS files</a></li>
+<li class="chapter" data-level="2.5.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.5.5</b> Using <code>here</code> to read data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.6</b> Making graphs with ggplot2</a>
+<li class="chapter" data-level="2.6" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.6</b> Wrangling data with <code>dplyr</code> and others</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.6.1</b> Building the plot</a></li>
-<li class="chapter" data-level="2.6.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.6.2</b> Geoms</a></li>
-<li class="chapter" data-level="2.6.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.6.3</b> Making the graph look better</a></li>
+<li class="chapter" data-level="2.6.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.6.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.6.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.6.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.6.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.6.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.6.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.6.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.6.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.7</b> Making graphs with <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.7.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.7.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.7.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.7.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.7.3</b> Making the graph look better</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
@@ -713,11 +719,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="loading-data-into-r" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Loading data into R<a href="loading-data-into-r.html#loading-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="loading-data-into-r" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Loading data into R<a href="loading-data-into-r.html#loading-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Naturally, we cannot do any statistical analyses without reading in data. R can flexibly read in a number of data formats.</p>
-<div id="setting-up-r-projects" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> Setting up R projects<a href="loading-data-into-r.html#setting-up-r-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="setting-up-r-projects" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Setting up R projects<a href="loading-data-into-r.html#setting-up-r-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before we continue, it’s worth taking a moment here to pick up on the project workflow we mentioned on the previous page. By default, R will operate out of your <code>Documents</code> folder on both Windows and macOS. If you make an <strong>R project</strong>, you can essentially create an instance of R that starts from the folder you place your R project in. This can be really useful for keeping all of your files related to one project in one place!</p>
 <p>There are several guides online on how to initialise R projects, so we will not try to reinvent the wheel here. However, the basic idea is something like this:L</p>
 <ol style="list-style-type: decimal">
@@ -740,33 +746,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 |-----output</code></pre>
 <p>The <code>code</code> folder in your project is your place for storing code, the <code>data</code> folder is for storing data and <code>output</code> is useful for saving any outputs you generate.</p>
 </div>
-<div id="csv-files" class="section level3 hasAnchor" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> csv files<a href="loading-data-into-r.html#csv-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="csv-files" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> csv files<a href="loading-data-into-r.html#csv-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>By and large, the most common file format for R is the <strong>.csv</strong> file format. .csv stands for <strong>comma separated values</strong>, and is basically a file format that stores your data in text form, separated by commas. The commas indicate where your data’s <em>columns</em> are, and thus</p>
 <p>The basic structure of a .csv file is identical to that of a regular dataframe in R. The first column should typically indicate the column name/heading, and each row should contain values.</p>
 <p>.csvs can be easily created using Excel. If you have a dataset in Excel format, you can export an Excel spreadsheet as a .csv file by going File -&gt; Export. However, as .csv files are stored as plain text, they will not retain any special formatting that you might be accustomed to in an Excel spreadsheet. They will only store data in plain text.</p>
 <p>To read a .csv file in R, the <code>read_csv()</code> function from <code>tidyverse</code> or <code>read.csv()</code> from base R will work equally as well. Both functions require you to specify where your .csv file can be found.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="loading-data-into-r.html#cb66-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Insert your file path here.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="loading-data-into-r.html#cb67-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Insert your file path here.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="text-files" class="section level3 hasAnchor" number="2.4.3">
-<h3><span class="header-section-number">2.4.3</span> Text files<a href="loading-data-into-r.html#text-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="text-files" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Text files<a href="loading-data-into-r.html#text-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R can also read in plain text files in .txt format. This is very similar to the .csv format, in that your text file will typically have column headers in the first row, each row with one participant/observation’s values, and each column separated by spaces.</p>
 <p><code>tidyverse</code> provides a function called <code>read_tsv()</code> to read in these files.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="loading-data-into-r.html#cb67-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;Insert your file path here.txt&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="loading-data-into-r.html#cb68-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;Insert your file path here.txt&quot;</span>)</span></code></pre></div>
 <p>If, however, you are working with a file that has a different type of character between each column - for example, a slash (/) - then you can use the function <code>read_delim()</code>, which is a more generic form of the two above. With this function, you must specify the <strong>delimiter</strong> - i.e. what separates the columns in the files. This can be done using the <code>delim =</code> argument.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="loading-data-into-r.html#cb68-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;Insert your file path here.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="loading-data-into-r.html#cb69-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;Insert your file path here.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;/&quot;</span>)</span></code></pre></div>
 </div>
-<div id="spss-files" class="section level3 hasAnchor" number="2.4.4">
-<h3><span class="header-section-number">2.4.4</span> SPSS files<a href="loading-data-into-r.html#spss-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="spss-files" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> SPSS files<a href="loading-data-into-r.html#spss-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>SPSS is still a popular program of choice in psychological sciences, and so a lot of the datasets you may come across may be in SPSS format. SPSS data files are in <strong>.sav</strong> format.</p>
 <p>Base R cannot natively read these files. However, the <code>haven</code> package provides a function called <code>read_spss()</code> that will read these files in for you.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="loading-data-into-r.html#cb69-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb69-2"><a href="loading-data-into-r.html#cb69-2" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">&quot;Insert your file path here.sav&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="loading-data-into-r.html#cb70-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb70-2"><a href="loading-data-into-r.html#cb70-2" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">&quot;Insert your file path here.sav&quot;</span>)</span></code></pre></div>
 </div>
-<div id="using-here-to-read-data" class="section level3 hasAnchor" number="2.4.5">
-<h3><span class="header-section-number">2.4.5</span> Using <code>here</code> to read data<a href="loading-data-into-r.html#using-here-to-read-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="using-here-to-read-data" class="section level3 hasAnchor" number="2.5.5">
+<h3><span class="header-section-number">2.5.5</span> Using <code>here</code> to read data<a href="loading-data-into-r.html#using-here-to-read-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On the previous page, we talked about the <code>here</code> package, and how it enables easy pathing. <code>here</code> becomes really useful for reading in data, and it becomes even easier if you have an R project set up.</p>
-<p>If you have a project structure like the example below:</p>
+<p>If you have a project structure like the example on the previous page:</p>
 <pre><code>|-RPMP
 |---code
 |-----rpmp_week1.Rmd
@@ -776,7 +782,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 |---RPMP.rproj</code></pre>
 <p>Then you can use <code>here()</code> in conjunction with any of the data-reading functions above. As the data-reading functions primarily only need a filepath, you can use <code>here()</code> to create that filepath and point to the right place.</p>
 <p>Here is an example:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="loading-data-into-r.html#cb71-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w1_dataset.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="loading-data-into-r.html#cb72-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w1_dataset.csv&quot;</span>))</span></code></pre></div>
 <p>The <code>here()</code> call tells R to look in the <code>data</code> folder, and then look for <code>w1_dataset.csv</code>. Remember, in an R project, every file is indexed relative to the <em>project</em> folder. This means that we don’t need to faff around with finding out where our RPMP folder is on our computer, because essentially that’s where we start! The filepath to this file will then be used as the argument for <code>read_csv()</code>.</p>
 <p>Even if you are not using a project structure (although we highly recommend you do), you can still use <code>here()</code> - so long as the file can be located relative to your current working directory, which can be obtained using <code>setwd()</code>. However, it’s usually worth saving yourself the hassle and creating a new R project for substantive bits of work, and saving files as folders within that project’s folder.</p>
 </div>

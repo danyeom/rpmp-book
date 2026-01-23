@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -144,45 +145,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro-to-R.html"><a href="intro-to-R.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
+<li class="chapter" data-level="2.1" data-path="R-Studio.html"><a href="R-Studio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating RStudio</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
-<li class="chapter" data-level="2.1.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
-<li class="chapter" data-level="2.1.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.1" data-path="R-Studio.html"><a href="R-Studio.html#the-four-panes"><i class="fa fa-check"></i><b>2.1.1</b> The four panes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="R-Studio.html"><a href="R-Studio.html#projects"><i class="fa fa-check"></i><b>2.1.2</b> Projects</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
+<li class="chapter" data-level="2.2" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.2</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
+<li class="chapter" data-level="2.2.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.2.1</b> Operators</a></li>
+<li class="chapter" data-level="2.2.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.2.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.2.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.2.3</b> Variable types</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.3</b> Data structures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.4</b> Loading data into R</a>
+<li class="chapter" data-level="2.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.4</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.4.1</b> Setting up R projects</a></li>
-<li class="chapter" data-level="2.4.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.4.2</b> csv files</a></li>
-<li class="chapter" data-level="2.4.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.4.3</b> Text files</a></li>
-<li class="chapter" data-level="2.4.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.4.4</b> SPSS files</a></li>
-<li class="chapter" data-level="2.4.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.4.5</b> Using <code>here</code> to read data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.4.1</b> Functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.4.2</b> Packages</a></li>
+<li class="chapter" data-level="2.4.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-tidyverse"><i class="fa fa-check"></i><b>2.4.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.4.4</b> The <code>here</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.5</b> Wrangling data with dplyr and others</a>
+<li class="chapter" data-level="2.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.5</b> Loading data into R</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.5.1</b> Selecting columns with <code>select()</code></a></li>
-<li class="chapter" data-level="2.5.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.5.2</b> Filtering rows with <code>filter()</code></a></li>
-<li class="chapter" data-level="2.5.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.5.3</b> Creating new columns with <code>mutate()</code></a></li>
-<li class="chapter" data-level="2.5.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.5.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
-<li class="chapter" data-level="2.5.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.5.5</b> Some other handy tidyverse functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.5.1</b> Setting up R projects</a></li>
+<li class="chapter" data-level="2.5.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.5.2</b> csv files</a></li>
+<li class="chapter" data-level="2.5.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.5.3</b> Text files</a></li>
+<li class="chapter" data-level="2.5.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.5.4</b> SPSS files</a></li>
+<li class="chapter" data-level="2.5.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.5.5</b> Using <code>here</code> to read data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.6</b> Making graphs with ggplot2</a>
+<li class="chapter" data-level="2.6" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.6</b> Wrangling data with <code>dplyr</code> and others</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.6.1</b> Building the plot</a></li>
-<li class="chapter" data-level="2.6.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.6.2</b> Geoms</a></li>
-<li class="chapter" data-level="2.6.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.6.3</b> Making the graph look better</a></li>
+<li class="chapter" data-level="2.6.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.6.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.6.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.6.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.6.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.6.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.6.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.6.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.6.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.7</b> Making graphs with <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.7.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.7.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.7.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.7.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.7.3</b> Making the graph look better</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
@@ -727,14 +733,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.4.2</span> Writing interactions in R<a href="r-specific-considerations.html#writing-interactions-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>aov_ez()</code> function that was just mentioned doesn’t use the same kind of formula notation that we saw in the other test sections, and that’s to make it easier to run. However, these analyses absolutely can be recreated in formula notation, and you will see many instances of this.</p>
 <p>Recall the basic layout for a formula in R:</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="r-specific-considerations.html#cb313-1" tabindex="-1"></a><span class="fu">lm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span>
-<span id="cb313-2"><a href="r-specific-considerations.html#cb313-2" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="r-specific-considerations.html#cb314-1" tabindex="-1"></a><span class="fu">lm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span>
+<span id="cb314-2"><a href="r-specific-considerations.html#cb314-2" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>To extend this to two variables with no interaction, you can simply add the second predictor as such:</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="r-specific-considerations.html#cb314-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="r-specific-considerations.html#cb315-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>To code for an interaction term, however, there either needs to be an explicit term for the interaction (denoted using a colon between the two interaction variables):</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="r-specific-considerations.html#cb315-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="r-specific-considerations.html#cb316-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>OR as the shorthand for above, which uses the asterisk. Note that the asterisk will include both the interaction term and all of its main effects (a la principle of marginality):</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="r-specific-considerations.html#cb316-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">*</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="r-specific-considerations.html#cb317-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">*</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>For what we do in this section, this is ok - but you may find in certain circumstances that you don’t want all of these terms together, so the first approach will let you specify what terms to include in the model.</p>
 </div>
 <div id="simple-effects-tests-in-r" class="section level3 hasAnchor" number="9.4.3">
@@ -742,13 +748,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Simple effects tests, weirdly, are difficult to do in Jamovi - the gamlj module in Jamovi will do simple effects tests for linear models (which includes ANOVAs), but it’s difficult to do so for anything other than a two-way between-groups ANOVA without some prerequisite knowledge on linear mixed models.</p>
 <p>In R, simple effects are relatively easy to estimate through the use of the <code>emmeans</code> package. All we need to do is just extend our <code>emmeans</code> calls that we have been using for one-way ANOVAs to incorporate a second variable.</p>
 <p>Imagine an ANOVA model named <code>model_aov</code> and two predictors named <code>A</code> and `B. Recall the basic syntax for generating comparisons for a one-way ANOVA:</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="r-specific-considerations.html#cb317-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="r-specific-considerations.html#cb318-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A)</span></code></pre></div>
 <p>To run this as a simple effects test, we simply need to tell <code>emmeans</code> to conduct these comparisons by another variable. This can be easily done by specifying the <code>by</code> argument in <code>emmeans</code>:</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="r-specific-considerations.html#cb318-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="r-specific-considerations.html#cb319-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>)</span></code></pre></div>
 <p>This will estimate the EM means for every level of A, at each level of B. To run simple effects tests for variable two, the variable names simply need to be swapped.</p>
 <p>Just like before, we can pipe from from <code>emmeans()</code> to <code>pairs()</code>:</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="r-specific-considerations.html#cb319-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb319-2"><a href="r-specific-considerations.html#cb319-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="r-specific-considerations.html#cb320-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb320-2"><a href="r-specific-considerations.html#cb320-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Final note on this matter: Rstatix does provide a function called <code>emmeans_test()</code> to perform a similar test. However, using the original <code>emmeans</code> package and its functions give you much greater flexibility, so it helps to learn how to use this as is.</p>
 </div>
 </div>

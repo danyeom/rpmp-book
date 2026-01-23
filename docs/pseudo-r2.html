@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -144,45 +145,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro-to-R.html"><a href="intro-to-R.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
+<li class="chapter" data-level="2.1" data-path="R-Studio.html"><a href="R-Studio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating RStudio</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
-<li class="chapter" data-level="2.1.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
-<li class="chapter" data-level="2.1.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.1" data-path="R-Studio.html"><a href="R-Studio.html#the-four-panes"><i class="fa fa-check"></i><b>2.1.1</b> The four panes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="R-Studio.html"><a href="R-Studio.html#projects"><i class="fa fa-check"></i><b>2.1.2</b> Projects</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
+<li class="chapter" data-level="2.2" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.2</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
+<li class="chapter" data-level="2.2.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.2.1</b> Operators</a></li>
+<li class="chapter" data-level="2.2.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.2.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.2.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.2.3</b> Variable types</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.3</b> Data structures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.4</b> Loading data into R</a>
+<li class="chapter" data-level="2.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.4</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.4.1</b> Setting up R projects</a></li>
-<li class="chapter" data-level="2.4.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.4.2</b> csv files</a></li>
-<li class="chapter" data-level="2.4.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.4.3</b> Text files</a></li>
-<li class="chapter" data-level="2.4.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.4.4</b> SPSS files</a></li>
-<li class="chapter" data-level="2.4.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.4.5</b> Using <code>here</code> to read data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.4.1</b> Functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.4.2</b> Packages</a></li>
+<li class="chapter" data-level="2.4.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-tidyverse"><i class="fa fa-check"></i><b>2.4.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.4.4</b> The <code>here</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.5</b> Wrangling data with dplyr and others</a>
+<li class="chapter" data-level="2.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.5</b> Loading data into R</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.5.1</b> Selecting columns with <code>select()</code></a></li>
-<li class="chapter" data-level="2.5.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.5.2</b> Filtering rows with <code>filter()</code></a></li>
-<li class="chapter" data-level="2.5.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.5.3</b> Creating new columns with <code>mutate()</code></a></li>
-<li class="chapter" data-level="2.5.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.5.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
-<li class="chapter" data-level="2.5.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.5.5</b> Some other handy tidyverse functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.5.1</b> Setting up R projects</a></li>
+<li class="chapter" data-level="2.5.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.5.2</b> csv files</a></li>
+<li class="chapter" data-level="2.5.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.5.3</b> Text files</a></li>
+<li class="chapter" data-level="2.5.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.5.4</b> SPSS files</a></li>
+<li class="chapter" data-level="2.5.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.5.5</b> Using <code>here</code> to read data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.6</b> Making graphs with ggplot2</a>
+<li class="chapter" data-level="2.6" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.6</b> Wrangling data with <code>dplyr</code> and others</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.6.1</b> Building the plot</a></li>
-<li class="chapter" data-level="2.6.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.6.2</b> Geoms</a></li>
-<li class="chapter" data-level="2.6.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.6.3</b> Making the graph look better</a></li>
+<li class="chapter" data-level="2.6.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.6.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.6.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.6.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.6.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.6.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.6.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.6.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.6.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.7</b> Making graphs with <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.7.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.7.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.7.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.7.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.7.3</b> Making the graph look better</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
@@ -719,8 +725,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.4.1</span> Regular <span class="math inline">\(R^2\)</span><a href="pseudo-r2.html#regular-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Recall that in a linear regression, we often talk about <span class="math inline">\(R^2\)</span>, or the coefficient of determination. We interpret this value as the amount of variance that is explained in our outcome by our predictor in the regression (or all of our predictors, in the case of multiple regression).</p>
 <p>As a reminder, here is the output for the regression on flow proneness in <a href="multreg-intro.html#multreg-intro">the regression module</a>:</p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="pseudo-r2.html#cb510-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span>
-<span id="cb510-2"><a href="pseudo-r2.html#cb510-2" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="pseudo-r2.html#cb511-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span>
+<span id="cb511-2"><a href="pseudo-r2.html#cb511-2" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
@@ -747,7 +753,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="calculating-pseudo-r2-measures" class="section level3 hasAnchor" number="11.4.2">
 <h3><span class="header-section-number">11.4.2</span> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures<a href="pseudo-r2.html#calculating-pseudo-r2-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As a reminder, let’s print the output from our logistic regression on sleep:</p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="pseudo-r2.html#cb512-1" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="pseudo-r2.html#cb513-1" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
@@ -768,20 +774,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>The <code>DescTools</code> package provides a very convenient function, <code>PseudoR2()</code>, to calculate these pseudo-<span class="math inline">\(R^2\)</span> measures for us. This function requires a) the name of the <code>glm</code> model (i.e. our logistic regression object), and b) a character specifying which type(s) of <span class="math inline">\(R^2\)</span> should be calculated. You’ll see this in the examples below.</p>
 <p><strong>McFadden’s <span class="math inline">\(R^2\)</span></strong> is roughly analogous to a regular <span class="math inline">\(R^2\)</span>, in that it is intended to give an estimate of how much total variability is explained by the logistic model. It is calculated by comparing the fit of a logistic model against a null (i.e. no predictor) model.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="pseudo-r2.html#cb514-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
-<span id="cb514-2"><a href="pseudo-r2.html#cb514-2" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;McFadden&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="pseudo-r2.html#cb515-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb515-2"><a href="pseudo-r2.html#cb515-2" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;McFadden&quot;</span>)</span></code></pre></div>
 <pre><code>##  McFadden 
 ## 0.1460373</code></pre>
 <p><strong>Cox and Snell’s <span class="math inline">\(R^2\)</span></strong> is also calculated by comparing a full model to an null/no predictor model. The underlying calculation, however, is different, and a particular oddity of the Cox and Snell <span class="math inline">\(R^2\)</span> is that the maximum possible value is less than 1.</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="pseudo-r2.html#cb516-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;CoxSnell&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="pseudo-r2.html#cb517-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;CoxSnell&quot;</span>)</span></code></pre></div>
 <pre><code>##  CoxSnell 
 ## 0.1797558</code></pre>
 <p><strong>Nagelkerke’s <span class="math inline">\(R^2\)</span></strong> is an adjustment of the Cox and Snell <span class="math inline">\(R^2\)</span> - specifically, it adjusts the value of <span class="math inline">\(R^2\)</span> so that it ranges from 0-1.</p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="pseudo-r2.html#cb518-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Nagelkerke&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="pseudo-r2.html#cb519-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Nagelkerke&quot;</span>)</span></code></pre></div>
 <pre><code>## Nagelkerke 
 ##  0.2420843</code></pre>
 <p>Finally, <strong>Tjur’s <span class="math inline">\(R^2\)</span></strong> is a relatively new pseudo-<span class="math inline">\(R^2\)</span>. It is calculated by first calculating the average predicted probabilities of the outcomes, and then taking the differences between those two probabilities. It is bounded between 0-1 and is also roughly analogous to a normal <span class="math inline">\(R^2\)</span>.</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="pseudo-r2.html#cb520-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Tjur&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="pseudo-r2.html#cb521-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Tjur&quot;</span>)</span></code></pre></div>
 <pre><code>##      Tjur 
 ## 0.1888425</code></pre>
 </div>

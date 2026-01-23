@@ -50,7 +50,7 @@ knitr::include_graphics(here("img", "datasaurus.gif"))
 ```
 
 
-This series of datasets is called the [Datasaurus Dozen](https://www.research.autodesk.com/publications/same-stats-different-graphs/), which are 12 datasets that look entirely different (including the dinosaur!) but share almost identical summary statistics, as shown by the bold numbers on the right.
+This series of datasets is called the [Datasaurus Dozen](https://www.research.autodesk.com/publications/same-stats-different-graphs/), which are 12 datasets that look entirely different (including the dinosaur!) but share almost identical summary statistics, as shown by the bold numbers on the right.^[There is actually an R package of the Datasaurus Dozen that you can play with: https://cran.r-project.org/web/packages/datasauRus/vignettes/Datasaurus.html]
 
 Data visualisation is important because:
 
@@ -420,7 +420,7 @@ The slides below demonstrate a couple of ways in which you can graph distributio
 
 **Skewness**, as the name implies, describes whether or not a distribution is symmetrical or skewed. If a distribution is skewed, we would expect numbers to be bunched up at one end of the distribution. Have a look at the three graphs below:
 
-```{r fig.align = "center", echo = FALSE}
+```{r fig.align = "center", echo = FALSE, fig.height = 4}
 x <- seq(0, 1, by = .02)
 
 skew_left <- data.frame(x, y = dbeta(x, 5, 2)) %>%

@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -144,45 +145,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro-to-R.html"><a href="intro-to-R.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
+<li class="chapter" data-level="2.1" data-path="R-Studio.html"><a href="R-Studio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating RStudio</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
-<li class="chapter" data-level="2.1.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
-<li class="chapter" data-level="2.1.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.1" data-path="R-Studio.html"><a href="R-Studio.html#the-four-panes"><i class="fa fa-check"></i><b>2.1.1</b> The four panes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="R-Studio.html"><a href="R-Studio.html#projects"><i class="fa fa-check"></i><b>2.1.2</b> Projects</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
+<li class="chapter" data-level="2.2" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.2</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
+<li class="chapter" data-level="2.2.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.2.1</b> Operators</a></li>
+<li class="chapter" data-level="2.2.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.2.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.2.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.2.3</b> Variable types</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.3</b> Data structures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.4</b> Loading data into R</a>
+<li class="chapter" data-level="2.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.4</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.4.1</b> Setting up R projects</a></li>
-<li class="chapter" data-level="2.4.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.4.2</b> csv files</a></li>
-<li class="chapter" data-level="2.4.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.4.3</b> Text files</a></li>
-<li class="chapter" data-level="2.4.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.4.4</b> SPSS files</a></li>
-<li class="chapter" data-level="2.4.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.4.5</b> Using <code>here</code> to read data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.4.1</b> Functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.4.2</b> Packages</a></li>
+<li class="chapter" data-level="2.4.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-tidyverse"><i class="fa fa-check"></i><b>2.4.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.4.4</b> The <code>here</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.5</b> Wrangling data with dplyr and others</a>
+<li class="chapter" data-level="2.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.5</b> Loading data into R</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.5.1</b> Selecting columns with <code>select()</code></a></li>
-<li class="chapter" data-level="2.5.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.5.2</b> Filtering rows with <code>filter()</code></a></li>
-<li class="chapter" data-level="2.5.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.5.3</b> Creating new columns with <code>mutate()</code></a></li>
-<li class="chapter" data-level="2.5.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.5.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
-<li class="chapter" data-level="2.5.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.5.5</b> Some other handy tidyverse functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.5.1</b> Setting up R projects</a></li>
+<li class="chapter" data-level="2.5.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.5.2</b> csv files</a></li>
+<li class="chapter" data-level="2.5.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.5.3</b> Text files</a></li>
+<li class="chapter" data-level="2.5.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.5.4</b> SPSS files</a></li>
+<li class="chapter" data-level="2.5.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.5.5</b> Using <code>here</code> to read data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.6</b> Making graphs with ggplot2</a>
+<li class="chapter" data-level="2.6" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.6</b> Wrangling data with <code>dplyr</code> and others</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.6.1</b> Building the plot</a></li>
-<li class="chapter" data-level="2.6.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.6.2</b> Geoms</a></li>
-<li class="chapter" data-level="2.6.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.6.3</b> Making the graph look better</a></li>
+<li class="chapter" data-level="2.6.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.6.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.6.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.6.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.6.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.6.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.6.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.6.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.6.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.7</b> Making graphs with <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.7.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.7.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.7.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.7.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.7.3</b> Making the graph look better</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
@@ -729,9 +735,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>heart_rate: Resting heart rate of the participant, in bpm</li>
 <li>sleep_disorder: Whether the participant has a sleep disorder or not (0 = No, 1 = Yes)</li>
 </ul>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="example-9.html#cb483-1" tabindex="-1"></a>sleep <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;logistic&quot;</span>, <span class="st">&quot;sleep_data.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="example-9.html#cb484-1" tabindex="-1"></a>sleep <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;logistic&quot;</span>, <span class="st">&quot;sleep_data.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 374 Columns: 11
-## ── Column specification ────────────────────────
+## ── Column specification ───────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (3): gender, bmi, blood_pressure
 ## dbl (8): id, age, sleep_duration, sleep_quality, physical_activity, stress, ...
@@ -758,11 +764,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.3.2</span> Building the model<a href="example-9.html#building-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here is where things start to change a little from what we’re used to. Because we are not building a linear model but a <em>generalised</em> linear model, we now need to use the <code>glm()</code> function in R. <code>glm()</code>, by and large, works exactly the same way as you have seen with <code>lm()</code>; you need to give it arguments in the form of <code>outcome ~ predictor</code>, and once you have run the function you need to call the results using <code>summary()</code>. The first thing that changes is that by virtue of the fact that we are using the GLM, we must specify what link function we are working with. This can be set using the <code>family</code> argument.</p>
 <p>In the instance of logistic regression, the relevant family is <code>binomial</code>, and specifically <code>binomial(link = "logit")</code>:</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="example-9.html#cb485-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> data, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="example-9.html#cb486-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> data, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>))</span></code></pre></div>
 <p>The formula is a little strange, but <code>binomial()</code> is essentially a function that takes the argument <code>link</code>, for which we set the value as <code>"logit"</code>. The <code>logit</code> argument is the default for this function though, so we can simply shorten this down to <code>family = binomial</code> specifically for logistic regressions. (For other binomial-based GLMs, you must specify the link.)</p>
 <p>With that in mind, we can build our logistic regression models. In the first instance, let’s see if age predicts whether someone has a sleep disorder.</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="example-9.html#cb486-1" tabindex="-1"></a>sleep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
-<span id="cb486-2"><a href="example-9.html#cb486-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="example-9.html#cb487-1" tabindex="-1"></a>sleep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
+<span id="cb487-2"><a href="example-9.html#cb487-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
@@ -783,7 +789,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>Note that our output table is a little bit different than what we’re used to; this is because of the change in procedure mentioned on the previous page (from least squares to maximum likelihood). However, we can still largely read this output the same way as we have. We can see that age is a significant predictor (<em>p</em> &lt; .001).</p>
 <p>The coefficient for age is .115. We can get the coefficients seperately by using the <code>coef()</code> function on our model:</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="example-9.html#cb488-1" tabindex="-1"></a><span class="fu">coef</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="example-9.html#cb489-1" tabindex="-1"></a><span class="fu">coef</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## (Intercept)         age 
 ##  -5.2802414   0.1154897</code></pre>
 <p>What does this mean? It means that for every 1 unit increase in age, the <em>log odds</em> increase by .115. This is important because remember that we’re modelling against <em>log odds</em>, not odds or probability! In essence, we have estimated the following:</p>
@@ -795,7 +801,7 @@ log(Odds) = -5.280 + (0.115 \times x_1)
 Odds = e^{\beta_0 + \beta_1 x_1 + \epsilon_i}
 \]</span></p>
 <p>To obtain the odds, as discussed on the previous page, we need to exponentiate our coefficients:</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="example-9.html#cb490-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm))</span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="example-9.html#cb491-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm))</span></code></pre></div>
 <pre><code>## (Intercept)         age 
 ## 0.005091201 1.122423009</code></pre>
 <p>The exponentiated coefficient gives us our <strong>odds ratio.</strong> This describes the <em>multiplied</em> change in odds for every 1 unit increase of our predictor. In this instance, for every 1 year increase in age, the predicted odds of having a sleep disorder are multiplied by 1.12. Another way to describe this is that the predicted odds of having a sleep disorder increase by a <em>factor of</em> 1.12.</p>
@@ -805,12 +811,12 @@ Odds = e^{\beta_0 + \beta_1 x_1 + \epsilon_i}
 <li>The probability increases by 1.12 - same deal as above, the probability isn’t linearly related to the predictors.</li>
 </ul>
 <p>We can get confidence intervals around our estimated coefficients using <code>confint()</code>, just like we have previously. We can do this either on the original coefficients, or the exponentiated ones. The confidence interval around the exponentiated coefficients gives us a 95% CI for our odds ratio.This is probably more useful in terms of interpretation than the log odds coefficients, so we have chosen them here.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="example-9.html#cb492-1" tabindex="-1"></a><span class="fu">confint</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="example-9.html#cb493-1" tabindex="-1"></a><span class="fu">confint</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                   2.5 %     97.5 %
 ## (Intercept) -6.60646431 -4.0395789
 ## age          0.08712071  0.1457569</code></pre>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="example-9.html#cb495-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm))</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="example-9.html#cb496-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm))</span></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                   2.5 %     97.5 %
 ## (Intercept) 0.001351603 0.01760488
@@ -834,25 +840,25 @@ P(Y = 1) = \frac{1}{1 + e^{-(-5.280 + (0.115 \times 50)}}
 P(Y = 1) = \frac{1}{1 + e^{-0.47}}
 \]</span></p>
 <p>We can use R to do the calculation for us:</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="example-9.html#cb498-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.47</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="example-9.html#cb499-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.47</span>))</span></code></pre></div>
 <pre><code>## [1] 0.6153838</code></pre>
 <p>Thus, a 50 year old person has a 61.5% chance of having a sleep disorder (note that this has been rounded).</p>
 <p>We can actually plot the expected probabilities across a range of values for age by first asking R to predict the probabilities across a range of ages. This will draw the characteristic S-shaped curve of the logistic model. We use the <code>predict()</code> function to calculate the predicted probabilities of each value of our predictor. The <code>type = response</code> argument is used here to tell R to predict the probabilities (and not the log odds).</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="example-9.html#cb500-1" tabindex="-1"></a>age_range <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb500-2"><a href="example-9.html#cb500-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">70</span></span>
-<span id="cb500-3"><a href="example-9.html#cb500-3" tabindex="-1"></a>) </span>
-<span id="cb500-4"><a href="example-9.html#cb500-4" tabindex="-1"></a></span>
-<span id="cb500-5"><a href="example-9.html#cb500-5" tabindex="-1"></a>age_range<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(sleep_glm, age_range, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb500-6"><a href="example-9.html#cb500-6" tabindex="-1"></a></span>
-<span id="cb500-7"><a href="example-9.html#cb500-7" tabindex="-1"></a>age_range <span class="sc">%&gt;%</span></span>
-<span id="cb500-8"><a href="example-9.html#cb500-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb500-9"><a href="example-9.html#cb500-9" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> predicted)</span>
-<span id="cb500-10"><a href="example-9.html#cb500-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb500-11"><a href="example-9.html#cb500-11" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> binomial), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb500-12"><a href="example-9.html#cb500-12" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="example-9.html#cb501-1" tabindex="-1"></a>age_range <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb501-2"><a href="example-9.html#cb501-2" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">70</span></span>
+<span id="cb501-3"><a href="example-9.html#cb501-3" tabindex="-1"></a>) </span>
+<span id="cb501-4"><a href="example-9.html#cb501-4" tabindex="-1"></a></span>
+<span id="cb501-5"><a href="example-9.html#cb501-5" tabindex="-1"></a>age_range<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(sleep_glm, age_range, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb501-6"><a href="example-9.html#cb501-6" tabindex="-1"></a></span>
+<span id="cb501-7"><a href="example-9.html#cb501-7" tabindex="-1"></a>age_range <span class="sc">%&gt;%</span></span>
+<span id="cb501-8"><a href="example-9.html#cb501-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb501-9"><a href="example-9.html#cb501-9" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> predicted)</span>
+<span id="cb501-10"><a href="example-9.html#cb501-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb501-11"><a href="example-9.html#cb501-11" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> binomial), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb501-12"><a href="example-9.html#cb501-12" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial glm!</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-368-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-373-1.png" width="672" /></p>
 </div>
 <div id="logistic-regression-with-multiple-predictors" class="section level3 hasAnchor" number="11.3.4">
 <h3><span class="header-section-number">11.3.4</span> Logistic regression with multiple predictors<a href="example-9.html#logistic-regression-with-multiple-predictors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -865,8 +871,8 @@ log(Odds) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 ... \beta_n x_n + \epsilon_i
 Odds = e^{\beta_0 + \beta_1 x_1 + \beta_2 x_2 ... \beta_n x_n + \epsilon_i}
 \]</span>
 And so on so forth with our probability formula. Really, this is just an extension of what we have already seen in multiple regression, but applied to a logistic regression context. Let’s see what this looks like in R with the below code:</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="example-9.html#cb503-1" tabindex="-1"></a>sleep_glm2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age <span class="sc">+</span> stress, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
-<span id="cb503-2"><a href="example-9.html#cb503-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm2)</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="example-9.html#cb504-1" tabindex="-1"></a>sleep_glm2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age <span class="sc">+</span> stress, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
+<span id="cb504-2"><a href="example-9.html#cb504-2" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = sleep_disorder ~ age + stress, family = binomial, 
@@ -889,11 +895,11 @@ And so on so forth with our probability formula. Really, this is just an extensi
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>What do we see here? Well, we can see that age is a significant predictor of the presence of a sleep disorder (<em>p</em> &lt; .001), and stress is as well (<em>p</em> &lt; .001). Namely, for every year increase in age, the log odds of a sleep disorder increase by 0.205, holding stress constant. Likewise, for every 1 point increase in stress, the log odds increase by .776, holding age constant.</p>
 <p>To convert this into odds ratios, we exponentiate the coefficients:</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="example-9.html#cb505-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm2))</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="example-9.html#cb506-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm2))</span></code></pre></div>
 <pre><code>##  (Intercept)          age       stress 
 ## 1.739856e-06 1.227649e+00 2.172449e+00</code></pre>
 <p>And let’s generate confidence intervals for our odds ratios too:</p>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="example-9.html#cb507-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm2))</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="example-9.html#cb508-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm2))</span></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                    2.5 %       97.5 %
 ## (Intercept) 9.083049e-08 0.0000240461

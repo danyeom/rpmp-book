@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -144,45 +145,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>I Introduction</b></span></li>
 <li class="chapter" data-level="2" data-path="intro-to-R.html"><a href="intro-to-R.html"><i class="fa fa-check"></i><b>2</b> A very brief introduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.1</b> Basic syntax</a>
+<li class="chapter" data-level="2.1" data-path="R-Studio.html"><a href="R-Studio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating RStudio</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.1.1</b> Operators</a></li>
-<li class="chapter" data-level="2.1.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.1.2</b> Assignment and naming</a></li>
-<li class="chapter" data-level="2.1.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.1.3</b> Variable types</a></li>
+<li class="chapter" data-level="2.1.1" data-path="R-Studio.html"><a href="R-Studio.html#the-four-panes"><i class="fa fa-check"></i><b>2.1.1</b> The four panes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="R-Studio.html"><a href="R-Studio.html#projects"><i class="fa fa-check"></i><b>2.1.2</b> Projects</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.2</b> Data structures</a>
+<li class="chapter" data-level="2.2" data-path="R-syntax.html"><a href="R-syntax.html"><i class="fa fa-check"></i><b>2.2</b> Basic syntax</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.2.1</b> Vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.2.2</b> Data frames</a></li>
+<li class="chapter" data-level="2.2.1" data-path="R-syntax.html"><a href="R-syntax.html#operators"><i class="fa fa-check"></i><b>2.2.1</b> Operators</a></li>
+<li class="chapter" data-level="2.2.2" data-path="R-syntax.html"><a href="R-syntax.html#assignment-and-naming"><i class="fa fa-check"></i><b>2.2.2</b> Assignment and naming</a></li>
+<li class="chapter" data-level="2.2.3" data-path="R-syntax.html"><a href="R-syntax.html#variable-types"><i class="fa fa-check"></i><b>2.2.3</b> Variable types</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.3</b> Packages and functions</a>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2.3</b> Data structures</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.3.1</b> Functions</a></li>
-<li class="chapter" data-level="2.3.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.3.2</b> Packages</a></li>
-<li class="chapter" data-level="2.3.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.3.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.3.4</b> The <code>here</code> package</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.4</b> Loading data into R</a>
+<li class="chapter" data-level="2.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html"><i class="fa fa-check"></i><b>2.4</b> Packages and functions</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.4.1</b> Setting up R projects</a></li>
-<li class="chapter" data-level="2.4.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.4.2</b> csv files</a></li>
-<li class="chapter" data-level="2.4.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.4.3</b> Text files</a></li>
-<li class="chapter" data-level="2.4.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.4.4</b> SPSS files</a></li>
-<li class="chapter" data-level="2.4.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.4.5</b> Using <code>here</code> to read data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="packages-and-functions.html"><a href="packages-and-functions.html#functions"><i class="fa fa-check"></i><b>2.4.1</b> Functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="packages-and-functions.html"><a href="packages-and-functions.html#packages"><i class="fa fa-check"></i><b>2.4.2</b> Packages</a></li>
+<li class="chapter" data-level="2.4.3" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-tidyverse"><i class="fa fa-check"></i><b>2.4.3</b> The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="packages-and-functions.html"><a href="packages-and-functions.html#the-here-package"><i class="fa fa-check"></i><b>2.4.4</b> The <code>here</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.5</b> Wrangling data with dplyr and others</a>
+<li class="chapter" data-level="2.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html"><i class="fa fa-check"></i><b>2.5</b> Loading data into R</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.5.1</b> Selecting columns with <code>select()</code></a></li>
-<li class="chapter" data-level="2.5.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.5.2</b> Filtering rows with <code>filter()</code></a></li>
-<li class="chapter" data-level="2.5.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.5.3</b> Creating new columns with <code>mutate()</code></a></li>
-<li class="chapter" data-level="2.5.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.5.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
-<li class="chapter" data-level="2.5.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.5.5</b> Some other handy tidyverse functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#setting-up-r-projects"><i class="fa fa-check"></i><b>2.5.1</b> Setting up R projects</a></li>
+<li class="chapter" data-level="2.5.2" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#csv-files"><i class="fa fa-check"></i><b>2.5.2</b> csv files</a></li>
+<li class="chapter" data-level="2.5.3" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#text-files"><i class="fa fa-check"></i><b>2.5.3</b> Text files</a></li>
+<li class="chapter" data-level="2.5.4" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#spss-files"><i class="fa fa-check"></i><b>2.5.4</b> SPSS files</a></li>
+<li class="chapter" data-level="2.5.5" data-path="loading-data-into-r.html"><a href="loading-data-into-r.html#using-here-to-read-data"><i class="fa fa-check"></i><b>2.5.5</b> Using <code>here</code> to read data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.6</b> Making graphs with ggplot2</a>
+<li class="chapter" data-level="2.6" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html"><i class="fa fa-check"></i><b>2.6</b> Wrangling data with <code>dplyr</code> and others</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.6.1</b> Building the plot</a></li>
-<li class="chapter" data-level="2.6.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.6.2</b> Geoms</a></li>
-<li class="chapter" data-level="2.6.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.6.3</b> Making the graph look better</a></li>
+<li class="chapter" data-level="2.6.1" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#selecting-columns-with-select"><i class="fa fa-check"></i><b>2.6.1</b> Selecting columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.6.2" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#filtering-rows-with-filter"><i class="fa fa-check"></i><b>2.6.2</b> Filtering rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.6.3" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>2.6.3</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.6.4" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#summarising-data-with-summarise-and-group_by"><i class="fa fa-check"></i><b>2.6.4</b> Summarising data with <code>summarise()</code> and <code>group_by()</code></a></li>
+<li class="chapter" data-level="2.6.5" data-path="wrangling-data-with-dplyr-and-others.html"><a href="wrangling-data-with-dplyr-and-others.html#some-other-handy-tidyverse-functions"><i class="fa fa-check"></i><b>2.6.5</b> Some other handy tidyverse functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>2.7</b> Making graphs with <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="ggplot.html"><a href="ggplot.html#building-the-plot"><i class="fa fa-check"></i><b>2.7.1</b> Building the plot</a></li>
+<li class="chapter" data-level="2.7.2" data-path="ggplot.html"><a href="ggplot.html#geoms"><i class="fa fa-check"></i><b>2.7.2</b> Geoms</a></li>
+<li class="chapter" data-level="2.7.3" data-path="ggplot.html"><a href="ggplot.html#making-the-graph-look-better"><i class="fa fa-check"></i><b>2.7.3</b> Making the graph look better</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>3</b> Descriptive statistics (Module 5)</a>
@@ -721,7 +727,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-scenario-1" class="section level3 hasAnchor" number="13.5.1">
 <h3><span class="header-section-number">13.5.1</span> Example scenario<a href="moderation-example.html#example-scenario-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will use the dataset from Powell et al. (2022) in the Week 10 seminar, which looks at harmonious and obsessive passion in the context of heavy metal music listeners. We’ll test a specific question for this example: Do positive experiences predict harmonious passion, and does satisfaction with life moderate this relationship?</p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="moderation-example.html#cb570-1" tabindex="-1"></a>passion_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;W10_Powell_2022.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="moderation-example.html#cb571-1" tabindex="-1"></a>passion_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_10&quot;</span>, <span class="st">&quot;W10_Powell_2022.csv&quot;</span>))</span></code></pre></div>
 </div>
 <div id="setting-up-in-r" class="section level3 hasAnchor" number="13.5.2">
 <h3><span class="header-section-number">13.5.2</span> Setting up in R<a href="moderation-example.html#setting-up-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -733,33 +739,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>jn = 1</code> calculates the Johnson-Neyman values for a significant moderation. These are also used for plotting.</li>
 <li><code>save = 2</code> is used to save the output to a variable.</li>
 </ul>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="moderation-example.html#cb571-1" tabindex="-1"></a>passion_mod <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
-<span id="cb571-2"><a href="moderation-example.html#cb571-2" tabindex="-1"></a>  <span class="at">data =</span> passion_data,</span>
-<span id="cb571-3"><a href="moderation-example.html#cb571-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;HP_TOT&quot;</span>,</span>
-<span id="cb571-4"><a href="moderation-example.html#cb571-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;SPANE_pos&quot;</span>,</span>
-<span id="cb571-5"><a href="moderation-example.html#cb571-5" tabindex="-1"></a>  <span class="at">w =</span> <span class="st">&quot;SWLS_TOT&quot;</span>,</span>
-<span id="cb571-6"><a href="moderation-example.html#cb571-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">1</span>,</span>
-<span id="cb571-7"><a href="moderation-example.html#cb571-7" tabindex="-1"></a>  <span class="at">plot =</span> <span class="dv">1</span>,</span>
-<span id="cb571-8"><a href="moderation-example.html#cb571-8" tabindex="-1"></a>  <span class="at">jn =</span> <span class="dv">1</span>,</span>
-<span id="cb571-9"><a href="moderation-example.html#cb571-9" tabindex="-1"></a>  <span class="at">save =</span> <span class="dv">2</span></span>
-<span id="cb571-10"><a href="moderation-example.html#cb571-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="moderation-example.html#cb572-1" tabindex="-1"></a>passion_mod <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
+<span id="cb572-2"><a href="moderation-example.html#cb572-2" tabindex="-1"></a>  <span class="at">data =</span> passion_data,</span>
+<span id="cb572-3"><a href="moderation-example.html#cb572-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;HP_TOT&quot;</span>,</span>
+<span id="cb572-4"><a href="moderation-example.html#cb572-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;SPANE_pos&quot;</span>,</span>
+<span id="cb572-5"><a href="moderation-example.html#cb572-5" tabindex="-1"></a>  <span class="at">w =</span> <span class="st">&quot;SWLS_TOT&quot;</span>,</span>
+<span id="cb572-6"><a href="moderation-example.html#cb572-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">1</span>,</span>
+<span id="cb572-7"><a href="moderation-example.html#cb572-7" tabindex="-1"></a>  <span class="at">plot =</span> <span class="dv">1</span>,</span>
+<span id="cb572-8"><a href="moderation-example.html#cb572-8" tabindex="-1"></a>  <span class="at">jn =</span> <span class="dv">1</span>,</span>
+<span id="cb572-9"><a href="moderation-example.html#cb572-9" tabindex="-1"></a>  <span class="at">save =</span> <span class="dv">2</span></span>
+<span id="cb572-10"><a href="moderation-example.html#cb572-10" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="output-11" class="section level3 hasAnchor" number="13.5.3">
 <h3><span class="header-section-number">13.5.3</span> Output<a href="moderation-example.html#output-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s now take a look at our output. The first output is our overall model fit, which is identical to what we get for any other multiple regression. Our model in this instance is significant, and explains 19.6% of the variance in harmonious passion.</p>
 <p>The second output gives us our standard regression table. This tells us whether the moderation is significant, and we can interpret this as we would for any other regression we’ve seen. So, here we can see that positive experiences are a significant predictor of harmonious passion (B = 0.796, t = 6.290, p &lt; .001), but satisfaction with life is not (p = .279). However, the interaction - or moderation - between the two is significant (B = 0.036, t = 2.576, p = .011).</p>
 <pre><code>## 
-## ********************* PROCESS for R Version 4.3.1 ********************* 
+## **************** PROCESS Procedure for R Version 5.0 ****************** 
 ##  
 ##            Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
 ##    Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
 ##  
 ## *********************************************************************** 
-##                  
-## Model : 1        
-##     Y : HP_TOT   
-##     X : SPANE_pos
-##     W : SWLS_TOT 
+##                   
+##   Model: 1        
+##       Y: HP_TOT   
+##       X: SPANE_pos
+##       W: SWLS_TOT 
 ## 
 ## Sample size: 177
 ## 
@@ -776,10 +782,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## constant    26.4430    5.7267    4.6175    0.0000   15.1398   37.7462
 ## SPANE_pos    0.0960    0.2529    0.3796    0.7047   -0.4031    0.5951
 ## SWLS_TOT    -0.8896    0.3329   -2.6723    0.0083   -1.5466   -0.2325
-## Int_1        0.0358    0.0139    2.5757    0.0108    0.0084    0.0632
+## int_1        0.0358    0.0139    2.5757    0.0108    0.0084    0.0632
 ## 
 ## Product terms key:
-## Int_1  :  SPANE_pos  x  SWLS_TOT      
+## int_1  :  SPANE_pos  x  SWLS_TOT      
 ## 
 ## Test(s) of highest order unconditional interaction(s):
 ##       R2-chng         F       df1       df2         p
@@ -802,7 +808,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##    SWLS_TOT    effect        se         t         p      LLCI      ULCI
 ##      5.0000    0.2750    0.1940    1.4176    0.1581   -0.1079    0.6579
 ##      6.5000    0.3287    0.1778    1.8485    0.0662   -0.0223    0.6796
-##      6.8962    0.3429    0.1737    1.9738    0.0500   -0.0000    0.6857
+##      6.8962    0.3429    0.1737    1.9738    0.0500    0.0000    0.6857
 ##      8.0000    0.3824    0.1627    2.3500    0.0199    0.0612    0.7035
 ##      9.5000    0.4361    0.1490    2.9264    0.0039    0.1420    0.7302
 ##     11.0000    0.4898    0.1371    3.5717    0.0005    0.2191    0.7604
@@ -821,8 +827,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     30.5000    1.1879    0.2317    5.1267    0.0000    0.7305    1.6452
 ##     32.0000    1.2416    0.2499    4.9681    0.0000    0.7483    1.7348
 ##     33.5000    1.2953    0.2685    4.8241    0.0000    0.7653    1.8252
-##     35.0000    1.3489    0.2874    4.6937    0.0000    0.7817    1.9162
-## 
+##     35.0000    1.3489    0.2874    4.6937    0.0000    0.7817    1.9162</code></pre>
+<pre><code>## 
 ## Data for visualizing the conditional effect of the focal predictor:
 ##   SPANE_pos  SWLS_TOT    HP_TOT
 ##     19.0000   12.0000   25.7538
@@ -833,8 +839,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     27.0000   20.0000   30.5742
 ##     19.0000   28.0000   22.4032
 ##     23.0000   28.0000   26.7966
-##     27.0000   28.0000   31.1900
-## 
+##     27.0000   28.0000   31.1900</code></pre>
+<pre><code>## 
 ## ******************** ANALYSIS NOTES AND ERRORS ************************ 
 ## 
 ## Level of confidence for all confidence intervals in output: 95
@@ -843,24 +849,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This indicates that we should investigate further, first with our simple slope/interaction plot as below. Unfortunately, as you can tell, the <code>plot</code> argument in <code>process()</code> doesn’t actually generate any plots. Rather, it gives a series of values for the predictor, moderator and outcome to plot. The same applies for the output from the Johnson-Neyman technique - while the output does tell you where the moderation is/is not significant, it does not draw a plot. This is probably because PROCESS was designed for SPSS users first and foremost in mind, and the SAS and R versions were designed for parity for SPSS first and foremost (rather than designed to take advantage of their native capabilities).</p>
 <p>There are ways to use these values for plotting, but truthfully - at least for this subject - they are far more effort than they are worth. Rather, there is a great package called <code>interactions</code> that will draw these plots for us.</p>
 <p>To start, we use <code>lm()</code> to build a regular regression model with an interaction between our predictor and moderator:</p>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="moderation-example.html#cb573-1" tabindex="-1"></a><span class="fu">library</span>(interactions)</span>
-<span id="cb573-2"><a href="moderation-example.html#cb573-2" tabindex="-1"></a>passion_mod_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(HP_TOT <span class="sc">~</span> SPANE_pos <span class="sc">*</span> SWLS_TOT, <span class="at">data =</span> passion_data)</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="moderation-example.html#cb576-1" tabindex="-1"></a><span class="fu">library</span>(interactions)</span>
+<span id="cb576-2"><a href="moderation-example.html#cb576-2" tabindex="-1"></a>passion_mod_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(HP_TOT <span class="sc">~</span> SPANE_pos <span class="sc">*</span> SWLS_TOT, <span class="at">data =</span> passion_data)</span></code></pre></div>
 <p>The <code>interact_plot()</code> function will then draw us a standard plot with simple slopes, based on the model above. For this function to work, at a minimum you must give it a) the name of the <code>lm()</code> model, b) the name of the predictor to <code>pred</code> and c) the name of the moderator to <code>modx</code>. The <code>colors</code> argument has also been specified to change the colours for the lines (by default they are different shades of blue).</p>
 <p>Based on the below graph, we can see that in all instances, the relationship between positive experiences and harmonious passion is positive. However, for people who are high on satisfaction with like (Mean + 1SD), the relationship is stronger - indexed by a greater slope. This relationship is weaker for people who are low on satisfaction with life (Mean - 1SD).</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="moderation-example.html#cb574-1" tabindex="-1"></a><span class="fu">interact_plot</span>(passion_mod_lm, </span>
-<span id="cb574-2"><a href="moderation-example.html#cb574-2" tabindex="-1"></a>              <span class="at">pred =</span> <span class="st">&quot;SPANE_pos&quot;</span>,</span>
-<span id="cb574-3"><a href="moderation-example.html#cb574-3" tabindex="-1"></a>              <span class="at">modx =</span> <span class="st">&quot;SWLS_TOT&quot;</span>, </span>
-<span id="cb574-4"><a href="moderation-example.html#cb574-4" tabindex="-1"></a>              <span class="at">colors =</span> <span class="st">&quot;Set1&quot;</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-419-1.png" width="672" /></p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="moderation-example.html#cb577-1" tabindex="-1"></a><span class="fu">interact_plot</span>(passion_mod_lm, </span>
+<span id="cb577-2"><a href="moderation-example.html#cb577-2" tabindex="-1"></a>              <span class="at">pred =</span> <span class="st">&quot;SPANE_pos&quot;</span>,</span>
+<span id="cb577-3"><a href="moderation-example.html#cb577-3" tabindex="-1"></a>              <span class="at">modx =</span> <span class="st">&quot;SWLS_TOT&quot;</span>, </span>
+<span id="cb577-4"><a href="moderation-example.html#cb577-4" tabindex="-1"></a>              <span class="at">colors =</span> <span class="st">&quot;Set1&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-424-1.png" width="672" /></p>
 <p>Lastly, we can examine the Johnson-Neyman plots to see where this relationship is non-significant. The same basic set of arguments - model, predictor, and moderator - can also be used as is for the <code>johnson_neyman()</code> function, which will draw a Johnson-Neyman plot. Helpfully, the function will also give a brief summary of the regions of significance/non-significance. Based on the plot and the text output, the moderation is non-significant when the moderator (satifaction with life) is below 6.9.</p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="moderation-example.html#cb575-1" tabindex="-1"></a><span class="fu">johnson_neyman</span>(passion_mod_lm, <span class="at">pred =</span> <span class="st">&quot;SPANE_pos&quot;</span>, <span class="at">modx =</span> <span class="st">&quot;SWLS_TOT&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="moderation-example.html#cb578-1" tabindex="-1"></a><span class="fu">johnson_neyman</span>(passion_mod_lm, <span class="at">pred =</span> <span class="st">&quot;SPANE_pos&quot;</span>, <span class="at">modx =</span> <span class="st">&quot;SWLS_TOT&quot;</span>)</span></code></pre></div>
 <pre><code>## JOHNSON-NEYMAN INTERVAL
 ## 
 ## When SWLS_TOT is OUTSIDE the interval [-65.76, 6.90], the slope of
 ## SPANE_pos is p &lt; .05.
 ## 
 ## Note: The range of observed values of SWLS_TOT is [5.00, 35.00]</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-420-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-425-1.png" width="672" /></p>
 
 </div>
 </div>

@@ -14,6 +14,73 @@ knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/e5bf2a8f4c787a12f
 
 The original subject was written with this workflow broadly in mind, although it wasn't intended to follow this closely (only to bring awareness to the general idea of modelling). For a far more comprehensive and rigorous overview of how to program in R, there is no better guide than *R 4 Data Science* (R4DS) by Hadley Wickham: <https://r4ds.had.co.nz/>.
 
+
+## Navigating RStudio {#R-Studio}
+
+### The four panes
+
+When you open RStudio, you will see four main panes on your screen. They are as follows.
+
+
+```{r echo = FALSE, fig.align = "center"}
+knitr::include_graphics("img/RStudio_Screen1.png")
+```
+
+The first pane, and probably the one you will spend the most time in, is the **source pane**. This is where you can write and edit your scripts, which are your files that contain R code. Generally, you will be working with either .R files (which contain code only) or .rmd files (which are more akin to traditional documents with chunks that execute code).
+
+There are some main elements to the source pane that are useful to know, which have been numbered above:
+
+1. Each file you are working on will have its own tab. As you can see here, I currently have three files (including the source document for this very chapter!).
+2. Any lines of text with a hash (#) in front of them are *comments*, which enable you to write text without executing code. These are super useful for annotating your code so that others can understand what your code does. 
+3. This is a line of code. As you can see, RStudio will colour different elements of the code in different colours. 
+4. This button will run any code that you have selected. To use it, highlight the code you want to run and click this button.
+
+
+```{r echo = FALSE, fig.align = "center"}
+knitr::include_graphics("img/RStudio_Screen2.png")
+```
+In the top right you will have the **environments** pane. If you create variables or load in data, you will be able to see them here. 
+
+```{r echo = FALSE, fig.align = "center"}
+knitr::include_graphics("img/RStudio_Screen3.png")
+```
+
+In the bottom left you will see the **console**. This is where all R code is actually executed, and where all output is printed. When you run code from the source pane (e.g. from a script), you will see the code being run down in the console. You can also execute code directly in the console if needed.
+
+```{r echo = FALSE, fig.align = "center"}
+knitr::include_graphics("img/RStudio_Screen4.png")
+```
+
+Finally, in the bottom right you will have what is usually called the **output** pane. You can see that there are multiple tabs in this pane as well. From left to right, the main ones you need are:
+
+- Files: A file explorer that lets you see all your files.
+- Plots: Any graphics (e.g. plots) will be shown in this tab.
+- Packages: This lets you see what *packages* are installed. More on this in a few pages!
+- Help: This pane lets you search for help pages on functions. 
+
+### Projects
+
+One of the great features of R is that we can easily create **projects** within RStudio. Projects allow us to contain everything related to a single project/line of work within one main folder. 
+
+All of the R-related files that are provided in this course come in .zip files. Once you unzip these files, you may see something like this:
+
+```         
+|-RPMP
+|---rpmp_week1.Rmd
+|---w1_dataset.csv
+|---RPMP.rproj
+```
+Here, we have one data file (.csv), one file of code (.Rmd) and one .rproj file. Always **open the .rproj file** to ensure that everything is set up correctly. Once you have done that, you will see RStudio switch over to this project. 
+
+We won't get *too* deep into project-oriented workflows for RPMP. However, there are several benefits to working within projects in RStudio, which we will expand on in the coming pages. One benefit that we can discuss now though is that projects simply encourage effective and easy file management: by containing everything within the one folder, you can organise all your files relevant to that project within the one group. It might be useful, for example, to create one Project for each study in your thesis (if your thesis is quantitative and you plan on using R). 
+
+Switching between projects is also easy by using the little icon at the very top right of your screen (above the environment pane):
+
+```{r echo = FALSE, fig.align = "center"}
+knitr::include_graphics("img/RStudio_Screen5.png")
+```
+
+
 ## Basic syntax {#R-syntax}
 
 ### Operators
@@ -278,7 +345,7 @@ By default, R comes with *lots* of functions, many of which will be used through
 
 When you start a new R session, the first thing that you'll want to do is load the packages that you need to use.
 
-For now, we'll load two packages for functions: `tidyverse` and `rstatix`. `tidyverse` is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. `rstatix` allows for simple statistical tests to be performed in an easy way. `palmerpenguins` comes with a dataset for practicing on. `palmerpenguins` loads a dataset named `penguins` that contains basic info on 3 species of penguins across 3 different islands.
+For now, we'll load two packages for functions: `tidyverse` and `rstatix`. `tidyverse` is a huge package that contains a group of other packages designed for data manipulation, visualisation and cleaning. `rstatix` allows for simple statistical tests to be performed in an easy way. `palmerpenguins` comes with a dataset for practicing on. `palmerpenguins` loads a dataset named `penguins` that contains basic info on 3 species of penguins across 3 different islands.^[In 2025, this dataset was added to the `datasets` package that comes with base R - meaning that the `penguins` data is now part of base R (yay!). This means that in newer versions of R, you can also access this dataset by simply using `data(penguins)` without needing to load the `palmerpenguins` package first. I haven't changed this though for demonstration reasons.]
 
 To load a package, call the `library()` function and enter the name of the package in brackets:
 
@@ -288,7 +355,7 @@ library(rstatix)
 library(palmerpenguins)
 ```
 
-### Tidyverse
+### The `tidyverse`
 
 The tidyverse is a mega-collection of phenomenal packages that fundamentally change how to interface with R. The tidyverse provides packages for things like:
 
@@ -339,7 +406,7 @@ Alternatively, read the below quote from R goddess Jenny Bryan:
 
 In short, `here()` allows us to locate files in a *relative* manner as opposed to an *absolute* one. This is super super useful for sharing your code and data with other people, and ensuring that your scripts will run no matter where they are.
 
-We won't get too into project-oriented workflows for RPMP. However, imagine you have a folder structure like this:
+Imagine you have a folder structure like this:
 
 ```         
 |-code
@@ -448,7 +515,7 @@ dataset <- read_spss("Insert your file path here.sav")
 
 On the previous page, we talked about the `here` package, and how it enables easy pathing. `here` becomes really useful for reading in data, and it becomes even easier if you have an R project set up.
 
-If you have a project structure like the example below:
+If you have a project structure like the example on the previous page:
 
 ```         
 |-RPMP
@@ -473,7 +540,7 @@ The `here()` call tells R to look in the `data` folder, and then look for `w1_da
 Even if you are not using a project structure (although we highly recommend you do), you can still use `here()` - so long as the file can be located relative to your current working directory, which can be obtained using `setwd()`. However, it's usually worth saving yourself the hassle and creating a new R project for substantive bits of work, and saving files as folders within that project's folder. 
 
 
-## Wrangling data with dplyr and others
+## Wrangling data with `dplyr` and others
 
 `dplyr` is a package within the tidyverse for manipulating and wrangling data. `dplyr` is one of the most popular packages on R because it provides a suite of functions that are fairly essential to manipulating and working with data. Below is a brief overview of some of these functions, applied to the `penguins` dataset.
 
@@ -630,7 +697,7 @@ Note that all of these are `dplyr` functions, so need to be piped from a dataset
 -   `relocate()` will let you rearrange the column order.
 -   The `slice()` set of functions will subset rows, but mainly based on positions (e.g. first, last) rather than conditions.
 
-## Making graphs with ggplot2 {#ggplot}
+## Making graphs with `ggplot2` {#ggplot}
 
 ### Building the plot
 
@@ -646,7 +713,7 @@ knitr::include_graphics("img/grammar_graphics.webp")
 
 A cheatsheet for ggplot can be found [here](https://rstudio.github.io/cheatsheets/html/data-visualization.html).
 
-To start a plot, we first call the `ggplot()` function. Here, we specify three of the main features of our plot - the dataset that we want to use, the x axis and the y axis. the x and y axes are wrapped within the `aes()` function, which defines our aesthetics. Here, we simply say which columns of our dataset should go on the x and y axes. Using the `penguin` dataset, we can start to visualise a scatter plot between bill length and bill depth like this:
+To start a plot, we first call the `ggplot()` function. Here, we specify three of the main features of our plot - the dataset that we want to use, the x axis and the y axis. the x and y axes are wrapped within the `aes()` function, which defines our aesthetics. Here, we simply say which columns of our dataset should go on the x and y axes. Using the `penguins` dataset, we can start to visualise a scatter plot between bill length and bill depth like this:
 
 ```{r}
 ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm))
@@ -656,7 +723,7 @@ However, notice that the plot is empty. This is because we've only specified the
 
 ### Geoms
 
-Geoms (short for geometries) define *how* data is plotted. If `ggplot()` provides the basic canvas for the graph (i.e. *what* to plot), geoms are what create the graph (i.e. *how* it is plotted). Different graph types are defined using geoms. As per the diagram of the grammar of graphics above, we add (literally, using `+`) additional layers to our base `ggplot()` call in order to build our graph.
+**Geoms** (short for geometries) define *how* data is plotted. If `ggplot()` provides the basic canvas for the graph (i.e. *what* to plot), geoms are what create the graph (i.e. *how* it is plotted). Different graph types are defined using geoms. As per the diagram of the grammar of graphics above, we add (literally, using `+`) additional layers to our base `ggplot()` call in order to build our graph.
 
 Refer to the cheatsheet for all of the possible geoms. For now, we will stick to some basics. 
 
