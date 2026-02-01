@@ -239,7 +239,7 @@ introduction-4
 planned-comparisons-1
 linear-contrasts
 an-example-1
-multiple-regression-continued
+regression-continued
 ancovas
 introduction-5
 example-6
@@ -290,6 +290,7 @@ the-steps-of-exploratory-factor-analysis
 example-dataset
 theory-of-efa
 pca-vs-efa
+the-common-factor-model
 partial-correlations-2
 initial-considerations-for-efa
 sample-size

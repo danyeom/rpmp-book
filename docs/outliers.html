@@ -496,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
+<li class="chapter" data-level="10" data-path="regression-continued.html"><a href="regression-continued.html"><i class="fa fa-check"></i><b>10</b> Regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.1</b> ANCOVAs</a>
 <ul>
@@ -575,7 +575,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html"><i class="fa fa-check"></i><b>12.2</b> Theory of EFA</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="theory-of-efa.html"><a href="theory-of-efa.html#pca-vs-efa"><i class="fa fa-check"></i><b>12.2.1</b> PCA vs EFA</a></li>
-<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.2</b> Partial correlations</a></li>
+<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#the-common-factor-model"><i class="fa fa-check"></i><b>12.2.2</b> The common factor model</a></li>
+<li class="chapter" data-level="12.2.3" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.3</b> Partial correlations</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html"><i class="fa fa-check"></i><b>12.3</b> Initial considerations for EFA</a>
 <ul>
@@ -740,7 +741,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="cooks-distance" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> Cook’s distance<a href="outliers.html#cooks-distance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Cook’s distances</strong> are a method for identifying <strong>influential points</strong> in a regression model. The basic rationale is that if a point is highly influential, it has a large effect in shaping the overall parameter estimates in the regression model. Thus, points with high Cook’s distances values are worth looking into.</p>
-<p>Cook’s distances can be easily calculated using the <code>cooks.distance()</code> function in base R. You just need to spply the name of the regression model (created using <code>lm()</code>):</p>
+<p>Cook’s distances can be easily calculated using the <code>cooks.distance()</code> function in base R. You just need to apply the name of the regression model (created using <code>lm()</code>):</p>
 <div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="outliers.html#cb441-1" tabindex="-1"></a>flow_cooksd <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(flow_block3)</span></code></pre></div>
 <p>This returns a singular vector of Cook’s distance values. We can then perform basic descriptives on this variable to get a sense of the range of Cook’s distance values:</p>
 <div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="outliers.html#cb442-1" tabindex="-1"></a><span class="fu">mean</span>(flow_cooksd)</span></code></pre></div>
@@ -753,7 +754,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 5.657846e-10</code></pre>
 <div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="outliers.html#cb450-1" tabindex="-1"></a><span class="fu">max</span>(flow_cooksd)</span></code></pre></div>
 <pre><code>## [1] 0.05169864</code></pre>
-<p>If you prefer a tidyverse implementation, you can use the <code>augment()</code> function from the <code>broom</code> package. This returns a whole range of values, including fitted values, residuals (both of which are useful for Q-Q plots) and Cook’s distances:</p>
+<p>If you prefer a tidyverse implementation, you can use the <code>augment()</code> function from the <code>broom</code> package (see <a href="broom-augment.html#broom-augment">the appendix</a> for more information on <code>broom</code>). This returns a whole range of values, including fitted values, residuals (both of which are useful for Q-Q plots) and Cook’s distances:</p>
 <div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="outliers.html#cb452-1" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb452-2"><a href="outliers.html#cb452-2" tabindex="-1"></a>flow_extra <span class="ot">&lt;-</span> <span class="fu">augment</span>(flow_block3)</span>
 <span id="cb452-3"><a href="outliers.html#cb452-3" tabindex="-1"></a></span>
@@ -813,6 +814,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 How do Mahalanobis distances work?
 </summary>
 <div style="background-color: #f0f0f0;">
+<p>The basic principle behind using Mahalanobis distances is basically the same as Cook’s distances: if a datapoint has a distance value greater than a specified cutoff, it is a multivariate outlier. The main difference is that <span class="math inline">\(D^2\)</span> is used for identifying multivariate outliers, as described above, and is empirically tested against a specified distribution (as opposed to Cook’s distances, where influential outliers are mainly identified on vibes).</p>
+<p>Mahalanobis distances follow a chi-square distribution, with the degrees of freedom being equal to the number of predictors (<em>k</em>) in a model. The significance level for <span class="math inline">\(D^2\)</span> is conventionally set at <em>p</em> &lt; .001. In essence, any datapoint that has a <span class="math inline">\(D^2\)</span> greater than a cutoff point on a chi-square distribution, given df = <em>k</em> and at <em>p</em> &lt; .001, is considered a significant outlier.</p>
 <p>To calculate Mahalanobis distances by hand, you can use the <code>mahalanobis()</code> function from base R. To do this, you need to give the function a dataframe with just the predictors in it.</p>
 <div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="outliers.html#cb457-1" tabindex="-1"></a>flow_temp <span class="ot">&lt;-</span> flow_data <span class="sc">%&gt;%</span></span>
 <span id="cb457-2"><a href="outliers.html#cb457-2" tabindex="-1"></a>  <span class="fu">select</span>(GoldMSI, trait_anxiety, openness)</span>
@@ -828,12 +831,11 @@ How do Mahalanobis distances work?
 <span id="cb458-2"><a href="outliers.html#cb458-2" tabindex="-1"></a></span>
 <span id="cb458-3"><a href="outliers.html#cb458-3" tabindex="-1"></a><span class="fu">head</span>(mahal)</span></code></pre></div>
 <pre><code>## [1] 0.6491979 3.7060236 2.8816398 0.1675431 7.4849829 1.4083562</code></pre>
-<p>Mahalanobis distances follow a chi-square distribution. Thus, we can leverage the properties of the chi-square to calculate <em>p</em>-values for each Mahalanobis distance. For this test, degrees of freedom is equal to the number of predictors (i.e. df = 3 as we have three predictors).</p>
+<p>Once we have done that we can leverage the properties of the chi-square distribution to calculate <em>p</em>-values for each Mahalanobis distance. Note that df = 3 here, as our original model had 3 predictors.</p>
 <div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="outliers.html#cb460-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">pchisq</span>(mahal, <span class="at">df =</span> <span class="dv">3</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb460-2"><a href="outliers.html#cb460-2" tabindex="-1"></a></span>
 <span id="cb460-3"><a href="outliers.html#cb460-3" tabindex="-1"></a><span class="fu">head</span>(p)</span></code></pre></div>
 <pre><code>## [1] 0.88508291 0.29500801 0.41023627 0.98265060 0.05794556 0.70357717</code></pre>
-<p>For Mahalanobis distances, the convention is to set the significance level at <em>p</em> &lt; .001. Thus, at this point we can just go ahead and identify any data points that have a <em>p</em>-value below this cutoff.</p>
 <p>Alternatively - and this is what <code>rstatix</code> does - you can calculate the Mahalanobis distance corresponding to <em>p</em> = .001, which will tell you the critical Mahalanobis distance value for a significant outlier.</p>
 <div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="outliers.html#cb462-1" tabindex="-1"></a><span class="fu">qchisq</span>(<span class="fl">0.999</span>, <span class="at">df =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 16.26624</code></pre>

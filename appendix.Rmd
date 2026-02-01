@@ -193,7 +193,7 @@ glance(stress_aov)
 
 ## The `augment()` function {#broom-augment}
 
-The a
+The `augment()` function is another useful function in `broom`. The important distinction between this function and the two other ones from `broom` is that `augment()` returns information on each *observation* or datapoint, whereas `glance()` returns additional information on the whole model.
 
 ### Chi-square tests
 

@@ -340,7 +340,7 @@ Thus, a 50 year old person has a 61.5% chance of having a sleep disorder (note t
 
 We can actually plot the expected probabilities across a range of values for age by first asking R to predict the probabilities across a range of ages. This will draw the characteristic S-shaped curve of the logistic model. We use the `predict()` function to calculate the predicted probabilities of each value of our predictor. The `type = response` argument is used here to tell R to predict the probabilities (and not the log odds).
 
-```{r}
+```{r echo = FALSE}
 age_range <- data.frame(
   age = 20:70
 ) 

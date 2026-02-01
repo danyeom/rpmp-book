@@ -496,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
+<li class="chapter" data-level="10" data-path="regression-continued.html"><a href="regression-continued.html"><i class="fa fa-check"></i><b>10</b> Regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.1</b> ANCOVAs</a>
 <ul>
@@ -575,7 +575,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html"><i class="fa fa-check"></i><b>12.2</b> Theory of EFA</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="theory-of-efa.html"><a href="theory-of-efa.html#pca-vs-efa"><i class="fa fa-check"></i><b>12.2.1</b> PCA vs EFA</a></li>
-<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.2</b> Partial correlations</a></li>
+<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#the-common-factor-model"><i class="fa fa-check"></i><b>12.2.2</b> The common factor model</a></li>
+<li class="chapter" data-level="12.2.3" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.3</b> Partial correlations</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html"><i class="fa fa-check"></i><b>12.3</b> Initial considerations for EFA</a>
 <ul>
@@ -730,13 +731,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="img/mediation_2.svg" style="display: block; margin: auto;" /></p>
 <p>To illustrate the causal steps approach (and subsequent approaches), we will use a fictional dataset below. This dataset contains scores on students’ grades, self-esteem and happiness. We theorise that the relationship between a student’s grades and their happiness is mediated by their self-esteem, which gives rise to the hypothetical mediation below:</p>
 <p><img src="img/mediation_3.png" width="420" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="mediation-causal-steps.html#cb558-1" tabindex="-1"></a>med_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;medmod&quot;</span>, <span class="st">&quot;med_grades.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="mediation-causal-steps.html#cb557-1" tabindex="-1"></a>med_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;medmod&quot;</span>, <span class="st">&quot;med_grades.csv&quot;</span>))</span></code></pre></div>
 </div>
 <div id="step-1-test-the-direct-effect-c" class="section level3 hasAnchor" number="13.2.2">
 <h3><span class="header-section-number">13.2.2</span> Step 1: Test the direct effect (c)<a href="mediation-causal-steps.html#step-1-test-the-direct-effect-c" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first step in the classic causal steps approach is simply to see whether our predictor X predicts the outcome Y, using a linear regression. This tests the direct effect, c. The magnitude of this direct effect is 0.396.</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="mediation-causal-steps.html#cb559-1" tabindex="-1"></a>step_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(happiness <span class="sc">~</span> grade, <span class="at">data =</span> med_data)</span>
-<span id="cb559-2"><a href="mediation-causal-steps.html#cb559-2" tabindex="-1"></a><span class="fu">summary</span>(step_1)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="mediation-causal-steps.html#cb558-1" tabindex="-1"></a>step_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(happiness <span class="sc">~</span> grade, <span class="at">data =</span> med_data)</span>
+<span id="cb558-2"><a href="mediation-causal-steps.html#cb558-2" tabindex="-1"></a><span class="fu">summary</span>(step_1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = happiness ~ grade, data = med_data)
@@ -759,8 +760,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="step-2-test-the-predictor-and-mediator-a" class="section level3 hasAnchor" number="13.2.3">
 <h3><span class="header-section-number">13.2.3</span> Step 2: Test the predictor and mediator (a)<a href="mediation-causal-steps.html#step-2-test-the-predictor-and-mediator-a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The next step is to see whether the predictor significantly predicts the mediator, which denotes the a path. The estimate for a in this case is 0.561.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="mediation-causal-steps.html#cb561-1" tabindex="-1"></a>step_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(self_esteem <span class="sc">~</span> grade, <span class="at">data =</span> med_data)</span>
-<span id="cb561-2"><a href="mediation-causal-steps.html#cb561-2" tabindex="-1"></a><span class="fu">summary</span>(step_2)</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="mediation-causal-steps.html#cb560-1" tabindex="-1"></a>step_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(self_esteem <span class="sc">~</span> grade, <span class="at">data =</span> med_data)</span>
+<span id="cb560-2"><a href="mediation-causal-steps.html#cb560-2" tabindex="-1"></a><span class="fu">summary</span>(step_2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = self_esteem ~ grade, data = med_data)
@@ -783,8 +784,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="step-3-test-the-predictor-and-mediator-on-the-outcome-b" class="section level3 hasAnchor" number="13.2.4">
 <h3><span class="header-section-number">13.2.4</span> Step 3: Test the predictor and mediator on the outcome (b)<a href="mediation-causal-steps.html#step-3-test-the-predictor-and-mediator-on-the-outcome-b" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This step involves running a multiple regression with both X and M as predictors, and Y as the outcome. This is because as in the model above, the effect of Y is determined by both the effect of the predictor and the mediator. The estimate for b is the regression coefficient for the mediator in this analysis - in this case, b = 0.6355.</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="mediation-causal-steps.html#cb563-1" tabindex="-1"></a>step_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(happiness <span class="sc">~</span> grade <span class="sc">+</span> self_esteem, <span class="at">data =</span> med_data)</span>
-<span id="cb563-2"><a href="mediation-causal-steps.html#cb563-2" tabindex="-1"></a><span class="fu">summary</span>(step_3)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="mediation-causal-steps.html#cb562-1" tabindex="-1"></a>step_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(happiness <span class="sc">~</span> grade <span class="sc">+</span> self_esteem, <span class="at">data =</span> med_data)</span>
+<span id="cb562-2"><a href="mediation-causal-steps.html#cb562-2" tabindex="-1"></a><span class="fu">summary</span>(step_3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = happiness ~ grade + self_esteem, data = med_data)

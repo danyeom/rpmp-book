@@ -496,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
+<li class="chapter" data-level="10" data-path="regression-continued.html"><a href="regression-continued.html"><i class="fa fa-check"></i><b>10</b> Regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.1</b> ANCOVAs</a>
 <ul>
@@ -575,7 +575,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html"><i class="fa fa-check"></i><b>12.2</b> Theory of EFA</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="theory-of-efa.html"><a href="theory-of-efa.html#pca-vs-efa"><i class="fa fa-check"></i><b>12.2.1</b> PCA vs EFA</a></li>
-<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.2</b> Partial correlations</a></li>
+<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#the-common-factor-model"><i class="fa fa-check"></i><b>12.2.2</b> The common factor model</a></li>
+<li class="chapter" data-level="12.2.3" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.3</b> Partial correlations</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html"><i class="fa fa-check"></i><b>12.3</b> Initial considerations for EFA</a>
 <ul>
@@ -725,8 +726,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.4.1</span> Regular <span class="math inline">\(R^2\)</span><a href="pseudo-r2.html#regular-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Recall that in a linear regression, we often talk about <span class="math inline">\(R^2\)</span>, or the coefficient of determination. We interpret this value as the amount of variance that is explained in our outcome by our predictor in the regression (or all of our predictors, in the case of multiple regression).</p>
 <p>As a reminder, here is the output for the regression on flow proneness in <a href="multreg-intro.html#multreg-intro">the regression module</a>:</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="pseudo-r2.html#cb511-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span>
-<span id="cb511-2"><a href="pseudo-r2.html#cb511-2" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="pseudo-r2.html#cb510-1" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span>
+<span id="cb510-2"><a href="pseudo-r2.html#cb510-2" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
@@ -753,7 +754,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="calculating-pseudo-r2-measures" class="section level3 hasAnchor" number="11.4.2">
 <h3><span class="header-section-number">11.4.2</span> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures<a href="pseudo-r2.html#calculating-pseudo-r2-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As a reminder, let’s print the output from our logistic regression on sleep:</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="pseudo-r2.html#cb513-1" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="pseudo-r2.html#cb512-1" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
@@ -774,20 +775,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>The <code>DescTools</code> package provides a very convenient function, <code>PseudoR2()</code>, to calculate these pseudo-<span class="math inline">\(R^2\)</span> measures for us. This function requires a) the name of the <code>glm</code> model (i.e. our logistic regression object), and b) a character specifying which type(s) of <span class="math inline">\(R^2\)</span> should be calculated. You’ll see this in the examples below.</p>
 <p><strong>McFadden’s <span class="math inline">\(R^2\)</span></strong> is roughly analogous to a regular <span class="math inline">\(R^2\)</span>, in that it is intended to give an estimate of how much total variability is explained by the logistic model. It is calculated by comparing the fit of a logistic model against a null (i.e. no predictor) model.</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="pseudo-r2.html#cb515-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
-<span id="cb515-2"><a href="pseudo-r2.html#cb515-2" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;McFadden&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="pseudo-r2.html#cb514-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb514-2"><a href="pseudo-r2.html#cb514-2" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;McFadden&quot;</span>)</span></code></pre></div>
 <pre><code>##  McFadden 
 ## 0.1460373</code></pre>
 <p><strong>Cox and Snell’s <span class="math inline">\(R^2\)</span></strong> is also calculated by comparing a full model to an null/no predictor model. The underlying calculation, however, is different, and a particular oddity of the Cox and Snell <span class="math inline">\(R^2\)</span> is that the maximum possible value is less than 1.</p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="pseudo-r2.html#cb517-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;CoxSnell&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="pseudo-r2.html#cb516-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;CoxSnell&quot;</span>)</span></code></pre></div>
 <pre><code>##  CoxSnell 
 ## 0.1797558</code></pre>
 <p><strong>Nagelkerke’s <span class="math inline">\(R^2\)</span></strong> is an adjustment of the Cox and Snell <span class="math inline">\(R^2\)</span> - specifically, it adjusts the value of <span class="math inline">\(R^2\)</span> so that it ranges from 0-1.</p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="pseudo-r2.html#cb519-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Nagelkerke&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="pseudo-r2.html#cb518-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Nagelkerke&quot;</span>)</span></code></pre></div>
 <pre><code>## Nagelkerke 
 ##  0.2420843</code></pre>
 <p>Finally, <strong>Tjur’s <span class="math inline">\(R^2\)</span></strong> is a relatively new pseudo-<span class="math inline">\(R^2\)</span>. It is calculated by first calculating the average predicted probabilities of the outcomes, and then taking the differences between those two probabilities. It is bounded between 0-1 and is also roughly analogous to a normal <span class="math inline">\(R^2\)</span>.</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="pseudo-r2.html#cb521-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Tjur&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="pseudo-r2.html#cb520-1" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">&quot;Tjur&quot;</span>)</span></code></pre></div>
 <pre><code>##      Tjur 
 ## 0.1888425</code></pre>
 </div>

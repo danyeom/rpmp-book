@@ -1,4 +1,4 @@
-# Multiple regression continued
+# Regression continued
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
@@ -410,7 +410,7 @@ Aside from visual inspection, we have two main methods of identifying outliers i
 
 **Cook's distances** are a method for identifying **influential points** in a regression model. The basic rationale is that if a point is highly influential, it has a large effect in shaping the overall parameter estimates in the regression model. Thus, points with high Cook's distances values are worth looking into.
 
-Cook's distances can be easily calculated using the `cooks.distance()` function in base R. You just need to spply the name of the regression model (created using `lm()`):
+Cook's distances can be easily calculated using the `cooks.distance()` function in base R. You just need to apply the name of the regression model (created using `lm()`):
 
 ```{r}
 flow_cooksd <- cooks.distance(flow_block3)
@@ -425,7 +425,7 @@ median(flow_cooksd)
 min(flow_cooksd)
 max(flow_cooksd)
 ```
-If you prefer a tidyverse implementation, you can use the `augment()` function from the `broom` package. This returns a whole range of values, including fitted values, residuals (both of which are useful for Q-Q plots) and Cook's distances:
+If you prefer a tidyverse implementation, you can use the `augment()` function from the `broom` package (see [the appendix](#broom-augment) for more information on `broom`). This returns a whole range of values, including fitted values, residuals (both of which are useful for Q-Q plots) and Cook's distances:
 
 ```{r}
 library(broom)
@@ -490,6 +490,10 @@ Here, we can see that participants 378 and 528 are multivariate outliers, and th
 <details>
 <summary>How do Mahalanobis distances work?</summary>
 ::: {style="background-color: #f0f0f0;"}
+The basic principle behind using Mahalanobis distances is basically the same as Cook's distances: if a datapoint has a distance value greater than a specified cutoff, it is a multivariate outlier. The main difference is that $D^2$ is used for identifying multivariate outliers, as described above, and is empirically tested against a specified distribution (as opposed to Cook's distances, where influential outliers are mainly identified on vibes).
+
+Mahalanobis distances follow a chi-square distribution, with the degrees of freedom being equal to the number of predictors (*k*) in a model. The significance level for $D^2$ is conventionally set at *p* < .001. In essence, any datapoint that has a $D^2$ greater than a cutoff point on a chi-square distribution, given df = *k* and at *p* < .001, is considered a significant outlier.
+
 To calculate Mahalanobis distances by hand, you can use the `mahalanobis()` function from base R. To do this, you need to give the function a dataframe with just the predictors in it.
 
 ```{r}
@@ -506,15 +510,13 @@ mahal <- mahalanobis(flow_temp, colMeans(flow_temp), cov(flow_temp))
 
 head(mahal)
 ```
-Mahalanobis distances follow a chi-square distribution. Thus, we can leverage the properties of the chi-square to calculate *p*-values for each Mahalanobis distance. For this test, degrees of freedom is equal to the number of predictors (i.e. df = 3 as we have three predictors).
+Once we have done that we can leverage the properties of the chi-square distribution to calculate *p*-values for each Mahalanobis distance. Note that df = 3 here, as our original model had 3 predictors.
 
 ```{r}
 p <- pchisq(mahal, df = 3, lower.tail = FALSE)
 
 head(p)
 ```
-For Mahalanobis distances, the convention is to set the significance level at *p* < .001. Thus, at this point we can just go ahead and identify any data points that have a *p*-value below this cutoff.
-
 Alternatively - and this is what `rstatix` does - you can calculate the Mahalanobis distance corresponding to *p* = .001, which will tell you the critical Mahalanobis distance value for a significant outlier.
 
 ```{r}

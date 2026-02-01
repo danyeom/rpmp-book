@@ -95,7 +95,7 @@ In short, EFA allows us to generate theoretical entities that we can test in sub
  
 
  
-The common factor model
+### The common factor model
 
 The basis of factor analysis is the common factor model. Broadly speaking, the common factor model suggests that variables that relate to each other are likely driven by underlying latent variables. For example, if five questions in a survey all ask about a specific aspect of motivation, and these items correlate with each other, we would expect the same thing - or latent factor - to be driving responses on these five items. Exploratory factor analysis operates under this common factor model.
 

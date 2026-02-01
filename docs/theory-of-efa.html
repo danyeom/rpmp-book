@@ -496,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
+<li class="chapter" data-level="10" data-path="regression-continued.html"><a href="regression-continued.html"><i class="fa fa-check"></i><b>10</b> Regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.1</b> ANCOVAs</a>
 <ul>
@@ -575,7 +575,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html"><i class="fa fa-check"></i><b>12.2</b> Theory of EFA</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="theory-of-efa.html"><a href="theory-of-efa.html#pca-vs-efa"><i class="fa fa-check"></i><b>12.2.1</b> PCA vs EFA</a></li>
-<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.2</b> Partial correlations</a></li>
+<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#the-common-factor-model"><i class="fa fa-check"></i><b>12.2.2</b> The common factor model</a></li>
+<li class="chapter" data-level="12.2.3" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.3</b> Partial correlations</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html"><i class="fa fa-check"></i><b>12.3</b> Initial considerations for EFA</a>
 <ul>
@@ -731,7 +732,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In EFA, the goal is only to explain common variance between the observed variables. EFA explicitly models the variance in the items to be comprised of common variance, which is variance due to shared underlying factors, and unique variance. Unique variance can be further broken down into specific variance, which is variance that is specific to each item, and error variance. By partitioning variance in this way, EFA is able to test models of factors as it allows for disconfirmation - a vital part of any model testing.</li>
 </ul>
 <p>In short, EFA allows us to generate theoretical entities that we can test in subsequent analyses. PCA only provides us with a measure that combines the effects of multiple variables, but does not test latent factors.</p>
-<p>The common factor model</p>
+</div>
+<div id="the-common-factor-model" class="section level3 hasAnchor" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> The common factor model<a href="theory-of-efa.html#the-common-factor-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The basis of factor analysis is the common factor model. Broadly speaking, the common factor model suggests that variables that relate to each other are likely driven by underlying latent variables. For example, if five questions in a survey all ask about a specific aspect of motivation, and these items correlate with each other, we would expect the same thing - or latent factor - to be driving responses on these five items. Exploratory factor analysis operates under this common factor model.</p>
 <p>Below is a basic diagram of the common factor model. The squares represent observed variables, which are the variables that we measure. The big circle denotes the latent factor that we want to estimate. The circles leading to the observed variables are error terms. In an exploratory factor analysis, the primary thing we want to investigate is the factor loadings, denoted by the various lambdas (<span class="math inline">\(\lambda\)</span>). We will see precisely what the factor loadings are later, but generally they are how strongly the latent factor predicts each observed variable.</p>
 <p><img src="img/common_factor_1.svg" /><!-- --></p>
@@ -739,8 +742,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For brevity’s sake, only three lambdas have been shown, but hopefully they are illustrative enough to get the general gist across. Every path leading from a latent variable to an observed variable is a parameter to be estimated in an exploratory factor analysis.</p>
 <p><img src="img/common_factor_2.svg" /><!-- --></p>
 </div>
-<div id="partial-correlations-2" class="section level3 hasAnchor" number="12.2.2">
-<h3><span class="header-section-number">12.2.2</span> Partial correlations<a href="theory-of-efa.html#partial-correlations-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="partial-correlations-2" class="section level3 hasAnchor" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Partial correlations<a href="theory-of-efa.html#partial-correlations-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In Module 10, we talked about the concept of <strong>correlation</strong> - i.e. how related two variables are. Recall that correlation coefficients are scaled from -1 to 1. In Extension Module 3 we also talked about the concept of <strong>partial correlation</strong> - the relationship between two variables while controlling for a third, as denoted using the below formula:</p>
 <p><span class="math display">\[
 r_{xy.z} = \frac{r_{xy} - (r_{xz} \times r_{yz})}{\sqrt{(1-r^2_{xz})(1-{r^2_{yz}})}}

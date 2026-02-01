@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Calculating a chi-square | Research Process for Music Psychologists</title>
+  <title>Chapter 10 Regression continued | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Calculating a chi-square | Research Process for Music Psychologists" />
+  <meta property="og:title" content="Chapter 10 Regression continued | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Calculating a chi-square | Research Process for Music Psychologists" />
+  <meta name="twitter:title" content="Chapter 10 Regression continued | Research Process for Music Psychologists" />
   
   <meta name="twitter:description" content="This is an R adaptation of Research Process for Music Psychologists." />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chi-squares.html"/>
-<link rel="next" href="the-chi-square-distribution.html"/>
+<link rel="prev" href="planned-comparisons.html"/>
+<link rel="next" href="ancovas.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -720,54 +720,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="calculating-a-chi-square" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Calculating a chi-square<a href="calculating-a-chi-square.html#calculating-a-chi-square" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div style="background-color: #f5f5f5;  padding: 1.75rem;">
-<p>We’ll start this module off by briefly going through the basics of what research designs suit chi-square tests, as well as the basic maths underlying the first part of the statistical test.</p>
-</div>
-<div id="categorical-data" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Categorical data<a href="calculating-a-chi-square.html#categorical-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As mentioned at the start of this module, chi-square tests are used when we work with <strong>categorical data</strong> - i.e., when we are dealing with <em>counts</em> of items or people, rather than continuous variables. Research questions focused on relationships or associations among categorical variables are suited to chi-square tests.</p>
-<p>Every categorical variable will have <strong>levels</strong> (categories) within them. These are the different values that categorical variable can be. For example, biological sex is often coded with two levels: male and female. Or perhaps you might categorise socioeconomic status into three levels: low, medium and high bands. This is something that can form a core part of your research design. The most basic example is asking participants what their biological sex is - participants will respond with one of the two categories.</p>
-<p>Alternatively, you can <em>create</em> categories from existing data. For example, many scales designed to assess psychological disorders such as depression and anxiety often have ‘cutoff’ points, where a certain score on the scale is indicative of a possible disorder. If you have everyone’s raw scores, you can convert these scores into categories depending on whether they are above or below these cutoff points (though this needs to be strongly justified).</p>
-<p>All of this kind of data are amenable to chi-square tests, <em>if</em> you are interested in relationships between categorical variables. The family of chi-square tests basically work by comparing the <strong>observed values to</strong> the <strong>expected values</strong>. As the names imply, observed value simply means the number of observations we have in each category or level (i.e. what our data actually is). Expected values, on the other hand, are the number of things we would <em>expect</em> to see under the null hypothesis.</p>
-<p>We can visualise categorical variables in two basic ways: a) a <strong>contingency table</strong> or b) a <strong>bar graph of counts</strong>. Below is the same set of data, shown in both forms:</p>
-</div>
-<div id="the-chi-square-formula" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> The chi-square formula<a href="calculating-a-chi-square.html#the-chi-square-formula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To test whether a result is significant, remember that we need to calculate a test statistic, and see where that fits on its underlying distribution. Here, our test statistic is handily named the <strong>chi-square statistic</strong>. To calculate the chi-squared test statistic we use the following formula:</p>
-<p><span class="math display">\[
-\chi^2 = \Sigma \frac{(O-E)^2}{E}
-\]</span></p>
-<p>Where:</p>
+<div id="regression-continued" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Regression continued<a href="regression-continued.html#regression-continued" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This section deals with some more advanced topics in ANOVAs and regression. It serves as a continuation to the first chapter on regression, and in particular focuses on multiple regressions. This chapter will cover the following:</p>
 <ul>
-<li><p>O = <strong>observed value</strong></p></li>
-<li><p>E = <strong>expected</strong> <strong>value</strong></p></li>
+<li>ANCOVA</li>
+<li>Hierarchical regressions</li>
+<li>Model selection</li>
+<li>Identifying and handling outliers</li>
 </ul>
-<p>The English translation of that above formula can be described in four steps:</p>
-<ol style="list-style-type: decimal">
-<li><p>Calculate observed count - expected count</p></li>
-<li><p>Square that difference</p></li>
-<li><p>Divide it by the expected count</p></li>
-<li><p>Do this for each cell, and add them all up</p></li>
-</ol>
-<p>We’ll look at this in more detail when we look at the actual tests. For the time being, here’s the key takeaway: have a look at the two graphs below, representing the observed and expected values of two different datasets.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-119-1.png" width="768" /></p>
-<p>Have a think about the following:</p>
-<ol style="list-style-type: decimal">
-<li><p>What is each graph telling you?</p></li>
-<li><p>The left graph appears to show noticeable differences between the observed and expected values. Based on the mathematical formula above, what will happen to the chi-square value?</p></li>
-<li><p>Each graph represents one set of data. Based on your answers to a) and b) above, which one of the two would you expect to demonstrate a significant effect?</p></li>
-</ol>
-</div>
+<p>This module won’t cover continuous interactions because they are often considered under the topic of moderation - for which there will be a separate module.</p>
+<p>Recall that the basic multiple regression looks something like this:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x_1 +\beta_2x_2 + \epsilon_i
+\]</span>
+As a reminder, the coefficients in this formula correspond to the following:</p>
+<ul>
+<li><span class="math inline">\(\beta_1\)</span> is the coefficient for predictor <span class="math inline">\(x_1\)</span>; i.e. as <span class="math inline">\(x_1\)</span> increases by 1 unit, <span class="math inline">\(\hat y\)</span> (the predicted y value) increases by <span class="math inline">\(\beta_1\)</span> units, <em>assuming</em> <span class="math inline">\(x_2\)</span> does not change</li>
+<li><span class="math inline">\(\beta_2\)</span> is the coefficient for predictor <span class="math inline">\(x_2\)</span>, and describes how <span class="math inline">\(\hat y\)</span> changes assuming <span class="math inline">\(x_1\)</span> does not change</li>
+<li><span class="math inline">\(\epsilon_i\)</span> is the error term, which we assume is normally distributed</li>
+</ul>
+<p>We can expand this formula out to include <span class="math inline">\(n\)</span> predictors, as follows:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x_1 +\beta_2x_2 + ... \beta_nx_n + \epsilon_i
+\]</span></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="chi-squares.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-chi-square-distribution.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="planned-comparisons.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ancovas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

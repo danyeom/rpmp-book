@@ -496,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.9.4" data-path="planned-comparisons.html"><a href="planned-comparisons.html#an-example-1"><i class="fa fa-check"></i><b>9.9.4</b> An example</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="multiple-regression-continued.html"><a href="multiple-regression-continued.html"><i class="fa fa-check"></i><b>10</b> Multiple regression continued</a>
+<li class="chapter" data-level="10" data-path="regression-continued.html"><a href="regression-continued.html"><i class="fa fa-check"></i><b>10</b> Regression continued</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="ancovas.html"><a href="ancovas.html"><i class="fa fa-check"></i><b>10.1</b> ANCOVAs</a>
 <ul>
@@ -575,7 +575,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html"><i class="fa fa-check"></i><b>12.2</b> Theory of EFA</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="theory-of-efa.html"><a href="theory-of-efa.html#pca-vs-efa"><i class="fa fa-check"></i><b>12.2.1</b> PCA vs EFA</a></li>
-<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.2</b> Partial correlations</a></li>
+<li class="chapter" data-level="12.2.2" data-path="theory-of-efa.html"><a href="theory-of-efa.html#the-common-factor-model"><i class="fa fa-check"></i><b>12.2.2</b> The common factor model</a></li>
+<li class="chapter" data-level="12.2.3" data-path="theory-of-efa.html"><a href="theory-of-efa.html#partial-correlations-2"><i class="fa fa-check"></i><b>12.2.3</b> Partial correlations</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="initial-considerations-for-efa.html"><a href="initial-considerations-for-efa.html"><i class="fa fa-check"></i><b>12.3</b> Initial considerations for EFA</a>
 <ul>
@@ -737,24 +738,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-10" class="section level3 hasAnchor" number="14.2.3">
 <h3><span class="header-section-number">14.2.3</span> Example<a href="spearmans-rho.html#example-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is a simple example of a correlation between two variables where non-linearity may be important. Singing accuracy is naturally skewed heavily, and develops non-linearly throughout life.</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="spearmans-rho.html#cb580-1" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;singing_data.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="spearmans-rho.html#cb579-1" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;singing_data.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 284 Columns: 2
-## ── Column specification ───────────────────────────────────
+## ── Column specification ──────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (2): accuracy, age
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>The relevant dataset contains just two variables: accuracy (measured in cents) and age (participant age). The scatterplot below shows the relationship between these two variables:</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="spearmans-rho.html#cb582-1" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
-<span id="cb582-2"><a href="spearmans-rho.html#cb582-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb582-3"><a href="spearmans-rho.html#cb582-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
-<span id="cb582-4"><a href="spearmans-rho.html#cb582-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb582-5"><a href="spearmans-rho.html#cb582-5" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb582-6"><a href="spearmans-rho.html#cb582-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="spearmans-rho.html#cb581-1" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
+<span id="cb581-2"><a href="spearmans-rho.html#cb581-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb581-3"><a href="spearmans-rho.html#cb581-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
+<span id="cb581-4"><a href="spearmans-rho.html#cb581-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb581-5"><a href="spearmans-rho.html#cb581-5" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb581-6"><a href="spearmans-rho.html#cb581-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-429-1.png" width="672" /></p>
 <p>To calculate Spearman’s rho, the steps are much the same as the way they are for normal correlations - we use the same <code>cor.test()</code> function that we saw earlier. The main difference is that we now must specify the <code>method</code> argument to equal to <code>"spearman"</code>, which will calculate Spearman’s rho instead.. Here, we see results consistent with a Pearson’s correlation; a significant, positive association between age and accuracy (<span class="math inline">\(\rho\)</span> = .53, <em>p</em> &lt; .001).</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="spearmans-rho.html#cb583-1" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="spearmans-rho.html#cb582-1" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in cor.test.default(singing$accuracy, singing$age, method =
 ## &quot;spearman&quot;): Cannot compute exact p-value with ties</code></pre>
 <pre><code>## 
