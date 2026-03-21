@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.7 Two-way mixed ANOVA | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.7 Two-way mixed ANOVA | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -736,49 +737,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Timepoint, a within-groups variable as all participants were measured at 3 timepoints (3 levels: 0 weeks, 6 weeks, 12 weeks)</li>
 </ol>
 <p>This gives us a two-way, 3 x 3 mixed factorial ANOVA. Let’s start by visualising anxiety scores for the three interventions. A boxplot or bar graph is useful here.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="two-way-mixed-anova.html#cb350-1" tabindex="-1"></a>twoway_mixed <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_mixed.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="two-way-mixed-anova.html#cb364-1" tabindex="-1"></a>twoway_mixed <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;factorial&quot;</span>, <span class="st">&quot;twoway_mixed.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 135 Columns: 4
-## ── Column specification ──────────────────────────────────
+## ── Column specification ─────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (2): group, time
 ## dbl (2): id, anxiety
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="two-way-mixed-anova.html#cb352-1" tabindex="-1"></a><span class="co"># This recodes factors</span></span>
-<span id="cb352-2"><a href="two-way-mixed-anova.html#cb352-2" tabindex="-1"></a></span>
-<span id="cb352-3"><a href="two-way-mixed-anova.html#cb352-3" tabindex="-1"></a>twoway_mixed<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_mixed<span class="sc">$</span>group)</span>
-<span id="cb352-4"><a href="two-way-mixed-anova.html#cb352-4" tabindex="-1"></a>twoway_mixed<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_mixed<span class="sc">$</span>time)</span></code></pre></div>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="two-way-mixed-anova.html#cb353-1" tabindex="-1"></a>twoway_mixed <span class="sc">%&gt;%</span></span>
-<span id="cb353-2"><a href="two-way-mixed-anova.html#cb353-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb353-3"><a href="two-way-mixed-anova.html#cb353-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> anxiety, <span class="at">colour =</span> group)</span>
-<span id="cb353-4"><a href="two-way-mixed-anova.html#cb353-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb353-5"><a href="two-way-mixed-anova.html#cb353-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb353-6"><a href="two-way-mixed-anova.html#cb353-6" tabindex="-1"></a>  <span class="co"># scale_x_discrete(labels = c(&quot;0 weeks&quot;, &quot;6 weeks&quot;, &quot;12 weeks&quot;)) +</span></span>
-<span id="cb353-7"><a href="two-way-mixed-anova.html#cb353-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb353-8"><a href="two-way-mixed-anova.html#cb353-8" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Time point&quot;</span>,</span>
-<span id="cb353-9"><a href="two-way-mixed-anova.html#cb353-9" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Anxiety score&quot;</span>,</span>
-<span id="cb353-10"><a href="two-way-mixed-anova.html#cb353-10" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;Intervention</span><span class="sc">\n</span><span class="st">group&quot;</span></span>
-<span id="cb353-11"><a href="two-way-mixed-anova.html#cb353-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb353-12"><a href="two-way-mixed-anova.html#cb353-12" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
-<span id="cb353-13"><a href="two-way-mixed-anova.html#cb353-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="two-way-mixed-anova.html#cb366-1" tabindex="-1"></a><span class="co"># This recodes factors</span></span>
+<span id="cb366-2"><a href="two-way-mixed-anova.html#cb366-2" tabindex="-1"></a></span>
+<span id="cb366-3"><a href="two-way-mixed-anova.html#cb366-3" tabindex="-1"></a>twoway_mixed<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_mixed<span class="sc">$</span>group)</span>
+<span id="cb366-4"><a href="two-way-mixed-anova.html#cb366-4" tabindex="-1"></a>twoway_mixed<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_mixed<span class="sc">$</span>time)</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="two-way-mixed-anova.html#cb367-1" tabindex="-1"></a>twoway_mixed <span class="sc">%&gt;%</span></span>
+<span id="cb367-2"><a href="two-way-mixed-anova.html#cb367-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb367-3"><a href="two-way-mixed-anova.html#cb367-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> anxiety, <span class="at">colour =</span> group)</span>
+<span id="cb367-4"><a href="two-way-mixed-anova.html#cb367-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb367-5"><a href="two-way-mixed-anova.html#cb367-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb367-6"><a href="two-way-mixed-anova.html#cb367-6" tabindex="-1"></a>  <span class="co"># scale_x_discrete(labels = c(&quot;0 weeks&quot;, &quot;6 weeks&quot;, &quot;12 weeks&quot;)) +</span></span>
+<span id="cb367-7"><a href="two-way-mixed-anova.html#cb367-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb367-8"><a href="two-way-mixed-anova.html#cb367-8" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Time point&quot;</span>,</span>
+<span id="cb367-9"><a href="two-way-mixed-anova.html#cb367-9" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Anxiety score&quot;</span>,</span>
+<span id="cb367-10"><a href="two-way-mixed-anova.html#cb367-10" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;Intervention</span><span class="sc">\n</span><span class="st">group&quot;</span></span>
+<span id="cb367-11"><a href="two-way-mixed-anova.html#cb367-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb367-12"><a href="two-way-mixed-anova.html#cb367-12" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb367-13"><a href="two-way-mixed-anova.html#cb367-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-289-1.png" alt="" width="672" /></p>
 <p>In a mixed ANOVA, we test the effect of both a between-groups and a within-groups variable. This means that the specific assumptions that apply to both between- and within-subject designs now carry over into this design. This means that the following assumptions apply:</p>
 <ul>
 <li>The data should have multivariate normality. Our QQ plot looks a little non-linear, so we might have an issue here.</li>
 </ul>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="two-way-mixed-anova.html#cb354-1" tabindex="-1"></a><span class="fu">aov</span>(anxiety <span class="sc">~</span> group <span class="sc">*</span> time, <span class="at">data =</span> twoway_mixed) <span class="sc">%&gt;%</span></span>
-<span id="cb354-2"><a href="two-way-mixed-anova.html#cb354-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb354-3"><a href="two-way-mixed-anova.html#cb354-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
-<span id="cb354-4"><a href="two-way-mixed-anova.html#cb354-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb354-5"><a href="two-way-mixed-anova.html#cb354-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-285-1.png" width="672" /></p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="two-way-mixed-anova.html#cb368-1" tabindex="-1"></a><span class="fu">aov</span>(anxiety <span class="sc">~</span> group <span class="sc">*</span> time, <span class="at">data =</span> twoway_mixed) <span class="sc">%&gt;%</span></span>
+<span id="cb368-2"><a href="two-way-mixed-anova.html#cb368-2" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb368-3"><a href="two-way-mixed-anova.html#cb368-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
+<span id="cb368-4"><a href="two-way-mixed-anova.html#cb368-4" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb368-5"><a href="two-way-mixed-anova.html#cb368-5" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-290-1.png" alt="" width="672" /></p>
 <ul>
 <li>Homogeneity of variance - the between-subject groups should have the same variance, at each level of the within-subjects variable. None of the tests are significant (p &gt; .05), so we’re ok here. To do this in R, we run Levene’s test at each timepoint:</li>
 </ul>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="two-way-mixed-anova.html#cb355-1" tabindex="-1"></a>twoway_mixed <span class="sc">%&gt;%</span></span>
-<span id="cb355-2"><a href="two-way-mixed-anova.html#cb355-2" tabindex="-1"></a>  <span class="fu">group_by</span>(time) <span class="sc">%&gt;%</span></span>
-<span id="cb355-3"><a href="two-way-mixed-anova.html#cb355-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(anxiety <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="two-way-mixed-anova.html#cb369-1" tabindex="-1"></a>twoway_mixed <span class="sc">%&gt;%</span></span>
+<span id="cb369-2"><a href="two-way-mixed-anova.html#cb369-2" tabindex="-1"></a>  <span class="fu">group_by</span>(time) <span class="sc">%&gt;%</span></span>
+<span id="cb369-3"><a href="two-way-mixed-anova.html#cb369-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(anxiety <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["time"],"name":[1],"type":["fct"],"align":["left"]},{"label":["df1"],"name":[2],"type":["int"],"align":["right"]},{"label":["df2"],"name":[3],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"0 weeks","2":"2","3":"42","4":"0.1613480","5":"0.8515208"},{"1":"12 weeks","2":"2","3":"42","4":"0.7112498","5":"0.4968484"},{"1":"6 weeks","2":"2","3":"42","4":"0.4812491","5":"0.6213768"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -791,16 +792,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="output-10" class="section level3 hasAnchor" number="9.7.3">
 <h3><span class="header-section-number">9.7.3</span> Output<a href="two-way-mixed-anova.html#output-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is our main output from R. You’ll note that the omnibus outputs are actually split across two tables - one for the within-subject effects, and another for the between-subject effects. This simply makes it easy to identify which variables are what types. Based on the output, we can see that we have a significant main effect of group (<em>F</em>(2, 42) = 4.352, <em>p</em> = .019), and also a significant main effect of time (<em>F</em>(2, 84) = 394.909, <em>p</em> &lt; .001). We also have a significant interaction (<em>F</em>(4, 84) = 110.188, <em>p</em> &lt; .001).</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="two-way-mixed-anova.html#cb356-1" tabindex="-1"></a>twoway_mixed_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
-<span id="cb356-2"><a href="two-way-mixed-anova.html#cb356-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_mixed,</span>
-<span id="cb356-3"><a href="two-way-mixed-anova.html#cb356-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
-<span id="cb356-4"><a href="two-way-mixed-anova.html#cb356-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;anxiety&quot;</span>,</span>
-<span id="cb356-5"><a href="two-way-mixed-anova.html#cb356-5" tabindex="-1"></a>  <span class="at">between =</span> <span class="st">&quot;group&quot;</span>,</span>
-<span id="cb356-6"><a href="two-way-mixed-anova.html#cb356-6" tabindex="-1"></a>  <span class="at">within =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb356-7"><a href="two-way-mixed-anova.html#cb356-7" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>)</span>
-<span id="cb356-8"><a href="two-way-mixed-anova.html#cb356-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="two-way-mixed-anova.html#cb370-1" tabindex="-1"></a>twoway_mixed_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb370-2"><a href="two-way-mixed-anova.html#cb370-2" tabindex="-1"></a>  <span class="at">data =</span> twoway_mixed,</span>
+<span id="cb370-3"><a href="two-way-mixed-anova.html#cb370-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb370-4"><a href="two-way-mixed-anova.html#cb370-4" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&quot;anxiety&quot;</span>,</span>
+<span id="cb370-5"><a href="two-way-mixed-anova.html#cb370-5" tabindex="-1"></a>  <span class="at">between =</span> <span class="st">&quot;group&quot;</span>,</span>
+<span id="cb370-6"><a href="two-way-mixed-anova.html#cb370-6" tabindex="-1"></a>  <span class="at">within =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb370-7"><a href="two-way-mixed-anova.html#cb370-7" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">&quot;pes&quot;</span>)</span>
+<span id="cb370-8"><a href="two-way-mixed-anova.html#cb370-8" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Contrasts set to contr.sum for the following variables: group</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="two-way-mixed-anova.html#cb358-1" tabindex="-1"></a>twoway_mixed_aov</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="two-way-mixed-anova.html#cb372-1" tabindex="-1"></a>twoway_mixed_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: anxiety
@@ -812,9 +813,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1
 ## 
 ## Sphericity correction method: GG</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="two-way-mixed-anova.html#cb360-1" tabindex="-1"></a><span class="co"># To get details on sphericity</span></span>
-<span id="cb360-2"><a href="two-way-mixed-anova.html#cb360-2" tabindex="-1"></a></span>
-<span id="cb360-3"><a href="two-way-mixed-anova.html#cb360-3" tabindex="-1"></a><span class="fu">summary</span>(twoway_mixed_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="two-way-mixed-anova.html#cb374-1" tabindex="-1"></a><span class="co"># To get details on sphericity</span></span>
+<span id="cb374-2"><a href="two-way-mixed-anova.html#cb374-2" tabindex="-1"></a></span>
+<span id="cb374-3"><a href="two-way-mixed-anova.html#cb374-3" tabindex="-1"></a><span class="fu">summary</span>(twoway_mixed_aov)</span></code></pre></div>
 <pre><code>## 
 ## Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
 ## 
@@ -850,8 +851,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Run a one-way ANOVA at each timepoint - this would be the simple effect of group</li>
 </ul>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="two-way-mixed-anova.html#cb362-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_mixed_aov, <span class="sc">~</span> group, <span class="at">by =</span> <span class="st">&quot;time&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb362-2"><a href="two-way-mixed-anova.html#cb362-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="two-way-mixed-anova.html#cb376-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_mixed_aov, <span class="sc">~</span> group, <span class="at">by =</span> <span class="st">&quot;time&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb376-2"><a href="two-way-mixed-anova.html#cb376-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <pre><code>## time = X0.weeks:
 ##  contrast           estimate    SE df lower.CL upper.CL t.ratio p.value
 ##  control - exercise   0.4400 0.552 42   -0.673    1.553   0.797  0.4297
@@ -861,7 +862,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## time = X12.weeks:
 ##  contrast           estimate    SE df lower.CL upper.CL t.ratio p.value
 ##  control - exercise   0.9800 0.571 42   -0.173    2.133   1.715  0.0937
-##  control - music      2.9467 0.571 42    1.794    4.100   5.157  &lt;.0001
+##  control - music      2.9467 0.571 42    1.794    4.100   5.157 &lt;0.0001
 ##  exercise - music     1.9667 0.571 42    0.814    3.120   3.442  0.0013
 ## 
 ## time = X6.weeks:
@@ -874,25 +875,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Run a one-way repeated measures ANOVA for each group - this would be the simple effect of time</li>
 </ul>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="two-way-mixed-anova.html#cb364-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_mixed_aov, <span class="sc">~</span> time, <span class="at">by =</span> <span class="st">&quot;group&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb364-2"><a href="two-way-mixed-anova.html#cb364-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="two-way-mixed-anova.html#cb378-1" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_mixed_aov, <span class="sc">~</span> time, <span class="at">by =</span> <span class="st">&quot;group&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb378-2"><a href="two-way-mixed-anova.html#cb378-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <pre><code>## group = control:
 ##  contrast             estimate     SE df lower.CL upper.CL t.ratio p.value
-##  X0.weeks - X12.weeks     0.58 0.1230 42   0.3324    0.828   4.727  &lt;.0001
+##  X0.weeks - X12.weeks     0.58 0.1230 42   0.3324    0.828   4.727 &lt;0.0001
 ##  X0.weeks - X6.weeks      0.16 0.0950 42  -0.0316    0.352   1.685  0.0994
 ##  X12.weeks - X6.weeks    -0.42 0.0982 42  -0.6182   -0.222  -4.276  0.0001
 ## 
 ## group = exercise:
 ##  contrast             estimate     SE df lower.CL upper.CL t.ratio p.value
-##  X0.weeks - X12.weeks     1.12 0.1230 42   0.8724    1.368   9.128  &lt;.0001
+##  X0.weeks - X12.weeks     1.12 0.1230 42   0.8724    1.368   9.128 &lt;0.0001
 ##  X0.weeks - X6.weeks      0.18 0.0950 42  -0.0116    0.372   1.896  0.0649
-##  X12.weeks - X6.weeks    -0.94 0.0982 42  -1.1382   -0.742  -9.571  &lt;.0001
+##  X12.weeks - X6.weeks    -0.94 0.0982 42  -1.1382   -0.742  -9.571 &lt;0.0001
 ## 
 ## group = music:
 ##  contrast             estimate     SE df lower.CL upper.CL t.ratio p.value
-##  X0.weeks - X12.weeks     3.45 0.1230 42   3.2057    3.701  28.144  &lt;.0001
-##  X0.weeks - X6.weeks      2.00 0.0950 42   1.8084    2.192  21.063  &lt;.0001
-##  X12.weeks - X6.weeks    -1.45 0.0982 42  -1.6515   -1.255 -14.797  &lt;.0001
+##  X0.weeks - X12.weeks     3.45 0.1230 42   3.2057    3.701  28.144 &lt;0.0001
+##  X0.weeks - X6.weeks      2.00 0.0950 42   1.8084    2.192  21.063 &lt;0.0001
+##  X12.weeks - X6.weeks    -1.45 0.0982 42  -1.6515   -1.255 -14.797 &lt;0.0001
 ## 
 ## Confidence level used: 0.95</code></pre>
 <p>Let’s bulletpoint the main feature of each, and you can refer to the output below as you go through:</p>

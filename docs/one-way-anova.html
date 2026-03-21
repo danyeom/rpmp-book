@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.5 One-way ANOVA | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.5 One-way ANOVA | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -740,19 +741,19 @@ are used when there are three or more groups, but can easily be used in situatio
 <div id="example-data-3" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> Example data<a href="one-way-anova.html#example-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the seminar, we talk about an example from Watts et al. (2003). Below is another simple example, comparing taste ratings across three different types of slices: caramel slices, vanilla slices and lemon slices. Participants were randomly allocated to taste one of the three slices blindfolded, and were then asked to verbally rate its taste on a scale from 1-10 (10 being super tasty).</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="one-way-anova.html#cb213-1" tabindex="-1"></a>w9_slices <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_9&quot;</span>, <span class="st">&quot;w9_slices.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="one-way-anova.html#cb225-1" tabindex="-1"></a>w9_slices <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_9&quot;</span>, <span class="st">&quot;w9_slices.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 63 Columns: 2
-## ── Column specification ──────────────────────────────────
+## ── Column specification ─────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): group
 ## dbl (1): rating
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="one-way-anova.html#cb215-1" tabindex="-1"></a><span class="co"># Create factor</span></span>
-<span id="cb215-2"><a href="one-way-anova.html#cb215-2" tabindex="-1"></a>w9_slices<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(w9_slices<span class="sc">$</span>group)</span>
-<span id="cb215-3"><a href="one-way-anova.html#cb215-3" tabindex="-1"></a></span>
-<span id="cb215-4"><a href="one-way-anova.html#cb215-4" tabindex="-1"></a><span class="fu">head</span>(w9_slices)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="one-way-anova.html#cb227-1" tabindex="-1"></a><span class="co"># Create factor</span></span>
+<span id="cb227-2"><a href="one-way-anova.html#cb227-2" tabindex="-1"></a>w9_slices<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(w9_slices<span class="sc">$</span>group)</span>
+<span id="cb227-3"><a href="one-way-anova.html#cb227-3" tabindex="-1"></a></span>
+<span id="cb227-4"><a href="one-way-anova.html#cb227-4" tabindex="-1"></a><span class="fu">head</span>(w9_slices)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["group"],"name":[1],"type":["fct"],"align":["left"]},{"label":["rating"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"caramel","2":"6"},{"1":"vanilla","2":"8"},{"1":"lemon","2":"4"},{"1":"caramel","2":"6"},{"1":"vanilla","2":"6"},{"1":"lemon","2":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -763,7 +764,7 @@ are used when there are three or more groups, but can easily be used in situatio
 <h3><span class="header-section-number">7.5.3</span> Assumption checks<a href="one-way-anova.html#assumption-checks-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, to test assumptions we need to run the ANOVA <em>first</em>. This is because some assumptions rely on values that are calculated when the ANOVA is run. Other programs, such as Jamovi and SPSS, will hide this manual work and present the information to you automatically. This is not quite the case in R, but that’s ok!</p>
 <p>The basic function for running an ANOVA in R is the <code>aov()</code> function, which takes a formula input (much like <code>t.test()</code>). Anything created using <code>aov()</code> should be assigned to a new variable so that we can use it later. This creates an <code>aov</code> object that will a) test our main effects and b) let us check some of our assumptions.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="one-way-anova.html#cb216-1" tabindex="-1"></a>w9_slices_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(rating <span class="sc">~</span> group, <span class="at">data =</span> w9_slices)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="one-way-anova.html#cb228-1" tabindex="-1"></a>w9_slices_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(rating <span class="sc">~</span> group, <span class="at">data =</span> w9_slices)</span></code></pre></div>
 <p>There are four main assumptions for a basic ANOVA.</p>
 <ul>
 <li>Data must be independent of each other - in other words, one
@@ -774,9 +775,9 @@ using the same methods as <em>t</em>-tests: either a QQ plot or a normality
 test (e.g. Shapiro-Wilks). You can access the residuals from the
 <code>aov</code> object directly like this:</li>
 </ul>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="one-way-anova.html#cb217-1" tabindex="-1"></a>w9_slices_aov<span class="sc">$</span>residuals</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="one-way-anova.html#cb229-1" tabindex="-1"></a>w9_slices_aov<span class="sc">$</span>residuals</span></code></pre></div>
 <p>This lets us do the SW test:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="one-way-anova.html#cb218-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w9_slices_aov<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="one-way-anova.html#cb230-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(w9_slices_aov<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -789,11 +790,11 @@ test (e.g. Shapiro-Wilks). You can access the residuals from the
 <li>The equality of variance (homoscedasticity) assumption.</li>
 </ul>
 <p>This means that the variances within each group are the same. We test this using Levene’s test, using the <code>levene_test()</code> function. Helpfully, <code>levene_test()</code> is flexible enough to work with either a formula <em>or</em> an <code>aov</code> object we have already fitted:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="one-way-anova.html#cb220-1" tabindex="-1"></a><span class="co"># Either one of these will work</span></span>
-<span id="cb220-2"><a href="one-way-anova.html#cb220-2" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
-<span id="cb220-3"><a href="one-way-anova.html#cb220-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(rating <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span>
-<span id="cb220-4"><a href="one-way-anova.html#cb220-4" tabindex="-1"></a></span>
-<span id="cb220-5"><a href="one-way-anova.html#cb220-5" tabindex="-1"></a><span class="fu">levene_test</span>(w9_slices_aov, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="one-way-anova.html#cb232-1" tabindex="-1"></a><span class="co"># Either one of these will work</span></span>
+<span id="cb232-2"><a href="one-way-anova.html#cb232-2" tabindex="-1"></a>w9_slices <span class="sc">%&gt;%</span></span>
+<span id="cb232-3"><a href="one-way-anova.html#cb232-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(rating <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span>
+<span id="cb232-4"><a href="one-way-anova.html#cb232-4" tabindex="-1"></a></span>
+<span id="cb232-5"><a href="one-way-anova.html#cb232-5" tabindex="-1"></a><span class="fu">levene_test</span>(w9_slices_aov, <span class="at">center =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["df1"],"name":[1],"type":["int"],"align":["right"]},{"label":["df2"],"name":[2],"type":["int"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"60","3":"0.720662","4":"0.4905921"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -806,7 +807,7 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 <div id="output-5" class="section level3 hasAnchor" number="7.5.4">
 <h3><span class="header-section-number">7.5.4</span> Output<a href="one-way-anova.html#output-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s our main output from the ANOVA, generated using the <code>summary()</code> function. This is called an omnibus, because it is a general test of the hypotheses:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="one-way-anova.html#cb221-1" tabindex="-1"></a><span class="fu">summary</span>(w9_slices_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="one-way-anova.html#cb233-1" tabindex="-1"></a><span class="fu">summary</span>(w9_slices_aov)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 ## group        2  22.22  11.111   6.897 0.00201 **
 ## Residuals   60  96.67   1.611                   
@@ -818,7 +819,7 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 <h3><span class="header-section-number">7.5.5</span> Post-hoc tests<a href="one-way-anova.html#post-hoc-tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The output above told us that we could reject our basic null hypothesis - that there was no difference between means. However, remember that it doesn’t tell us where those differences are. To figure out where they are, we need to follow up that ANOVA with post-hoc tests.</p>
 <p>To generate post-hocs, there are a couple of ways. Tukey tests can be calculated with <code>TukeyHSD()</code> or <code>emmeans()</code>:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="one-way-anova.html#cb223-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(w9_slices_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="one-way-anova.html#cb235-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(w9_slices_aov)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -829,8 +830,8 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 ## lemon-caramel   -0.4761905 -1.4175618 0.4651809 0.4486738
 ## vanilla-caramel  0.9523810  0.0110096 1.8937523 0.0467882
 ## vanilla-lemon    1.4285714  0.4872001 2.3699428 0.0015928</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="one-way-anova.html#cb225-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
-<span id="cb225-2"><a href="one-way-anova.html#cb225-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;tukey&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="one-way-anova.html#cb237-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
+<span id="cb237-2"><a href="one-way-anova.html#cb237-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;tukey&quot;</span>)</span></code></pre></div>
 <pre><code>##  contrast          estimate    SE df lower.CL upper.CL t.ratio p.value
 ##  caramel - lemon      0.476 0.392 60   -0.465    1.418   1.216  0.4487
 ##  caramel - vanilla   -0.952 0.392 60   -1.894   -0.011  -2.431  0.0468
@@ -846,7 +847,7 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 <li>There is a significant difference between lemon and vanilla slices, in that participants preferred vanilla slices (MD = 1.43, <em>p</em> = .002).</li>
 </ul>
 <p>To generate Bonferroni or Holm-corrected <em>p</em>-values, you need to use the <code>pairwise.t.test()</code> function:</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="one-way-anova.html#cb227-1" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> w9_slices<span class="sc">$</span>rating, <span class="at">g =</span> w9_slices<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="one-way-anova.html#cb239-1" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> w9_slices<span class="sc">$</span>rating, <span class="at">g =</span> w9_slices<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 
@@ -858,8 +859,8 @@ might consider using a Welch’s ANOVA, which can be done with <code>welch_anova
 ## 
 ## P value adjustment method: holm</code></pre>
 <p>In this case, you must provide <code>p.adjust.method</code> as an argument. By default, this function will use Holm corrections. Alternatively, just change your <code>emmeans()</code> call:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="one-way-anova.html#cb229-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
-<span id="cb229-2"><a href="one-way-anova.html#cb229-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="one-way-anova.html#cb241-1" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
+<span id="cb241-2"><a href="one-way-anova.html#cb241-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
 <pre><code>##  contrast          estimate    SE df lower.CL upper.CL t.ratio p.value
 ##  caramel - lemon      0.476 0.392 60   -0.489   1.4410   1.216  0.2289
 ##  caramel - vanilla   -0.952 0.392 60   -1.917   0.0124  -2.431  0.0361

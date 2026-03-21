@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.5 Effect sizes for chi-squares | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.5 Effect sizes for chi-squares | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -741,13 +742,13 @@ V = \sqrt{\frac{\chi^2}{n(k-1)}}
 \]</span>
 Here, <em>k</em> refers to the number of groups in the variable with the lowest number of groups. So for example, in a 2x3 design, one variable has 2 levels and the other has 3; <em>k</em> = 2 in this instance.</p>
 <p>Phi and Cramer’s <em>V</em> can both be calculated in R with the following functions from the <code>effectsize</code> package, a handy package that will calculate many common effect size measures. Like <code>chisq.test()</code>, both functions will work if you give them a contingency table. Helpfully, both functions calculate 95% CIs.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="effect-sizes-for-chi-squares.html#cb144-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="effect-sizes-for-chi-squares.html#cb156-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["phi"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.1993439","2":"0.95","3":"0","4":"0.3767907"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="effect-sizes-for-chi-squares.html#cb145-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="effect-sizes-for-chi-squares.html#cb157-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(w7_instrument_table, <span class="at">adjust =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Cramers_v"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["CI"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["CI_low"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["CI_high"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.1993439","2":"0.95","3":"0","4":"0.3767907"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

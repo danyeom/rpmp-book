@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 ANOVAs | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 ANOVAs | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -734,7 +735,7 @@ variance</li>
 their assumption tests</li>
 <li>Interpret the output of the ANOVAs and report their findings</li>
 </ul>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-177"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-182"></span>
 <img src="https://imgs.xkcd.com/comics/third_way_2x.png" alt="[xkcd: Third Way](https://xkcd.com/1285/)"  />
 <p class="caption">
 Figure 7.1: <a href="https://xkcd.com/1285/">xkcd: Third Way</a>

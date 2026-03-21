@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12.6 Rotation, and interpreting output again | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12.6 Rotation, and interpreting output again | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -731,7 +732,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Only one loading per variable</li>
 <li>At least three loadings per factor</li>
 </ul>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="rotation-and-interpreting-output-again.html#cb548-1" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="rotation-and-interpreting-output-again.html#cb562-1" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div>
 <pre><code>## Factor Analysis using method =  ml
 ## Call: fa(r = saq, nfactors = 3, rotate = &quot;none&quot;, fm = &quot;ml&quot;)
 ## Standardized loadings (pattern matrix) based upon correlation matrix
@@ -762,7 +763,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## The root mean square of the residuals (RMSR) is  0.012 
 ## The df corrected root mean square of the residuals is  0.021 
 ## 
-## The harmonic n.obs is  2571 with the empirical chi square  28.515  with prob &lt;  0.00465 
+## The harmonic n.obs is  2571 with the empirical chi square  14.257  with prob &lt;  0.285 
 ## The total n.obs was  2571  with Likelihood Chi Square =  33.874  with prob &lt;  0.000706 
 ## 
 ## Tucker Lewis Index of factoring reliability =  0.982
@@ -781,22 +782,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Oblique</strong> rotations allow factors to be correlated.</li>
 </ul>
 <p>The below diagram visualises what rotations do:</p>
-<p><img src="img/rotations.png" width="313" /></p>
+<p><img src="img/rotations.png" alt="" width="313" /></p>
 <p><strong>Which rotation to choose?</strong> In psychology, everything tends to be correlated with everything else, and it’s extremely rare that we would get an instance where two factors do not correlate at all. For that reason, <strong>oblique rotations are generally the way to go</strong>. Orthogonal rotations are extremely hard to justify without strong a-priori evidence - and even if two factors are uncorrelated, oblique rotations will give the same solution as orthogonal ones. In short, there’s generally no reason to prefer an orthogonal rotation by default.</p>
 </div>
 <div id="rotated-factor-solution" class="section level3 hasAnchor" number="12.6.2">
 <h3><span class="header-section-number">12.6.2</span> Rotated factor solution<a href="rotation-and-interpreting-output-again.html#rotated-factor-solution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s apply an oblique rotation to our factor analysis. The default oblique rotation is called oblimin. To do this, we need to re-run our <code>fa()</code> function with a rotation specified.</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="rotation-and-interpreting-output-again.html#cb550-1" tabindex="-1"></a>saq_efa_rot <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
-<span id="cb550-2"><a href="rotation-and-interpreting-output-again.html#cb550-2" tabindex="-1"></a>  saq,</span>
-<span id="cb550-3"><a href="rotation-and-interpreting-output-again.html#cb550-3" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
-<span id="cb550-4"><a href="rotation-and-interpreting-output-again.html#cb550-4" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">&quot;oblimin&quot;</span>,</span>
-<span id="cb550-5"><a href="rotation-and-interpreting-output-again.html#cb550-5" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">&quot;ml&quot;</span></span>
-<span id="cb550-6"><a href="rotation-and-interpreting-output-again.html#cb550-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="rotation-and-interpreting-output-again.html#cb564-1" tabindex="-1"></a>saq_efa_rot <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
+<span id="cb564-2"><a href="rotation-and-interpreting-output-again.html#cb564-2" tabindex="-1"></a>  saq,</span>
+<span id="cb564-3"><a href="rotation-and-interpreting-output-again.html#cb564-3" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
+<span id="cb564-4"><a href="rotation-and-interpreting-output-again.html#cb564-4" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">&quot;oblimin&quot;</span>,</span>
+<span id="cb564-5"><a href="rotation-and-interpreting-output-again.html#cb564-5" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">&quot;ml&quot;</span></span>
+<span id="cb564-6"><a href="rotation-and-interpreting-output-again.html#cb564-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>This produces the following output, which we now term a pattern matrix:</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="rotation-and-interpreting-output-again.html#cb551-1" tabindex="-1"></a>saq_efa_rot <span class="sc">%&gt;%</span></span>
-<span id="cb551-2"><a href="rotation-and-interpreting-output-again.html#cb551-2" tabindex="-1"></a>  <span class="fu">fa.sort</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb551-3"><a href="rotation-and-interpreting-output-again.html#cb551-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="rotation-and-interpreting-output-again.html#cb565-1" tabindex="-1"></a>saq_efa_rot <span class="sc">%&gt;%</span></span>
+<span id="cb565-2"><a href="rotation-and-interpreting-output-again.html#cb565-2" tabindex="-1"></a>  <span class="fu">fa.sort</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb565-3"><a href="rotation-and-interpreting-output-again.html#cb565-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div>
 <pre><code>## Factor Analysis using method =  ml
 ## Call: fa(r = saq, nfactors = 3, rotate = &quot;oblimin&quot;, fm = &quot;ml&quot;)
 ## Standardized loadings (pattern matrix) based upon correlation matrix
@@ -833,7 +834,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## The root mean square of the residuals (RMSR) is  0.012 
 ## The df corrected root mean square of the residuals is  0.021 
 ## 
-## The harmonic n.obs is  2571 with the empirical chi square  28.515  with prob &lt;  0.00465 
+## The harmonic n.obs is  2571 with the empirical chi square  14.257  with prob &lt;  0.285 
 ## The total n.obs was  2571  with Likelihood Chi Square =  33.874  with prob &lt;  0.000706 
 ## 
 ## Tucker Lewis Index of factoring reliability =  0.982
@@ -841,20 +842,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## BIC =  -60.351
 ## Fit based upon off diagonal values = 0.998
 ## Measures of factor score adequacy             
-##                                                     ML1   ML3   ML2
-## Correlation of (regression) scores with factors   0.852 0.823 0.736
-## Multiple R square of scores with factors          0.726 0.678 0.541
-## Minimum correlation of possible factor scores     0.453 0.356 0.082</code></pre>
+##                                                     ML1    ML3    ML2
+## Correlation of (regression) scores with factors   0.718  0.672  0.636
+## Multiple R square of scores with factors          0.515  0.452  0.405
+## Minimum correlation of possible factor scores     0.031 -0.096 -0.190</code></pre>
 <p>Now we can see our simple structure taking effect, and this output is much more interpretable from before. These values are still regression coefficients between each latent factor and each variable, but now we can group these variables into their underlying latent factors much more easily. We can see that questions 1, 4 and 5 are best captured by factor 1, questions 6, 14 and 15 by factor 2 and questions 2, 19 and 22 by factor 3.</p>
 <p><strong>One warning here</strong>. On the previous page, where we had an unrotated solution, the communalities were calculated by summing the squared factor loadings for each variable. That rule no longer applies here because by allowing the factors to correlate, the regression loadings now capture non-specific variance. Summing the squared factor loadings will lead to greater communality values than what they actually are. However, as you can hopefully see in the uniqueness column, the actual communalities have not changed. Rotation does not change how much variance is explained in total - only how that variance is distributed!</p>
 <p>Oblique rotations will also generate a <strong>factor correlation matrix</strong>. This calculates the correlations between the factors - remembering that by specifying an oblique rotation, we allowed them to correlate:</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="rotation-and-interpreting-output-again.html#cb553-1" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Phi</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="rotation-and-interpreting-output-again.html#cb567-1" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Phi</span></code></pre></div>
 <pre><code>##            ML1        ML3        ML2
 ## ML1  1.0000000  0.5909483 -0.4107233
 ## ML3  0.5909483  1.0000000 -0.4475027
 ## ML2 -0.4107233 -0.4475027  1.0000000</code></pre>
 <p>Finally, we get the table of variance explained. This is now not as useful because of the same reason we cannot sum the squared factor loadings - each factor on its own now captures shared variance across the other factors as they are allowed to correlate. However, the total amount of variance explained is still 35.1%; once again, this does not change.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="rotation-and-interpreting-output-again.html#cb555-1" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Vaccounted</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="rotation-and-interpreting-output-again.html#cb569-1" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Vaccounted</span></code></pre></div>
 <pre><code>##                             ML1       ML3        ML2
 ## SS loadings           1.3601670 1.0425634 0.75593543
 ## Proportion Var        0.1511297 0.1158404 0.08399283

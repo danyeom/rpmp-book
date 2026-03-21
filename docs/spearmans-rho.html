@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14.2 Spearman’s rho | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14.2 Spearman’s rho | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -726,7 +727,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">14.2.1</span> Introduction<a href="spearmans-rho.html#introduction-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Spearman’s rho (<span class="math inline">\(\rho\)</span>) is a non-parametric correlation coefficient, broadly equivalent in interpretation with Pearson’s correlation coefficient. It is used to calculate a correlation in instances where Pearson’s r would not be appropriate; namely, when data is not linear.</p>
 <p>Spearman’s rho can be used when data is monotonic. Monotonic data is data where as X changes, Y changes in one direction. Below is a visualisation of monotonic versus non-monotonic data:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-427-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-432-1.png" alt="" width="672" /></p>
 <p>In the linear and monotonic examples, the line of best fit follows one direction - up. In the rightmost graph, however, there is a decrease and then an increase in the predicted values of y. This is an example of a non-monotonic function.</p>
 </div>
 <div id="understanding-ranks" class="section level3 hasAnchor" number="14.2.2">
@@ -738,24 +739,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="example-10" class="section level3 hasAnchor" number="14.2.3">
 <h3><span class="header-section-number">14.2.3</span> Example<a href="spearmans-rho.html#example-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is a simple example of a correlation between two variables where non-linearity may be important. Singing accuracy is naturally skewed heavily, and develops non-linearly throughout life.</p>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="spearmans-rho.html#cb579-1" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;singing_data.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="spearmans-rho.html#cb593-1" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nonpara&quot;</span>, <span class="st">&quot;singing_data.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 284 Columns: 2
-## ── Column specification ──────────────────────────────────
+## ── Column specification ─────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (2): accuracy, age
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>The relevant dataset contains just two variables: accuracy (measured in cents) and age (participant age). The scatterplot below shows the relationship between these two variables:</p>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="spearmans-rho.html#cb581-1" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
-<span id="cb581-2"><a href="spearmans-rho.html#cb581-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb581-3"><a href="spearmans-rho.html#cb581-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
-<span id="cb581-4"><a href="spearmans-rho.html#cb581-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb581-5"><a href="spearmans-rho.html#cb581-5" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
-<span id="cb581-6"><a href="spearmans-rho.html#cb581-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-429-1.png" width="672" /></p>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="spearmans-rho.html#cb595-1" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
+<span id="cb595-2"><a href="spearmans-rho.html#cb595-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb595-3"><a href="spearmans-rho.html#cb595-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
+<span id="cb595-4"><a href="spearmans-rho.html#cb595-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb595-5"><a href="spearmans-rho.html#cb595-5" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb595-6"><a href="spearmans-rho.html#cb595-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-434-1.png" alt="" width="672" /></p>
 <p>To calculate Spearman’s rho, the steps are much the same as the way they are for normal correlations - we use the same <code>cor.test()</code> function that we saw earlier. The main difference is that we now must specify the <code>method</code> argument to equal to <code>"spearman"</code>, which will calculate Spearman’s rho instead.. Here, we see results consistent with a Pearson’s correlation; a significant, positive association between age and accuracy (<span class="math inline">\(\rho\)</span> = .53, <em>p</em> &lt; .001).</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="spearmans-rho.html#cb582-1" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="spearmans-rho.html#cb596-1" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in cor.test.default(singing$accuracy, singing$age, method =
 ## &quot;spearman&quot;): Cannot compute exact p-value with ties</code></pre>
 <pre><code>## 

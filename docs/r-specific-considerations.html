@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.4 R-specific considerations | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.4 R-specific considerations | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -734,14 +735,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.4.2</span> Writing interactions in R<a href="r-specific-considerations.html#writing-interactions-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>aov_ez()</code> function that was just mentioned doesn’t use the same kind of formula notation that we saw in the other test sections, and that’s to make it easier to run. However, these analyses absolutely can be recreated in formula notation, and you will see many instances of this.</p>
 <p>Recall the basic layout for a formula in R:</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="r-specific-considerations.html#cb314-1" tabindex="-1"></a><span class="fu">lm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span>
-<span id="cb314-2"><a href="r-specific-considerations.html#cb314-2" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="r-specific-considerations.html#cb328-1" tabindex="-1"></a><span class="fu">lm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span>
+<span id="cb328-2"><a href="r-specific-considerations.html#cb328-2" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>To extend this to two variables with no interaction, you can simply add the second predictor as such:</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="r-specific-considerations.html#cb315-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="r-specific-considerations.html#cb329-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>To code for an interaction term, however, there either needs to be an explicit term for the interaction (denoted using a colon between the two interaction variables):</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="r-specific-considerations.html#cb316-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="r-specific-considerations.html#cb330-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>OR as the shorthand for above, which uses the asterisk. Note that the asterisk will include both the interaction term and all of its main effects (a la principle of marginality):</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="r-specific-considerations.html#cb317-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">*</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="r-specific-considerations.html#cb331-1" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">*</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div>
 <p>For what we do in this section, this is ok - but you may find in certain circumstances that you don’t want all of these terms together, so the first approach will let you specify what terms to include in the model.</p>
 </div>
 <div id="simple-effects-tests-in-r" class="section level3 hasAnchor" number="9.4.3">
@@ -749,13 +750,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Simple effects tests, weirdly, are difficult to do in Jamovi - the gamlj module in Jamovi will do simple effects tests for linear models (which includes ANOVAs), but it’s difficult to do so for anything other than a two-way between-groups ANOVA without some prerequisite knowledge on linear mixed models.</p>
 <p>In R, simple effects are relatively easy to estimate through the use of the <code>emmeans</code> package. All we need to do is just extend our <code>emmeans</code> calls that we have been using for one-way ANOVAs to incorporate a second variable.</p>
 <p>Imagine an ANOVA model named <code>model_aov</code> and two predictors named <code>A</code> and `B. Recall the basic syntax for generating comparisons for a one-way ANOVA:</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="r-specific-considerations.html#cb318-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="r-specific-considerations.html#cb332-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A)</span></code></pre></div>
 <p>To run this as a simple effects test, we simply need to tell <code>emmeans</code> to conduct these comparisons by another variable. This can be easily done by specifying the <code>by</code> argument in <code>emmeans</code>:</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="r-specific-considerations.html#cb319-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="r-specific-considerations.html#cb333-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>)</span></code></pre></div>
 <p>This will estimate the EM means for every level of A, at each level of B. To run simple effects tests for variable two, the variable names simply need to be swapped.</p>
 <p>Just like before, we can pipe from from <code>emmeans()</code> to <code>pairs()</code>:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="r-specific-considerations.html#cb320-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb320-2"><a href="r-specific-considerations.html#cb320-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="r-specific-considerations.html#cb334-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb334-2"><a href="r-specific-considerations.html#cb334-2" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Final note on this matter: Rstatix does provide a function called <code>emmeans_test()</code> to perform a similar test. However, using the original <code>emmeans</code> package and its functions give you much greater flexibility, so it helps to learn how to use this as is.</p>
 </div>
 </div>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.1 Navigating RStudio | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.1 Navigating RStudio | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -725,7 +726,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-four-panes" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> The four panes<a href="R-Studio.html#the-four-panes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When you open RStudio, you will see four main panes on your screen. They are as follows.</p>
-<p><img src="img/RStudio_Screen1.png" width="1414" style="display: block; margin: auto;" /></p>
+<p><img src="img/RStudio_Screen1.png" alt="" width="1414" style="display: block; margin: auto;" /></p>
 <p>The first pane, and probably the one you will spend the most time in, is the <strong>source pane</strong>. This is where you can write and edit your scripts, which are your files that contain R code. Generally, you will be working with either .R files (which contain code only) or .rmd files (which are more akin to traditional documents with chunks that execute code).</p>
 <p>There are some main elements to the source pane that are useful to know, which have been numbered above:</p>
 <ol style="list-style-type: decimal">
@@ -734,11 +735,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>This is a line of code. As you can see, RStudio will colour different elements of the code in different colours.</li>
 <li>This button will run any code that you have selected. To use it, highlight the code you want to run and click this button.</li>
 </ol>
-<p><img src="img/RStudio_Screen2.png" width="340" style="display: block; margin: auto;" />
+<p><img src="img/RStudio_Screen2.png" alt="" width="340" style="display: block; margin: auto;" />
 In the top right you will have the <strong>environments</strong> pane. If you create variables or load in data, you will be able to see them here.</p>
-<p><img src="img/RStudio_Screen3.png" width="346" style="display: block; margin: auto;" /></p>
+<p><img src="img/RStudio_Screen3.png" alt="" width="346" style="display: block; margin: auto;" /></p>
 <p>In the bottom left you will see the <strong>console</strong>. This is where all R code is actually executed, and where all output is printed. When you run code from the source pane (e.g. from a script), you will see the code being run down in the console. You can also execute code directly in the console if needed.</p>
-<p><img src="img/RStudio_Screen4.png" width="340" style="display: block; margin: auto;" /></p>
+<p><img src="img/RStudio_Screen4.png" alt="" width="340" style="display: block; margin: auto;" /></p>
 <p>Finally, in the bottom right you will have what is usually called the <strong>output</strong> pane. You can see that there are multiple tabs in this pane as well. From left to right, the main ones you need are:</p>
 <ul>
 <li>Files: A file explorer that lets you see all your files.</li>
@@ -758,7 +759,7 @@ In the top right you will have the <strong>environments</strong> pane. If you cr
 <p>Here, we have one data file (.csv), one file of code (.Rmd) and one .rproj file. Always <strong>open the .rproj file</strong> to ensure that everything is set up correctly. Once you have done that, you will see RStudio switch over to this project.</p>
 <p>We won’t get <em>too</em> deep into project-oriented workflows for RPMP. However, there are several benefits to working within projects in RStudio, which we will expand on in the coming pages. One benefit that we can discuss now though is that projects simply encourage effective and easy file management: by containing everything within the one folder, you can organise all your files relevant to that project within the one group. It might be useful, for example, to create one Project for each study in your thesis (if your thesis is quantitative and you plan on using R).</p>
 <p>Switching between projects is also easy by using the little icon at the very top right of your screen (above the environment pane):</p>
-<p><img src="img/RStudio_Screen5.png" width="150" style="display: block; margin: auto;" /></p>
+<p><img src="img/RStudio_Screen5.png" alt="" width="150" style="display: block; margin: auto;" /></p>
 </div>
 </div>
             </section>

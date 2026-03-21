@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.6 Bonus: McNemar’s Test | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.6 Bonus: McNemar’s Test | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -833,9 +834,9 @@ p_b = p_c
 <div id="example-1" class="section level3 hasAnchor" number="5.6.3">
 <h3><span class="header-section-number">5.6.3</span> Example<a href="bonus-mcnemars-test.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below is a fictional dataset from 70 registered voters in a fictional country. The 70 voters were asked whether they intended to vote for the current government twice: before event X happened in the government and after event X. Their responses were recorded as simple Yes-No answers.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="bonus-mcnemars-test.html#cb146-1" tabindex="-1"></a>w7_voting <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_voting.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="bonus-mcnemars-test.html#cb158-1" tabindex="-1"></a>w7_voting <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week_7&quot;</span>, <span class="st">&quot;W7_voting.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 71 Columns: 3
-## ── Column specification ──────────────────────────────────
+## ── Column specification ─────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (2): before, after
 ## dbl (1): id
@@ -843,10 +844,10 @@ p_b = p_c
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Here is a contingency table of our data:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="bonus-mcnemars-test.html#cb148-1" tabindex="-1"></a>w7_voting_table <span class="ot">&lt;-</span> <span class="fu">table</span>(w7_voting<span class="sc">$</span>before, w7_voting<span class="sc">$</span>after) </span>
-<span id="cb148-2"><a href="bonus-mcnemars-test.html#cb148-2" tabindex="-1"></a></span>
-<span id="cb148-3"><a href="bonus-mcnemars-test.html#cb148-3" tabindex="-1"></a>w7_voting_table <span class="sc">%&gt;%</span></span>
-<span id="cb148-4"><a href="bonus-mcnemars-test.html#cb148-4" tabindex="-1"></a>  <span class="fu">addmargins</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="bonus-mcnemars-test.html#cb160-1" tabindex="-1"></a>w7_voting_table <span class="ot">&lt;-</span> <span class="fu">table</span>(w7_voting<span class="sc">$</span>before, w7_voting<span class="sc">$</span>after) </span>
+<span id="cb160-2"><a href="bonus-mcnemars-test.html#cb160-2" tabindex="-1"></a></span>
+<span id="cb160-3"><a href="bonus-mcnemars-test.html#cb160-3" tabindex="-1"></a>w7_voting_table <span class="sc">%&gt;%</span></span>
+<span id="cb160-4"><a href="bonus-mcnemars-test.html#cb160-4" tabindex="-1"></a>  <span class="fu">addmargins</span>()</span></code></pre></div>
 <pre><code>##      
 ##       No Yes Sum
 ##   No  18  28  46
@@ -866,9 +867,9 @@ p_b = p_c
 \chi^2 = 7.41
 \]</span></p>
 <p>If we were doing this fully by hand, we could consult a chi-squared table and see what the relevant <em>p</em>-value would be with this chi-squared value and a df = 1. However, we’ll skip straight to Jamovi. A McNemar test can be run in R using the <code>mcnemar.test()</code> function in base R:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="bonus-mcnemars-test.html#cb150-1" tabindex="-1"></a>w7_voting_mcn <span class="ot">&lt;-</span> <span class="fu">mcnemar.test</span>(w7_voting_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb150-2"><a href="bonus-mcnemars-test.html#cb150-2" tabindex="-1"></a></span>
-<span id="cb150-3"><a href="bonus-mcnemars-test.html#cb150-3" tabindex="-1"></a>w7_voting_mcn</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="bonus-mcnemars-test.html#cb162-1" tabindex="-1"></a>w7_voting_mcn <span class="ot">&lt;-</span> <span class="fu">mcnemar.test</span>(w7_voting_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb162-2"><a href="bonus-mcnemars-test.html#cb162-2" tabindex="-1"></a></span>
+<span id="cb162-3"><a href="bonus-mcnemars-test.html#cb162-3" tabindex="-1"></a>w7_voting_mcn</span></code></pre></div>
 <pre><code>## 
 ##  McNemar&#39;s Chi-squared test
 ## 

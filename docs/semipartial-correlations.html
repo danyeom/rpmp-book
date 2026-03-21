@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.6 Semipartial correlations | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.6 Semipartial correlations | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -741,11 +742,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As an example, let’s look at a regression where Gold-MSI scores, openness to experience and trait anxiety predict flow proneness. In this model, <span class="math inline">\(R^2\)</span> is .297, meaning that 29.7% of the variance is explained by all three predictors together.</p>
 <p>The <code>ppcor</code> package provides a function called <code>spcor.test()</code>, which works just like its <code>pcor.test()</code> cousin. The only difference is that because we are now partialling the effect of control variables from the <em>predictor</em> only, the order in which we enter <code>x</code> and <code>y</code> matters.</p>
 <p>Namely, <code>x</code> must be the <em>outcome</em> variable, and <code>y</code> must be the <em>predictor</em> we are interested in controlling. This ensures that the control variables are correctly being removed from the predictor variable and not the outcome:</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="semipartial-correlations.html#cb474-1" tabindex="-1"></a><span class="fu">spcor.test</span>(</span>
-<span id="cb474-2"><a href="semipartial-correlations.html#cb474-2" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>DFS_Total,</span>
-<span id="cb474-3"><a href="semipartial-correlations.html#cb474-3" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
-<span id="cb474-4"><a href="semipartial-correlations.html#cb474-4" tabindex="-1"></a>  <span class="at">z =</span> flow_data[, <span class="fu">c</span>(<span class="st">&quot;openness&quot;</span>, <span class="st">&quot;trait_anxiety&quot;</span>)]</span>
-<span id="cb474-5"><a href="semipartial-correlations.html#cb474-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="semipartial-correlations.html#cb488-1" tabindex="-1"></a><span class="fu">spcor.test</span>(</span>
+<span id="cb488-2"><a href="semipartial-correlations.html#cb488-2" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>DFS_Total,</span>
+<span id="cb488-3"><a href="semipartial-correlations.html#cb488-3" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
+<span id="cb488-4"><a href="semipartial-correlations.html#cb488-4" tabindex="-1"></a>  <span class="at">z =</span> flow_data[, <span class="fu">c</span>(<span class="st">&quot;openness&quot;</span>, <span class="st">&quot;trait_anxiety&quot;</span>)]</span>
+<span id="cb488-5"><a href="semipartial-correlations.html#cb488-5" tabindex="-1"></a>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]},{"label":["gp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Method"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"0.4008732","2":"1.391025e-32","3":"12.4304","4":"811","5":"2","6":"pearson"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -754,16 +755,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Note that <code>flow_data[, c("openness", "trait_anxiety")]</code> is simply base R notation for selecting the columns named “openness” and “trait_anxiety” from the <code>flow_data</code> dataframe.</p>
 <p>The semipartial correlation <em>sr</em> between Gold-MSI and flow proneness, controlling for the other two predictors (openness and trait anxiety) is <em>sr</em> = .401, <em>p</em> &lt; .001.</p>
 <p>To calculate <span class="math inline">\(sr2\)</span> you will need to square the <em>sr</em> value above, which is thankfully easy enough in R:</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="semipartial-correlations.html#cb475-1" tabindex="-1"></a><span class="fl">0.4008732</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="semipartial-correlations.html#cb489-1" tabindex="-1"></a><span class="fl">0.4008732</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 0.1606993</code></pre>
 <p>Squaring <em>sr</em> = .401 gives us <span class="math inline">\(sr^2\)</span> = 0.1697; this means that Gold-MSI scores uniquely explain 17% of the variance in flow proneness.</p>
 </div>
 <div id="calculating-all-sr2-values" class="section level3 hasAnchor" number="10.6.3">
 <h3><span class="header-section-number">10.6.3</span> Calculating all <span class="math inline">\(sr^2\)</span> values<a href="semipartial-correlations.html#calculating-all-sr2-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We could continue to use the <code>spcor.test()</code> function to calculate the other semipartial correlations for the other predictor and the outcome. However, just like <code>pcor()</code> we have an analogous function called <code>spcor()</code> that will calculate multiple semipartials in one go, using all of the variables in a provided dataframe. Like <code>pcor()</code>, the semipartials between two variables will be controlled for all other variables in the dataframe. In the output below, for example, the semipartial between DFS_Total and GoldMSI controls for both openness and trait_anxiety:</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="semipartial-correlations.html#cb477-1" tabindex="-1"></a>flow_data <span class="sc">%&gt;%</span></span>
-<span id="cb477-2"><a href="semipartial-correlations.html#cb477-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(GoldMSI, trait_anxiety, openness, DFS_Total) <span class="sc">%&gt;%</span></span>
-<span id="cb477-3"><a href="semipartial-correlations.html#cb477-3" tabindex="-1"></a>  <span class="fu">spcor</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="semipartial-correlations.html#cb491-1" tabindex="-1"></a>flow_data <span class="sc">%&gt;%</span></span>
+<span id="cb491-2"><a href="semipartial-correlations.html#cb491-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(GoldMSI, trait_anxiety, openness, DFS_Total) <span class="sc">%&gt;%</span></span>
+<span id="cb491-3"><a href="semipartial-correlations.html#cb491-3" tabindex="-1"></a>  <span class="fu">spcor</span>()</span></code></pre></div>
 <pre><code>## $estimate
 ##                 GoldMSI trait_anxiety    openness  DFS_Total
 ## GoldMSI       1.0000000    0.09414456  0.19909165  0.4120839

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>13.3 Mediation: Sobel’s test and bootstrapping | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="13.3 Mediation: Sobel’s test and bootstrapping | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -729,7 +730,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">13.3.1</span> Running mediations in R<a href="mediation-sobels-test-and-bootstrapping.html#running-mediations-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are many packages available to run mediations in R, including the well-known package <code>mediation</code> package. One of the most popular software tools for running mediations (and moderations), particularly for SPSS users, is the <a href="https://processmacro.org/index.html">PROCESS macro by Andrew Hayes</a>. PROCESS is essentially a set of code that can run a series of what we call <em>conditional process models</em> - including mediation and moderation.</p>
 <p>Note that due to copyright reasons, the R version of process isn’t available on this book’s corresponding GitHub repo; however, it can be downloaded for free from the official site using the link above. Detailed documentation is available in Hayes (2022). Loading PROCESS is not quite like loading a package in R as it isn’t available in package form. To load it, you must use the <code>source()</code> function in base R, which will run another R script. Place the <code>process.R</code> file somewhere you can find it, and pass the file path to <code>source()</code>. It will take a little bit to load depending on your computer’s specs, but if it has loaded correctly then you should see the following:</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb564-1" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;process.R&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb578-1" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;process.R&quot;</span>))</span></code></pre></div>
 <pre><code>## 
 ## **************** PROCESS Procedure for R Version 5.0 ****************** 
 ##  
@@ -758,15 +759,15 @@ t_{ab} = \frac{ab}{SE_{ab}}
 - <code>x</code>, <code>y</code> and <code>m</code> specify the predictor, outcome and mediator respectively.
 - <code>model = 4</code> specifies that we want to run a mediation. (PROCESS comes with 20-odd different model types!)
 - <code>normal = 1</code> and <code>boot = 0</code> specifies that we only want a Sobel test for the indirect effect.</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-1" tabindex="-1"></a>med_sobel <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
-<span id="cb566-2"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-2" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
-<span id="cb566-3"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;happiness&quot;</span>,</span>
-<span id="cb566-4"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;grade&quot;</span>,</span>
-<span id="cb566-5"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-5" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">&quot;self_esteem&quot;</span>,</span>
-<span id="cb566-6"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
-<span id="cb566-7"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-7" tabindex="-1"></a>  <span class="at">normal =</span> <span class="dv">1</span>,</span>
-<span id="cb566-8"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-8" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">0</span></span>
-<span id="cb566-9"><a href="mediation-sobels-test-and-bootstrapping.html#cb566-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-1" tabindex="-1"></a>med_sobel <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
+<span id="cb580-2"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-2" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
+<span id="cb580-3"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;happiness&quot;</span>,</span>
+<span id="cb580-4"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;grade&quot;</span>,</span>
+<span id="cb580-5"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-5" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">&quot;self_esteem&quot;</span>,</span>
+<span id="cb580-6"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
+<span id="cb580-7"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-7" tabindex="-1"></a>  <span class="at">normal =</span> <span class="dv">1</span>,</span>
+<span id="cb580-8"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-8" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">0</span></span>
+<span id="cb580-9"><a href="mediation-sobels-test-and-bootstrapping.html#cb580-9" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## 
 ## **************** PROCESS Procedure for R Version 5.0 ****************** 
 ##  
@@ -838,16 +839,16 @@ t_{ab} = \frac{ab}{SE_{ab}}
 <li><code>boot = 1000</code> means that we want to bootstrap/resample 1000 times. While this is ok for now (and relatively fast), depending on the data you may want to up this to 10000 or higher.</li>
 <li><code>seed = 2024</code> sets a <em>seed</em> for this run. Because bootstrapping involves random sampling, every run will give slightly different results (which isn’t good for replicability/transparency). Setting a seed locks R into generating the same values on every run.</li>
 </ul>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-1" tabindex="-1"></a>med_bootstrap <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
-<span id="cb568-2"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-2" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
-<span id="cb568-3"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;happiness&quot;</span>,</span>
-<span id="cb568-4"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;grade&quot;</span>,</span>
-<span id="cb568-5"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-5" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">&quot;self_esteem&quot;</span>,</span>
-<span id="cb568-6"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
-<span id="cb568-7"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-7" tabindex="-1"></a>  <span class="at">bc =</span> <span class="dv">1</span>,</span>
-<span id="cb568-8"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-8" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">1000</span>,</span>
-<span id="cb568-9"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-9" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">2024</span></span>
-<span id="cb568-10"><a href="mediation-sobels-test-and-bootstrapping.html#cb568-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-1" tabindex="-1"></a>med_bootstrap <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
+<span id="cb582-2"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-2" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
+<span id="cb582-3"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;happiness&quot;</span>,</span>
+<span id="cb582-4"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;grade&quot;</span>,</span>
+<span id="cb582-5"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-5" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">&quot;self_esteem&quot;</span>,</span>
+<span id="cb582-6"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-6" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
+<span id="cb582-7"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-7" tabindex="-1"></a>  <span class="at">bc =</span> <span class="dv">1</span>,</span>
+<span id="cb582-8"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-8" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">1000</span>,</span>
+<span id="cb582-9"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-9" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">2024</span></span>
+<span id="cb582-10"><a href="mediation-sobels-test-and-bootstrapping.html#cb582-10" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## 
 ## **************** PROCESS Procedure for R Version 5.0 ****************** 
 ##  

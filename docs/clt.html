@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.5 Central Limit Theorem | Research Process for Music Psychologists</title>
   <meta name="description" content="This is an R adaptation of Research Process for Music Psychologists." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.5 Central Limit Theorem | Research Process for Music Psychologists" />
   <meta property="og:type" content="book" />
@@ -205,8 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="variability.html"><a href="variability.html"><i class="fa fa-check"></i><b>3.3</b> Variability</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="variability.html"><a href="variability.html#the-variability-of-data"><i class="fa fa-check"></i><b>3.3.1</b> The variability of data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.2</b> Standard deviation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sderr"><i class="fa fa-check"></i><b>3.3.3</b> Standard error, and the SDoTM</a></li>
+<li class="chapter" data-level="3.3.2" data-path="variability.html"><a href="variability.html#percentiles-and-the-iqr"><i class="fa fa-check"></i><b>3.3.2</b> Percentiles, and the IQR</a></li>
+<li class="chapter" data-level="3.3.3" data-path="variability.html"><a href="variability.html#sd"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>3.4</b> Distributions</a>
 <ul>
@@ -217,9 +217,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="clt.html"><a href="clt.html"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#what-is-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.1</b> What is the Central Limit Theorem?</a></li>
-<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.2</b> Simulation</a></li>
-<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#some-important-points"><i class="fa fa-check"></i><b>3.5.3</b> Some important points</a></li>
+<li class="chapter" data-level="3.5.1" data-path="clt.html"><a href="clt.html#sderr"><i class="fa fa-check"></i><b>3.5.1</b> The sampling distribution of the mean</a></li>
+<li class="chapter" data-level="3.5.2" data-path="clt.html"><a href="clt.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>3.5.2</b> The Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.5.3" data-path="clt.html"><a href="clt.html#standard-error-of-the-mean"><i class="fa fa-check"></i><b>3.5.3</b> Standard error of the mean</a></li>
+<li class="chapter" data-level="3.5.4" data-path="clt.html"><a href="clt.html#simulation"><i class="fa fa-check"></i><b>3.5.4</b> Simulation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="zscores.html"><a href="zscores.html"><i class="fa fa-check"></i><b>3.6</b> z-scores</a>
 <ul>
@@ -723,27 +724,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="clt" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Central Limit Theorem<a href="clt.html#clt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
-<p>In Module 6, we will cover the foundations of statistical tests. However, in order to understand what those tests tell us and how useful they are, it is important to basically look at what allows them to work in the first place. In comes the <strong>Central Limit Theorem</strong>, one of the most important concepts in all of statistics.</p>
-<p>You’ll want to keep the concept of the <strong>sampling distribution of the mean fresh in mind</strong> for this page, as it all relates to that!</p>
+<p>In Module 6, we will cover the foundations of statistical tests. However, in order to understand what those tests tell us and how useful they are, it is important to basically look at what allows them to work in the first place. In comes the <strong>Central Limit Theorem</strong>, one of the most important concepts in all of statistics. We will also look at <strong>standard error</strong>, as this becomes a crucial concept for the next module!</p>
 </div>
-<div id="what-is-the-central-limit-theorem" class="section level3 hasAnchor" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> What is the Central Limit Theorem?<a href="clt.html#what-is-the-central-limit-theorem" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Central Limit Theorem (CLT) is a fundamental theorem of probability theory. It states that under the right conditions, the sampling distribution of the mean will converge to a <strong>normal</strong> distribution. This occurs even when the original data are <em>not</em> normally distributed.</p>
-<p>Why is this important? After all, it’s not like this is something we immediately <em>see</em> in action most of the time. Put simply, without the CLT we would not be able to do any of the statistics we do. The CLT allows us to make statistical inferences even when we don’t know the true nature (i.e. distribution) of our data by using the normal distribution to test hypotheses. The fact that it applies even when we have skewed or non-normal data means that we can still make valuable inferences in these scenarios as well. Therefore, it is critical ‘under the hood’ to all of the statistical tests we run.</p>
+<div id="sderr" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> The sampling distribution of the mean<a href="clt.html#sderr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample’s mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to <strong>sampling error</strong>. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like the spread on the right:</p>
+<p><img src="img/w5_sdotm.svg" /><!-- --></p>
+<p>The spread of these sample means is called the <strong>sampling distribution of the mean (SDoTM)</strong>, shown on the right.</p>
 </div>
-<div id="simulation" class="section level3 hasAnchor" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> Simulation<a href="clt.html#simulation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-central-limit-theorem" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> The Central Limit Theorem<a href="clt.html#the-central-limit-theorem" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The hypothetical height example above demonstrates the <strong>Central Limit Theorem (CLT)</strong>, a fundamental theorem of probability theory. It states that under the right conditions, the <strong>sampling distribution of the mean will converge to a normal distribution</strong>. This occurs even when the original data are <em>not</em> normally distributed.</p>
+<p>The Central Limit Theorem works on the <strong>law of large numbers</strong>, another fundamental probability theory. The law of large numbers states that given a large enough sample, our estimates of a probability or phenomenon should converge on the <em>true</em> value. For example, consider a regular six-sided die. If the die is fair, each possible <em>outcome</em> or number should have a 1/6 chance of being rolled. Therefore, if we were to roll a single die 100,000 times then we should see that 1 in 6 chance (16.67%) bear out in the data:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-101-1.png" alt="" width="3600" /></p>
+<p>The CLT utilises the same principle. If we conduct studies with large enough samples then our estimates of a parameter should converge (or at least get pretty close) to the <em>true</em> population value.</p>
+<p>A general rule of thumb for sample sizes is that <strong>n &gt; 30</strong> is sufficient even when the population is skewed. In other words, even if a population is heavily skewed on a variable, taking several samples of n &gt; 30 will still show a normally distributed set of sample means. You can see this for yourself in the simulator above - try set sample size to 5, 10 and then 30, and see what happens in the Sampling Distribution tab.</p>
+</div>
+<div id="standard-error-of-the-mean" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Standard error of the mean<a href="clt.html#standard-error-of-the-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Coming back to the height example above, we can see that the sampling distribution on the right resembles the actual distribution on the left pretty closely. This is a good thing! This gives us a sense of where the <strong>population mean</strong> (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.</p>
+<p>However, of course, in a real research setting we typically do not take multiple repeated samples like this, and instead just take one. Thanks to the CLT, though, we know that if our sample is large enough, we should still be converging closer to the true mean than we would if we had a small sample. This still allows us to make inferences about the population parameter with just one sample.</p>
+<p>The <strong>standard error of the mean</strong> (standard error; SE) is another measure of variability - this time, it is the spread of <strong>sample means</strong> across the sampling distribution of the mean. This represents how close our sample mean is to the likely <em>population</em> mean, and therefore is one way of estimating the <em>precision</em> of our effect. If our sampling distribution is wide, our standard error will be large - and that means that we won’t have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean.</p>
+<p>Standard error is calculated using the below formula:</p>
+<p><span class="math display">\[
+SE = \frac{SD}{\sqrt n}
+\]</span></p>
+<p>Where SD = standard deviation, and n = sample size.</p>
+<p>Based on the formula alone, hopefully one critical element is clear: with bigger samples, the standard error decreases - and therefore, the sample mean should be closer to the population mean. This means that with large samples, we should ideally be getting a really good estimate of the population of interest! Conversely, smaller sample sizes (as is common in music research) are unlikely to be good estimates of populations due to the inherently greater amount of error involved. Therefore, we should always be aiming for <strong>larger sample sizes</strong> wherever possible for statistical analyses.</p>
+</div>
+<div id="simulation" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Simulation<a href="clt.html#simulation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To test this for yourself, try the below sample simulator. You can set what distribution you want to draw from, and choose how many samples and simulations you want to run.</p>
 <p>The Population Distribution tab will show you what you are sampling from; the Samples tab is each individual sample and the Sampling Distribution tab shows the distribution of sample means. Try and change the sample size and see how that impacts on the Sampling Distribution.</p>
 <p>(You may need to scroll within the app to see the full output.)</p>
 <iframe src="https://gallery.shinyapps.io/CLT_mean/?showcase=0" width="672" height="800px" data-external="1">
 </iframe>
-</div>
-<div id="some-important-points" class="section level3 hasAnchor" number="3.5.3">
-<h3><span class="header-section-number">3.5.3</span> Some important points<a href="clt.html#some-important-points" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A general rule of thumb for sample sizes is that <strong>n &gt; 30</strong> is sufficient even when the population is skewed. In other words, even if a population is heavily skewed on a variable, taking several samples of n &gt; 30 will still show a normally distributed set of sample means. You can see this for yourself in the simulator above - try set sample size to 5, 10 and then 30, and see what happens in the Sampling Distribution tab.</p>
-<p>In addition, remember that with bigger samples, the variability in sample means (i.e. standard error) decreases - and therefore, the sample mean gets closer to the <strong>population mean</strong>. This means that with large samples, we should ideally be getting a really good estimate of the population of interest! Conversely, smaller sample sizes (as is common in music research) are unlikely to be good estimates of populations.</p>
-<p>We will touch on the issue of sample size more in Module 6 but this should already also give you an indication of one of the most important things when it comes to statistical tests: <strong>sample size matters</strong>.</p>
 </div>
 </div>
             </section>

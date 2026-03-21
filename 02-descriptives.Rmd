@@ -245,6 +245,48 @@ You can see that all three graphs peak at around the same point, but *look* very
 
 We saw on the last page that we can quantify how far values are spread apart by finding the range. However, this isn't always a good idea - two datasets with the exact same range can look wildly different. Therefore, we need ways of quantifying how data is spread out as well.
 
+### Percentiles, and the IQR
+
+A basic way of describing variability in our dataset is by reporting **percentiles** or quantiles of the data. This is simply reporting what values fall within a certain percentage of the range of the data. For example, the 20th percentile captures all data that is in the bottom 20% of the sample.
+
+Consider the following basic dataset:
+
+```{r}
+dataset_a <- c(7, 10, 8, 1, 6, 5, 9, 3, 3, 4, 3, 0, 8, 8, 4, 9, 7, 1, 1, 5)
+
+dataset_a
+```
+
+You can use the `quantile()` function to get R to calculate percentiles for you. `quantile()` needs the name of a vector as the first argument, and the desired percentile as a decimal for the `prob` argument (e.g. 20% = 0.2).
+
+We can, for instance, make the following statements:
+
+- The 25th percentile is the value 3 (count five values from the left - this is 25% of the data).
+- The median is 5 (the middle 2 values are 5), which is also the 50th percentile
+- The 90th percentile is 9.
+
+```{r}
+quantile(dataset_a, prob = 0.25)
+quantile(dataset_a, prob = 0.50) # You could also use median(dataset_a)
+quantile(dataset_a, prob = 0.90)
+```
+`quantile()` can return multiple percentiles by giving a vector of decimals to the `prob` argument. For an IQR, we can tell R to calculate percentiles for the vector `c(0.25, 0.75)` - representing the 25th and 75th percentiles:
+
+```{r}
+quantile(dataset_a, prob = c(0.25, 0.75))
+```
+
+A specific form of this that can be quite useful is the **interquartile range (IQR)**, which describes the **middle 50%** of the data (i.e. 25% either side of the median). It is a single value that represents the 75th percentile score *minus* the 25th percentile score.
+
+If a dataset is heavily skewed, for instance, reporting the median with the IQR can be a useful way of more accurately capturing the basic features of the data. In this instance, the IQR would be 8 - 3 = 5. You can use the `IQR()` function to calculate this too (note the `na.rm = TRUE)`).
+
+```{r}
+IQR(dataset_a, na.rm = TRUE)
+```
+
+
+
+
 ### Standard deviation {#sd}
 
 **Standard deviation** ($\sigma$, or **SD**) describes how spread out our data is within our sample, in standard (i.e. comparable) units. Data that is spread out widely (like the red curve above) will have a large standard deviation; likewise, data that has a narrow spread will have a small standard deviation. We'll touch on this a bit more in the following pages, but for now just remember what a standard deviation is for.
@@ -288,30 +330,7 @@ df_a %>%
 ```
 
 
-### Standard error, and the SDoTM {#sderr}
 
-Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample's mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to **sampling error**. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like this:
-
-```{r echo = FALSE}
-knitr::include_graphics(here("img", "w5_sdotm.svg"))
-```
-
-
-The spread of these sample means is called the **sampling distribution of the mean (SDoTM)**, shown on the right. This gives us a sense of where the population mean (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.
-
-The **standard error of the mean** (standard error; SE) is another measure of variability - this time, it is the spread of **sample means** across the sampling distribution of the mean. This represents how close our sample mean is to the likely *population* mean. If our sampling distribution is wide, our standard error will be large - and that means that we won't have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean. 
-
-Standard error is calculated using the below formula:
-
-$$
-SE = \frac{SD}{\sqrt n}
-$$
-
-Where SD = standard deviation, and n = sample size. 
-
- 
-
-**Practice**: You have a dataset of 400 people. You know that the mean of the DV is 760, with a standard deviation of 40. Calculate the standard error for this sample.
 
 ## Distributions {#distributions}
 
@@ -497,16 +516,76 @@ data.frame(
 ## Central Limit Theorem {#clt}
 
 ::: {style="background-color: #f5f5f5;  padding: 1.75rem;"}
-In Module 6, we will cover the foundations of statistical tests. However, in order to understand what those tests tell us and how useful they are, it is important to basically look at what allows them to work in the first place. In comes the **Central Limit Theorem**, one of the most important concepts in all of statistics. 
-
-You'll want to keep the concept of the **sampling distribution of the mean fresh in mind** for this page, as it all relates to that!
+In Module 6, we will cover the foundations of statistical tests. However, in order to understand what those tests tell us and how useful they are, it is important to basically look at what allows them to work in the first place. In comes the **Central Limit Theorem**, one of the most important concepts in all of statistics. We will also look at **standard error**, as this becomes a crucial concept for the next module!
 :::
 
-### What is the Central Limit Theorem?
+### The sampling distribution of the mean {#sderr}
 
-The Central Limit Theorem (CLT) is a fundamental theorem of probability theory. It states that under the right conditions, the sampling distribution of the mean will converge to a **normal** distribution. This occurs even when the original data are *not* normally distributed.
+Imagine that I have a population of 100 regular people (shown on the left). I take a sample of 10 people, measure their heights and then calculate the mean height of that one sample. I then repeat this process over and over again, and plot where each sample's mean falls. Of course, because every sample is slightly different the mean of each sample will be slightly different too due to **sampling error**. Some sample means will be lower than the true population mean, while some will be higher. Eventually, we might end up with something like the spread on the right:
 
-Why is this important? After all, it's not like this is something we immediately *see* in action most of the time. Put simply, without the CLT we would not be able to do any of the statistics we do. The CLT allows us to make statistical inferences even when we don't know the true nature (i.e. distribution) of our data by using the normal distribution to test hypotheses. The fact that it applies even when we have skewed or non-normal data means that we can still make valuable inferences in these scenarios as well. Therefore, it is critical 'under the hood' to all of the statistical tests we run.
+```{r echo = FALSE}
+knitr::include_graphics(here("img", "w5_sdotm.svg"))
+```
+
+
+The spread of these sample means is called the **sampling distribution of the mean (SDoTM)**, shown on the right. 
+
+### The Central Limit Theorem
+
+The hypothetical height example above demonstrates the **Central Limit Theorem (CLT)**, a fundamental theorem of probability theory. It states that under the right conditions, the **sampling distribution of the mean will converge to a normal distribution**. This occurs even when the original data are *not* normally distributed.
+
+The Central Limit Theorem works on the **law of large numbers**, another fundamental probability theory. The law of large numbers states that given a large enough sample, our estimates of a probability or phenomenon should converge on the *true* value. For example, consider a regular six-sided die. If the die is fair, each possible *outcome* or number should have a 1/6 chance of being rolled. Therefore, if we were to roll a single die 100,000 times then we should see that 1 in 6 chance (16.67%) bear out in the data:
+
+```{r echo = FALSE, fig.dpi = 600, fig.dim = c(6, 4)}
+# simulate 10000 die throws
+
+set.seed(2026)
+
+die <- data.frame(
+  roll = 1:100000,
+  outcome = sample(1:6, 100000, replace = TRUE)
+) 
+
+
+# Calculate probabilities
+
+die %>%
+  group_by(outcome) %>%
+  summarise(n = n()) %>%
+  mutate(
+    percent = round(n/sum(n) * 100, 2)
+  ) %>%
+  ggplot(aes(x = outcome, y = n)) +
+  geom_col(fill = "plum3") +
+  scale_x_continuous(breaks = 1:6) +
+  geom_label(aes(label = paste0(percent, "%")), vjust = 3) +
+  labs(x = "Outcome", y = "Count") +
+  ggpubr::theme_pubr()
+
+```
+
+
+The CLT utilises the same principle. If we conduct studies with large enough samples then our estimates of a parameter should converge (or at least get pretty close) to the *true* population value. 
+
+A general rule of thumb for sample sizes is that **n > 30** is sufficient even when the population is skewed. In other words, even if a population is heavily skewed on a variable, taking several samples of n > 30 will still show a normally distributed set of sample means. You can see this for yourself in the simulator above - try set sample size to 5, 10 and then 30, and see what happens in the Sampling Distribution tab.
+
+### Standard error of the mean
+
+Coming back to the height example above, we can see that the sampling distribution on the right resembles the actual distribution on the left pretty closely. This is a good thing! This gives us a sense of where the **population mean** (the parameter that we are interested in) might lie. With enough samples, the peak of this sampling distribution of the mean will converge around the population mean. As you can see in our hypothetical example, the peak of the sampling distribution of the mean sits pretty close to the original population mean, meaning our estimate is pretty good.
+
+However, of course, in a real research setting we typically do not take multiple repeated samples like this, and instead just take one. Thanks to the CLT, though, we know that if our sample is large enough, we should still be converging closer to the true mean than we would if we had a small sample. This still allows us to make inferences about the population parameter with just one sample.
+
+The **standard error of the mean** (standard error; SE) is another measure of variability - this time, it is the spread of **sample means** across the sampling distribution of the mean. This represents how close our sample mean is to the likely *population* mean, and therefore is one way of estimating the *precision* of our effect. If our sampling distribution is wide, our standard error will be large - and that means that we won't have a very precise estimate of the population mean. However, if we have a small standard error that will mean that our sample mean is likely to be close to the population mean. 
+
+Standard error is calculated using the below formula:
+
+$$
+SE = \frac{SD}{\sqrt n}
+$$
+
+Where SD = standard deviation, and n = sample size. 
+
+Based on the formula alone, hopefully one critical element is clear: with bigger samples, the standard error decreases - and therefore, the sample mean should be closer to the population mean. This means that with large samples, we should ideally be getting a really good estimate of the population of interest! Conversely, smaller sample sizes (as is common in music research) are unlikely to be good estimates of populations due to the inherently greater amount of error involved. Therefore, we should always be aiming for **larger sample sizes** wherever possible for statistical analyses.
 
 
 ### Simulation
@@ -522,13 +601,7 @@ knitr::include_app("https://gallery.shinyapps.io/CLT_mean/", height = "800px")
 ```
 
 
-### Some important points
 
-A general rule of thumb for sample sizes is that **n > 30** is sufficient even when the population is skewed. In other words, even if a population is heavily skewed on a variable, taking several samples of n > 30 will still show a normally distributed set of sample means. You can see this for yourself in the simulator above - try set sample size to 5, 10 and then 30, and see what happens in the Sampling Distribution tab.
-
-In addition, remember that with bigger samples, the variability in sample means (i.e. standard error) decreases - and therefore, the sample mean gets closer to the **population mean**. This means that with large samples, we should ideally be getting a really good estimate of the population of interest! Conversely, smaller sample sizes (as is common in music research) are unlikely to be good estimates of populations.
-
-We will touch on the issue of sample size more in Module 6 but this should already also give you an indication of one of the most important things when it comes to statistical tests: **sample size matters**.
 
 ## z-scores {#zscores}
 
