@@ -373,3 +373,5 @@ broom-augment
 chi-square-tests
 regressions
 technical-details-of-anova
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+velicers-minimum-average-partials-map-test

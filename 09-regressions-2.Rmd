@@ -336,6 +336,7 @@ AIC(flow_block1, flow_block2, flow_block3)
 BIC(flow_block1, flow_block2, flow_block3)
 ```
 
+We can see that Block 3 has the lowest AIC and BIC values, meaning that it is the best fit.
 
 ## Outliers
 
@@ -573,7 +574,7 @@ We can see that even without the outliers, the pattern of results is very simila
 
 There are other methods that you could consider:
 
-- Using a *non-parametric* test, which are not affected by outliers see [the section on non-parametric tests](#nonpara)
+- Using a *non-parametric* test, which are not affected by outliers (see [the section on non-parametric tests](#nonpara))
 - Transforming the data to 'un-outlier' the outliers - this can be tricky to interpret
 
 Regardless, it is a good idea to report both versions of the model - with and without outliers - for transparency, to show that you have actively considered these residuals.

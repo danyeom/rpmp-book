@@ -153,12 +153,23 @@ describe(saq)
 EFA can be conducted with one of multiple algorithms that determines the final factor structure to be extracted. Different methods rely on different assumptions, so basic assumption checks are useful:
 
 -    Data must be interval/ratio data. Ordinal data is problematic unless you generally have at least 5 scale points; in which case, you can broadly approximate this to be continuous.
--    Normality is important, depending on the method. The usual QQ-plot or Shapiro-Wilks tests on individual items can be useful here.a
+-    Normality is important, depending on the method. The usual QQ-plot or Shapiro-Wilks tests on individual items can be useful here.
 -    Multicollinearity: observed variables should not be collinear with each other.
 
  
 
-Note though that this only tests the normality of one variable, i.e. univariate normality. EFA is ideal with multivariate normality, i.e. the joint dimensions of the entire dataset are normally distributed. Univariate normality is necessary but not sufficient for multivariate normality. Sadly, however, Jamovi doesn't give an easy way to test multivariate normality so let's run with univariate normality for now.
+Note though that the Shapiro-Wilks test only tests the normality of one variable, i.e. univariate normality. EFA is ideal with multivariate normality, i.e. the joint dimensions of the entire dataset are normally distributed. Univariate normality is necessary but not sufficient for multivariate normality. Although Jamovi doesn't provide an easy way to test for multivariate normality (yet), it is very easy to do so in R with the `MVN` package.
+
+```{r message = FALSE}
+library(MVN)
+
+# Use the mvn() function to create the test output
+mvn_results <- mvn(saq, mvn_test = "mardia")
+
+# Extract the multivariate normality test only
+mvn_results$multivariate_normality
+```
+
 
  
 ### Factorability
@@ -196,6 +207,15 @@ cortest.bartlett(saq)
 This test is often referred to as the KMO Test or Kaiser's MSA, but both respectively mean the same thing. It is a measure of how much variance among all variables might be due to common variance. Higher KMO/MSA values indicate that more variance is likely due to common factors, thus indicating suitability for factor analysis.
 
 Kaiser (1974) provided the following (hilarious) interpretations of MSA values:
+
+```{r echo = FALSE}
+data.frame(
+  msa = c("MSA between .80 - .90", "MSA between .70 - .80", "MSA between .60 - .70", "NSA between .50 - .60", "MSA < .50"),
+  interpretation = c("Marvelous", "Middling", "Mediocre", "Miserable", "Unacceptable")
+) %>%
+  knitr::kable(col.names = c("MSA value", "Interpretation"))
+```
+
 
 MSA values are typically calculated for each variable, and for overall. It helps to report both. The `KMO()` function in `psych` will calculate both sets of measures of sampling adequacy. Here are our variables below. Overall they are generally in the meritorious range (except for one):
 
@@ -247,14 +267,25 @@ scree(saq)
  
 ### Parallel analysis
 
-Parallel analysis (Horn, 1965) is a sophisticated technique that involves simulating random datasets of the same size as our actual dataset, and comparing our dataset's eigenvalues against the random dataset's eigenvalues. Parallel analysis is generally demonstrated using a scree plot with an additional scree line for the simulated datasets. The `fa.parallel()` function will run this for us.
+Parallel analysis (Horn, 1965) is a sophisticated technique that involves simulating random datasets of the same size as our actual dataset, and comparing our dataset's eigenvalues against the random dataset's eigenvalues. Parallel analysis is generally demonstrated using a scree plot with an additional scree line for the simulated datasets. The `fa.parallel()` function will run this for us.^[The `EFA.dimensions` package has a similar function called `RAWPAR()`.]
 
-The number of factors to retain is determined by the number of factors where our actual data's eigenvalue exceeds the simulated dataset's eigenvalue. In this instance, we would choose to retain three factors, as the actual data eigenvalues clearly drop below the simulated data at four factors.
+The number of factors to retain is determined by the number of factors where our actual data's eigenvalue exceeds the simulated dataset's eigenvalue.^[As you can see from the output, there are two ways of calculating these eigenvalues - using either a PCA or PAF (principal axis factoring). The `fa.parallel()` function uses both. Although counterintuitive given that they are not the same technique conceptually, the PCA-based output (i.e. number of *components*) is the typical method, and actually does perform well at correctly identifying the number of factors to extract. Jamovi appears to default to PAF-based eigenvalues, however.] In this instance, we would choose to retain three factors, as the actual data eigenvalues clearly drop below the simulated data at four factors.
 
 ```{r}
 fa.parallel(saq)
 ```
 
+### Velicer's Minimum Average Partials (MAP) test
+
+The Minimum Average Partials (MAP; Velicer, 1976) test is another powerful test that is generally useful at identifying how many factors should be extracted. It basically works by calculating the partial correlations between items and finding their average *after* removing the variance explained by the factors. 
+
+The `EFA.dimensions` package contains a series of helpful functions for running some EFA-related checks. The MAP test is included as part of the `MAP()` function:
+
+```{r}
+library(EFA.dimensions)
+MAP(saq)
+```
+Here, we look for the number of factors with the minimum average partial correlation (hence the name). There are two forms of this test, one based on the original and a revised version - the only difference is that the original looks for the average *squared* correlation, while the revised version calculates it to the 4th power. As we can see, the smallest average correlation in both versions occurs when we extract one factor.
 
  
 ### How to decide?
@@ -264,6 +295,7 @@ Let's summarise our interim decisions so far:
 -    Kaiser's rule suggests 1 factor
 -    Visual scree plot inspection suggests either 2 or 4 factors
 -    Parallel analysis suggests 3 factors
+-    MAP suggests 1 factor
 
 How do we decide what to use? Decades of empirical and simulation literature have shown a couple of things:
 
