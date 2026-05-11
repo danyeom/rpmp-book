@@ -35,18 +35,56 @@ knitr::include_graphics("https://imgs.xkcd.com/comics/linear_regression.png")
 We've talked a surprising amount about correlations in this subject, but we haven't considered how to actually test if two things are correlated to begin with. We change that this week with an overview of correlation coefficients.
 </div>
 
+### Covariance
+
+To start, examine the figure below. The figure below plots the gestational period lengths of ~1230 pregnancies, plotted against the birth weight of the child.
+
+```{r echo = FALSE, message = FALSE, fig.dim = c(5, 5), fig.align='center', warning = FALSE}
+babies <- read_csv(here("data", "week_10", "w10_babies.csv"))
+
+babies_plot <- babies %>%
+  filter_out(case %in% c(261, 870)) %>%   # Remove outliers
+  ggplot(
+    aes(x = gestation, y = bwt)
+  ) +
+  geom_point() +
+  labs(x = "Gestational period length (Weeks)", y = "Infant birth weight (g)")
+
+babies_plot
+```
+A trend might be immediately obvious - longer gestational periods are associated with higher birth weights. We can say that the two variables - gestation length and birth weight - **covary** with each other, as a change in one variable is associated with change in another. 
+
+**Covariance** simply describes and quantifies how two variables change with each other. For instance, if two variables have a positive covariance, this means that as one variable increases, so does the other. Similarly, if two variables have a negative covariance, this means that as one increases the other decreases.
+
+<details>
+    <summary>How is covariance calculated?</summary>
+    The formula for the covariance between two variables X and Y is given as:
+    
+    $$
+    \Large q = \frac{\Sigma (x_i - \bar{x})(y_i - \bar{y})}{N-1}
+    $$
+    
+    
+  Where $x_i$ and $y_i$ refer to the individual values for variables X and Y respectively, and $\bar{x}$ and $\bar{y}$ refer to the means of variables X and Y respectively. Put simply:
+
+- Subtract each participant's value for variable X from the mean of variable X.
+- Do the same for each participant on variable Y - their individual value minus the mean of Y.
+- For each participant, multiply the two differences together.
+- Sum this value across all participants.
+- Divide by N - 1.
+</details>
+
 ### Correlation coefficients
 
-We can quantify the strength of two variables using a correlation coefficient, which gives us a measure of how tightly these two variables are related. 
+We can quantify the strength of two variables using a **correlation coefficient**, which gives us a measure of how tightly these two variables are related. There are many types of correlation coefficients, but the most common is the **Pearson's correlation coefficient, r**. It's calculated using the below (simplified) formula:
 
-To start, we need to know what covariance is. Covariance simply describes how two variables change with each other. For instance, if two variables have a positive covariance, this means that as one variable increases, so does the other. Similarly, if two variables have a negative covariance, this means that as one increases the other decreases. See if you can describe what the covariances would be like below:
+$$
+r = \frac{Cov_{xy}}{SD_x \times SD_y}
+$$
 
-```{r echo = FALSE}
-knitr::include_graphics("img/w10_cor_examples.svg")
-```
+In this subject we won't expect you to calculate a correlation coefficient by hand, but the key takeaway here is that by dividing a value by a standard deviation (or, in this case, a product of two SDs), we are **standardising** the covariance. Hence, a correlation coefficient is a **standardised** measure, meaning that we can compare correlation coefficients quite easily across variables regardless of their scale.
 
-
-Correlation coefficients are just another way of describing this. Correlation coefficients have the following properties:
+Correlation coefficients have the following properties:
 
 -    They are between -1 and +1
 -    The sign of the correlation describes the direction - a positive value represents a positive correlation
@@ -55,15 +93,29 @@ Correlation coefficients are just another way of describing this. Correlation co
   -    A rough guideline for this subject, r = .20 is weak, r = .50 is moderate, r = .70 is strong
   -    Visually, a magnitude of 0 corresponds to a flat line; the steeper the line, the higher the magnitude
 
-There are many types of correlation coefficients, but the most common is the Pearson's correlation coefficient. It's calculated using the below (simplified) formula:
-
-$$
-r = \frac{Cov_{xy}}{SD_x \times SD_y}
-$$
-
-In this subject we won't expect you to calculate a correlation coefficient by hand, but the key takeaway here is that by dividing a value by a standard deviation (or, in this case, a product of two SDs), we are standardising the covariance. Hence, a correlation coefficient is a standardised measure, meaning that we can compare correlation coefficients quite easily across variables regardless of their scale.
 
 ### Activity
+
+
+See if you can describe what the covariances would be like below:
+
+```{r echo = FALSE}
+knitr::include_graphics("img/w10_cor_examples.svg")
+```
+
+Look at the below correlation coefficients. 
+
+```{r echo = FALSE}
+data.frame(
+  x = c(0.35, -0.24, -0.02, 0.85),
+  y = rep("", 4),
+  z = rep("", 4)
+) %>%
+  knitr::kable(
+    col.names = c(" ", "Is it positive or negative?", "How strong is it?")
+  )
+```
+
 
 ### Testing correlations in R
 
@@ -80,15 +132,18 @@ Let's correlate height and speed. This can easily be done in R by using the `cor
 ```{r}
 cor.test(w10_speed$height, w10_speed$speed)
 ```
+
 We can see that our correlation is *r* = .249, which is a relatively weak to moderate correlation. This correlation is also significant (*p* < .001). We also get a confidence interval around the size of the correlation, which is great for showing the range of possible values. So we might write this up as something like:
 
 <div style="background-color: #cce3c8;  padding: 1.75rem;">
 There was a significant weak positive correlation between students' heights and their fastest ever driving speed (*r*(1300) = .25, *p* < .001; 95% CI [.20, .30]).
 </div>
 
-If you need to run multiple correlations at once, there are two ways to visualise them. Below are two types, using fictional questionnaire data.
+### Displaying correlations
 
-The first is simply a table, like below:
+It is common to compute correlation coefficients between multiple variables at the same time and display them. In more complex analyses, this is often a crucial early step in the analytical process. Below are two ways of visualising multiple correlations, using fictional questionnaire data.
+
+The first is simply a **correlation matrix**, like below:
 
 ```{r echo = FALSE}
 cor_mat <- matrix(c(1  , .24, -.56, .72, 
@@ -104,7 +159,7 @@ data.frame(cor_mat) %>%
 ```
 
 
-The second is a correlation heatmap, which is especially effective with many correlations at once (common when working with huge questionnaires or neuroimaging). As shown by the legend on the right, the colour and shade of each square are determined by the strength of the correlation. This can be easily done by the ``ggcorrplot` package, if you have a correlation matrix formatted in R:
+The second is a **correlation heatmap**, which is especially effective with many correlations at once (common when working with huge questionnaires or neuroimaging). As shown by the legend on the right, the colour and shade of each square are determined by the strength of the correlation. This can be easily done by the ``ggcorrplot` package, if you have a correlation matrix formatted in R:
 
 ```{r message = FALSE, warning = FALSE}
 library(ggcorrplot)
@@ -114,65 +169,32 @@ ggcorrplot(cor_mat, type = "lower", show.diag = TRUE)
 ## Regression hypotheses
 
 <div style="background-color: #f5f5f5;  padding: 1.75rem;">
-Let's move on from correlations to regressions, where we test whether one variable can predict another. To do that, let's start by considering what it is we actually hypothesise in doing a linear regression.
+Let's move on from correlations to regressions, where we test whether one variable can predict another. To do that, let's start by considering what a linear regression actually is, and how it works.
 </div>
 
-### Terminology
+### What is regression?
+
+Recall the gestation versus birth weight example from the previous page:
+
+```{r echo = FALSE, warning = FALSE, fig.dim=c(5,5), fig.align='center'}
+babies_plot
+```
+
+On the previous page, we saw that these two variables covary - as gestation length increases, the birth weight of the infant increases as well. We might then be interested in seeing whether gestational length *predicts* birth weight. In other words, does the gestational period of a pregnancy significantly predict the weight of the baby?
+
+**Regression** is a technique that allows us to see whether one or more independent variables predict a (continuous) dependent variable. Regression is one of the most widely used techniques in psychology because we are often interested in relationships between continuous variables, *and* we are often interested in seeing whether certain variables predict others. Put simply, it allows us to examine relationships between variables (like correlations), but is a very flexible and powerful method of doing so.
+
 
 Let's kick off the regression portion of this module with a bit of terminology:
+
 -   The line is called the line of best fit. The slope of the line is, well, the slope. It describes how much Y changes if X changes by one unit.
 -   The point at which the line crosses the y-axis is called the intercept (the y-intercept in full). The intercept is one of the two paramaters of a regression line (the other being the slope).
 
-Linear regressions involve plotting a line of best fit to the data, and using this line to make predictions. 
+In this module, we will also call the independent variable a **predictor**, and the dependent variable the **outcome**. The terms "predictor" and "outcome" are more general terminology than IV and DV, which are typically used in experimental contexts. However, they mean the same thing and can be used interchangeably.
 
-If you think back to high school, you may have learned something like y = mx + c or y = ax + b in algebra to describe a straight line. In linear regression, we use the same concepts to both describe our line and make predictions using it (more on that later). The key difference is that we change the letters a bit:
+### How do regressions work?
 
-$$
-y = \beta_0 + \beta_1x + \epsilon_i
-$$
-
-Let's break this down:
-
--    y is simply our predicted value (i.e. the line of best fit)
--   $\beta_0$ is our intercept (the c in y = mx + c)
--   $x$ simply refers to our independent variable
--   $\beta_1$ is the slope for the independent variable - in other words, how much y increases for every unit increase of x. We also call this B
--   $\epsilon_i$ is error, which is essentially random variation (due to sampling). This error is normally distributed.
-
-Keep this in mind for now - we'll come back to this later in the module!
-
- 
-### Hypothesis testing in regressions
-
-When we conduct a linear regression, in part we're testing if the two variables are correlated. However, we're also testing whether we can predict our DV from our IV, so our statistical hypotheses are formulated around this idea. Our null and alternative hypotheses are therefore about the slope ($\beta_1$):
-
--   $H_0: \beta_1 = 0$, i.e. the slope is 0
-
--   $H_1: \beta_1 \neq 0$, i.e. the slope is not equal to 0
-
-Consider the two graphs below. On the left is a graph where the line of best fit has a slope of 0 (the null). No matter what value X is, the value of Y is always the same (2.5 in this example) - in other words, X does not predict Y. The graph on the right side, on the other hand, is an example of the alternative hypothesis in this scenario. Here, X does clearly predict Y - as X increases, Y increases as well. 
-
-```{r fig.align = "center", echo = FALSE}
-knitr::include_graphics("img/w10_regression_hypotheses.svg")
-```
-
-But how do we actually test this? The answer is something we've seen before - we do a t-test! 
-
-We came across t-tests in context of comparing two means against each other. The logic here is exactly the same, except now we compare two slopes with each other - the slope we actually observe (B) minus the null hypothesis slope (0). We can use this logic to calculate a t-statistic using the below formula:
-
-$$
-t = \frac{B}{SE_B}
-$$
-
-Where *B* = observed slope and SE = standard error of B. This is the same formula as the calculation for a t-test, albeit that the top row is just B (because it is B - 0). We can do this for each predictor, and then use the same t-distribution to test whether this slope is significant - in other words, whether our predictor (IV) significantly predicts our outcome (DV).
-
-## Least squares regression
-
-<div style="background-color: #f5f5f5;  padding: 1.75rem;">
-Linear regression starts with trying to fit a line to our continuous data. But... how on earth do we figure out where that line sits?
-</div>
-
-### The regression line
+Fundamentally, linear regressions involve plotting a line of best fit through the data. This line of best fit tells us something about the relationship between the two variables, including whether our predictor variable significant predicts the outcome. 
 
 See if you can take a guess where we should draw a line of best fit on the plot below:
 
@@ -191,9 +213,9 @@ df %>%
 
 You might have some good guesses, and there's every chance that you've drawn a line that fits the data points pretty well. But for this data, it's pretty obvious where the line would sit, and the data that we do work with won't always be as clear cut. 
 
-The line of best fit sits where **the distance between the line and every point is minimised**. See the example below, where we have 10 data points to illustrate. Each dot represents a single data point, while the solid blue line is our line of best fit. The dashed lines represent the difference between the blue line (which is what we *predict* - more on this later) and the actual data point. This difference is called a **residual**. 
+The line of best fit sits where **the distance between the line and every point is minimised**. The difference between what we *predict* (the line) and an actual data point is called a **residual**, which simply refers to *error.* It makes sense then that to find the line of best fit, we want to place our line at the point where all of our possible residuals, or error, is minimised. If we didn't minimise our error, we couldn't say that it was the line of *best* fit!
 
-So, in other words, the line of best fit sits where the *residuals* are minimised.
+See the example below, where we have chosen 10 data points to illustrate. Each dot represents a single data point, while the solid blue line is our line of best fit. The dashed lines represent our residuals, or the difference between the blue line (what we *predict*) and each actual data point. 
 
 ```{r fig.align = "center", echo = FALSE, message = FALSE, warning = FALSE}
 set.seed(202306)
@@ -225,7 +247,78 @@ $$
 
 Where $y_i$ is each individual (ith) value on the y-axis, and $\bar y_i$ is the predicted y-value (i.e. the regression line). Essentially, we calculate the residual for each data point, square it and add it all up. 
 
-The actual *minimising* part is something we won't concern ourselves with for this subject (or at all), because quite frankly it's complicated - the key here is to understand how a regression line is fit to the data.
+From there, we would fine the line where all of these squared deviations are minimised. The actual *minimising* part is something we won't concern ourselves with for this subject, because it's complicated - the key takeaway here is that the line of best fit sits at the point where we have minimised these residuals as much as possible.
+
+
+## The regression equation
+
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+Now we have a sense of how to place our line of best fit, what does that actually tell us about the relationship between our predictor and outcome? Here, we will look a bit closer at what the *slope* of the line indicates.
+</div>
+
+### Slopes and intercepts
+
+Coming back to our gestation versus birth weight example once again, let's now estimate a line of best fit through the data using our program of choice:
+
+```{r warning = FALSE, fig.dim=c(5,5), fig.align='center', echo=FALSE, message=FALSE}
+babies_plot +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+As we can see, there is clearly a positive relationship between gestation and birth weight - as we expected from us eyeballing the data. But recall that we're interested in seeing whether our predictor (gestation) does significantly predict the outcome (birth weight). How do we tell if this is the case? The **slope** of the line of best fit tells us this, because it quantifies **how much the outcome changes with each unit increase of the predictor**.
+
+An intuitive way to think about it is this: if the slope here was steep, it would tell us that every extra week of gestation would lead to a fairly noticeable increase in birth weight. If the slope was instead very gradual or flat, every extra week of gestation would lead to barely any change in birth weight - meaning that gestation would *not* predict birth weight very well.
+
+### The regression equation
+
+If you think back to high school, you may have learned something like y = mx + c in algebra to describe a straight line, where:
+
+- *m* denotes the slope, and
+- *c* denotes the intercept. 
+
+
+In linear regression, we use the same concepts to both describe our line and make predictions using it (more on that later). The key difference is that we change the letters a bit:
+
+$$
+y = \beta_0 + \beta_1x + \epsilon_i
+$$
+
+Let's break this down:
+
+-    y is simply our predicted value (i.e. the line of best fit)
+-   $\beta_0$ is our intercept (the c in y = mx + c)
+-   $x$ simply refers to our independent variable
+-   $\beta_1$ is the slope for the independent variable - in other words, how much y increases for every unit increase of x. We also call this B
+-   $\epsilon_i$ is error (i.e. our residuals), which is essentially random variation (due to sampling). This error should be normally distributed.
+
+Keep this in mind for now - we'll come back to this later in the module!
+
+ 
+### Hypothesis testing in regressions
+
+When we conduct a linear regression, in part we're testing if the two variables are correlated. However, we're also testing whether our predictor significantly predicts our outcome, so our *statistical* hypotheses are formulated around this idea. Our null and alternative hypotheses are therefore about the slope ($\beta_1$):
+
+-   $H_0: \beta_1 = 0$, i.e. the slope is 0
+
+-   $H_1: \beta_1 \neq 0$, i.e. the slope is not equal to 0
+
+Consider the two graphs below. On the left is a graph where the line of best fit has a slope of 0 (the null). No matter what value X is, the value of Y is always the same (2.5 in this example) - in other words, X does not predict Y. The graph on the right side, on the other hand, is an example of the alternative hypothesis in this scenario. Here, X does clearly predict Y - as X increases, Y increases as well. 
+
+```{r fig.align = "center", echo = FALSE}
+knitr::include_graphics("img/w10_regression_hypotheses.svg")
+```
+
+But how do we actually test this? The answer is something we've seen before - we do a t-test! 
+
+We came across t-tests in context of comparing two means against each other. The logic here is exactly the same, except now we compare two slopes with each other - the slope we actually observe (B) minus the slope under the null hypothesis, which would be 0. We can use this logic to calculate a t-statistic using the below formula:
+
+$$
+t = \frac{B}{SE_B}
+$$
+
+Where *B* = observed slope and SE = standard error of B. This is the same formula as the calculation for a t-test, albeit that the top row is just B (because it is B - 0). We can do this for each predictor, and then use the same t-distribution to test whether this slope is significant - in other words, whether our predictor (IV) significantly predicts our outcome (DV).
+
+
 
 ## Assumption tests
 

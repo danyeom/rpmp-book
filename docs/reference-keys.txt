@@ -172,14 +172,18 @@ post-hoc-tests-2
 alternative-using-rstatix
 linear-relationships
 correlations
+covariance
 correlation-coefficients
 activity
 testing-correlations-in-r
+displaying-correlations
 regression-hypotheses
-terminology
+what-is-regression
+how-do-regressions-work
+the-regression-equation
+slopes-and-intercepts
+the-regression-equation-1
 hypothesis-testing-in-regressions
-least-squares-regression
-the-regression-line
 assumption-tests
 linearity
 homoscedasticity
@@ -302,6 +306,7 @@ deciding-on-the-number-of-factors
 the-kaiser-guttman-rule
 the-scree-plot
 parallel-analysis
+velicers-minimum-average-partials-map-test
 how-to-decide
 interpreting-output
 extraction-methods
@@ -373,5 +378,3 @@ broom-augment
 chi-square-tests
 regressions
 technical-details-of-anova
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-velicers-minimum-average-partials-map-test
