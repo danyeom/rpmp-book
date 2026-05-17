@@ -255,30 +255,31 @@ There are four possibilities here - males in Group A, females in Group A, males 
 
 ### Example
 
-One of the earliest modern studies on music's effect on consumer behaviour came from Hargreaves and North, who played either French or German music in a wine shop. They looked at how much people spent on French and German wines, and tested to see whether the effect of background music and wine type had an effect on spending.
+One of the earliest modern studies on music's effect on consumer behaviour came from [Hargreaves et al. 1999](https://doi.org/10.1037/0021-9010.84.2.271), who played either French or German music in a wine shop. They looked at how much people spent on French and German wines, and tested to see whether the effect of background music and wine type had an effect on spending.
 
-We're going to step through an analogous (fictional) example. Pretend we played either country or classical music, and looked at when people purchased beer or wine. (We're going to assume we've removed people who bought both beer and wine together.) We're interested in whether these two variables had an effect on how much people spent. Therefore, we have two between-groups IVs:
+We're going to step through an analogous (fictional) example, inspired by the Hargreaves et al. (1999) study. Pretend we played either country or classical music in a supermarket, and observed moments when people purchased beer or wine (We're going to assume we've removed people who bought both beer and wine together.) . In this hypothetical scenario, we might expect a similar 'priming' effect of the background music - that is, maybe the type of music will prime people to behave in different ways. Maybe, for instance, a certain kind of music will make people spend more, but this might depend on what type of alcohol they are buying. 
 
--   Alcohol type being purchased: was the person buying beer or wine?
--   Genre of background music: was country or classical music being played at the time?
+Our research question in this instance is, Does the effect of music on alcohol spend depend on the type of alcohol purchased?
 
-We therefore has two independent variables: alcohol type (beer, wine) and genre of background music (country, classical). Her dependent variable is total spend. This can be described in two key ways:
+Therefore, we have two between-groups IVs:
 
--   Two-way ANOVA (alcohol type x genre)
--   2 x 2 ANOVA: more specifically, 2 (beer, wine) x 2 (country, classical) ANOVA between alcohol type and genre
+-   **Alcohol type** being purchased: was the person buying beer or wine?
+-   **Genre** of background music: was country or classical music being played at the time?
 
-We'd use a two-way ANOVA to model the effects of two IVs on one dependent variable. Let's start by generating descriptives and a graph to visualise what we're looking at:
+We're interested in whether these two variables have an effect on how much people spend (our dependent variable/outcome). This can be described as a **two-way ANOVA** (alcohol type x genre), or alternatively as a **2 x 2 ANOVA** - more specifically, 2 (beer, wine) x 2 (country, classical) ANOVA between alcohol type and genre.
+
+Let's start by generating descriptives and a graph to visualise what we're looking at:
 
 ```{r message = FALSE, warning = FALSE}
 twoway_alcohol <- read_csv(here("data", "factorial", "twoway_bganova.csv"))
 ```
 
-```{r message = FALSE, warning = FALSE}
+```{r message = FALSE, warning = FALSE, echo = FALSE}
 twoway_alcohol %>%
   group_by(alcohol_type, genre) %>%
   summarise(
     n = n(),
-    mean = mean(spend), na.rm = TRUE,
+    mean = mean(spend, na.rm = TRUE),
     sd = sd(spend, na.rm = TRUE),
     se = sd/n
   ) %>%
@@ -288,42 +289,26 @@ twoway_alcohol %>%
   ) +
   geom_point() +
   geom_line() +
-  geom_errorbar(aes(ymin = mean - 1.96*se, ymax = mean + 1.96*se), width = 0.2)
+  geom_errorbar(aes(ymin = mean - 1.96*se, ymax = mean + 1.96*se), width = 0.2) +
+  labs(x = "Alcohol type", y = "Spend ($)")
 ```
+
+```{r}
+twoway_alcohol %>%
+  group_by(alcohol_type, genre) %>%
+  summarise(
+    n = n(),
+    mean = mean(spend, na.rm = TRUE),
+    median = median(spend, na.rm = TRUE),
+    sd = sd(spend, na.rm = TRUE),
+    se = sd/n
+  ) 
+```
+
 
 ### Assumption testing
 
-The assumptions for a two-way ANOVA are the same as a one-way between groups ANOVA:
-
--   The data should be independent of each other.
--   Equality of variance: Look at Levene's test:
-
-```{r}
-twoway_alcohol_aov <- aov(spend ~ alcohol_type * genre, data = twoway_alcohol)
-
-twoway_alcohol %>%
-  levene_test(spend ~ alcohol_type * genre)
-```
-
--   Normality of residuals: Look at the Shapiro-Wilk test (on the residuals) or a Q-Q plot:
-
-```{r}
-shapiro.test(twoway_alcohol_aov$residuals)
-```
-
-Both assumptions appear to be intact.
-
-### Output
-
-Let's first look at our output for the omnibus ANOVA. The way to read this table is much like the same for a one-way ANOVA, but now we need to read across each line - as each line represents a different effect. 
-Note that here, we use the `aov_ez()` function from the `afex` package. Because in many instances we work with unbalanced data (i.e. each group x group combination does not have the same number of participants), we tend to calculate something called *Type III* Sums of Squares/ANOVAs. We won't dive too much into this, but this is essentially about how sums of squares are calculated, and how the effects are tested. Learning Statistics with R has an excellent explanation of what the various types are.
-
-So we see that:
-
--   There is no main effect for alcohol (*p* = .137),
--   There is a main effect for genre (*p* < .001),
--   Importantly, there is a significant interaction effect for alcohol x genre (*p* < .001).
-
+As we have previously seen with ANOVAs in R, to test some of our assumptions we first need to build our ANOVA. Note that here, we use the `aov_ez()` function from the `afex` package. Because in many instances we work with unbalanced data (i.e. each group x group combination does not have the same number of participants), we tend to calculate something called *Type III* Sums of Squares/ANOVAs. We won't dive too much into this, but this is essentially about how sums of squares are calculated, and how the effects are tested. Learning Statistics with R has an excellent explanation of what the various types are.
 
 ```{r}
 twoway_alcohol_aov <- aov_ez(
@@ -335,45 +320,73 @@ twoway_alcohol_aov <- aov_ez(
   include_aov = TRUE
 )
 
-twoway_alcohol_aov
 ```
 
-Because we have a significant interaction term, we now need to turn to conducting **simple effects tests** to decompose where this effect is. You might want to use something like `tukey_hsd()` to generate every possible pairwise comparison, like so:
+
+The assumptions for a two-way ANOVA are the same as a one-way between groups ANOVA:
+
+-   The data should be independent of each other.
+-   Equality of variance: Just like the one-way ANOVA, we use Levene's test to examine our equality of variance assumption. 
 
 ```{r}
-tukey_hsd(twoway_alcohol_aov$aov)
+twoway_alcohol %>%
+  levene_test(spend ~ alcohol_type * genre, center = "mean")
 ```
 
-Remember, for a simple effects test we want to test for differences between the levels of one variable, at every level of the other variable. In our instance, that may be comparing genre type (classical vs country) for beer purchases, and then for wine purchases.
+-   Normality of residuals: Look at the Shapiro-Wilk test (on the residuals) or a Q-Q plot. If you use `aov_ez()` to calculate your ANOVA, note that the residuals are within either `aov` or `lm` within your ANOVA, so you will find them in `model$aov$residuals`:
 
-Our post-hoc table gives us this information - but not all rows are necessarily important here. Let's hold alcohol as a constant, and compare genre for each type of alcohol purchased. That means that we need to look for the following comparisons:
+```{r}
+# twoway_alcohol_aov <- aov(spend ~ alcohol_type * genre, data = twoway_alcohol)
+shapiro.test(twoway_alcohol_aov$aov$residuals)
+```
+
+Both assumptions appear to be intact.
+
+### Output
+
+Let's first look at our output for the omnibus ANOVA. The way to read this table is much like the same for a one-way ANOVA, but now we need to read across each line - as each line represents a different effect. So we see that:
+
+-   There is no main effect for alcohol (*p* = .137),
+-   There is a main effect for genre (*p* < .001),
+-   Importantly, there is a significant interaction effect for alcohol x genre (*p* < .001).
+
+```{r}
+twoway_alcohol_aov
+```
+In other words, there is a significant effect of background music genre on how much people spent on alcohol, but this depended on the type of alcohol they bought. Because this interaction is significant, we now need to turn to conducting **simple effects tests** to decompose what is actually going on. 
+
+Remember, for a simple effects test we want to test for differences between the levels of one variable, at every level of the other variable. One option is to hold alcohol as a constant, and compare genre for each type of alcohol purchased. Another is to instead hold genre constant and compare the two types of alcohol.
+
+Although it's up to us to determine which set of comparisons we interpret, it's useful to return to our original research question to guide our thinking here. Remember that we were originally interested in the effect of music on alcohol spend, but we thought this might depend on the type of wine being purchased. In that case, we might wish to hold *alcohol* type constant, and compare the two genres against each other.
+
+That means that we need to conduct the following comparisons:
 
 -   For **beer**, country vs classical
 -   For **wine**, country vs classical
 
-If we were to frame it in terms of the variables in the dataset, we would be looking for:
-
--   Beer country - beer classical
--   Wine country - wine classical
-
-Conveniently, this is captured in the very top and bottom rows of our post-hoc output table. Let's also run our simple effects tests using `emmeans`:
+In R, we can simply use `emmeans` to generate these comparisons.
 
 ```{r}
 emmeans(twoway_alcohol_aov, ~ genre, by = "alcohol_type") %>%
-  pairs(infer = TRUE)
+  pairs(infer = TRUE) 
 ```
 
-We can see that beer purchases were significantly greater with classical music on in the background than country (*t* = 30.24, *p* < .001). Likewise, wine purchases were also significantly greater with classical music than country music (*t* = 62.42, *p* < .001).
+We can see that:
 
-Of course, it might make more sense to do the simple effects tests the other way round; in other words, hold genre constant and compare how much was spent on each alcohol type. You can still absolutely find out this information, but now you would be looking for the following rows:
+- For beer, people spent more money if classical was on in the background compared to country (Mean difference = 6.11, *t* = 30.24, *p* < .001). 
+- But for wine, this difference was even greater - participants spent much more on wine if classical music was playing in the background (MD = 12.64, *t* = 62.42, *p* < .001).
+
+Of course, it might make more sense to do the simple effects tests the other way round; in other words, hold genre constant and compare how much was spent on each alcohol type. You can still absolutely find out this information by changing the `by` argument within `emmeans()`:
 
 -   For **country**, wine vs beer (wine country - beer country): *t* = 15.34, *p* < .001
--   For **classical**, wine vs beer (wine classical - beer classical): *t* = 16.85, *p* < .001
+-   For **classical**, wine vs beer (wine classical - beer classical): *t* = 16.85, *p* < .001.
 
 ```{r}
 emmeans(twoway_alcohol_aov, ~ alcohol_type, by = "genre") %>%
   pairs(infer = TRUE) 
 ```
+
+
 
 ### Write-up
 
@@ -389,7 +402,9 @@ The following example is completely fictional, and has no real grounding in theo
 
 ### Example
 
-If you did this subject in 2023 you would have met Victor and Gloria in the second statistics assignment, who were working with data looking at what predicts high school GPA. They've now moved onto a new project about whether listening to happy or sad music may affect exam performance. To do this, they design a nifty little study. They recruit 20 participants and bring them into the lab. This is their procedure:
+If you did this subject in 2023 you would have met Victor and Gloria in the second statistics assignment, who were working with data looking at what predicts high school GPA. They've now moved onto a new project about whether listening to happy or sad music may affect exam performance. To do this, they design a nifty little study. Their research question is: **does music affect exam performance under varying conditions of difficulty?**
+
+They recruit 20 participants and bring them into the lab. This is their procedure:
 
 -   Participants come into the lab and do a series of standard maths exams. The maths exams are either easy, medium or hard, and participants are randomly assigned to do either the easy or the hard one first. They are also randomly assigned either happy or sad background music as they do the exam.
 -   Once they have completed the first exam, they take a 10 minute break and then do another exam that is easy, medium, or hard, and with either happy or soft music in the background.
@@ -401,7 +416,7 @@ We have two **within-subjects** independent variables here:
 1.   Difficulty of the exam (3 levels: easy, medium, hard)
 2.   Background music (2 levels: happy or sad)
 
-Every participant therefore does 6 maths exams: easy-happy, easy-sad, medium-happy, medium-sad, hard-happy and hard-sad. The dependent variable of interest is their exam score. We're interested in whether the difficulty and the music type have an effect on exam performance. Because our two IVs are within-subject variables, we will want to use a two-way repeated measures ANOVA.
+Every participant therefore does 6 maths exams: easy-happy, easy-sad, medium-happy, medium-sad, hard-happy and hard-sad. The dependent variable of interest is their exam score. We're interested in whether the difficulty and the music type have an effect on exam performance. Because our two IVs are within-subject variables, we will want to use a **two-way repeated measures ANOVA**, or a **difficulty (3) x music (2) repeated measures ANOVA**.
 
 ```{r}
 twoway_exam <- read_csv(here("data", "factorial", "twoway_rmanova_long.csv"))
@@ -428,14 +443,14 @@ twoway_exam <- twoway_exam %>%
 
 Let's start with the usual descriptives and graphs:
 
-```{r echo = FALSE}
+```{r echo = FALSE, message = FALSE}
 twoway_exam %>%
   group_by(difficulty, music) %>%
   summarise(
     n = n(),
     mean = mean(grade),
     sd = sd(grade),
-    se = sd/n
+    se = sd/sqrt(n)
   ) %>%
   ungroup() %>%
   ggplot(
@@ -450,24 +465,35 @@ twoway_exam %>%
   labs(x = "Difficulty", y = "Mean grade", colour = "Music type")
 ```
 
+```{r message = FALSE}
+twoway_exam %>%
+  group_by(difficulty, music) %>%
+  summarise(
+    n = n(),
+    mean = mean(grade),
+    sd = sd(grade),
+    se = sd/sqrt(n)
+  )
+```
 
-Eyeballing the graph, we can see that there might be some sort of effect happening. Unsurprisingly, it looks like the easy maths exams are, well. easier, because people are scoring better on them. There might be an effect of music, because in both easy and hard conditions it looks like people do better with happy music compared to sad music. But the interaction plot tells us there's something clearly going on, and it paints a really interesting story on its own. It appears that there's almost a 'plateau'-ing effect with medium difficulty, in that both happy and sad hit the same point in exam scores. However, it looks like for happy music, harder exams see no further decrease in performance - but there is a sharp drop again for sad music.
+
+Eyeballing the graph, we can see that there might be some sort of effect happening. Unsurprisingly, it looks like the easy maths exams are, well. easier, because people are scoring better on them. There *might* be an effect of music, because in both easy and hard conditions it looks like people do better with happy music compared to sad music. But the interaction plot tells us there's something clearly going on, and it paints a really interesting story on its own. It appears that there's almost a 'plateau'-ing effect with medium difficulty, in that both happy and sad hit the same point in exam scores. However, it looks like for happy music, harder exams see no further decrease in performance - but there is a sharp drop again for sad music.
 
 ### Assumptions
 
-The assumptions for a two-way RM ANOVA is the same as a one-way:
+The assumptions for a two-way RM ANOVA is the same as a one-way RM-ANOVA:
 
 -   The data from the conditions should be normally distributed. (More specifically, the residuals should be normally distributed.)
 
 -   The data for each subject should be independent of every other subject.
 
--   Sphericity must be met.
+-   **Sphericity** must be met.
 
-As is the case with one-way repeated measures ANOVAs, the assumption of sphericity is only tested when there are three or more levels; with only two levels, the assumption is always met. The output is below with the main ANOVA output. The sphericity for all of our effects is intact, so we don't have any issues here, but if we did the same principle would apply - we would apply our corrections depending on the value of epsilon.
+As is the case with one-way repeated measures ANOVAs, the assumption of sphericity is only tested when there are *three* or more levels; with only two levels, the assumption is always met. The output is below with the main ANOVA output. The sphericity for all of our effects is intact, so we don't have any issues here, but if we did the same principle would apply - we would apply our corrections depending on the value of epsilon.
 
-Let's also see if our variables are normally distributed:
+Let's also see if our variables are normally distributed. 
 
-R-Note: For a repeated measures ANOVA, for some reason the closest I can get to generating what Jamovi does is to build an `aov()` model without an explicit `Error()` term - as would be the case for a fully between-subjects ANOVA. You can then use the standardised residuals to create a Q-Q plot using the below code. Note that `broom:augment()` is just a helper function that nicely extracts the residuals:
+R-Note: For a repeated measures ANOVA, for some reason the closest you can get to generating what Jamovi does is to build an `aov()` model without an explicit `Error()` term - as would be the case for a fully between-subjects ANOVA. You can then use the standardised residuals to create a Q-Q plot using the below code. Note that `broom:augment()` is just a helper function that nicely extracts the residuals:
 
 ```{r}
 aov(grade ~ difficulty * music, data = twoway_exam) %>%
@@ -495,14 +521,21 @@ twoway_exam_aov <- aov_ez(
 
 twoway_exam_aov
 
+
+```
+
+And here is our output for sphericity:
+
+```{r}
 # To get sphericity output
 
 summary(twoway_exam_aov)
 ```
 
-Once again this is quite a busy table! We can see that there is a significant main effect of difficulty (*F*(2, 38) = 189.61, *p* < .001), as well as a significant main effect of music type (*F*(1, 19) = 18.39, *p* < .001). There is also a significant interaction effect of difficulty and music (*F*(2, 38) = 10.29, *p* < .001). We can also see our sphericity output here; neither the difficulty variable (*W* = .880) nor the difficulty x music interaction (*W* = .788) terms show significant violation of sphericity (*p* > .05). Therefore we have not corrected for anything in our main ANOVA output. Note that because music only has two levels, there is no sphericity test for it.
 
-To decompose this, we'll do our usual simple effects tests - holding one variable constant and running pairwise comparisons with the other. For this example, we'll just hold the difficulty constant and compare music genres. We can absolutely reverse the simple effects, but for the sake of simplicity we'll just do it the one way round for this example.
+Once again this is quite a busy set of outputs! We can see that there is a significant main effect of difficulty (*F*(2, 38) = 189.61, *p* < .001), as well as a significant main effect of music type (*F*(1, 19) = 18.39, *p* < .001). There is also a significant interaction effect of difficulty and music (*F*(2, 38) = 10.29, *p* < .001). We can also see our sphericity output here; neither the difficulty variable (*W* = .880) nor the difficulty x music interaction (*W* = .788) terms show significant violation of sphericity (*p* > .05). Therefore we have not corrected for anything in our main ANOVA output. Note that because music only has two levels, there is no sphericity test for it.
+
+To decompose this, we'll do our usual simple effects tests - holding one variable constant and running pairwise comparisons with the other. Based on our original research question, it might make sense to hold the music type constant and compare the exams on difficulty. This means we need to look at all of the rows that compare **easy, medium and hard** for the same kind of music. We can absolutely reverse the interpretation of the simple effects, but doing it in this manner is probably more consistent with the nature of the original research question - it lets us see how participants performed across difficulty levels, based on the music they were listening to.
 
 ```{r}
 emmeans(twoway_exam_aov, ~ music, by = "difficulty") %>%
@@ -510,17 +543,18 @@ emmeans(twoway_exam_aov, ~ music, by = "difficulty") %>%
 ```
 
 
-From this we can see that for easy exams, on average people scored 4.4 points higher with happy music compared to sad music (p = .023). On medium exams, there was no difference between happy and sad music (p = .900). Lastly, for harder exams people who listened to happy music scored, on average, 11.7 points higher than people who listened to sad music (*p* < .001). This suggests overall that happy music is probably better for completing exams than sad music, though the medium difficulty exam is a strange one here.
+From this we can see that 
 
-If, instead, we wanted to hold music type constant and test differences in difficulty, we would get this output. 
+- For happy music:
+  - Performance on the easy exam was better than the medium exam (MD = 21.1 points, *p* < .001).
+  - There was no significant difference between the medium and hard exams (MD = 0.30 points, *p* = .863).
+  - Performance on the easy exams was naturally significantly higher than hard exams (MD = 21.4 points, *p* < .001).
+- For sad music:
+  - Performance on the easy exam was again better than the medium exam (MD = 16.9 points, *p* < .001).
+  - Performance on the medium exam was also significantly higher than the hard exam (MD = 11.8 points, *p* < .001).
+  - Performance on the easy exams was naturally significantly higher than hard exams (MD = 28.7 points, *p* < .001).
 
-```{r}
-emmeans(twoway_exam_aov, ~ difficulty, by = "music") %>%
-  pairs(infer = TRUE, adjust = "none")
-```
-
-
-This paints a much more interesting picture about what is going on, and might be a more interesting way of decomposing the interaction. But remember - only do one or the other!
+This suggests overall that happy music is probably better for completing exams than sad music, particularly when the exams are difficult.
 
 ## Two-way mixed ANOVA
 
@@ -550,7 +584,7 @@ twoway_mixed$group <- factor(twoway_mixed$group)
 twoway_mixed$time <- factor(twoway_mixed$time)
 ```
 
-```{r}
+```{r echo = FALSE}
 twoway_mixed %>%
   ggplot(
     aes(x = time, y = anxiety, colour = group)
@@ -591,7 +625,7 @@ twoway_mixed %>%
 
 ### Output
 
-Below is our main output from R. You'll note that the omnibus outputs are actually split across two tables - one for the within-subject effects, and another for the between-subject effects. This simply makes it easy to identify which variables are what types. Based on the output, we can see that we have a significant main effect of group (*F*(2, 42) = 4.352, *p* = .019), and also a significant main effect of time (*F*(2, 84) = 394.909, *p* < .001). We also have a significant interaction (*F*(4, 84) = 110.188, *p* < .001).
+Below is our main output from R. Unlike Jamovi and some other software, R does not split the output by between- or within-subject factors - which makes reading the output slightly easier. Based on the output, we can see that we have a significant main effect of group (*F*(2, 42) = 4.352, *p* = .019), and also a significant main effect of time (*F*(2, 84) = 394.909, *p* < .001). We also have a significant interaction (*F*(4, 84) = 110.188, *p* < .001).
 
 ```{r}
 twoway_mixed_aov <- aov_ez(
@@ -610,16 +644,7 @@ twoway_mixed_aov
 summary(twoway_mixed_aov)
 ```
 
-Let's decompose this with simple effects. Doing this in Jamovi is not trivial at all for some reason - you have to really get your hands dirty with Jamovi in order to make this work. There are two main ways you can do this:
-
--   Run a one-way ANOVA at each timepoint - this would be the simple effect of group
-
-```{r}
-emmeans(twoway_mixed_aov, ~ group, by = "time") %>%
-  pairs(infer = TRUE, adjust = "none")
-```
-
--   Run a one-way repeated measures ANOVA for each group - this would be the simple effect of time
+Let's decompose this with simple effects. Given the original question, here it might make sense to hold the group constant, and examine how they change over time.
 
 ```{r}
 emmeans(twoway_mixed_aov, ~ time, by = "group") %>%
@@ -628,43 +653,55 @@ emmeans(twoway_mixed_aov, ~ time, by = "group") %>%
 
 Let's bulletpoint the main feature of each, and you can refer to the output below as you go through:
 
--   For controls, anxiety scores were not significantly different between the 0 week and 6 week mark (p = .065). However, anxiety scores were significantly lower at 12 weeks compared to 6 weeks (p = .004). Scores were also significantly lower at 12 weeks compared to 0 weeks (p = .002).
--   For the exercise group, anxiety scores were not significantly different from 0 weeks to 6 weeks (p = .089). However, anxiety scores significantly decreased from 6 weeks to 12 weeks (*p* < .001). Scores were also significantly lower after 12 weeks than at 0 weeks (*p* < .001).
--   For the music group, anxiety scores significantly decreased between 0 weeks and 6 weeks (*p* < .001). Scores were significantly lower at the 12 week mark again compared to the 6 week mark (*p* < .001). Scores were also significantly lower at 12 weeks compared to 0 weeks (*p* < .001). These comparisons are best supplemented with the differences in means.
+- For controls, anxiety scores were not significantly different between the 0 week and 6 week mark (*p* = .099). However, anxiety scores were significantly lower at 12 weeks compared to 6 weeks (*p* < .001). Scores were also significantly lower at 12 weeks compared to 0 weeks (*p* < .001).
+- For the exercise group, anxiety scores were not significantly different from 0 weeks to 6 weeks (*p* = .065). However, anxiety scores significantly decreased from 6 weeks to 12 weeks (*p* < .001). Scores were also significantly lower after 12 weeks than at 0 weeks (*p* < .001).
+- For the music group, anxiety scores significantly decreased between 0 weeks and 6 weeks (*p* < .001). Scores were significantly lower at the 12 week mark again compared to the 6 week mark (*p* < .001). Scores were also significantly lower at 12 weeks compared to 0 weeks (*p* < .001).
+
+Of course, if you were writing these results up in full then you would also want to include means and standard deviations, or other relevant values like the mean difference.
+
+Phew - all done!
 
 ## Three-way ANOVA
 
-### Introduction
+### Why not three?
 
-Of course, we don't have to stop at two IVs. Sometimes we may have designs where we want to 
+In this module we've largely focused on two-way ANOVAs, where we have two independent variables. Why not more than that, you may ask? Is it possible to do a three-way, four-way or even a five-way ANOVA?
 
-At this point though, I want to ask you... *why* are you going to that complex of a design?
+The short answer is yes. The longer answer, in my view, is yes - but some caution is warranted. We'll focus on a three-way ANOVA here. In a three-way ANOVA, we test for relationships between three independent variables - A, B and C - on a continuous outcome, just like other ANOVAs. As in the case of the two-way ANOVA, we typically not only test the main effects of the three IVs, but also interactions between all of them. This means that in a standard three-way ANOVA, we end up estimating the following effects:
 
-To illustrate, consider a three-way ANOVA with variables A, B and C. In line with the principle of marginality, an ANOVA with all possible interactions will have:
+- Three main effects: variable A, B and C
+- Three first-order interactions: AxB, AxC and BxC
+- One second-order interaction: AxBxC.
 
--   3 main effects: A, B and C
--   3 simple (two-way) interaction effects: AxB, AxC, BxC
--   1 three-way interaction: AxBxC
+Suddenly we've gone from interpreting 3 effects to 7 - and we saw how much work it was to really work through a two-way interaction as is! The key extension here is that not only do we test for all possible two-way interactions, but our highest-order term is now a *three-way* interaction (ABC). In essence, this would be claiming that the two-way interaction of AB also depends on the level of C.
 
-This is not a trivial thing to interpret! A significant three-way interaction means that e.g. the main effect of variable A depends on both variable B *and* variable C. This quickly becomes really difficult to interpret, particularly when one or more variables have multiple levels. What is the effect of A when B = 2 and C = 4, for instance? What about A when B = 2 and C = 3? etc etc.
+Naturally, we can extend this thinking to adding more IVs. Let's now take a look at a four-way ANOVA with four variables, A, B, C and D:
 
-Nevertheless, three-way ANOVAs (and even beyond that) are not necessarily uncommon, so it doesn't hurt to know about them. We'll unpack the main concepts as we step through an example, for the sake of brevity. 
+- Four main effects (A, B, C, D)
+- Six first-order interactions: AxB, AxC, AxD, BxC, BxD, CxD
+- Three second-order interactions: AxBxC, AxCxD, BxCxD
+- One third-order interaction: ABCD
+
+This is 14 effects!! Hence why some caution is potentially required - by definition (i.e. the principle of marginality), if we are modelling four-way interactions we are not only modelling the four-way ABCD interaction but everything else underneath it. This can make interpretation really thorny, and so you really have to be comfortable with interpreting the effect!
+
+It's worth stressing here that there is no real requirement to actually model interaction effects per se. *If* you have a good reason to not include them, you can actually do three-way ANOVAs *without* higher-order interactions. The thing you *can't* do is model higher-order interactions without everything underneath them. 
+
+Nevertheless, three-way ANOVAs (and even beyond that) are not necessarily uncommon, so it doesn't hurt to know about them. We will work through an example in full here.
 
 ### Example
 
-This dataset is from a fictional experiment looking at how gender (male and female), risk of migraine (low or high) and different treatments (labelled X, Y and Z) impacted pain scores associated with a migraine headache. Below is a snippet of what our data looks like:
+This dataset is from a fictional experiment looking at how gender (male and female), risk of migraine (low or high) and different treatments (labelled X, Y and Z) impacted pain scores associated with a migraine headache. This dataset is a lightly adapted version of the `headache` dataset from the `datarium` package. 
+
+This gives us a gender (2) x risk (2) x treatment (3) three-way design. Below is a snippet of what our data looks like:
 
 ```{r}
-library(datarium)
-data(headache)
-head(headache)
+headache <- read_csv(here("data", "factorial", "threeway_headache.csv"))
 ```
-
 We want to run a gender (2) x risk (2) x treatment (3) three-way ANOVA to see whether these predictors have an effect on overall pain scores.
 
 Let's start by visualising this data. We cannot fully visualise a three-way interaction because we inherently need four dimensions (as we have three predictors and one outcome variable). The best way to approach this is to draw a series of two-way interaction plots, split by the third variable. In the example below, the graphs show treatment on the x-axis, pain scores on the y-axis, different lines for low and high risk and separate graphs for male and female participants:
 
-```{r echo = FALSE}
+```{r echo = FALSE, message = FALSE}
 headache %>%
   group_by(gender, risk, treatment) %>%
   summarise(
@@ -678,85 +715,15 @@ headache %>%
   geom_point(size = 2) +
   geom_line(linewidth = 1) +
   facet_wrap(~c(gender)) +
-  theme_pubr()
+  theme_pubr() +
+  labs(x = "Treatment", y = "Pain score", colour = "Risk")
 ```
-
-### Simple *simple* effects
-
-Consider a scenario where a three-way interaction is significant. Naturally, as we saw in the examples with two-way ANOVAs, we now have to turn to breaking down the lower-order terms to unpack this interaction.
-
-For a two-way ANOVA, this was easy - we simply interpreted the effect of variable A at each level of variable B, and vice versa. We called this a simple effects test. But now, we need to break down a three-way interaction by looking at every *two-way* interaction that is now significant. The 'simple effect' is now each two-way interaction, hence why the terminology of **simple interaction effect/test** is sometimes used.
-
-That, of course, means that if the two-way is significant, we need to run the next level of simple effects for each main effect. At this level, we call them **simple simple main effects**. That's because we're now looking at main effects that are simple effects of a simple interaction effect, which is itself a simple effect of a three-way interaction. If that didn't make sense, consider running an alternate analysis to a three-way ANOVA. 
-
-It helps to visualise this, so I'll use the headache data to do so. Imagine that the three-way interaction between treatment, risk and gender is significant. Imagine that every other effect is also significant (we'll test this further down). This would give us three sets of simple interactions to test:
-
-1.    Treatment x risk, for each gender
-2.    Treatment x gender, for each risk level
-3.    Gender x risk, for each treatment
-
-Here is the first interaction visualised - treatment and risk, with separate plots for males and females:
-
-```{r echo = FALSE}
-headache_summary <- headache %>%
-  group_by(gender, risk, treatment) %>%
-  summarise(
-    mean_pain = mean(pain_score),
-    sd_score = sd(pain_score)
-  ) 
-
-
-headache_summary %>%
-  ggplot(
-    aes(x = treatment, y = mean_pain, colour = risk, group = risk)
-  ) +
-  geom_point(size = 2) +
-  geom_line(linewidth = 1) +
-  facet_wrap(~c(gender)) +
-  theme_pubr()
-```
-
-Here's the second, which plots treatment x gender for each risk level:
-
-```{r echo = FALSE}
-headache_summary %>%
-  ggplot(
-    aes(x = treatment, y = mean_pain, colour = gender, group = gender)
-  ) +
-  geom_point(size = 2) +
-  geom_line(linewidth = 1) +
-  facet_wrap(~c(risk)) +
-  theme_pubr()
-```
-
-And finally, here is gender and risk by each treatment:
-
-```{r echo = FALSE}
-headache_summary %>%
-  ggplot(
-    aes(x = risk, y = mean_pain, colour = gender, group = gender)
-  ) +
-  geom_point(size = 2) +
-  geom_line(linewidth = 1) +
-  facet_wrap(~c(treatment)) +
-  theme_pubr()
-```
-
-And then within that, you would also want the main effects.
-
 
 ### Assumptions and output
 
-Let's run our basic ANOVA. Just like in Jamovi, we'll do our usual assumption checks for our ANOVA model too. Based on Levene's test and the Shapiro-Wilks test, we have no violations in multivariate equality of variance (*p* = .994) or normality (*p* = .398).
+Let's run our main ANOVA. In R, we can simply use the `aov_ez()` function here again to build our ANOVA model:
 
 ```{r}
-headache %>%
-  levene_test(pain_score ~ gender * risk * treatment, center = "mean")
-
-```
-
-```{r}
-
 threeway_aov <- aov_ez(
   data = headache,
   id = "id",
@@ -765,69 +732,126 @@ threeway_aov <- aov_ez(
   anova_table = list(es = "pes"),
   include_aov = TRUE
 )
+```
 
+
+Our assumptions are exactly the same as before - we test for normality of residuals and equality/homogeneity of variance. The tests are exactly the same. Based on Levene's test and the Shapiro-Wilks test, we have no violations in multivariate equality of variance (*p* = .994) or normality (*p* = .398).
+
+```{r}
+# Levene's test
+headache %>%
+  levene_test(pain_score ~ gender * risk * treatment, center = "mean")
+```
+
+```{r}
+# Normality 
 shapiro.test(threeway_aov$aov$residuals)
 ```
 
+Now let's examine our omnibus ANOVA output.
 
 ```{r}
 threeway_aov
 ```
-
-
-So what do our results tell us? Well:
+What do our results tell us? Well:
 
 -   We have significant main effects of gender (*F*(1, 60) = 16.20, *p* < .001), risk group (*F*(1, 60) = 92.69, *p* < .001) and treatment (*F*(2, 60) = 7.32, *p* = .001).
 
--   We have a significant two-way gender x treatment interaction (*F*(2, 60) = 3.34, *p* = .04), but no significant interactions between gender x risk (*p* = .708) and risk x treatment (*p* = .494).
+-   We have a significant two-way gender x treatment interaction (*F*(2, 60) = 3.34, *p* = .042), but no significant interactions between gender x risk (*p* = .708) and risk x treatment (*p* = .494).
 
 -   Our highest-order interaction, gender x risk x treatment is significant (*F*(2, 60) = 7.41, *p* = .001).
 
-Great, so we know that we're dealing with a three-way interaction. But... how do we break that down? As in a two-way, we now need to break down simple **main** effects and simple **interaction** effects.
 
-In a two-way ANOVA, we broke down the two-way interaction by essentially running tests on the main effects (hence, simple main effects). In a three-way ANOVA, we attempt to start by testing for interactions between A and B, at each level of C. Think of it like running multiple two-way ANOVAs.
+### Breaking down complex interactions
 
-In our case, let's look at whether risk and treatment interact, for men and women separately. For simplicity, I'm defaulting to using rstatix's `anova_test()` here, but an alternative approach is to filer the data by men and women and use these smaller datasets as calls to `aov_ez`.
+Great, so we know that we're dealing with a significant three-way interaction. But... how do we break that down? 
 
-```{r}
-headache %>%
-  group_by(gender) %>%
-  anova_test(pain_score ~ treatment * risk, type = 3)
-```
+For a two-way ANOVA, this was easy - recall that we conducted **simple effects tests**, where we interpreted the effect of variable A at each level of variable B (or vice versa). In essence, we ran comparisons on the main effects for each level of the other variable. 
 
-Here, the risk x treatment interaction is significant for men (*p* = .016). However, for women the interaction is not quite significant (*p* = .054).
+We now need to extend that that thinking to the number of effects in a full three-way ANOVA. Naturally, as we saw with two-way ANOVAs, if we have a significant *three-way* interaction we have to break down the lower-order terms to unpack this interaction. This includes both main effects and two-way interactions, giving rise to simple **main** effects and simple **interaction** effects.
 
-Let's break this down for the men by doing simple simple effects. Following the principle of starting with the highest-order factor first, we now need to decompose the two-way risk x treatment interaction for men. Is there a difference between treatments when risk is low?
+As we are primarily interested in the efficacy of the treatment on headacoe pain, it might make sense for us to examine the risk x treatment interaction for each gender. We do so by essentially running two-way ANOVAs between A and B (in this case, risk and treatment) at each level of C (in this case, gender). Let's put this in a plot form, with 95% CIs:
 
-Here's a graph to visualise what comparisons we're looking at:
+```{r echo = FALSE, message = FALSE}
+headache_summary <- headache %>%
+  group_by(gender, risk, treatment) %>%
+  summarise(
+    n = n(),
+    mean_pain = mean(pain_score),
+    sd_score = sd(pain_score),
+    se = sd_score/sqrt(n)
+  ) %>%
+  ungroup()
 
-```{r echo = FALSE}
 
 headache_summary %>%
   ggplot(
     aes(x = treatment, y = mean_pain, colour = risk, group = risk)
   ) +
-  geom_point(size = 2, colour = "grey") +
-  geom_line(linewidth = 1, colour = "grey") +
-  geom_point(data = subset(headache_summary, risk == "low" & gender == "male"), size = 2) +
-  geom_line(data = subset(headache_summary, risk == "low" & gender == "male"), linewidth = 1) +
-    geom_point(data = subset(headache_summary, risk == "high" & gender == "male"), size = 2) +
-  geom_line(data = subset(headache_summary, risk == "high" & gender == "male"), size = 1) +
+  geom_point(size = 2) +
+  geom_line(linewidth = 1) +
+  geom_errorbar(
+    aes(
+      ymin = mean_pain - 1.96*se,
+      ymax = mean_pain + 1.96*se
+    ), width = 0.2
+  ) +
   facet_wrap(~c(gender)) +
-  theme_pubr()
+  theme_pubr() +
+  labs(x = "Treatment", y = "Mean pain score", colour = "Risk")
 ```
 
-Here's one way to run the simple simple effets of treatment (with Holm adjustments by default). When specifying the `emmeans()` call, note that we use the same interaction terminology 
+Here, we can see something interesting going on. For both men and women, the efficacy of the treatments might differ - but this may also depend on their risk. For women, for instance, there may not be much change in headache pain, especially for women at high risk of headaches - we can see that the 95% CIs in this group all largely overlap with each other. For men at high risk though, there appears to be a decent difference between treatments X and Y. This is what we will drill down into further.
+
+To do so, we first use `emmeans()` to calculate our estimated marginal means for our three-way interactions. For ease, this will be assigned to a variable called `headache_emm` like below:
 
 ```{r}
-emmeans(threeway_aov, ~ treatment * gender * risk) %>%
-  pairs(infer = TRUE, adjust = "holm", simple = "gender")
+headache_emm <- emmeans(threeway_aov, ~ treatment * gender * risk)
+headache_emm
+```
+To calculate the initial two-way simple interactions, we can use the `joint_tests()` function from `emmeans`, which will calculate ANOVAs based on the contrasts we specify. In this case, because we want to calculate two-way interactions for each level of gender, we specify the argument `by = "gender"`. 
+
+```{r}
+headache_emm %>%
+  joint_tests(by = "gender")
+```
+Focusing on the two-way interactions for each gender here, we see that the interaction is significant for males (*p* = .008) but not for females (*p* = .065). 
+
+Now we can break down these two-way interactions further to examine the simple main effects of interest (alternatively called simple *simple* effects). As above, since we might be most interested in the differences between treatments, let's examine the simple main effects of treatment.
+
+To do that, we can use the `pairs()` function as we always have. As a bit of a shortcut to obtain the simple effects we are interested in, we can specify the argument `simple = "treatment"` to indicate that we want simple effects for this variable. This is equivalent to `pairs(by = c("gender", "risk"))`.
+
+```{r}
+headache_emm %>%
+  pairs(infer = TRUE, adjust = "none", simple = "treatment")
+```
+What do we see? Let's take this by each combination of gender and risk:
+
+- For women at high risk of headaches, there are no significant differences in efficacy between the treatments (all *p*s > .05).
+- For men at high risk, treatment Y is significantly better than treatment X (*p* < .001), and treatment X is also significantly better than treatment X (*p* < .001). However, there is no significant diffrence between treatments Y and Z (*p* = .299).
+- For women at low risk, treatment Y is again significantly better than treatment X (*p* = .026). However, no other comparisons are significant (*p*s > .05).
+- For men at low risk, there are no significant differences in efficacy between the treatments (all *p*s > .05).
+
+Of course, with this many comparisons you may wish to correct for multiple comparisons - particularly if these simple effects are being conducted post-hoc, and not based on the question. Here is an example with Holm corrections:
+
+```{r}
+headache_emm %>%
+  pairs(infer = TRUE, adjust = "holm", simple = "treatment")
 ```
 
-From this we can infer the following:
--   For *high risk* men, there was a significant difference in treatment between X and Y (*p* = .004), a significant difference between X and Z (*p* = .001) but no difference between X and Z (*p* = .347)
--   No significant difference between treatments for **low risk** men
+### A note about splitting data
 
+In SPSS (and likely Jamovi), to conduct simple interaction tests you would typically need to split the data by one of the variables. In our example, we would literally conduct two-way ANOVAs for males and females separately, which would split our sample size in half. However, an important note is that `emmmeans` uses the error terms across the *whole* model to calculate test statistics properly.
+
+There does not seem to be a fully consistent approach a to which way is better, and this might potentially be a limitation of software more so than methodological approaches. However, given that these differences will also impact significance it is good to know here. (The same applies for two-way ANOVAs, but all programs handle these well.)
+
+On a related note, it is possible to calculate the two-way simple interactions using `anova_test()` with the correct model error term. This function has a specific argument called `error`, which specifies which model (in `lm` form) should be used for calculating error terms. In this instance, because we want the error term from the whole three-way ANOVA model, we extract the `lm` object from our `aov` object and pass this to this argument.
+
+```{r}
+headache %>%
+  group_by(gender) %>%
+  anova_test(pain_score ~ treatment * risk, type = 3, error = threeway_aov$lm)
+```
 
 
 ## Planned comparisons
