@@ -45,7 +45,24 @@ It's common for many students learning research methods and statistics to simply
 
 Below is an example of why data visualisation should be a crucial part of the quantitative research process:
 
+::: {.content-visible when-format="html"}
+
 ![](img/datasaurus.gif)
+:::
+
+::: {.content-visible when-format="typst"}
+
+```{r fig.align='center'}
+library(datasauRus)
+
+ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
+  geom_point() +
+  theme_void() +
+  theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol = 3)
+```
+
+:::
 
 ```{r echo = FALSE, eval = FALSE}
 knitr::include_graphics(here("img", "datasaurus.gif"))
