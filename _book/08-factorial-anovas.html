@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; Factorial ANOVAs – Research Process for Music Psychologists</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./09-regressions-2.html" rel="next">
+<link href="./07-regressions.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./08-factorial-anovas.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Process for Music Psychologists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I: Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A very brief introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-descriptives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferential statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II: Basic inferential tests</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-chisquares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chi-squares</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III: Advanced methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-factorial-anovas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regressions-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-efa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-medmod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-nonpara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#factorial-intro" id="toc-factorial-intro" class="nav-link active" data-scroll-target="#factorial-intro"><span class="header-section-number">8.1</span> Introduction</a></li>
+  <li><a href="#factorial-designs" id="toc-factorial-designs" class="nav-link" data-scroll-target="#factorial-designs"><span class="header-section-number">8.2</span> Factorial designs</a>
+  <ul class="collapse">
+  <li><a href="#what-is-an-interaction" id="toc-what-is-an-interaction" class="nav-link" data-scroll-target="#what-is-an-interaction"><span class="header-section-number">8.2.1</span> What is an interaction?</a></li>
+  <li><a href="#testing-for-interactions" id="toc-testing-for-interactions" class="nav-link" data-scroll-target="#testing-for-interactions"><span class="header-section-number">8.2.2</span> Testing for interactions</a></li>
+  </ul></li>
+  <li><a href="#simple-effects-tests" id="toc-simple-effects-tests" class="nav-link" data-scroll-target="#simple-effects-tests"><span class="header-section-number">8.3</span> Simple effects tests</a>
+  <ul class="collapse">
+  <li><a href="#simple-effects-tests-1" id="toc-simple-effects-tests-1" class="nav-link" data-scroll-target="#simple-effects-tests-1"><span class="header-section-number">8.3.1</span> Simple effects tests</a></li>
+  </ul></li>
+  <li><a href="#r-specific-considerations" id="toc-r-specific-considerations" class="nav-link" data-scroll-target="#r-specific-considerations"><span class="header-section-number">8.4</span> R-specific considerations</a>
+  <ul class="collapse">
+  <li><a href="#the-afex-package" id="toc-the-afex-package" class="nav-link" data-scroll-target="#the-afex-package"><span class="header-section-number">8.4.1</span> The <code>afex</code> package</a></li>
+  <li><a href="#writing-interactions-in-r" id="toc-writing-interactions-in-r" class="nav-link" data-scroll-target="#writing-interactions-in-r"><span class="header-section-number">8.4.2</span> Writing interactions in R</a></li>
+  <li><a href="#simple-effects-tests-in-r" id="toc-simple-effects-tests-in-r" class="nav-link" data-scroll-target="#simple-effects-tests-in-r"><span class="header-section-number">8.4.3</span> Simple effects tests in R</a></li>
+  </ul></li>
+  <li><a href="#two-way-between-groups-anova" id="toc-two-way-between-groups-anova" class="nav-link" data-scroll-target="#two-way-between-groups-anova"><span class="header-section-number">8.5</span> Two-way between groups ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">8.5.1</span> Introduction</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">8.5.2</span> Example</a></li>
+  <li><a href="#assumption-testing" id="toc-assumption-testing" class="nav-link" data-scroll-target="#assumption-testing"><span class="header-section-number">8.5.3</span> Assumption testing</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output"><span class="header-section-number">8.5.4</span> Output</a></li>
+  <li><a href="#write-up" id="toc-write-up" class="nav-link" data-scroll-target="#write-up"><span class="header-section-number">8.5.5</span> Write-up</a></li>
+  </ul></li>
+  <li><a href="#two-way-repeated-measures-anova" id="toc-two-way-repeated-measures-anova" class="nav-link" data-scroll-target="#two-way-repeated-measures-anova"><span class="header-section-number">8.6</span> Two-way repeated measures ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">8.6.1</span> Introduction</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">8.6.2</span> Example</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="header-section-number">8.6.3</span> Assumptions</a></li>
+  <li><a href="#output-1" id="toc-output-1" class="nav-link" data-scroll-target="#output-1"><span class="header-section-number">8.6.4</span> Output</a></li>
+  </ul></li>
+  <li><a href="#two-way-mixed-anova" id="toc-two-way-mixed-anova" class="nav-link" data-scroll-target="#two-way-mixed-anova"><span class="header-section-number">8.7</span> Two-way mixed ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#introduction-2" id="toc-introduction-2" class="nav-link" data-scroll-target="#introduction-2"><span class="header-section-number">8.7.1</span> Introduction</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">8.7.2</span> Example</a></li>
+  <li><a href="#output-2" id="toc-output-2" class="nav-link" data-scroll-target="#output-2"><span class="header-section-number">8.7.3</span> Output</a></li>
+  </ul></li>
+  <li><a href="#three-way-anova" id="toc-three-way-anova" class="nav-link" data-scroll-target="#three-way-anova"><span class="header-section-number">8.8</span> Three-way ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#why-not-three" id="toc-why-not-three" class="nav-link" data-scroll-target="#why-not-three"><span class="header-section-number">8.8.1</span> Why not three?</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3"><span class="header-section-number">8.8.2</span> Example</a></li>
+  <li><a href="#assumptions-and-output" id="toc-assumptions-and-output" class="nav-link" data-scroll-target="#assumptions-and-output"><span class="header-section-number">8.8.3</span> Assumptions and output</a></li>
+  <li><a href="#breaking-down-complex-interactions" id="toc-breaking-down-complex-interactions" class="nav-link" data-scroll-target="#breaking-down-complex-interactions"><span class="header-section-number">8.8.4</span> Breaking down complex interactions</a></li>
+  <li><a href="#a-note-about-splitting-data" id="toc-a-note-about-splitting-data" class="nav-link" data-scroll-target="#a-note-about-splitting-data"><span class="header-section-number">8.8.5</span> A note about splitting data</a></li>
+  </ul></li>
+  <li><a href="#planned-comparisons" id="toc-planned-comparisons" class="nav-link" data-scroll-target="#planned-comparisons"><span class="header-section-number">8.9</span> Planned comparisons</a>
+  <ul class="collapse">
+  <li><a href="#introduction-3" id="toc-introduction-3" class="nav-link" data-scroll-target="#introduction-3"><span class="header-section-number">8.9.1</span> Introduction</a></li>
+  <li><a href="#planned-comparisons-1" id="toc-planned-comparisons-1" class="nav-link" data-scroll-target="#planned-comparisons-1"><span class="header-section-number">8.9.2</span> Planned comparisons</a></li>
+  <li><a href="#linear-contrasts" id="toc-linear-contrasts" class="nav-link" data-scroll-target="#linear-contrasts"><span class="header-section-number">8.9.3</span> Linear contrasts</a></li>
+  <li><a href="#an-example" id="toc-an-example" class="nav-link" data-scroll-target="#an-example"><span class="header-section-number">8.9.4</span> An example</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./08-factorial-anovas.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="factorial-anova" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this module we return to the humble ANOVA, and to working with categorical predictors again. Specifically, we move beyond just having one categorical predictor in an ANOVA model to having two (and all of the complexities that come with doing so). We’ll also take a look at interactions, which form a crucial part of more complex models specifying relationships between our predictors.</p>
+<p>This module covers:</p>
+<ul>
+<li>Two-way between-subjects ANOVA</li>
+<li>Two-way repeated measures ANOVA</li>
+<li>TWo-way mixed ANOVA</li>
+<li>Three-way between-subjects ANOVA</li>
+</ul>
+<section id="factorial-intro" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="factorial-intro"><span class="header-section-number">8.1</span> Introduction</h2>
+<p>In Week 9 we talked about analyses of variance - tests for comparing means across one categorical IV/predictor (typically with at least 3 levels) on one continuous outcome. In this extension module we move to some more complex ANOVA models - specifically two-way ANOVAs, where we have two categorical predictors and one continuous outcome. The main goal is still largely the same - comparing means across groups - but becomes a bit more complex with the involvement of two variables. We’ll also briefly consider the instance of a three-way ANOVA (i.e.&nbsp;three predictors), but won’t spend too much time on this for good reason. We’ll also talk briefly about some statistical concepts that we haven’t covered in the main subject content, specifically about interactions and contrasts.</p>
+<p>By the end of this module you should be able to:</p>
+<ul>
+<li>Describe what an interaction is</li>
+<li>Conduct and interpret an omnibus two-way ANOVA</li>
+<li>Distinguish between post-hoc tests, simple effects tests and planned contrasts</li>
+<li>Attempt to think about a three-way ANOVA (but see warnings on the relevant page)</li>
+</ul>
+</section>
+<section id="factorial-designs" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="factorial-designs"><span class="header-section-number">8.2</span> Factorial designs</h2>
+<p>In Week 9, when we talk about ANOVAs we conduct one-way ANOVAs. These tests from Week 9 are called one-way ANOVAs because there is only one IV with multiple levels being tested. However, in many research designs we will want to test the effect of two or more categorical variables at the same time (for example, experimental conditions or variables that capture important categories, such as participant sex).</p>
+<p>When we want to test the effect of more than one IV, we start getting into what we call <strong>factorial ANOVAs</strong>. Factorial ANOVAs are used when we have two or more IVs, each with at least two levels per variable. This is common in a lot of research designs, where either multiple categorical variables are collected as part of the data collection phase or categorical variables are created as part of the analysis process.</p>
+<p>We will talk about this more on the next page, but factorial designs are particularly useful for testing interactions, and the effects of both of your IVs together.</p>
+<p>When reporting results for factorial designs, it is expected that you report how many levels each variable had. For instance, let’s say your two IVs are participant sex (male and female) and experimental group (group A, B and C). If you were to test this factorial design, there are a couple of ways you could report this:</p>
+<ul>
+<li>A Sex (2) x Group (3) factorial ANOVA</li>
+<li>A 2 x 3 factorial ANOVA</li>
+<li>A Sex x Group (2 x 3) factorial ANOVA</li>
+</ul>
+<p>The first one is the preferable because it lays out the conditions clearly.</p>
+<section id="what-is-an-interaction" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="what-is-an-interaction"><span class="header-section-number">8.2.1</span> What is an interaction?</h3>
+<p>Pretend you’ve been enacting a singing intervention in a school of kids, where one group of kids have been singing daily and another group have not been. You’re interested in whether the singing intervention has an effect on their wellbeing. By and large, the singing intervention does - there is a clear difference between the kids who get singing sessions and kids who don’t. However, you notice that how effective the intervention is depends on whether they are boys or girls. The girls appear to benefit the most, while the boys don’t seem to as much. In other words, the effectiveness of the intervention is contingent on the biological sex of the child.</p>
+<p>This is an example of an interaction, where the effect of one IV depends on the effect of another IV. The consequence of an interaction is that the two IVs both influence the DV together (in a non-additive manner). Interactions can be important for understanding how certain phenomena work.</p>
+<p>Consider the two plots below, that show the relationship between two predictors (X and Group) and one outcome (on the y-axis).</p>
+<ul>
+<li>In the graph on the left, there is a clear difference between groups 1 and 2. There is also a clear difference between A, B and C on X; however, this is constant.</li>
+<li>In the graph on the right, there’s still a clear difference between groups 1 and 2. However, the difference is greater between different groups. For group 1, there is no change from A to C, but there is for group 2; in other words, the effect of X depends on the effect of Group.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="img/factorial_graph.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The easiest way of demonstrating an interaction is by using an interaction plot, like the one above. This kind of graph plots means as dots, and joins different groups/IVs together by lines. Interaction plots with error bars (e.g.&nbsp;+/- 1 standard error) provide the clearest way of graphing of an interaction effect.</p>
+</section>
+<section id="testing-for-interactions" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="testing-for-interactions"><span class="header-section-number">8.2.2</span> Testing for interactions</h3>
+<p>We can test for interactions when we have at least two independent variables/predictors, using both ANOVAs and regressions. The majority of this module will focus on instances with two predictors in an ANOVA context, as they are easiest to conceptualise.</p>
+<p>By default, if we have two predictors - A, and B, and an outcome, Y - our model will have the following terms:</p>
+<ul>
+<li>A, or the main effect of A (i.e.&nbsp;of A only)</li>
+<li>B, the other main effect</li>
+<li>A x B, which is our interaction effect</li>
+</ul>
+<p>Therefore, we end up with two types of effects that we need to interpret: main effects, and interaction effects. An interaction effect is what we call a higher-order term, in that it is a more complex term in our model. We test the significance of each term, giving us three p-values and sets of test statistics.</p>
+</section>
+</section>
+<section id="simple-effects-tests" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="simple-effects-tests"><span class="header-section-number">8.3</span> Simple effects tests</h2>
+<p>Remember from the previous page that when we have two predictors, we end up with three model terms:</p>
+<ul>
+<li>A, a <strong>main effect</strong></li>
+<li>B, a <strong>main effect</strong></li>
+<li>A x B, which is our <strong>interaction effect</strong></li>
+</ul>
+<p>Therefore, we end up with two types of effects that we need to interpret: main effects, and interaction effects. An interaction effect is what we call a higher-order term, in that it is a more complex term in our model. We test the significance of each term, giving us three p-values and sets of test statistics.</p>
+<p>Here’s an example of a two-way ANOVA with a significant interaction. Notice that there are three effects here: one for gender, one for education and the gender x education level interaction. (We’ll go through how to run these models a bit later.)</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type 3 tests)
+
+Response: score
+                  Effect    df  MSE          F  pes p.value
+1                 gender 1, 52 0.30       0.59 .011    .448
+2        education_level 2, 52 0.30 189.17 *** .879   &lt;.001
+3 gender:education_level 2, 52 0.30    7.34 ** .220    .002
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>How do we interpret this? Clearly, we have no main effect of gender (<em>p</em> = .448) but we do have an effect of education level (<em>p</em> &lt; .001). We also have a significant interaction term: gender x education (<em>p</em> = .002).</p>
+<p>Here is where something called the <strong>principle of marginality</strong> kicks in. The principle of marginality, states that if two variables interact with each other, the main effects of each variable are marginal to their interaction. In more simple terms, this means that a significant interaction is a better explanation of the main effects than the main effects themselves. In context, this means that the significant effect of education level is actually best explained by decomposing the gender x education level interaction. Therefore, if you have a significant interaction you want to break this down first. If the interaction is not significant, you can run post-hocs on the main effects only.</p>
+<p>But like a regular ANOVA, this only tells us that there is an interaction. How do we find out which means are different?</p>
+<section id="simple-effects-tests-1" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="simple-effects-tests-1"><span class="header-section-number">8.3.1</span> Simple effects tests</h3>
+<p>One option is to conduct post-hoc tests like normal, and run post-hocs on the interaction term. But this is not necessarily meaningful:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = tmp_formula, data = dat.ret, contrasts = contrasts)
+
+$gender
+                 diff         lwr       upr     p adj
+male-female 0.1932143 -0.09680436 0.4832329 0.1870895
+
+$education_level
+                         diff       lwr        upr     p adj
+school-college     -0.7573684 -1.187898 -0.3268386 0.0002637
+university-college  2.4944417  2.069328  2.9195559 0.0000000
+university-school   3.2518102  2.826696  3.6769243 0.0000000
+
+$`gender:education_level`
+                                        diff        lwr          upr     p adj
+male:college-female:college       -0.2396667 -0.9873581  0.508024749 0.9317495
+female:school-female:college      -0.7220000 -1.4497494  0.005749384 0.0529764
+male:school-female:college        -1.0363333 -1.7840247 -0.288641918 0.0019203
+female:university-female:college   1.9430000  1.2152506  2.670749384 0.0000000
+male:university-female:college     2.8290000  2.1012506  3.556749384 0.0000000
+female:school-male:college        -0.4823333 -1.2300247  0.265358082 0.4086560
+male:school-male:college          -0.7966667 -1.5637819 -0.029551460 0.0374890
+female:university-male:college     2.1826667  1.4349753  2.930358082 0.0000000
+male:university-male:college       3.0686667  2.3209753  3.816358082 0.0000000
+male:school-female:school         -0.3143333 -1.0620247  0.433358082 0.8132166
+female:university-female:school    2.6650000  1.9372506  3.392749384 0.0000000
+male:university-female:school      3.5510000  2.8232506  4.278749384 0.0000000
+female:university-male:school      2.9793333  2.2316419  3.727024749 0.0000000
+male:university-male:school        3.8653333  3.1176419  4.613024749 0.0000000
+male:university-female:university  0.8860000  0.1582506  1.613749384 0.0087499</code></pre>
+</div>
+</div>
+<p>A more targeted approach is to conduct simple effects tests. Simple effects tests are a form of pairwise comparisons that are run to break down an interaction. It involves running pairwise comparisons between one predictor at every level of the other predictor.</p>
+<p>Using the example above, this might include running pairwise comparisons between education levels for males and females separately:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>gender = female:
+ contrast             estimate    SE df t.ratio p.value
+ college - school        0.722 0.246 52   2.935  0.0050
+ college - university   -1.943 0.246 52  -7.899 &lt;0.0001
+ school - university    -2.665 0.246 52 -10.834 &lt;0.0001
+
+gender = male:
+ contrast             estimate    SE df t.ratio p.value
+ college - school        0.797 0.259 52   3.073  0.0034
+ college - university   -3.069 0.253 52 -12.143 &lt;0.0001
+ school - university    -3.865 0.253 52 -15.295 &lt;0.0001</code></pre>
+</div>
+</div>
+<p>Or, to spin it the other way, you might compare males and females for each education level separately:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>education_level = college:
+ contrast      estimate    SE df t.ratio p.value
+ female - male    0.240 0.253 52   0.948  0.3473
+
+education_level = school:
+ contrast      estimate    SE df t.ratio p.value
+ female - male    0.314 0.253 52   1.244  0.2191
+
+education_level = university:
+ contrast      estimate    SE df t.ratio p.value
+ female - male   -0.886 0.246 52  -3.602  0.0007</code></pre>
+</div>
+</div>
+<p>Generally, it is wise to run simple effects tests both ways - as this decomposes the interaction into something that is interpretable. This is usually guided by theoretical reasons (i.e.&nbsp;a hypothesis about which simple effects to run). Of course, a good graph will tell the rest of the story:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-factorial-anovas_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="r-specific-considerations" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="r-specific-considerations"><span class="header-section-number">8.4</span> R-specific considerations</h2>
+<p>This page discusses some basic considerations about performing factorial ANOVAs in R.</p>
+<section id="the-afex-package" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="the-afex-package"><span class="header-section-number">8.4.1</span> The <code>afex</code> package</h3>
+<p>In the sections on one-way ANOVAs we largely stuck to using base R’s <code>aov()</code> function, or the <code>anova_test()</code> function from the <code>rstatix</code> package. While we can absolutely continue to use these for factorial ANOVAs, one problem is that factorial ANOVAs are inherently more complex models than their one-way progenitors. For instance, <code>aov()</code> only really works with <strong>balanced</strong> designs, which is where every cell (i.e.&nbsp;group x group combination of your IVs/predictors) has the same number of participants.</p>
+<p>To use an example, a 2 x 2 ANOVA where each of the four possibilities (e.g.&nbsp;Level 1 Variable A + Level 1 Variable B…) has 20 participants is a balanced design. In contrast, if A1-B2 had 40 participants and the other possibilities had 20 participants, this would be an unbalanced design. Unbalanced designs introduce several complexities for ANOVAs.</p>
+<p>The <code>afex</code> package is designed for factorial ANOVAs in particular. It provides a very nice and convenient way of running factorial ANOVAs in a way that’s not too hard, while still being flexible enough for more hardcore R users.</p>
+<p>In particular, the function you will want to keep in mind is <code>aov_ez()</code>.</p>
+</section>
+<section id="writing-interactions-in-r" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="writing-interactions-in-r"><span class="header-section-number">8.4.2</span> Writing interactions in R</h3>
+<p>The <code>aov_ez()</code> function that was just mentioned doesn’t use the same kind of formula notation that we saw in the other test sections, and that’s to make it easier to run. However, these analyses absolutely can be recreated in formula notation, and you will see many instances of this.</p>
+<p>Recall the basic layout for a formula in R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> dataset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To extend this to two variables with no interaction, you can simply add the second predictor as such:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To code for an interaction term, however, there either needs to be an explicit term for the interaction (denoted using a colon between the two interaction variables):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> predictor_1<span class="sc">:</span>predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>OR as the shorthand for above, which uses the asterisk. Note that the asterisk will include both the interaction term and all of its main effects (a la principle of marginality):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(outcome <span class="sc">~</span> predictor_1 <span class="sc">*</span> predictor_2, <span class="at">data =</span> dataset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>For what we do in this section, this is ok - but you may find in certain circumstances that you don’t want all of these terms together, so the first approach will let you specify what terms to include in the model.</p>
+</section>
+<section id="simple-effects-tests-in-r" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="simple-effects-tests-in-r"><span class="header-section-number">8.4.3</span> Simple effects tests in R</h3>
+<p>Simple effects tests, weirdly, are difficult to do in Jamovi - the gamlj module in Jamovi will do simple effects tests for linear models (which includes ANOVAs), but it’s difficult to do so for anything other than a two-way between-groups ANOVA without some prerequisite knowledge on linear mixed models.</p>
+<p>In R, simple effects are relatively easy to estimate through the use of the <code>emmeans</code> package. All we need to do is just extend our <code>emmeans</code> calls that we have been using for one-way ANOVAs to incorporate a second variable.</p>
+<p>Imagine an ANOVA model named <code>model_aov</code> and two predictors named <code>A</code> and `B. Recall the basic syntax for generating comparisons for a one-way ANOVA:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To run this as a simple effects test, we simply need to tell <code>emmeans</code> to conduct these comparisons by another variable. This can be easily done by specifying the <code>by</code> argument in <code>emmeans</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">"B"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This will estimate the EM means for every level of A, at each level of B. To run simple effects tests for variable two, the variable names simply need to be swapped.</p>
+<p>Just like before, we can pipe from from <code>emmeans()</code> to <code>pairs()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(model_aov, <span class="sc">~</span> A, <span class="at">by =</span> <span class="st">"B"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Final note on this matter: Rstatix does provide a function called <code>emmeans_test()</code> to perform a similar test. However, using the original <code>emmeans</code> package and its functions give you much greater flexibility, so it helps to learn how to use this as is.</p>
+</section>
+</section>
+<section id="two-way-between-groups-anova" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="two-way-between-groups-anova"><span class="header-section-number">8.5</span> Two-way between groups ANOVA</h2>
+<section id="introduction" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">8.5.1</span> Introduction</h3>
+<p>Two-way between-groups ANOVAs are used when you have two categorical IVs, both of which are between-groups variables. For example, you might have the following IVs:</p>
+<ul>
+<li>Sex: Male or female</li>
+<li>Experimental group: Group A or Group B</li>
+</ul>
+<p>There are four possibilities here - males in Group A, females in Group A, males in Group B and females in Group B. These are mutually exclusive categories in the context of this design.</p>
+</section>
+<section id="example" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="example"><span class="header-section-number">8.5.2</span> Example</h3>
+<p>One of the earliest modern studies on music’s effect on consumer behaviour came from <a href="https://doi.org/10.1037/0021-9010.84.2.271">Hargreaves et al.&nbsp;1999</a>, who played either French or German music in a wine shop. They looked at how much people spent on French and German wines, and tested to see whether the effect of background music and wine type had an effect on spending.</p>
+<p>We’re going to step through an analogous (fictional) example, inspired by the Hargreaves et al.&nbsp;(1999) study. Pretend we played either country or classical music in a supermarket, and observed moments when people purchased beer or wine (We’re going to assume we’ve removed people who bought both beer and wine together.) . In this hypothetical scenario, we might expect a similar ‘priming’ effect of the background music - that is, maybe the type of music will prime people to behave in different ways. Maybe, for instance, a certain kind of music will make people spend more, but this might depend on what type of alcohol they are buying.</p>
+<p>Our research question in this instance is, Does the effect of music on alcohol spend depend on the type of alcohol purchased?</p>
+<p>Therefore, we have two between-groups IVs:</p>
+<ul>
+<li><strong>Alcohol type</strong> being purchased: was the person buying beer or wine?</li>
+<li><strong>Genre</strong> of background music: was country or classical music being played at the time?</li>
+</ul>
+<p>We’re interested in whether these two variables have an effect on how much people spend (our dependent variable/outcome). This can be described as a <strong>two-way ANOVA</strong> (alcohol type x genre), or alternatively as a <strong>2 x 2 ANOVA</strong> - more specifically, 2 (beer, wine) x 2 (country, classical) ANOVA between alcohol type and genre.</p>
+<p>Let’s start by generating descriptives and a graph to visualise what we’re looking at:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>twoway_alcohol <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"factorial"</span>, <span class="st">"twoway_bganova.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-factorial-anovas_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>twoway_alcohol <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(alcohol_type, genre) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(spend, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(spend, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(spend, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span>n</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by alcohol_type and genre.
+ℹ Output is grouped by alcohol_type.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(alcohol_type, genre))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+# Groups:   alcohol_type [2]
+  alcohol_type genre         n  mean median    sd     se
+  &lt;chr&gt;        &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1 beer         classical    49  36.1   35.9 0.981 0.0200
+2 beer         country      51  29.9   29.8 1.03  0.0202
+3 wine         classical    47  39.5   39.4 0.993 0.0211
+4 wine         country      53  26.9   27.0 1.03  0.0195</code></pre>
+</div>
+</div>
+</section>
+<section id="assumption-testing" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="assumption-testing"><span class="header-section-number">8.5.3</span> Assumption testing</h3>
+<p>As we have previously seen with ANOVAs in R, to test some of our assumptions we first need to build our ANOVA. Note that here, we use the <code>aov_ez()</code> function from the <code>afex</code> package. Because in many instances we work with unbalanced data (i.e.&nbsp;each group x group combination does not have the same number of participants), we tend to calculate something called <em>Type III</em> Sums of Squares/ANOVAs. We won’t dive too much into this, but this is essentially about how sums of squares are calculated, and how the effects are tested. Learning Statistics with R has an excellent explanation of what the various types are.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>twoway_alcohol_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> twoway_alcohol,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"ptcpt"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">"spend"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="st">"alcohol_type"</span>, <span class="st">"genre"</span>),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">"pes"</span>),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Converting to factor: alcohol_type, genre</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Contrasts set to contr.sum for the following variables: alcohol_type, genre</code></pre>
+</div>
+</div>
+<p>The assumptions for a two-way ANOVA are the same as a one-way between groups ANOVA:</p>
+<ul>
+<li>The data should be independent of each other.</li>
+<li>Equality of variance: Just like the one-way ANOVA, we use Levene’s test to examine our equality of variance assumption.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>twoway_alcohol <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levene_test</span>(spend <span class="sc">~</span> alcohol_type <span class="sc">*</span> genre, <span class="at">center =</span> <span class="st">"mean"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+    df1   df2 statistic     p
+  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1     3   196    0.0528 0.984</code></pre>
+</div>
+</div>
+<ul>
+<li>Normality of residuals: Look at the Shapiro-Wilk test (on the residuals) or a Q-Q plot. If you use <code>aov_ez()</code> to calculate your ANOVA, note that the residuals are within either <code>aov</code> or <code>lm</code> within your ANOVA, so you will find them in <code>model$aov$residuals</code>:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># twoway_alcohol_aov &lt;- aov(spend ~ alcohol_type * genre, data = twoway_alcohol)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(twoway_alcohol_aov<span class="sc">$</span>aov<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  twoway_alcohol_aov$aov$residuals
+W = 0.99647, p-value = 0.9295</code></pre>
+</div>
+</div>
+<p>Both assumptions appear to be intact.</p>
+</section>
+<section id="output" class="level3" data-number="8.5.4">
+<h3 data-number="8.5.4" class="anchored" data-anchor-id="output"><span class="header-section-number">8.5.4</span> Output</h3>
+<p>Let’s first look at our output for the omnibus ANOVA. The way to read this table is much like the same for a one-way ANOVA, but now we need to read across each line - as each line represents a different effect. So we see that:</p>
+<ul>
+<li>There is no main effect for alcohol (<em>p</em> = .137),</li>
+<li>There is a main effect for genre (<em>p</em> &lt; .001),</li>
+<li>Importantly, there is a significant interaction effect for alcohol x genre (<em>p</em> &lt; .001).</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>twoway_alcohol_aov</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type 3 tests)
+
+Response: spend
+              Effect     df  MSE           F  pes p.value
+1       alcohol_type 1, 196 1.02        2.23 .011    .137
+2              genre 1, 196 1.02 4295.08 *** .956   &lt;.001
+3 alcohol_type:genre 1, 196 1.02  519.96 *** .726   &lt;.001
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>In other words, there is a significant effect of background music genre on how much people spent on alcohol, but this depended on the type of alcohol they bought. Because this interaction is significant, we now need to turn to conducting <strong>simple effects tests</strong> to decompose what is actually going on.</p>
+<p>Remember, for a simple effects test we want to test for differences between the levels of one variable, at every level of the other variable. One option is to hold alcohol as a constant, and compare genre for each type of alcohol purchased. Another is to instead hold genre constant and compare the two types of alcohol.</p>
+<p>Although it’s up to us to determine which set of comparisons we interpret, it’s useful to return to our original research question to guide our thinking here. Remember that we were originally interested in the effect of music on alcohol spend, but we thought this might depend on the type of wine being purchased. In that case, we might wish to hold <em>alcohol</em> type constant, and compare the two genres against each other.</p>
+<p>That means that we need to conduct the following comparisons:</p>
+<ul>
+<li>For <strong>beer</strong>, country vs classical</li>
+<li>For <strong>wine</strong>, country vs classical</li>
+</ul>
+<p>In R, we can simply use <code>emmeans</code> to generate these comparisons.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_alcohol_aov, <span class="sc">~</span> genre, <span class="at">by =</span> <span class="st">"alcohol_type"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>alcohol_type = beer:
+ contrast            estimate    SE  df lower.CL upper.CL t.ratio p.value
+ classical - country     6.11 0.202 196     5.72     6.51  30.242 &lt;0.0001
+
+alcohol_type = wine:
+ contrast            estimate    SE  df lower.CL upper.CL t.ratio p.value
+ classical - country    12.64 0.202 196    12.24    13.04  62.416 &lt;0.0001
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<p>We can see that:</p>
+<ul>
+<li>For beer, people spent more money if classical was on in the background compared to country (Mean difference = 6.11, <em>t</em> = 30.24, <em>p</em> &lt; .001).</li>
+<li>But for wine, this difference was even greater - participants spent much more on wine if classical music was playing in the background (MD = 12.64, <em>t</em> = 62.42, <em>p</em> &lt; .001).</li>
+</ul>
+<p>Of course, it might make more sense to do the simple effects tests the other way round; in other words, hold genre constant and compare how much was spent on each alcohol type. You can still absolutely find out this information by changing the <code>by</code> argument within <code>emmeans()</code>:</p>
+<ul>
+<li>For <strong>country</strong>, wine vs beer (wine country - beer country): <em>t</em> = 15.34, <em>p</em> &lt; .001</li>
+<li>For <strong>classical</strong>, wine vs beer (wine classical - beer classical): <em>t</em> = 16.85, <em>p</em> &lt; .001.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_alcohol_aov, <span class="sc">~</span> alcohol_type, <span class="at">by =</span> <span class="st">"genre"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>genre = classical:
+ contrast    estimate    SE  df lower.CL upper.CL t.ratio p.value
+ beer - wine    -3.48 0.206 196    -3.88    -3.07 -16.847 &lt;0.0001
+
+genre = country:
+ contrast    estimate    SE  df lower.CL upper.CL t.ratio p.value
+ beer - wine     3.05 0.198 196     2.66     3.44  15.378 &lt;0.0001
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+</section>
+<section id="write-up" class="level3" data-number="8.5.5">
+<h3 data-number="8.5.5" class="anchored" data-anchor-id="write-up"><span class="header-section-number">8.5.5</span> Write-up</h3>
+<p>A two-way ANOVA was conducted to test whether alcohol type and music genre had an effect on spending habits. We found a significant main effect of music genre (<em>F</em>(1, 196) = 4295.08, <em>p</em> &lt; .001) but no significant main effect of alcohol type (<em>p</em> = .137). We found a significant two-way interaction between alcohol type and genre (<em>F</em>(1, 196) = 519.97, <em>p</em> &lt; .001). To follow up this two-way interaction, we conducted simple effects tests. The simple effect of genre was analysed for each level of alcohol type with Holm corrections. On average, people spent $6.11 more on beer if they heard classical music compared to country music (<em>t</em>(196) = 30.242, <em>p</em> &lt; .001). Likewise, on average people spent $12.64 more on wine if they heard classical music compared to country (<em>t</em>(196) = 62.416, <em>p</em> &lt; .001).</p>
+</section>
+</section>
+<section id="two-way-repeated-measures-anova" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="two-way-repeated-measures-anova"><span class="header-section-number">8.6</span> Two-way repeated measures ANOVA</h2>
+<section id="introduction-1" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="introduction-1"><span class="header-section-number">8.6.1</span> Introduction</h3>
+<p>Similar to its one-way counterpart, in a two-way ANOVA we assess the effect of two within-subjects variables on a dependent variable.</p>
+<p>The following example is completely fictional, and has no real grounding in theory (as far as I’m aware). It’s intentionally facetious, but hopefully demonstrates the process of doing a two-way repeated measures ANOVA.</p>
+</section>
+<section id="example-1" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="example-1"><span class="header-section-number">8.6.2</span> Example</h3>
+<p>If you did this subject in 2023 you would have met Victor and Gloria in the second statistics assignment, who were working with data looking at what predicts high school GPA. They’ve now moved onto a new project about whether listening to happy or sad music may affect exam performance. To do this, they design a nifty little study. Their research question is: <strong>does music affect exam performance under varying conditions of difficulty?</strong></p>
+<p>They recruit 20 participants and bring them into the lab. This is their procedure:</p>
+<ul>
+<li>Participants come into the lab and do a series of standard maths exams. The maths exams are either easy, medium or hard, and participants are randomly assigned to do either the easy or the hard one first. They are also randomly assigned either happy or sad background music as they do the exam.</li>
+<li>Once they have completed the first exam, they take a 10 minute break and then do another exam that is easy, medium, or hard, and with either happy or soft music in the background.</li>
+<li>This process repeats until they have done all combinations of difficulty and background music.</li>
+<li>Each exam is scored out of 100.</li>
+</ul>
+<p>We have two <strong>within-subjects</strong> independent variables here:</p>
+<ol type="1">
+<li>Difficulty of the exam (3 levels: easy, medium, hard)</li>
+<li>Background music (2 levels: happy or sad)</li>
+</ol>
+<p>Every participant therefore does 6 maths exams: easy-happy, easy-sad, medium-happy, medium-sad, hard-happy and hard-sad. The dependent variable of interest is their exam score. We’re interested in whether the difficulty and the music type have an effect on exam performance. Because our two IVs are within-subject variables, we will want to use a <strong>two-way repeated measures ANOVA</strong>, or a <strong>difficulty (3) x music (2) repeated measures ANOVA</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"factorial"</span>, <span class="st">"twoway_rmanova_long.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 120 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): difficulty, music
+dbl (2): ptcpt, grade
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>R will generally treat character variables as factors, but will order the factors alphabetically. In our instance, because we have a specific order for the categories that is not alphabetical and we want our graph to reflect this, we will need to tell R what order our levels are. This is simple to do with the <code>factor()</code> function, which will create factors from columns in your data. <code>factor()</code> first needs to know what column you are wanting to create factors in, and then it will want to know the specific order of the factors. The order is set with the <code>levels</code> argument.</p>
+<p>We will recode both the difficulty and the music type variables for completion’s sake, and there are two ways to go about doing this.</p>
+<p>First, you can just use base R functions like so:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>twoway_exam<span class="sc">$</span>music <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_exam<span class="sc">$</span>music, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"happy"</span>, <span class="st">"sad"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Or you can use <code>factor()</code> within mutate and largely identical syntax:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>twoway_exam <span class="ot">&lt;-</span> twoway_exam <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">difficulty =</span> <span class="fu">factor</span>(difficulty, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"easy"</span>, <span class="st">"medium"</span>, <span class="st">"hard"</span>))</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s start with the usual descriptives and graphs:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-factorial-anovas_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>twoway_exam <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(difficulty, music) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(grade),</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(grade),</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+# Groups:   difficulty [3]
+  difficulty music     n  mean    sd    se
+  &lt;fct&gt;      &lt;fct&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 easy       happy    20  71.9  6.25  1.40
+2 easy       sad      20  67.5  5.97  1.33
+3 medium     happy    20  50.8  5.18  1.16
+4 medium     sad      20  50.6  4.65  1.04
+5 hard       happy    20  50.5  6.74  1.51
+6 hard       sad      20  38.8  6.67  1.49</code></pre>
+</div>
+</div>
+<p>Eyeballing the graph, we can see that there might be some sort of effect happening. Unsurprisingly, it looks like the easy maths exams are, well. easier, because people are scoring better on them. There <em>might</em> be an effect of music, because in both easy and hard conditions it looks like people do better with happy music compared to sad music. But the interaction plot tells us there’s something clearly going on, and it paints a really interesting story on its own. It appears that there’s almost a ‘plateau’-ing effect with medium difficulty, in that both happy and sad hit the same point in exam scores. However, it looks like for happy music, harder exams see no further decrease in performance - but there is a sharp drop again for sad music.</p>
+</section>
+<section id="assumptions" class="level3" data-number="8.6.3">
+<h3 data-number="8.6.3" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">8.6.3</span> Assumptions</h3>
+<p>The assumptions for a two-way RM ANOVA is the same as a one-way RM-ANOVA:</p>
+<ul>
+<li><p>The data from the conditions should be normally distributed. (More specifically, the residuals should be normally distributed.)</p></li>
+<li><p>The data for each subject should be independent of every other subject.</p></li>
+<li><p><strong>Sphericity</strong> must be met.</p></li>
+</ul>
+<p>As is the case with one-way repeated measures ANOVAs, the assumption of sphericity is only tested when there are <em>three</em> or more levels; with only two levels, the assumption is always met. The output is below with the main ANOVA output. The sphericity for all of our effects is intact, so we don’t have any issues here, but if we did the same principle would apply - we would apply our corrections depending on the value of epsilon.</p>
+<p>Let’s also see if our variables are normally distributed.</p>
+<p>R-Note: For a repeated measures ANOVA, for some reason the closest you can get to generating what Jamovi does is to build an <code>aov()</code> model without an explicit <code>Error()</code> term - as would be the case for a fully between-subjects ANOVA. You can then use the standardised residuals to create a Q-Q plot using the below code. Note that <code>broom:augment()</code> is just a helper function that nicely extracts the residuals:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(grade <span class="sc">~</span> difficulty <span class="sc">*</span> music, <span class="at">data =</span> twoway_exam) <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `augment()` method for objects of class `aov` is not maintained by the broom team, and is only supported through the `lm` tidier method. Please be cautious in interpreting and reporting broom output.
+
+This warning is displayed once per session.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-factorial-anovas_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It’s not… great but for the purposes of demonstration, we’ll run with it anyway.</p>
+</section>
+<section id="output-1" class="level3" data-number="8.6.4">
+<h3 data-number="8.6.4" class="anchored" data-anchor-id="output-1"><span class="header-section-number">8.6.4</span> Output</h3>
+<p>Here’s our output from R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>twoway_exam_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> twoway_exam,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"ptcpt"</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">"grade"</span>,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">"difficulty"</span>, <span class="st">"music"</span>),</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">"pes"</span>),</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>twoway_exam_aov</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type 3 tests)
+
+Response: grade
+            Effect          df   MSE          F  pes p.value
+1       difficulty 1.79, 33.92 40.38 189.61 *** .909   &lt;.001
+2            music       1, 19 48.16  18.39 *** .492   &lt;.001
+3 difficulty:music 1.65, 31.36 39.89  10.29 *** .351   &lt;.001
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1
+
+Sphericity correction method: GG </code></pre>
+</div>
+</div>
+<p>And here is our output for sphericity:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To get sphericity output</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(twoway_exam_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
+
+                 Sum Sq num Df Error SS den Df   F value    Pr(&gt;F)    
+(Intercept)      363220      1   511.30     19 13497.322 &lt; 2.2e-16 ***
+difficulty        13668      2  1369.60     38   189.613 &lt; 2.2e-16 ***
+music               886      1   915.03     19    18.390 0.0003968 ***
+difficulty:music    677      2  1251.07     38    10.286 0.0002691 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Mauchly Tests for Sphericity
+
+                 Test statistic p-value
+difficulty              0.87972 0.31556
+difficulty:music        0.78826 0.11750
+
+
+Greenhouse-Geisser and Huynh-Feldt Corrections
+ for Departure from Sphericity
+
+                  GG eps Pr(&gt;F[GG])    
+difficulty       0.89263  &lt; 2.2e-16 ***
+difficulty:music 0.82526  0.0007226 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                    HF eps   Pr(&gt;F[HF])
+difficulty       0.9789636 4.104076e-20
+difficulty:music 0.8936983 4.903345e-04</code></pre>
+</div>
+</div>
+<p>Once again this is quite a busy set of outputs! We can see that there is a significant main effect of difficulty (<em>F</em>(2, 38) = 189.61, <em>p</em> &lt; .001), as well as a significant main effect of music type (<em>F</em>(1, 19) = 18.39, <em>p</em> &lt; .001). There is also a significant interaction effect of difficulty and music (<em>F</em>(2, 38) = 10.29, <em>p</em> &lt; .001). We can also see our sphericity output here; neither the difficulty variable (<em>W</em> = .880) nor the difficulty x music interaction (<em>W</em> = .788) terms show significant violation of sphericity (<em>p</em> &gt; .05). Therefore we have not corrected for anything in our main ANOVA output. Note that because music only has two levels, there is no sphericity test for it.</p>
+<p>To decompose this, we’ll do our usual simple effects tests - holding one variable constant and running pairwise comparisons with the other. Based on our original research question, it might make sense to hold the music type constant and compare the exams on difficulty. This means we need to look at all of the rows that compare <strong>easy, medium and hard</strong> for the same kind of music. We can absolutely reverse the interpretation of the simple effects, but doing it in this manner is probably more consistent with the nature of the original research question - it lets us see how participants performed across difficulty levels, based on the music they were listening to.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_exam_aov, <span class="sc">~</span> music, <span class="at">by =</span> <span class="st">"difficulty"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>difficulty = easy:
+ contrast    estimate   SE df lower.CL upper.CL t.ratio p.value
+ happy - sad      4.4 1.78 19    0.682     8.12   2.477  0.0228
+
+difficulty = medium:
+ contrast    estimate   SE df lower.CL upper.CL t.ratio p.value
+ happy - sad      0.2 1.58 19   -3.097     3.50   0.127  0.9003
+
+difficulty = hard:
+ contrast    estimate   SE df lower.CL upper.CL t.ratio p.value
+ happy - sad     11.7 2.40 19    6.675    16.72   4.873  0.0001
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<p>From this we can see that</p>
+<ul>
+<li>For happy music:
+<ul>
+<li>Performance on the easy exam was better than the medium exam (MD = 21.1 points, <em>p</em> &lt; .001).</li>
+<li>There was no significant difference between the medium and hard exams (MD = 0.30 points, <em>p</em> = .863).</li>
+<li>Performance on the easy exams was naturally significantly higher than hard exams (MD = 21.4 points, <em>p</em> &lt; .001).</li>
+</ul></li>
+<li>For sad music:
+<ul>
+<li>Performance on the easy exam was again better than the medium exam (MD = 16.9 points, <em>p</em> &lt; .001).</li>
+<li>Performance on the medium exam was also significantly higher than the hard exam (MD = 11.8 points, <em>p</em> &lt; .001).</li>
+<li>Performance on the easy exams was naturally significantly higher than hard exams (MD = 28.7 points, <em>p</em> &lt; .001).</li>
+</ul></li>
+</ul>
+<p>This suggests overall that happy music is probably better for completing exams than sad music, particularly when the exams are difficult.</p>
+</section>
+</section>
+<section id="two-way-mixed-anova" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="two-way-mixed-anova"><span class="header-section-number">8.7</span> Two-way mixed ANOVA</h2>
+<section id="introduction-2" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="introduction-2"><span class="header-section-number">8.7.1</span> Introduction</h3>
+<p>In a mixed factorial design, we want to see the effect of a between groups variable and a within-groups variable on a continuous DV. These are also sometimes called repeated measures ANOVAs (i.e.&nbsp;repeated measures designs with a between-group variable), but this can be a little confusing; for that reason, calling them a mixed factorial model is preferred.</p>
+<p>The data we’ll use for this one is of a mock longitudinal randomised-controlled trial. This kind of design is common when testing the effect of an intervention - and that’s exactly what we’ll do here. This mock dataset is also a bit more complex than the previous ones we’ve looked at just to give the full range of assumption testing and modelling that we have to do.</p>
+</section>
+<section id="example-2" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="example-2"><span class="header-section-number">8.7.2</span> Example</h3>
+<p>Elaine and Chaise ran an RCT testing the effect of a music listening intervention on anxiety scores. To do this, participants were randomly allocated to three conditions: a music listening intervention (listen to a podcast for 30 minutes a day), a control exercise intervention (walk for 30 minutes a day) and a control nothing intervention (do nothing). Participants were tested at three timepoints: at the start of the study, at the 6 week mark and then at the 12 week mark. (With thanks to the datarium package for providing a perfect test dataset for this example.)</p>
+<p>In other words, we have two variables:</p>
+<ol type="1">
+<li>Intervention: a between-groups variable, because participants were randomly assigned to one of three interventions (3 levels; Control, Exercise, Music)</li>
+<li>Timepoint, a within-groups variable as all participants were measured at 3 timepoints (3 levels: 0 weeks, 6 weeks, 12 weeks)</li>
+</ol>
+<p>This gives us a two-way, 3 x 3 mixed factorial ANOVA. Let’s start by visualising anxiety scores for the three interventions. A boxplot or bar graph is useful here.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>twoway_mixed <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"factorial"</span>, <span class="st">"twoway_mixed.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 135 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): group, time
+dbl (2): id, anxiety
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This recodes factors</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>twoway_mixed<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_mixed<span class="sc">$</span>group)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>twoway_mixed<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">factor</span>(twoway_mixed<span class="sc">$</span>time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-factorial-anovas_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In a mixed ANOVA, we test the effect of both a between-groups and a within-groups variable. This means that the specific assumptions that apply to both between- and within-subject designs now carry over into this design. This means that the following assumptions apply:</p>
+<ul>
+<li>The data should have multivariate normality. Our QQ plot looks a little non-linear, so we might have an issue here.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(anxiety <span class="sc">~</span> group <span class="sc">*</span> time, <span class="at">data =</span> twoway_mixed) <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-factorial-anovas_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Homogeneity of variance - the between-subject groups should have the same variance, at each level of the within-subjects variable. None of the tests are significant (p &gt; .05), so we’re ok here. To do this in R, we run Levene’s test at each timepoint:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>twoway_mixed <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time) <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levene_test</span>(anxiety <span class="sc">~</span> group, <span class="at">center =</span> <span class="st">"mean"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  time       df1   df2 statistic     p
+  &lt;fct&gt;    &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1 0 weeks      2    42     0.161 0.852
+2 12 weeks     2    42     0.711 0.497
+3 6 weeks      2    42     0.481 0.621</code></pre>
+</div>
+</div>
+<ul>
+<li>Sphericity of the within-subject variable must be met. Our sphericity assumption technically isn’t violated (<em>p</em> = .079), but this is so close to an arbitrary threshold that we might consider reporting corrected versions anyway. However, we’ll forge ahead with our original omnibus model and report that. <code>aov_ez()</code> can give you this in the output below.</li>
+</ul>
+</section>
+<section id="output-2" class="level3" data-number="8.7.3">
+<h3 data-number="8.7.3" class="anchored" data-anchor-id="output-2"><span class="header-section-number">8.7.3</span> Output</h3>
+<p>Below is our main output from R. Unlike Jamovi and some other software, R does not split the output by between- or within-subject factors - which makes reading the output slightly easier. Based on the output, we can see that we have a significant main effect of group (<em>F</em>(2, 42) = 4.352, <em>p</em> = .019), and also a significant main effect of time (<em>F</em>(2, 84) = 394.909, <em>p</em> &lt; .001). We also have a significant interaction (<em>F</em>(4, 84) = 110.188, <em>p</em> &lt; .001).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>twoway_mixed_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> twoway_mixed,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"id"</span>,</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">"anxiety"</span>,</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="st">"group"</span>,</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">within =</span> <span class="st">"time"</span>,</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">"pes"</span>)</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Contrasts set to contr.sum for the following variables: group</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>twoway_mixed_aov</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type 3 tests)
+
+Response: anxiety
+      Effect          df  MSE          F  pes p.value
+1      group       2, 42 7.12     4.35 * .172    .019
+2       time 1.79, 75.24 0.09 394.91 *** .904   &lt;.001
+3 group:time 3.58, 75.24 0.09 110.19 *** .840   &lt;.001
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1
+
+Sphericity correction method: GG </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To get details on sphericity</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(twoway_mixed_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
+
+            Sum Sq num Df Error SS den Df   F value  Pr(&gt;F)    
+(Intercept)  34919      1  299.146     42 4902.6660 &lt; 2e-16 ***
+group           62      2  299.146     42    4.3518 0.01916 *  
+time            67      2    7.081     84  394.9095 &lt; 2e-16 ***
+group:time      37      4    7.081     84  110.1876 &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+Mauchly Tests for Sphericity
+
+           Test statistic  p-value
+time              0.88364 0.079193
+group:time        0.88364 0.079193
+
+
+Greenhouse-Geisser and Huynh-Feldt Corrections
+ for Departure from Sphericity
+
+            GG eps Pr(&gt;F[GG])    
+time       0.89577  &lt; 2.2e-16 ***
+group:time 0.89577  &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+              HF eps   Pr(&gt;F[HF])
+time       0.9330916 1.037156e-40
+group:time 0.9330916 1.461019e-30</code></pre>
+</div>
+</div>
+<p>Let’s decompose this with simple effects. Given the original question, here it might make sense to hold the group constant, and examine how they change over time.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(twoway_mixed_aov, <span class="sc">~</span> time, <span class="at">by =</span> <span class="st">"group"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>group = control:
+ contrast             estimate     SE df lower.CL upper.CL t.ratio p.value
+ X0.weeks - X12.weeks     0.58 0.1230 42   0.3324    0.828   4.727 &lt;0.0001
+ X0.weeks - X6.weeks      0.16 0.0950 42  -0.0316    0.352   1.685  0.0994
+ X12.weeks - X6.weeks    -0.42 0.0982 42  -0.6182   -0.222  -4.276  0.0001
+
+group = exercise:
+ contrast             estimate     SE df lower.CL upper.CL t.ratio p.value
+ X0.weeks - X12.weeks     1.12 0.1230 42   0.8724    1.368   9.128 &lt;0.0001
+ X0.weeks - X6.weeks      0.18 0.0950 42  -0.0116    0.372   1.896  0.0649
+ X12.weeks - X6.weeks    -0.94 0.0982 42  -1.1382   -0.742  -9.571 &lt;0.0001
+
+group = music:
+ contrast             estimate     SE df lower.CL upper.CL t.ratio p.value
+ X0.weeks - X12.weeks     3.45 0.1230 42   3.2057    3.701  28.144 &lt;0.0001
+ X0.weeks - X6.weeks      2.00 0.0950 42   1.8084    2.192  21.063 &lt;0.0001
+ X12.weeks - X6.weeks    -1.45 0.0982 42  -1.6515   -1.255 -14.797 &lt;0.0001
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<p>Let’s bulletpoint the main feature of each, and you can refer to the output below as you go through:</p>
+<ul>
+<li>For controls, anxiety scores were not significantly different between the 0 week and 6 week mark (<em>p</em> = .099). However, anxiety scores were significantly lower at 12 weeks compared to 6 weeks (<em>p</em> &lt; .001). Scores were also significantly lower at 12 weeks compared to 0 weeks (<em>p</em> &lt; .001).</li>
+<li>For the exercise group, anxiety scores were not significantly different from 0 weeks to 6 weeks (<em>p</em> = .065). However, anxiety scores significantly decreased from 6 weeks to 12 weeks (<em>p</em> &lt; .001). Scores were also significantly lower after 12 weeks than at 0 weeks (<em>p</em> &lt; .001).</li>
+<li>For the music group, anxiety scores significantly decreased between 0 weeks and 6 weeks (<em>p</em> &lt; .001). Scores were significantly lower at the 12 week mark again compared to the 6 week mark (<em>p</em> &lt; .001). Scores were also significantly lower at 12 weeks compared to 0 weeks (<em>p</em> &lt; .001).</li>
+</ul>
+<p>Of course, if you were writing these results up in full then you would also want to include means and standard deviations, or other relevant values like the mean difference.</p>
+<p>Phew - all done!</p>
+</section>
+</section>
+<section id="three-way-anova" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="three-way-anova"><span class="header-section-number">8.8</span> Three-way ANOVA</h2>
+<section id="why-not-three" class="level3" data-number="8.8.1">
+<h3 data-number="8.8.1" class="anchored" data-anchor-id="why-not-three"><span class="header-section-number">8.8.1</span> Why not three?</h3>
+<p>In this module we’ve largely focused on two-way ANOVAs, where we have two independent variables. Why not more than that, you may ask? Is it possible to do a three-way, four-way or even a five-way ANOVA?</p>
+<p>The short answer is yes. The longer answer, in my view, is yes - but some caution is warranted. We’ll focus on a three-way ANOVA here. In a three-way ANOVA, we test for relationships between three independent variables - A, B and C - on a continuous outcome, just like other ANOVAs. As in the case of the two-way ANOVA, we typically not only test the main effects of the three IVs, but also interactions between all of them. This means that in a standard three-way ANOVA, we end up estimating the following effects:</p>
+<ul>
+<li>Three main effects: variable A, B and C</li>
+<li>Three first-order interactions: AxB, AxC and BxC</li>
+<li>One second-order interaction: AxBxC.</li>
+</ul>
+<p>Suddenly we’ve gone from interpreting 3 effects to 7 - and we saw how much work it was to really work through a two-way interaction as is! The key extension here is that not only do we test for all possible two-way interactions, but our highest-order term is now a <em>three-way</em> interaction (ABC). In essence, this would be claiming that the two-way interaction of AB also depends on the level of C.</p>
+<p>Naturally, we can extend this thinking to adding more IVs. Let’s now take a look at a four-way ANOVA with four variables, A, B, C and D:</p>
+<ul>
+<li>Four main effects (A, B, C, D)</li>
+<li>Six first-order interactions: AxB, AxC, AxD, BxC, BxD, CxD</li>
+<li>Three second-order interactions: AxBxC, AxCxD, BxCxD</li>
+<li>One third-order interaction: ABCD</li>
+</ul>
+<p>This is 14 effects!! Hence why some caution is potentially required - by definition (i.e.&nbsp;the principle of marginality), if we are modelling four-way interactions we are not only modelling the four-way ABCD interaction but everything else underneath it. This can make interpretation really thorny, and so you really have to be comfortable with interpreting the effect!</p>
+<p>It’s worth stressing here that there is no real requirement to actually model interaction effects per se. <em>If</em> you have a good reason to not include them, you can actually do three-way ANOVAs <em>without</em> higher-order interactions. The thing you <em>can’t</em> do is model higher-order interactions without everything underneath them.</p>
+<p>Nevertheless, three-way ANOVAs (and even beyond that) are not necessarily uncommon, so it doesn’t hurt to know about them. We will work through an example in full here.</p>
+</section>
+<section id="example-3" class="level3" data-number="8.8.2">
+<h3 data-number="8.8.2" class="anchored" data-anchor-id="example-3"><span class="header-section-number">8.8.2</span> Example</h3>
+<p>This dataset is from a fictional experiment looking at how gender (male and female), risk of migraine (low or high) and different treatments (labelled X, Y and Z) impacted pain scores associated with a migraine headache. This dataset is a lightly adapted version of the <code>headache</code> dataset from the <code>datarium</code> package.</p>
+<p>This gives us a gender (2) x risk (2) x treatment (3) three-way design. Below is a snippet of what our data looks like:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>headache <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"factorial"</span>, <span class="st">"threeway_headache.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 72 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (3): gender, risk, treatment
+dbl (2): id, pain_score
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>We want to run a gender (2) x risk (2) x treatment (3) three-way ANOVA to see whether these predictors have an effect on overall pain scores.</p>
+<p>Let’s start by visualising this data. We cannot fully visualise a three-way interaction because we inherently need four dimensions (as we have three predictors and one outcome variable). The best way to approach this is to draw a series of two-way interaction plots, split by the third variable. In the example below, the graphs show treatment on the x-axis, pain scores on the y-axis, different lines for low and high risk and separate graphs for male and female participants:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-factorial-anovas_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="assumptions-and-output" class="level3" data-number="8.8.3">
+<h3 data-number="8.8.3" class="anchored" data-anchor-id="assumptions-and-output"><span class="header-section-number">8.8.3</span> Assumptions and output</h3>
+<p>Let’s run our main ANOVA. In R, we can simply use the <code>aov_ez()</code> function here again to build our ANOVA model:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>threeway_aov <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> headache,</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"id"</span>,</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">"pain_score"</span>,</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">between =</span> <span class="fu">c</span>(<span class="st">"gender"</span>, <span class="st">"risk"</span>, <span class="st">"treatment"</span>),</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">anova_table =</span> <span class="fu">list</span>(<span class="at">es =</span> <span class="st">"pes"</span>),</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">include_aov =</span> <span class="cn">TRUE</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Converting to factor: gender, risk, treatment</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Contrasts set to contr.sum for the following variables: gender, risk, treatment</code></pre>
+</div>
+</div>
+<p>Our assumptions are exactly the same as before - we test for normality of residuals and equality/homogeneity of variance. The tests are exactly the same. Based on Levene’s test and the Shapiro-Wilks test, we have no violations in multivariate equality of variance (<em>p</em> = .994) or normality (<em>p</em> = .398).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Levene's test</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levene_test</span>(pain_score <span class="sc">~</span> gender <span class="sc">*</span> risk <span class="sc">*</span> treatment, <span class="at">center =</span> <span class="st">"mean"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+    df1   df2 statistic     p
+  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1    11    60     0.237 0.994</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality </span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(threeway_aov<span class="sc">$</span>aov<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  threeway_aov$aov$residuals
+W = 0.98212, p-value = 0.3981</code></pre>
+</div>
+</div>
+<p>Now let’s examine our omnibus ANOVA output.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>threeway_aov</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type 3 tests)
+
+Response: pain_score
+                 Effect    df   MSE         F  pes p.value
+1                gender 1, 60 19.35 16.20 *** .213   &lt;.001
+2                  risk 1, 60 19.35 92.70 *** .607   &lt;.001
+3             treatment 2, 60 19.35   7.32 ** .196    .001
+4           gender:risk 1, 60 19.35      0.14 .002    .708
+5      gender:treatment 2, 60 19.35    3.34 * .100    .042
+6        risk:treatment 2, 60 19.35      0.71 .023    .494
+7 gender:risk:treatment 2, 60 19.35   7.41 ** .198    .001
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>What do our results tell us? Well:</p>
+<ul>
+<li><p>We have significant main effects of gender (<em>F</em>(1, 60) = 16.20, <em>p</em> &lt; .001), risk group (<em>F</em>(1, 60) = 92.69, <em>p</em> &lt; .001) and treatment (<em>F</em>(2, 60) = 7.32, <em>p</em> = .001).</p></li>
+<li><p>We have a significant two-way gender x treatment interaction (<em>F</em>(2, 60) = 3.34, <em>p</em> = .042), but no significant interactions between gender x risk (<em>p</em> = .708) and risk x treatment (<em>p</em> = .494).</p></li>
+<li><p>Our highest-order interaction, gender x risk x treatment is significant (<em>F</em>(2, 60) = 7.41, <em>p</em> = .001).</p></li>
+</ul>
+</section>
+<section id="breaking-down-complex-interactions" class="level3" data-number="8.8.4">
+<h3 data-number="8.8.4" class="anchored" data-anchor-id="breaking-down-complex-interactions"><span class="header-section-number">8.8.4</span> Breaking down complex interactions</h3>
+<p>Great, so we know that we’re dealing with a significant three-way interaction. But… how do we break that down?</p>
+<p>For a two-way ANOVA, this was easy - recall that we conducted <strong>simple effects tests</strong>, where we interpreted the effect of variable A at each level of variable B (or vice versa). In essence, we ran comparisons on the main effects for each level of the other variable.</p>
+<p>We now need to extend that that thinking to the number of effects in a full three-way ANOVA. Naturally, as we saw with two-way ANOVAs, if we have a significant <em>three-way</em> interaction we have to break down the lower-order terms to unpack this interaction. This includes both main effects and two-way interactions, giving rise to simple <strong>main</strong> effects and simple <strong>interaction</strong> effects.</p>
+<p>As we are primarily interested in the efficacy of the treatment on headacoe pain, it might make sense for us to examine the risk x treatment interaction for each gender. We do so by essentially running two-way ANOVAs between A and B (in this case, risk and treatment) at each level of C (in this case, gender). Let’s put this in a plot form, with 95% CIs:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-factorial-anovas_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here, we can see something interesting going on. For both men and women, the efficacy of the treatments might differ - but this may also depend on their risk. For women, for instance, there may not be much change in headache pain, especially for women at high risk of headaches - we can see that the 95% CIs in this group all largely overlap with each other. For men at high risk though, there appears to be a decent difference between treatments X and Y. This is what we will drill down into further.</p>
+<p>To do so, we first use <code>emmeans()</code> to calculate our estimated marginal means for our three-way interactions. For ease, this will be assigned to a variable called <code>headache_emm</code> like below:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>headache_emm <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(threeway_aov, <span class="sc">~</span> treatment <span class="sc">*</span> gender <span class="sc">*</span> risk)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>headache_emm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> treatment gender risk emmean  SE df lower.CL upper.CL
+ X         female high   78.9 1.8 60     75.3     82.5
+ Y         female high   81.2 1.8 60     77.6     84.8
+ Z         female high   81.0 1.8 60     77.4     84.6
+ X         male   high   92.7 1.8 60     89.1     96.3
+ Y         male   high   82.3 1.8 60     78.7     85.9
+ Z         male   high   79.7 1.8 60     76.1     83.3
+ X         female low    74.2 1.8 60     70.6     77.7
+ Y         female low    68.4 1.8 60     64.8     72.0
+ Z         female low    69.8 1.8 60     66.2     73.4
+ X         male   low    76.1 1.8 60     72.5     79.6
+ Y         male   low    73.1 1.8 60     69.5     76.7
+ Z         male   low    74.5 1.8 60     70.9     78.0
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<p>To calculate the initial two-way simple interactions, we can use the <code>joint_tests()</code> function from <code>emmeans</code>, which will calculate ANOVAs based on the contrasts we specify. In this case, because we want to calculate two-way interactions for each level of gender, we specify the argument <code>by = "gender"</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>headache_emm <span class="sc">%&gt;%</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">joint_tests</span>(<span class="at">by =</span> <span class="st">"gender"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>gender = female:
+ model term     df1 df2 F.ratio p.value
+ treatment        2  60   0.482  0.6201
+ risk             1  60  42.803 &lt;0.0001
+ treatment:risk   2  60   2.868  0.0646
+
+gender = male:
+ model term     df1 df2 F.ratio p.value
+ treatment        2  60  10.174  0.0002
+ risk             1  60  50.037 &lt;0.0001
+ treatment:risk   2  60   5.252  0.0079</code></pre>
+</div>
+</div>
+<p>Focusing on the two-way interactions for each gender here, we see that the interaction is significant for males (<em>p</em> = .008) but not for females (<em>p</em> = .065).</p>
+<p>Now we can break down these two-way interactions further to examine the simple main effects of interest (alternatively called simple <em>simple</em> effects). As above, since we might be most interested in the differences between treatments, let’s examine the simple main effects of treatment.</p>
+<p>To do that, we can use the <code>pairs()</code> function as we always have. As a bit of a shortcut to obtain the simple effects we are interested in, we can specify the argument <code>simple = "treatment"</code> to indicate that we want simple effects for this variable. This is equivalent to <code>pairs(by = c("gender", "risk"))</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>headache_emm <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">"none"</span>, <span class="at">simple =</span> <span class="st">"treatment"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>gender = female, risk = high:
+ contrast estimate   SE df lower.CL upper.CL t.ratio p.value
+ X - Y       -2.31 2.54 60   -7.390     2.77  -0.910  0.3666
+ X - Z       -2.17 2.54 60   -7.250     2.91  -0.855  0.3962
+ Y - Z        0.14 2.54 60   -4.940     5.22   0.055  0.9562
+
+gender = male, risk = high:
+ contrast estimate   SE df lower.CL upper.CL t.ratio p.value
+ X - Y       10.40 2.54 60    5.317    15.48   4.094  0.0001
+ X - Z       13.06 2.54 60    7.978    18.14   5.142 &lt;0.0001
+ Y - Z        2.66 2.54 60   -2.419     7.74   1.048  0.2990
+
+gender = female, risk = low:
+ contrast estimate   SE df lower.CL upper.CL t.ratio p.value
+ X - Y        5.79 2.54 60    0.714    10.87   2.282  0.0261
+ X - Z        4.38 2.54 60   -0.703     9.46   1.723  0.0900
+ Y - Z       -1.42 2.54 60   -6.498     3.66  -0.558  0.5788
+
+gender = male, risk = low:
+ contrast estimate   SE df lower.CL upper.CL t.ratio p.value
+ X - Y        2.91 2.54 60   -2.167     7.99   1.147  0.2559
+ X - Z        1.60 2.54 60   -3.484     6.68   0.628  0.5321
+ Y - Z       -1.32 2.54 60   -6.397     3.76  -0.519  0.6059
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<p>What do we see? Let’s take this by each combination of gender and risk:</p>
+<ul>
+<li>For women at high risk of headaches, there are no significant differences in efficacy between the treatments (all <em>p</em>s &gt; .05).</li>
+<li>For men at high risk, treatment Y is significantly better than treatment X (<em>p</em> &lt; .001), and treatment X is also significantly better than treatment X (<em>p</em> &lt; .001). However, there is no significant diffrence between treatments Y and Z (<em>p</em> = .299).</li>
+<li>For women at low risk, treatment Y is again significantly better than treatment X (<em>p</em> = .026). However, no other comparisons are significant (<em>p</em>s &gt; .05).</li>
+<li>For men at low risk, there are no significant differences in efficacy between the treatments (all <em>p</em>s &gt; .05).</li>
+</ul>
+<p>Of course, with this many comparisons you may wish to correct for multiple comparisons - particularly if these simple effects are being conducted post-hoc, and not based on the question. Here is an example with Holm corrections:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>headache_emm <span class="sc">%&gt;%</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs</span>(<span class="at">infer =</span> <span class="cn">TRUE</span>, <span class="at">adjust =</span> <span class="st">"holm"</span>, <span class="at">simple =</span> <span class="st">"treatment"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>gender = female, risk = high:
+ contrast estimate   SE df lower.CL upper.CL t.ratio p.value
+ X - Y       -2.31 2.54 60   -8.565     3.94  -0.910  1.0000
+ X - Z       -2.17 2.54 60   -8.425     4.08  -0.855  1.0000
+ Y - Z        0.14 2.54 60   -6.115     6.39   0.055  1.0000
+
+gender = male, risk = high:
+ contrast estimate   SE df lower.CL upper.CL t.ratio p.value
+ X - Y       10.40 2.54 60    4.142    16.65   4.094  0.0003
+ X - Z       13.06 2.54 60    6.803    19.31   5.142 &lt;0.0001
+ Y - Z        2.66 2.54 60   -3.594     8.92   1.048  0.2990
+
+gender = female, risk = low:
+ contrast estimate   SE df lower.CL upper.CL t.ratio p.value
+ X - Y        5.79 2.54 60   -0.461    12.05   2.282  0.0782
+ X - Z        4.38 2.54 60   -1.878    10.63   1.723  0.1799
+ Y - Z       -1.42 2.54 60   -7.672     4.84  -0.558  0.5788
+
+gender = male, risk = low:
+ contrast estimate   SE df lower.CL upper.CL t.ratio p.value
+ X - Y        2.91 2.54 60   -3.342     9.17   1.147  0.7677
+ X - Z        1.60 2.54 60   -4.659     7.85   0.628  1.0000
+ Y - Z       -1.32 2.54 60   -7.572     4.94  -0.519  1.0000
+
+Confidence level used: 0.95 
+Conf-level adjustment: bonferroni method for 3 estimates 
+P value adjustment: holm method for 3 tests </code></pre>
+</div>
+</div>
+</section>
+<section id="a-note-about-splitting-data" class="level3" data-number="8.8.5">
+<h3 data-number="8.8.5" class="anchored" data-anchor-id="a-note-about-splitting-data"><span class="header-section-number">8.8.5</span> A note about splitting data</h3>
+<p>In SPSS (and likely Jamovi), to conduct simple interaction tests you would typically need to split the data by one of the variables. In our example, we would literally conduct two-way ANOVAs for males and females separately, which would split our sample size in half. However, an important note is that <code>emmmeans</code> uses the error terms across the <em>whole</em> model to calculate test statistics properly.</p>
+<p>There does not seem to be a fully consistent approach a to which way is better, and this might potentially be a limitation of software more so than methodological approaches. However, given that these differences will also impact significance it is good to know here. (The same applies for two-way ANOVAs, but all programs handle these well.)</p>
+<p>On a related note, it is possible to calculate the two-way simple interactions using <code>anova_test()</code> with the correct model error term. This function has a specific argument called <code>error</code>, which specifies which model (in <code>lm</code> form) should be used for calculating error terms. In this instance, because we want the error term from the whole three-way ANOVA model, we extract the <code>lm</code> object from our <code>aov</code> object and pass this to this argument.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>headache <span class="sc">%&gt;%</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anova_test</span>(pain_score <span class="sc">~</span> treatment <span class="sc">*</span> risk, <span class="at">type =</span> <span class="dv">3</span>, <span class="at">error =</span> threeway_aov<span class="sc">$</span>lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  gender Effect           DFn   DFd      F             p `p&lt;.05`   ges
+* &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
+1 female treatment          2    60  0.482 0.62          ""      0.016
+2 female risk               1    60 42.8   0.000000015   "*"     0.416
+3 female treatment:risk     2    60  2.87  0.065         ""      0.087
+4 male   treatment          2    60 10.2   0.000157      "*"     0.253
+5 male   risk               1    60 50.0   0.00000000187 "*"     0.455
+6 male   treatment:risk     2    60  5.25  0.008         "*"     0.149</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="planned-comparisons" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="planned-comparisons"><span class="header-section-number">8.9</span> Planned comparisons</h2>
+<section id="introduction-3" class="level3" data-number="8.9.1">
+<h3 data-number="8.9.1" class="anchored" data-anchor-id="introduction-3"><span class="header-section-number">8.9.1</span> Introduction</h3>
+<p>Up until now, the typical process for testing an ANOVA has been something like this:</p>
+<ul>
+<li>Determine null and alternative hypotheses</li>
+<li>Run an omnibus ANOVA</li>
+<li>Run post-hocs to unpack any significant effects</li>
+</ul>
+<p>The last point here is of interest to us. Recall that the omnibus ANOVA generally tells us that there is a difference between the means somewhere in our potential list of comparisons. We don’t know where that difference may be ahead of time. Post-hoc tests like Tukey tests allow us to ‘unpack’ these significant differences further. However, post-hocs by definition are <em>a-posteriori</em> - they are only done after a significant result/test, meaning that they are strictly <strong>exploratory</strong>.</p>
+<p>Sometimes, however, we may actually have <em>a-priori</em> (i.e.&nbsp;before the test) hypotheses about specific comparisons we want to make. Often, these are specific predictions based on literature that we want to test in our own data. In these instances, we now move into the possibility of doing planned comparisons.</p>
+</section>
+<section id="planned-comparisons-1" class="level3" data-number="8.9.2">
+<h3 data-number="8.9.2" class="anchored" data-anchor-id="planned-comparisons-1"><span class="header-section-number">8.9.2</span> Planned comparisons</h3>
+<p>As mentioned above, we use <strong>planned comparisons</strong> when we have <strong>specific hypotheses</strong> we want to test. For instance, you may want to compare two specific groups out of four for a hypothetical reason. Or, alternatively, you may wish to compare one group against all of the others at once. These kinds of scenarios can be vital for testing specific hypotheses.</p>
+<p>The benefit of planned comparisons is twofold. Firstly, good planned comparisons should be based in either existing theory or on specific hypotheses, meaning that you are generally aiming to test a specific effect for (hopefully) a scientifically sound reason. Secondly, planned comparisons reduce the number of comparisons that need to be made, thereby reducing the overall family-wise Type I error rate. In essence, we only conduct the tests required to evaluate our original research question(s).</p>
+</section>
+<section id="linear-contrasts" class="level3" data-number="8.9.3">
+<h3 data-number="8.9.3" class="anchored" data-anchor-id="linear-contrasts"><span class="header-section-number">8.9.3</span> Linear contrasts</h3>
+<p>In planned comparisons, we typically compare two specific means with each other. With that in mind, it may be tempting to simply default to running a t-test or something similar to compare just the two groups you want. However, this would not properly test the planned comparison, because in some instances we must average over the other groups in the comparisons. To correctly set up planned comparisons, we must set up <strong>linear contrasts</strong>. In essence, these allow to specify how the various groups in an ANOVA should be compared.</p>
+<p>Here’s an intuitive way of thinking about these contrasts. Imagine we want to compare one superstar soccer player (e.g.&nbsp;maybe Messi) to a given football team of 15. To make the comparison fair, we would <em>weight</em> each person in the team of 15 (i.e.&nbsp;make each person’s average worth 1/15), in order for the team’s average to be comparable to the superstar player.</p>
+<p>In essence, this is what we do when defining linear contrasts, and we do this via defining a contrast matrix. This <strong>contrast matrix</strong> is a way that lets us weight the categories in a variable to create contrasts. While there are several forms of standard contrasts (which is slightly beyond the scope, but <a href="https://stats.oarc.ucla.edu/r/library/r-library-contrast-coding-systems-for-categorical-variables/">here is a good overview</a>.</p>
+<p>We assign a positive or negative number to each level in a variable in order to define a contrast. Here, the direction (positive vs negative) matters; any value with a positive contrast coefficient will be on one side of the comparison, and any value with a negative coefficient will be on the other side of the comparison. The linear contrasts <strong>must sum to</strong> zero, meaning that the total on each side must be the same.</p>
+<p>Below are three examples of specific contrasts, and their coefficients:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">a</th>
+<th style="text-align: left;">b</th>
+<th style="text-align: left;">c</th>
+<th style="text-align: left;">d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group A</td>
+<td style="text-align: left;">Group B</td>
+<td style="text-align: left;">Group C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group A - Group B</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group B - Group C</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group A - (Group B and C)</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">-1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>It doesn’t really matter what numbers you use to enter these contrasts, so long as they sum to zero. For example, we could also write the first contrast using 0.5 and -0.5 in place of the 1s.</p>
+</section>
+<section id="an-example" class="level3" data-number="8.9.4">
+<h3 data-number="8.9.4" class="anchored" data-anchor-id="an-example"><span class="header-section-number">8.9.4</span> An example</h3>
+<p>Let’s revisit the one-way ANOVA we ran in 9.5 One way ANOVA:</p>
+<blockquote class="blockquote">
+<p>Below is another simple example, comparing taste ratings across three different types of slices: caramel slices, vanilla slices and lemon slices. Participants were randomly allocated to taste one of the three slices blindfolded, and were then asked to verbally rate its taste on a scale from 1-10 (10 being super tasty).</p>
+</blockquote>
+<p>Now, pretend that this time we have a specific hypothesis we want to test. Namely, pretend that we are only interested in two comparisons:</p>
+<ol type="1">
+<li>Vanilla - caramel slices</li>
+<li>Vanilla - caramel and lemon slices</li>
+</ol>
+<p>Here’s the original ANOVA output for your reference, though we don’t need to do anything with this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+group        2  22.22  11.111   6.897 0.00201 **
+Residuals   60  96.67   1.611                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>We need to define the contrast coefficients for our two planned contrasts. In R, there are two ways you can do this: either define contrasts at the <em>aov</em> level, or use <code>emmeans</code>. We will do the latter.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">a</th>
+<th style="text-align: left;">b</th>
+<th style="text-align: left;">c</th>
+<th style="text-align: left;">d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Caramel</td>
+<td style="text-align: left;">Lemon</td>
+<td style="text-align: left;">Vanilla</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Caramel - Vanilla</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Vanilla - (Caramel and Lemon)</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>To set up the contrasts, we first need to know the exact order of our group variable/</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IDentify levels</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(w9_slices<span class="sc">$</span>group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "caramel" "lemon"   "vanilla"</code></pre>
+</div>
+</div>
+<p>Once we know that, we need to create new variables that will contain the contrasts. To do this, we will create a vector of length <em>k</em>, where <em>k</em> is the total number of groups in the independent/categorical variable. In this case, becasue we have three slice flavours, we need to create vectors of length 3.</p>
+<p>The value of each vector item corresponds to the level of the factor. For <code>emmeans</code>, all we need to do is use a 1 for the group of interest, and 0 of others; <code>emmeans</code> will build the correct contrast coefficients later depending on what we give it.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define contrasts</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>lemon <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>caramel <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>vanilla <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Finally, we can perform our contrasts. We start with the same call to <code>emmeans()</code>, so we must first give it our aov`/ANOVA object and indicate our grouping variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> group   emmean    SE df lower.CL upper.CL
+ caramel   5.62 0.277 60     5.06     6.17
+ lemon     5.14 0.277 60     4.59     5.70
+ vanilla   6.57 0.277 60     6.02     7.13
+
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+<p>Next, we use the <code>contrast()</code> function to perform the pairwise comparisons. (<code>pairs()</code>, which we saw earlier, is just a shorthand form of <code>contrast()</code>.) Here is where we give the function the speicifc contrasts that we want to run. We do this by supplying the <code>methods</code> argument in <code>contrast()</code>. This argument takes a <strong>list</strong> of comparisons we want to run, expressed in <code>A - B</code> form (where A and B are the variables of <em>contrast coefficients</em> representing the groups we want to compare).</p>
+<p>For example, if we want to compare our caramel and vanilla slices, we simply need to give <code>caramel - vanilla</code> - both of which we defined just above - to a list in <code>contrast()</code>. This will generate the following set of output.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>      caramel <span class="sc">-</span> vanilla</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> contrast    estimate    SE df t.ratio p.value
+ c(1, 0, -1)   -0.952 0.392 60  -2.431  0.0180</code></pre>
+</div>
+</div>
+<p>The output is a little hard to read through, but we can fix that by assigning a name to the list item:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Caramel - vanilla"</span> <span class="ot">=</span> caramel <span class="sc">-</span> vanilla</span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> contrast          estimate    SE df t.ratio p.value
+ Caramel - vanilla   -0.952 0.392 60  -2.431  0.0180</code></pre>
+</div>
+</div>
+<p>Unlike Jamovi and gamlj, which can only display one given comparison at a time, <code>emmeans()</code> can display multiple. Here, for example, is how we would define our second contrast - that is, vanilla vs the other two slices:</p>
+<pre><code>list("Vanilla vs others" = vanilla - (caramel + lemon)/2</code></pre>
+<p>Note here that we take the average of ‘caramel’ and ‘lemon’, by adding them up and dividing by 2. This will have the same effect of making their contrast coefficients half the weight of the vanilla level (i.e.&nbsp;it does the maths of calculating the correct contrast coefficient so that it sums to zero).</p>
+<p>Instead of making this a whole new <code>emmeans()</code> call, we can simply add that list term to the <code>list()</code> part of our code in the main call.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(w9_slices_aov, <span class="sc">~</span> group) <span class="sc">%&gt;%</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">contrast</span>(</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="fu">list</span>(</span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Caramel - vanilla"</span> <span class="ot">=</span> caramel <span class="sc">-</span> vanilla,</span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Vanilla - others"</span> <span class="ot">=</span> vanilla <span class="sc">-</span> (lemon <span class="sc">+</span> caramel)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> contrast          estimate    SE df t.ratio p.value
+ Caramel - vanilla   -0.952 0.392 60  -2.431  0.0180
+ Vanilla - others     1.190 0.339 60   3.509  0.0009</code></pre>
+</div>
+</div>
+<p>Using this output, we can see that the comparison between caramel slices and vanilla slices is significant (<em>t</em> = 2.43, <em>p</em> = .018). Likewise, the comparison between the vanilla slices and the other slices is significant (<em>t</em> = 3.51, <em>p</em> &lt; .001).</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./07-regressions.html" class="pagination-link" aria-label="Linear relationships">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./09-regressions-2.html" class="pagination-link" aria-label="Regression continued">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

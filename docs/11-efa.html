@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>11&nbsp; Exploratory factor analysis – Research Process for Music Psychologists</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./12-medmod.html" rel="next">
+<link href="./10-logistic.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./11-efa.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Process for Music Psychologists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I: Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A very brief introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-descriptives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferential statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II: Basic inferential tests</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-chisquares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chi-squares</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III: Advanced methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-factorial-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regressions-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-efa.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-medmod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-nonpara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-efa" id="toc-introduction-to-efa" class="nav-link active" data-scroll-target="#introduction-to-efa"><span class="header-section-number">11.1</span> Introduction to EFA</a>
+  <ul class="collapse">
+  <li><a href="#dimension-reduction" id="toc-dimension-reduction" class="nav-link" data-scroll-target="#dimension-reduction"><span class="header-section-number">11.1.1</span> Dimension reduction</a></li>
+  <li><a href="#factor-analysis" id="toc-factor-analysis" class="nav-link" data-scroll-target="#factor-analysis"><span class="header-section-number">11.1.2</span> Factor analysis</a></li>
+  <li><a href="#the-steps-of-exploratory-factor-analysis" id="toc-the-steps-of-exploratory-factor-analysis" class="nav-link" data-scroll-target="#the-steps-of-exploratory-factor-analysis"><span class="header-section-number">11.1.3</span> The steps of exploratory factor analysis</a></li>
+  <li><a href="#example-dataset" id="toc-example-dataset" class="nav-link" data-scroll-target="#example-dataset"><span class="header-section-number">11.1.4</span> Example dataset</a></li>
+  </ul></li>
+  <li><a href="#theory-of-efa" id="toc-theory-of-efa" class="nav-link" data-scroll-target="#theory-of-efa"><span class="header-section-number">11.2</span> Theory of EFA</a>
+  <ul class="collapse">
+  <li><a href="#pca-vs-efa" id="toc-pca-vs-efa" class="nav-link" data-scroll-target="#pca-vs-efa"><span class="header-section-number">11.2.1</span> PCA vs EFA</a></li>
+  <li><a href="#the-common-factor-model" id="toc-the-common-factor-model" class="nav-link" data-scroll-target="#the-common-factor-model"><span class="header-section-number">11.2.2</span> The common factor model</a></li>
+  <li><a href="#partial-correlations" id="toc-partial-correlations" class="nav-link" data-scroll-target="#partial-correlations"><span class="header-section-number">11.2.3</span> Partial correlations</a></li>
+  </ul></li>
+  <li><a href="#initial-considerations-for-efa" id="toc-initial-considerations-for-efa" class="nav-link" data-scroll-target="#initial-considerations-for-efa"><span class="header-section-number">11.3</span> Initial considerations for EFA</a>
+  <ul class="collapse">
+  <li><a href="#sample-size" id="toc-sample-size" class="nav-link" data-scroll-target="#sample-size"><span class="header-section-number">11.3.1</span> Sample size</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="header-section-number">11.3.2</span> Assumptions</a></li>
+  <li><a href="#factorability" id="toc-factorability" class="nav-link" data-scroll-target="#factorability"><span class="header-section-number">11.3.3</span> Factorability</a></li>
+  </ul></li>
+  <li><a href="#how-many-factorscomponents" id="toc-how-many-factorscomponents" class="nav-link" data-scroll-target="#how-many-factorscomponents"><span class="header-section-number">11.4</span> How many factors/components?</a>
+  <ul class="collapse">
+  <li><a href="#deciding-on-the-number-of-factors" id="toc-deciding-on-the-number-of-factors" class="nav-link" data-scroll-target="#deciding-on-the-number-of-factors"><span class="header-section-number">11.4.1</span> Deciding on the number of factors</a></li>
+  <li><a href="#the-kaiser-guttman-rule" id="toc-the-kaiser-guttman-rule" class="nav-link" data-scroll-target="#the-kaiser-guttman-rule"><span class="header-section-number">11.4.2</span> The Kaiser-Guttman rule</a></li>
+  <li><a href="#the-scree-plot" id="toc-the-scree-plot" class="nav-link" data-scroll-target="#the-scree-plot"><span class="header-section-number">11.4.3</span> The scree plot</a></li>
+  <li><a href="#parallel-analysis" id="toc-parallel-analysis" class="nav-link" data-scroll-target="#parallel-analysis"><span class="header-section-number">11.4.4</span> Parallel analysis</a></li>
+  <li><a href="#velicers-minimum-average-partials-map-test" id="toc-velicers-minimum-average-partials-map-test" class="nav-link" data-scroll-target="#velicers-minimum-average-partials-map-test"><span class="header-section-number">11.4.5</span> Velicer’s Minimum Average Partials (MAP) test</a></li>
+  <li><a href="#how-to-decide" id="toc-how-to-decide" class="nav-link" data-scroll-target="#how-to-decide"><span class="header-section-number">11.4.6</span> How to decide?</a></li>
+  </ul></li>
+  <li><a href="#interpreting-output" id="toc-interpreting-output" class="nav-link" data-scroll-target="#interpreting-output"><span class="header-section-number">11.5</span> Interpreting output</a>
+  <ul class="collapse">
+  <li><a href="#extraction-methods" id="toc-extraction-methods" class="nav-link" data-scroll-target="#extraction-methods"><span class="header-section-number">11.5.1</span> Extraction methods</a></li>
+  <li><a href="#interpreting-output-1" id="toc-interpreting-output-1" class="nav-link" data-scroll-target="#interpreting-output-1"><span class="header-section-number">11.5.2</span> Interpreting output</a></li>
+  <li><a href="#total-variance-explained" id="toc-total-variance-explained" class="nav-link" data-scroll-target="#total-variance-explained"><span class="header-section-number">11.5.3</span> Total variance explained</a></li>
+  </ul></li>
+  <li><a href="#rotation-and-interpreting-output-again" id="toc-rotation-and-interpreting-output-again" class="nav-link" data-scroll-target="#rotation-and-interpreting-output-again"><span class="header-section-number">11.6</span> Rotation, and interpreting output again</a>
+  <ul class="collapse">
+  <li><a href="#rotations" id="toc-rotations" class="nav-link" data-scroll-target="#rotations"><span class="header-section-number">11.6.1</span> Rotations</a></li>
+  <li><a href="#rotated-factor-solution" id="toc-rotated-factor-solution" class="nav-link" data-scroll-target="#rotated-factor-solution"><span class="header-section-number">11.6.2</span> Rotated factor solution</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./11-efa.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Many of the <em>things</em> we are interested in psychological research are things that are both <em>unobservable</em> and not <em>directly</em> measurable. Consider, for instance, someone’s height: this is an observable and directly measurable quantity, in that we can a) see how tall they are and b) take a tape measure to them and get a direct, precise measurement of their height. In contrast, consider the things that we are often interested in when it comes to psychological constructs: motivations, wellbeing attitudes, beliefs, cognitive abilities, values, personality features…</p>
+<p>None of these kinds of constructs are directly measurable or even tangible. We can’t take a rule to measure how much someone enjoys listening to music, for example, or identify the extent to which they believe that listening to certain genres is healthy or unhealthy for you. However, we might be able to observe <em>behaviours</em> that might relate to these constructs, or people may respond to questions in ways that are indicative of said constructs.</p>
+<p>In this module we talk about <strong>factor analysis</strong>, which is one method of using statistics to identify these <strong>latent constructs</strong>. Specifically, we will focus on <strong>exploratory factor analysis</strong>, which aims to take a series of variables and identify the latent constructs that may underlie these variables.</p>
+<section id="introduction-to-efa" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="introduction-to-efa"><span class="header-section-number">11.1</span> Introduction to EFA</h2>
+<p>We generally conduct a survey because we’re interested in how different people hold different attitudes, ideas or beliefs about things. All of the standard statistical tools that you learned in Modules 5 and 6 are useful in this regard, and can absolutely be used with survey data. But given how highly dimensional survey data is, it opens up a new way of analysing data - exploratory factor analysis.</p>
+<section id="dimension-reduction" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="dimension-reduction"><span class="header-section-number">11.1.1</span> Dimension reduction</h3>
+<p>Sometimes it’s easy to forget that designing a questionnaire and administering it gives rise to quite complex data. After all, a single question item may simply ask participants to rate themselves on a statement using a Likert scale, as we have seen earlier in this module. However, consider how many questions we might collect across a scale and it quickly becomes evident that this kind of data is highly dimensional - that is, with lots of individual questions we end up with a lot of data to sift through.</p>
+<p>This kind of scenario is where dimension reduction techniques become extremely useful. Dimension reduction techniques allow us to essentially collapse data into ‘supervariables’ that can simplify the analyses that we do by capturing the commonalities across questionnaire items.</p>
+<p>Principal components analysis (PCA) is the most common form of dimension reduction. Principal components analysis lets us take highly dimensional data, such as a questionnaire/scale with multiple items, and collapse that down into a smaller number of components.</p>
+</section>
+<section id="factor-analysis" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="factor-analysis"><span class="header-section-number">11.1.2</span> Factor analysis</h3>
+<p>Factor analysis is another analytical technique like dimension reduction. However, the key conceptual difference is that while PCA lets us collapse multiple variables into a smaller number of components, factor analysis lets us identify latent factors in our data. Latent factors are the factors underlying the behaviours and responses that we observe in our questionnaire items. We might find, for example, that performance on a series of tests is actually underlaid by multiple distinct, theoretically meaningful factors.</p>
+<p>Therefore, factor analysis lets us build and test theories about latent psychological constructs. Factor analysis allows us to indirectly measure these latent factors - essentially, are our questions tapping into the same ‘thing’?</p>
+<p>Factor analysis can be split into exploratory factor analysis (EFA) and confirmatory factor analysis (CFA). We will focus specifically on EFA in this module.</p>
+<p><strong>A terminology note</strong></p>
+<p>You’ll note that we’ve described PCA as generating components, while FA generates factors. It’s worth remembering that this is intentional, and the two terms should not be used interchangeably. We will talk more about this on the pages that follow, but components are simply linear combinations of multiple variables. Factors are estimates of latent variables that drive behaviour. The latter specifically is what we use to test theories about psychological constructs.</p>
+</section>
+<section id="the-steps-of-exploratory-factor-analysis" class="level3" data-number="11.1.3">
+<h3 data-number="11.1.3" class="anchored" data-anchor-id="the-steps-of-exploratory-factor-analysis"><span class="header-section-number">11.1.3</span> The steps of exploratory factor analysis</h3>
+<p>EFA is quite an involved analysis, and there are several considerations that must be taken into account:</p>
+<ul>
+<li>Prepare data and assess for suitability</li>
+<li>Decide on the extraction method</li>
+<li>Decide on how many factors to retain</li>
+<li>Decide on the rotation method</li>
+<li>Interpret the results</li>
+</ul>
+</section>
+<section id="example-dataset" class="level3" data-number="11.1.4">
+<h3 data-number="11.1.4" class="anchored" data-anchor-id="example-dataset"><span class="header-section-number">11.1.4</span> Example dataset</h3>
+<p>The example we’ll be using to work through this data is from a brilliant statistician and educator, Professor Andy Field, who is very highly regarded for his Discovering Statistics series - including Discovering Statistics with SPSS and Discovering Statistics with R. I highly recommend checking them out if you plan on using them!</p>
+<p>As part of his book, Prof.&nbsp;Field came up with a questionnaire called the SPSS Anxiety Questionnaire (SAQ). For the purposes of the next few pages we’ll be using a reduced version with just 9 questions, which we’ll call the SAQ-9. The questions in this survey are:</p>
+<p>Q1: Statistics makes me cry Q2: My friends will think I’m stupid for not being able to cope with SPSS Q4: I dream that Pearson is attacking me with correlation coefficients Q5: I don’t understand statistics Q6: I have little experience of computers Q14: Computers have minds of their own and deliberately go wrong whenever I use them Q15: Computers are out to get me Q19: Everybody looks at me when I use SPSS Q22: My friends are better at SPSS than I am</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>saq <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"efa"</span>, <span class="st">"SAQ-9.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 2571 Columns: 9
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (9): q01, q02, q04, q05, q06, q14, q15, q19, q22
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>As we walk through the content, we will use this dataset to illustrate how to conduct an exploratory factor analysis. (Note the questions were specifically chosen for demonstration purposes.)</p>
+<p>To actually conduct the EFA, we will primarily rely on two packages: <code>psych</code> and <code>EFA.dimensions</code>. The <code>psych</code> package is a fairly big package designed to run many common analyses in psychological science, specifically analyses that relate to <em>psychometrics.</em> It’s an incredibly useful package to be aware of in general. <code>EFA.dimensions</code> is another great package that provides functions to help with certain parts of the EFA process.</p>
+</section>
+</section>
+<section id="theory-of-efa" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="theory-of-efa"><span class="header-section-number">11.2</span> Theory of EFA</h2>
+<p>On this page, we (briefly) touch on a bit of the statistical theory underlying factor analysis and PCA. We won’t dive too deeply into the maths underlying EFA, but will focus on the high-level conceptual stuff.</p>
+<section id="pca-vs-efa" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="pca-vs-efa"><span class="header-section-number">11.2.1</span> PCA vs EFA</h3>
+<p>Here is a good point to formally differentiate PCA vs EFA, following on from the brief disclaimer on the previous page.</p>
+<p>Both PCA and EFA will extract up to k factors that attempt to explain the observed variables. k, in this instance, is capped at the number of observed variables; so, if you input 24 variables into a PCA, the maximum number of components that you can estimate is 24. However, what defines these components/factors differs:</p>
+<ul>
+<li>In PCA, where we are just interested in collapsing variables, we assume that all variance in the observed variables is explained by the factors. Ultimately, a PCA will extract k components that ultimately explain 100% of the variance in all of the observed variables.</li>
+<li>In EFA, the goal is only to explain common variance between the observed variables. EFA explicitly models the variance in the items to be comprised of common variance, which is variance due to shared underlying factors, and unique variance. Unique variance can be further broken down into specific variance, which is variance that is specific to each item, and error variance. By partitioning variance in this way, EFA is able to test models of factors as it allows for disconfirmation - a vital part of any model testing.</li>
+</ul>
+<p>In short, EFA allows us to generate theoretical entities that we can test in subsequent analyses. PCA only provides us with a measure that combines the effects of multiple variables, but does not test latent factors.</p>
+</section>
+<section id="the-common-factor-model" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="the-common-factor-model"><span class="header-section-number">11.2.2</span> The common factor model</h3>
+<p>The basis of factor analysis is the common factor model. Broadly speaking, the common factor model suggests that variables that relate to each other are likely driven by underlying latent variables. For example, if five questions in a survey all ask about a specific aspect of motivation, and these items correlate with each other, we would expect the same thing - or latent factor - to be driving responses on these five items. Exploratory factor analysis operates under this common factor model.</p>
+<p>Below is a basic diagram of the common factor model. The squares represent observed variables, which are the variables that we measure. The big circle denotes the latent factor that we want to estimate. The circles leading to the observed variables are error terms. In an exploratory factor analysis, the primary thing we want to investigate is the factor loadings, denoted by the various lambdas (<span class="math inline">\(\lambda\)</span>). We will see precisely what the factor loadings are later, but generally they are how strongly the latent factor predicts each observed variable.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="img/common_factor_1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now let’s take a look at the common factor model with two factors. As you can see, we allow every observed variable to load onto every factor - thus, we estimate factor loadings for every possible path going from latent factors to observed variables. This is what we estimate in exploratory factor analysis (and PCA - sort of).</p>
+<p>For brevity’s sake, only three lambdas have been shown, but hopefully they are illustrative enough to get the general gist across. Every path leading from a latent variable to an observed variable is a parameter to be estimated in an exploratory factor analysis.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="img/common_factor_2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="partial-correlations" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="partial-correlations"><span class="header-section-number">11.2.3</span> Partial correlations</h3>
+<p>In Module 10, we talked about the concept of <strong>correlation</strong> - i.e.&nbsp;how related two variables are. Recall that correlation coefficients are scaled from -1 to 1. In Extension Module 3 we also talked about the concept of <strong>partial correlation</strong> - the relationship between two variables while controlling for a third, as denoted using the below formula:</p>
+<p><span class="math display">\[
+r_{xy.z} = \frac{r_{xy} - (r_{xz} \times r_{yz})}{\sqrt{(1-r^2_{xz})(1-{r^2_{yz}})}}
+\]</span></p>
+<p>Both PCA and EFA rely on estimating partial correlations. Specifically, factor analysis aims to estimate latent factors that <strong>minimise the partial correlations</strong> among <strong>observed</strong> variables. If a latent factor perfectly explains the relationship between two variables, the partial correlations between the observed variables should be zero. A lot of the ‘under the hood’ maths, which we won’t touch on, essentially relates to identifying the latent factors that maximise the <strong>amount of variance</strong> explained in each variable by the factor solutions.</p>
+</section>
+</section>
+<section id="initial-considerations-for-efa" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="initial-considerations-for-efa"><span class="header-section-number">11.3</span> Initial considerations for EFA</h2>
+<p>We’ll start with some basic considerations for EFA/PCA. These are generally things that should be thought about/considered before an EFA, or at least before you interpret the results.</p>
+<section id="sample-size" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="sample-size"><span class="header-section-number">11.3.1</span> Sample size</h3>
+<p>For adequate power, EFA typically needs a fairly big sample size. There is no clear agreement about what constitutes a ‘good’ sample size, and it’s difficult to give concrete recommendations.</p>
+<p>Many guides and sources will often mention a n:p rule of thumb, where n is sample size and p is number of variables (which is the number of parameters that needs to be estimated). The idea is that an ideal EFA sample size will have n participants for every variable you are analysing. These can range from as low as 3:1 to 20:1, with a typical ‘ok’ range being from 10-20:1. However, there is no clear support for these rules, and no minimum is truly sufficient (Hogarty et al.&nbsp;2005).</p>
+<p>In general - the bigger the better, and the more variables you have the more participants you need. Aim for at least 300+ no matter the circumstance (this is a very blunt rule of thumb!).</p>
+<p>Below are our descriptives. While we can use a bit of tidyverse to get descriptives, the <code>describe()</code> function from the <code>psych</code> package is also convenient for getting basic descriptives for every column in a dataset. We can see that we have n = 2571, which should be more than adequate.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    vars    n mean   sd median trimmed  mad min max range  skew kurtosis   se
+q01    1 2571 2.37 0.83      2    2.34 0.00   1   5     4  0.65     0.61 0.02
+q02    2 2571 1.62 0.85      1    1.46 0.00   1   5     4  1.49     2.04 0.02
+q04    3 2571 2.79 0.95      3    2.74 1.48   1   5     4  0.39    -0.29 0.02
+q05    4 2571 2.72 0.96      3    2.68 1.48   1   5     4  0.46    -0.44 0.02
+q06    5 2571 2.23 1.12      2    2.09 1.48   1   5     4  0.93     0.15 0.02
+q14    6 2571 2.88 1.00      3    2.84 1.48   1   5     4  0.29    -0.36 0.02
+q15    7 2571 2.77 1.01      3    2.72 1.48   1   5     4  0.43    -0.45 0.02
+q19    8 2571 2.29 1.10      2    2.21 1.48   1   5     4  0.48    -0.72 0.02
+q22    9 2571 2.89 1.04      3    2.93 1.48   1   5     4 -0.07    -0.68 0.02</code></pre>
+</div>
+</div>
+</section>
+<section id="assumptions" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">11.3.2</span> Assumptions</h3>
+<p>EFA can be conducted with one of multiple algorithms that determines the final factor structure to be extracted. Different methods rely on different assumptions, so basic assumption checks are useful:</p>
+<ul>
+<li>Data must be interval/ratio data. Ordinal data is problematic unless you generally have at least 5 scale points; in which case, you can broadly approximate this to be continuous.</li>
+<li>Normality is important, depending on the method. The usual QQ-plot or Shapiro-Wilks tests on individual items can be useful here.</li>
+<li>Multicollinearity: observed variables should not be collinear with each other.</li>
+</ul>
+<p>Note though that the Shapiro-Wilks test only tests the normality of one variable, i.e.&nbsp;univariate normality. EFA is ideal with multivariate normality, i.e.&nbsp;the joint dimensions of the entire dataset are normally distributed. Univariate normality is necessary but not sufficient for multivariate normality. Although Jamovi doesn’t provide an easy way to test for multivariate normality (yet), it is very easy to do so in R with the <code>MVN</code> package.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MVN)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the mvn() function to create the test output</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mvn_results <span class="ot">&lt;-</span> <span class="fu">mvn</span>(saq, <span class="at">mvn_test =</span> <span class="st">"mardia"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the multivariate normality test only</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>mvn_results<span class="sc">$</span>multivariate_normality</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test Statistic p.value     Method          MVN
+1 Mardia Skewness  2300.558  &lt;0.001 asymptotic ✗ Not normal
+2 Mardia Kurtosis    23.632  &lt;0.001 asymptotic ✗ Not normal</code></pre>
+</div>
+</div>
+</section>
+<section id="factorability" class="level3" data-number="11.3.3">
+<h3 data-number="11.3.3" class="anchored" data-anchor-id="factorability"><span class="header-section-number">11.3.3</span> Factorability</h3>
+<p>Factorability broadly describes whether the data are likely to be amenable to factor analysis. If data are factorable, it suggests that there is likely to be at least one latent factor underlying the observations.</p>
+<p>We can test factorability in three ways:</p>
+<ol type="1">
+<li>Correlations</li>
+</ol>
+<p>A simple matrix of correlations can give us a first-pass indication of factorability. If most items correlate with each other, this can indicate that there are underlying latent factors. There is no hard and fast rule for what counts as ‘acceptable’, but if most variables are not significantly correlated that indicates that the data may not be factorable. In our SAQ-9 data, we can see that all correlations between variables are significant, which is generally a good sign.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            q01         q02         q04        q05         q06        q14
+q01  1.00000000 -0.09872403  0.43586018  0.4024399  0.21673399  0.3378797
+q02 -0.09872403  1.00000000 -0.11185965 -0.1193466 -0.07420968 -0.1646999
+q04  0.43586018 -0.11185965  1.00000000  0.4006722  0.27820154  0.3508096
+q05  0.40243992 -0.11934658  0.40067225  1.0000000  0.25746014  0.3153381
+q06  0.21673399 -0.07420968  0.27820154  0.2574601  1.00000000  0.4022441
+q14  0.33787966 -0.16469991  0.35080964  0.3153381  0.40224407  1.0000000
+q15  0.24575263 -0.16499581  0.33423089  0.2613719  0.35989309  0.3801148
+q19 -0.18901103  0.20329748 -0.18597751 -0.1653221 -0.16675017 -0.2540581
+q22 -0.10440866  0.23087487 -0.09838349 -0.1325359 -0.16513541 -0.1698375
+           q15        q19         q22
+q01  0.2457526 -0.1890110 -0.10440866
+q02 -0.1649958  0.2032975  0.23087487
+q04  0.3342309 -0.1859775 -0.09838349
+q05  0.2613719 -0.1653221 -0.13253593
+q06  0.3598931 -0.1667502 -0.16513541
+q14  0.3801148 -0.2540581 -0.16983754
+q15  1.0000000 -0.2098023 -0.16790617
+q19 -0.2098023  1.0000000  0.23392259
+q22 -0.1679062  0.2339226  1.00000000</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, the lowerCor() fucntion from psych prints this more nicely</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lowerCor</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    q01   q02   q04   q05   q06   q14   q15   q19   q22  
+q01  1.00                                                
+q02 -0.10  1.00                                          
+q04  0.44 -0.11  1.00                                    
+q05  0.40 -0.12  0.40  1.00                              
+q06  0.22 -0.07  0.28  0.26  1.00                        
+q14  0.34 -0.16  0.35  0.32  0.40  1.00                  
+q15  0.25 -0.16  0.33  0.26  0.36  0.38  1.00            
+q19 -0.19  0.20 -0.19 -0.17 -0.17 -0.25 -0.21  1.00      
+q22 -0.10  0.23 -0.10 -0.13 -0.17 -0.17 -0.17  0.23  1.00</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Bartlett’s test of sphericity</li>
+</ol>
+<p>Bartlett’s test of sphericity tests the null hypothesis that all correlations between variables are zero at the population level. In other words, if Bartlett’s test is non-significant it suggests that all of the indicator variables are not correlated. As a result, Bartlett’s test is pretty much always significant as it is very sensitive to sample size. Unsurprisingly, then, our Bartlett’s test result is significant.</p>
+<p>To run this, we use the <code>cortest.bartlett()</code> function from <code>psych</code>. Note that base R does include a function called <code>bartlett.test()</code>, but this is not the same test! (same Bartlett, though.)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>R was not square, finding R from data</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$chisq
+[1] 3674.737
+
+$p.value
+[1] 0
+
+$df
+[1] 36</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Kaiser-Meyer-Olkin (KMO) Test/Kaiser’s Measure of Sampling Adequacy</li>
+</ol>
+<p>This test is often referred to as the KMO Test or Kaiser’s MSA, but both respectively mean the same thing. It is a measure of how much variance among all variables might be due to common variance. Higher KMO/MSA values indicate that more variance is likely due to common factors, thus indicating suitability for factor analysis.</p>
+<p>Kaiser (1974) provided the following (hilarious) interpretations of MSA values:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">MSA value</th>
+<th style="text-align: left;">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MSA between .80 - .90</td>
+<td style="text-align: left;">Marvelous</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSA between .70 - .80</td>
+<td style="text-align: left;">Middling</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSA between .60 - .70</td>
+<td style="text-align: left;">Mediocre</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NSA between .50 - .60</td>
+<td style="text-align: left;">Miserable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSA &lt; .50</td>
+<td style="text-align: left;">Unacceptable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>MSA values are typically calculated for each variable, and for overall. It helps to report both. The <code>KMO()</code> function in <code>psych</code> will calculate both sets of measures of sampling adequacy. Here are our variables below. Overall they are generally in the meritorious range (except for one):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">KMO</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Kaiser-Meyer-Olkin factor adequacy
+Call: KMO(r = saq)
+Overall MSA =  0.82
+MSA for each item = 
+ q01  q02  q04  q05  q06  q14  q15  q19  q22 
+0.81 0.76 0.82 0.84 0.82 0.84 0.85 0.84 0.77 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="how-many-factorscomponents" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="how-many-factorscomponents"><span class="header-section-number">11.4</span> How many factors/components?</h2>
+<p>A crucial element of doing an EFA is deciding on the number of factors that should be extracted for the final solution. This is not a trivial decision, and essentially determines the final factor structure you derive and interpret in your factor analysis. Note that while we mainly talk about factors on this page, the same considerations apply when thinking of components in PCA.</p>
+<section id="deciding-on-the-number-of-factors" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="deciding-on-the-number-of-factors"><span class="header-section-number">11.4.1</span> Deciding on the number of factors</h3>
+<p>Recall that an EFA/PCA will extract up to k factors/components, where k is the number of observed variables. At k factors/components, this will have explained all of the possible variance there is to explain in the observed variables. The basic idea behind how these factors are calculated is by essentially drawing straight lines through our data, much like a regression line. The idea is that each straight line (factor/component) should explain as much variance as possible, and each successive factor/component that is drawn explains the remaining variance.</p>
+<p>The first factor/component will always attempt to explain the most variance possible. The second factor/component will then be drawn through what remains after the first factor/component is calculated, in a way that both maximises the variance captured and is uncorrelated with the first factor/component. This lets us capture as much variance as possible in a clean way, where we can identify the relative contributions of each successive factor/component.</p>
+<p>The amount of variance that is captured by each factor/component is represented by a number called the <strong>eigenvalue.</strong> Naturally, the first factor/component will have the highest eigenvalue, and the eigenvalue of each factor/component afterwards will decrease.</p>
+<p>This means that at some point, we reach a stage where an additional factor doesn’t add much in terms of the variance explained. This indicates that there isn’t much utility in retaining factors after a certain point - i.e.&nbsp;we get diminishing returns on increasing the number of factors we have to interpret. We must strike a balance between having a relatively straightforward factor structure to interpret and how much variance is explained. Too few factors means we may not accurately capture enough variance to be meaningful or miss very crucial relationships, but too many factors means we lose parsimony and interpretability.</p>
+<p>There are several ways in which we can identify where the most optimal number of factors to retain is.</p>
+</section>
+<section id="the-kaiser-guttman-rule" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="the-kaiser-guttman-rule"><span class="header-section-number">11.4.2</span> The Kaiser-Guttman rule</h3>
+<p>The Kaiser-Guttman, Kaiser or simply the “eigenvalue &gt; 1” rule states that we should simply keep any factor with an eigenvalue above 1. To do this, we first need a correlation matrix from our data. We then feed this to the <code>eigen()</code> function in base R, which will calculate eigenvalues. I’ve piped it here, but you can also go straight to <code>eigen(cor(saq))</code>. Our data suggests that we retain 2 factors using this rule.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>saq_eigen <span class="ot">&lt;-</span> <span class="fu">cor</span>(saq) <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">eigen</span>()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>saq_eigen<span class="sc">$</span>values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.9515869 1.2029159 0.9339932 0.7897083 0.7671243 0.6453702 0.6078335
+[8] 0.5663971 0.5350707</code></pre>
+</div>
+</div>
+</section>
+<section id="the-scree-plot" class="level3" data-number="11.4.3">
+<h3 data-number="11.4.3" class="anchored" data-anchor-id="the-scree-plot"><span class="header-section-number">11.4.3</span> The scree plot</h3>
+<p>The scree plot is a plot of each factor’s eigenvalue. This method relies on visual inspection - namely, you want to identify the ‘elbow’ of the line, or the point where the graph levels off. This is the point where the amount of variance explained by additional factors reaches that diminishing returns phase.</p>
+<p><code>psych</code> will plot two sets of eigenvalues - one ‘component’-based set (which is what we calculated above), and one ‘factor’-based set (which is what Jamovi gives you).</p>
+<p>This is inherently a bit subjective, and sometimes isn’t very clear. On our scree plot below, it looks like four factors is the point where the diminishing returns begin, so we would go with retaining four factors. However, a more conservative interpreter could reasonably argue that we should only retain 2 factors.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scree</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="11-efa_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="parallel-analysis" class="level3" data-number="11.4.4">
+<h3 data-number="11.4.4" class="anchored" data-anchor-id="parallel-analysis"><span class="header-section-number">11.4.4</span> Parallel analysis</h3>
+<p>Parallel analysis (Horn, 1965) is a sophisticated technique that involves simulating random datasets of the same size as our actual dataset, and comparing our dataset’s eigenvalues against the random dataset’s eigenvalues. Parallel analysis is generally demonstrated using a scree plot with an additional scree line for the simulated datasets. The <code>fa.parallel()</code> function will run this for us.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The number of factors to retain is determined by the number of factors where our actual data’s eigenvalue exceeds the simulated dataset’s eigenvalue.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In this instance, we would choose to retain three factors, as the actual data eigenvalues clearly drop below the simulated data at four factors.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="11-efa_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parallel analysis suggests that the number of factors =  3  and the number of components =  2 </code></pre>
+</div>
+</div>
+</section>
+<section id="velicers-minimum-average-partials-map-test" class="level3" data-number="11.4.5">
+<h3 data-number="11.4.5" class="anchored" data-anchor-id="velicers-minimum-average-partials-map-test"><span class="header-section-number">11.4.5</span> Velicer’s Minimum Average Partials (MAP) test</h3>
+<p>The Minimum Average Partials (MAP; Velicer, 1976) test is another powerful test that is generally useful at identifying how many factors should be extracted. It basically works by calculating the partial correlations between items and finding their average <em>after</em> removing the variance explained by the factors.</p>
+<p>The <code>EFA.dimensions</code> package contains a series of helpful functions for running some EFA-related checks. The MAP test is included as part of the <code>MAP()</code> function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EFA.dimensions)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MAP</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+
+MINIMUM AVERAGE PARTIAL (MAP) TEST</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Number of cases = 2571</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Number of variables = 9</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Specified kind of correlations for this analysis: Pearson</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+
+Total Variance Explained (Initial Eigenvalues):</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Eigenvalues    Proportion of Variance    Cumulative Prop. Variance
+Factor 1           2.95                      0.33                         0.33
+Factor 2           1.20                      0.13                         0.46
+Factor 3           0.93                      0.10                         0.57
+Factor 4           0.79                      0.09                         0.65
+Factor 5           0.77                      0.09                         0.74
+Factor 6           0.65                      0.07                         0.81
+Factor 7           0.61                      0.07                         0.88
+Factor 8           0.57                      0.06                         0.94
+Factor 9           0.54                      0.06                         1.00</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Velicer's m values</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   root   m_pr_squared   m_pr_4rth_power
+      0        0.06439           0.98585
+      1        0.02330           0.12171
+      2        0.04126           0.19847
+      3        0.06469           0.32682
+      4        0.12008           1.09402
+      5        0.20155           3.03325
+      6        0.28088           4.94336
+      7        0.48302          16.87119
+      8        1.00000          91.00000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+The smallest partial_r_squared m value is 0.0233</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+The smallest partial_r_4rth_power m value is 0.12171</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+The number of components according to the original (1976) MAP Test is = 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+The number of components according to the revised (2000) MAP Test is = 1</code></pre>
+</div>
+</div>
+<p>Here, we look for the number of factors with the minimum average partial correlation (hence the name). There are two forms of this test, one based on the original and a revised version - the only difference is that the original looks for the average <em>squared</em> correlation, while the revised version calculates it to the 4th power. As we can see, the smallest average correlation in both versions occurs when we extract one factor.</p>
+</section>
+<section id="how-to-decide" class="level3" data-number="11.4.6">
+<h3 data-number="11.4.6" class="anchored" data-anchor-id="how-to-decide"><span class="header-section-number">11.4.6</span> How to decide?</h3>
+<p>Let’s summarise our interim decisions so far:</p>
+<ul>
+<li>Kaiser’s rule suggests 1 factor</li>
+<li>Visual scree plot inspection suggests either 2 or 4 factors</li>
+<li>Parallel analysis suggests 3 factors</li>
+<li>MAP suggests 1 factor</li>
+</ul>
+<p>How do we decide what to use? Decades of empirical and simulation literature have shown a couple of things:</p>
+<ul>
+<li><strong>Parallel analysis is one of the best methods</strong> of identifying how many factors should be retained. While it is sensitive to various things like sample size, simulation studies have shown that parallel analysis consistently outperforms other methods in terms of how many factors should be retained.</li>
+<li>In contrast, <strong>do not use the Kaiser rule</strong>! The Kaiser rule will consistently misestimate the number of factors - often, the misestimation will be quite severe. It is an extremely popular rule because a) it is simple to interpret and b) SPSS, which was the dominant statistical program of choice for a very long time, defaults to only using the Kaiser rule for PCA/EFA.</li>
+<li><strong>Theoretical and practical considerations</strong> should also inform your decision making. If parallel analysis suggests 7 factors, for example, but those 7 factors are hard to interpret then you should probably not run with that by default. Instead, the next thing to do would be to step through solutions that remove one factor at a time until an acceptable, interpretable model has been reached.</li>
+</ul>
+<p>There are other methods of identifying factors, such as Vellicer’s Minimum Average Partials test, but Jamovi does not provide these options. In the absence of any strong justification for anything else, it is best to fall back on parallel analysis. Thus, it’s best if we go with three factors.</p>
+</section>
+</section>
+<section id="interpreting-output" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="interpreting-output"><span class="header-section-number">11.5</span> Interpreting output</h2>
+<p>Let’s now look at how to actually interpret the output of a factor analysis, including how to make sense of the main numbers that you get out of a basic EFA/PCA output.</p>
+<section id="extraction-methods" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="extraction-methods"><span class="header-section-number">11.5.1</span> Extraction methods</h3>
+<p>PCA only has one method of deriving the eigenvalues of the components, and so it will give the same answer every time you run it on the same dataset. EFA, however, has multiple possible means of estimating factors, which are typically termed extraction methods. We won’t go into the details of how exactly they work, but the key thing to know is that the extraction method essentially changes</p>
+<p>There are three extraction methods available in Jamovi:</p>
+<ul>
+<li><strong>Maximum likelihood.</strong> One of the most common options, and provides the most generalisable and robust estimates. ML methods assume normality and generally require large datasets, however.</li>
+<li><strong>Principal axis factoring.</strong> Principal axis factoring does not make particular assumptions about the normality or distribution of the data, meaning that it is good at handling more complex datasets.</li>
+<li><strong>Minimum residuals.</strong> The minimum residual method is sort of a middle-ground option between the two, but isn’t as commonly used in psychological research.</li>
+</ul>
+<p>Under ideal conditions, maximum likelihood (ML) and PA (principal axis) methods will generally give very similar estimates of the factors. When data are severely non-normal (or you want to anticipate that it will be), it is better to go with PA in the first instance. Otherwise, ML estimates are generally the way to go.</p>
+<p>To run a factor analysis in r, we use the <code>fa</code> function from <code>psych</code>. At minimum, we must specify the following:</p>
+<ul>
+<li>The dataset as the first argument</li>
+<li>The number of factors we want to extract</li>
+<li>The type of rotation - for now set this to “none”, as we’ll talk about this later</li>
+<li>The factoring method, <code>fm</code> - as above. <code>"ml"</code> stands for maximum likelihood, <code>"pa"</code> stands for principal axis factoring and <code>"minres"</code> stands for minimum residuals.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  saq,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">"none"</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">"ml"</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="interpreting-output-1" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="interpreting-output-1"><span class="header-section-number">11.5.2</span> Interpreting output</h3>
+<p>Below is the main output of our EFA. This is what we call a factor matrix:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>saq_efa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = saq, nfactors = 3, rotate = "none", fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+      ML1   ML2   ML3   h2   u2 com
+q01  0.59  0.31 -0.12 0.46 0.54 1.6
+q02 -0.25  0.25  0.32 0.23 0.77 2.8
+q04  0.62  0.23 -0.02 0.44 0.56 1.3
+q05  0.56  0.19 -0.06 0.36 0.64 1.3
+q06  0.55 -0.21  0.32 0.45 0.55 2.0
+q14  0.63 -0.12  0.10 0.42 0.58 1.1
+q15  0.55 -0.15  0.10 0.34 0.66 1.2
+q19 -0.37  0.21  0.22 0.23 0.77 2.3
+q22 -0.28  0.31  0.24 0.24 0.76 2.9
+
+                       ML1  ML2  ML3
+SS loadings           2.33 0.47 0.35
+Proportion Var        0.26 0.05 0.04
+Cumulative Var        0.26 0.31 0.35
+Proportion Explained  0.74 0.15 0.11
+Cumulative Proportion 0.74 0.89 1.00
+
+Mean item complexity =  1.8
+Test of the hypothesis that 3 factors are sufficient.
+
+df null model =  36  with the objective function =  1.43 with Chi Square =  3674.74
+df of  the model are 12  and the objective function was  0.01 
+
+The root mean square of the residuals (RMSR) is  0.01 
+The df corrected root mean square of the residuals is  0.02 
+
+The harmonic n.obs is  2571 with the empirical chi square  14.26  with prob &lt;  0.28 
+The total n.obs was  2571  with Likelihood Chi Square =  33.87  with prob &lt;  0.00071 
+
+Tucker Lewis Index of factoring reliability =  0.982
+RMSEA index =  0.027  and the 90 % confidence intervals are  0.016 0.037
+BIC =  -60.35
+Fit based upon off diagonal values = 1
+Measures of factor score adequacy             
+                                                   ML1   ML2   ML3
+Correlation of (regression) scores with factors   0.89  0.65  0.59
+Multiple R square of scores with factors          0.79  0.43  0.35
+Minimum correlation of possible factor scores     0.59 -0.15 -0.31</code></pre>
+</div>
+</div>
+<p>What do these numbers mean? Firstly, each value in each factor column (labelled <code>ML1</code>, <code>ML2</code> etc) gives us our loadings. Note that as per the common factor model we described before, we estimate a loading for every variable on every factor. However, this can be a bit gross to interpret, so we generally choose to suppress (not remove) loadings below a certain threshold. By default, Jamovi will hide loadings below 0.3. We can also sort the items based on their loadings. To do this, we use the <code>fa.sort()</code> function and feed in our EFA object. We can then use <code>print()</code> to clean up this output with two arguments: <code>digits</code> to show rounding, and <code>cut</code> to suppress values below a certain size. This gives us a nicer output:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa.sort</span>(saq_efa) </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> .<span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = saq, nfactors = 3, rotate = "none", fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+       ML1    ML2    ML3    h2    u2  com
+q14  0.631               0.420 0.580 1.12
+q04  0.622               0.441 0.559 1.27
+q01  0.589  0.311        0.458 0.542 1.61
+q05  0.562               0.358 0.642 1.26
+q15  0.551               0.337 0.663 1.23
+q06  0.546         0.324 0.448 0.552 1.97
+q19 -0.371               0.229 0.771 2.27
+q22         0.314        0.238 0.762 2.88
+q02                0.319 0.229 0.771 2.84
+
+                        ML1   ML2   ML3
+SS loadings           2.333 0.474 0.352
+Proportion Var        0.259 0.053 0.039
+Cumulative Var        0.259 0.312 0.351
+Proportion Explained  0.738 0.150 0.111
+Cumulative Proportion 0.738 0.889 1.000
+
+Mean item complexity =  1.8
+Test of the hypothesis that 3 factors are sufficient.
+
+df null model =  36  with the objective function =  1.432 with Chi Square =  3674.737
+df of  the model are 12  and the objective function was  0.013 
+
+The root mean square of the residuals (RMSR) is  0.012 
+The df corrected root mean square of the residuals is  0.021 
+
+The harmonic n.obs is  2571 with the empirical chi square  14.257  with prob &lt;  0.285 
+The total n.obs was  2571  with Likelihood Chi Square =  33.874  with prob &lt;  0.000706 
+
+Tucker Lewis Index of factoring reliability =  0.982
+RMSEA index =  0.0266  and the 90 % confidence intervals are  0.0163 0.0374
+BIC =  -60.351
+Fit based upon off diagonal values = 0.998
+Measures of factor score adequacy             
+                                                    ML1    ML2    ML3
+Correlation of (regression) scores with factors   0.892  0.652  0.587
+Multiple R square of scores with factors          0.795  0.425  0.345
+Minimum correlation of possible factor scores     0.590 -0.150 -0.310</code></pre>
+</div>
+</div>
+<p>Statistically speaking, in a factor matrix each loading is a <strong>regression coefficient</strong> for the latent factor predicting the variable. We can interpret them as we would with normal regressions, except this is a regression coefficient for our latent variable predicting each observed variable. For example, the loading for q14 on factor 1 is 0.631. This means that for every 1 unit increase on latent factor 1, scores on Q14 increase by .631 units.</p>
+<p>Jamovi typically only gives you the <strong>uniqueness</strong> column, <code>u2</code>, which gives us the value of unique variance as a percentage. This is how much variance in each item is not explained by the factors we have chosen. In this instance, 58% of the variance in Q14 is not explained by the three factors.</p>
+<p>Generally though, it’s easier to think in terms of <strong>communalities</strong>, or the values in the <code>h2</code> column, which is the amount of variance that is explained by the factors. Communalities are simply 1 - uniqueness; thus, the communality of Q14 is 0.420, which indicates that 42% of the variance in Q14 is explained by the three factors. Higher communalities indicate that the factors collectively explain more variance in the observed variable.</p>
+<p>How is this value calculated? Communalities are the sum of the squared factor loadings. Therefore, we can look at Q14’s factor loadings in the first (pre-sorted) output table, and calculate the communality as:</p>
+<p><span class="math display">\[
+h^2 = .631^2 + -.116^2 + .0963^2
+\]</span></p>
+<p>Which gives us an answer of approximately 0.420:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>.<span class="dv">631</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="sc">-</span>.<span class="dv">116</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> .<span class="dv">0963</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4208907</code></pre>
+</div>
+</div>
+</section>
+<section id="total-variance-explained" class="level3" data-number="11.5.3">
+<h3 data-number="11.5.3" class="anchored" data-anchor-id="total-variance-explained"><span class="header-section-number">11.5.3</span> Total variance explained</h3>
+<p>The output of <code>psych</code> will also give you a brief table of the total amount of variance explained by each factor. This is shown in the output of <code>fa</code>, but can also be accessed again below. It is generally useful to at least report the total cumulative variance explained by all factors. In this case, the three factors collectively explain 35.1% of the total variance in the data (shown by the row saying “Cumulative var”).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>saq_efa<span class="sc">$</span>Vaccounted</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            ML1        ML2        ML3
+SS loadings           2.3325379 0.47409809 0.35202983
+Proportion Var        0.2591709 0.05267757 0.03911443
+Cumulative Var        0.2591709 0.31184845 0.35096287
+Proportion Explained  0.7384567 0.15009441 0.11144890
+Cumulative Proportion 0.7384567 0.88855110 1.00000000</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="rotation-and-interpreting-output-again" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="rotation-and-interpreting-output-again"><span class="header-section-number">11.6</span> Rotation, and interpreting output again</h2>
+<p>You may have noticed that on the previous page, we didn’t make much of an effort to actually talk about what the factors were or what they meant. That’s because the output that we got on the previous page isn’t actually terribly informative or easy to interpret. To help with this, in EFA we perform a technique called <strong>rotation</strong>.</p>
+<section id="rotations" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="rotations"><span class="header-section-number">11.6.1</span> Rotations</h3>
+<p>Rotations are a technique in EFA that are done to help with the interpretability of the factor solution. The key aim of rotation is to achieve <strong>simple structure</strong> where possible.</p>
+<p>You may have noticed that the matrix from the previous page has quite a few variables with high enough loadings on multiple factors. This is called <strong>cross-loading</strong>, and indicates that two factors explain the variable. This is not easily interpretable! Ideally, in a robust simple structure we want:</p>
+<ul>
+<li>Only one loading per variable</li>
+<li>At least three loadings per factor</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = saq, nfactors = 3, rotate = "none", fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+       ML1    ML2    ML3    h2    u2  com
+q14  0.631               0.420 0.580 1.12
+q04  0.622               0.441 0.559 1.27
+q01  0.589  0.311        0.458 0.542 1.61
+q05  0.562               0.358 0.642 1.26
+q15  0.551               0.337 0.663 1.23
+q06  0.546         0.324 0.448 0.552 1.97
+q19 -0.371               0.229 0.771 2.27
+q22         0.314        0.238 0.762 2.88
+q02                0.319 0.229 0.771 2.84
+
+                        ML1   ML2   ML3
+SS loadings           2.333 0.474 0.352
+Proportion Var        0.259 0.053 0.039
+Cumulative Var        0.259 0.312 0.351
+Proportion Explained  0.738 0.150 0.111
+Cumulative Proportion 0.738 0.889 1.000
+
+Mean item complexity =  1.8
+Test of the hypothesis that 3 factors are sufficient.
+
+df null model =  36  with the objective function =  1.432 with Chi Square =  3674.737
+df of  the model are 12  and the objective function was  0.013 
+
+The root mean square of the residuals (RMSR) is  0.012 
+The df corrected root mean square of the residuals is  0.021 
+
+The harmonic n.obs is  2571 with the empirical chi square  14.257  with prob &lt;  0.285 
+The total n.obs was  2571  with Likelihood Chi Square =  33.874  with prob &lt;  0.000706 
+
+Tucker Lewis Index of factoring reliability =  0.982
+RMSEA index =  0.0266  and the 90 % confidence intervals are  0.0163 0.0374
+BIC =  -60.351
+Fit based upon off diagonal values = 0.998
+Measures of factor score adequacy             
+                                                    ML1    ML2    ML3
+Correlation of (regression) scores with factors   0.892  0.652  0.587
+Multiple R square of scores with factors          0.795  0.425  0.345
+Minimum correlation of possible factor scores     0.590 -0.150 -0.310</code></pre>
+</div>
+</div>
+<p>Rotation can help us achieve this. What rotations essentially do is change how variance is distributed within each factor. That wording is extremely important to note. It does not change our data in any way - the actual amount of variance explained by each factor does not change. What does change is how variance is distributed across the factors, which has the effect of then changing the loadings. But the actual data does not change!!</p>
+<p>There are two families of rotations that we can employ.</p>
+<ul>
+<li><strong>Orthogonal</strong> rotations force factors to be <strong>uncorrelated</strong>.</li>
+<li><strong>Oblique</strong> rotations allow factors to be correlated.</li>
+</ul>
+<p>The below diagram visualises what rotations do:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="img/rotations.png" class="img-fluid figure-img" width="313"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Which rotation to choose?</strong> In psychology, everything tends to be correlated with everything else, and it’s extremely rare that we would get an instance where two factors do not correlate at all. For that reason, <strong>oblique rotations are generally the way to go</strong>. Orthogonal rotations are extremely hard to justify without strong a-priori evidence - and even if two factors are uncorrelated, oblique rotations will give the same solution as orthogonal ones. In short, there’s generally no reason to prefer an orthogonal rotation by default.</p>
+</section>
+<section id="rotated-factor-solution" class="level3" data-number="11.6.2">
+<h3 data-number="11.6.2" class="anchored" data-anchor-id="rotated-factor-solution"><span class="header-section-number">11.6.2</span> Rotated factor solution</h3>
+<p>Let’s apply an oblique rotation to our factor analysis. The default oblique rotation is called oblimin. To do this, we need to re-run our <code>fa()</code> function with a rotation specified.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  saq,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">"oblimin"</span>,</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">"ml"</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This produces the following output, which we now term a pattern matrix:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fa.sort</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = saq, nfactors = 3, rotate = "oblimin", fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+       ML1    ML3    ML2    h2    u2  com
+q01  0.714               0.458 0.542 1.02
+q04  0.609               0.441 0.559 1.06
+q05  0.553               0.358 0.642 1.02
+q06         0.704        0.448 0.552 1.01
+q14         0.440        0.420 0.580 1.57
+q15         0.434        0.337 0.663 1.32
+q02                0.506 0.229 0.771 1.04
+q22                0.488 0.238 0.762 1.08
+q19                0.412 0.229 0.771 1.11
+
+                        ML1   ML3   ML2
+SS loadings           1.360 1.043 0.756
+Proportion Var        0.151 0.116 0.084
+Cumulative Var        0.151 0.267 0.351
+Proportion Explained  0.431 0.330 0.239
+Cumulative Proportion 0.431 0.761 1.000
+
+ With factor correlations of 
+       ML1    ML3    ML2
+ML1  1.000  0.591 -0.411
+ML3  0.591  1.000 -0.448
+ML2 -0.411 -0.448  1.000
+
+Mean item complexity =  1.1
+Test of the hypothesis that 3 factors are sufficient.
+
+df null model =  36  with the objective function =  1.432 with Chi Square =  3674.737
+df of  the model are 12  and the objective function was  0.013 
+
+The root mean square of the residuals (RMSR) is  0.012 
+The df corrected root mean square of the residuals is  0.021 
+
+The harmonic n.obs is  2571 with the empirical chi square  14.257  with prob &lt;  0.285 
+The total n.obs was  2571  with Likelihood Chi Square =  33.874  with prob &lt;  0.000706 
+
+Tucker Lewis Index of factoring reliability =  0.982
+RMSEA index =  0.0266  and the 90 % confidence intervals are  0.0163 0.0374
+BIC =  -60.351
+Fit based upon off diagonal values = 0.998
+Measures of factor score adequacy             
+                                                    ML1    ML3    ML2
+Correlation of (regression) scores with factors   0.718  0.672  0.636
+Multiple R square of scores with factors          0.515  0.452  0.405
+Minimum correlation of possible factor scores     0.031 -0.096 -0.190</code></pre>
+</div>
+</div>
+<p>Now we can see our simple structure taking effect, and this output is much more interpretable from before. These values are still regression coefficients between each latent factor and each variable, but now we can group these variables into their underlying latent factors much more easily. We can see that questions 1, 4 and 5 are best captured by factor 1, questions 6, 14 and 15 by factor 2 and questions 2, 19 and 22 by factor 3.</p>
+<p><strong>One warning here</strong>. On the previous page, where we had an unrotated solution, the communalities were calculated by summing the squared factor loadings for each variable. That rule no longer applies here because by allowing the factors to correlate, the regression loadings now capture non-specific variance. Summing the squared factor loadings will lead to greater communality values than what they actually are. However, as you can hopefully see in the uniqueness column, the actual communalities have not changed. Rotation does not change how much variance is explained in total - only how that variance is distributed!</p>
+<p>Oblique rotations will also generate a <strong>factor correlation matrix</strong>. This calculates the correlations between the factors - remembering that by specifying an oblique rotation, we allowed them to correlate:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Phi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           ML1        ML3        ML2
+ML1  1.0000000  0.5909483 -0.4107233
+ML3  0.5909483  1.0000000 -0.4475027
+ML2 -0.4107233 -0.4475027  1.0000000</code></pre>
+</div>
+</div>
+<p>Finally, we get the table of variance explained. This is now not as useful because of the same reason we cannot sum the squared factor loadings - each factor on its own now captures shared variance across the other factors as they are allowed to correlate. However, the total amount of variance explained is still 35.1%; once again, this does not change.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Vaccounted</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            ML1       ML3        ML2
+SS loadings           1.3601670 1.0425634 0.75593543
+Proportion Var        0.1511297 0.1158404 0.08399283
+Cumulative Var        0.1511297 0.2669700 0.35096287
+Proportion Explained  0.4306144 0.3300645 0.23932111
+Cumulative Proportion 0.4306144 0.7606789 1.00000000</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The <code>EFA.dimensions</code> package has a similar function called <code>RAWPAR()</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>As you can see from the output, there are two ways of calculating these eigenvalues - using either a PCA or PAF (principal axis factoring). The <code>fa.parallel()</code> function uses both. Although counterintuitive given that they are not the same technique conceptually, the PCA-based output (i.e.&nbsp;number of <em>components</em>) is the typical method, and actually does perform well at correctly identifying the number of factors to extract. Jamovi appears to default to PAF-based eigenvalues, however.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10-logistic.html" class="pagination-link" aria-label="Logistic regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./12-medmod.html" class="pagination-link" aria-label="Mediation and Moderation">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

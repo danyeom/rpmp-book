@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Linear relationships – Research Process for Music Psychologists</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-factorial-anovas.html" rel="next">
+<link href="./06-anovas.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-chisquares.html">Part II: Basic inferential tests</a></li><li class="breadcrumb-item"><a href="./07-regressions.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Process for Music Psychologists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I: Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A very brief introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-descriptives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferential statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II: Basic inferential tests</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-chisquares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chi-squares</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-regressions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III: Advanced methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-factorial-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regressions-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-efa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-medmod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-nonpara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#correlations" id="toc-correlations" class="nav-link active" data-scroll-target="#correlations"><span class="header-section-number">7.1</span> Correlations</a>
+  <ul class="collapse">
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">7.1.1</span> Covariance</a></li>
+  <li><a href="#correlation-coefficients" id="toc-correlation-coefficients" class="nav-link" data-scroll-target="#correlation-coefficients"><span class="header-section-number">7.1.2</span> Correlation coefficients</a></li>
+  <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity"><span class="header-section-number">7.1.3</span> Activity</a></li>
+  <li><a href="#testing-correlations-in-r" id="toc-testing-correlations-in-r" class="nav-link" data-scroll-target="#testing-correlations-in-r"><span class="header-section-number">7.1.4</span> Testing correlations in R</a></li>
+  <li><a href="#displaying-correlations" id="toc-displaying-correlations" class="nav-link" data-scroll-target="#displaying-correlations"><span class="header-section-number">7.1.5</span> Displaying correlations</a></li>
+  </ul></li>
+  <li><a href="#regression-hypotheses" id="toc-regression-hypotheses" class="nav-link" data-scroll-target="#regression-hypotheses"><span class="header-section-number">7.2</span> Regression hypotheses</a>
+  <ul class="collapse">
+  <li><a href="#what-is-regression" id="toc-what-is-regression" class="nav-link" data-scroll-target="#what-is-regression"><span class="header-section-number">7.2.1</span> What is regression?</a></li>
+  <li><a href="#how-do-regressions-work" id="toc-how-do-regressions-work" class="nav-link" data-scroll-target="#how-do-regressions-work"><span class="header-section-number">7.2.2</span> How do regressions work?</a></li>
+  </ul></li>
+  <li><a href="#the-regression-equation" id="toc-the-regression-equation" class="nav-link" data-scroll-target="#the-regression-equation"><span class="header-section-number">7.3</span> The regression equation</a>
+  <ul class="collapse">
+  <li><a href="#slopes-and-intercepts" id="toc-slopes-and-intercepts" class="nav-link" data-scroll-target="#slopes-and-intercepts"><span class="header-section-number">7.3.1</span> Slopes and intercepts</a></li>
+  <li><a href="#the-regression-equation-1" id="toc-the-regression-equation-1" class="nav-link" data-scroll-target="#the-regression-equation-1"><span class="header-section-number">7.3.2</span> The regression equation</a></li>
+  <li><a href="#hypothesis-testing-in-regressions" id="toc-hypothesis-testing-in-regressions" class="nav-link" data-scroll-target="#hypothesis-testing-in-regressions"><span class="header-section-number">7.3.3</span> Hypothesis testing in regressions</a></li>
+  </ul></li>
+  <li><a href="#assumption-tests" id="toc-assumption-tests" class="nav-link" data-scroll-target="#assumption-tests"><span class="header-section-number">7.4</span> Assumption tests</a>
+  <ul class="collapse">
+  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity"><span class="header-section-number">7.4.1</span> Linearity</a></li>
+  <li><a href="#homoscedasticity" id="toc-homoscedasticity" class="nav-link" data-scroll-target="#homoscedasticity"><span class="header-section-number">7.4.2</span> Homoscedasticity</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">7.4.3</span> Independence</a></li>
+  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality"><span class="header-section-number">7.4.4</span> Normality</a></li>
+  <li><a href="#multicollinearity" id="toc-multicollinearity" class="nav-link" data-scroll-target="#multicollinearity"><span class="header-section-number">7.4.5</span> Multicollinearity</a></li>
+  </ul></li>
+  <li><a href="#linear-regressions-in-r" id="toc-linear-regressions-in-r" class="nav-link" data-scroll-target="#linear-regressions-in-r"><span class="header-section-number">7.5</span> Linear regressions in R</a>
+  <ul class="collapse">
+  <li><a href="#scenario" id="toc-scenario" class="nav-link" data-scroll-target="#scenario"><span class="header-section-number">7.5.1</span> Scenario</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="header-section-number">7.5.2</span> Assumptions</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output"><span class="header-section-number">7.5.3</span> Output</a></li>
+  </ul></li>
+  <li><a href="#predictions" id="toc-predictions" class="nav-link" data-scroll-target="#predictions"><span class="header-section-number">7.6</span> Predictions</a>
+  <ul class="collapse">
+  <li><a href="#revisiting-the-linear-regression-equation" id="toc-revisiting-the-linear-regression-equation" class="nav-link" data-scroll-target="#revisiting-the-linear-regression-equation"><span class="header-section-number">7.6.1</span> Revisiting the linear regression equation</a></li>
+  <li><a href="#building-a-regression-equation" id="toc-building-a-regression-equation" class="nav-link" data-scroll-target="#building-a-regression-equation"><span class="header-section-number">7.6.2</span> Building a regression equation</a></li>
+  <li><a href="#an-example-prediction" id="toc-an-example-prediction" class="nav-link" data-scroll-target="#an-example-prediction"><span class="header-section-number">7.6.3</span> An example prediction</a></li>
+  </ul></li>
+  <li><a href="#multiple-regression-theory" id="toc-multiple-regression-theory" class="nav-link" data-scroll-target="#multiple-regression-theory"><span class="header-section-number">7.7</span> Multiple regression: Theory</a>
+  <ul class="collapse">
+  <li><a href="#multiple-regression" id="toc-multiple-regression" class="nav-link" data-scroll-target="#multiple-regression"><span class="header-section-number">7.7.1</span> Multiple regression</a></li>
+  <li><a href="#the-regression-equation-once-again" id="toc-the-regression-equation-once-again" class="nav-link" data-scroll-target="#the-regression-equation-once-again"><span class="header-section-number">7.7.2</span> The regression equation, once again</a></li>
+  <li><a href="#assumption-testing-in-multiple-regressions" id="toc-assumption-testing-in-multiple-regressions" class="nav-link" data-scroll-target="#assumption-testing-in-multiple-regressions"><span class="header-section-number">7.7.3</span> Assumption testing in multiple regressions</a></li>
+  </ul></li>
+  <li><a href="#multreg-intro" id="toc-multreg-intro" class="nav-link" data-scroll-target="#multreg-intro"><span class="header-section-number">7.8</span> Multiple regressions in R</a>
+  <ul class="collapse">
+  <li><a href="#example-data" id="toc-example-data" class="nav-link" data-scroll-target="#example-data"><span class="header-section-number">7.8.1</span> Example data</a></li>
+  <li><a href="#assumption-checks" id="toc-assumption-checks" class="nav-link" data-scroll-target="#assumption-checks"><span class="header-section-number">7.8.2</span> Assumption checks</a></li>
+  <li><a href="#output-1" id="toc-output-1" class="nav-link" data-scroll-target="#output-1"><span class="header-section-number">7.8.3</span> Output</a></li>
+  <li><a href="#comparing-predictive-strength" id="toc-comparing-predictive-strength" class="nav-link" data-scroll-target="#comparing-predictive-strength"><span class="header-section-number">7.8.4</span> Comparing predictive strength</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-chisquares.html">Part II: Basic inferential tests</a></li><li class="breadcrumb-item"><a href="./07-regressions.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Up until now we’ve been dealing almost exclusively with categorical variables in some way. For example, chi-square tests are for testing relationships between categorical variables; likewise, t-tests and ANOVAs deal with categorical IVs against continuous DVs. In reality though, many of the things we’re interested in are inherently continuous in nature. There are very few psychological constructs that aren’t continuous in some way, and so working with continuous variables forms a core part of doing statistical analyses.</p>
+<p>Enter the linear regression and its many other forms - in some ways, the bedrock of many of the research that we do (more on this in Week 11). When we’re dealing with continuous variables, linear regressions are generally the first place to start. We won’t go much further beyond the basics here (certainly as it applies to a lot of psychological research), but even these concepts are foundational for many reasons.</p>
+<p>By the end of this module you should be able to:</p>
+<ul>
+<li>Describe how hypothesis testing works in regressions - including what is being tested</li>
+<li>Conduct appropriate assumption tests for a linear regression</li>
+<li>Run a linear regression and interpret the output</li>
+<li>Make predictions based on the output of a linear regression</li>
+<li>Run and interpret a multiple regression</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://imgs.xkcd.com/comics/linear_regression.png" class="img-fluid figure-img"></p>
+<figcaption><a href="https://xkcd.com/1725/">xkcd: Linear Regression</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="correlations" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="correlations"><span class="header-section-number">7.1</span> Correlations</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>We’ve talked a surprising amount about correlations in this subject, but we haven’t considered how to actually test if two things are correlated to begin with. We change that this week with an overview of correlation coefficients.</p>
+</div>
+<section id="covariance" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="covariance"><span class="header-section-number">7.1.1</span> Covariance</h3>
+<p>To start, examine the figure below. The figure below plots the gestational period lengths of ~1230 pregnancies, plotted against the birth weight of the child.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A trend might be immediately obvious - longer gestational periods are associated with higher birth weights. We can say that the two variables - gestation length and birth weight - <strong>covary</strong> with each other, as a change in one variable is associated with change in another.</p>
+<p><strong>Covariance</strong> simply describes and quantifies how two variables change with each other. For instance, if two variables have a positive covariance, this means that as one variable increases, so does the other. Similarly, if two variables have a negative covariance, this means that as one increases the other decreases.</p>
+<details>
+<summary>
+How is covariance calculated?
+</summary>
+<p>The formula for the covariance between two variables X and Y is given as:</p>
+<p><span class="math display">\[
+    q = \frac{\Sigma (x_i - \bar{x})(y_i - \bar{y})}{N-1}
+    \]</span></p>
+<p>Where <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> refer to the individual values for variables X and Y respectively, and <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\bar{y}\)</span> refer to the means of variables X and Y respectively. Put simply:</p>
+<ul>
+<li>Subtract each participant’s value for variable X from the mean of variable X.</li>
+<li>Do the same for each participant on variable Y - their individual value minus the mean of Y.</li>
+<li>For each participant, multiply the two differences together.</li>
+<li>Sum this value across all participants.</li>
+<li>Divide by N - 1.</li>
+</ul>
+</details>
+</section>
+<section id="correlation-coefficients" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="correlation-coefficients"><span class="header-section-number">7.1.2</span> Correlation coefficients</h3>
+<p>We can quantify the strength of two variables using a <strong>correlation coefficient</strong>, which gives us a measure of how tightly these two variables are related. There are many types of correlation coefficients, but the most common is the <strong>Pearson’s correlation coefficient, r</strong>. It’s calculated using the below (simplified) formula:</p>
+<p><span class="math display">\[
+r = \frac{Cov_{xy}}{SD_x \times SD_y}
+\]</span></p>
+<p>In this subject we won’t expect you to calculate a correlation coefficient by hand, but the key takeaway here is that by dividing a value by a standard deviation (or, in this case, a product of two SDs), we are <strong>standardising</strong> the covariance. Hence, a correlation coefficient is a <strong>standardised</strong> measure, meaning that we can compare correlation coefficients quite easily across variables regardless of their scale.</p>
+<p>Correlation coefficients have the following properties:</p>
+<ul>
+<li>They are between -1 and +1</li>
+<li>The sign of the correlation describes the direction - a positive value represents a positive correlation</li>
+<li>The numerical value describes the magnitude</li>
+<li>A correlation of 1 means a perfect correlation; a correlation of 0 means a negative correlation</li>
+<li>A rough guideline for this subject, r = .20 is weak, r = .50 is moderate, r = .70 is strong</li>
+<li>Visually, a magnitude of 0 corresponds to a flat line; the steeper the line, the higher the magnitude</li>
+</ul>
+</section>
+<section id="activity" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="activity"><span class="header-section-number">7.1.3</span> Activity</h3>
+<p>See if you can describe what the covariances would be like below:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="img/w10_cor_examples.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Look at the below correlation coefficients.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Is it positive or negative?</th>
+<th style="text-align: left;">How strong is it?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.35</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-0.24</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.85</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="testing-correlations-in-r" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="testing-correlations-in-r"><span class="header-section-number">7.1.4</span> Testing correlations in R</h3>
+<p>Statistical programs like Jamovi and R will allow us to not only quantify a correlation between two variables, but test whether this correlation is significant. Generally, when working with continuous data it never hurts to run a basic correlation.</p>
+<p>Here is an example using a simple dataset containing the gender, height and speed (the fastest they had ever driven).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>w10_speed <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week_10"</span>, <span class="st">"W10_speed.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+Rows: 1325 Columns: 4
+── Column specification
+──────────────────────────────────────────────────────── Delimiter: "," chr
+(1): gender dbl (3): ...1, speed, height
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -&gt; `...1`</code></pre>
+</div>
+</div>
+<p>Let’s correlate height and speed. This can easily be done in R by using the <code>cor.test()</code> function. You simply need to give it the names of the two columns you want to correlate. By default, this function will run a Pearson’s correlation.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(w10_speed<span class="sc">$</span>height, w10_speed<span class="sc">$</span>speed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  w10_speed$height and w10_speed$speed
+t = 9.2871, df = 1300, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.1977889 0.2997013
+sample estimates:
+      cor 
+0.2494356 </code></pre>
+</div>
+</div>
+<p>We can see that our correlation is <em>r</em> = .249, which is a relatively weak to moderate correlation. This correlation is also significant (<em>p</em> &lt; .001). We also get a confidence interval around the size of the correlation, which is great for showing the range of possible values. So we might write this up as something like:</p>
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+<p>There was a significant weak positive correlation between students’ heights and their fastest ever driving speed (<em>r</em>(1300) = .25, <em>p</em> &lt; .001; 95% CI [.20, .30]).</p>
+</div>
+</section>
+<section id="displaying-correlations" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="displaying-correlations"><span class="header-section-number">7.1.5</span> Displaying correlations</h3>
+<p>It is common to compute correlation coefficients between multiple variables at the same time and display them. In more complex analyses, this is often a crucial early step in the analytical process. Below are two ways of visualising multiple correlations, using fictional questionnaire data.</p>
+<p>The first is simply a <strong>correlation matrix</strong>, like below:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Q1</th>
+<th style="text-align: right;">Q2</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">Q4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Q1</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">-0.56</td>
+<td style="text-align: right;">0.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q2</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.38</td>
+<td style="text-align: right;">0.43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Q3</td>
+<td style="text-align: right;">-0.56</td>
+<td style="text-align: right;">-0.38</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q4</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">-0.11</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The second is a <strong>correlation heatmap</strong>, which is especially effective with many correlations at once (common when working with huge questionnaires or neuroimaging). As shown by the legend on the right, the colour and shade of each square are determined by the strength of the correlation. This can be easily done by the `<code>ggcorrplot</code> package, if you have a correlation matrix formatted in R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">"lower"</span>, <span class="at">show.diag =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="regression-hypotheses" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="regression-hypotheses"><span class="header-section-number">7.2</span> Regression hypotheses</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>Let’s move on from correlations to regressions, where we test whether one variable can predict another. To do that, let’s start by considering what a linear regression actually is, and how it works.</p>
+</div>
+<section id="what-is-regression" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="what-is-regression"><span class="header-section-number">7.2.1</span> What is regression?</h3>
+<p>Recall the gestation versus birth weight example from the previous page:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>On the previous page, we saw that these two variables covary - as gestation length increases, the birth weight of the infant increases as well. We might then be interested in seeing whether gestational length <em>predicts</em> birth weight. In other words, does the gestational period of a pregnancy significantly predict the weight of the baby?</p>
+<p><strong>Regression</strong> is a technique that allows us to see whether one or more independent variables predict a (continuous) dependent variable. Regression is one of the most widely used techniques in psychology because we are often interested in relationships between continuous variables, <em>and</em> we are often interested in seeing whether certain variables predict others. Put simply, it allows us to examine relationships between variables (like correlations), but is a very flexible and powerful method of doing so.</p>
+<p>Let’s kick off the regression portion of this module with a bit of terminology:</p>
+<ul>
+<li>The line is called the line of best fit. The slope of the line is, well, the slope. It describes how much Y changes if X changes by one unit.</li>
+<li>The point at which the line crosses the y-axis is called the intercept (the y-intercept in full). The intercept is one of the two paramaters of a regression line (the other being the slope).</li>
+</ul>
+<p>In this module, we will also call the independent variable a <strong>predictor</strong>, and the dependent variable the <strong>outcome</strong>. The terms “predictor” and “outcome” are more general terminology than IV and DV, which are typically used in experimental contexts. However, they mean the same thing and can be used interchangeably.</p>
+</section>
+<section id="how-do-regressions-work" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="how-do-regressions-work"><span class="header-section-number">7.2.2</span> How do regressions work?</h3>
+<p>Fundamentally, linear regressions involve plotting a line of best fit through the data. This line of best fit tells us something about the relationship between the two variables, including whether our predictor variable significant predicts the outcome.</p>
+<p>See if you can take a guess where we should draw a line of best fit on the plot below:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You might have some good guesses, and there’s every chance that you’ve drawn a line that fits the data points pretty well. But for this data, it’s pretty obvious where the line would sit, and the data that we do work with won’t always be as clear cut.</p>
+<p>The line of best fit sits where <strong>the distance between the line and every point is minimised</strong>. The difference between what we <em>predict</em> (the line) and an actual data point is called a <strong>residual</strong>, which simply refers to <em>error.</em> It makes sense then that to find the line of best fit, we want to place our line at the point where all of our possible residuals, or error, is minimised. If we didn’t minimise our error, we couldn’t say that it was the line of <em>best</em> fit!</p>
+<p>See the example below, where we have chosen 10 data points to illustrate. Each dot represents a single data point, while the solid blue line is our line of best fit. The dashed lines represent our residuals, or the difference between the blue line (what we <em>predict</em>) and each actual data point.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We do this using the <strong>least squares</strong> principle. In essence, we calculate a <strong>squared deviation</strong> for each residual using the formula below - it might be familiar…</p>
+<p><span class="math display">\[
+SS_{res} = \Sigma (y_i - \bar y_i)^2
+\]</span></p>
+<p>Where <span class="math inline">\(y_i\)</span> is each individual (ith) value on the y-axis, and <span class="math inline">\(\bar y_i\)</span> is the predicted y-value (i.e.&nbsp;the regression line). Essentially, we calculate the residual for each data point, square it and add it all up.</p>
+<p>From there, we would fine the line where all of these squared deviations are minimised. The actual <em>minimising</em> part is something we won’t concern ourselves with for this subject, because it’s complicated - the key takeaway here is that the line of best fit sits at the point where we have minimised these residuals as much as possible.</p>
+</section>
+</section>
+<section id="the-regression-equation" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="the-regression-equation"><span class="header-section-number">7.3</span> The regression equation</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>Now we have a sense of how to place our line of best fit, what does that actually tell us about the relationship between our predictor and outcome? Here, we will look a bit closer at what the <em>slope</em> of the line indicates.</p>
+</div>
+<section id="slopes-and-intercepts" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="slopes-and-intercepts"><span class="header-section-number">7.3.1</span> Slopes and intercepts</h3>
+<p>Coming back to our gestation versus birth weight example once again, let’s now estimate a line of best fit through the data using our program of choice:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As we can see, there is clearly a positive relationship between gestation and birth weight - as we expected from us eyeballing the data. But recall that we’re interested in seeing whether our predictor (gestation) does significantly predict the outcome (birth weight). How do we tell if this is the case? The <strong>slope</strong> of the line of best fit tells us this, because it quantifies <strong>how much the outcome changes with each unit increase of the predictor</strong>.</p>
+<p>An intuitive way to think about it is this: if the slope here was steep, it would tell us that every extra week of gestation would lead to a fairly noticeable increase in birth weight. If the slope was instead very gradual or flat, every extra week of gestation would lead to barely any change in birth weight - meaning that gestation would <em>not</em> predict birth weight very well.</p>
+</section>
+<section id="the-regression-equation-1" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="the-regression-equation-1"><span class="header-section-number">7.3.2</span> The regression equation</h3>
+<p>If you think back to high school, you may have learned something like y = mx + c in algebra to describe a straight line, where:</p>
+<ul>
+<li><em>m</em> denotes the slope, and</li>
+<li><em>c</em> denotes the intercept.</li>
+</ul>
+<p>In linear regression, we use the same concepts to both describe our line and make predictions using it (more on that later). The key difference is that we change the letters a bit:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x + \epsilon_i
+\]</span></p>
+<p>Let’s break this down:</p>
+<ul>
+<li>y is simply our predicted value (i.e.&nbsp;the line of best fit)</li>
+<li><span class="math inline">\(\beta_0\)</span> is our intercept (the c in y = mx + c)</li>
+<li><span class="math inline">\(x\)</span> simply refers to our independent variable</li>
+<li><span class="math inline">\(\beta_1\)</span> is the slope for the independent variable - in other words, how much y increases for every unit increase of x. We also call this B</li>
+<li><span class="math inline">\(\epsilon_i\)</span> is error (i.e.&nbsp;our residuals), which is essentially random variation (due to sampling). This error should be normally distributed.</li>
+</ul>
+<p>Keep this in mind for now - we’ll come back to this later in the module!</p>
+</section>
+<section id="hypothesis-testing-in-regressions" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="hypothesis-testing-in-regressions"><span class="header-section-number">7.3.3</span> Hypothesis testing in regressions</h3>
+<p>When we conduct a linear regression, in part we’re testing if the two variables are correlated. However, we’re also testing whether our predictor significantly predicts our outcome, so our <em>statistical</em> hypotheses are formulated around this idea. Our null and alternative hypotheses are therefore about the slope (<span class="math inline">\(\beta_1\)</span>):</p>
+<ul>
+<li><p><span class="math inline">\(H_0: \beta_1 = 0\)</span>, i.e.&nbsp;the slope is 0</p></li>
+<li><p><span class="math inline">\(H_1: \beta_1 \neq 0\)</span>, i.e.&nbsp;the slope is not equal to 0</p></li>
+</ul>
+<p>Consider the two graphs below. On the left is a graph where the line of best fit has a slope of 0 (the null). No matter what value X is, the value of Y is always the same (2.5 in this example) - in other words, X does not predict Y. The graph on the right side, on the other hand, is an example of the alternative hypothesis in this scenario. Here, X does clearly predict Y - as X increases, Y increases as well.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/w10_regression_hypotheses.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>But how do we actually test this? The answer is something we’ve seen before - we do a t-test!</p>
+<p>We came across t-tests in context of comparing two means against each other. The logic here is exactly the same, except now we compare two slopes with each other - the slope we actually observe (B) minus the slope under the null hypothesis, which would be 0. We can use this logic to calculate a t-statistic using the below formula:</p>
+<p><span class="math display">\[
+t = \frac{B}{SE_B}
+\]</span></p>
+<p>Where <em>B</em> = observed slope and SE = standard error of B. This is the same formula as the calculation for a t-test, albeit that the top row is just B (because it is B - 0). We can do this for each predictor, and then use the same t-distribution to test whether this slope is significant - in other words, whether our predictor (IV) significantly predicts our outcome (DV).</p>
+</section>
+</section>
+<section id="assumption-tests" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="assumption-tests"><span class="header-section-number">7.4</span> Assumption tests</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>As usual, there are several assumptions that we need to test for regressions. Some people call these <strong>regression diagnostics</strong> - they mean the same as assumption testing.</p>
+</div>
+<section id="linearity" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="linearity"><span class="header-section-number">7.4.1</span> Linearity</h3>
+<p>Believe it or not, for a linear regression your data should be… linear. Wild, right?</p>
+<p>Bitter sarcasm aside, linearity is an important assumption that needs to be met before conducting a linear regression. Not all data will follow a linear pattern; some data may instead sit on a curve. Compare the two examples below, where one is clearly non-linear:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If the data shows no clear linear relationship between your IV and DV, it is likely because the two are weakly correlated (and so a linear regression would not be useful anyway). If instead the data lies on a very obvious curve, you can either:</p>
+<ul>
+<li>Transform the data to make it linear (but you must be clear about what this represents)</li>
+<li>Attempt to fit a curve and see whether this has more explanatory power, but madness lies this way for the unprepared</li>
+</ul>
+</section>
+<section id="homoscedasticity" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="homoscedasticity"><span class="header-section-number">7.4.2</span> Homoscedasticity</h3>
+<p>The <strong>homoscedasticity</strong> assumption is one that we’ve seen before - it is essentially a version of the equality of variance test. In a linear regression context, however, this assumption works a little bit differently; if this assumption is met, then the variance should be equal at all levels of our predictor (i.e.&nbsp;the x-axis).</p>
+<p>The easiest way to test this is to create a <strong>fitted vs residuals</strong> graph. As the name implies, we take the fitted values for each level of the predictor in our data, and plot that against the residuals (fitted - actual). Here are some fitted vs residual plots for two sets of data. The data on the left has an even spread of variance as X increases, meaning that it is homoscedastic; the data on the right, on the other hand, spreads out like a cone. The data on the right therefore is likely <em>heteroscedastic.</em></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There are a couple of ways to overcome this, such as either transforming the raw variables or weighting them.</p>
+</section>
+<section id="independence" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="independence"><span class="header-section-number">7.4.3</span> Independence</h3>
+<p>This one is the same - data points should be independent of each other. Like we have seen with other tests, this should ideally be a feature of good experimental design. In linear regression, a specific issue is autocorrelation - where the residuals between two values of X are not independent. If the residuals are <em>not</em> independent, your data likely exhibits signs of <strong>autocorrelation</strong> (i.e.&nbsp;it is correlated with itself). This can distort the relationship between your IV and DV, and indicates that your data are connected through time.</p>
+<p>We can test this using a test called the <strong>Durbin-Watson</strong> test of autocorrelation. The Durbin-Watson test will estimate a coefficient/test statistic that quantifies the degree of autocorrelation (dependence) between observations in the data. The DW test statistic ranges from 0 to 4, with the following interpretations:</p>
+<ul>
+<li>A DW test statistic of ~2 indicates no autocorrelation.</li>
+<li>A DW test statistic of &lt; 2 indicate <em>positive</em> autocorrelation - i.e.&nbsp;one data point will positively influence the next.</li>
+<li>A DW test statistic of &gt; 2 indicates <em>negative</em> autocorrelation.</li>
+</ul>
+<p>The general principle of the Durbin-Watson test, therefore, is to have a test statistic close to 2 and (ideally) a non-significant result. The value of the test statistic is generally more useful than the significance of the test alone. A common guideline for interpreting this value is that a DW test statistic below 1 or above 3 is problematic, which we will also use for this subject.</p>
+<p>The <code>DurbinWatsonTest()</code> function from the DescTools package will let us test this quite easily.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">DurbinWatsonTest</span>(mod_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  mod_1
+DW = 2.0317, p-value = 0.5619
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+</section>
+<section id="normality" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="normality"><span class="header-section-number">7.4.4</span> Normality</h3>
+<p>The <strong>normality</strong> assumption is the same here as it has been elsewhere - the residuals must be normally distributed. Here, it’s a little bit easier to visualise what these ‘residuals’ are because we can calculate and see them. That being said, the way we test for these are exactly the same - either use a Q-Q plot or a Shapiro-Wilks test.</p>
+</section>
+<section id="multicollinearity" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="multicollinearity"><span class="header-section-number">7.4.5</span> Multicollinearity</h3>
+<p>The <strong>multicollinearity</strong> (sometimes just called collinearity) assumption only applies to <strong>multiple regressions</strong>, where you have more than one predictor in your test. multicollinearity occurs when two predictors are too similar to one another (i.e.&nbsp;they are highly correlated with each other. This becomes a problem at the individual predictor level, because what happens is that the effect of predictor A becomes muddled by predictor B - in other words, if two predictors are collinear, it becomes impossible to tell apart which one is contributing what to the regression.</p>
+<p>There are three basic ways you can assess this.</p>
+<ul>
+<li>The simplest is to test a correlation between the two predictors. If they are very highly correlated (use r = .80 as a rule of thumb), this is likely to be a problem.</li>
+<li>The <strong>variance inflation factor (VIF)</strong> is a more formal measure of multicollinearity. It is a single number, and a higher value means greater collinearity. If a VIF is <strong>greater than 5</strong> this suggests an issue.</li>
+<li><strong>Tolerance</strong> is a related value to VIF - in fact, it is just 1 divided by the FID - and works in much the same way - except smaller values mean greater collinearity. As a rule of thumb, if tolerance is smaller than 0.20 this suggests an issue.</li>
+</ul>
+<p>To calculate VIF, you can use the <code>VIF()</code> function from the <code>DescTools</code> package - more on the relevant page.</p>
+</section>
+</section>
+<section id="linear-regressions-in-r" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="linear-regressions-in-r"><span class="header-section-number">7.5</span> Linear regressions in R</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>Let’s now turn to an example of how to do a linear regression in R.</p>
+</div>
+<section id="scenario" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="scenario"><span class="header-section-number">7.5.1</span> Scenario</h3>
+<p>Musical sophistication describes the various ways in which people engage with music. In general, the more ways in which people engage with music, the more musically sophisticated they are.</p>
+<p>One hypothesis is that years of musical training will clearly influence musical sophistication. While this is a bit of a no-brainer hypothesis, we’ll test it using some example data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>w10_goldmsi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week_10"</span>, <span class="st">"w10_goldmsi.csv"</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 74 Columns: 2
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (2): years_training, GoldMSI
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This extra code is here for later</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>w10_goldmsi <span class="ot">&lt;-</span> w10_goldmsi <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(w10_goldmsi))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w10_goldmsi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  years_training GoldMSI    id
+           &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
+1              5      98     1
+2              3      71     2
+3              2      75     3
+4              5      94     4
+5              6      89     5
+6              3      52     6</code></pre>
+</div>
+</div>
+</section>
+<section id="assumptions" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">7.5.2</span> Assumptions</h3>
+<p>In R the linear regression needs to be coded first <em>before</em> testing assumptions. Linear regression models can be built using <code>lm()</code>, and the same formula notation used in <code>aov()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>w10_goldmsi_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(GoldMSI <span class="sc">~</span> years_training, <span class="at">data =</span> w10_goldmsi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s test our assumptions from the previous page.</p>
+<p>Linearity: a simple scatterplot tells us that our data probably is suitable for a linear regression:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>w10_goldmsi <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> years_training, <span class="at">y =</span> GoldMSI)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Independence: our DW test is significant (<em>p</em> = .021), but our test statistic is 1.54. So, even though it’s still significant it probably isn’t much of a problem.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DurbinWatsonTest</span>(w10_goldmsi_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  w10_goldmsi_lm
+DW = 1.5409, p-value = 0.02123
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+<p>Homoscedasticity: To plot a residual vs fitted plot in R, there are two ways: - <code>plot(model, which = 1)</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(w10_goldmsi_lm, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Using ggplot, but giving the model name instead of the data and setting the x and y aesthetics as follows:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(w10_goldmsi_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `fortify(&lt;lm&gt;)` was deprecated in ggplot2 4.0.0.
+ℹ Please use `broom::augment(&lt;lm&gt;)` instead.
+ℹ The deprecated feature was likely used in the ggplot2 package.
+  Please report the issue at &lt;https://github.com/tidyverse/ggplot2/issues&gt;.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Normality of residuals: Like <code>aov</code> models, you can access the residuals from a given <code>lm()</code> model, by using the name of the <code>lm</code> object, followed by <code>$residuals</code>. This is useful for doing e.g.&nbsp;a Shapiro-Wilks test on the residuals, or a Q-Q plot of residuals:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_goldmsi_lm<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  w10_goldmsi_lm$residuals
+W = 0.98995, p-value = 0.8289</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(w10_goldmsi_lm<span class="sc">$</span>residuals)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(w10_goldmsi_lm<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Our SW test is non-significant and our Q-Q plot looks ok, so this assumption is not violated.</p>
+</section>
+<section id="output" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="output"><span class="header-section-number">7.5.3</span> Output</h3>
+<p>The output that R gives us for a linear regression comes in two parts: a test of the overall model, and a breakdown of the predictors and their slopes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = GoldMSI ~ years_training, data = w10_goldmsi)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-35.617  -9.227   2.025   9.773  33.666 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      53.901      5.233  10.300 8.33e-16 ***
+years_training    4.858      1.138   4.271 5.86e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 14.61 on 72 degrees of freedom
+Multiple R-squared:  0.2021,    Adjusted R-squared:  0.191 
+F-statistic: 18.24 on 1 and 72 DF,  p-value: 5.859e-05</code></pre>
+</div>
+</div>
+<p>Let’s start with the overall model. This tells us whether the regression model as a whole is significant. A couple of things to note here.</p>
+<ul>
+<li><span class="math inline">\(R^2\)</span> is called the coefficient of determination. This value tells how much variance in the outcome is explained by the predictor. Our value is .202, which means that 20.2% of the variance in Gold-MSI scores is explained by years of training.</li>
+<li>The overall model test is essentially an ANOVA (we won’t go too deep into why just yet!), which tells us whether the model is significant. In this case, it is (<em>F</em>(1, 72) = 18.24, <em>p</em> &lt; .001).</li>
+</ul>
+<p>Now we can look at the middle of the output, which gives the model coefficients. This part of the output tells us whether the predictors are significant. (Given the overall model is, with one predictor we’d expect this to be significant as well!).</p>
+<p>The Estimate column gives us the <em>B</em> coefficient, which is our slope. This tells us how much our outcome increases when our predictor increases by 1 unit.</p>
+<p>From this, we can see that years of training is a significant predictor of Gold-MSI scores (<em>t</em> = 4.27, <em>p</em> &lt; .001); for every year of training, Gold-MSI scores increase by 4.86 (given by the value under Estimate, next to our predictor variable).</p>
+<p>Finally, we can use the <code>confint</code> function to return 95% confidence intervals on each regression slope:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(w10_goldmsi_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  2.5 %    97.5 %
+(Intercept)    43.46925 64.332391
+years_training  2.59058  7.125814</code></pre>
+</div>
+</div>
+<p>Therefore, the 95% CI around the estimated regression coefficient of 4.86 is [2.59, 7.13].</p>
+<p>Here is how we can write up these results. Note that for a regression, it is important to discuss both the overall model fit and the specific effect of the predictor.</p>
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+<p>We conducted a simple linear regression to examine whether years of training predicted Gold-MSI scores. The overall model was significant (<em>F</em>(1, 72) = 18.24, <em>p</em> &lt; .001), with years of training explaining 20.2% of the variance in Gold-MSI scores (<span class="math inline">\(R^2\)</span> = .202). Years of training was a significant positive predictor of Gold-MSI scores (<em>B</em> = 4.86, <em>t</em> = 4.27, <em>p</em> &lt; .001).</p>
+</div>
+</section>
+</section>
+<section id="predictions" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="predictions"><span class="header-section-number">7.6</span> Predictions</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>A significant result from a linear regression tells us that our IV significantly predicts our outcome. We can actually use the results of the regression to make predictions about our outcome. This can be really useful in a number of contexts.</p>
+</div>
+<section id="revisiting-the-linear-regression-equation" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="revisiting-the-linear-regression-equation"><span class="header-section-number">7.6.1</span> Revisiting the linear regression equation</h3>
+<p>Let’s come back to the equation for a linear regression:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x + \epsilon_i
+\]</span></p>
+<p>The results from the linear regression on the previous page allow us to construct a line of best fit. Using this line of best fit, we can make predictions about a participant’s score on the dependent variable, given their score on the independent/predictor variable.</p>
+</section>
+<section id="building-a-regression-equation" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="building-a-regression-equation"><span class="header-section-number">7.6.2</span> Building a regression equation</h3>
+<p>Here’s the coefficient table from the previous page:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(w10_goldmsi_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = GoldMSI ~ years_training, data = w10_goldmsi)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-35.617  -9.227   2.025   9.773  33.666 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      53.901      5.233  10.300 8.33e-16 ***
+years_training    4.858      1.138   4.271 5.86e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 14.61 on 72 degrees of freedom
+Multiple R-squared:  0.2021,    Adjusted R-squared:  0.191 
+F-statistic: 18.24 on 1 and 72 DF,  p-value: 5.859e-05</code></pre>
+</div>
+</div>
+<p>This table tells us the following things:</p>
+<ul>
+<li>The value of the intercept, <span class="math inline">\(\beta_0\)</span>, is 53.901</li>
+<li>The value of the slope, <span class="math inline">\(\beta_1\)</span>, is 4.858</li>
+</ul>
+<p>Now we can make our equation as such:</p>
+<p><span class="math display">\[
+GoldMSI = 53.901 + (4.858 \times Years)
+\]</span></p>
+<p>We can now use this to predict scores!</p>
+</section>
+<section id="an-example-prediction" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="an-example-prediction"><span class="header-section-number">7.6.3</span> An example prediction</h3>
+<p>Participant 47, highlighted in green below, has 5 years of musical training. What would their predicted Gold-MSI score to be?</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can use the equation we just built to calculate a predicted score:</p>
+<p><span class="math display">\[GoldMSI = 53.901 + (4.858 \times Years)\]</span> <span class="math display">\[GoldMSI = 53.901 + (4.858 \times 5)\]</span> <span class="math display">\[=78.191\]</span></p>
+<p>Therefore, we would predict someone with 5 years of musical training to have a Gold-MSI score of 78.191. This is where the line sits. Notice however, that the predicted value is noticeably different to the participant’s actual value (which in this instance is 56). The difference between the predicted and the actual value is called the residual - precisely the same residual that we aim to minimise when we fit a regression line to begin with (as well as the same residuals we do assumption tests on).</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While these predictions can be useful, there are two warnings that should be kept in mind.</p>
+<ul>
+<li><strong>Extrapolation is dangerous</strong>. While we might get data that appears linear, there is nothing to say that this data will remain linear outside of the bounds of our data. Extrapolating data refers to making inferences beyond the available range, and should be avoided.</li>
+<li><strong>Don’t forget that some data have logical boundaries</strong>. For example, the Gold-MSI’s maximum possible score is 126 across all scales. Any preditions that are higher than this are therefore quite easily nonsensical.</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="multiple-regression-theory" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="multiple-regression-theory"><span class="header-section-number">7.7</span> Multiple regression: Theory</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>If all of that stuff on the previous page made sense then great! You’re now ready to tackle multiple regressions, which are an extension of the simple linear regression. You’ll see that much of the same stuff applies here, but a few things change…</p>
+</div>
+<section id="multiple-regression" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="multiple-regression"><span class="header-section-number">7.7.1</span> Multiple regression</h3>
+<p>Multiple regression is used when we want to test multiple predictors against an outcome variable. It’d be a safe bet to say that multiple regression and its various forms are probably one of the most used statistical tests in music psychology literature as a whole - you’ll see them everywhere! No introduction to linear regression would really be complete without at least scratching the surface of multiple regression.</p>
+<p>The name “multiple regression” is actually a fairly generic term in some respects, as it describes any instance of regression with two or more predictors. I say that because there are several forms of multiple regression, such as:</p>
+<ul>
+<li>Standard multiple regression, which we will cover in this subject</li>
+<li>Hierarchical multiple regression, where you split your analysis into blocks</li>
+<li>Stepwise multiple regression, where algorithms attempt to select the best predictors</li>
+<li>And more!</li>
+</ul>
+</section>
+<section id="the-regression-equation-once-again" class="level3" data-number="7.7.2">
+<h3 data-number="7.7.2" class="anchored" data-anchor-id="the-regression-equation-once-again"><span class="header-section-number">7.7.2</span> The regression equation, once again</h3>
+<p>Recall that in a simple linear regression, we had this formula to describe the line of best fit:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x + \epsilon_i
+\]</span></p>
+<p>In a multiple regression, we work with an extension of this formula. The key part here is the part of the equation labelled <span class="math inline">\(\beta_1x\)</span> - this is the part of the equation that relates to the individual predictor and its slope (i.e.&nbsp;how it predicts the outcome). We extend this in a multiple regression. For example, say we now had two predictors:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x_1 +\beta_2x_2 + \epsilon_i
+\]</span></p>
+<p>We now have a term for our first predictor <span class="math inline">\(\beta_1x_1\)</span> and for our second: <span class="math inline">\(\beta_2x_2\)</span>.</p>
+<ul>
+<li>x1 and x2 simply mean predictor 1 and predictor 2.</li>
+<li>The betas here are still regression slopes; the subscript numbers just indicate which predictor they correspond to.</li>
+</ul>
+<p>From here on, much of the same reasoning that we saw in the early pages of this module apply. The primary hypotheses are now about whether each slope is significantly different from zero - which would indicate whether each predictor does significantly predict the outcome.</p>
+</section>
+<section id="assumption-testing-in-multiple-regressions" class="level3" data-number="7.7.3">
+<h3 data-number="7.7.3" class="anchored" data-anchor-id="assumption-testing-in-multiple-regressions"><span class="header-section-number">7.7.3</span> Assumption testing in multiple regressions</h3>
+<p>All of the following assumption tests apply:</p>
+<ul>
+<li>Linearity</li>
+<li>Independence</li>
+<li>Homoscedasticity</li>
+<li>Normality</li>
+<li>Multicollinearity</li>
+</ul>
+<p>We’ll test these on the next page!</p>
+</section>
+</section>
+<section id="multreg-intro" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="multreg-intro"><span class="header-section-number">7.8</span> Multiple regressions in R</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>Phew - we’re almost there! Let’s round out this week’s module by doing a standard multiple regression in Jamovi.</p>
+</div>
+<section id="example-data" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="example-data"><span class="header-section-number">7.8.1</span> Example data</h3>
+<p>Let’s look at a real set of data from Rakei et al.&nbsp;(2022). Their study looked at what predicts how prone people are to flow - the experience of being ‘in the moment’ and extremely focused while doing a task, such as performing. They measured a wide range of personality and emotion-related variables, but we’ll focus on just a subset here:</p>
+<ul>
+<li>Trait anxiety: broadly, refers to people’s tendency to feel anxious</li>
+<li>Openness to experience: a personality trait that describes how likely people are to seek new experiences</li>
+<li>DFS_Total: a measure of proneness to flow.</li>
+</ul>
+<p>Let’s see if trait anxiety and openness predict flow proneness.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>w10_flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week_10"</span>, <span class="st">"w10_flow.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 811 Columns: 6
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (6): id, age, GoldMSI, DFS_Total, trait_anxiety, openness
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>To build a multiple regression model in R, we simply need to add (literally) more terms to <code>lm()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="assumption-checks" class="level3" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="assumption-checks"><span class="header-section-number">7.8.2</span> Assumption checks</h3>
+<p>Our Durbin-Watson test suggests no issues with independence of observations.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DurbinWatsonTest</span>(w10_flow_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  w10_flow_lm
+DW = 1.9456, p-value = 0.2182
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+<p>The Shapiro-Wilks test suggests that our normality assumption is violated - though if you look at the relevant Q-Q plot, it doesn’t appear to be very severe.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(w10_flow_lm<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  w10_flow_lm$residuals
+W = 0.99311, p-value = 0.0008488</code></pre>
+</div>
+</div>
+<p>The residuals-fitted plot for our data looks ok - no obvious conical shape, suggesting that the homoscedasticity assumption is intact.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(w10_flow_lm, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-regressions_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lastly, our multicollinearity statistics look good - no violations suggested here.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>trait_anxiety      openness 
+     1.025955      1.025955 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tolerance</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>DescTools<span class="sc">::</span><span class="fu">VIF</span>(w10_flow_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>trait_anxiety      openness 
+    0.9747012     0.9747012 </code></pre>
+</div>
+</div>
+</section>
+<section id="output-1" class="level3" data-number="7.8.3">
+<h3 data-number="7.8.3" class="anchored" data-anchor-id="output-1"><span class="header-section-number">7.8.3</span> Output</h3>
+<p>Let’s start as always by taking a look at our output. Our regression explains 13.6 of the variance in flow proneness (<span class="math inline">\(R^2\)</span> = .136), and our overall model is significant (<em>F</em>(2, 808) = 63.81, <em>p</em> &lt; .001).</p>
+<p>With that in mind, let’s turn to our individual predictors. Remember, now we have two predictors to consider - and we need to interpret them individually as well.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-16.596  -2.331  -0.151   2.308  12.794 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   32.65078    1.13377  28.798  &lt; 2e-16 ***
+trait_anxiety -0.11116    0.01278  -8.697  &lt; 2e-16 ***
+openness       0.83372    0.14538   5.735 1.38e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.705 on 808 degrees of freedom
+Multiple R-squared:  0.1364,    Adjusted R-squared:  0.1343 
+F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   2.5 %      97.5 %
+(Intercept)   30.4252962 34.87625896
+trait_anxiety -0.1362446 -0.08606874
+openness       0.5483533  1.11907751</code></pre>
+</div>
+</div>
+<p>We can see that both trait anxiety and openness are significant predictors of flow proneness, but interpreting the direction is also really important here. For that, we turn to our estimates:</p>
+<ul>
+<li>The estimate for trait anxiety is <em>B</em> = -.111 (95% CI [-.136, .086]), suggesting that higher trait anxiety predicts lower flow proneness (<em>p</em> &lt; .001)</li>
+<li>On the other hand, the estimate for openness is <em>B</em> = .834 (95% CI [.548, 1.119]), suggesting that higher openness predicts higher flow proneness (<em>p</em> &lt; .001).</li>
+</ul>
+<p>Therefore, we can conclude that both are significant predictors and have opposite effects to each other. We can write this up as follows:</p>
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+<p>We ran a multiple regression with trait anxiety and openness as predictors, and flow proneness as an outcome. The overall regression model was significant (<em>F</em>(2, 808) = 63.81, <em>p</em> &lt; .001), and explained 13.6% of the variance in flow proneness. Trait anxiety significantly predicted flow proneness (<em>B</em> = -.11, 95% CI [-.14, -.09], <em>t</em> = -8.70, <em>p</em> &lt; .001); higher trait anxiety predicted lower flow proneness. Openness was also a significant predictor (<em>B</em> = .83, 95% CI [.55, 1.12], <em>t</em> = 5.74, <em>p</em> &lt; .001); higher openness predicted higher flow proneness.</p>
+</div>
+<p>But there’s one more thing we can consider here…</p>
+</section>
+<section id="comparing-predictive-strength" class="level3" data-number="7.8.4">
+<h3 data-number="7.8.4" class="anchored" data-anchor-id="comparing-predictive-strength"><span class="header-section-number">7.8.4</span> Comparing predictive strength</h3>
+<p>When we do a multiple regression, we can actually identify which of our predictors is the strongest predictor of the outcome.</p>
+<p>Our estimate column alone won’t tell us that, because these are <strong>unstandardised coefficients</strong>. They are unstandardised because they describe the relationship in terms of the original units of each measure. An increase of 1 unit on trait anxiety is not necessarily the same thing as a 1 unit increase in openness because they are on different scales, so we can’t compare them directly!</p>
+<p>However, if we were to <strong>standardise</strong> these coefficients, we would then bring them all into the same scale (think back to z-scores!) - which would allow us to directly compare which predictor leads to a greater change in the outcome. These are simply regression coefficients that have been standardised, meaning that they are all on the same scale. Jamovi will calculate a <strong>standardised estimate</strong> (sometimes called <strong>standardised coefficient</strong>), which is presented in the rightmost column of the above table. Standardised estimates are denoted as <strong>beta</strong> (<span class="math inline">\(\beta\)</span>), and thus are sometimes called <strong>standard betas</strong>.</p>
+<p>Standard betas allow us to interpret our coefficients in terms of changes in <strong>standard deviations</strong>; namely, a 1 SD increase in predictor X leads to a <span class="math inline">\(\beta\)</span> SD change in predictor Y.</p>
+<p>In R, we need to use an extra function to calculate standard betas. We can call on the <code>StdCoef()</code> function from the <code>DescTools</code> package:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">StdCoef</span>(w10_flow_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Estimate* Std. Error*  df
+(Intercept)    0.0000000   0.0000000 808
+trait_anxiety -0.2879944   0.0331142 808
+openness       0.1899044   0.0331142 808
+attr(,"class")
+[1] "coefTable" "matrix"   </code></pre>
+</div>
+</div>
+<p>If you want confidence intervals around the standardised coefficients, the <code>standardize_parameters()</code> function from the <code>effectsize</code> package will do this for you:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'effectsize'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:rstatix':
+
+    cohens_d, eta_squared</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">standardize_parameters</span>(w10_flow_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Standardization method: refit
+
+Parameter     | Std. Coef. |         95% CI
+-------------------------------------------
+(Intercept)   |   9.28e-16 | [-0.06,  0.06]
+trait anxiety |      -0.29 | [-0.35, -0.22]
+openness      |       0.19 | [ 0.12,  0.25]</code></pre>
+</div>
+</div>
+<p>Alternatively, we can simply standardise our predictors before running our regression (which is a lot easier in R than in other programs):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardise predictors</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>w10_flow_std <span class="ot">&lt;-</span> w10_flow <span class="sc">%&gt;%</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">trait_anxiety =</span> <span class="fu">scale</span>(trait_anxiety),</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">openness =</span> <span class="fu">scale</span>(openness),</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">DFS_Total =</span> <span class="fu">scale</span>(DFS_Total)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>w10_flow_lm_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow_std)</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm_std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow_std)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.1675 -0.5855 -0.0379  0.5795  3.2128 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    9.281e-16  3.267e-02   0.000        1    
+trait_anxiety -2.880e-01  3.311e-02  -8.697  &lt; 2e-16 ***
+openness       1.899e-01  3.311e-02   5.735 1.38e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9304 on 808 degrees of freedom
+Multiple R-squared:  0.1364,    Adjusted R-squared:  0.1343 
+F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(w10_flow_lm_std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    2.5 %      97.5 %
+(Intercept)   -0.06413295  0.06413295
+trait_anxiety -0.35299439 -0.22299437
+openness       0.12490436  0.25490437</code></pre>
+</div>
+</div>
+<p>This means that we can just compare the numbers of the standardised estimates (ignoring positive/negative signs) to see which one is the greatest predictor of the outcome. In the example above, trait anxiety has a standard coefficient of .288, whereas openness has a standard coefficient of .190. Trait anxiety is therefore a stronger predictor of flow proneness, because a 1 standard deviation increase in trait anxiety leads to a greater increase in flow proneness - namely, a change of .288 standard deviations.</p>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Given that this data was randomly generated, it probably is due to a simulation outlier more than anything.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-anovas.html" class="pagination-link" aria-label="ANOVAs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-factorial-anovas.html" class="pagination-link" aria-label="Factorial ANOVAs">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

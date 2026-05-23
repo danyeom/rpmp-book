@@ -1,0 +1,50 @@
+# Preface {.unnumbered}
+
+This is an R adaptation of the quantitative research/statistics content from a subject called Research Process for Music Psychologists (MUSI90252). The subject is an introduction to research methods for new Masters and PhD students in music psychology and music science at the University of Melbourne.
+
+**The general idea**
+
+The subject's statistics material was originally written for [Jamovi](https://www.jamovi.org/), given its ease of use and impressive functionality. The reason why we (the original subject coordinator and I) preferenced Jamovi in the first instance is because many of our students do not come from psychological science, statistics or research backgrounds, so statistical analysis is often an entirely new frontier for them. Jamovi provides a *free* point-and-click interface that will be familiar to users of SPSS and other platforms who may be used to a point-and-click approach. I actually think this is a great thing, and I believe one of Jamovi's greatest strengths is how easy it is to use. 
+
+However, I have also strongly encouraged any music psychology students doing quantitatively-oriented research to consider learning R in the long term. R is therefore also offered as an option for this subject, and this book is meant to serve as the R-specific version of the subject material.
+
+By and large the content is a very faithful reproduction of the subject's original Jamovi-oriented content, with the following exceptions:
+
+- Some additional commentary has been added for R-specific material, such as information on certain functions.
+- Some embedded content in the Canvas version is not available here (mainly Jamovi-specific content, and Readings Online content).
+- Some content has been re-organised because of how R outputs things compared to Jamovi. 
+- The first chapter is a very (*very*) brief overview of how to use core R and `tidyverse` functions.
+
+Where possible, the subject content has been written to achieve **parity with Jamovi** first and foremost, to reduce discrepancies and friction between the two versions of the subject material. The material in this book has been designed to align with what Jamovi provides in terms of both functionality and output, as closely as possible. R can and will do so much more than what is presented in this book, and I strongly encourage interested students to seek out this content separately.
+
+**About this book**
+
+Up until 22nd May 2026, this book was written using [bookdown](https://bookdown.org/). I changed the book to [Quarto](https://quarto.org/), partly because of the additional functinality built in to Quarto and partly because I really like how Quarto books look. It has come at the small cost of one or two features - such as the ability to easily split chapters into multiple pages - but overall makes for (imo) a much nicer reading experience.
+
+The bookdown version is available on a separate branch on my GitHub.
+
+Several elements in this new version of the book will be updated as time goes on. This first render in Quarto may be a bit rough around the edges while I work through these.
+
+```{r, eval=FALSE, echo = FALSE}
+# bookdown::render_book()
+```
+
+
+```{r eval = FALSE, echo = FALSE}
+# install.packages(c(
+#   "tidyverse", "here", "psych", "rstatix", "ggpubr", "DescTools", "ggcorrplot", "afex", "emmeans", "effectsize", "lm.beta", "datarium"
+))
+```
+
+
+```{r eval=FALSE, echo = FALSE}
+# bookdown::serve_book()
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+# knitr::write_bib(c(
+#   .packages(), 'bookdown', 'knitr', 'rmarkdown'
+# ), 'packages.bib')
+```
