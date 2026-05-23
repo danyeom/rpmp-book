@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>13&nbsp; Non-parametric tests – Research Process for Music Psychologists</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./appendix.html" rel="next">
+<link href="./12-medmod.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./13-nonpara.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Process for Music Psychologists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I: Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A very brief introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-descriptives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferential statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II: Basic inferential tests</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-chisquares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chi-squares</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III: Advanced methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-factorial-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regressions-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-efa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-medmod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-nonpara.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#parametric-vs-non-parametric-tests" id="toc-parametric-vs-non-parametric-tests" class="nav-link active" data-scroll-target="#parametric-vs-non-parametric-tests"><span class="header-section-number">13.1</span> Parametric vs non-parametric tests</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">13.1.1</span> Introduction</a></li>
+  <li><a href="#non-parametric-tests" id="toc-non-parametric-tests" class="nav-link" data-scroll-target="#non-parametric-tests"><span class="header-section-number">13.1.2</span> Non-parametric tests</a></li>
+  </ul></li>
+  <li><a href="#spearmans-rho" id="toc-spearmans-rho" class="nav-link" data-scroll-target="#spearmans-rho"><span class="header-section-number">13.2</span> Spearman’s rho</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">13.2.1</span> Introduction</a></li>
+  <li><a href="#understanding-ranks" id="toc-understanding-ranks" class="nav-link" data-scroll-target="#understanding-ranks"><span class="header-section-number">13.2.2</span> Understanding ranks</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">13.2.3</span> Example</a></li>
+  </ul></li>
+  <li><a href="#mann-whitney-u-tests" id="toc-mann-whitney-u-tests" class="nav-link" data-scroll-target="#mann-whitney-u-tests"><span class="header-section-number">13.3</span> Mann-Whitney U tests</a>
+  <ul class="collapse">
+  <li><a href="#introduction-2" id="toc-introduction-2" class="nav-link" data-scroll-target="#introduction-2"><span class="header-section-number">13.3.1</span> Introduction</a></li>
+  <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses"><span class="header-section-number">13.3.2</span> Hypotheses</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">13.3.3</span> Example</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output"><span class="header-section-number">13.3.4</span> Output</a></li>
+  </ul></li>
+  <li><a href="#wilcoxon-signed-rank-test" id="toc-wilcoxon-signed-rank-test" class="nav-link" data-scroll-target="#wilcoxon-signed-rank-test"><span class="header-section-number">13.4</span> Wilcoxon signed rank test</a>
+  <ul class="collapse">
+  <li><a href="#introduction-3" id="toc-introduction-3" class="nav-link" data-scroll-target="#introduction-3"><span class="header-section-number">13.4.1</span> Introduction</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">13.4.2</span> Example</a></li>
+  <li><a href="#output-1" id="toc-output-1" class="nav-link" data-scroll-target="#output-1"><span class="header-section-number">13.4.3</span> Output</a></li>
+  </ul></li>
+  <li><a href="#kruskal-wallis-anova" id="toc-kruskal-wallis-anova" class="nav-link" data-scroll-target="#kruskal-wallis-anova"><span class="header-section-number">13.5</span> Kruskal-Wallis ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#introduction-4" id="toc-introduction-4" class="nav-link" data-scroll-target="#introduction-4"><span class="header-section-number">13.5.1</span> Introduction</a></li>
+  <li><a href="#example-scenario" id="toc-example-scenario" class="nav-link" data-scroll-target="#example-scenario"><span class="header-section-number">13.5.2</span> Example scenario</a></li>
+  <li><a href="#checking-assumptions-normal-anova" id="toc-checking-assumptions-normal-anova" class="nav-link" data-scroll-target="#checking-assumptions-normal-anova"><span class="header-section-number">13.5.3</span> Checking assumptions (normal ANOVA)</a></li>
+  <li><a href="#output-2" id="toc-output-2" class="nav-link" data-scroll-target="#output-2"><span class="header-section-number">13.5.4</span> Output</a></li>
+  </ul></li>
+  <li><a href="#friedman-anovas" id="toc-friedman-anovas" class="nav-link" data-scroll-target="#friedman-anovas"><span class="header-section-number">13.6</span> Friedman ANOVAs</a>
+  <ul class="collapse">
+  <li><a href="#introduction-5" id="toc-introduction-5" class="nav-link" data-scroll-target="#introduction-5"><span class="header-section-number">13.6.1</span> Introduction</a></li>
+  <li><a href="#example-scenario-1" id="toc-example-scenario-1" class="nav-link" data-scroll-target="#example-scenario-1"><span class="header-section-number">13.6.2</span> Example scenario</a></li>
+  <li><a href="#checking-assumptions-normal-anova-1" id="toc-checking-assumptions-normal-anova-1" class="nav-link" data-scroll-target="#checking-assumptions-normal-anova-1"><span class="header-section-number">13.6.3</span> Checking assumptions (normal ANOVA)</a></li>
+  <li><a href="#running-a-friedman-anova" id="toc-running-a-friedman-anova" class="nav-link" data-scroll-target="#running-a-friedman-anova"><span class="header-section-number">13.6.4</span> Running a Friedman ANOVA</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./13-nonpara.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="nonpara" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="parametric-vs-non-parametric-tests" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="parametric-vs-non-parametric-tests"><span class="header-section-number">13.1</span> Parametric vs non-parametric tests</h2>
+<section id="introduction" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">13.1.1</span> Introduction</h3>
+<p>Recall the aim of much of the statistics we do:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/populations_samples.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When we estimate these parameters using statistical tests, we make certain assumptions about data in order for our tests to be valid. Many of those assumptions involve some degree of normality - whether the data/outcome needs to be normally distributed, or the residuals in the model need to be normally distributed. The tests that we cover in this subject - <em>t</em>-tests and ANOVAs especially - are called parametric tests, because they make an assumption about the distribution. But what happens if those assumptions aren’t met?</p>
+</section>
+<section id="non-parametric-tests" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="non-parametric-tests"><span class="header-section-number">13.1.2</span> Non-parametric tests</h3>
+<p>Non-parametric tests do not make assumptions about the underlying distributions of data (and hence are sometimes called distribution-free tests). Instead, they are more general tests that make the following (broad) hypotheses:</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: The underlying distributions are equal</li>
+<li><span class="math inline">\(H_1\)</span>: The underlying distributions are not equal</li>
+</ul>
+<p>So when should they be used, and what are their pros and cons? In general, non-parametric tests should be considered when a) <strong>assumptions for parametric tests are not met</strong> and b) <strong>you are working with small samples</strong>. As noted below, with large samples a lot of the parametric assumptions in tests are fairly robust (unless deviations are particularly severe).</p>
+<p>Below are the non-parametric equivalents to the major tests that we cover, with their associated datasets.</p>
+<p>Note that chi-square tests are already non-parametric, while non-parametric regression is just a headache.</p>
+</section>
+</section>
+<section id="spearmans-rho" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="spearmans-rho"><span class="header-section-number">13.2</span> Spearman’s rho</h2>
+<section id="introduction-1" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="introduction-1"><span class="header-section-number">13.2.1</span> Introduction</h3>
+<p>Spearman’s rho (<span class="math inline">\(\rho\)</span>) is a non-parametric correlation coefficient, broadly equivalent in interpretation with Pearson’s correlation coefficient. It is used to calculate a correlation in instances where Pearson’s r would not be appropriate; namely, when data is not linear.</p>
+<p>Spearman’s rho can be used when data is monotonic. Monotonic data is data where as X changes, Y changes in one direction. Below is a visualisation of monotonic versus non-monotonic data:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="13-nonpara_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the linear and monotonic examples, the line of best fit follows one direction - up. In the rightmost graph, however, there is a decrease and then an increase in the predicted values of y. This is an example of a non-monotonic function.</p>
+</section>
+<section id="understanding-ranks" class="level3" data-number="13.2.2">
+<h3 data-number="13.2.2" class="anchored" data-anchor-id="understanding-ranks"><span class="header-section-number">13.2.2</span> Understanding ranks</h3>
+<p>Non-parametric statistics, including all of the ones that we talk about in this module, rely on establishing ranks in your data. Mathematically, this is how non-parametric tests are able to test the hypotheses they do without needing to rely on accurately estimating some parameter, or making assumptions about said parameters. Although each test has a different way of using these ranks, many of them often start by calculating ranks in your data.</p>
+<p>This is about as simple as it sounds. Consider the table below, with 5 measurements on a simple scale. The left column shows the raw data, while the middle column shows the ranked data - largest to smallest, reading top to bottom. The right column shows their ranks in order. The smallest value is given a rank of 1.</p>
+<p>The ranks are then used to calculate test statistics for non-parametric tests.</p>
+</section>
+<section id="example" class="level3" data-number="13.2.3">
+<h3 data-number="13.2.3" class="anchored" data-anchor-id="example"><span class="header-section-number">13.2.3</span> Example</h3>
+<p>Below is a simple example of a correlation between two variables where non-linearity may be important. Singing accuracy is naturally skewed heavily, and develops non-linearly throughout life.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>singing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"nonpara"</span>, <span class="st">"singing_data.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 284 Columns: 2
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (2): accuracy, age
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>The relevant dataset contains just two variables: accuracy (measured in cents) and age (participant age). The scatterplot below shows the relationship between these two variables:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>singing <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> accuracy)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="13-nonpara_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To calculate Spearman’s rho, the steps are much the same as the way they are for normal correlations - we use the same <code>cor.test()</code> function that we saw earlier. The main difference is that we now must specify the <code>method</code> argument to equal to <code>"spearman"</code>, which will calculate Spearman’s rho instead.. Here, we see results consistent with a Pearson’s correlation; a significant, positive association between age and accuracy (<span class="math inline">\(\rho\)</span> = .53, <em>p</em> &lt; .001).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(singing<span class="sc">$</span>accuracy, singing<span class="sc">$</span>age, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in cor.test.default(singing$accuracy, singing$age, method =
+"spearman"): Cannot compute exact p-value with ties</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Spearman's rank correlation rho
+
+data:  singing$accuracy and singing$age
+S = 1808559, p-value &lt; 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.5262664 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="mann-whitney-u-tests" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="mann-whitney-u-tests"><span class="header-section-number">13.3</span> Mann-Whitney U tests</h2>
+<section id="introduction-2" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="introduction-2"><span class="header-section-number">13.3.1</span> Introduction</h3>
+<p>A Mann-Whitney U (also called a <strong>Wilcoxon rank-sum test</strong>) is a non-parametric form of the independent samples t-test. In other words, it applies to situations where you are comparing two independent groups, and for whatever reason the assumptions of an independent t-test are severely violated.</p>
+<p>Note that many statistics webpages erroneously call the Mann-Whitney U a test of medians; this is not necessarily true (and even the distribution point is a little strained). The test is simply on the ranks of the data.</p>
+</section>
+<section id="hypotheses" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="hypotheses"><span class="header-section-number">13.3.2</span> Hypotheses</h3>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: The probability distributions of the two groups is the same (i.e.&nbsp;they derive from the same distribution).</li>
+<li><span class="math inline">\(H_1\)</span>: The probability distributions of the two groups are not the same (i.e.&nbsp;they derive from different distribution).</li>
+</ul>
+<p>The test statistic is the <strong>U</strong> statistic. The U statistic ranges from 0 (which implies complete separation between the two groups) and n1 * n2 (the sample sizes of both groups multiplied).</p>
+</section>
+<section id="example-1" class="level3" data-number="13.3.3">
+<h3 data-number="13.3.3" class="anchored" data-anchor-id="example-1"><span class="header-section-number">13.3.3</span> Example</h3>
+<p>The dataset for this page and the next relate to young men’s wages in 1980 and 1987 across the United States. The original study was interested in the effects of union bargaining/membership on wages.</p>
+<p>The following variables are in the dataset:</p>
+<ul>
+<li>nr: Participant ID</li>
+<li>year: year of measurement (1980 or 1987)</li>
+<li>school: Years of schooling</li>
+<li>exper: Years of work experience, calculated as school - 6</li>
+<li>union: Was their wage set by collective bargaining? (two levels: yes, no)</li>
+<li>ethn: Participant ethnicity (three levels: black, hisp, other)</li>
+<li>married; Marital status (two levels: yes, no)</li>
+<li>health: Does the participant have a health problem? (two levels: yes, no)</li>
+<li>wage: Hourly wage, log-transformed</li>
+<li>industry, occupation, residence: Demographic and descriptive variables</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wages <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"nonpara"</span>, <span class="st">"wages.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1090 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (7): union, ethn, married, health, industry, occupation, residence
+dbl (6): ...1, nr, year, school, exper, wage
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>Consider the following question: In 1980, were wages higher for union members than non-union members?</p>
+<p>Let’s take a look at the data in R first. First, let’s filter our dataset so that we only have cases from 1980.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wages_1980 <span class="ot">&lt;-</span> wages <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1980</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Pretend that we run our assumption checks on the wage data and obtain the following:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wages_1980 <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(union) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shapiro_test</span>(wage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  union variable statistic        p
+  &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+1 no    wage         0.932 1.14e-12
+2 yes   wage         0.976 1.81e- 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wages_1980 <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levene_test</span>(wage <span class="sc">~</span> union, <span class="at">center =</span> <span class="st">"mean"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+    df1   df2 statistic        p
+  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1     1   543      11.0 0.000972</code></pre>
+</div>
+</div>
+<p>Both assumptions have been violated. Now, pretend that we think this violation is bad enough that even a Welch test wouldn’t be appropriate. In this instance, we may turn to a Mann-Whitney U test.</p>
+</section>
+<section id="output" class="level3" data-number="13.3.4">
+<h3 data-number="13.3.4" class="anchored" data-anchor-id="output"><span class="header-section-number">13.3.4</span> Output</h3>
+<p>TO run a Mann-Whitney U test, we use the <code>wilcox.test()</code> function in R. The <code>wilcox.test()</code> function behaves just like the regular <code>t.test()</code> function for both independent and paired-samples <em>t</em>-tests, down to the same notation. So, we can use the same notation for a independent-samples <em>t</em>-test as we have done so in the past:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(wage <span class="sc">~</span> union, <span class="at">data =</span> wages_1980)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  wage by union
+W = 19767, p-value = 2.898e-07
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+<p>Here is our output above. We can see that the <em>p</em>-value is significant, and so therefore these two samples (union vs non-union) do not appear to come from the same underlying distribution (Mann-Whitney <em>U</em> = 19767, <em>p</em> &lt; .001). We can then use descriptives as per normal to figure out where the difference is (the median and mean wages for union members are higher than non-members).</p>
+<p>We also want to calculate our effect size for this test, called the <strong>rank biserial correlation</strong>. We won’t worry too much about the maths here, but we can broadly interpret this along similar lines to Pearson’s r (weak to medium in this instance). To do this, we can use the <code>rank_biserial()</code> function in the <code>effectsize</code> package, which works like its <code>cohens_d()</code> counterpart:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_biserial</span>(wage <span class="sc">~</span> union, <span class="at">data =</span> wages_1980)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>r (rank biserial) |         95% CI
+----------------------------------
+-0.29             | [-0.39, -0.19]</code></pre>
+</div>
+</div>
+<p>Something to note, though, is that unlike the standard <em>t</em>-test, how exactly this result should be interpreted is a little more vague. With a regular <em>t</em>-test, we test differences between two group means, and thus we can directly make a comparison between means when interpreting a test. In this instance, however, we are testing differences in ranks; this doesn’t have a clean interpretation beyond there just being a difference (of sorts) between the groups.</p>
+</section>
+</section>
+<section id="wilcoxon-signed-rank-test" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="wilcoxon-signed-rank-test"><span class="header-section-number">13.4</span> Wilcoxon signed rank test</h2>
+<section id="introduction-3" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="introduction-3"><span class="header-section-number">13.4.1</span> Introduction</h3>
+<p>The non-parametric equivalent to the paired-samples <em>t</em>-test is the Wilcoxon signed-rank test. The sign and rank part of the test’s name comes from how the test statistic is calculated. We won’t deal too much with the mechanics of doing this, but it involves three main steps:</p>
+<ol type="1">
+<li>Calculate the difference between condition 1 and condition 2</li>
+<li>Rank each difference based on its absolute value (i.e.&nbsp;disregard whether it is positive/negative)</li>
+<li>Add up each set of signed differences (i.e.&nbsp;add all the positive differences together, and add all the negative ones together). The test statistic is the minimum of the two.</li>
+</ol>
+<p>In essence, the maths is exactly the same as a regular paired-samples <em>t</em>-test (i.e.&nbsp;it is a one-sample test on the differences between groups), but just using ranks this time rather than means. The Wilcoxon signed-rank test can be used to test whether the medians differ between the two conditions (i.e.&nbsp;it’s appropriate to hypothesise this here). Like the other non-parametric tests, it is a test that is free from assumptions about distributions.</p>
+</section>
+<section id="example-2" class="level3" data-number="13.4.2">
+<h3 data-number="13.4.2" class="anchored" data-anchor-id="example-2"><span class="header-section-number">13.4.2</span> Example</h3>
+<p>In the wages dataset, there are wages between 1980 and 1987. Did the median wage change between these two years? Here are our descriptives:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>wages_wide <span class="ot">&lt;-</span> wages <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(nr, year, wage) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols =</span> nr,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> year,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> wage,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"wage_"</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Recall that in a paired-samples <em>t</em>-test, the normality assumption refers to whether the differences between the two conditions are normally distributed. We can test this in the usual two ways: 1) with a normality significance test, and 2) by assessing a Q-Q plot. Here is the former, to show what a non-normal dataset might look like:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(wages_wide<span class="sc">$</span>wage_1980 <span class="sc">-</span> wages_wide<span class="sc">$</span>wage_1987)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  wages_wide$wage_1980 - wages_wide$wage_1987
+W = 0.88454, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>As we can see, the test is significant (Shapiro-Wilks’ <em>W</em> = .885, <em>p</em> &lt; .001) - naturally, a tell-tale sign that this data aren’t normally distributed. This would be a good example to use Wilcoxon signed-rank tests over a regular paired t-test.</p>
+</section>
+<section id="output-1" class="level3" data-number="13.4.3">
+<h3 data-number="13.4.3" class="anchored" data-anchor-id="output-1"><span class="header-section-number">13.4.3</span> Output</h3>
+<p>The setup for a signed-rank test in R again uses the same syntax as the regular <code>t.test()</code> function for a paired test - meaning that we can either give it the two separate columns with <code>paired = TRUE</code>, or use <code>Pairs(a, b) ~ 1</code> notation. For simplicity we’ll just do the former:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(wages_wide<span class="sc">$</span>wage_1980, wages_wide<span class="sc">$</span>wage_1987, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  wages_wide$wage_1980 and wages_wide$wage_1987
+V = 15096, p-value &lt; 2.2e-16
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+<p>As mentioned on the previous page, we can also use our <code>rank_biserial()</code> function the same way to calculate an effect size for this paired test:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_biserial</span>(wages_wide<span class="sc">$</span>wage_1980, wages_wide<span class="sc">$</span>wage_1987, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>r (rank biserial) |         95% CI
+----------------------------------
+-0.80             | [-0.83, -0.76]</code></pre>
+</div>
+</div>
+<p>Here is our output. Our test is clearly significant, so we can reject the null and say that wages in 1987 were higher than wages in 1980 (<em>W</em> = 15096, <em>p</em> &lt; .001). Our effect size is also large this time (and negative, indicating that wages were higher in 1987 than 1980).</p>
+</section>
+</section>
+<section id="kruskal-wallis-anova" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="kruskal-wallis-anova"><span class="header-section-number">13.5</span> Kruskal-Wallis ANOVA</h2>
+<section id="introduction-4" class="level3" data-number="13.5.1">
+<h3 data-number="13.5.1" class="anchored" data-anchor-id="introduction-4"><span class="header-section-number">13.5.1</span> Introduction</h3>
+<p>The Kruskal-Wallis ANOVA is the non-parametric equivalent of the basic one-way ANOVA. It is essentially an extension of the Mann-Whitney U test, which has a couple of important ramifications: namely, it doesn’t assume any underlying distributions.</p>
+<p>Like the Mann-Whitney U test, by default the Kruskal-Wallis ANOVA is purely a test of whether the data in each group come from the same underlying distributions. The KW ANOVA can only test for a difference in medians if you can assume that each group’s distribution is the same shape and spread (e.g.&nbsp;all groups are skewed in the same way). Otherwise, you are essentially testing for a difference in the underlying distributions.</p>
+</section>
+<section id="example-scenario" class="level3" data-number="13.5.2">
+<h3 data-number="13.5.2" class="anchored" data-anchor-id="example-scenario"><span class="header-section-number">13.5.2</span> Example scenario</h3>
+<p>The example data for this page and the next come from one data source, looking at language abilities in young children. These datasets contain the same participants, but the file labelled “autism_kw” takes data at one cross-section while the “autism_friedman” file contains four timepoints.</p>
+<p>The variables in this dataset include:</p>
+<ul>
+<li>childid: Participant ID</li>
+<li>sicdegp: Assessment of expressive language development. Three groups: high, medium, low.</li>
+<li>age2: Participant’s age, centered around 2 years old. The numeric values indicate how many years have passed since the child was 2 years old.</li>
+<li><pre><code>   In the "autism_friedman" dataset, the columns are labelled age_0, age_1, age_3 and age_7. These refer to the ages of 2 years old, 2yo, 5yo and 9yo respectively.</code></pre></li>
+<li>vsae: Vineland Socialisation Age Equivalent</li>
+<li>gender, race: Participant’s gender and race</li>
+<li>bestest2 - Diagnosis at age 2. Two levels: autism and PDD (pervasive developmental disorder).</li>
+</ul>
+<p>We will take a look at the first autism dataset (“autism_kw”). In this dataset, we want to conduct an ANOVA comparing socialisation age equivalents (VSAE) between children with varying levels of expressive language development.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>autism <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"nonpara"</span>, <span class="st">"autism_long.csv"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sicdegp =</span> <span class="fu">factor</span>(sicdegp)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 63 Columns: 7
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): sicdegp, gender, race, bestest2
+dbl (3): childid, age2, vsae
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
+<section id="checking-assumptions-normal-anova" class="level3" data-number="13.5.3">
+<h3 data-number="13.5.3" class="anchored" data-anchor-id="checking-assumptions-normal-anova"><span class="header-section-number">13.5.3</span> Checking assumptions (normal ANOVA)</h3>
+<p>Here’s what a regular ANOVA would look like on this data - specifically, the assumption checks. We can see that both assumptions are violated; Levene’s test is significant (<em>F</em>(2, 60) = 4.57, <em>p</em> =. 014), and the Shaprio-Wilks test is too (backed up by a funky looking Q-Q plot; <em>W</em> = .86, <em>p</em> &lt; .001).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>autism_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># levene's test</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>autism <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levene_test</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">center =</span> <span class="st">"mean"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+    df1   df2 statistic      p
+  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+1     2    60      4.57 0.0142</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shapiro-wilks</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(autism_aov<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  autism_aov$residuals
+W = 0.86118, p-value = 4.232e-06</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>autism_aov <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">theme_pubr</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `augment()` method for objects of class `aov` is not maintained by the broom team, and is only supported through the `lm` tidier method. Please be cautious in interpreting and reporting broom output.
+
+This warning is displayed once per session.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="13-nonpara_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now, these aren’t too bad in general, but let’s assume for the sake of practice that these violations are severe enough that we would consider using non-parametrics instead.</p>
+</section>
+<section id="output-2" class="level3" data-number="13.5.4">
+<h3 data-number="13.5.4" class="anchored" data-anchor-id="output-2"><span class="header-section-number">13.5.4</span> Output</h3>
+<p>To conduct a Kruskal-Wallis ANOVA in R, we can use the <code>kruskal.test()</code> function. This function works very similarly to <code>aov()</code>, meaning that we can provide the same notation as we normally would:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>autism_kw <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>autism_kw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  vsae by sicdegp
+Kruskal-Wallis chi-squared = 28.474, df = 2, p-value = 6.562e-07</code></pre>
+</div>
+</div>
+<p>Note here that the test statistic in a Kruskal-Wallis is a chi-square distribution, with a df of <em>g</em> - 1 (where <em>g</em> = number of groups). This is sometimes called <em>H</em>, but is mathematically equivalent to the chi-square we are familiar with. Our overall result is significant (<span class="math inline">\(\chi^2\)</span>(2) = 28.47, <em>p</em> &lt; .001).</p>
+<p>The same notation is used for calculating effect sizes, using the <code>rank_epsilon_squared()</code> function from <code>effectsize</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_epsilon_squared</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epsilon2 (rank) |       95% CI
+------------------------------
+0.46            | [0.35, 1.00]
+
+- One-sided CIs: upper bound fixed at [1.00].</code></pre>
+</div>
+</div>
+<p>Here, our non-parametric effect size is epsilon squared, <span class="math inline">\(\epsilon^2\)</span>. It is not commonly seen so can be hard to interpret, but people have made various guidelines of their own.</p>
+<p>Jamovi uses Dwass-Steel-Critchlow-Fligner tests (phew!), or simply DCSF tests, for ‘post hoc’ pairwise comparisons. We’ll use the same here for compatibility with Jamovi. The only thing you really need to know about these comparisons is that they have an in-built correction for the family-wise error rate, so do not need adjusting after the analyses have been run.</p>
+<p>To run these tests, we need a new package called <code>PMCMRplus</code>. Within this package is a function called <code>dscfAllPairsTest()</code>, which will give us the <em>p</em>-values for each pairwise comparison. The required code is exactly the same as we have used above:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>PMCMRplus<span class="sc">::</span><span class="fu">dscfAllPairsTest</span>(vsae <span class="sc">~</span> sicdegp, <span class="at">data =</span> autism)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+    Pairwise comparisons using Dwass-Steele-Critchlow-Fligner all-pairs test</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>data: vsae by sicdegp</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    high    low   
+low 5.4e-06 -     
+med 0.0002  0.0635</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+P value adjustment method: single-step</code></pre>
+</div>
+</div>
+<p>We can see that there is a significant difference in socialisation age between children with high versus low expressive language (p &lt; .001), as well as between children with high versus medium expressive language (p &lt; .001). However, there is no significant difference in socialisation age between children with low and medium expressive language (p = .064).</p>
+</section>
+</section>
+<section id="friedman-anovas" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="friedman-anovas"><span class="header-section-number">13.6</span> Friedman ANOVAs</h2>
+<section id="introduction-5" class="level3" data-number="13.6.1">
+<h3 data-number="13.6.1" class="anchored" data-anchor-id="introduction-5"><span class="header-section-number">13.6.1</span> Introduction</h3>
+<p>The Friedman ANOVA (or Friedman test) is the non-parametric equivalent of a one-way repeated measures ANOVA. The idea behind the Friedman’s ANOVA is the same as its parametric counterpart, namely to test whether there are differences in treatments across multiple time points.</p>
+</section>
+<section id="example-scenario-1" class="level3" data-number="13.6.2">
+<h3 data-number="13.6.2" class="anchored" data-anchor-id="example-scenario-1"><span class="header-section-number">13.6.2</span> Example scenario</h3>
+<p>We will take a look at the autism dataset again, albeit with a new version called <code>autism_wide.csv</code>. In this scenario, we now want to see how expressive language changes over time. Note that the variables relating to age are referenced/centered to 2 years old. That is, a value of <code>age2</code> of 0 indicates the child is 2 years old; a value of 1 refers to 3 years old and a value of 3 refers to 5 years old.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>autism_wide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"nonpara"</span>, <span class="st">"autism_wide.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 63 Columns: 9
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): sicdegp, gender, race, bestest2
+dbl (5): childid, age_0, age_1, age_3, age_7
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape into long format</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>autism <span class="ot">&lt;-</span> autism_wide <span class="sc">%&gt;%</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> age_0<span class="sc">:</span>age_7,</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"age2"</span>,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"vsae"</span>,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"age_"</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">age2 =</span> <span class="fu">factor</span>(age2)</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="checking-assumptions-normal-anova-1" class="level3" data-number="13.6.3">
+<h3 data-number="13.6.3" class="anchored" data-anchor-id="checking-assumptions-normal-anova-1"><span class="header-section-number">13.6.3</span> Checking assumptions (normal ANOVA)</h3>
+<p>Like last time, let’s examine our assumptions using a normal repeated-measures ANOVA. We can see that our sphericity assumption is violated (<em>p</em> &lt; .001), and very severely so; recall that the W statistic in Mauchly’s test is a deviation from 1, so our test statistic of <em>W</em> = .047 is very low! This might be one instance where we would legitimately consider running a Friedman ANOVA, if we weren’t keen on applying such a strong Greenhouse-Geisser correction to our ANOVA.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>autism <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> vsae, <span class="at">within =</span> age2, <span class="at">wid =</span> childid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ANOVA Table (type III tests)
+
+$ANOVA
+  Effect DFn DFd      F        p p&lt;.05   ges
+1   age2   3 186 48.401 3.62e-23     * 0.286
+
+$`Mauchly's Test for Sphericity`
+  Effect     W        p p&lt;.05
+1   age2 0.047 4.88e-38     *
+
+$`Sphericity Corrections`
+  Effect   GGe     DF[GG]    p[GG] p[GG]&lt;.05   HFe      DF[HF]    p[HF]
+1   age2 0.434 1.3, 80.71 2.02e-11         * 0.439 1.32, 81.73 1.55e-11
+  p[HF]&lt;.05
+1         *</code></pre>
+</div>
+</div>
+</section>
+<section id="running-a-friedman-anova" class="level3" data-number="13.6.4">
+<h3 data-number="13.6.4" class="anchored" data-anchor-id="running-a-friedman-anova"><span class="header-section-number">13.6.4</span> Running a Friedman ANOVA</h3>
+<p>Friedman ANOVAs are available in R with the <code>friedman.test()</code> function. This function requires long data, and by and large even uses the same formula notation that we are used to. The only difference is that because this is repeated measures data, we must tweak the formula slightly to account for this. The formula needs to take <code>outcome ~ predictor | id</code> notation, where <code>id</code> needs to point to a column in the dataset that simply indicates each participant’s unique ID. Otherwise, the formula is much as you would expect:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">friedman.test</span>(vsae <span class="sc">~</span> age2 <span class="sc">|</span> childid, <span class="at">data =</span> autism)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Friedman rank sum test
+
+data:  vsae and age2 and childid
+Friedman chi-squared = 133.51, df = 3, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Also like the Kruskal-Wallis ANOVA, R will report a chi-square as the test statistic. This is for the same reason as before; the actual test statistic <em>Q</em> approximates a chi-square distribution with large enough samples (e.g.&nbsp;n &gt; 15). We can see that our omnibus result is significant (<span class="math inline">\(\chi^2\)</span>(3) = 133.51, <em>p</em> &lt; .001).</p>
+<p>Although Jamovi does not give an effect size for a Friedman ANOVA, there actually is one called Kendall’s <em>W</em>. The <code>effectsize</code> package provides a function called - you guessed it - <code>kendalls_w()</code> to calculate this. The notation is the same as <code>friedman.test()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kendalls_w</span>(vsae <span class="sc">~</span> age2 <span class="sc">|</span> childid, <span class="at">data =</span> autism)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 9 block(s) contain ties.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Kendall's W |       95% CI
+--------------------------
+0.71        | [0.59, 1.00]
+
+- One-sided CIs: upper bound fixed at [1.00].</code></pre>
+</div>
+</div>
+<p>Of course, we still need to do post-hoc pairwise comparisons. The post-hocs that Jamovi provides are called Durbin-Conover pairwise comparisons, which are simply called Durbin tests elsewhere. The <code>PMCMRplus</code> package we mentioned earlier provides a function called <code>durbinAllPairsTest()</code> to conduct these posthocs. Note that although the function can be run without assigning the output to a new object, this will only give <em>p</em>-values; to get the proper output, we will want to assign the function’s output to a variable and then run <code>summary()</code> on this.</p>
+<p>This function will also allow you to use <em>p</em>-value adjustment methods. Holm adjusted <em>p</em> values are the default, which we will run with.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>autism_posthoc <span class="ot">&lt;-</span> PMCMRplus<span class="sc">::</span><span class="fu">durbinAllPairsTest</span>(<span class="at">y =</span> autism<span class="sc">$</span>vsae, <span class="at">groups =</span> autism<span class="sc">$</span>age2, <span class="at">blocks =</span> autism<span class="sc">$</span>childid)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(autism_posthoc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+    Pairwise comparisons using Durbin's all-pairs test for a two-way balanced incomplete block design</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>data: autism$vsae, autism$age2 and autism$childid</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>P value adjustment method: holm</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>H0</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           t value   Pr(&gt;|t|)    
+1 - 0 == 0   7.317 2.2075e-11 ***
+3 - 0 == 0  14.189 &lt; 2.22e-16 ***
+7 - 0 == 0  19.979 &lt; 2.22e-16 ***
+3 - 1 == 0   6.872 1.8542e-10 ***
+7 - 1 == 0  12.662 &lt; 2.22e-16 ***
+7 - 3 == 0   5.790 2.9470e-08 ***</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>---</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The left column of this output is denoting a specific hypothesis being tested. For example, “1 - 0 == 0” means that it is testing whether the difference between age2 = 1 and age2 = 0 is equal to 0. The corresponding columns to the right give the test statistic and the <em>p</em>-value.</p>
+<p>Based on our results, we can see that all comparisons are significant (<em>p</em> &lt; .001). To interpret this, the most useful way would be to draw a plot and go back to the main descriptives, to infer that there is a significant increase or decrease in expressive language with age.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./12-medmod.html" class="pagination-link" aria-label="Mediation and Moderation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./appendix.html" class="pagination-link" aria-label="Appendix">
+        <span class="nav-page-text">Appendix</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

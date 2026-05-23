@@ -1,0 +1,78 @@
+project:
+  type: book
+
+book:
+  title: "Research Process for Music Psychologists"
+  subtitle: "R version"
+  author: "DY"
+  date: "last-modified"
+  chapters:
+  - index.qmd
+  - part: "Part I: Introduction"
+    chapters:
+      - 01-intro.qmd
+      - 02-descriptives.qmd
+      - 03-inferential.qmd
+  - part: "Part II: Basic inferential tests"
+    chapters:
+      - 04-chisquares.qmd 
+      - 05-ttests.qmd 
+      - 06-anovas.qmd 
+      - 07-regressions.qmd
+  - part: "Part III: Advanced methods"
+    chapters:   
+      - 08-factorial-anovas.qmd 
+      - 09-regressions-2.qmd
+      - 10-logistic.qmd 
+      - 11-efa.qmd
+      - 12-medmod.qmd 
+      - 13-nonpara.qmd
+  appendices:
+    - appendix.qmd
+  page-navigation: true
+
+
+
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
+output_dir: "_book"
+
+
+url: https://danyeom.github.io/rpmp-book
+
+format: 
+  html:
+    theme: cosmo
+  # pdf:
+  #   documentclass: scrreprt
+  # epub:
+  #   cover-image: cover.png
+  typst:
+    toc: true
+    columns: 1
+    mainfont: "Source Sans Pro"
+    font-paths: myfonts
+    
+# filters: 
+#   - mitex
+    
+# site: bookdown::bookdown_site
+# output: 
+#   bookdown::gitbook:
+#     split_by: section
+#     df_print: paged
+#     fontsettings:
+#       theme: night
+#     config:
+#       sharing: null
+#       edit: null
+# documentclass: book
+# bibliography: references.bib
+# 
+# # cover-image: path to the social sharing image like images/cover.jpg
+# description: |
+#   This is an R adaptation of Research Process for Music Psychologists.
+# link-citations: true
+# github-repo: rstudio/bookdown-demo

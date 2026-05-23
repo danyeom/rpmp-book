@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; t-tests – Research Process for Music Psychologists</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-anovas.html" rel="next">
+<link href="./04-chisquares.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-chisquares.html">Part II: Basic inferential tests</a></li><li class="breadcrumb-item"><a href="./05-ttests.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Process for Music Psychologists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I: Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A very brief introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-descriptives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferential statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II: Basic inferential tests</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-chisquares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chi-squares</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ttests.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III: Advanced methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-factorial-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regressions-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-efa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-medmod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-nonpara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#t-tests-and-the-t-distribution" id="toc-t-tests-and-the-t-distribution" class="nav-link active" data-scroll-target="#t-tests-and-the-t-distribution"><span class="header-section-number">5.1</span> <em>t</em>-tests and the <em>t</em>-distribution</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-t-test" id="toc-what-is-a-t-test" class="nav-link" data-scroll-target="#what-is-a-t-test"><span class="header-section-number">5.1.1</span> What is a <em>t</em>-test?</a></li>
+  <li><a href="#the-t-statistic" id="toc-the-t-statistic" class="nav-link" data-scroll-target="#the-t-statistic"><span class="header-section-number">5.1.2</span> The <em>t</em>-statistic</a></li>
+  <li><a href="#the-t-distribution" id="toc-the-t-distribution" class="nav-link" data-scroll-target="#the-t-distribution"><span class="header-section-number">5.1.3</span> The <em>t</em>-distribution</a></li>
+  <li><a href="#the-t-table" id="toc-the-t-table" class="nav-link" data-scroll-target="#the-t-table"><span class="header-section-number">5.1.4</span> The <em>t</em>-table</a></li>
+  </ul></li>
+  <li><a href="#cohens-d" id="toc-cohens-d" class="nav-link" data-scroll-target="#cohens-d"><span class="header-section-number">5.2</span> Cohen’s <em>d</em></a>
+  <ul class="collapse">
+  <li><a href="#what-is-cohens-d" id="toc-what-is-cohens-d" class="nav-link" data-scroll-target="#what-is-cohens-d"><span class="header-section-number">5.2.1</span> What is Cohen’s <em>d</em>?</a></li>
+  <li><a href="#interpreting-cohens-d" id="toc-interpreting-cohens-d" class="nav-link" data-scroll-target="#interpreting-cohens-d"><span class="header-section-number">5.2.2</span> Interpreting Cohen’s <em>d</em></a></li>
+  </ul></li>
+  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link" data-scroll-target="#one-sample-t-test"><span class="header-section-number">5.3</span> One-sample <em>t</em>-test</a>
+  <ul class="collapse">
+  <li><a href="#one-sample-t-test-1" id="toc-one-sample-t-test-1" class="nav-link" data-scroll-target="#one-sample-t-test-1"><span class="header-section-number">5.3.1</span> One-sample <em>t</em>-test</a></li>
+  <li><a href="#example-data" id="toc-example-data" class="nav-link" data-scroll-target="#example-data"><span class="header-section-number">5.3.2</span> Example data</a></li>
+  <li><a href="#assumption-checks" id="toc-assumption-checks" class="nav-link" data-scroll-target="#assumption-checks"><span class="header-section-number">5.3.3</span> Assumption checks</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output"><span class="header-section-number">5.3.4</span> Output</a></li>
+  </ul></li>
+  <li><a href="#independent-samples-t-test" id="toc-independent-samples-t-test" class="nav-link" data-scroll-target="#independent-samples-t-test"><span class="header-section-number">5.4</span> Independent samples t-test</a>
+  <ul class="collapse">
+  <li><a href="#independent-samples" id="toc-independent-samples" class="nav-link" data-scroll-target="#independent-samples"><span class="header-section-number">5.4.1</span> Independent samples</a></li>
+  <li><a href="#example-data-1" id="toc-example-data-1" class="nav-link" data-scroll-target="#example-data-1"><span class="header-section-number">5.4.2</span> Example data</a></li>
+  <li><a href="#assumption-checks-1" id="toc-assumption-checks-1" class="nav-link" data-scroll-target="#assumption-checks-1"><span class="header-section-number">5.4.3</span> Assumption checks</a></li>
+  <li><a href="#output-1" id="toc-output-1" class="nav-link" data-scroll-target="#output-1"><span class="header-section-number">5.4.4</span> Output</a></li>
+  </ul></li>
+  <li><a href="#paired-samples-t-test" id="toc-paired-samples-t-test" class="nav-link" data-scroll-target="#paired-samples-t-test"><span class="header-section-number">5.5</span> Paired-samples <em>t</em>-test</a>
+  <ul class="collapse">
+  <li><a href="#paired-samples" id="toc-paired-samples" class="nav-link" data-scroll-target="#paired-samples"><span class="header-section-number">5.5.1</span> Paired-samples</a></li>
+  <li><a href="#example-data-2" id="toc-example-data-2" class="nav-link" data-scroll-target="#example-data-2"><span class="header-section-number">5.5.2</span> Example data</a></li>
+  <li><a href="#assumption-checks-2" id="toc-assumption-checks-2" class="nav-link" data-scroll-target="#assumption-checks-2"><span class="header-section-number">5.5.3</span> Assumption checks</a></li>
+  <li><a href="#output-2" id="toc-output-2" class="nav-link" data-scroll-target="#output-2"><span class="header-section-number">5.5.4</span> Output</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-chisquares.html">Part II: Basic inferential tests</a></li><li class="breadcrumb-item"><a href="./05-ttests.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>t</em>-tests are usually one of the first families of statistical tests that students learn when they take a research methods subject. I (Dan) pretty much learnt only <em>t</em>-tests until my third year of my psychology major (I learnt chi-squares and other tests through taking separate statistics subjects through my uni’s Department of Statistics before I learnt them in psychology). It’s not hard to see why this is the case - <em>t</em>-tests are really intuitive and simple to conduct, and so are an accessible way into learning statistical tests (even though chi-squares are even easier).</p>
+<p>The family of <em>t</em>-tests come into play when we have one categorical IV with two levels, and one continuous DV. As you can imagine, there are many instances where this kind of design comes into play, and you will see as much in the datasets and examples this week. There are nine datasets for you to play around this week (3 for each kind of test) - so hopefully that will give you plenty of practice!</p>
+<p>By the end of this module you should be able to:</p>
+<ul>
+<li>Describe how a t-test works in principle</li>
+<li>Conduct three forms of chi-square tests: one-sample, independent-samples and paired-samples</li>
+<li>Calculate and interpret an appropriate effect size for the above tests</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://imgs.xkcd.com/comics/control_group.png" class="img-fluid figure-img"></p>
+<figcaption><a href="https://xkcd.com/2576/">xkcd: Control Group</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="t-tests-and-the-t-distribution" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="t-tests-and-the-t-distribution"><span class="header-section-number">5.1</span> <em>t</em>-tests and the <em>t</em>-distribution</h2>
+<p>We begin this week’s module in much the same way we went through last week’s. We’ll look at the shape of the underlying distribution, and what determines the shape of that distribution. On this page we’ll also go through what the basic premise of the <em>t</em>-test is.</p>
+<section id="what-is-a-t-test" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="what-is-a-t-test"><span class="header-section-number">5.1.1</span> What is a <em>t</em>-test?</h3>
+<p>The family of <em>t</em>-tests, broadly speaking, are used when we want to compare one mean against another. This can take on three major forms, which we will go into later in the module:</p>
+<ol type="1">
+<li>Is this sample mean different from the population mean?</li>
+<li>Are these two group means different?</li>
+<li>Is the mean at point 1 different to the mean at point 2?</li>
+</ol>
+<p>All of these instances require a comparison between two means, which the <em>t</em>-tests will allow you to test for. So, in a general sense our hypotheses would be something like:</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: The means between the two groups are not significantly different. (i.e.&nbsp;<span class="math inline">\(\mu_1 = \mu_2\)</span>)</li>
+<li><span class="math inline">\(H_1\)</span>: The means between the two groups are significantly different. (i.e.&nbsp;<span class="math inline">\(\mu_1 \neq \mu_2\)</span>)</li>
+</ul>
+<p>The question of when <em>t</em>-tests should be used is hopefully somewhat obvious - in general, we use them we want to compare two means with each other. The important part is what kind of means they are:</p>
+<ul>
+<li>If we compare one sample mean to a hypothesised population mean, this is a one-sample <em>t</em>-test</li>
+<li>If we compare two group means, this is an independent samples <em>t</em>-test</li>
+<li>If we measure one group twice and compare the two means, this is a paired-samples <em>t</em>-test.</li>
+</ul>
+<p>In this module, we’ll go through all three (but will emphasise the latter two especially as they see the most use).</p>
+</section>
+<section id="the-t-statistic" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="the-t-statistic"><span class="header-section-number">5.1.2</span> The <em>t</em>-statistic</h3>
+<p>Last week we introduced the chi-square statistic, which is the value that we use when we want to assess whether a result is significant. When we want to assess whether a difference between two means is significant we calculate a different test statistic, which (as the name implies) is the <em>t</em>-statistic. While you won’t be required to calculate this by hand this week, it would be good to wrap your head around the below formula so you understand how it works in principle:</p>
+<p><span class="math display">\[
+t = \frac{M_1 - M_2}{SE}
+\]</span></p>
+<p>This is how <em>t</em> is calculated conceptually - it is the difference in the two means over the standard error of the mean. Note that the world conceptually is stressed here because the actual formula is slightly different for each <em>t</em>-test, but all work on this above principle. Again, we won’t go through the maths of this in detail - this is beyond the scope of the subject!</p>
+</section>
+<section id="the-t-distribution" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="the-t-distribution"><span class="header-section-number">5.1.3</span> The <em>t</em>-distribution</h3>
+<p>By now, hopefully you’re comfortable with the idea that we use our test statistic and find its position on its underlying probability distribution in order to calculate the <em>p</em>-value. The underlying distribution of this test is the <em>t</em>-distribution, which is depicted below. Note that like the chi-square distribution, degrees of freedom is the only parameter that determines its shape:</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-ttests_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The one key difference between the <em>t</em>-distribution and the chi-square distribution from a mathematical point of view is that the <em>t</em>-distribution is symmetrical, much like the normal distribution (although they are not the same). Therefore, it is possible to get a negative <em>t</em>-test statistic; however, this simply reflects the order in which the groups are being compared. E.g.</p>
+<ul>
+<li>Say that Group 1 - Group 2 gives a test statistic of <em>t</em> = 1.5.</li>
+<li>If you were to enter the groups as Group 2 - Group 1 instead, the <em>t</em> would be -1.5. This simply reflects the ordering of the groups.</li>
+</ul>
+</section>
+<section id="the-t-table" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="the-t-table"><span class="header-section-number">5.1.4</span> The <em>t</em>-table</h3>
+<p>Once again, like the chi-square we have a beautiful little table for calculating a critical <em>t</em>-value. We won’t go into too much depth over how this works because it works exactly like how it does for chi-squares - find the row corresponding to your degrees of freedom, then find the column corresponding to your alpha level.</p>
+<p>Yes, there are a lot of cross-references to what we covered last week with chi-squares - and that’s a good thing! The point here is that conceptually, the process of testing hypotheses using <em>t</em>-tests is exactly the same as what we did with chi-squares, but the specific design and maths are different.</p>
+</section>
+</section>
+<section id="cohens-d" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="cohens-d"><span class="header-section-number">5.2</span> Cohen’s <em>d</em></h2>
+<p>This might be starting to sound a little familiar by now, but here are some effect sizes for <em>t</em>-tests. Note that they’re different to the Cramer’s <em>V</em> we saw in the chi-square test of independence last week - this is because it is a) conceptually different and b) interpreted differently too.</p>
+<section id="what-is-cohens-d" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="what-is-cohens-d"><span class="header-section-number">5.2.1</span> What is Cohen’s <em>d</em>?</h3>
+<p>Cohen’s d is a measure of effect size that is used when comparing between two means (i.e.&nbsp;in a <em>t</em>-test). It essentially is a measure of the distance between the two means. See below for three pairs of means:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-ttests_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If two groups aren’t all that different (e.g.&nbsp;panel A), then any effect of group will be small or negligible. If the two groups are further apart, however (like panel C), there is a more obvious effect of group - and so the size of the effect itself will be larger. Cohen’s <em>d</em> essentially is a measure of this ‘distance’.</p>
+<p>The basic formula for calculating Cohen’s <em>d</em> is: <span class="math display">\[
+d = \frac{M_1 - M_2}{\sigma_{pooled}}
+\]</span></p>
+<p>In other words, Cohen’s <em>d</em> is calculated by taking the difference between the two group means and dividing that by the pooled standard deviation across both groups. Pooled SD is essentially an aggregate SD across both groups in the sample, and not something we’ll concern ourselves with this week (because like the maths for the <em>t</em>-statistic, the calculation of the pooled SD depends on the test and is hard).</p>
+</section>
+<section id="interpreting-cohens-d" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="interpreting-cohens-d"><span class="header-section-number">5.2.2</span> Interpreting Cohen’s <em>d</em></h3>
+<p>Cohen provided some now-famous guidelines for interpreting the size of Cohen’s <em>d</em> values:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Effect size</th>
+<th style="text-align: left;">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">d = .20</td>
+<td style="text-align: left;">Small</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d = .50</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d = .80</td>
+<td style="text-align: left;">Large</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="one-sample-t-test" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="one-sample-t-test"><span class="header-section-number">5.3</span> One-sample <em>t</em>-test</h2>
+<p>The first test that we’ll look at is the one-sample <em>t</em>-test, which is the most simple of the three that we will look at this week.</p>
+<section id="one-sample-t-test-1" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="one-sample-t-test-1"><span class="header-section-number">5.3.1</span> One-sample <em>t</em>-test</h3>
+<p>A one-sample <em>t</em>-test is used when we want to compare a sample against a hypothesised population value. It is useful when we already know the expected value of the parameter we’re interested in, such as a population mean or a target value.</p>
+<p>The basic hypotheses for a three-way interaction are:</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: The sample mean is not significantly different from the hypothesised mean. (i.e.&nbsp;<span class="math inline">\(M = \mu\)</span>)</li>
+<li><span class="math inline">\(H_1\)</span>: The sample mean is significantly different from the hypothesised mean. (i.e.&nbsp;<span class="math inline">\(M \neq \mu\)</span>)</li>
+</ul>
+<p>It’s worth noting that one-sample <em>t</em>-tests aren’t that commonly used because they require you to know the population value (or, if you hypothesise a value, you need to justify why). However, they’re included here because they’re still a part of the <em>t</em>-test family, and they serve as a nice introduction to how <em>t</em>-tests work.</p>
+</section>
+<section id="example-data" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="example-data"><span class="header-section-number">5.3.2</span> Example data</h3>
+<p>Historically, scores in a fictional research methods class average at 72. This year, you are the subject coordinator for the first time, and you notice that last year’s cohort appear to have really struggled. You want to see if there is a meaningful difference between the cohort’s average grade and what the target grade should be.</p>
+<p>Here’s the dataset below:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>w8_grades <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week_8"</span>, <span class="st">"W8_grades.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 128 Columns: 2
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (2): id, grade
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w8_grades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+     id grade
+  &lt;dbl&gt; &lt;dbl&gt;
+1     1    60
+2     2    66
+3     3    70
+4     4    72
+5     5    63
+6     6    71</code></pre>
+</div>
+</div>
+</section>
+<section id="assumption-checks" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="assumption-checks"><span class="header-section-number">5.3.3</span> Assumption checks</h3>
+<p>There is only one relevant assumption that we need to check for the one-sample <em>t</em>-test: whether our data is distributed normally or not. We can do this in two ways. The first and quickest is through a test called the Shapiro-Wilks test (often abbreviated as the SW test). The SW test is a significant test of departures from normality. The statistic in question, W, is an index of normality. If W is close to 1, then data is normally distributed; the smaller W becomes, the more non-normal the data is.</p>
+<p>A significant <em>p</em>-value on the SW test suggests that the data is non-normal. Thankfully, that isn’t an issue here.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_grades<span class="sc">$</span>grade)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  w8_grades$grade
+W = 0.98652, p-value = 0.2395</code></pre>
+</div>
+</div>
+<p>The second way is through a Q-Q plot (Quantile-Quantile) plot. Essentially, these plot where data should be (if the data are normally distributed) against where the data actually is. If the normality assumption is intact, most of the data should lie on or close to the straight line, like the left plot. Data that looks like the right, where the data curves away from the central line, is more likely to be non-normally distributed.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="img/w8_qqplots.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To draw a Q-Q plot in R, the base functions <code>qqnorm()</code> and <code>qqline()</code> can be used. <code>qqnorm()</code> will draw the basic Q-Q plot, while <code>qqline()</code> will draw a straight line through the graph. Note that <code>qqnorm()</code> must be run first before <code>qqline()</code> can be used.</p>
+<p>In this case, since we want to draw a Q-Q plot of a single variable, we just need to give the name of the column/variable we are interested in using <code>data$variable</code> format.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(w8_grades<span class="sc">$</span>grade)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(w8_grades<span class="sc">$</span>grade)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-ttests_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In our case, most of the points fall quite close to the main line, so we seem to be ok here - in line with our Shapiro-Wilks test (though this won’t always be the case).</p>
+</section>
+<section id="output" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="output"><span class="header-section-number">5.3.4</span> Output</h3>
+<p>Here are our descriptive statistics. They alone might already tell us something is going on:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">median</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">67.09</td>
+<td style="text-align: right;">5.38</td>
+<td style="text-align: right;">67.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>To run a one-sample <em>t</em>-test, the basic function is the <code>t.test()</code> function. For a one-sample <em>t</em>-test, you must provide the argument <code>x</code> (the data) and <code>mu</code>, which is the hypothesised population mean.</p>
+<p>Below is our output from the one-sample <em>t</em>-test. Our result tells us that there is a significant difference between the mean of the sample (<em>M</em> = 67.09) and the hypothesised mean of 72 (<em>p</em> &lt; .001). The mean difference here is calculated as Sample - Hypothesis; therefore, a difference of -4.91 means that the sample mean is 4.91 units <em>lower</em> than the population mean (which hopefully would have been evident from the descriptives anyway). This means that for some reason, last year’s cohort are performing worse than the expected average.</p>
+<p>R Note: Jamovi will give you a 95% confidence interval around the mean difference as 95% CI = [-5.85, -3.97]. R however will give you a CI around the actual <em>mean</em>. In this case, the 95% confidence interval for the group mean is [66.15, 68.03]. Really though, this is giving us the same information; 72 - 5.85 = 66.15, and 72 - 3.97 = 68.03. So the only difference is in what value is presented for the 95% CI, but the actual inference itself doesn’t change.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  w8_grades$grade
+t = -10.342, df = 127, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 72
+95 percent confidence interval:
+ 66.14570 68.02617
+sample estimates:
+mean of x 
+ 67.08594 </code></pre>
+</div>
+</div>
+<p>Anoter way of writing a one-sample <em>t</em>-test is to use <code>variable ~ 1</code> formula notation. The <code>~ 1</code> is used to indicate that we are running a one-sample <em>t</em>-test. We still need to define <code>mu = 72</code> to set our hypothesised population mean.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_grades, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  grade
+t = -10.342, df = 127, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 72
+95 percent confidence interval:
+ 66.14570 68.02617
+sample estimates:
+mean of x 
+ 67.08594 </code></pre>
+</div>
+</div>
+<p>Alternatively, you can use the <code>t_test()</code> function in <code>rstatix</code>. This function also requires formula notation. <code>detailed = TRUE</code> will print a detailed output that will give the 95% CI for the mean as well:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  estimate .y.   group1 group2     n statistic        p    df conf.low conf.high
+*    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1     67.1 grade 1      null …   128     -10.3 1.47e-18   127     66.1      68.0
+# ℹ 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>As we have previously done for chi-square tests, we will want to calculate an effect size for our <em>t</em>-test. The <code>cohens_d()</code> function from <code>effectsize</code> can handle the calculation of effect sizes for all three variants of <em>t</em>-tests. One thing that’s quite nice about this function is that the required syntax for <code>cohens_d()</code> is nearly identical to that for <code>t.test()</code> - meaning that the correct type of Cohen’s <em>d</em> (one-sample, independent samples, paired) will be calculated based on what you put in.</p>
+<p>For a one-sample t-test, for instance, you can write the syntax exactly as you would for <code>t.test()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-sample</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(w8_grades$grade, mu = 72)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |         95% CI
+--------------------------
+-0.91     | [-1.12, -0.71]
+
+- Deviation from a difference of 72.</code></pre>
+</div>
+</div>
+<p>The alternate way of specifying a one-sample <em>t</em>-test, the <code>var ~ 1</code> format, also works. <code>cohens_d()</code> will recognise both.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-sample - alternate</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(grade ~ 1, data = w8_grades, mu = 72)</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_grades, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |         95% CI
+--------------------------
+-0.91     | [-1.12, -0.71]
+
+- Deviation from a difference of 72.</code></pre>
+</div>
+</div>
+<p>Alternatively, you can use the <code>rstatix</code> package. This will give the same values, but the confidence intervals generated by <code>effectsize</code> are traditional confidence intervals, whereas <code>rstaix</code> uses a different method (which we need not concern ourselves with). In any case, the actual width of the intervals should be similar. Just note that for paired samples Cohen’s <em>d</em>, long data is required (as is the case with <em>t</em>-tests in <code>rstatix</code>).</p>
+<p>For a one-sample <em>t</em>-test, the formula once again needs to be in <code>var ~ 1</code> format and <code>mu</code> must be specified:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>w8_grades <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(grade <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">72</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">"norm"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  .y.   group1 group2     effsize     n conf.low conf.high magnitude
+* &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;ord&gt;    
+1 grade 1      null model  -0.914   128    -1.09     -0.73 large    </code></pre>
+</div>
+</div>
+<p>Here is an example write-up of the above:</p>
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+<p>A one-sample <em>t</em>-test was conducted to examine whether grades in the research methods class differed from the historical average of 72. The sample’s grades (<em>M</em> = 67.09, <em>SD</em> = 5.38) were significantly lower than the historical average (<em>t</em>(127) = -10.3, <em>p</em> &lt; .001), with a mean difference of 4.91 (95% CI = [-5.85, -3.97]). This effect was large in size (<em>d</em> = -0.91).</p>
+</div>
+</section>
+</section>
+<section id="independent-samples-t-test" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="independent-samples-t-test"><span class="header-section-number">5.4</span> Independent samples t-test</h2>
+<p>The independent-samples <em>t</em>-test is one of the most common tests that you will see in literature - it is one of the bread-and-butter tests of many music psychologists (for better or worse).</p>
+<section id="independent-samples" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="independent-samples"><span class="header-section-number">5.4.1</span> Independent samples</h3>
+<p>Independent samples <em>t</em>-tests are used when we want to compare two separate groups on one continuous outcome. They’re therefore well-suited for data with one categorical IV with two levels, against one continuous outcome.</p>
+</section>
+<section id="example-data-1" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="example-data-1"><span class="header-section-number">5.4.2</span> Example data</h3>
+<p>For this example we’ll use a contrived but really simple example. A group of self-reported professional and amateur musicians were asked how many years of training they had on their primary instrument.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>w8_training <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week_8"</span>, <span class="st">"W8_training.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 60 Columns: 3
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Group
+dbl (2): Participant, Years_training
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w8_training)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  Participant Years_training Group       
+        &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;       
+1           1              8 Professional
+2           2              9 Professional
+3           3              4 Professional
+4           4              7 Professional
+5           5              9 Professional
+6           6              6 Professional</code></pre>
+</div>
+</div>
+<p>Let us start with a nice plot:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(Years_training, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(Years_training, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> sd<span class="sc">/</span><span class="fu">n</span>()</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> mean)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> mean <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se,</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> mean <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-ttests_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="assumption-checks-1" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="assumption-checks-1"><span class="header-section-number">5.4.3</span> Assumption checks</h3>
+<p>There are three main assumptions for a basic independent samples <em>t</em>-test:</p>
+<ul>
+<li>Data must be independent of each other - in other words, one person’s response should not be influenced by another. This should come as a feature of good experimental design.</li>
+<li>The equality of variance (homoscedasticity) assumption. The classical <em>t</em>-test assumes that each group has the same variance (homoscedasticity). We can test this using a significant test called Levene’s test. If the test is significant (<em>p</em> &lt; .05), the assumption is violated. In our data, this assumption seems to be intact (<em>F</em>(1, 58) = .114, <em>p</em> = .737).</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levene_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">center =</span> <span class="st">"mean"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+    df1   df2 statistic     p
+  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1     1    58     0.114 0.737</code></pre>
+</div>
+</div>
+<ul>
+<li>The residuals should be normally distributed. This essentially has implications for how well the data behaves. We can test this in two ways. The first is using a normality test, like the <strong>Shapiro-Wilks (SW)</strong> test, which is usually done using <code>shapiro.test()</code>. Like Levene’s test, if the result of this test is significant it suggests that the normality assumption is violated. The result that Jamovi gives is not super clear in terms of what values exactly have been used to run the SW-test, so we will turn to another method.</li>
+</ul>
+<p>For an independent t-test specifically, another way of testing this assumption is to simply see whether the dependent variable is normally distributed in <strong>both groups separately</strong>. In other words, we perform a Shapiro-Wilks test on years of training in both amateurs and professionals.</p>
+<p><code>rstatix</code> provides its own version of the SW-test (<code>shapiro_test</code>) that is compatible with <code>group_by()</code> and general tidyverse notation. Thus, we can first group using <code>group_by()</code>, and then run a SW-test on each group:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shapiro_test</span>(Years_training)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  Group        variable       statistic       p
+  &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;
+1 Amateur      Years_training     0.901 0.00763
+2 Professional Years_training     0.938 0.0896 </code></pre>
+</div>
+</div>
+<p>We can therefore see that for professionals our data is normally distribution (<em>W</em> = .94, <em>p</em> = .090), but not for amateurs (<em>W</em> = .90, <em>p</em> = .008).</p>
+</section>
+<section id="output-1" class="level3" data-number="5.4.4">
+<h3 data-number="5.4.4" class="anchored" data-anchor-id="output-1"><span class="header-section-number">5.4.4</span> Output</h3>
+<p>In reality, it’s rare that any of these assumptions are fully met even when tests say they are (the tests we just mentioned can be biased). This is especially true for classical <em>t</em>-tests, which are very sensitive to violations. A consistently better alternative is to use the Welch <em>t</em>-test, which assumes the equality of variance assumption is not met. Welch <em>t</em>-tests are also fairly robust against the normality assumption, and so are more flexible without sacrificing accuracy.</p>
+<p>Here’s our output from R. Note that this is from a Welch <em>t</em>-test - R will do this by default.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Years_training by Group
+t = -5.8586, df = 57.989, p-value = 2.33e-07
+alternative hypothesis: true difference in means between group Amateur and group Professional is not equal to 0
+95 percent confidence interval:
+ -3.922048 -1.924448
+sample estimates:
+     mean in group Amateur mean in group Professional 
+                  4.387097                   7.310345 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 15
+  estimate estimate1 estimate2 .y.   group1 group2    n1    n2 statistic       p
+*    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1    -2.92      4.39      7.31 Year… Amate… Profe…    31    29     -5.86 2.33e-7
+# ℹ 5 more variables: df &lt;dbl&gt;, conf.low &lt;dbl&gt;, conf.high &lt;dbl&gt;, method &lt;chr&gt;,
+#   alternative &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Now for the effect size. For an independent samples <em>t</em>-test, you can give it <em>almost</em> the same as the regular <code>t.test()</code> function. The only change is that by default, <code>cohens_d()</code> will calculate Cohen’s <em>d</em> assuming equal variance. In order for our value of <em>d</em> to match a Welch-samples <em>t</em>-test, we need to set <code>pooled_sd = FALSE</code> (which makes the syntax slightly different to <code>t.test()</code>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Independent samples</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(Years_training ~ Group, data = w8_training)</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">pooled_sd =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |         95% CI
+--------------------------
+-1.51     | [-2.08, -0.93]
+
+- Estimated using un-pooled SD.</code></pre>
+</div>
+</div>
+<p>Or again, we can alternatively use the <code>cohen_d()</code> function from <code>rstatix</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(Years_training <span class="sc">~</span> Group, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">"norm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 9
+  .y.            group1  group2 effsize    n1    n2 conf.low conf.high magnitude
+* &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;ord&gt;    
+1 Years_training Amateur Profe…   -1.51    31    29    -2.06     -0.88 large    </code></pre>
+</div>
+</div>
+<p>From this, we can see that the two groups do significantly differ on years of training (<em>t</em>(57.99) = 5.86, <em>p</em> &lt; .001). We can use the mean difference value to see, well… the difference in means between the two groups. In this case, professionals have 2.92 more years of training (on average; 95% CI = [1.92, 3.92]) compared to amateurs. So, we could write this up as something like:</p>
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+<p>An independent samples <em>t</em>-test was conducted to examine whether professionals and amateurs differed on years of musical instrument training. Professionals had on average 2.92 years more training (95% CI [1.92, 3.92]) compared to amateurs (<em>t</em>(57.99) = 5.86, <em>p</em> &lt; .001), corresponding to a large significant effect (<em>d</em> = 1.51).</p>
+</div>
+<p>(n.b.&nbsp;the signs for <em>t</em> and the mean difference don’t overly matter so long as they are interpreted in the right way. The output above calculates amateurs - professionals, which is why the values for both are negative; but if you were to force the test to run the other way round, the values would be the same with the signs flipped. Hence why descriptives and graphs are super important too!)</p>
+<p>If for some reason you do want R to run a Student’s <em>t</em>-test, you need to specify <code>var.equal = TRUE</code>. This tells R that we assume equality of variances.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Years_training <span class="sc">~</span> Group, <span class="at">data =</span> w8_training, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  Years_training by Group
+t = -5.8424, df = 58, p-value = 2.476e-07
+alternative hypothesis: true difference in means between group Amateur and group Professional is not equal to 0
+95 percent confidence interval:
+ -3.924805 -1.921691
+sample estimates:
+     mean in group Amateur mean in group Professional 
+                  4.387097                   7.310345 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(Years_training <span class="sc">~</span> Group, <span class="at">detailed =</span> <span class="cn">TRUE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 15
+  estimate estimate1 estimate2 .y.   group1 group2    n1    n2 statistic       p
+*    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1    -2.92      4.39      7.31 Year… Amate… Profe…    31    29     -5.84 2.48e-7
+# ℹ 5 more variables: df &lt;dbl&gt;, conf.low &lt;dbl&gt;, conf.high &lt;dbl&gt;, method &lt;chr&gt;,
+#   alternative &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="paired-samples-t-test" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="paired-samples-t-test"><span class="header-section-number">5.5</span> Paired-samples <em>t</em>-test</h2>
+<p>Here’s our last test for the module, and it is again another bread-and-butter statistical test in literature: the paired-samples <em>t</em>-test.</p>
+<section id="paired-samples" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="paired-samples"><span class="header-section-number">5.5.1</span> Paired-samples</h3>
+<p>Paired samples <em>t</em>-tests, as the name sort of implies, are used when we have a sample and we take measurements twice. Often, paired-samples <em>t</em>-tests are interested in testing the effect of time on an outcome; for example, a before-after design lends itself quite nicely to paired-samples and other repeated-measures tests.</p>
+<p>The core hypotheses are very much the same here, aside from the caveat that the means are between conditions and not groups.</p>
+<p>Mathematically, the paired-samples <em>t</em>-test is actually just a variant of the one-sample <em>t</em>-test. If we did a one-sample <em>t</em>-test on the differences between the two timepoints/conditions, we would get the same results. You can see a demonstration of this in the dropdown at the end of this section.</p>
+</section>
+<section id="example-data-2" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="example-data-2"><span class="header-section-number">5.5.2</span> Example data</h3>
+<p>For this example, we’ll take a look at a simple interventions study. Participants were asked to answer a short list of questions relating to how they were feeling, once before an intervention and once afterwards. Higher scores represent better emotional states. The intervention was a series of self-regulation classes and exercises that the participants took twice a week. We’re interested in seeing whether the intervention was effective.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week_8"</span>, <span class="st">"W8_symptoms.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 32 Columns: 2
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (2): before, after
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  before after
+   &lt;dbl&gt; &lt;dbl&gt;
+1     14    18
+2     18    17
+3     14    18
+4     10    18
+5     14    12
+6     14    13</code></pre>
+</div>
+</div>
+<p>R-note: Data for paired-samples <em>t</em>-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot to long format</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"time"</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"symptom_score"</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  time   symptom_score
+  &lt;chr&gt;          &lt;dbl&gt;
+1 before            14
+2 after             18
+3 before            18
+4 after             17
+5 before            14
+6 after             18</code></pre>
+</div>
+</div>
+</section>
+<section id="assumption-checks-2" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="assumption-checks-2"><span class="header-section-number">5.5.3</span> Assumption checks</h3>
+<p>Similar to other tests, we need to check normality. Here, the assumption is whether the differences between time 1 and 2 are normally distributed (not necessarily time 1 and 2 themselves). Hence, when we run a Shapiro-Wilks test we’re running this on the values we get from Time 1 - Time 2.</p>
+<p>In our data, this assumption seems to be intact (<em>W</em> .985, <em>p</em> = .918).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms<span class="sc">$</span>after)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  w8_symptoms$before - w8_symptoms$after
+W = 0.98465, p-value = 0.9177</code></pre>
+</div>
+</div>
+</section>
+<section id="output-2" class="level3" data-number="5.5.4">
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="output-2"><span class="header-section-number">5.5.4</span> Output</h3>
+<p>In R, you can do pairwise <em>t</em>-tests using the default <code>t.test()</code> (or the <code>rstatix</code> equivalent <code>t_test()</code>) function. In both methods, you must set <code>paired = TRUE</code> in order to run a paired <em>t</em>-test. However, there is one key difference: the base <code>t.test()</code> requires data in <em>wide</em> format, whereas <code>rstatix::t_test()</code> requires data in <em>long</em> format. Here are both methods.</p>
+<p>For the base <code>t.test()</code> function, your data needs to be in wide format. From there it is as simple as giving the two columns as the arguments to the function, and setting <code>paired = TRUE</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  w8_symptoms$before and w8_symptoms$after
+t = -2.9501, df = 31, p-value = 0.005999
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -4.651185 -0.848815
+sample estimates:
+mean difference 
+          -2.75 </code></pre>
+</div>
+</div>
+<p>Alternatively, you can use the below notation. <code>Pair(before, after)</code> indicates that we want R to treat the <code>before</code> and <code>after</code> variables as paired data. The <code>~ 1</code>, as we saw before, indicates that this is a one-sample <em>t</em>-test. This is because a paired-samples <em>t</em>-test is functionally equivalent to a one-sample <em>t</em>-test on the differences between conditions (see the expandable dropdown below for more details).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  Pair(before, after)
+t = -2.9501, df = 31, p-value = 0.005999
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -4.651185 -0.848815
+sample estimates:
+mean difference 
+          -2.75 </code></pre>
+</div>
+</div>
+<p>Note that before R 4.4.0 (2024), the notation for paired-samples <em>t</em>-tests were different.</p>
+<p>If you prefer <code>rstatix</code>, on the other hand, your data needs to be in long format. After that, you can pass the test as a formula much like how you would do so in the independent samples case:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 13
+  estimate .y.          group1 group2    n1    n2 statistic     p    df conf.low
+*    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+1     2.75 symptom_sco… after  before    32    32      2.95 0.006    31    0.849
+# ℹ 3 more variables: conf.high &lt;dbl&gt;, method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Once again, we’ll also want to calculate Cohen’s <em>d</em> for our paired-samples <em>t</em>-test. For a paired-samples <em>t</em>-test the developers of <code>effectsize</code> recommend using the <code>rm_d()</code> function, which stands for repeated-measures Cohen’s <em>d</em>. This function takes the same basic syntax as <code>t.test()</code> for paired-samples <em>t</em>-tests, including the use of wide data, but a couple of extra arguments are required.</p>
+<ul>
+<li><code>method = "z"</code> defines how the pooled SD term is calculated. There are six possible options, but this option gives the standard calculation.</li>
+<li><code>adjust = FALSE</code>: calculates Hedges’ G, which is an alternative effect size that corrects for small sample bias. We won’t worry about this here, so we will set this to <code>FALSE</code>.</li>
+</ul>
+<p>Note that like the other functions, you can either provide the arguments in <code>Pairs() ~ 1</code> or by subsetting the columns (<code>x = x$1, y = x$2</code>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired sample - works with wide data</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(Pair(before, after) ~ 1, data = w8_symptoms)</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms, <span class="at">method =</span> <span class="st">"z"</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>d (z) |         95% CI
+----------------------
+-0.52 | [-0.89, -0.15]</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x = w8_symptoms$before, y = w8_symptoms$after, paired = TRUE)</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">method =</span> <span class="st">"z"</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>d (z) |         95% CI
+----------------------
+-0.52 | [-0.89, -0.15]</code></pre>
+</div>
+</div>
+<p>If using <code>cohen_d</code>() from <code>rstatix</code>, <code>paired = TRUE</code> must be selected:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">"norm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 9
+  .y.           group1 group2 effsize    n1    n2 conf.low conf.high magnitude
+* &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;ord&gt;    
+1 symptom_score after  before   0.522    32    32     0.11      0.88 moderate </code></pre>
+</div>
+</div>
+<p>The Canvas version asks you to interpret each of these effect sizes, but… <code>rstatix</code> will automatically label this for you!</p>
+<p>The mean symptom scores of the two timepoints are significantly different (<em>t</em>(31) = 2.95, <em>p</em> = .006). Based on the means and mean difference (2.75; 95% CI = [0.85, 4.65]), participants reported having significantly better emotional states after the intervention compared to beforehand. We can write that up as below, and in this specific example we will condense the text down:</p>
+<div style="background-color: #cce3c8;  padding: 1.75rem;">
+<p>A paired samples <em>t</em>-test found that symptoms significantly decreased after the intervention (<em>t</em>(31) = 2.95, <em>p</em> = .006), with an average decrease of 2.75 points (95% CI [0.85, 4.65]). This decrease was medium in size (<em>d</em> = 0.52).</p>
+</div>
+<details>
+<summary>
+Paired samples using the one-sample <em>t</em>-test
+</summary>
+<p>Mathematically, all a paired-samples <em>t</em>-test is doing is running a one-sample <em>t</em>-test on the differences between the two timepoints/groups, Below is a demonstration of how paired-samples tests can be run using the one-sample <em>t</em>-test.</p>
+<p>Let’s start by returning to the wide version of our dataset. We first need to calculate the difference between the <code>before</code> and <code>after</code> columns, which we can easily do with <code>mutate()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">diff =</span> before <span class="sc">-</span> after</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>w8_symptoms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 32 × 3
+   before after  diff
+    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1     14    18    -4
+ 2     18    17     1
+ 3     14    18    -4
+ 4     10    18    -8
+ 5     14    12     2
+ 6     14    13     1
+ 7     11    20    -9
+ 8     12    18    -6
+ 9     15    18    -3
+10     18     8    10
+# ℹ 22 more rows</code></pre>
+</div>
+</div>
+<p>We can run a one-sample <em>t</em>-test on the differences now, with the null hypothesis value being 0 - i.e.&nbsp;we are testing the null hypothesis that the mean differences are not significantly different from 0.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(w8_symptoms<span class="sc">$</span>diff <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  w8_symptoms$diff
+t = -2.9501, df = 31, p-value = 0.005999
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ -4.651185 -0.848815
+sample estimates:
+mean of x 
+    -2.75 </code></pre>
+</div>
+</div>
+<p>As we can see, the results are equivalent to the output of the paired-samples <em>t</em>-test above. Note too that our Shapiro-Wilks test will also give equivalent results if it is run on the differences directly.</p>
+</details>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04-chisquares.html" class="pagination-link" aria-label="Chi-squares">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chi-squares</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06-anovas.html" class="pagination-link" aria-label="ANOVAs">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

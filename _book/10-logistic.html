@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; Logistic regression – Research Process for Music Psychologists</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./11-efa.html" rel="next">
+<link href="./09-regressions-2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./10-logistic.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Process for Music Psychologists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I: Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A very brief introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-descriptives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferential statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II: Basic inferential tests</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-chisquares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chi-squares</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III: Advanced methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-factorial-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regressions-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-logistic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-efa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-medmod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-nonpara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#probability-and-odds" id="toc-probability-and-odds" class="nav-link active" data-scroll-target="#probability-and-odds"><span class="header-section-number">10.1</span> Probability and odds</a>
+  <ul class="collapse">
+  <li><a href="#reminder-of-probabilities" id="toc-reminder-of-probabilities" class="nav-link" data-scroll-target="#reminder-of-probabilities"><span class="header-section-number">10.1.1</span> Reminder of probabilities</a></li>
+  <li><a href="#odds" id="toc-odds" class="nav-link" data-scroll-target="#odds"><span class="header-section-number">10.1.2</span> Odds</a></li>
+  <li><a href="#odds-ratios" id="toc-odds-ratios" class="nav-link" data-scroll-target="#odds-ratios"><span class="header-section-number">10.1.3</span> Odds ratios</a></li>
+  </ul></li>
+  <li><a href="#theory-of-logistic-regression" id="toc-theory-of-logistic-regression" class="nav-link" data-scroll-target="#theory-of-logistic-regression"><span class="header-section-number">10.2</span> Theory of logistic regression</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">10.2.1</span> Introduction</a></li>
+  <li><a href="#modelling-probabilities-sort-of" id="toc-modelling-probabilities-sort-of" class="nav-link" data-scroll-target="#modelling-probabilities-sort-of"><span class="header-section-number">10.2.2</span> Modelling probabilities (sort of)</a></li>
+  <li><a href="#the-logistic-model" id="toc-the-logistic-model" class="nav-link" data-scroll-target="#the-logistic-model"><span class="header-section-number">10.2.3</span> The logistic model</a></li>
+  </ul></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">10.3</span> Example</a>
+  <ul class="collapse">
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="header-section-number">10.3.1</span> Assumptions</a></li>
+  <li><a href="#building-the-model" id="toc-building-the-model" class="nav-link" data-scroll-target="#building-the-model"><span class="header-section-number">10.3.2</span> Building the model</a></li>
+  <li><a href="#predictions" id="toc-predictions" class="nav-link" data-scroll-target="#predictions"><span class="header-section-number">10.3.3</span> Predictions</a></li>
+  <li><a href="#logistic-regression-with-multiple-predictors" id="toc-logistic-regression-with-multiple-predictors" class="nav-link" data-scroll-target="#logistic-regression-with-multiple-predictors"><span class="header-section-number">10.3.4</span> Logistic regression with multiple predictors</a></li>
+  </ul></li>
+  <li><a href="#pseudo-r2" id="toc-pseudo-r2" class="nav-link" data-scroll-target="#pseudo-r2"><span class="header-section-number">10.4</span> Pseudo <span class="math inline">\(R^2\)</span></a>
+  <ul class="collapse">
+  <li><a href="#regular-r2" id="toc-regular-r2" class="nav-link" data-scroll-target="#regular-r2"><span class="header-section-number">10.4.1</span> Regular <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#calculating-pseudo-r2-measures" id="toc-calculating-pseudo-r2-measures" class="nav-link" data-scroll-target="#calculating-pseudo-r2-measures"><span class="header-section-number">10.4.2</span> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures</a></li>
+  <li><a href="#when-do-you-report-it" id="toc-when-do-you-report-it" class="nav-link" data-scroll-target="#when-do-you-report-it"><span class="header-section-number">10.4.3</span> When do you report it?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./10-logistic.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This section of the book (at least for the time being) deals with <strong>logistic regression.</strong> In some ways, we have come full circle with the inclusion of this chapter: the first statistical test we looked at were to do with categorical data, and now we make a partial return to categorical data.</p>
+<p>While I recognise that logistic regression has an awesome application to classification and basic machine learning, the focus of this book is not on classification but prediction. Thus, we won’t be diving into classification accuracy or ROC curves in the context of logistic regression, even though these are not terribly hard to implement in either R or Jamovi.</p>
+<section id="probability-and-odds" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="probability-and-odds"><span class="header-section-number">10.1</span> Probability and odds</h2>
+<section id="reminder-of-probabilities" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="reminder-of-probabilities"><span class="header-section-number">10.1.1</span> Reminder of probabilities</h3>
+<p>Consider the following table:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Burnout</th>
+<th style="text-align: right;">No burnout</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Musician</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Non-musician</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">42</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>You may recall that this is a 2x2 contingency table, which we have seen before in a chi-square context. Using this table, we can work out the <em>probability</em> of certain events or outcomes.</p>
+<p>If we selected someone randomly from this table, for example, what is the probability that they would be a musician? Well, we can see that there are 24 musicians from the sample of 42, so we could simply say:</p>
+<p><span class="math display">\[
+P(Musician) = \frac{24}{42} = 0.57
+\]</span></p>
+<p>Likewise, what is the probability that someone is burnt out? That would simply be:</p>
+<p><span class="math display">\[
+P(Burnout) = \frac{30}{42} = 0.71
+\]</span></p>
+<p>What about the probability that someone is a musician <em>and</em> and burnt out? We could denote this as follows:</p>
+<p><span class="math display">\[
+P(Musician ∩ Burnout) = \frac{20}{42} = 0.47
+\]</span> What about the probability that someone is burnt out, given they are a musician? This would be a <em>conditional</em> probability, where we are finding a probability of something on the condition that the person is burnt out. There are 24 participants who reported burnout, so our calculation would be as follows:</p>
+<p><span class="math display">\[
+P(Burnout | Musician) = \frac{20}{24} = 0.83
+\]</span></p>
+</section>
+<section id="odds" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="odds"><span class="header-section-number">10.1.2</span> Odds</h3>
+<p>Now, let’s talk about <strong>odds.</strong> Odds are simply the likelihood of a particular outcome occuring, and is calculated as the probability that an event will occur, divided by the probability that the event will <em>not</em> occur. In other words, if the probability of an event is denoted as <span class="math inline">\(A\)</span>, the probability of event <span class="math inline">\(A\)</span> not occuring is <span class="math inline">\(1-A\)</span>. We can then calculate the odds as:</p>
+<p><span class="math display">\[
+Odds = \frac{A}{1-A}
+\]</span></p>
+<p>Let’s return to our example above, and print out the table again for ease of reference.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Burnout</th>
+<th style="text-align: right;">No burnout</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Musician</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Non-musician</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">42</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>What are the <em>odds</em> of burnout in the musician group? To do this, we need to find the probability of burnout given they are musicians, and divide that by the probability of no burnout given they are musicians. The odds of burnout given that someone is a musician is as we saw above:</p>
+<p><span class="math display">\[
+P(Burnout | Musician) = \frac{20}{24}
+\]</span></p>
+<p>And the probability of someone <em>not</em> burning out given that they are a musician must therefore be:</p>
+<p><span class="math display">\[
+P(No \ burnout | Musician) = \frac{4}{24}
+\]</span> Now we can divide these two probabilities as follows:</p>
+<p><span class="math display">\[
+Odds = \frac{20/24}{4/24} = \frac{20}{4} = 5
+\]</span></p>
+<p>What this means is that musicians are <em>5</em> times as more likely to experience burnout than not experience it.</p>
+<p>One more example. What are the odds of burnout in the non-musician group? Using the same principles as above, we can calculate this as follows.</p>
+<p><span class="math display">\[
+P(Burnout | Nonmusician) = \frac{10}{18}
+\]</span> <span class="math display">\[
+P(No \ burnout | Nonmusician) = \frac{8}{18}
+\]</span></p>
+<p><span class="math display">\[
+Odds = \frac{10/18}{8/18} = \frac{10}{8} = 1.25
+\]</span></p>
+<p>So even non-musicians are 1.25 times more likely - or, in other words, 25% more likely - to increase burnout than not experience it.</p>
+</section>
+<section id="odds-ratios" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="odds-ratios"><span class="header-section-number">10.1.3</span> Odds ratios</h3>
+<p>Now we can take a look at the <strong>odds ratio</strong>. The odds ratio describes how likely one <em>outcome</em> is given an exposure/group, compared to another exposure/group. The odds ratio is calculated by dividing the <em>odds</em> of event A by the odds of event B. The resulting value gives an indication of how much more likely event A is compared to event B, given differences in exposure.</p>
+<p>We have already calculated two sets of odds ratios:</p>
+<ol type="a">
+<li>The odds that a musician experiences burnout; <span class="math inline">\(Odds = 5\)</span></li>
+<li>The odds that a non-musician experiences burnout; <span class="math inline">\(Odds = 1.25\)</span></li>
+</ol>
+<p>We can now calculate an odds ratio for how likely a <em>musician</em> is to experience burnout compared to a non-musician. We simply divide the two sets of odds:</p>
+<p><span class="math display">\[
+OR = \frac{Odds(A)}{Odds(B)}
+\]</span></p>
+<p><span class="math display">\[
+OR = \frac{5}{1.25} = 4
+\]</span></p>
+<p>An odds ratio of 4 indicates that a musician is <em>4 times as likely</em> to experience burnout compared to a non-musician. Heavens!</p>
+</section>
+</section>
+<section id="theory-of-logistic-regression" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="theory-of-logistic-regression"><span class="header-section-number">10.2</span> Theory of logistic regression</h2>
+<section id="introduction" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">10.2.1</span> Introduction</h3>
+<p>All of the concepts on the previous page bring us to the main technique of this model, which is <strong>logistic regression.</strong> Logistic regression is used when we want to predict a <strong>binary outcome</strong> - for example, dead/alive status, affected/unaffected status and other scenarios where we have two primary outcomes. In this sense, we are essentially making a prediction about how <em>likely</em> outcome 1 is over outcome 0. Keep this in mind!</p>
+</section>
+<section id="modelling-probabilities-sort-of" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="modelling-probabilities-sort-of"><span class="header-section-number">10.2.2</span> Modelling probabilities (sort of)</h3>
+<p>Consider the following example data. We can see that we have two columns of interest: <code>age</code> and <code>outcome</code>. Notice how <code>outcome</code> only takes the values of 0 and 1. This is because this is a <em>binary</em> variable, where 0 = one outcome and 1 = another outcome. Often, we run into situations where we are interested in predicting a binary outcome using a series of predictors, including continuous ones.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>age_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id age outcome
+1   1   4       0
+2   2   5       0
+3   3   6       0
+4   4   7       0
+5   5   9       0
+6   6  12       1
+7   7  13       1
+8   8  14       1
+9   9  15       1
+10 10  16       1
+11 11  17       1</code></pre>
+</div>
+</div>
+<p>Your first thought may be to just use a simple linear regression in this instance, and sure, R isn’t going to stop you from doing so:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(outcome <span class="sc">~</span> age, <span class="at">data =</span> age_data)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = outcome ~ age, data = age_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.36788 -0.12490  0.01528  0.13212  0.32370 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -0.55739    0.16515  -3.375  0.00819 ** 
+age          0.10281    0.01421   7.235 4.89e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2108 on 9 degrees of freedom
+Multiple R-squared:  0.8533,    Adjusted R-squared:  0.837 
+F-statistic: 52.35 on 1 and 9 DF,  p-value: 4.893e-05</code></pre>
+</div>
+</div>
+<p>You might conclude that you have a significant model, with age being a significant predictor of the binary outcome. Nice! … right? Well, the moment you plot your data you may quickly see the problem with this approach:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>age_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> outcome)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10-logistic_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There are two huge problems here! For starters, the line currently implies that there are values that exist <em>between</em> 0 and 1, but what is that meant to mean? In this instance, how can we have any intermediate values between our binary outcome? The second problem is that a simple linear regression also implies that there are values that exist <em>beyond</em> 0 and 1, as you can hopefully see in the graph above. This also makes no sense!</p>
+</section>
+<section id="the-logistic-model" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="the-logistic-model"><span class="header-section-number">10.2.3</span> The logistic model</h3>
+<p>In short, if we want to use our standard regression techniques, we need to model our data in a way where we can have outcomes beyond 0 or 1. Given that probabilities don’t let us do this, that’s a no-go (unless we use probit regression, but that’s a different kettle of fish). Maybe we could use the odds because they let us go past 1 - but as we saw previously, odds are bounded at a minimum of 0. However… <em>log</em> odds are not bounded in this way, as the log of 0 is <span class="math inline">\(- \infty\)</span>. It also turns out that with a large enough sample size, the relationship between a predictor and the log odds is linear. Therefore, we can model a regression against the log odds as follows:</p>
+<p><span class="math display">\[
+log(Odds) = \beta_0 + \beta_1 x_1 + \epsilon_i
+\]</span> This is essentially the equation for logistic regression. We use the linear regression formula to predict the <em>log odds</em> of an outcome. This makes logistic regression a form of the <strong>generalised linear model</strong> (GLM). We won’t go too into GLMs beyond here, but essentially the GLM uses a linear equation to model an outcome Y using a <strong>link function.</strong> The link function describes how the predictors relate to the outcome in the model, or in other words it allows us to use a linear regression on a transformed outcome:</p>
+<p><span class="math display">\[
+f(Y) = \beta_0 + \beta_1 x_1 + \epsilon_i
+\]</span></p>
+<p>In the formula above, <span class="math inline">\(f(Y)\)</span> is used to describe the link function. In our instance, we are looking at a <strong>logit</strong> link to do a logistic regression, where our outcome is log odds (as opposed to Y, the dependent variable directly). There are many others out there that are suited for different types of data (e.g.&nbsp;Poisson regression). As another example of a link function, the <em>identity</em> function is <span class="math inline">\(f(Y) = Y\)</span>; this gives us linear regression, so really our usual regression models are just an example of the GLM.</p>
+<p>The logistic function is characterised by a very obvious S-shaped curve:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="img/logistic_curve.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>(Technical note: the regression line that is fit is no longer least squares regression. Rather, it uses a procedure called <strong>maximum likelihood.</strong> Think of it as a different engine under the hood.)</p>
+<p>In practice, then, this means that we can use the same kinds of thinking as we have in previous regression models to interpret logistic regression outcomes. Namely, given the formula above, a 1-unit increase in <span class="math inline">\(x_1\)</span> will correspond to a <span class="math inline">\(\beta_1\)</span> increase in the log odds. However, even though mathematically that makes sense, it’s hard to interpret what this actually means. What does an increase in log odds correspond to??</p>
+<p>To solve this dilemma, we often will want to convert our outcome <em>back</em> into odds. To do so is simple: we simply exponentiate both sides:</p>
+<p><span class="math display">\[
+Odds = e^{\beta_0 + \beta_1 x_1 + \epsilon_i}
+\]</span> To obtain the probability of an event occuring, we need to convert the odds back into a probability:</p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \epsilon_i)}}
+\]</span></p>
+</section>
+</section>
+<section id="example" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="example"><span class="header-section-number">10.3</span> Example</h2>
+<p>Below is a dataset relating to the presence of sleep disorders (credit to Laksika Tharmalingam on <a href="https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset">Kaggle</a> for this dataset!), and various metrics relating to lifestyle and physical health. The dataset contains the following variables:</p>
+<ul>
+<li>id: Participant id</li>
+<li>gender: Participant gender</li>
+<li>age: Participant age</li>
+<li>sleep_duration: The number of hours the participant sleeps per day</li>
+<li>sleep_quality: The participant’s subjective rating (1-10) of the quality of their sleep</li>
+<li>physical_activity: How many minutes per day the participant does physical activity</li>
+<li>stress: Subjective rating of stress level (1-10)</li>
+<li>bmi: BMI category (Underweight, normal, overweight)</li>
+<li>blood_pressure: systolic/diastolic blood pressure</li>
+<li>heart_rate: Resting heart rate of the participant, in bpm</li>
+<li>sleep_disorder: Whether the participant has a sleep disorder or not (0 = No, 1 = Yes)</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sleep <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"logistic"</span>, <span class="st">"sleep_data.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 374 Columns: 11
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (3): gender, bmi, blood_pressure
+dbl (8): id, age, sleep_duration, sleep_quality, physical_activity, stress, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>In this example, we’re interested in seeing whether specific factors predict whether or not the participant has a sleep disorder. We’ll work with an example with one predictor to start, and then move to multiple predictors afterwards.</p>
+<section id="assumptions" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">10.3.1</span> Assumptions</h3>
+<p>The refreshing thing about the logistic regression is that there are actually very few assumptions that need to be made. For starters, we do <strong>not</strong> assume the following:</p>
+<ul>
+<li>Linearity between the IV and the DV</li>
+<li>Normality</li>
+<li>Homoscedasticity</li>
+</ul>
+<p>None of these assumptions apply! What we do assume instead is:</p>
+<ul>
+<li>Linearity between the IV and the <em>logit</em> (i.e.&nbsp;the log odds)</li>
+<li>The outcome is a binary variable that is <em>mutually exclusive</em> (someone cannot be Y = 0 and Y = 1 at the same time)</li>
+<li>Absence of multicollinearity (in a multiple regression context)</li>
+</ul>
+</section>
+<section id="building-the-model" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="building-the-model"><span class="header-section-number">10.3.2</span> Building the model</h3>
+<p>Here is where things start to change a little from what we’re used to. Because we are not building a linear model but a <em>generalised</em> linear model, we now need to use the <code>glm()</code> function in R. <code>glm()</code>, by and large, works exactly the same way as you have seen with <code>lm()</code>; you need to give it arguments in the form of <code>outcome ~ predictor</code>, and once you have run the function you need to call the results using <code>summary()</code>. The first thing that changes is that by virtue of the fact that we are using the GLM, we must specify what link function we are working with. This can be set using the <code>family</code> argument.</p>
+<p>In the instance of logistic regression, the relevant family is <code>binomial</code>, and specifically <code>binomial(link = "logit")</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(outcome <span class="sc">~</span> predictor, <span class="at">data =</span> data, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The formula is a little strange, but <code>binomial()</code> is essentially a function that takes the argument <code>link</code>, for which we set the value as <code>"logit"</code>. The <code>logit</code> argument is the default for this function though, so we can simply shorten this down to <code>family = binomial</code> specifically for logistic regressions. (For other binomial-based GLMs, you must specify the link.)</p>
+<p>With that in mind, we can build our logistic regression models. In the first instance, let’s see if age predicts whether someone has a sleep disorder.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sleep_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -5.28024    0.65343  -8.081 6.44e-16 ***
+age          0.11549    0.01493   7.738 1.01e-14 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 507.47  on 373  degrees of freedom
+Residual deviance: 433.36  on 372  degrees of freedom
+AIC: 437.36
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+<p>Note that our output table is a little bit different than what we’re used to; this is because of the change in procedure mentioned on the previous page (from least squares to maximum likelihood). However, we can still largely read this output the same way as we have. We can see that age is a significant predictor (<em>p</em> &lt; .001).</p>
+<p>The coefficient for age is .115. We can get the coefficients seperately by using the <code>coef()</code> function on our model:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(sleep_glm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)         age 
+ -5.2802414   0.1154897 </code></pre>
+</div>
+</div>
+<p>What does this mean? It means that for every 1 unit increase in age, the <em>log odds</em> increase by .115. This is important because remember that we’re modelling against <em>log odds</em>, not odds or probability! In essence, we have estimated the following:</p>
+<p><span class="math display">\[
+log(Odds) = -5.280 + (0.115 \times x_1)
+\]</span></p>
+<p>We need to make sense of this another way somehow. Recall that log odds and odds relate to each other in the following way:</p>
+<p><span class="math display">\[
+Odds = e^{\beta_0 + \beta_1 x_1 + \epsilon_i}
+\]</span></p>
+<p>To obtain the odds, as discussed on the previous page, we need to exponentiate our coefficients:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)         age 
+0.005091201 1.122423009 </code></pre>
+</div>
+</div>
+<p>The exponentiated coefficient gives us our <strong>odds ratio.</strong> This describes the <em>multiplied</em> change in odds for every 1 unit increase of our predictor. In this instance, for every 1 year increase in age, the predicted odds of having a sleep disorder are multiplied by 1.12. Another way to describe this is that the predicted odds of having a sleep disorder increase by a <em>factor of</em> 1.12.</p>
+<p>This coefficient does <em>not</em> mean the following:</p>
+<ul>
+<li>The odds increase by 1.12 for every unit of x - remember, only the <em>log odds</em> are linearly related to the predictor. The odds are non-linearly related.</li>
+<li>The probability increases by 1.12 - same deal as above, the probability isn’t linearly related to the predictors.</li>
+</ul>
+<p>We can get confidence intervals around our estimated coefficients using <code>confint()</code>, just like we have previously. We can do this either on the original coefficients, or the exponentiated ones. The confidence interval around the exponentiated coefficients gives us a 95% CI for our odds ratio.This is probably more useful in terms of interpretation than the log odds coefficients, so we have chosen them here.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(sleep_glm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Waiting for profiling to be done...</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  2.5 %     97.5 %
+(Intercept) -6.60646431 -4.0395789
+age          0.08712071  0.1457569</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Waiting for profiling to be done...</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  2.5 %     97.5 %
+(Intercept) 0.001351603 0.01760488
+age         1.091028365 1.15691494</code></pre>
+</div>
+</div>
+<p>Thus, we can say that the OR of a sleep disorder is 1.12 (95% CI = [1.09, 1.16]).</p>
+</section>
+<section id="predictions" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="predictions"><span class="header-section-number">10.3.3</span> Predictions</h3>
+<p>Now recall that we can convert from odds to probabilities in the following manner:</p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \epsilon_i)}}
+\]</span></p>
+<p>Using this, we can make predictions about the <em>probability</em> of our outcome for a given value of our predictor. For example, what is the probability that a 50 year old will have a sleep disorder? That would be given as the following:</p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \epsilon_i)}}
+\]</span></p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-(-5.280 + (0.115 \times 50)}}
+\]</span></p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-0.47}}
+\]</span></p>
+<p>We can use R to do the calculation for us:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.47</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6153838</code></pre>
+</div>
+</div>
+<p>Thus, a 50 year old person has a 61.5% chance of having a sleep disorder (note that this has been rounded).</p>
+<p>We can actually plot the expected probabilities across a range of values for age by first asking R to predict the probabilities across a range of ages. This will draw the characteristic S-shaped curve of the logistic model. We use the <code>predict()</code> function to calculate the predicted probabilities of each value of our predictor. The <code>type = response</code> argument is used here to tell R to predict the probabilities (and not the log odds).</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in eval(family$initialize): non-integer #successes in a binomial glm!</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10-logistic_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="logistic-regression-with-multiple-predictors" class="level3" data-number="10.3.4">
+<h3 data-number="10.3.4" class="anchored" data-anchor-id="logistic-regression-with-multiple-predictors"><span class="header-section-number">10.3.4</span> Logistic regression with multiple predictors</h3>
+<p>Let’s now expand out the previous example to include two predictors: age and stress. Just like a regular multiple regression, logistic regression can include multiple continuous predictors. This will take on the form of the following:</p>
+<p><span class="math display">\[
+log(Odds) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 ... \beta_n x_n + \epsilon_i
+\]</span></p>
+<p>This means that our odds formula becomes:</p>
+<p><span class="math display">\[
+Odds = e^{\beta_0 + \beta_1 x_1 + \beta_2 x_2 ... \beta_n x_n + \epsilon_i}
+\]</span> And so on so forth with our probability formula. Really, this is just an extension of what we have already seen in multiple regression, but applied to a logistic regression context. Let’s see what this looks like in R with the below code:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sleep_glm2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sleep_disorder <span class="sc">~</span> age <span class="sc">+</span> stress, <span class="at">data =</span> sleep, <span class="at">family =</span> binomial)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = sleep_disorder ~ age + stress, family = binomial, 
+    data = sleep)
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -13.26171    1.41932  -9.344  &lt; 2e-16 ***
+age           0.20510    0.02212   9.272  &lt; 2e-16 ***
+stress        0.77585    0.10607   7.315 2.58e-13 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 507.47  on 373  degrees of freedom
+Residual deviance: 355.62  on 371  degrees of freedom
+AIC: 361.62
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+</div>
+<p>What do we see here? Well, we can see that age is a significant predictor of the presence of a sleep disorder (<em>p</em> &lt; .001), and stress is as well (<em>p</em> &lt; .001). Namely, for every year increase in age, the log odds of a sleep disorder increase by 0.205, holding stress constant. Likewise, for every 1 point increase in stress, the log odds increase by .776, holding age constant.</p>
+<p>To convert this into odds ratios, we exponentiate the coefficients:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(sleep_glm2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> (Intercept)          age       stress 
+1.739856e-06 1.227649e+00 2.172449e+00 </code></pre>
+</div>
+</div>
+<p>And let’s generate confidence intervals for our odds ratios too:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(sleep_glm2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Waiting for profiling to be done...</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   2.5 %       97.5 %
+(Intercept) 9.083049e-08 0.0000240461
+age         1.178095e+00 1.2851325926
+stress      1.782252e+00 2.7038110976</code></pre>
+</div>
+</div>
+<p>We can see that the for every 1 year increase in age, the predicted odds of having a sleep disorder increase by a factor (i.e.&nbsp;are multiplied by) of 1.23 (95% CI: [1.18, 1.29]), holding stress constant. For every 1 unit increase in stress, the predicted odds of a sleep disorder increase by a factor of 2.17 (95% CI: [1.78, 2.70]), holding age constant.</p>
+<p>Just like before, we can also predict the probability that a participant will have a sleep disorder given their age and stress level. For example, let’s say we have a 50 year old with a stress level of 5:</p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-(-13.262 + (0.205 \times 50) + (0.776 \times 5))}}
+\]</span></p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-0.868}} = 0.704
+\]</span></p>
+<p>THus, this individual has a 70.4% chance of having a sleep disorder. Now what about if the person’s stress level is 6?</p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-(-13.262 + (0.205 \times 50) + (0.776 \times 6))}}
+\]</span></p>
+<p><span class="math display">\[
+P(Y = 1) = \frac{1}{1 + e^{-1.644}} = 0.838
+\]</span> Now the person’s probability is 83.8%. In other words, it helps not to be stressed!</p>
+</section>
+</section>
+<section id="pseudo-r2" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="pseudo-r2"><span class="header-section-number">10.4</span> Pseudo <span class="math inline">\(R^2\)</span></h2>
+<section id="regular-r2" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="regular-r2"><span class="header-section-number">10.4.1</span> Regular <span class="math inline">\(R^2\)</span></h3>
+<p>Recall that in a linear regression, we often talk about <span class="math inline">\(R^2\)</span>, or the coefficient of determination. We interpret this value as the amount of variance that is explained in our outcome by our predictor in the regression (or all of our predictors, in the case of multiple regression).</p>
+<p>As a reminder, here is the output for the regression on flow proneness in <a href="07-regressions.html#multreg-intro">the regression module</a>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>w10_flow_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> w10_flow)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(w10_flow_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = DFS_Total ~ trait_anxiety + openness, data = w10_flow)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-16.596  -2.331  -0.151   2.308  12.794 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   32.65078    1.13377  28.798  &lt; 2e-16 ***
+trait_anxiety -0.11116    0.01278  -8.697  &lt; 2e-16 ***
+openness       0.83372    0.14538   5.735 1.38e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.705 on 808 degrees of freedom
+Multiple R-squared:  0.1364,    Adjusted R-squared:  0.1343 
+F-statistic: 63.81 on 2 and 808 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>As we can see, our value for <span class="math inline">\(R^2\)</span> is .1364, meaning that 13.64% of the variance in our outcome, flow proneness, can be explained by our predictors trait anxiety and openness. The mathematical properties of least squares regression allow us to derive this value and interpret it fairly cleanly and easily. We can even compare <span class="math inline">\(R^2\)</span> across similar models, or (in the hierarchical case) use it to directly compare model fit.</p>
+<p>In logistic regression, however, we cannot calculate the same value as we no longer use ordinary least squares regression. Instead, we use <strong>maximum likelihood</strong>, which provides a different way of calculating the various parameters (i.e.&nbsp;coefficients) in our model. Maximum likelihood methods in the context of logistic regression don’t really give us the same ‘clean’ and easily interpretable <span class="math inline">\(R^2\)</span> as we get in normal regressions, because we don’t operate under the same method of minimising residuals. Rather, these <span class="math inline">\(R^2\)</span> methods are calculated using each model’s likelihood, <span class="math inline">\(\hat L\)</span>.</p>
+<p>To partially overcome this, several measures of <strong>pseudo <span class="math inline">\(R^2\)</span></strong> have been developed. The word ‘pseudo’ is important here, as it’s important to acknowledge that these are not quite the same thing as our usual <span class="math inline">\(R^2\)</span>. We can’t use them in the same way to directly compare across models, for instance - each pseudo-<span class="math inline">\(R^2\)</span> has its own suggested interpretation, and thus do not always cohere with each other. The wonderful <a href="https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/">Statistical Methods and Data Analysis group</a> at UCLA have a great explanation, with formulae for several pseudo-<span class="math inline">\(R^2\)</span> measures. We will focus on three in this module, mainly for parity with Jamovi (but they also happen to be the most popular).</p>
+</section>
+<section id="calculating-pseudo-r2-measures" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="calculating-pseudo-r2-measures"><span class="header-section-number">10.4.2</span> Calculating pseudo-<span class="math inline">\(R^2\)</span> measures</h3>
+<p>As a reminder, let’s print the output from our logistic regression on sleep:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sleep_glm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = sleep_disorder ~ age, family = binomial, data = sleep)
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -5.28024    0.65343  -8.081 6.44e-16 ***
+age          0.11549    0.01493   7.738 1.01e-14 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 507.47  on 373  degrees of freedom
+Residual deviance: 433.36  on 372  degrees of freedom
+AIC: 437.36
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+<p>The <code>DescTools</code> package provides a very convenient function, <code>PseudoR2()</code>, to calculate these pseudo-<span class="math inline">\(R^2\)</span> measures for us. This function requires a) the name of the <code>glm</code> model (i.e.&nbsp;our logistic regression object), and b) a character specifying which type(s) of <span class="math inline">\(R^2\)</span> should be calculated. You’ll see this in the examples below.</p>
+<p><strong>McFadden’s <span class="math inline">\(R^2\)</span></strong> is roughly analogous to a regular <span class="math inline">\(R^2\)</span>, in that it is intended to give an estimate of how much total variability is explained by the logistic model. It is calculated by comparing the fit of a logistic model against a null (i.e.&nbsp;no predictor) model.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">"McFadden"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> McFadden 
+0.1460373 </code></pre>
+</div>
+</div>
+<p><strong>Cox and Snell’s <span class="math inline">\(R^2\)</span></strong> is also calculated by comparing a full model to an null/no predictor model. The underlying calculation, however, is different, and a particular oddity of the Cox and Snell <span class="math inline">\(R^2\)</span> is that the maximum possible value is less than 1.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">"CoxSnell"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> CoxSnell 
+0.1797558 </code></pre>
+</div>
+</div>
+<p><strong>Nagelkerke’s <span class="math inline">\(R^2\)</span></strong> is an adjustment of the Cox and Snell <span class="math inline">\(R^2\)</span> - specifically, it adjusts the value of <span class="math inline">\(R^2\)</span> so that it ranges from 0-1.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">"Nagelkerke"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Nagelkerke 
+ 0.2420843 </code></pre>
+</div>
+</div>
+<p>Finally, <strong>Tjur’s <span class="math inline">\(R^2\)</span></strong> is a relatively new pseudo-<span class="math inline">\(R^2\)</span>. It is calculated by first calculating the average predicted probabilities of the outcomes, and then taking the differences between those two probabilities. It is bounded between 0-1 and is also roughly analogous to a normal <span class="math inline">\(R^2\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PseudoR2</span>(sleep_glm, <span class="at">which =</span> <span class="st">"Tjur"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Tjur 
+0.1888425 </code></pre>
+</div>
+</div>
+</section>
+<section id="when-do-you-report-it" class="level3" data-number="10.4.3">
+<h3 data-number="10.4.3" class="anchored" data-anchor-id="when-do-you-report-it"><span class="header-section-number">10.4.3</span> When do you report it?</h3>
+<p>Truthfully, as the UCLA help page states, pseudo-<span class="math inline">\(R^2\)</span> methods are not as useful or as cleanly interpretable as normal OLS-based <span class="math inline">\(R^2\)</span>. They are only useful when comparing models using the <em>same</em> pseudo-<span class="math inline">\(R^2\)</span> value, using the same data and variables. In other words, these measures are useful to select between competing models on the same data; they are not valid for comparing across datasets.</p>
+<p>Another thing to consider is that different measures perform differently. Simulation studies (e.g.&nbsp;Veall and Zimmermann 1992) have shown that Nagelkerke and McFadden’s <span class="math inline">\(R^2\)</span> both severely underestimate the ‘true’ value of <span class="math inline">\(R^2\)</span>. Other methods exist, which can be calculated with <code>PseudoR2()</code>, but are not as widely implemented.</p>
+<p>Some will argue that <span class="math inline">\(R^2\)</span> values are pointless outside of the model selection context. Others will say that it never hurts to report them anyway even if you are reporting just the one model. The decision, ultimately, is probably best left to you as the researcher to figure out what is most appropriate for what you are doing.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./09-regressions-2.html" class="pagination-link" aria-label="Regression continued">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./11-efa.html" class="pagination-link" aria-label="Exploratory factor analysis">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

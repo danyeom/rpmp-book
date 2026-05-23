@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12&nbsp; Mediation and Moderation – Research Process for Music Psychologists</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./13-nonpara.html" rel="next">
+<link href="./11-efa.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./12-medmod.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Process for Music Psychologists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I: Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A very brief introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-descriptives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferential statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II: Basic inferential tests</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-chisquares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chi-squares</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear relationships</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III: Advanced methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-factorial-anovas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Factorial ANOVAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regressions-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-efa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-medmod.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-nonpara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#mediation-intro" id="toc-mediation-intro" class="nav-link active" data-scroll-target="#mediation-intro"><span class="header-section-number">12.1</span> Mediation: Intro</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-mediation" id="toc-introduction-to-mediation" class="nav-link" data-scroll-target="#introduction-to-mediation"><span class="header-section-number">12.1.1</span> Introduction to mediation</a></li>
+  <li><a href="#in-mathematical-terms" id="toc-in-mathematical-terms" class="nav-link" data-scroll-target="#in-mathematical-terms"><span class="header-section-number">12.1.2</span> In mathematical terms</a></li>
+  </ul></li>
+  <li><a href="#mediation-causal-steps" id="toc-mediation-causal-steps" class="nav-link" data-scroll-target="#mediation-causal-steps"><span class="header-section-number">12.2</span> Mediation: Causal steps</a>
+  <ul class="collapse">
+  <li><a href="#the-causal-steps-approach" id="toc-the-causal-steps-approach" class="nav-link" data-scroll-target="#the-causal-steps-approach"><span class="header-section-number">12.2.1</span> The causal steps approach</a></li>
+  <li><a href="#step-1-test-the-direct-effect-c" id="toc-step-1-test-the-direct-effect-c" class="nav-link" data-scroll-target="#step-1-test-the-direct-effect-c"><span class="header-section-number">12.2.2</span> Step 1: Test the direct effect (c)</a></li>
+  <li><a href="#step-2-test-the-predictor-and-mediator-a" id="toc-step-2-test-the-predictor-and-mediator-a" class="nav-link" data-scroll-target="#step-2-test-the-predictor-and-mediator-a"><span class="header-section-number">12.2.3</span> Step 2: Test the predictor and mediator (a)</a></li>
+  <li><a href="#step-3-test-the-predictor-and-mediator-on-the-outcome-b" id="toc-step-3-test-the-predictor-and-mediator-on-the-outcome-b" class="nav-link" data-scroll-target="#step-3-test-the-predictor-and-mediator-on-the-outcome-b"><span class="header-section-number">12.2.4</span> Step 3: Test the predictor and mediator on the outcome (b)</a></li>
+  <li><a href="#step-4-decide-the-extent-of-mediation" id="toc-step-4-decide-the-extent-of-mediation" class="nav-link" data-scroll-target="#step-4-decide-the-extent-of-mediation"><span class="header-section-number">12.2.5</span> Step 4: Decide the extent of mediation</a></li>
+  <li><a href="#problems-with-the-causal-steps-approach" id="toc-problems-with-the-causal-steps-approach" class="nav-link" data-scroll-target="#problems-with-the-causal-steps-approach"><span class="header-section-number">12.2.6</span> Problems with the causal steps approach</a></li>
+  </ul></li>
+  <li><a href="#mediation-sobels-test-and-bootstrapping" id="toc-mediation-sobels-test-and-bootstrapping" class="nav-link" data-scroll-target="#mediation-sobels-test-and-bootstrapping"><span class="header-section-number">12.3</span> Mediation: Sobel’s test and bootstrapping</a>
+  <ul class="collapse">
+  <li><a href="#running-mediations-in-r" id="toc-running-mediations-in-r" class="nav-link" data-scroll-target="#running-mediations-in-r"><span class="header-section-number">12.3.1</span> Running mediations in R</a></li>
+  <li><a href="#sobels-test" id="toc-sobels-test" class="nav-link" data-scroll-target="#sobels-test"><span class="header-section-number">12.3.2</span> Sobel’s test</a></li>
+  <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping"><span class="header-section-number">12.3.3</span> Bootstrapping</a></li>
+  </ul></li>
+  <li><a href="#moderation-introduction" id="toc-moderation-introduction" class="nav-link" data-scroll-target="#moderation-introduction"><span class="header-section-number">12.4</span> Moderation: Introduction</a>
+  <ul class="collapse">
+  <li><a href="#refresher-on-interactions" id="toc-refresher-on-interactions" class="nav-link" data-scroll-target="#refresher-on-interactions"><span class="header-section-number">12.4.1</span> Refresher on interactions</a></li>
+  <li><a href="#moderation" id="toc-moderation" class="nav-link" data-scroll-target="#moderation"><span class="header-section-number">12.4.2</span> Moderation</a></li>
+  <li><a href="#simple-slopes" id="toc-simple-slopes" class="nav-link" data-scroll-target="#simple-slopes"><span class="header-section-number">12.4.3</span> Simple slopes</a></li>
+  <li><a href="#the-johnson-neyman-technique" id="toc-the-johnson-neyman-technique" class="nav-link" data-scroll-target="#the-johnson-neyman-technique"><span class="header-section-number">12.4.4</span> The Johnson-Neyman technique</a></li>
+  </ul></li>
+  <li><a href="#moderation-example" id="toc-moderation-example" class="nav-link" data-scroll-target="#moderation-example"><span class="header-section-number">12.5</span> Moderation: Example</a>
+  <ul class="collapse">
+  <li><a href="#example-scenario" id="toc-example-scenario" class="nav-link" data-scroll-target="#example-scenario"><span class="header-section-number">12.5.1</span> Example scenario</a></li>
+  <li><a href="#setting-up-in-r" id="toc-setting-up-in-r" class="nav-link" data-scroll-target="#setting-up-in-r"><span class="header-section-number">12.5.2</span> Setting up in R</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output"><span class="header-section-number">12.5.3</span> Output</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./12-medmod.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mediation and Moderation</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Sometimes, the hypotheses we want to test are ones where the effect of interest works in a very specific way. In some cases, we might hypothesise that the relationship between two variables is actually best explained by a third variable that acts between them. For instance, we might predict that a relationship between sugar levels in food and happiness is best explained by food intake - we might eat more sugar, and eating more makes us happier (or something like that).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This kind of hypothesis is called a <strong>mediation</strong>, and is common in psychological research as a lot of our work deals with <em>processes.</em></p>
+<p>In other instances, we might expect interaction effects like what we saw in two-way ANOVAs, but between continuous predictors. Note that up until this point we have only considered categorical x categorical interactions within an ANOVA context, so now is a good time to explore continuous x continuous interactions. We describe these effects as <strong>moderation</strong> effects.</p>
+<p>This chapter will cover both mediation and moderation.</p>
+<section id="mediation-intro" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="mediation-intro"><span class="header-section-number">12.1</span> Mediation: Intro</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>We start with an overview of the concept of mediation, with special consideration to its interpretation for the time being.</p>
+</div>
+<section id="introduction-to-mediation" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="introduction-to-mediation"><span class="header-section-number">12.1.1</span> Introduction to mediation</h3>
+<p><strong>Mediation</strong> refers to a specific model where we hypothesise that the relationship between a predictor X and an outcome Y is explained by the effect of a third <em>mediating</em> variable. You can imagine a simple linear regression in the following way, with c representing the <strong>direct effect</strong> (or the regression coefficient) between the predictor and the outcome.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/mediation_1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>But what happens if we believe that there actually isn’t as direct of a relationship? In other words, we believe that our predictor X actually predicts/affects Y through a mediating variable, M? That might look like the following:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/mediation_2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In other words, mediation occurs when the effect of X on Y is explained through the effect of M. When paired with clever and careful study designs, mediations can be used to <strong>test causality</strong>. The underlying principle of the diagram above is that X causes M, and M causes Y; i.e.&nbsp;we implicitly specify <strong>directional relationships</strong> between our predictor, mediator and outcome.</p>
+</section>
+<section id="in-mathematical-terms" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="in-mathematical-terms"><span class="header-section-number">12.1.2</span> In mathematical terms</h3>
+<p>The basic idea of mediation is that the <strong>total direct effect, c, should reduce</strong> once the mediator is accounted for. This new direct effect is denoted as c’ (c-prime). If a mediating effect is significant, then <em>c’</em> should be smaller than <em>c</em>; after all, if the mediator explains what is going on then this should explain the direct effect between the predictor and outcome.</p>
+<p>The a and b paths denote the relationship between the predictor and mediator (a), and the mediator and the outcome (b). Together, they denote the <strong>indirect effect</strong> of the mediator, which we denote as ab - literally, the product of the two coefficients.</p>
+<p>What is the relationship between the direct and indirect effect? Well, if the original effect c is the <strong>total</strong> effect, we can decompose this as:</p>
+<p>Total effect = direct effect (c’) + indirect effect (ab)</p>
+<p>Without a mediator, the indirect effect ab is equal to zero, and so we only have a direct effect. However, if the indirect effect fully explains the relationship between the predictor and the outcome then we would expect the direct effect (c’) to be close to 0, and the indirect effect to fully explain/comprise the total effect.</p>
+</section>
+</section>
+<section id="mediation-causal-steps" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="mediation-causal-steps"><span class="header-section-number">12.2</span> Mediation: Causal steps</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>No introduction to mediation is complete without considering the causal steps approach, which held dominance as the main method of testing mediations for a while. Below is an overview of this approach.</p>
+</div>
+<section id="the-causal-steps-approach" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="the-causal-steps-approach"><span class="header-section-number">12.2.1</span> The causal steps approach</h3>
+<p>The causal steps approach outlined by Baron and Kenny (1986) was one of the first defined ways to test for a mediation. The name refers to a sequence of analytical steps that must be taken in order to apparently demonstrate a mediation, in line with the figure we saw on the previous page:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/mediation_2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To illustrate the causal steps approach (and subsequent approaches), we will use a fictional dataset below. This dataset contains scores on students’ grades, self-esteem and happiness. We theorise that the relationship between a student’s grades and their happiness is mediated by their self-esteem, which gives rise to the hypothetical mediation below:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/mediation_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="420"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>med_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"medmod"</span>, <span class="st">"med_grades.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-1-test-the-direct-effect-c" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="step-1-test-the-direct-effect-c"><span class="header-section-number">12.2.2</span> Step 1: Test the direct effect (c)</h3>
+<p>The first step in the classic causal steps approach is simply to see whether our predictor X predicts the outcome Y, using a linear regression. This tests the direct effect, c.&nbsp;The magnitude of this direct effect is 0.396.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>step_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(happiness <span class="sc">~</span> grade, <span class="at">data =</span> med_data)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = happiness ~ grade, data = med_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.0262 -1.2340 -0.3282  1.5583  5.1622 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   2.8572     0.6932   4.122 7.88e-05 ***
+grade         0.3961     0.1112   3.564 0.000567 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.929 on 98 degrees of freedom
+Multiple R-squared:  0.1147,    Adjusted R-squared:  0.1057 
+F-statistic:  12.7 on 1 and 98 DF,  p-value: 0.0005671</code></pre>
+</div>
+</div>
+</section>
+<section id="step-2-test-the-predictor-and-mediator-a" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="step-2-test-the-predictor-and-mediator-a"><span class="header-section-number">12.2.3</span> Step 2: Test the predictor and mediator (a)</h3>
+<p>The next step is to see whether the predictor significantly predicts the mediator, which denotes the a path. The estimate for a in this case is 0.561.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>step_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(self_esteem <span class="sc">~</span> grade, <span class="at">data =</span> med_data)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = self_esteem ~ grade, data = med_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.3046 -0.8656  0.1344  1.1344  4.6954 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.49952    0.58920   2.545   0.0125 *  
+grade        0.56102    0.09448   5.938 4.39e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.639 on 98 degrees of freedom
+Multiple R-squared:  0.2646,    Adjusted R-squared:  0.2571 
+F-statistic: 35.26 on 1 and 98 DF,  p-value: 4.391e-08</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-test-the-predictor-and-mediator-on-the-outcome-b" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="step-3-test-the-predictor-and-mediator-on-the-outcome-b"><span class="header-section-number">12.2.4</span> Step 3: Test the predictor and mediator on the outcome (b)</h3>
+<p>This step involves running a multiple regression with both X and M as predictors, and Y as the outcome. This is because as in the model above, the effect of Y is determined by both the effect of the predictor and the mediator. The estimate for b is the regression coefficient for the mediator in this analysis - in this case, b = 0.6355.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>step_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(happiness <span class="sc">~</span> grade <span class="sc">+</span> self_esteem, <span class="at">data =</span> med_data)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = happiness ~ grade + self_esteem, data = med_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7631 -1.2393  0.0308  1.0832  4.0055 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   1.9043     0.6055   3.145   0.0022 ** 
+grade         0.0396     0.1096   0.361   0.7187    
+self_esteem   0.6355     0.1005   6.321 7.92e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.631 on 97 degrees of freedom
+Multiple R-squared:  0.373, Adjusted R-squared:  0.3601 
+F-statistic: 28.85 on 2 and 97 DF,  p-value: 1.471e-10</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4-decide-the-extent-of-mediation" class="level3" data-number="12.2.5">
+<h3 data-number="12.2.5" class="anchored" data-anchor-id="step-4-decide-the-extent-of-mediation"><span class="header-section-number">12.2.5</span> Step 4: Decide the extent of mediation</h3>
+<p>Recall on the previous page that the idea of mediation is to see how close <em>c</em>, the direct effect, gets to zero after mediation (i.e.&nbsp;<em>c’</em> = 0). The significance of the mediated direct effect, <em>c’</em>, as well as its magnitude are generally used to determine the extent to which this direct effect has been mediated.</p>
+<p>If <strong>full mediation</strong> has occurred, the effect of <em>c’</em> should be non-significant and close to 0. If <em>c’</em> is still significant and not close to 0, but all the other steps are significant, then <strong>partial mediation</strong> is said to have occurred.</p>
+<p>In our instance, the estimate of <em>c’</em> is 0.0396, with a <em>p</em>-value of .719. Given that the <em>c’</em> effect is non-significant, we would say that self-esteem <strong>fully mediates</strong> the relationship between grades and happiness.</p>
+<p>One final check - also recall that the total effect, <em>c</em>, can be broken down into the direct effect <em>c’</em> and the indirect effect <em>ab</em>. You can manually check the maths here - <em>ab</em> (0.561 * 0.6355) + 0.0396 (the coefficient for <em>c’</em>) gives us 0.396, which was our initial estimate of the total effect <em>c</em>.</p>
+</section>
+<section id="problems-with-the-causal-steps-approach" class="level3" data-number="12.2.6">
+<h3 data-number="12.2.6" class="anchored" data-anchor-id="problems-with-the-causal-steps-approach"><span class="header-section-number">12.2.6</span> Problems with the causal steps approach</h3>
+<p>The causal steps approach is not often used in mediation analyses anymore for a couple of reasons:</p>
+<ul>
+<li><strong>Step 1 is not always necessary</strong>. A non-significant <em>c</em> does not necessarily indicate that there is no mediation - in fact, sometimes we can observe <strong>suppression effects</strong>, where the indirect effect is positive while the direct effect is negative (or vice versa). This can happen when the causal chains act in opposite directions, thereby cancelling out the overall effect.</li>
+<li>This approach does not <em>really</em> test the indirect path - only its individual components. Because we are interested in the effect of the mediating path, i.e.&nbsp;<em>ab</em>, it makes sense that we would want to know if that overall indirect effect is significant. However, this approach doesn’t actually test for that.</li>
+<li>Related to the above, Type II errors can be higher with this approach - some mediation effects can be missed.</li>
+</ul>
+</section>
+</section>
+<section id="mediation-sobels-test-and-bootstrapping" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="mediation-sobels-test-and-bootstrapping"><span class="header-section-number">12.3</span> Mediation: Sobel’s test and bootstrapping</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>So the causal steps approach doesn’t really work for mediation… What now? Well, there are two more contemporary methods of testing mediations. While the latter (the bootstrap method) is the most recommended, we demonstrate both for completion’s sake.</p>
+</div>
+<section id="running-mediations-in-r" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="running-mediations-in-r"><span class="header-section-number">12.3.1</span> Running mediations in R</h3>
+<p>There are many packages available to run mediations in R, including the well-known package <code>mediation</code> package. One of the most popular software tools for running mediations (and moderations), particularly for SPSS users, is the <a href="https://processmacro.org/index.html">PROCESS macro by Andrew Hayes</a>. PROCESS is essentially a set of code that can run a series of what we call <em>conditional process models</em> - including mediation and moderation.</p>
+<p>Note that due to copyright reasons, the R version of process isn’t available on this book’s corresponding GitHub repo; however, it can be downloaded for free from the official site using the link above. Detailed documentation is available in Hayes (2022). Loading PROCESS is not quite like loading a package in R as it isn’t available in package form. To load it, you must use the <code>source()</code> function in base R, which will run another R script. Place the <code>process.R</code> file somewhere you can find it, and pass the file path to <code>source()</code>. It will take a little bit to load depending on your computer’s specs, but if it has loaded correctly then you should see the following:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"process.R"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+**************** PROCESS Procedure for R Version 5.0 ****************** 
+ 
+           Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+   Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+ 
+*********************************************************************** 
+ 
+PROCESS is now ready for use.
+Copyright 2013-2025 by Andrew F. Hayes ALL RIGHTS RESERVED
+Workshop schedule at haskayne.ucalgary.ca/CCRAM 
+Information about PROCESS available at processmacro.org/faq.html </code></pre>
+</div>
+</div>
+<p>Key to the PROCESS macro is the <code>process()</code> function, which is basically a does-it-all function that will run both mediations and moderations.</p>
+</section>
+<section id="sobels-test" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="sobels-test"><span class="header-section-number">12.3.2</span> Sobel’s test</h3>
+<p>The first, and perhaps most common method, goes by a couple of names: Sobel’s test or the delta method are perhaps the two most well known. Jamovi calls this the <strong>Standard</strong> method. Sobel’s test is a direct test of the significance of the <em>ab</em> pathway in a mediation.</p>
+<p>The principle behind Sobel’s test is actually relatively simple: it is analogous to a <em>t</em>-test, in that a <em>t</em>-statistic is calculated by dividing the estimate of <em>ab</em> by its estimated standard error:</p>
+<p><span class="math display">\[
+t_{ab} = \frac{ab}{SE_{ab}}
+\]</span></p>
+<p>From there, a <em>p</em>-value can be calculated by using this <em>t</em>-statistic and comparing it against a null <em>t</em>-distribution, much like you would with a <em>t</em>-test or a regression slope.</p>
+<p>Note that Sobel’s test <strong>assumes normality</strong>.</p>
+<p>To run a mediation, we use the <code>process()</code> function as follows: - <code>data</code> specifies the dataset. - <code>x</code>, <code>y</code> and <code>m</code> specify the predictor, outcome and mediator respectively. - <code>model = 4</code> specifies that we want to run a mediation. (PROCESS comes with 20-odd different model types!) - <code>normal = 1</code> and <code>boot = 0</code> specifies that we only want a Sobel test for the indirect effect.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>med_sobel <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"happiness"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"grade"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">"self_esteem"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">normal =</span> <span class="dv">1</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">0</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+**************** PROCESS Procedure for R Version 5.0 ****************** 
+ 
+           Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+   Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+ 
+*********************************************************************** 
+                    
+  Model: 4          
+      Y: happiness  
+      X: grade      
+      M: self_esteem
+
+Sample size: 100
+
+
+*********************************************************************** 
+Outcome Variable: self_esteem
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+     0.5144    0.2646    2.6868   35.2586    1.0000   98.0000    0.0000
+
+Model: 
+             coeff        se         t         p      LLCI      ULCI
+constant    1.4995    0.5892    2.5450    0.0125    0.3303    2.6688
+grade       0.5610    0.0945    5.9379    0.0000    0.3735    0.7485
+
+*********************************************************************** 
+Outcome Variable: happiness
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+     0.6107    0.3730    2.6613   28.8524    2.0000   97.0000    0.0000
+
+Model: 
+                coeff        se         t         p      LLCI      ULCI
+constant       1.9043    0.6055    3.1452    0.0022    0.7026    3.1059
+grade          0.0396    0.1096    0.3612    0.7187   -0.1780    0.2572
+self_esteem    0.6355    0.1005    6.3212    0.0000    0.4360    0.8350
+
+**************** DIRECT AND INDIRECT EFFECTS OF X ON Y ****************
+
+Direct effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+     0.0396    0.1096    0.3612    0.7187   -0.1780    0.2572
+
+Indirect effect(s) of X on Y:
+               Effect
+self_esteem    0.3565
+
+Normal theory test for indirect effect(s):
+               Effect        se         Z         p
+self_esteem    0.3565    0.0829    4.2994    0.0000
+
+******************** ANALYSIS NOTES AND ERRORS ************************ 
+
+Level of confidence for all confidence intervals in output: 95</code></pre>
+</div>
+</div>
+<p>Here is an output of our mediation using Sobel’s test. You can see that it gives a <em>p</em>-value of not just the individual paths, but of the indirect and direct paths overall. Our indirect effect is significant (z = 4.299, <em>p</em> &lt; .001), while our direct effect is not (z = .367, <em>p</em> = .719) - suggesting a full mediation, as we saw before.</p>
+<p>Note that the output helpfully adds a note stating that the “Normal theory test” was used, which corresponds to Sobel’s test.</p>
+<p>Sobel’s test is probably the most common method used, at least in most recent psychological literature. However, it too has a noticeable problem in that <strong>it only works well in large samples</strong>. This is for a couple of reasons, but primarily that the distribution of <em>ab</em> is only normal at very large sample sizes. Therefore, using Sobel’s test in smaller sample sizes is likely to be skewed, which leads to <strong>incorrect standard errors</strong>.</p>
+</section>
+<section id="bootstrapping" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="bootstrapping"><span class="header-section-number">12.3.3</span> Bootstrapping</h3>
+<p>To overcome the problem described above, another approach is to <strong>bootstrap the standard errors</strong>. This is where we continually resample a large number of times from our original dataset and calculate <em>ab</em> for each sampled dataset. Once we do this enough times, we can build an empirical distribution of possible <em>ab</em> values, and then use that to calculate an empirical <em>p</em>-value for each effect.</p>
+<p>The advantage of bootstrapping is that we can calculate more robust confidence intervals around our estimates without needing to assume normality - instead, these are directly derived from our data (in a sense). To that effect, here is an output from a <em>bootstrapped</em> mediation (specifically, a bias-corrected bootstrapping method). A couple of extra notes here:</p>
+<ul>
+<li><code>bc = 1</code> means we want bias-corrected bootstrap intervals.</li>
+<li><code>boot = 1000</code> means that we want to bootstrap/resample 1000 times. While this is ok for now (and relatively fast), depending on the data you may want to up this to 10000 or higher.</li>
+<li><code>seed = 2024</code> sets a <em>seed</em> for this run. Because bootstrapping involves random sampling, every run will give slightly different results (which isn’t good for replicability/transparency). Setting a seed locks R into generating the same values on every run.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>med_bootstrap <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> med_data,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"happiness"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"grade"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">m =</span> <span class="st">"self_esteem"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">4</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">bc =</span> <span class="dv">1</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">boot =</span> <span class="dv">1000</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">2024</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(med_bootstrap)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+<p>Note that what changes here is the SE and confidence interval around each effect’s estimate. We can see that the 95% confidence interval [.224, .538] is different to what we observed in the Sobel test version of this analysis. These are likely to be more robust, and thus we generally will want to prefer bootstrapping when running mediations.</p>
+</section>
+</section>
+<section id="moderation-introduction" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="moderation-introduction"><span class="header-section-number">12.4</span> Moderation: Introduction</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>We start the second half of this module with an overview of what moderation is, and how it can be used. On the next page we will go through a worked example.</p>
+</div>
+<section id="refresher-on-interactions" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="refresher-on-interactions"><span class="header-section-number">12.4.1</span> Refresher on interactions</h3>
+<p>If you have completed the module on factorial ANOVAs, you’ll be familiar with the concept of an interaction:</p>
+<blockquote class="blockquote">
+<p>where the effect of one IV depends on the effect of another IV.</p>
+</blockquote>
+<p>At the time we dealt with interactions between categorical predictors, i.e.&nbsp;variables with discrete, defined and mutually exclusive groupings in the data - e.g.&nbsp;sex (male, female) vs treatment (drug, placebo). We essentially estimate mean scores for each combination of categories in our data, and compare the variouos combinations on our continuous outcome measure, leading to graphs like these:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/interaction_cat.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>However, one thing we haven’t looked at in great detail are interaction effects between <em>continuous</em> predictors.</p>
+</section>
+<section id="moderation" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="moderation"><span class="header-section-number">12.4.2</span> Moderation</h3>
+<p><strong>Moderation</strong> occurs when one variable influences the relationship between a predictor (X) and an outcome (Y). In contrast to a mediator, which we denote as M, we typically denote a moderator using W. Put simply, the existence of a moderator implies that the effect of X on Y depends on the value of W.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/moderation_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="420"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That might sound familiar… and for good reason! If you thought that just sounds like an interaction effect, you’d be absolutely right. At a statistical/mathematical level, a moderation is simply an interaction between two continuous predictors, and thus you can think of moderation and interaction as the same thing. That means that we can define a moderation using a regression formula as follows:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x + \beta_2w + \beta_3(xw) + \epsilon_i
+\]</span></p>
+<p>Where <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_2\)</span> and are regression coefficients (slopes) for X and W respectively, and <span class="math inline">\(\beta_3\)</span> is the interaction effect.</p>
+<p>However, you may have already clocked that this may not be as easy as it may be for a factorial ANOVA, where we deal with categorical predictors. After all, at least in the categorical instance we could group observations based on the combinations of the two predictors. For example, in a factorial ANOVA with sex as one of the variables, we could plot/test an effect between a predictor and an outcome for men and women separately. But how do we do this for continuous variables, where there are no ‘clear’ cutpoints? To unpack a moderation, there are two techniques we can apply.</p>
+</section>
+<section id="simple-slopes" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="simple-slopes"><span class="header-section-number">12.4.3</span> Simple slopes</h3>
+<p>The first approach is the <strong>simple slopes</strong> approach, which is similar in principle to simple effects tests after factorial ANOVAs. The basic idea of a simple slopes test is to calculate the predicted values between X and Y, for multiple levels of the moderator W. The standard approach is to take the mean value of the moderator W, as well as 1 SD above and below the mean, and calculate the regression slopes for each level of the moderator. We can then plot this as follows:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/interaction_plot.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From this graph, we can infer the nature of the interaction. In this example, for participants high on the moderator (red line), the relationship between X and Y is stronger; consequently, for participants low on the moderator (blue line), participants show a weaker relationship.</p>
+<p>Of course, we can also choose more points, e.g.&nbsp;if we also wanted to look at +/- 2SD, or at percentile-based cutpoints we could do so.</p>
+</section>
+<section id="the-johnson-neyman-technique" class="level3" data-number="12.4.4">
+<h3 data-number="12.4.4" class="anchored" data-anchor-id="the-johnson-neyman-technique"><span class="header-section-number">12.4.4</span> The Johnson-Neyman technique</h3>
+<p>A critique of the simple slopes, or “pick-a-point” approach is that the selected points are relatively arbitrary. While +/- 1SD make sense as cutpoints, we tend to choose those in the absence of anything especially meaningful or precise. A second technique for probing a continuous interaction/moderation is called the <strong>Johnson-Neyman</strong> (JN) technique. The basic idea of the Johnson-Neyman technique is that it identifies the point at which the <strong>moderator</strong> no longer significantly interacts with the predictor.</p>
+<p>The exact maths behind this is complex, but in short it aims to identify the values of W that are equal to or below a critical <em>t</em> value for a significant interaction effect.</p>
+<p>We visualise the results of the Johnson-Neyman technique with a plot, which plots values of the moderator (W) on the x-axis against the <em>slope</em> of the predictor on the y-axis. Here’s an example (from the help docs for the interactions package in R:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/j-n-plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="975"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The red shaded region indicates where the moderation is non-significant. So, in this instance, values of the moderator between ~ 3.8 and 5.9 (as an eyeball guess) do not significantly moderate the relationship between the predictor and outcome. Values above or below this, however, do indicate significant moderation. Using the PROCESS macro in SPSS/R, it’s possible to get the exact values for where this range starts and ends.</p>
+</section>
+</section>
+<section id="moderation-example" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="moderation-example"><span class="header-section-number">12.5</span> Moderation: Example</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>To round this module off, here is a worked example of a moderation.</p>
+</div>
+<section id="example-scenario" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="example-scenario"><span class="header-section-number">12.5.1</span> Example scenario</h3>
+<p>We will use the dataset from Powell et al.&nbsp;(2022) in the Week 10 seminar, which looks at harmonious and obsessive passion in the context of heavy metal music listeners. We’ll test a specific question for this example: Do positive experiences predict harmonious passion, and does satisfaction with life moderate this relationship?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>passion_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week_10"</span>, <span class="st">"W10_Powell_2022.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="setting-up-in-r" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="setting-up-in-r"><span class="header-section-number">12.5.2</span> Setting up in R</h3>
+<p>To set up a moderation using PROCESS, we turn to the <code>process()</code> function once again. This time, we want to set the following options:</p>
+<ul>
+<li><code>w</code> sets our moderator.</li>
+<li><code>model = 1</code> indicates that we want a simple moderation.</li>
+<li><code>plot = 1</code> gives us values for plotting the moderation.</li>
+<li><code>jn = 1</code> calculates the Johnson-Neyman values for a significant moderation. These are also used for plotting.</li>
+<li><code>save = 2</code> is used to save the output to a variable.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>passion_mod <span class="ot">&lt;-</span> <span class="fu">process</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> passion_data,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"HP_TOT"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"SPANE_pos"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">w =</span> <span class="st">"SWLS_TOT"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="dv">1</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> <span class="dv">1</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">jn =</span> <span class="dv">1</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">save =</span> <span class="dv">2</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="output" class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="output"><span class="header-section-number">12.5.3</span> Output</h3>
+<p>Let’s now take a look at our output. The first output is our overall model fit, which is identical to what we get for any other multiple regression. Our model in this instance is significant, and explains 19.6% of the variance in harmonious passion.</p>
+<p>The second output gives us our standard regression table. This tells us whether the moderation is significant, and we can interpret this as we would for any other regression we’ve seen. So, here we can see that positive experiences are a significant predictor of harmonious passion (B = 0.796, t = 6.290, p &lt; .001), but satisfaction with life is not (p = .279). However, the interaction - or moderation - between the two is significant (B = 0.036, t = 2.576, p = .011).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+**************** PROCESS Procedure for R Version 5.0 ****************** 
+ 
+           Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+   Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+ 
+*********************************************************************** 
+                  
+  Model: 1        
+      Y: HP_TOT   
+      X: SPANE_pos
+      W: SWLS_TOT 
+
+Sample size: 177
+
+
+*********************************************************************** 
+Outcome Variable: HP_TOT
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+     0.4425    0.1958   32.2539   14.0427    3.0000  173.0000    0.0000
+
+Model: 
+              coeff        se         t         p      LLCI      ULCI
+constant    26.4430    5.7267    4.6175    0.0000   15.1398   37.7462
+SPANE_pos    0.0960    0.2529    0.3796    0.7047   -0.4031    0.5951
+SWLS_TOT    -0.8896    0.3329   -2.6723    0.0083   -1.5466   -0.2325
+int_1        0.0358    0.0139    2.5757    0.0108    0.0084    0.0632
+
+Product terms key:
+int_1  :  SPANE_pos  x  SWLS_TOT      
+
+Test(s) of highest order unconditional interaction(s):
+      R2-chng         F       df1       df2         p
+X*W    0.0308    6.6341    1.0000  173.0000    0.0108
+----------
+Focal predictor: SPANE_pos (X)
+      Moderator: SWLS_TOT (W)
+
+Conditional effects of the focal predictor at values of the moderator(s):
+   SWLS_TOT    effect        se         t         p      LLCI      ULCI
+    12.0000    0.5256    0.1305    4.0288    0.0001    0.2681    0.7831
+    20.0000    0.8120    0.1290    6.2931    0.0000    0.5573    1.0666
+    28.0000    1.0984    0.2025    5.4242    0.0000    0.6987    1.4980
+
+Moderator value(s) defining Johnson-Neyman significance region(s):
+      Value   % below   % above
+     6.8962    4.5198   95.4802
+
+Conditional effect of focal predictor at values of the moderator:
+   SWLS_TOT    effect        se         t         p      LLCI      ULCI
+     5.0000    0.2750    0.1940    1.4176    0.1581   -0.1079    0.6579
+     6.5000    0.3287    0.1778    1.8485    0.0662   -0.0223    0.6796
+     6.8962    0.3429    0.1737    1.9738    0.0500    0.0000    0.6857
+     8.0000    0.3824    0.1627    2.3500    0.0199    0.0612    0.7035
+     9.5000    0.4361    0.1490    2.9264    0.0039    0.1420    0.7302
+    11.0000    0.4898    0.1371    3.5717    0.0005    0.2191    0.7604
+    12.5000    0.5435    0.1276    4.2606    0.0000    0.2917    0.7952
+    14.0000    0.5972    0.1209    4.9410    0.0000    0.3586    0.8357
+    15.5000    0.6509    0.1175    5.5379    0.0000    0.4189    0.8829
+    17.0000    0.7046    0.1179    5.9785    0.0000    0.4720    0.9372
+    18.5000    0.7583    0.1218    6.2259    0.0000    0.5179    0.9987
+    20.0000    0.8120    0.1290    6.2931    0.0000    0.5573    1.0666
+    21.5000    0.8657    0.1390    6.2263    0.0000    0.5912    1.1401
+    23.0000    0.9194    0.1513    6.0776    0.0000    0.6208    1.2179
+    24.5000    0.9731    0.1652    5.8887    0.0000    0.6469    1.2992
+    26.0000    1.0268    0.1805    5.6871    0.0000    0.6704    1.3831
+    27.5000    1.0805    0.1969    5.4883    0.0000    0.6919    1.4690
+    29.0000    1.1342    0.2140    5.3004    0.0000    0.7118    1.5565
+    30.5000    1.1879    0.2317    5.1267    0.0000    0.7305    1.6452
+    32.0000    1.2416    0.2499    4.9681    0.0000    0.7483    1.7348
+    33.5000    1.2953    0.2685    4.8241    0.0000    0.7653    1.8252
+    35.0000    1.3489    0.2874    4.6937    0.0000    0.7817    1.9162</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Data for visualizing the conditional effect of the focal predictor:
+  SPANE_pos  SWLS_TOT    HP_TOT
+    19.0000   12.0000   25.7538
+    23.0000   12.0000   27.8561
+    27.0000   12.0000   29.9584
+    19.0000   20.0000   24.0785
+    23.0000   20.0000   27.3264
+    27.0000   20.0000   30.5742
+    19.0000   28.0000   22.4032
+    23.0000   28.0000   26.7966
+    27.0000   28.0000   31.1900</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+******************** ANALYSIS NOTES AND ERRORS ************************ 
+
+Level of confidence for all confidence intervals in output: 95
+
+W values in conditional tables are the 16th, 50th, and 84th percentiles.</code></pre>
+</div>
+</div>
+<p>This indicates that we should investigate further, first with our simple slope/interaction plot as below. Unfortunately, as you can tell, the <code>plot</code> argument in <code>process()</code> doesn’t actually generate any plots. Rather, it gives a series of values for the predictor, moderator and outcome to plot. The same applies for the output from the Johnson-Neyman technique - while the output does tell you where the moderation is/is not significant, it does not draw a plot. This is probably because PROCESS was designed for SPSS users first and foremost in mind, and the SAS and R versions were designed for parity for SPSS first and foremost (rather than designed to take advantage of their native capabilities).</p>
+<p>There are ways to use these values for plotting, but truthfully - at least for this subject - they are far more effort than they are worth. Rather, there is a great package called <code>interactions</code> that will draw these plots for us.</p>
+<p>To start, we use <code>lm()</code> to build a regular regression model with an interaction between our predictor and moderator:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(interactions)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>passion_mod_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(HP_TOT <span class="sc">~</span> SPANE_pos <span class="sc">*</span> SWLS_TOT, <span class="at">data =</span> passion_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The <code>interact_plot()</code> function will then draw us a standard plot with simple slopes, based on the model above. For this function to work, at a minimum you must give it a) the name of the <code>lm()</code> model, b) the name of the predictor to <code>pred</code> and c) the name of the moderator to <code>modx</code>. The <code>colors</code> argument has also been specified to change the colours for the lines (by default they are different shades of blue).</p>
+<p>Based on the below graph, we can see that in all instances, the relationship between positive experiences and harmonious passion is positive. However, for people who are high on satisfaction with like (Mean + 1SD), the relationship is stronger - indexed by a greater slope. This relationship is weaker for people who are low on satisfaction with life (Mean - 1SD).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interact_plot</span>(passion_mod_lm, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">pred =</span> <span class="st">"SPANE_pos"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">modx =</span> <span class="st">"SWLS_TOT"</span>, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">colors =</span> <span class="st">"Set1"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-medmod_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lastly, we can examine the Johnson-Neyman plots to see where this relationship is non-significant. The same basic set of arguments - model, predictor, and moderator - can also be used as is for the <code>johnson_neyman()</code> function, which will draw a Johnson-Neyman plot. Helpfully, the function will also give a brief summary of the regions of significance/non-significance. Based on the plot and the text output, the moderation is non-significant when the moderator (satifaction with life) is below 6.9.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">johnson_neyman</span>(passion_mod_lm, <span class="at">pred =</span> <span class="st">"SPANE_pos"</span>, <span class="at">modx =</span> <span class="st">"SWLS_TOT"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>JOHNSON-NEYMAN INTERVAL
+
+When SWLS_TOT is OUTSIDE the interval [-65.76, 6.90], the slope of
+SPANE_pos is p &lt; .05.
+
+Note: The range of observed values of SWLS_TOT is [5.00, 35.00]</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-medmod_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>I’m no dietitian or food psychology expert so I make no claims as to the veracity or accuracy of this statement.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./11-efa.html" class="pagination-link" aria-label="Exploratory factor analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./13-nonpara.html" class="pagination-link" aria-label="Non-parametric tests">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Non-parametric tests</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
