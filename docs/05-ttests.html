@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -619,7 +619,20 @@ W = 0.98652, p-value = 0.2395</code></pre>
 </div>
 <p>To run a one-sample <em>t</em>-test, the basic function is the <code>t.test()</code> function. For a one-sample <em>t</em>-test, you must provide the argument <code>x</code> (the data) and <code>mu</code>, which is the hypothesised population mean.</p>
 <p>Below is our output from the one-sample <em>t</em>-test. Our result tells us that there is a significant difference between the mean of the sample (<em>M</em> = 67.09) and the hypothesised mean of 72 (<em>p</em> &lt; .001). The mean difference here is calculated as Sample - Hypothesis; therefore, a difference of -4.91 means that the sample mean is 4.91 units <em>lower</em> than the population mean (which hopefully would have been evident from the descriptives anyway). This means that for some reason, last year’s cohort are performing worse than the expected average.</p>
-<p>R Note: Jamovi will give you a 95% confidence interval around the mean difference as 95% CI = [-5.85, -3.97]. R however will give you a CI around the actual <em>mean</em>. In this case, the 95% confidence interval for the group mean is [66.15, 68.03]. Really though, this is giving us the same information; 72 - 5.85 = 66.15, and 72 - 3.97 = 68.03. So the only difference is in what value is presented for the 95% CI, but the actual inference itself doesn’t change.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>R-Note: Confidence intervals for t-tests
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a one-sample <em>t</em>-test, Jamovi will give you a 95% confidence interval around the mean difference - in this case, Jamovi will report the 95% CI as = [-5.85, -3.97]. R however will give you a CI around the actual <em>sample mean</em>. In this case, the 95% confidence interval for the group mean is [66.15, 68.03].</p>
+<p>Really though, this is giving us the same information; 72 - 66.15 = 5.85, and 72 - 68.03 = 3.97. So the only difference between R and Jamovi here is what the 95% CI is placed around, but the actual inference itself doesn’t change.</p>
+</div>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(w8_grades<span class="sc">$</span>grade, <span class="at">mu =</span> <span class="dv">72</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -701,7 +714,7 @@ mean of x
 <pre><code># A tibble: 1 × 8
   .y.   group1 group2     effsize     n conf.low conf.high magnitude
 * &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;ord&gt;    
-1 grade 1      null model  -0.914   128    -1.08     -0.72 large    </code></pre>
+1 grade 1      null model  -0.914   128     -1.1     -0.72 large    </code></pre>
 </div>
 </div>
 <p>Here is an example write-up of the above:</p>
@@ -745,7 +758,7 @@ dbl (2): Participant, Years_training
 6           6              6 Professional</code></pre>
 </div>
 </div>
-<p>Let us start with a nice plot:</p>
+<p>Let us start with a nice plot. With some clever piping of functions, we can go straight from calculating summary descriptives to plotting using <code>ggplot</code> in one smooth chain of events, using the code below:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>w8_training <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
@@ -863,7 +876,7 @@ sample estimates:
 <pre><code># A tibble: 1 × 9
   .y.            group1  group2 effsize    n1    n2 conf.low conf.high magnitude
 * &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;ord&gt;    
-1 Years_training Amateur Profe…   -1.51    31    29    -2.08     -0.82 large    </code></pre>
+1 Years_training Amateur Profe…   -1.51    31    29    -2.07     -0.85 large    </code></pre>
 </div>
 </div>
 <p>From this, we can see that the two groups do significantly differ on years of training (<em>t</em>(57.99) = 5.86, <em>p</em> &lt; .001). We can use the mean difference value to see, well… the difference in means between the two groups. In this case, professionals have 2.92 more years of training (on average; 95% CI = [1.92, 3.92]) compared to amateurs. So, we could write this up as something like:</p>
@@ -936,7 +949,17 @@ dbl (2): before, after
 6     14    13</code></pre>
 </div>
 </div>
-<p>R-note: Data for paired-samples <em>t</em>-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>R Note: Setting up your data for paired samples
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Data for paired-samples <em>t</em>-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot to long format</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
@@ -944,10 +967,12 @@ dbl (2): before, after
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"time"</span>,</span>
 <span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"symptom_score"</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To check that this has worked properly, we can use <code>head()</code> to do a quick check of the new data frame:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display start of new data</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w8_symptoms_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   time   symptom_score
@@ -960,13 +985,45 @@ dbl (2): before, after
 6 after             18</code></pre>
 </div>
 </div>
+</div>
+</div>
+<p>If you run the code chunk in the box above, you will get a long version of our dataset. We can use this to generate a nice-looking plot quite easily, like before:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_score =</span> <span class="fu">mean</span>(symptom_score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_score =</span> <span class="fu">sd</span>(symptom_score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> sd_score<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"before"</span>, <span class="st">"after"</span>), </span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Before"</span>, <span class="st">"After"</span>))</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_score)) <span class="sc">+</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> mean_score <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se,</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> mean_score <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_pubr</span>() <span class="sc">+</span></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Timepoint"</span>, <span class="at">y =</span> <span class="st">"Mean symptom score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-ttests_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="assumption-checks-2" class="level3" data-number="5.5.3">
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="assumption-checks-2"><span class="header-section-number">5.5.3</span> Assumption checks</h3>
 <p>Similar to other tests, we need to check normality. Here, the assumption is whether the differences between time 1 and 2 are normally distributed (not necessarily time 1 and 2 themselves). Hence, when we run a Shapiro-Wilks test we’re running this on the values we get from Time 1 - Time 2.</p>
 <p>In our data, this assumption seems to be intact (<em>W</em> .985, <em>p</em> = .918).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms<span class="sc">$</span>after)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(w8_symptoms<span class="sc">$</span>before <span class="sc">-</span> w8_symptoms<span class="sc">$</span>after)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -981,7 +1038,7 @@ W = 0.98465, p-value = 0.9177</code></pre>
 <p>In R, you can do pairwise <em>t</em>-tests using the default <code>t.test()</code> (or the <code>rstatix</code> equivalent <code>t_test()</code>) function. In both methods, you must set <code>paired = TRUE</code> in order to run a paired <em>t</em>-test. However, there is one key difference: the base <code>t.test()</code> requires data in <em>wide</em> format, whereas <code>rstatix::t_test()</code> requires data in <em>long</em> format. Here are both methods.</p>
 <p>For the base <code>t.test()</code> function, your data needs to be in wide format. From there it is as simple as giving the two columns as the arguments to the function, and setting <code>paired = TRUE</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -998,7 +1055,7 @@ mean difference
 </div>
 <p>Alternatively, you can use the below notation. <code>Pair(before, after)</code> indicates that we want R to treat the <code>before</code> and <code>after</code> variables as paired data. The <code>~ 1</code>, as we saw before, indicates that this is a one-sample <em>t</em>-test. This is because a paired-samples <em>t</em>-test is functionally equivalent to a one-sample <em>t</em>-test on the differences between conditions (see the expandable dropdown below for more details).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -1016,8 +1073,8 @@ mean difference
 <p>Note that before R 4.4.0 (2024), the notation for paired-samples <em>t</em>-tests were different.</p>
 <p>If you prefer <code>rstatix</code>, on the other hand, your data needs to be in long format. After that, you can pass the test as a formula much like how you would do so in the independent samples case:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 13
   estimate .y.          group1 group2    n1    n2 statistic     p    df conf.low
@@ -1033,9 +1090,9 @@ mean difference
 </ul>
 <p>Note that like the other functions, you can either provide the arguments in <code>Pairs() ~ 1</code> or by subsetting the columns (<code>x = x$1, y = x$2</code>).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired sample - works with wide data</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(Pair(before, after) ~ 1, data = w8_symptoms)</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms, <span class="at">method =</span> <span class="st">"z"</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired sample - works with wide data</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(Pair(before, after) ~ 1, data = w8_symptoms)</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="fu">Pair</span>(before, after) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> w8_symptoms, <span class="at">method =</span> <span class="st">"z"</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>d (z) |         95% CI
 ----------------------
@@ -1043,8 +1100,8 @@ mean difference
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x = w8_symptoms$before, y = w8_symptoms$after, paired = TRUE)</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">method =</span> <span class="st">"z"</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x = w8_symptoms$before, y = w8_symptoms$after, paired = TRUE)</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">rm_d</span>(<span class="at">x =</span> w8_symptoms<span class="sc">$</span>before, <span class="at">y =</span> w8_symptoms<span class="sc">$</span>after, <span class="at">method =</span> <span class="st">"z"</span>, <span class="at">adjust =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>d (z) |         95% CI
 ----------------------
@@ -1053,13 +1110,13 @@ mean difference
 </div>
 <p>If using <code>cohen_d</code>() from <code>rstatix</code>, <code>paired = TRUE</code> must be selected:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">"norm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms_long <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cohens_d</span>(symptom_score <span class="sc">~</span> time, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">ci =</span> <span class="cn">TRUE</span>, <span class="at">ci.type =</span> <span class="st">"norm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 9
   .y.           group1 group2 effsize    n1    n2 conf.low conf.high magnitude
 * &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;ord&gt;    
-1 symptom_score after  before   0.522    32    32     0.13      0.89 moderate </code></pre>
+1 symptom_score after  before   0.522    32    32      0.1      0.89 moderate </code></pre>
 </div>
 </div>
 <p>The Canvas version asks you to interpret each of these effect sizes, but… <code>rstatix</code> will automatically label this for you!</p>
@@ -1067,19 +1124,27 @@ mean difference
 <div style="background-color: #cce3c8;  padding: 1.75rem;">
 <p>A paired samples <em>t</em>-test found that symptoms significantly decreased after the intervention (<em>t</em>(31) = 2.95, <em>p</em> = .006), with an average decrease of 2.75 points (95% CI [0.85, 4.65]). This decrease was medium in size (<em>d</em> = 0.52).</p>
 </div>
-<details>
-<summary>
-Paired samples using the one-sample <em>t</em>-test
-</summary>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Paired samples using the one-sample <em>t</em>-test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Mathematically, all a paired-samples <em>t</em>-test is doing is running a one-sample <em>t</em>-test on the differences between the two timepoints/groups, Below is a demonstration of how paired-samples tests can be run using the one-sample <em>t</em>-test.</p>
 <p>Let’s start by returning to the wide version of our dataset. We first need to calculate the difference between the <code>before</code> and <code>after</code> columns, which we can easily do with <code>mutate()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">diff =</span> before <span class="sc">-</span> after</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>w8_symptoms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>w8_symptoms <span class="ot">&lt;-</span> w8_symptoms <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">diff =</span> before <span class="sc">-</span> after</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>w8_symptoms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 32 × 3
    before after  diff
@@ -1097,9 +1162,9 @@ Paired samples using the one-sample <em>t</em>-test
 # ℹ 22 more rows</code></pre>
 </div>
 </div>
-<p>We can run a one-sample <em>t</em>-test on the differences now, with the null hypothesis value being 0 - i.e.&nbsp;we are testing the null hypothesis that the mean differences are not significantly different from 0.</p>
+<p>We can run a one-sample <em>t</em>-test on the differences now, with the null hypothesis value being 0 - i.e.&nbsp;we are testing the null hypothesis that the differences between the two timepoints are not significantly different from 0.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(w8_symptoms<span class="sc">$</span>diff <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(w8_symptoms<span class="sc">$</span>diff <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1115,7 +1180,9 @@ mean of x
 </div>
 </div>
 <p>As we can see, the results are equivalent to the output of the paired-samples <em>t</em>-test above. Note too that our Shapiro-Wilks test will also give equivalent results if it is run on the differences directly.</p>
-</details>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -1535,6 +1602,26 @@ mean of x
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2026, Daniel Yeom</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/danyeom">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -381,6 +381,9 @@ window.Quarto = {
 </header>
 
 
+<p>So far, we have (almost) exclusively dealt in what we consider <em>parametric</em> tests. Our classic body of tests like the <em>t</em>-test, ANOVA and regression model, and their extensions, are all forms of parametric statistical models. However, we have also seen that these tests are all accompanied with (and to some extent, defined or constrained by) certain assumptions about the data. If these assumptions are violated to a severe enough extent, we may need to adjust our modelling approach to match.</p>
+<p>One option is to turn to statistical tests that are similar to the ones we know, but do <em>not</em> make the all of the same assumptions. These broadly form the suite of <strong>non-parametric</strong> tests, which we will focus on here. In this section we will focus on non-parametric alternatives to correlations, <em>t</em>-tests and ANOVAs.</p>
+<p>Technically speaking, we have already come across one family of non-parametric tests: chi-squares! We will expand on more why as we go through. Also, while there is a technique called non-parametric regression it is <em>very</em> different to normal regression and so will not be discussed here.</p>
 <section id="parametric-vs-non-parametric-tests" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="parametric-vs-non-parametric-tests"><span class="header-section-number">13.1</span> Parametric vs non-parametric tests</h2>
 <section id="introduction" class="level3" data-number="13.1.1">
@@ -406,7 +409,40 @@ window.Quarto = {
 </ul>
 <p>So when should they be used, and what are their pros and cons? In general, non-parametric tests should be considered when a) <strong>assumptions for parametric tests are not met</strong> and b) <strong>you are working with small samples</strong>. As noted below, with large samples a lot of the parametric assumptions in tests are fairly robust (unless deviations are particularly severe).</p>
 <p>Below are the non-parametric equivalents to the major tests that we cover, with their associated datasets.</p>
-<p>Note that chi-square tests are already non-parametric, while non-parametric regression is just a headache.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parametric test</th>
+<th style="text-align: left;">Non-parametric equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pearson’s r</td>
+<td style="text-align: left;">Spearman’s rho</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Independent samples t-test</td>
+<td style="text-align: left;">Mann-Whitney U test</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Paired samples t-test</td>
+<td style="text-align: left;">Wilcoxon signed-rank test</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">One-way ANOVA</td>
+<td style="text-align: left;">Kruskal-Wallis ANOVA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">One-way repeated measures ANOVA</td>
+<td style="text-align: left;">Friedman ANOVA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 </section>
 <section id="spearmans-rho" class="level2" data-number="13.2">
@@ -419,7 +455,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="13-nonpara_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="13-nonpara_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -458,7 +494,7 @@ dbl (2): accuracy, age
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="13-nonpara_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="13-nonpara_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -587,7 +623,7 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 -0.29             | [-0.39, -0.19]</code></pre>
 </div>
 </div>
-<p>Something to note, though, is that unlike the standard <em>t</em>-test, how exactly this result should be interpreted is a little more vague. With a regular <em>t</em>-test, we test differences between two group means, and thus we can directly make a comparison between means when interpreting a test. In this instance, however, we are testing differences in ranks; this doesn’t have a clean interpretation beyond there just being a difference (of sorts) between the groups.</p>
+<p>Something to note, though, is that unlike the standard <em>t</em>-test, how exactly this result should be interpreted is a little more vague. With a regular <em>t</em>-test, we test differences between two group means, and thus we can directly make a comparison between means when interpreting a test. In this instance, however, we are testing differences in <em>ranks</em>; this doesn’t have a clean interpretation beyond there just being a difference (of sorts) between the groups.</p>
 </section>
 </section>
 <section id="wilcoxon-signed-rank-test" class="level2" data-number="13.4">
@@ -739,7 +775,7 @@ This warning is displayed once per session.</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="13-nonpara_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="13-nonpara_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1340,6 +1376,26 @@ Friedman chi-squared = 133.51, df = 3, p-value &lt; 2.2e-16</code></pre>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2026, Daniel Yeom</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/danyeom">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

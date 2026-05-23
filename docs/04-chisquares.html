@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -661,13 +661,26 @@ window.Quarto = {
 <section id="using-r" class="level3" data-number="4.3.4">
 <h3 data-number="4.3.4" class="anchored" data-anchor-id="using-r"><span class="header-section-number">4.3.4</span> Using R</h3>
 <p>The relevant function for doing a chi-square test in R is the <code>chisq.test()</code> function.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>By default, the <code>chisq.test()</code> function in R will assume that your categories have an equal chance of happening. However, in this instance we know that the colours are not evenly distributed. To ensure the proper probabilities are set beforehand, this needs to be specified by giving the <code>p</code> argument within <code>chisq.test()</code>. Note that the order of the expected probabilities needs to match the order they appear in the dataset (R will generally order these alphabetically unless told otherwise):<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>By default, the <code>chisq.test()</code> function in R will assume that your categories have an equal chance of happening. However, in this instance we know that the colours are not evenly distributed. To ensure the proper probabilities are set beforehand, this needs to be specified by giving the <code>p</code> argument within <code>chisq.test()</code>. Note that the order of the expected probabilities needs to match the order they appear in the dataset (R will generally order these alphabetically unless told otherwise):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This pulls the relevant variable directly</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>w7_mnm_table <span class="ot">&lt;-</span> <span class="fu">table</span>(mnm_data<span class="sc">$</span>colour)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>w7_mnm_chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(w7_mnm_table, </span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.24</span>, <span class="fl">0.13</span>, <span class="fl">0.16</span>, <span class="fl">0.20</span>, <span class="fl">0.13</span>, <span class="fl">0.14</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>R Note: Manually ordering variables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you need to order your variable a certain way, you should use the <code>factor()</code> function. You will need to specify a <code>levels</code> argument, which describes the ordering of the categories/groups, and optionally a <code>labels</code> argument which gives each one a label. Both arguments take vectors, i.e.&nbsp;<code>labels = c("1", "2", "3")</code>.</p>
+</div>
 </div>
 </section>
 <section id="output" class="level3" data-number="4.3.5">
@@ -699,7 +712,7 @@ X-squared = 17.353, df = 5, p-value = 0.003877</code></pre>
 </div>
 <p>Here is an example write-up of these results:</p>
 <div style="background-color: #cce3c8;  padding: 1.75rem;">
-<p>A chi-square test of goodness of fit was conducted to see whether the number of M&amp;Ms aligned with the expected proportions published in 2008. There was a significant difference between the observed and expected proportions (<span class="math inline">\(chi^2\)</span>(5, <em>N</em> = 712) = 17.35, <em>p</em> = .004). There were more green M&amp;Ms and less blue M&amp;Ms than expected.</p>
+<p>A chi-square test of goodness of fit was conducted to see whether the number of M&amp;Ms aligned with the expected proportions published in 2008. There was a significant difference between the observed and expected proportions (<span class="math inline">\(\chi^2\)</span>(5, <em>N</em> = 712) = 17.35, <em>p</em> = .004). There were more green M&amp;Ms and less blue M&amp;Ms than expected.</p>
 </div>
 </section>
 </section>
@@ -1052,7 +1065,6 @@ McNemar's chi-squared = 7.4103, df = 1, p-value = 0.006485</code></pre>
 <hr>
 <ol>
 <li id="fn1"><p>There is an analogous function called <code>chisq_test()</code> in the <code>rstatix</code> package, but the base R <code>chisq.test()</code> is easy enough to learn.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>If you need to order your variable a certain way, you should use the <code>factor()</code> function. You will need to specify a <code>levels</code> argument, which describes the ordering of the categories/groups, and optionally a <code>labels</code> argument which gives each one a label. Both arguments take vectors, i.e.&nbsp;<code>labels = c("1", "2", "3")</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1470,6 +1482,26 @@ McNemar's chi-squared = 7.4103, df = 1, p-value = 0.006485</code></pre>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2026, Daniel Yeom</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/danyeom">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

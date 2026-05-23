@@ -1,5 +1,11 @@
 # Non-parametric tests {#nonpara}
 
+So far, we have (almost) exclusively dealt in what we consider *parametric* tests.  Our classic body of tests like the *t*-test, ANOVA and regression model, and their extensions, are all forms of parametric statistical models. However, we have also seen that these tests are all accompanied with (and to some extent, defined or constrained by) certain assumptions about the data. If these assumptions are violated to a severe enough extent, we may need to adjust our modelling approach to match.
+
+One option is to turn to statistical tests that are similar to the ones we know, but do *not* make the all of the same assumptions. These broadly form the suite of **non-parametric** tests, which we will focus on here. In this section we will focus on non-parametric alternatives to correlations, *t*-tests and ANOVAs. 
+
+Technically speaking, we have already come across one family of non-parametric tests: chi-squares! We will expand on more why as we go through. Also, while there is a technique called non-parametric regression it is *very* different to normal regression and so will not be discussed here.
+
 ```{r 13_packages, warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
 library(ggpubr)
@@ -34,7 +40,16 @@ So when should they be used, and what are their pros and cons? In general, non-p
 
 Below are the non-parametric equivalents to the major tests that we cover, with their associated datasets.
 
-Note that chi-square tests are already non-parametric, while non-parametric regression is just a headache.
+```{r echo = FALSE}
+data.frame(
+  x1 = c("Pearson's r", "Independent samples t-test", "Paired samples t-test", "One-way ANOVA", "One-way repeated measures ANOVA"),
+  x2 = c("Spearman's rho", "Mann-Whitney U test", "Wilcoxon signed-rank test", "Kruskal-Wallis ANOVA", "Friedman ANOVA")
+) %>%
+  knitr::kable(col.names = c("Parametric test", "Non-parametric equivalent"))
+```
+
+
+
 
 ## Spearman's rho
 
@@ -193,7 +208,7 @@ rank_biserial(wage ~ union, data = wages_1980)
 ```
 
 
-Something to note, though, is that unlike the standard *t*-test, how exactly this result should be interpreted is a little more vague. With a regular *t*-test, we test differences between two group means, and thus we can directly make a comparison between means when interpreting a test. In this instance, however, we are testing differences in ranks; this doesn't have a clean interpretation beyond there just being a difference (of sorts) between the groups.
+Something to note, though, is that unlike the standard *t*-test, how exactly this result should be interpreted is a little more vague. With a regular *t*-test, we test differences between two group means, and thus we can directly make a comparison between means when interpreting a test. In this instance, however, we are testing differences in *ranks*; this doesn't have a clean interpretation beyond there just being a difference (of sorts) between the groups.
 
 
 ## Wilcoxon signed rank test
@@ -379,6 +394,7 @@ Like last time, let's examine our assumptions using a normal repeated-measures A
 autism %>%
   anova_test(dv = vsae, within = age2, wid = childid)
 ```
+
 ### Running a Friedman ANOVA
 
 Friedman ANOVAs are available in R with the `friedman.test()` function. This function requires long data, and by and large even uses the same formula notation that we are used to. The only difference is that because this is repeated measures data, we must tweak the formula slightly to account for this. The formula needs to take `outcome ~ predictor | id` notation, where `id` needs to point to a column in the dataset that simply indicates each participant's unique ID. Otherwise, the formula is much as you would expect:

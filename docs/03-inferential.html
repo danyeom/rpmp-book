@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -292,7 +292,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#the-definition-of-the-p-value" id="toc-the-definition-of-the-p-value" class="nav-link" data-scroll-target="#the-definition-of-the-p-value"><span class="header-section-number">3.2.1</span> The definition of the p-value</a></li>
   <li><a href="#a-brief-probability-primer-and-how-this-relates-to-p-values" id="toc-a-brief-probability-primer-and-how-this-relates-to-p-values" class="nav-link" data-scroll-target="#a-brief-probability-primer-and-how-this-relates-to-p-values"><span class="header-section-number">3.2.2</span> A brief probability primer, and how this relates to p-values</a></li>
-  <li><a href="#the-debate-around-p-values" id="toc-the-debate-around-p-values" class="nav-link" data-scroll-target="#the-debate-around-p-values"><span class="header-section-number">3.2.3</span> The debate around p-values</a></li>
   </ul></li>
   <li><a href="#types-of-error" id="toc-types-of-error" class="nav-link" data-scroll-target="#types-of-error"><span class="header-section-number">3.3</span> Types of error</a>
   <ul class="collapse">
@@ -304,14 +303,12 @@ window.Quarto = {
   <li><a href="#statistical-power-1" id="toc-statistical-power-1" class="nav-link" data-scroll-target="#statistical-power-1"><span class="header-section-number">3.4.1</span> Statistical power</a></li>
   <li><a href="#factors-that-affect-power" id="toc-factors-that-affect-power" class="nav-link" data-scroll-target="#factors-that-affect-power"><span class="header-section-number">3.4.2</span> Factors that affect power</a></li>
   <li><a href="#power-analyses" id="toc-power-analyses" class="nav-link" data-scroll-target="#power-analyses"><span class="header-section-number">3.4.3</span> Power analyses</a></li>
-  <li><a href="#post-hoc-power-analyses" id="toc-post-hoc-power-analyses" class="nav-link" data-scroll-target="#post-hoc-power-analyses"><span class="header-section-number">3.4.4</span> Post-hoc power analyses</a></li>
   </ul></li>
   <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals"><span class="header-section-number">3.5</span> Confidence intervals</a>
   <ul class="collapse">
   <li><a href="#a-reminder-from-the-previous-module" id="toc-a-reminder-from-the-previous-module" class="nav-link" data-scroll-target="#a-reminder-from-the-previous-module"><span class="header-section-number">3.5.1</span> A reminder from the previous module</a></li>
   <li><a href="#confidence-intervals-1" id="toc-confidence-intervals-1" class="nav-link" data-scroll-target="#confidence-intervals-1"><span class="header-section-number">3.5.2</span> Confidence intervals</a></li>
   <li><a href="#confidence" id="toc-confidence" class="nav-link" data-scroll-target="#confidence"><span class="header-section-number">3.5.3</span> Confidence</a></li>
-  <li><a href="#confidence-intervals-in-literature" id="toc-confidence-intervals-in-literature" class="nav-link" data-scroll-target="#confidence-intervals-in-literature"><span class="header-section-number">3.5.4</span> Confidence intervals in literature</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -460,11 +457,20 @@ window.Quarto = {
 </ol>
 <p>So in essence, if a p-value is p = .05 we’re saying that assuming the null is true, there is a 5% chance of observing this result or greater. Likewise, an extremely small p-value (e.g.&nbsp;p = .0000000001) means that assuming the null is true, the probability of getting the data we have is extremely small. The logic, therefore, is that there must be an alternative explanation.</p>
 <p>To clarify, the example above is just on a normal distribution - each statistical test we perform has its own (null) distribution, which we will talk about more in future modules. However, the rationale across tests is essentially the same.</p>
-</section>
-<section id="the-debate-around-p-values" class="level3" style="background-color: #f5f5f5;  padding: 1.75rem;" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="the-debate-around-p-values"><span class="header-section-number">3.2.3</span> The debate around p-values</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The debate around p-values
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Throughout history, p-values have been so misunderstood and misappropriated that some journals, such as Basic and Applied Social Psychology, actually either discourage or outright ban the reporting of p-values. This ties into a wider debate about the usefulness or meaningfulness of the hypothesis testing approach outlined on the previous page, with a number of academics and scientists arguing that it is time to do away with the system as a whole.</p>
 <p>The debate is something that goes beyond the scope of the subject, so we won’t be taking a strong stand on it either way. What we do think though is that it’s really important that you understand how hypothesis testing works and what p-values can or can’t tell you.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="types-of-error" class="level2" data-number="3.3">
@@ -549,10 +555,19 @@ window.Quarto = {
 <li>R (with the <code>pwr</code> package, among many others)</li>
 </ul>
 <p>We won’t get too into the maths here of how this is done (it heavily depends on your research design, e.g.&nbsp;how many groups you have, what test you plan on doing…). These programs will let you select the appropriate design you want to test, and choose the size of the effect you want and your alpha level. The power analysis will then give you a minimum sample size per group for you to achieve that level of statistical power.</p>
-</section>
-<section id="post-hoc-power-analyses" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="post-hoc-power-analyses"><span class="header-section-number">3.4.4</span> Post-hoc power analyses</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Post-hoc power analyses
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You might see authors in some papers where you present a power analysis after collecting your sample and doing your analyses. Supposedly, this is to show that your sample had enough power to detect an effect. However, this is conceptually flawed. The primary flaw is that post-hocs are essentially just restatements of your p-values and so do little to show the true power of a design/test.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="confidence-intervals" class="level2" data-number="3.5">
@@ -633,20 +648,29 @@ window.Quarto = {
 </div>
 <p>The choice of 95% is conventional, like alpha (our significance criterion); we can (but often don’t) change our level of confidence. This changes the relevant formula for calculating the interval, as in the examples below:</p>
 <p><span class="math display">\[
-90\% CI = M \pm (1.645 \times SE)
+90\% \ CI = M \pm (1.645 \times SE)
 \]</span></p>
 <p><span class="math display">\[
-99\% CI = M \pm (2.576 \times SE)
+99\% \ CI = M \pm (2.576 \times SE)
 \]</span></p>
 <p>Notice that the value we multiply the SE by has changed. If you have been especially observant so far, you may have figured out what these values are: they’re z-scores!</p>
-</section>
-<section id="confidence-intervals-in-literature" class="level3" style="background-color: #f5f5f5;  padding: 1.75rem;" data-number="3.5.4">
-<h3 data-number="3.5.4" class="anchored" data-anchor-id="confidence-intervals-in-literature"><span class="header-section-number">3.5.4</span> Confidence intervals in literature</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Confidence intervals in literature
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>On the page about <em>p</em>-values, I left a brief note around some of the current discourse around the usefulness (or uselessness) of <em>p</em>-values. Proponents of getting rid of <em>p</em>-values/moving away from them advocate strongly for two alternatives: a) effect sizes (self-explanatory; we will come to this) and b) confidence intervals, to show the range of long-run plausible values for the estimate.</p>
 <p>Again, we won’t be taking an especially strong stance either way. That being said, it is now fairly common practice to report 95% confidence intervals alongside the results of significance tests for transparency. Programs like Jamovi will usually calculate these intervals automatically for you.</p>
+</div>
+</div>
+
+
 </section>
-
-
 </section>
 
 </main> <!-- /main -->
@@ -1063,6 +1087,26 @@ window.Quarto = {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2026, Daniel Yeom</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/danyeom">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

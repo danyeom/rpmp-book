@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -959,7 +959,7 @@ flow_block3  5 4289.398</code></pre>
 <pre><code>[1] 0.05169864</code></pre>
 </div>
 </div>
-<p>If you prefer a tidyverse implementation, you can use the <code>augment()</code> function from the <code>broom</code> package (see <a href="appendix.html#broom-augment">the appendix</a> for more information on <code>broom</code>). This returns a whole range of values, including fitted values, residuals (both of which are useful for Q-Q plots) and Cook’s distances:</p>
+<p>If you prefer a tidyverse implementation, you can use the <code>augment()</code> function from the <code>broom</code> package (see <a href="#broom-augment">the appendix</a> for more information on <code>broom</code>). This returns a whole range of values, including fitted values, residuals (both of which are useful for Q-Q plots) and Cook’s distances:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>flow_extra <span class="ot">&lt;-</span> <span class="fu">augment</span>(flow_block3)</span>
@@ -1190,7 +1190,7 @@ F-statistic: 113.1 on 3 and 805 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>We can see that even without the outliers, the pattern of results is very similar to the original model we had above. Therefore, in this kind of setting we don’t really gain anything by removing the outliers, and we might choose to keep the original model. Every participant lost is power lost, and the more information we have, the better! However, if your results do change substantially after excluding outliers then you will need to examine the differences carefully.</p>
 <p>There are other methods that you could consider:</p>
 <ul>
-<li>Using a <em>non-parametric</em> test, which are not affected by outliers (see <a href="13-nonpara.html">the section on non-parametric tests</a>)</li>
+<li>Using a <em>non-parametric</em> test, which are not affected by outliers (see <a href="#nonpara">the section on non-parametric tests</a>)</li>
 <li>Transforming the data to ‘un-outlier’ the outliers - this can be tricky to interpret</li>
 </ul>
 <p>Regardless, it is a good idea to report both versions of the model - with and without outliers - for transparency, to show that you have actively considered these residuals.</p>
@@ -1820,6 +1820,26 @@ $method
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2026, Daniel Yeom</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/danyeom">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

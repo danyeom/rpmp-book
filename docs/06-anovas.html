@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -595,7 +595,8 @@ SS_b = \Sigma n(\bar x - \bar X)^2
 <li>Multiply it by n, the size of each group</li>
 <li>Add them all up.</li>
 </ul>
-<p>Let’s do that for our fictional data. Our group means are Group 1 = 2, Group 2 = 3.5 and Group 3 = 6.5. <span class="math inline">\(SS_b = 4(2-4)^2 + 4(3.5-4)^2 + 4(6.5-4)^2\)</span> <span class="math inline">\(SS_b = (4 \times 4) + (4 \times 0.25) + (4 \times 6.25)\)</span> <span class="math inline">\(SS_b = 42\)</span></p>
+<p>Let’s do that for our fictional data. Our group means are Group 1 = 2, Group 2 = 3.5 and Group 3 = 6.5. <span class="math display">\[SS_b = 4(2-4)^2 + 4(3.5-4)^2 + 4(6.5-4)^2\]</span></p>
+<p><span class="math display">\[SS_b = (4 \times 4) + (4 \times 0.25) + (4 \times 6.25)\]</span> <span class="math display">\[SS_b = 42\]</span></p>
 <p><strong>Within</strong></p>
 <p>For the within-group sum of squares, the formula is:</p>
 <p><span class="math display">\[
@@ -608,7 +609,11 @@ SS_w = \Sigma (x - \bar x)^2
 <li>Add them all up.</li>
 </ul>
 <p>So for our data, it would look something like.. <span class="math display">\[
-SS_w = (1-2)^2 + (2-2)^2 + (3-2)^2 + (2-2)^2 + (2-3.5)^2 + (4-3.5)^2 + (5-3.5)^2 + (3-3.5)^2 + (5-6.5)^2 + (8-6.5)^2 + (6-6.5)^2 + (7-6.5)^2
+\begin{aligned}
+SS_w = (1-2)^2 + (2-2)^2 + (3-2)^2 + (2-2)^2 + \\
+(2-3.5)^2 + (4-3.5)^2 + (5-3.5)^2 + (3-3.5)^2 + \\
+(5-6.5)^2 + (8-6.5)^2 + (6-6.5)^2 + (7-6.5)^2
+\end{aligned}
 \]</span> <span class="math display">\[SS_w = 12\]</span>.</p>
 </section>
 <section id="degrees-of-freedom" class="level3" data-number="6.2.3">
@@ -1289,7 +1294,7 @@ This warning is displayed once per session.</code></pre>
 </section>
 <section id="anova-output" class="level3" data-number="6.6.4">
 <h3 data-number="6.6.4" class="anchored" data-anchor-id="anova-output"><span class="header-section-number">6.6.4</span> ANOVA output</h3>
-<p>R-Note: Repeated measures ANOVAs in R are <em>not</em> trivial in the slightest, and adapting this was a genuine challenge. To some extent this probably reflects the differences in approach between point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make many assumptions about what’s going on along the way.</p>
+<p>Repeated measures ANOVAs in R are surprisingly <em>not</em> trivial to conduct, to the point where even adapting the Jamovi version of this analysis was a genuine challenge. To some extent this probably reflects the differences in approach between point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make certain assumptions about what’s going on along the way.</p>
 <p>For that reason, now is a good time to introduce the <code>afex</code> package, which stands for “analysis of factorial experiments”. The <code>aov_ez()</code> function will let us specify a repeated measures ANOVA in a very easy way. See below for an alternative using <code>rstatix</code>, although this is less flexible than the <code>afex</code> version.</p>
 <p>At a minimum, you must give the following arguments to <code>aov_ez()</code>:</p>
 <ul>
@@ -1921,6 +1926,26 @@ $`Sphericity Corrections`
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2026, Daniel Yeom</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/danyeom">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

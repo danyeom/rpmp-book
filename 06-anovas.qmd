@@ -265,8 +265,10 @@ In words, this means:
 
 Let's do that for our fictional data. Our group means are Group 1 = 2,
 Group 2 = 3.5 and Group 3 = 6.5.
-$SS_b = 4(2-4)^2 + 4(3.5-4)^2 + 4(6.5-4)^2$
-$SS_b = (4 \times 4) + (4 \times 0.25) + (4 \times 6.25)$ $SS_b = 42$
+$$SS_b = 4(2-4)^2 + 4(3.5-4)^2 + 4(6.5-4)^2$$
+
+$$SS_b = (4 \times 4) + (4 \times 0.25) + (4 \times 6.25)$$ 
+$$SS_b = 42$$
 
 **Within**
 
@@ -285,7 +287,11 @@ This one is a bit more tedious. It means:
 
 So for our data, it would look something like.. 
 $$
-SS_w = (1-2)^2 + (2-2)^2 + (3-2)^2 + (2-2)^2 + (2-3.5)^2 + (4-3.5)^2 + (5-3.5)^2 + (3-3.5)^2 + (5-6.5)^2 + (8-6.5)^2 + (6-6.5)^2 + (7-6.5)^2
+\begin{aligned}
+SS_w = (1-2)^2 + (2-2)^2 + (3-2)^2 + (2-2)^2 + \\
+(2-3.5)^2 + (4-3.5)^2 + (5-3.5)^2 + (3-3.5)^2 + \\
+(5-6.5)^2 + (8-6.5)^2 + (6-6.5)^2 + (7-6.5)^2
+\end{aligned}
 $$ 
 $$SS_w = 12$$.
 
@@ -950,7 +956,7 @@ In R, most main packages will test the sphericity assumption along with the main
 
 ### ANOVA output
 
-R-Note: Repeated measures ANOVAs in R are *not* trivial in the slightest, and adapting this was a genuine challenge. To some extent this probably reflects the differences in approach between point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make many assumptions about what's going on along the way. 
+Repeated measures ANOVAs in R are surprisingly *not* trivial to conduct, to the point where even adapting the Jamovi version of this analysis was a genuine challenge. To some extent this probably reflects the differences in approach between point-and-click software compared to actually having to code the ANOVA model: the former is easy but you perhaps make certain assumptions about what's going on along the way. 
 
 For that reason, now is a good time to introduce the `afex` package, which stands for "analysis of factorial experiments". The `aov_ez()` function will let us specify a repeated measures ANOVA in a very easy way. See below for an alternative using `rstatix`, although this is less flexible than the `afex` version.
 
@@ -1044,6 +1050,7 @@ w9_memory_aov2 <- w9_memory %>%
 ```{r}
 w9_memory_aov2
 ```
+
 The two columns to look for are the ones labelled `DF[HF]` - this gives the adjusted degrees of freedom with the Huynh-Feldt corrections (`DF[GG]` would give Greenhouse-Geisser dfs) - and `p[HF]`, which gives the adjusted *p*-value. 
 
 Note that the `rstatix` version is not compatible with either `eta_squared()` (from the `effectsize` package) or `emmeans`. If you want post-hocs, you will need to use the `pairwise.t.test()` function or its `rstatix` equivalent. However, this does mean that it is not possible to do Tukey adjustments.

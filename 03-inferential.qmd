@@ -167,12 +167,12 @@ So in essence, if a p-value is p = .05 we're saying that assuming the null is tr
 To clarify, the example above is just on a normal distribution - each statistical test we perform has its own (null) distribution, which we will talk about more in future modules. However, the rationale across tests is essentially the same.
 
 
-<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+::: {.callout-note}
 ### The debate around p-values
 Throughout history, p-values have been so misunderstood and misappropriated that some journals, such as Basic and Applied Social Psychology, actually either discourage or outright ban the reporting of p-values. This ties into a wider debate about the usefulness or meaningfulness of the hypothesis testing approach outlined on the previous page, with a number of academics and scientists arguing that it is time to do away with the system as a whole.
 
 The debate is something that goes beyond the scope of the subject, so we won't be taking a strong stand on it either way. What we do think though is that it's really important that you understand how hypothesis testing works and what p-values can or can't tell you.
-</div>
+:::
 
 ## Types of error
 
@@ -247,11 +247,11 @@ Most modern statistics software will allow you to conduct power analyses:
 
 We won't get too into the maths here of how this is done (it heavily depends on your research design, e.g. how many groups you have, what test you plan on doing...). These programs will let you select the appropriate design you want to test, and choose the size of the effect you want and your alpha level. The power analysis will then give you a minimum sample size per group for you to achieve that level of statistical power.
 
- 
+::: {.callout-warning}
 ### Post-hoc power analyses
 
 You might see authors in some papers where you present a power analysis after collecting your sample and doing your analyses. Supposedly, this is to show that your sample had enough power to detect an effect. However, this is conceptually flawed. The primary flaw is that post-hocs are essentially just restatements of your p-values and so do little to show the true power of a design/test.
-
+:::
 
 ## Confidence intervals
 
@@ -497,19 +497,19 @@ samples %>%
 The choice of 95% is conventional, like alpha (our significance criterion); we can (but often don't) change our level of confidence. This changes the relevant formula for calculating the interval, as in the examples below:
 
 $$
-90\% CI = M \pm (1.645 \times SE)
+90\% \ CI = M \pm (1.645 \times SE)
 $$
 
 $$
-99\% CI = M \pm (2.576 \times SE)
+99\% \ CI = M \pm (2.576 \times SE)
 $$
 
 Notice that the value we multiply the SE by has changed. If you have been especially observant so far, you may have figured out what these values are: they're z-scores!
 
-<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+::: {.callout-note}
 ### Confidence intervals in literature
 
 On the page about *p*-values, I left a brief note around some of the current discourse around the usefulness (or uselessness) of *p*-values. Proponents of getting rid of *p*-values/moving away from them advocate strongly for two alternatives: a) effect sizes (self-explanatory; we will come to this) and b) confidence intervals, to show the range of long-run plausible values for the estimate.
 
 Again, we won't be taking an especially strong stance either way. That being said, it is now fairly common practice to report 95% confidence intervals alongside the results of significance tests for transparency. Programs like Jamovi will usually calculate these intervals automatically for you.
-</div>
+:::

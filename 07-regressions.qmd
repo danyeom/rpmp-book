@@ -458,7 +458,7 @@ There are three basic ways you can assess this.
 
 -    The simplest is to test a correlation between the two predictors. If they are very highly correlated (use r = .80 as a rule of thumb), this is likely to be a problem.
 -    The **variance inflation factor (VIF)** is a more formal measure of multicollinearity. It is a single number, and a higher value means greater collinearity. If a VIF is **greater than 5** this suggests an issue.
--    **Tolerance** is a related value to VIF - in fact, it is just 1 divided by the FID - and works in much the same way - except smaller values mean greater collinearity. As a rule of thumb, if tolerance is smaller than 0.20 this suggests an issue.
+-    **Tolerance** is a related value to VIF - in fact, it is just 1 divided by the VIF - and works in much the same way, except smaller values mean greater collinearity. As a rule of thumb, if tolerance is smaller than 0.20 this suggests an issue.
 
 To calculate VIF, you can use the `VIF()` function from the `DescTools` package - more on the relevant page.
 
@@ -515,6 +515,7 @@ DurbinWatsonTest(w10_goldmsi_lm)
 
 
 Homoscedasticity: To plot a residual vs fitted plot in R, there are two ways:
+
 -   `plot(model, which = 1)`.
 
 ```{r}
@@ -647,7 +648,7 @@ Therefore, we would predict someone with 5 years of musical training to have a G
 
 
 :::{.callout-warning}
-### A warning
+### Warning: How not to predict
 
 While these predictions can be useful, there are two warnings that should be kept in mind.
 

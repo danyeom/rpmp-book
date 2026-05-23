@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -822,7 +822,7 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <ul>
 <li>The simplest is to test a correlation between the two predictors. If they are very highly correlated (use r = .80 as a rule of thumb), this is likely to be a problem.</li>
 <li>The <strong>variance inflation factor (VIF)</strong> is a more formal measure of multicollinearity. It is a single number, and a higher value means greater collinearity. If a VIF is <strong>greater than 5</strong> this suggests an issue.</li>
-<li><strong>Tolerance</strong> is a related value to VIF - in fact, it is just 1 divided by the FID - and works in much the same way - except smaller values mean greater collinearity. As a rule of thumb, if tolerance is smaller than 0.20 this suggests an issue.</li>
+<li><strong>Tolerance</strong> is a related value to VIF - in fact, it is just 1 divided by the VIF - and works in much the same way, except smaller values mean greater collinearity. As a rule of thumb, if tolerance is smaller than 0.20 this suggests an issue.</li>
 </ul>
 <p>To calculate VIF, you can use the <code>VIF()</code> function from the <code>DescTools</code> package - more on the relevant page.</p>
 </section>
@@ -900,7 +900,10 @@ DW = 1.5409, p-value = 0.02123
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </div>
 </div>
-<p>Homoscedasticity: To plot a residual vs fitted plot in R, there are two ways: - <code>plot(model, which = 1)</code>.</p>
+<p>Homoscedasticity: To plot a residual vs fitted plot in R, there are two ways:</p>
+<ul>
+<li><code>plot(model, which = 1)</code>.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(w10_goldmsi_lm, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -1079,7 +1082,7 @@ GoldMSI = 53.901 + (4.858 \times Years)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>A warning
+<span class="screen-reader-only">Warning</span>Warning: How not to predict
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1777,6 +1780,26 @@ openness       0.12490436  0.25490437</code></pre>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2026, Daniel Yeom</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/danyeom">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

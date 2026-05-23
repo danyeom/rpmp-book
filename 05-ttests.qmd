@@ -250,11 +250,17 @@ To run a one-sample *t*-test, the basic function is the `t.test()` function. For
 
 Below is our output from the one-sample *t*-test. Our result tells us that there is a significant difference between the mean of the sample (*M* = 67.09) and the hypothesised mean of 72 (*p* < .001). The mean difference here is calculated as Sample - Hypothesis; therefore, a difference of -4.91 means that the sample mean is 4.91 units *lower* than the population mean (which hopefully would have been evident from the descriptives anyway). This means that for some reason, last year's cohort are performing worse than the expected average. 
 
-R Note: Jamovi will give you a 95% confidence interval around the mean difference as 95% CI = [-5.85, -3.97]. R however will give you a CI around the actual *mean*. In this case, the 95% confidence interval for the group mean is [66.15, 68.03]. Really though, this is giving us the same information; 72 - 5.85 = 66.15, and 72 - 3.97 = 68.03. So the only difference is in what value is presented for the 95% CI, but the actual inference itself doesn't change.
+::: {.callout-tip}
+### R-Note: Confidence intervals for t-tests
+For a one-sample *t*-test, Jamovi will give you a 95% confidence interval around the mean difference - in this case, Jamovi will report the 95% CI as = [-5.85, -3.97]. R however will give you a CI around the actual *sample mean*. In this case, the 95% confidence interval for the group mean is [66.15, 68.03]. 
+
+Really though, this is giving us the same information; 72 - 66.15 = 5.85, and 72 - 68.03 = 3.97. So the only difference between R and Jamovi here is what the 95% CI is placed around, but the actual inference itself doesn't change.
+:::
 
 ```{r}
 t.test(w8_grades$grade, mu = 72)
 ```
+
 Anoter way of writing a one-sample *t*-test is to use `variable ~ 1` formula notation. The ` ~ 1` is used to indicate that we are running a one-sample *t*-test. We still need to define `mu = 72` to set our hypothesised population mean.
 
 ```{r}
@@ -321,7 +327,7 @@ w8_training <- read_csv(here("data", "week_8", "W8_training.csv"))
 head(w8_training)
 ```
 
-Let us start with a nice plot:
+Let us start with a nice plot. With some clever piping of functions, we can go straight from calculating summary descriptives to plotting using `ggplot` in one smooth chain of events, using the code below:
 
 ```{r fig.dim = c(4, 4), fig.align = "center"}
 w8_training %>%
@@ -442,7 +448,10 @@ w8_symptoms <- read_csv(here("data", "week_8", "W8_symptoms.csv"))
 head(w8_symptoms)
 ```
 
-R-note: Data for paired-samples *t*-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:
+
+::: {.callout-tip}
+### R Note: Setting up your data for paired samples
+Data for paired-samples *t*-tests can either be in wide form or long form, and this depends on the specific function used. Our dataset is already in wide form as we have one column for before and one for after, so the following code will create a long-form version:
 
 ```{r}
 
@@ -453,10 +462,43 @@ w8_symptoms_long <- w8_symptoms %>%
     names_to = "time",
     values_to = "symptom_score"
   )
+```
 
+To check that this has worked properly, we can use `head()` to do a quick check of the new data frame:
+
+```{r}
 # Display start of new data
 head(w8_symptoms_long)
 ```
+:::
+
+
+If you run the code chunk in the box above, you will get a long version of our dataset. We can use this to generate a nice-looking plot quite easily, like before:
+
+```{r fig.align='center', fig.dim=c(4,4)}
+w8_symptoms_long %>%
+  group_by(time) %>%
+  summarise(
+    n = n(),
+    mean_score = mean(symptom_score, na.rm = TRUE),
+    sd_score = sd(symptom_score, na.rm = TRUE),
+    se = sd_score/sqrt(n)
+  ) %>%
+  mutate(
+    time = factor(time, levels = c("before", "after"), 
+                  labels = c("Before", "After"))
+  ) %>%
+  ggplot(aes(x = time, y = mean_score)) +
+  geom_point(size = 4) +
+  geom_errorbar(aes(
+    ymin = mean_score - 1.96*se,
+    ymax = mean_score + 1.96*se
+  ), width = 0.2) +
+  theme_pubr() +
+  labs(x = "Timepoint", y = "Mean symptom score")
+```
+
+
 
 ### Assumption checks
 
@@ -531,12 +573,12 @@ The mean symptom scores of the two timepoints are significantly different (*t*(3
 A paired samples *t*-test found that symptoms significantly decreased after the intervention (*t*(31) = 2.95, *p* = .006), with an average decrease of 2.75 points (95% CI [0.85, 4.65]). This decrease was medium in size (*d* = 0.52).
 </div>
 
+::: {.callout-note collapse="true"}
+### Paired samples using the one-sample *t*-test
 
-<details>
-  <summary>Paired samples using the one-sample *t*-test</summary>
-  Mathematically, all a paired-samples *t*-test is doing is running a one-sample *t*-test on the differences between the two timepoints/groups, Below is a demonstration of how paired-samples tests can be run using the one-sample *t*-test.
+Mathematically, all a paired-samples *t*-test is doing is running a one-sample *t*-test on the differences between the two timepoints/groups, Below is a demonstration of how paired-samples tests can be run using the one-sample *t*-test.
   
-  Let's start by returning to the wide version of our dataset. We first need to calculate the difference between the `before` and `after` columns, which we can easily do with `mutate()`.
+Let's start by returning to the wide version of our dataset. We first need to calculate the difference between the `before` and `after` columns, which we can easily do with `mutate()`.
   
 ```{r}
 w8_symptoms <- w8_symptoms %>%
@@ -547,12 +589,11 @@ w8_symptoms <- w8_symptoms %>%
 w8_symptoms
 ```
   
-  We can run a one-sample *t*-test on the differences now, with the null hypothesis value being 0 - i.e. we are testing the null hypothesis that the mean differences are not significantly different from 0.
+We can run a one-sample *t*-test on the differences now, with the null hypothesis value being 0 - i.e. we are testing the null hypothesis that the differences between the two timepoints are not significantly different from 0.
   
 ```{r}
 t.test(w8_symptoms$diff ~ 1, mu = 0)
 ```
-  As we can see, the results are equivalent to the output of the paired-samples *t*-test above. Note too that our Shapiro-Wilks test will also give equivalent results if it is run on the differences directly.
-  
-</details>
 
+As we can see, the results are equivalent to the output of the paired-samples *t*-test above. Note too that our Shapiro-Wilks test will also give equivalent results if it is run on the differences directly.
+:::
