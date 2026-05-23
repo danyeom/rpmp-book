@@ -38,7 +38,11 @@ delete_merged_file: true
 language:
   ui:
     chapter_name: "Chapter "
+<<<<<<< HEAD
 
+=======
+output_dir: "_book"
+>>>>>>> bfac8c97cd067a857c59ee280a4fe3f912bc3101
 
 
 url: https://danyeom.github.io/rpmp-book
