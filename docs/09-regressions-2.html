@@ -362,7 +362,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-factorial-anovas.html">Part III: Advanced methods</a></li><li class="breadcrumb-item"><a href="./09-regressions-2.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></h1>
+<h1 class="title"><span id="sec-regressions-2" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Regression continued</span></span></h1>
 </div>
 
 
@@ -702,7 +702,7 @@ dbl (6): id, age, GoldMSI, DFS_Total, trait_anxiety, openness
 </div>
 <p>In the first regressions module, we simply ran everything in one go as a multiple regression. Now let’s imagine we want to run this as a hierarchical regression, with the following blocks:</p>
 <ul>
-<li>Block 1: GOld MSI predicting proneness to flow (DFS_Total)</li>
+<li>Block 1: Gold MSI predicting proneness to flow (DFS_Total)</li>
 <li>Block 2: Gold MSI and openness predicting proneness to flow</li>
 <li>Block 3: Gold MSI, openness and trait anxiety predicting proneness to flow</li>
 </ul>
@@ -798,13 +798,14 @@ Multiple R-squared:  0.2971,    Adjusted R-squared:  0.2945
 F-statistic: 113.7 on 3 and 807 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>On the next page we’ll talk about model comparison in a more formal manner. However, if we wanted to write these results up we would need to talk about the results from each block. For example:</p>
-<p>A hierarchical regression was conducted to examine the effect</p>
+<p>In the next section we’ll talk about model comparison in a more formal manner.</p>
 </section>
 </section>
 <section id="comparing-models" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="comparing-models"><span class="header-section-number">9.3</span> Comparing models</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
 <p>On the previous page, we ended up with three models relating to the flow data. That’s all well and good, and seeing how each model changed the predictors was valuable in its own right. But how do we actually… decide which model to run with?</p>
+</div>
 <section id="comparing-r2" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="comparing-r2"><span class="header-section-number">9.3.1</span> Comparing <span class="math inline">\(R^2\)</span></h3>
 <p>The most commonly cited method of comparing between regression models is to examine their <span class="math inline">\(R^2\)</span> values, which you may recall is a measure of how much variance in the outcome is explained by the predictors.</p>
@@ -1056,11 +1057,18 @@ flow_block3  5 4289.398</code></pre>
 </div>
 </div>
 <p>Here, we can see that participants 378 and 528 are multivariate outliers, and thus we may want to consider doing something about them.</p>
-<details>
-<summary>
-How do Mahalanobis distances work?
-</summary>
-<div style="background-color: #f0f0f0;">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>How are Mahalanobis distances calculated?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>The basic principle behind using Mahalanobis distances is basically the same as Cook’s distances: if a datapoint has a distance value greater than a specified cutoff, it is a multivariate outlier. The main difference is that <span class="math inline">\(D^2\)</span> is used for identifying multivariate outliers, as described above, and is empirically tested against a specified distribution (as opposed to Cook’s distances, where influential outliers are mainly identified on vibes).</p>
 <p>Mahalanobis distances follow a chi-square distribution, with the degrees of freedom being equal to the number of predictors (<em>k</em>) in a model. The significance level for <span class="math inline">\(D^2\)</span> is conventionally set at <em>p</em> &lt; .001. In essence, any datapoint that has a <span class="math inline">\(D^2\)</span> greater than a cutoff point on a chi-square distribution, given df = <em>k</em> and at <em>p</em> &lt; .001, is considered a significant outlier.</p>
 <p>To calculate Mahalanobis distances by hand, you can use the <code>mahalanobis()</code> function from base R. To do this, you need to give the function a dataframe with just the predictors in it.</p>
@@ -1108,7 +1116,8 @@ How do Mahalanobis distances work?
 </div>
 <p>This means that any Mahalanobis distance above 16.27 will be significant.</p>
 </div>
-</details>
+</div>
+</div>
 </section>
 <section id="what-happens-if-there-is-an-outlier" class="level3" data-number="9.4.3">
 <h3 data-number="9.4.3" class="anchored" data-anchor-id="what-happens-if-there-is-an-outlier"><span class="header-section-number">9.4.3</span> What happens if there is an outlier?</h3>
@@ -1159,10 +1168,15 @@ F-statistic: 113.7 on 3 and 807 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>flow_no_outliers <span class="ot">&lt;-</span> flow_data <span class="sc">%&gt;%</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">378</span>, <span class="dv">528</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><code>dplyr</code> version 1.1.0 though now introduces the <code>filter_out()</code> function, which provides a much more readable syntax for filtering <em>out</em> rows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>flow_no_outliers <span class="ot">&lt;-</span> flow_data <span class="sc">%&gt;%</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_out</span>(id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">378</span>, <span class="dv">528</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>Now that we have a dataframe without the two outliers, let’s now refit our model. The only argument we need to change is the name of the dataset:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>flow_lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> flow_no_outliers)</span>
-<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(flow_lm2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>flow_lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DFS_Total <span class="sc">~</span> GoldMSI <span class="sc">+</span> trait_anxiety <span class="sc">+</span> openness, <span class="at">data =</span> flow_no_outliers)</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(flow_lm2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1228,12 +1242,12 @@ r_{xy.z} = \frac{r_{xy} - (r_{xz} \times r_{yz})}{\sqrt{(1-r^2_{xz})(1-{r^2_{yz}
 </ul>
 <p>The output will look something like this. This looks similar enough to a standard correlation output, and you can interpret it as such. The output shows the relationship between X (Gold-MSI) and Y (DFS Total, flow proneness), while controlling for the effect of openness to experience.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ppcor)</span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pcor.test</span>(</span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
-<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>DFS_Total,</span>
-<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> flow_data<span class="sc">$</span>openness</span>
-<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ppcor)</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pcor.test</span>(</span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>DFS_Total,</span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> flow_data<span class="sc">$</span>openness</span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   estimate      p.value statistic   n gp  Method
 1 0.4207818 4.274538e-36  13.18493 811  1 pearson</code></pre>
@@ -1241,11 +1255,11 @@ r_{xy.z} = \frac{r_{xy} - (r_{xz} \times r_{yz})}{\sqrt{(1-r^2_{xz})(1-{r^2_{yz}
 </div>
 <p>Compare this to the standard correlation call below - we can see that even after controlling for openness the correlation is still significant, and doesn’t decrease by a huge amount (partial <em>r</em>(809) = .42, <em>p</em> &lt; .001).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard correlation</span></span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(</span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
-<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>DFS_Total</span>
-<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard correlation</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>DFS_Total</span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -1262,9 +1276,9 @@ sample estimates:
 </div>
 <p>To run multiple partial correlations, between variables, the <code>pcor()</code> function will compute these given a dataset. This will calculate partial correlations between pairs of variables, controlling for every other variable included in the call to <code>pcor()</code>. In the example below, we fuse <code>select()</code> to pull only the variables we are interested in and pipe this to <code>pcor()</code> - basically, we are giving <code>pcor()</code> a data frame with only the three variables of interest<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>flow_data <span class="sc">%&gt;%</span></span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(GoldMSI, openness, DFS_Total) <span class="sc">%&gt;%</span></span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pcor</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>flow_data <span class="sc">%&gt;%</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(GoldMSI, openness, DFS_Total) <span class="sc">%&gt;%</span></span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pcor</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$estimate
             GoldMSI  openness DFS_Total
@@ -1310,7 +1324,7 @@ $method
 </ul>
 <p>If we wanted to find out how much X <em>uniquely</em> contributes to outcome Y, we could first calculate a semipartial correlation between X and Y, controlling for Z’s effect on X. In essence, by removing Z’s effect on X only, we are isolating any effect of X on Y specifically, allowing us to examine how much X is contributing on its own. Likewise, if we wanted to find out the unique variance explained by Z, we would run another semipartial between Z and Y, controlling for X’s effect on Z.</p>
 <p><strong>Squaring each sr value</strong> (i.e.&nbsp;calculate <span class="math inline">\(sr^2\)</span>), will give the <strong>unique amount of variance</strong> explained by predictor X, after controlling for all other variables. If <span class="math inline">\(sr^2\)</span> for variable X is 0.1, for instance, this means that <strong>10% of the variance in Y is uniquely estimated/contributed by X</strong>. In turn, if we calculate <span class="math inline">\(sr^2\)</span> values for each predictor, controlling for all other predictors, and subtract this from <span class="math inline">\(R^2\)</span>, this will give us the shared variance.</p>
-<p>The diagram below summarises this info (shoutout to <a href="https://uq.pressbooks.pub/psychological-research-methods-workbook/chapter/activity-5-standard-and-hierarchical-multiple-regression-in-jamovi/">UQ</a>:</p>
+<p>The diagram below summarises this info (shoutout to <a href="https://uq.pressbooks.pub/psychological-research-methods-workbook/chapter/activity-5-standard-and-hierarchical-multiple-regression-in-jamovi/">UQ</a>):</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -1327,11 +1341,11 @@ $method
 <p>The <code>ppcor</code> package provides a function called <code>spcor.test()</code>, which works just like its <code>pcor.test()</code> cousin. The only difference is that because we are now partialling the effect of control variables from the <em>predictor</em> only, the order in which we enter <code>x</code> and <code>y</code> matters.</p>
 <p>Namely, <code>x</code> must be the <em>outcome</em> variable, and <code>y</code> must be the <em>predictor</em> we are interested in controlling. This ensures that the control variables are correctly being removed from the predictor variable and not the outcome:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spcor.test</span>(</span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>DFS_Total,</span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
-<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> flow_data[, <span class="fu">c</span>(<span class="st">"openness"</span>, <span class="st">"trait_anxiety"</span>)]</span>
-<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spcor.test</span>(</span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flow_data<span class="sc">$</span>DFS_Total,</span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> flow_data<span class="sc">$</span>GoldMSI,</span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> flow_data[, <span class="fu">c</span>(<span class="st">"openness"</span>, <span class="st">"trait_anxiety"</span>)]</span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   estimate      p.value statistic   n gp  Method
 1 0.4008732 1.391025e-32   12.4304 811  2 pearson</code></pre>
@@ -1341,7 +1355,7 @@ $method
 <p>The semipartial correlation <em>sr</em> between Gold-MSI and flow proneness, controlling for the other two predictors (openness and trait anxiety) is <em>sr</em> = .401, <em>p</em> &lt; .001.</p>
 <p>To calculate <span class="math inline">\(sr2\)</span> you will need to square the <em>sr</em> value above, which is thankfully easy enough in R:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.4008732</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.4008732</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1606993</code></pre>
 </div>
@@ -1352,9 +1366,9 @@ $method
 <h3 data-number="9.6.3" class="anchored" data-anchor-id="calculating-all-sr2-values"><span class="header-section-number">9.6.3</span> Calculating all <span class="math inline">\(sr^2\)</span> values</h3>
 <p>We could continue to use the <code>spcor.test()</code> function to calculate the other semipartial correlations for the other predictor and the outcome. However, just like <code>pcor()</code> we have an analogous function called <code>spcor()</code> that will calculate multiple semipartials in one go, using all of the variables in a provided dataframe. Like <code>pcor()</code>, the semipartials between two variables will be controlled for all other variables in the dataframe. In the output below, for example, the semipartial between DFS_Total and GoldMSI controls for both openness and trait_anxiety:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>flow_data <span class="sc">%&gt;%</span></span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(GoldMSI, trait_anxiety, openness, DFS_Total) <span class="sc">%&gt;%</span></span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spcor</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>flow_data <span class="sc">%&gt;%</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(GoldMSI, trait_anxiety, openness, DFS_Total) <span class="sc">%&gt;%</span></span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spcor</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$estimate
                 GoldMSI trait_anxiety    openness  DFS_Total

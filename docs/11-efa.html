@@ -321,21 +321,22 @@ window.Quarto = {
   <li><a href="#introduction-to-efa" id="toc-introduction-to-efa" class="nav-link active" data-scroll-target="#introduction-to-efa"><span class="header-section-number">11.1</span> Introduction to EFA</a>
   <ul class="collapse">
   <li><a href="#dimension-reduction" id="toc-dimension-reduction" class="nav-link" data-scroll-target="#dimension-reduction"><span class="header-section-number">11.1.1</span> Dimension reduction</a></li>
-  <li><a href="#factor-analysis" id="toc-factor-analysis" class="nav-link" data-scroll-target="#factor-analysis"><span class="header-section-number">11.1.2</span> Factor analysis</a></li>
-  <li><a href="#the-steps-of-exploratory-factor-analysis" id="toc-the-steps-of-exploratory-factor-analysis" class="nav-link" data-scroll-target="#the-steps-of-exploratory-factor-analysis"><span class="header-section-number">11.1.3</span> The steps of exploratory factor analysis</a></li>
-  <li><a href="#example-dataset" id="toc-example-dataset" class="nav-link" data-scroll-target="#example-dataset"><span class="header-section-number">11.1.4</span> Example dataset</a></li>
+  <li><a href="#forms-of-dimension-reduction" id="toc-forms-of-dimension-reduction" class="nav-link" data-scroll-target="#forms-of-dimension-reduction"><span class="header-section-number">11.1.2</span> Forms of dimension reduction</a></li>
   </ul></li>
-  <li><a href="#theory-of-efa" id="toc-theory-of-efa" class="nav-link" data-scroll-target="#theory-of-efa"><span class="header-section-number">11.2</span> Theory of EFA</a>
+  <li><a href="#introduction-to-factor-analysis" id="toc-introduction-to-factor-analysis" class="nav-link" data-scroll-target="#introduction-to-factor-analysis"><span class="header-section-number">11.2</span> Introduction to factor analysis</a>
   <ul class="collapse">
-  <li><a href="#pca-vs-efa" id="toc-pca-vs-efa" class="nav-link" data-scroll-target="#pca-vs-efa"><span class="header-section-number">11.2.1</span> PCA vs EFA</a></li>
+  <li><a href="#what-is-factor-analysis" id="toc-what-is-factor-analysis" class="nav-link" data-scroll-target="#what-is-factor-analysis"><span class="header-section-number">11.2.1</span> What is factor analysis?</a></li>
   <li><a href="#the-common-factor-model" id="toc-the-common-factor-model" class="nav-link" data-scroll-target="#the-common-factor-model"><span class="header-section-number">11.2.2</span> The common factor model</a></li>
-  <li><a href="#partial-correlations" id="toc-partial-correlations" class="nav-link" data-scroll-target="#partial-correlations"><span class="header-section-number">11.2.3</span> Partial correlations</a></li>
+  <li><a href="#pca-vs-efa" id="toc-pca-vs-efa" class="nav-link" data-scroll-target="#pca-vs-efa"><span class="header-section-number">11.2.3</span> PCA vs EFA</a></li>
+  <li><a href="#partial-correlations" id="toc-partial-correlations" class="nav-link" data-scroll-target="#partial-correlations"><span class="header-section-number">11.2.4</span> Partial correlations</a></li>
+  <li><a href="#the-steps-of-an-efa" id="toc-the-steps-of-an-efa" class="nav-link" data-scroll-target="#the-steps-of-an-efa"><span class="header-section-number">11.2.5</span> The steps of an EFA</a></li>
   </ul></li>
   <li><a href="#initial-considerations-for-efa" id="toc-initial-considerations-for-efa" class="nav-link" data-scroll-target="#initial-considerations-for-efa"><span class="header-section-number">11.3</span> Initial considerations for EFA</a>
   <ul class="collapse">
   <li><a href="#sample-size" id="toc-sample-size" class="nav-link" data-scroll-target="#sample-size"><span class="header-section-number">11.3.1</span> Sample size</a></li>
-  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="header-section-number">11.3.2</span> Assumptions</a></li>
-  <li><a href="#factorability" id="toc-factorability" class="nav-link" data-scroll-target="#factorability"><span class="header-section-number">11.3.3</span> Factorability</a></li>
+  <li><a href="#descriptives-of-the-data" id="toc-descriptives-of-the-data" class="nav-link" data-scroll-target="#descriptives-of-the-data"><span class="header-section-number">11.3.2</span> Descriptives of the data</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="header-section-number">11.3.3</span> Assumptions</a></li>
+  <li><a href="#factorability" id="toc-factorability" class="nav-link" data-scroll-target="#factorability"><span class="header-section-number">11.3.4</span> Factorability</a></li>
   </ul></li>
   <li><a href="#how-many-factorscomponents" id="toc-how-many-factorscomponents" class="nav-link" data-scroll-target="#how-many-factorscomponents"><span class="header-section-number">11.4</span> How many factors/components?</a>
   <ul class="collapse">
@@ -356,6 +357,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#rotations" id="toc-rotations" class="nav-link" data-scroll-target="#rotations"><span class="header-section-number">11.6.1</span> Rotations</a></li>
   <li><a href="#rotated-factor-solution" id="toc-rotated-factor-solution" class="nav-link" data-scroll-target="#rotated-factor-solution"><span class="header-section-number">11.6.2</span> Rotated factor solution</a></li>
+  </ul></li>
+  <li><a href="#interpreting-solutions-and-factor-scores" id="toc-interpreting-solutions-and-factor-scores" class="nav-link" data-scroll-target="#interpreting-solutions-and-factor-scores"><span class="header-section-number">11.7</span> Interpreting solutions, and factor scores</a>
+  <ul class="collapse">
+  <li><a href="#naming-factors" id="toc-naming-factors" class="nav-link" data-scroll-target="#naming-factors"><span class="header-section-number">11.7.1</span> Naming factors</a></li>
+  <li><a href="#factor-scores" id="toc-factor-scores" class="nav-link" data-scroll-target="#factor-scores"><span class="header-section-number">11.7.2</span> Factor scores</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -383,74 +389,60 @@ window.Quarto = {
 
 
 <p>Many of the <em>things</em> we are interested in psychological research are things that are both <em>unobservable</em> and not <em>directly</em> measurable. Consider, for instance, someone’s height: this is an observable and directly measurable quantity, in that we can a) see how tall they are and b) take a tape measure to them and get a direct, precise measurement of their height. In contrast, consider the things that we are often interested in when it comes to psychological constructs: motivations, wellbeing attitudes, beliefs, cognitive abilities, values, personality features…</p>
-<p>None of these kinds of constructs are directly measurable or even tangible. We can’t take a rule to measure how much someone enjoys listening to music, for example, or identify the extent to which they believe that listening to certain genres is healthy or unhealthy for you. However, we might be able to observe <em>behaviours</em> that might relate to these constructs, or people may respond to questions in ways that are indicative of said constructs.</p>
+<p>None of these kinds of constructs are directly measurable or even tangible. We can’t take a ruler to measure how much someone enjoys listening to music, for example, or identify the extent to which they believe that listening to certain genres is healthy or unhealthy for you. However, we might be able to observe <em>behaviours</em> that might relate to these constructs, or people may respond to questions in ways that are indicative of said constructs.</p>
 <p>In this module we talk about <strong>factor analysis</strong>, which is one method of using statistics to identify these <strong>latent constructs</strong>. Specifically, we will focus on <strong>exploratory factor analysis</strong>, which aims to take a series of variables and identify the latent constructs that may underlie these variables.</p>
 <section id="introduction-to-efa" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="introduction-to-efa"><span class="header-section-number">11.1</span> Introduction to EFA</h2>
-<p>We generally conduct a survey because we’re interested in how different people hold different attitudes, ideas or beliefs about things. All of the standard statistical tools that you learned in Modules 5 and 6 are useful in this regard, and can absolutely be used with survey data. But given how highly dimensional survey data is, it opens up a new way of analysing data - exploratory factor analysis.</p>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>On this page, we briefly consider what dimensional reduction techniques are, to provide a grounding for the rest of the module.</p>
+</div>
 <section id="dimension-reduction" class="level3" data-number="11.1.1">
 <h3 data-number="11.1.1" class="anchored" data-anchor-id="dimension-reduction"><span class="header-section-number">11.1.1</span> Dimension reduction</h3>
-<p>Sometimes it’s easy to forget that designing a questionnaire and administering it gives rise to quite complex data. After all, a single question item may simply ask participants to rate themselves on a statement using a Likert scale, as we have seen earlier in this module. However, consider how many questions we might collect across a scale and it quickly becomes evident that this kind of data is highly dimensional - that is, with lots of individual questions we end up with a lot of data to sift through.</p>
-<p>This kind of scenario is where dimension reduction techniques become extremely useful. Dimension reduction techniques allow us to essentially collapse data into ‘supervariables’ that can simplify the analyses that we do by capturing the commonalities across questionnaire items.</p>
-<p>Principal components analysis (PCA) is the most common form of dimension reduction. Principal components analysis lets us take highly dimensional data, such as a questionnaire/scale with multiple items, and collapse that down into a smaller number of components.</p>
+<p>As mentioned on the previous page, in psychological research it is common to use <strong>scales</strong> that measure some unobserverable, or indirectly measurable construct - like motivations, attitudes and beliefs. These scales often take the form of surveys or questionnaires that ask participants a series of questions. All of the standard statistical tools that you learn (e.g.&nbsp;<em>t</em>-tests, ANOVAs, regressions) are useful in this regard, and can absolutely be used with survey data.</p>
+<p>However, even a single questionnaire with a number of survey items will inevitably give rise to quite complex data. A single question item may simply ask participants to rate themselves on a statement using a Likert scale or similar. Consider though that questionnaires often capture responses on <em>many</em> statements, or performance batteries might capture performance on <em>multiple</em> tasks. It may quickly be evident that this kind of data is highly dimensional - that is, with lots of individual questions we end up with a lot of data to sift through.</p>
+<p>Thus, we sometimes need techniques where we can <em>reduce</em> the dimensionality of our data. This is is where dimension reduction techniques become extremely useful. Dimension reduction techniques allow us to essentially collapse multiple variables into a smaller set of variables that represent them.</p>
 </section>
-<section id="factor-analysis" class="level3" data-number="11.1.2">
-<h3 data-number="11.1.2" class="anchored" data-anchor-id="factor-analysis"><span class="header-section-number">11.1.2</span> Factor analysis</h3>
-<p>Factor analysis is another analytical technique like dimension reduction. However, the key conceptual difference is that while PCA lets us collapse multiple variables into a smaller number of components, factor analysis lets us identify latent factors in our data. Latent factors are the factors underlying the behaviours and responses that we observe in our questionnaire items. We might find, for example, that performance on a series of tests is actually underlaid by multiple distinct, theoretically meaningful factors.</p>
-<p>Therefore, factor analysis lets us build and test theories about latent psychological constructs. Factor analysis allows us to indirectly measure these latent factors - essentially, are our questions tapping into the same ‘thing’?</p>
-<p>Factor analysis can be split into exploratory factor analysis (EFA) and confirmatory factor analysis (CFA). We will focus specifically on EFA in this module.</p>
-<p><strong>A terminology note</strong></p>
-<p>You’ll note that we’ve described PCA as generating components, while FA generates factors. It’s worth remembering that this is intentional, and the two terms should not be used interchangeably. We will talk more about this on the pages that follow, but components are simply linear combinations of multiple variables. Factors are estimates of latent variables that drive behaviour. The latter specifically is what we use to test theories about psychological constructs.</p>
-</section>
-<section id="the-steps-of-exploratory-factor-analysis" class="level3" data-number="11.1.3">
-<h3 data-number="11.1.3" class="anchored" data-anchor-id="the-steps-of-exploratory-factor-analysis"><span class="header-section-number">11.1.3</span> The steps of exploratory factor analysis</h3>
-<p>EFA is quite an involved analysis, and there are several considerations that must be taken into account:</p>
+<section id="forms-of-dimension-reduction" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="forms-of-dimension-reduction"><span class="header-section-number">11.1.2</span> Forms of dimension reduction</h3>
+<p>There are two main dimension reduction techniques:</p>
 <ul>
-<li>Prepare data and assess for suitability</li>
-<li>Decide on the extraction method</li>
-<li>Decide on how many factors to retain</li>
-<li>Decide on the rotation method</li>
-<li>Interpret the results</li>
+<li><strong>Principal components analysis (PCA)</strong> is the most common form of dimension reduction. Principal components analysis lets us take highly dimensional data, such as a questionnaire/scale with multiple items, and collapse that down into a smaller number of components. The components are, in a sense, aggregates of the variables they are comprised of.</li>
+<li><strong>Exploratory factor analysis (EFA)</strong> is a technique that aims to identify latent factors from a given set of observable variables. While it achieves a similar goal as PCA, which is to reduce lots of variables down into a smaller set, the resulting factors can be interpreted as latent factors that underlie or drive responses on the variables they influence.</li>
 </ul>
+<p>In this module we will focus primarily on EFA. However, as we will also see on the next section many of the things we talk about will also apply to conducting PCAs - with some important caveats.</p>
 </section>
-<section id="example-dataset" class="level3" data-number="11.1.4">
-<h3 data-number="11.1.4" class="anchored" data-anchor-id="example-dataset"><span class="header-section-number">11.1.4</span> Example dataset</h3>
-<p>The example we’ll be using to work through this data is from a brilliant statistician and educator, Professor Andy Field, who is very highly regarded for his Discovering Statistics series - including Discovering Statistics with SPSS and Discovering Statistics with R. I highly recommend checking them out if you plan on using them!</p>
-<p>As part of his book, Prof.&nbsp;Field came up with a questionnaire called the SPSS Anxiety Questionnaire (SAQ). For the purposes of the next few pages we’ll be using a reduced version with just 9 questions, which we’ll call the SAQ-9. The questions in this survey are:</p>
-<p>Q1: Statistics makes me cry Q2: My friends will think I’m stupid for not being able to cope with SPSS Q4: I dream that Pearson is attacking me with correlation coefficients Q5: I don’t understand statistics Q6: I have little experience of computers Q14: Computers have minds of their own and deliberately go wrong whenever I use them Q15: Computers are out to get me Q19: Everybody looks at me when I use SPSS Q22: My friends are better at SPSS than I am</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>saq <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"efa"</span>, <span class="st">"SAQ-9.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 2571 Columns: 9
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-dbl (9): q01, q02, q04, q05, q06, q14, q15, q19, q22
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</section>
+<section id="introduction-to-factor-analysis" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="introduction-to-factor-analysis"><span class="header-section-number">11.2</span> Introduction to factor analysis</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>We begin with a general overview of factor analysis and its conceptual underpinnings.</p>
 </div>
-</div>
-<p>As we walk through the content, we will use this dataset to illustrate how to conduct an exploratory factor analysis. (Note the questions were specifically chosen for demonstration purposes.)</p>
-<p>To actually conduct the EFA, we will primarily rely on two packages: <code>psych</code> and <code>EFA.dimensions</code>. The <code>psych</code> package is a fairly big package designed to run many common analyses in psychological science, specifically analyses that relate to <em>psychometrics.</em> It’s an incredibly useful package to be aware of in general. <code>EFA.dimensions</code> is another great package that provides functions to help with certain parts of the EFA process.</p>
-</section>
-</section>
-<section id="theory-of-efa" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="theory-of-efa"><span class="header-section-number">11.2</span> Theory of EFA</h2>
-<p>On this page, we (briefly) touch on a bit of the statistical theory underlying factor analysis and PCA. We won’t dive too deeply into the maths underlying EFA, but will focus on the high-level conceptual stuff.</p>
-<section id="pca-vs-efa" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="pca-vs-efa"><span class="header-section-number">11.2.1</span> PCA vs EFA</h3>
-<p>Here is a good point to formally differentiate PCA vs EFA, following on from the brief disclaimer on the previous page.</p>
-<p>Both PCA and EFA will extract up to k factors that attempt to explain the observed variables. k, in this instance, is capped at the number of observed variables; so, if you input 24 variables into a PCA, the maximum number of components that you can estimate is 24. However, what defines these components/factors differs:</p>
+<section id="what-is-factor-analysis" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="what-is-factor-analysis"><span class="header-section-number">11.2.1</span> What is factor analysis?</h3>
+<p>Factor analysis describes a family of statistical techniques that center around the purpose of identifying <strong>latent factors</strong>, or <strong>latent variables</strong>. Latent factors are the factors underlying the behaviours and responses that we observe in our questionnaire items. In other words, the general inference we make is that people’s behaviours (e.g.&nbsp;responses to specific self-report questions) are underlaid or driven by latent factors that denote psychological constructs.</p>
+<p>Consider a simple example. Imagine a person consistently endorses the following statements:</p>
 <ul>
-<li>In PCA, where we are just interested in collapsing variables, we assume that all variance in the observed variables is explained by the factors. Ultimately, a PCA will extract k components that ultimately explain 100% of the variance in all of the observed variables.</li>
-<li>In EFA, the goal is only to explain common variance between the observed variables. EFA explicitly models the variance in the items to be comprised of common variance, which is variance due to shared underlying factors, and unique variance. Unique variance can be further broken down into specific variance, which is variance that is specific to each item, and error variance. By partitioning variance in this way, EFA is able to test models of factors as it allows for disconfirmation - a vital part of any model testing.</li>
+<li>I am the life of the party.</li>
+<li>I talk to a lot of different people at parties.</li>
 </ul>
-<p>In short, EFA allows us to generate theoretical entities that we can test in subsequent analyses. PCA only provides us with a measure that combines the effects of multiple variables, but does not test latent factors.</p>
+<p>And they rate themselves low on the following statements:</p>
+<ul>
+<li>I don’t talk a lot.</li>
+<li>I keep in the background.</li>
+</ul>
+<p>You can probably see that this pattern of responding would indicate something about this person - all of these questions tap into the same ‘thing’ or concept. In this case, all of these statements are a measure of the personality factor of extroversion, from the Mini-IPIP (International Personality Item Pool). This factor can be identified through conducting a factor analysis of responses to survey items like these.</p>
+<p>Therefore, in essence factor analysis lets us build and test models about latent psychological constructs. Factor analysis can be split into <strong>exploratory factor analysis (EFA)</strong> and <strong>confirmatory factor analysis (CFA)</strong>. We will focus specifically on EFA in this module.</p>
 </section>
 <section id="the-common-factor-model" class="level3" data-number="11.2.2">
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="the-common-factor-model"><span class="header-section-number">11.2.2</span> The common factor model</h3>
-<p>The basis of factor analysis is the common factor model. Broadly speaking, the common factor model suggests that variables that relate to each other are likely driven by underlying latent variables. For example, if five questions in a survey all ask about a specific aspect of motivation, and these items correlate with each other, we would expect the same thing - or latent factor - to be driving responses on these five items. Exploratory factor analysis operates under this common factor model.</p>
-<p>Below is a basic diagram of the common factor model. The squares represent observed variables, which are the variables that we measure. The big circle denotes the latent factor that we want to estimate. The circles leading to the observed variables are error terms. In an exploratory factor analysis, the primary thing we want to investigate is the factor loadings, denoted by the various lambdas (<span class="math inline">\(\lambda\)</span>). We will see precisely what the factor loadings are later, but generally they are how strongly the latent factor predicts each observed variable.</p>
+<p>The basis of both types of factor analysis is the <strong>common factor model</strong>. Broadly speaking, if variables (e.g.&nbsp;survey items) are decently correlated with each other, they share <em>variance</em> with each other. This shared variance reflects variance that is common to the variables (<strong>common variance</strong>), and thus may indicate underlying latent factors. We can perhaps intuitively see this with the four extraversion questions above - responses on the four items are all likely to correlate with each other (e.g.&nbsp;compare “I talk to a lot of different people at parties” with “I don’t talk a lot”). Thus, they are likely to be driven by some underlying factor.</p>
+<p>Below is a basic diagram of the common factor model, with one latent factor. Here is what each part of the figure represents:</p>
+<ul>
+<li>The squares represent observed variables, which are the variables that we measure.</li>
+<li>The big circle denotes the latent factor that we want to estimate. The circles leading to the observed variables are error terms.</li>
+<li>The arrows denote <em>paths</em>. Note the direction of the paths here - they go from the latent factor to each observed variable. This is because we are inferring that the latent variable is causing the behaviour in each observed variable.</li>
+<li>In an exploratory factor analysis, the primary thing we want to investigate is the factor loadings, denoted by the various lambdas (<span class="math inline">\(\lambda\)</span>). We will see precisely what the factor loadings are later, but generally they are how strongly the latent factor predicts each observed variable.</li>
+</ul>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -471,25 +463,96 @@ dbl (9): q01, q02, q04, q05, q06, q14, q15, q19, q22
 </div>
 </div>
 </div>
+<p>Typically, however, we <em>don’t know</em> how many latent factors may underlie a given set of observed variables. For instance, if you have a 25-item scale, how many factors might underlie responses to the scale?</p>
+<p>Technically speaking, if we have <em>k</em> items then we can extract up to <em>k</em> factors, where each item forms its own factor. However, if we did that then we wouldn’t actually be extracting any factors at all - we would simply be reproducing the data by itself! In addition, after a certain number of factors we will not gain any appreciable increase in both how much of the data we explain, and may also run into issues of interpretability (both of which we will see shortly). In other words, there will be a certain number of factors that provides the best balance between <em>interpretability</em> and <em>statistical fit</em>.</p>
+<p>Thus, the overarching goal of EFA is to <strong>identify the correct</strong> (or at least defensible) <strong>number of factors</strong> underlying a given set of observed variables.</p>
 </section>
-<section id="partial-correlations" class="level3" data-number="11.2.3">
-<h3 data-number="11.2.3" class="anchored" data-anchor-id="partial-correlations"><span class="header-section-number">11.2.3</span> Partial correlations</h3>
-<p>In Module 10, we talked about the concept of <strong>correlation</strong> - i.e.&nbsp;how related two variables are. Recall that correlation coefficients are scaled from -1 to 1. In Extension Module 3 we also talked about the concept of <strong>partial correlation</strong> - the relationship between two variables while controlling for a third, as denoted using the below formula:</p>
+<section id="pca-vs-efa" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="pca-vs-efa"><span class="header-section-number">11.2.3</span> PCA vs EFA</h3>
+<p>Here is a good point to formally differentiate PCA vs EFA, following on from the brief disclaimer on the previous section.</p>
+<p>Both PCA and EFA operate on similar mathematical and procedural principles, to the point where they have often been used interchangeably. However, they are <strong>not the same thing</strong>! The key difference is how PCA and EFA treat variance:</p>
+<ul>
+<li>In PCA, we assume that <em>all variance</em> in the observed variables is shared by underlying ‘latent variables’. Thus, we don’t distinguish between variance that is common to the observed variables and error variance.</li>
+<li>In EFA, the goal is only to explain <em>common variance</em> between the observed variables - i.e.&nbsp;the variance that is actually shared between observed variables. EFA explicitly models the variance in the items to be comprised of common variance, which is variance due to shared underlying factors, and <em>unique variance</em>. Unique variance can be further broken down into specific variance, which is variance that is specific to each item, and error variance.</li>
+</ul>
+<p>What does this mean? Essentially, by partitioning common variance only and allowing for error, EFA provides a true model of latent factors, which can then be tested with CFA and other techniques. In constrant, PCA does <strong>not</strong> actually generate a model that can be tested, as it contains no specific error component like EFA does. PCA simply reduces a lot of variables into a smaller number of variables.</p>
+<p>This means that the actual products of PCA and EFA are also conceptually different, and thus go by different terms: PCA generates <em>components</em>, while FA generates <em>factors.</em> The two terms should not be used interchangeably.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Don’t conflate PCA and EFA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Although PCA and EFA are conceptually (and mathematically) different as discussed above, they have often been treated as interchangeable - i.e.&nbsp;PCA has often been (mis)used as a form of factor analysis. Be careful not to make the same mistake for the reasons described above. Even though similar results can be obtained between PCA and EFA under ideal conditions, this does not automatically mean that PCA provides a true test of latent factors.</p>
+</div>
+</div>
+</section>
+<section id="partial-correlations" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="partial-correlations"><span class="header-section-number">11.2.4</span> Partial correlations</h3>
+<p>In the <a href="07-regressions.html" class="quarto-xref">regression module in Chapter&nbsp;<span>7</span></a>, we talked about the concept of <strong>correlation</strong> - i.e.&nbsp;how related two variables are. Recall that correlation coefficients are scaled from -1 to 1. Similarly, in the <a href="09-regressions-2.html" class="quarto-xref">second regression module in Chapter&nbsp;<span>9</span></a> we also talked about the concept of <strong>partial correlation</strong> - the relationship between two variables while controlling for a third, as denoted using the below formula:</p>
 <p><span class="math display">\[
 r_{xy.z} = \frac{r_{xy} - (r_{xz} \times r_{yz})}{\sqrt{(1-r^2_{xz})(1-{r^2_{yz}})}}
 \]</span></p>
-<p>Both PCA and EFA rely on estimating partial correlations. Specifically, factor analysis aims to estimate latent factors that <strong>minimise the partial correlations</strong> among <strong>observed</strong> variables. If a latent factor perfectly explains the relationship between two variables, the partial correlations between the observed variables should be zero. A lot of the ‘under the hood’ maths, which we won’t touch on, essentially relates to identifying the latent factors that maximise the <strong>amount of variance</strong> explained in each variable by the factor solutions.</p>
+<p>Both PCA and EFA rely on estimating partial correlations. Specifically, factor analysis aims to estimate latent factors that <strong>minimise the partial correlations</strong> among <strong>observed</strong> variables. If a latent factor perfectly explains the relationship between two variables, the partial correlations between the observed variables (i.e.&nbsp;after accounting for the latent factor) should be zero. A lot of the ‘under the hood’ maths, which we won’t touch on, essentially relates to identifying the latent factors that maximise the <strong>amount of variance</strong> explained in each variable by the factor solutions.</p>
+</section>
+<section id="the-steps-of-an-efa" class="level3" data-number="11.2.5">
+<h3 data-number="11.2.5" class="anchored" data-anchor-id="the-steps-of-an-efa"><span class="header-section-number">11.2.5</span> The steps of an EFA</h3>
+<p>EFA is quite an involved analysis, and there are several considerations that must be taken into account:</p>
+<ul>
+<li>Prepare data and assess for suitability</li>
+<li>Decide on the extraction method</li>
+<li>Decide on how many factors to retain</li>
+<li>Decide on the rotation method</li>
+<li>Interpret the results</li>
+</ul>
+<p>This takes us through the process of examining a set of data for their suitability for factor analysis, to the process of deciding how many latent factors we identify from the data and interpreting them.</p>
+<p>The example data we’ll be using to work through these steps are from a brilliant statistician and educator, Professor Andy Field, who is very highly regarded for his Discovering Statistics series - including Discovering Statistics with SPSS and Discovering Statistics with R. I highly recommend checking them out if you plan on using them!</p>
+<p>As part of his book, Prof.&nbsp;Field came up with a questionnaire called the SPSS Anxiety Questionnaire (SAQ). For the purposes of the next few pages we’ll be using a reduced version with just 9 questions, which we’ll call the SAQ-9. The questions in this survey are:</p>
+<ul>
+<li>Q1: Statistics makes me cry</li>
+<li>Q2: My friends will think I’m stupid for not being able to cope with SPSS</li>
+<li>Q4: I dream that Pearson is attacking me with correlation coefficients</li>
+<li>Q5: I don’t understand statistics</li>
+<li>Q6: I have little experience of computers</li>
+<li>Q14: Computers have minds of their own and deliberately go wrong whenever I use them</li>
+<li>Q15: Computers are out to get me</li>
+<li>Q19: Everybody looks at me when I use SPSS</li>
+<li>Q22: My friends are better at SPSS than I am</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>saq <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"efa"</span>, <span class="st">"SAQ-9.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 2571 Columns: 9
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (9): q01, q02, q04, q05, q06, q14, q15, q19, q22
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>As we walk through the content, we will use this dataset to illustrate how to conduct an exploratory factor analysis.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>To actually conduct the EFA, we will primarily rely on two packages: <code>psych</code> and <code>EFA.dimensions</code>. The <code>psych</code> package is a fairly big package designed to run many common analyses in psychological science, specifically analyses that relate to <em>psychometrics.</em> It’s an incredibly useful package to be aware of in general. <code>EFA.dimensions</code> is another great package that provides functions to help with certain parts of the EFA process.</p>
 </section>
 </section>
 <section id="initial-considerations-for-efa" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="initial-considerations-for-efa"><span class="header-section-number">11.3</span> Initial considerations for EFA</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
 <p>We’ll start with some basic considerations for EFA/PCA. These are generally things that should be thought about/considered before an EFA, or at least before you interpret the results.</p>
+</div>
 <section id="sample-size" class="level3" data-number="11.3.1">
 <h3 data-number="11.3.1" class="anchored" data-anchor-id="sample-size"><span class="header-section-number">11.3.1</span> Sample size</h3>
-<p>For adequate power, EFA typically needs a fairly big sample size. There is no clear agreement about what constitutes a ‘good’ sample size, and it’s difficult to give concrete recommendations.</p>
-<p>Many guides and sources will often mention a n:p rule of thumb, where n is sample size and p is number of variables (which is the number of parameters that needs to be estimated). The idea is that an ideal EFA sample size will have n participants for every variable you are analysing. These can range from as low as 3:1 to 20:1, with a typical ‘ok’ range being from 10-20:1. However, there is no clear support for these rules, and no minimum is truly sufficient (Hogarty et al.&nbsp;2005).</p>
-<p>In general - the bigger the better, and the more variables you have the more participants you need. Aim for at least 300+ no matter the circumstance (this is a very blunt rule of thumb!).</p>
-<p>Below are our descriptives. While we can use a bit of tidyverse to get descriptives, the <code>describe()</code> function from the <code>psych</code> package is also convenient for getting basic descriptives for every column in a dataset. We can see that we have n = 2571, which should be more than adequate.</p>
+<p>EFA is a technique that typically needs a fairly big sample size for adequate power. However, the power of an EFA depends heavily on various features of the chosen EFA model itself, such as how many factors we extract and how many items we have per factor. Thus, there is no ‘clear’ there is no clear agreement about what constitutes a ‘good’ sample size, and it’s difficult to give concrete recommendations.</p>
+<p>Many guides and sources will often mention a n:<em>p</em> rule of thumb, where n is sample size and <em>p</em> is number of variables (which is the number of parameters that needs to be estimated). The idea is that an ideal EFA sample size will have n participants for every variable you are analysing. These can range from as low as 3:1 to 20:1, with a typical ‘ok’ range being from 10-20:1. However, there is no clear support for these rules, and no minimum is truly sufficient (Hogarty et al.&nbsp;2005).</p>
+<p>In general - the bigger the better, and if you have more variables to factor analyse then you will need more participants. It’s good to aim for at least 300+ no matter the circumstance, but it should be noted that this is a very blunt rule of thumb!</p>
+</section>
+<section id="descriptives-of-the-data" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="descriptives-of-the-data"><span class="header-section-number">11.3.2</span> Descriptives of the data</h3>
+<p>Often, the first useful step in conducting an EFA is to simply examine the descriptive statistics for each item. Below are our descriptives for our 9-item scale. While we can use a bit of tidyverse to get descriptives, the <code>describe()</code> function from the <code>psych</code> package is also convenient for getting basic descriptives for every column in a dataset. We can see that we have n = 2571, which should be more than adequate.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -505,12 +568,14 @@ q19    8 2571 2.29 1.10      2    2.21 1.48   1   5     4  0.48    -0.72 0.02
 q22    9 2571 2.89 1.04      3    2.93 1.48   1   5     4 -0.07    -0.68 0.02</code></pre>
 </div>
 </div>
+<p>Based on the descriptives of each item, we can see that q02 (“My friends will think I’m stupid for not being able to cope with SPSS”) might be a bit skewed towards lower values, given the median here is 1 out of 5. This may not automatically be an issue, however.</p>
 </section>
-<section id="assumptions" class="level3" data-number="11.3.2">
-<h3 data-number="11.3.2" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">11.3.2</span> Assumptions</h3>
-<p>EFA can be conducted with one of multiple algorithms that determines the final factor structure to be extracted. Different methods rely on different assumptions, so basic assumption checks are useful:</p>
+<section id="assumptions" class="level3" data-number="11.3.3">
+<h3 data-number="11.3.3" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">11.3.3</span> Assumptions</h3>
+<p>Because EFA fundamentally examines correlations between variables, many of the assumptions inherent to Pearson’s <em>r</em> (and linear relationships more broadly) apply directly to EFAs. This includes:</p>
 <ul>
-<li>Data must be interval/ratio data. Ordinal data is problematic unless you generally have at least 5 scale points; in which case, you can broadly approximate this to be continuous.</li>
+<li>Data must be interval/ratio (continuous) data. Ordinal data with at least 5 scale points can be treated as continuous (e.g.&nbsp;see Huh &amp; Gim, 2025); otherwise, you must alter the methods used for the EFA.</li>
+<li>Linearity between variables</li>
 <li>Normality is important, depending on the method. The usual QQ-plot or Shapiro-Wilks tests on individual items can be useful here.</li>
 <li>Multicollinearity: observed variables should not be collinear with each other.</li>
 </ul>
@@ -530,14 +595,15 @@ q22    9 2571 2.89 1.04      3    2.93 1.48   1   5     4 -0.07    -0.68 0.02</c
 </div>
 </div>
 </section>
-<section id="factorability" class="level3" data-number="11.3.3">
-<h3 data-number="11.3.3" class="anchored" data-anchor-id="factorability"><span class="header-section-number">11.3.3</span> Factorability</h3>
-<p>Factorability broadly describes whether the data are likely to be amenable to factor analysis. If data are factorable, it suggests that there is likely to be at least one latent factor underlying the observations.</p>
+<section id="factorability" class="level3" data-number="11.3.4">
+<h3 data-number="11.3.4" class="anchored" data-anchor-id="factorability"><span class="header-section-number">11.3.4</span> Factorability</h3>
+<p>Factorability broadly describes whether the data are sutiable for factor analysis. If data are factorable, it suggests that there is likely to be at least one latent factor underlying the observations.</p>
 <p>We can test factorability in three ways:</p>
 <ol type="1">
 <li>Correlations</li>
 </ol>
-<p>A simple matrix of correlations can give us a first-pass indication of factorability. If most items correlate with each other, this can indicate that there are underlying latent factors. There is no hard and fast rule for what counts as ‘acceptable’, but if most variables are not significantly correlated that indicates that the data may not be factorable. In our SAQ-9 data, we can see that all correlations between variables are significant, which is generally a good sign.</p>
+<p>A simple matrix of correlations can give us a first-pass indication of factorability. As per the common factor model, if most items correlate with each other this can indicate that there are underlying latent factors. There is no hard and fast rule for what counts as ‘acceptable’, but if most variables are not significantly correlated that indicates that the data may not be factorable. In our SAQ-9 data, we can see that all correlations between variables are significant, which is generally a good sign.</p>
+<p>Naturally, we can use <code>cor()</code> to generate a correlation matrix. Alternatively, the <code>lowerCor()</code> fucntion from <code>psych</code> prints this more nicely:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -562,9 +628,7 @@ q15  1.0000000 -0.2098023 -0.16790617
 q19 -0.2098023  1.0000000  0.23392259
 q22 -0.1679062  0.2339226  1.00000000</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, the lowerCor() fucntion from psych prints this more nicely</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lowerCor</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lowerCor</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    q01   q02   q04   q05   q06   q14   q15   q19   q22  
 q01  1.00                                                
@@ -581,7 +645,8 @@ q22 -0.10  0.23 -0.10 -0.13 -0.17 -0.17 -0.17  0.23  1.00</code></pre>
 <ol start="2" type="1">
 <li>Bartlett’s test of sphericity</li>
 </ol>
-<p>Bartlett’s test of sphericity tests the null hypothesis that all correlations between variables are zero at the population level. In other words, if Bartlett’s test is non-significant it suggests that all of the indicator variables are not correlated. As a result, Bartlett’s test is pretty much always significant as it is very sensitive to sample size. Unsurprisingly, then, our Bartlett’s test result is significant.</p>
+<p>Bartlett’s test of sphericity tests the null hypothesis that all correlations between variables are zero at the population level. In other words, if Bartlett’s test is non-significant it suggests that all of the indicator variables are not correlated, using a chi-square test. This is a more formal test of seeing whether the variables are significantly correlated with each other across a full matrix than the visual inspection above.</p>
+<p>Note though that Bartlett’s test is highly sensitive, especially in large samples. In large sample sizes, Bartlett’s test can be significant even with trivial differences between the observed and null correlation matrices, because it is a test of whether <em>any</em> correlations are significantly different from zero! So it is probably no real surprise that our Bartlett’s test is significant here, and likely always will be for the kind of data we use for EFA.</p>
 <p>To run this, we use the <code>cortest.bartlett()</code> function from <code>psych</code>. Note that base R does include a function called <code>bartlett.test()</code>, but this is not the same test! (same Bartlett, though.)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -602,7 +667,7 @@ $df
 <ol start="3" type="1">
 <li>Kaiser-Meyer-Olkin (KMO) Test/Kaiser’s Measure of Sampling Adequacy</li>
 </ol>
-<p>This test is often referred to as the KMO Test or Kaiser’s MSA, but both respectively mean the same thing. It is a measure of how much variance among all variables might be due to common variance. Higher KMO/MSA values indicate that more variance is likely due to common factors, thus indicating suitability for factor analysis.</p>
+<p>This test is often referred to as the KMO Test or Kaiser’s MSA, but both respectively mean the same thing. The KMO is another measure of factorability that doesn’t share the same sensitivity to sample size as Bartlett’s test. It is a measure of how much variance among all variables might be due to common variance. Higher KMO/MSA values indicate that more variance is likely due to common factors, thus indicating suitability for factor analysis.</p>
 <p>Kaiser (1974) provided the following (hilarious) interpretations of MSA values:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -615,22 +680,26 @@ $df
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">MSA between .80 - .90</td>
+<td style="text-align: left;">MSA &gt; 0.90</td>
 <td style="text-align: left;">Marvelous</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">MSA between .80 - .90</td>
+<td style="text-align: left;">Meritorious</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">MSA between .70 - .80</td>
 <td style="text-align: left;">Middling</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">MSA between .60 - .70</td>
 <td style="text-align: left;">Mediocre</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">NSA between .50 - .60</td>
 <td style="text-align: left;">Miserable</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">MSA &lt; .50</td>
 <td style="text-align: left;">Unacceptable</td>
 </tr>
@@ -650,17 +719,32 @@ MSA for each item =
 0.81 0.76 0.82 0.84 0.82 0.84 0.85 0.84 0.77 </code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>What happens if one variable has a low KMO value?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If a variable has a low individual low KMO value, particularly when compared to other items, it indicates that that singular variable likely doesn’t share a lot of variance with the other variables. In turn, this will mean that the variable likely won’t load strongly on a factor. The typical thing to do in this case is to drop the variable with the low KMO.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="how-many-factorscomponents" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="how-many-factorscomponents"><span class="header-section-number">11.4</span> How many factors/components?</h2>
-<p>A crucial element of doing an EFA is deciding on the number of factors that should be extracted for the final solution. This is not a trivial decision, and essentially determines the final factor structure you derive and interpret in your factor analysis. Note that while we mainly talk about factors on this page, the same considerations apply when thinking of components in PCA.</p>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>A crucial element of doing an EFA is deciding on the number of factors that should be extracted for the final solution. This is not a trivial decision, and essentially determines the final factor structure you derive and interpret in your factor analysis. Note that while we mainly talk about factors in this section, the same considerations apply when thinking of components in PCA.</p>
+</div>
 <section id="deciding-on-the-number-of-factors" class="level3" data-number="11.4.1">
 <h3 data-number="11.4.1" class="anchored" data-anchor-id="deciding-on-the-number-of-factors"><span class="header-section-number">11.4.1</span> Deciding on the number of factors</h3>
-<p>Recall that an EFA/PCA will extract up to k factors/components, where k is the number of observed variables. At k factors/components, this will have explained all of the possible variance there is to explain in the observed variables. The basic idea behind how these factors are calculated is by essentially drawing straight lines through our data, much like a regression line. The idea is that each straight line (factor/component) should explain as much variance as possible, and each successive factor/component that is drawn explains the remaining variance.</p>
-<p>The first factor/component will always attempt to explain the most variance possible. The second factor/component will then be drawn through what remains after the first factor/component is calculated, in a way that both maximises the variance captured and is uncorrelated with the first factor/component. This lets us capture as much variance as possible in a clean way, where we can identify the relative contributions of each successive factor/component.</p>
-<p>The amount of variance that is captured by each factor/component is represented by a number called the <strong>eigenvalue.</strong> Naturally, the first factor/component will have the highest eigenvalue, and the eigenvalue of each factor/component afterwards will decrease.</p>
+<p>Recall that an EFA/PCA will extract up to k factors/components, where k is the number of observed variables. At <em>k</em> factors/components, all of the possible variance there is to explain in the observed variables will have been captured. But how does this process actually work?</p>
+<p>The basic idea is that the first factor/component will always attempt to explain the most variance possible. The second factor/component will then attempt to explain what variance remains after the first factor/component is calculated, in a way that both maximises the variance captured and is uncorrelated with the first factor/component. Each successive factor that is extracted will again try and explain additional variance that hasn’t been captured by the factors already extracted. This lets us capture as much variance as possible in a clean way, where we can identify the relative contributions of each successive factor/component.</p>
 <p>This means that at some point, we reach a stage where an additional factor doesn’t add much in terms of the variance explained. This indicates that there isn’t much utility in retaining factors after a certain point - i.e.&nbsp;we get diminishing returns on increasing the number of factors we have to interpret. We must strike a balance between having a relatively straightforward factor structure to interpret and how much variance is explained. Too few factors means we may not accurately capture enough variance to be meaningful or miss very crucial relationships, but too many factors means we lose parsimony and interpretability.</p>
+<p>The amount of variance that is captured by each factor/component is represented by a number called the <strong>eigenvalue.</strong> We will not concern ourselves about how eigenvalues are calculated. Naturally, the first factor/component will have the highest eigenvalue, and the eigenvalue of each factor/component afterwards will decrease.</p>
 <p>There are several ways in which we can identify where the most optimal number of factors to retain is.</p>
 </section>
 <section id="the-kaiser-guttman-rule" class="level3" data-number="11.4.2">
@@ -679,9 +763,9 @@ MSA for each item =
 </section>
 <section id="the-scree-plot" class="level3" data-number="11.4.3">
 <h3 data-number="11.4.3" class="anchored" data-anchor-id="the-scree-plot"><span class="header-section-number">11.4.3</span> The scree plot</h3>
-<p>The scree plot is a plot of each factor’s eigenvalue. This method relies on visual inspection - namely, you want to identify the ‘elbow’ of the line, or the point where the graph levels off. This is the point where the amount of variance explained by additional factors reaches that diminishing returns phase.</p>
-<p><code>psych</code> will plot two sets of eigenvalues - one ‘component’-based set (which is what we calculated above), and one ‘factor’-based set (which is what Jamovi gives you).</p>
-<p>This is inherently a bit subjective, and sometimes isn’t very clear. On our scree plot below, it looks like four factors is the point where the diminishing returns begin, so we would go with retaining four factors. However, a more conservative interpreter could reasonably argue that we should only retain 2 factors.</p>
+<p>The scree plot is a plot of each factor’s eigenvalue. This method relies on visual inspection - namely, you want to identify the ‘elbow’ of the line, or the point where the graph levels off. This is the point where the amount of variance explained by additional factors reaches that diminishing returns phase mentioned above.</p>
+<p>The <code>psych</code> package provides a helpful <code>scree()</code> function that will create this plot for us. <code>psych</code> will plot two sets of eigenvalues - one ‘component’-based set (which is what we calculated above), and one ‘factor’-based set (which is what Jamovi gives you).</p>
+<p>This is inherently a bit subjective, and sometimes isn’t very clear. On our scree plot below, it looks like either two or four factors is the point where the diminishing returns begin, so we could go with retaining four factors. However, a more conservative interpreter could reasonably argue that we should only retain 2 factors.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scree</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -695,10 +779,12 @@ MSA for each item =
 </section>
 <section id="parallel-analysis" class="level3" data-number="11.4.4">
 <h3 data-number="11.4.4" class="anchored" data-anchor-id="parallel-analysis"><span class="header-section-number">11.4.4</span> Parallel analysis</h3>
-<p>Parallel analysis (Horn, 1965) is a sophisticated technique that involves simulating random datasets of the same size as our actual dataset, and comparing our dataset’s eigenvalues against the random dataset’s eigenvalues. Parallel analysis is generally demonstrated using a scree plot with an additional scree line for the simulated datasets. The <code>fa.parallel()</code> function will run this for us.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>The number of factors to retain is determined by the number of factors where our actual data’s eigenvalue exceeds the simulated dataset’s eigenvalue.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In this instance, we would choose to retain three factors, as the actual data eigenvalues clearly drop below the simulated data at four factors.</p>
+<p>Parallel analysis (Horn, 1965) is a sophisticated technique that involves simulating random datasets of the same size as our actual dataset, but with correlations of 0 across the board, and comparing our dataset’s eigenvalues against the random dataset’s eigenvalues. The general intuition here is that if there are meaningful factors in our data, they should be evident when compared against random noise.</p>
+<p>Parallel analysis is generally demonstrated using a scree plot with an additional scree line for the simulated datasets. The <code>EFA.dimensions</code> package comes with a handy function called <code>RAWPAR()</code> that will conduct parallel analysis for us, and plot the results.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>The number of factors to retain is determined by the number of factors where our actual data’s eigenvalue exceeds the simulated dataset’s eigenvalue. <code>RAWPAR()</code> will calculate eigenvalues from the random data at two points: the mean eigenvalue for each number of factors, and (by default) at the 95th percentile of eigenvalues. You should look at the <em>percentile-based eigenvalue</em> when comparing against our actual dataset, because this is essentially a more stringent test of how many factors to keep. In this instance, we would choose to retain two factors, as the actual data eigenvalues clearly drop below the simulated data at three factors.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EFA.dimensions)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RAWPAR</span>(saq, <span class="at">extraction =</span> <span class="st">"PCA"</span>, <span class="at">percentile =</span> <span class="dv">95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -706,18 +792,75 @@ MSA for each item =
 </figure>
 </div>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+
+PARALLEL ANALYSIS</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Randomization method: generated data</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Type of correlations specified for the real data eigenvalues: Pearson</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Type of correlations specified for the random data eigenvalues: pearson</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Extraction Method: Principal Components</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Variables = 9</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Cases = 2571</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Ndatasets = 100</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Percentile = 95</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Compare the Real Data eigenvalues below to the corresponding</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>random data Mean and Percentile eigenvalues</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Parallel analysis suggests that the number of factors =  3  and the number of components =  2 </code></pre>
+<pre><code>   Root   Real_Data    Mean   Percentile
+      1       2.952   1.089        1.118
+      2       1.203   1.060        1.080
+      3       0.934   1.038        1.051
+      4       0.790   1.017        1.032
+      5       0.767   0.999        1.010
+      6       0.645   0.981        0.992
+      7       0.608   0.962        0.978
+      8       0.566   0.940        0.959
+      9       0.535   0.913        0.933</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+The number of factors according to the parallel analysis = 2</code></pre>
 </div>
 </div>
 </section>
 <section id="velicers-minimum-average-partials-map-test" class="level3" data-number="11.4.5">
 <h3 data-number="11.4.5" class="anchored" data-anchor-id="velicers-minimum-average-partials-map-test"><span class="header-section-number">11.4.5</span> Velicer’s Minimum Average Partials (MAP) test</h3>
-<p>The Minimum Average Partials (MAP; Velicer, 1976) test is another powerful test that is generally useful at identifying how many factors should be extracted. It basically works by calculating the partial correlations between items and finding their average <em>after</em> removing the variance explained by the factors.</p>
-<p>The <code>EFA.dimensions</code> package contains a series of helpful functions for running some EFA-related checks. The MAP test is included as part of the <code>MAP()</code> function:</p>
+<p>The Minimum Average Partials (MAP; Velicer, 1976) test is another powerful test that is generally useful at identifying how many factors should be extracted. It basically works by calculating the partial correlations between items and finding their average <em>after</em> removing the variance explained by the factors. The idea here is that the correct number of factors should minimise the residual partial correlations.</p>
+<p>The <code>EFA.dimensions</code> package provides a <code>MAP()</code> function, which will print this nicely for us:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EFA.dimensions)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MAP</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EFA.dimensions)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MAP</span>(saq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 
@@ -793,52 +936,68 @@ The number of components according to the revised (2000) MAP Test is = 1</code><
 <ul>
 <li>Kaiser’s rule suggests 1 factor</li>
 <li>Visual scree plot inspection suggests either 2 or 4 factors</li>
-<li>Parallel analysis suggests 3 factors</li>
+<li>Parallel analysis suggests 2 factors</li>
 <li>MAP suggests 1 factor</li>
 </ul>
 <p>How do we decide what to use? Decades of empirical and simulation literature have shown a couple of things:</p>
 <ul>
 <li><strong>Parallel analysis is one of the best methods</strong> of identifying how many factors should be retained. While it is sensitive to various things like sample size, simulation studies have shown that parallel analysis consistently outperforms other methods in terms of how many factors should be retained.</li>
 <li>In contrast, <strong>do not use the Kaiser rule</strong>! The Kaiser rule will consistently misestimate the number of factors - often, the misestimation will be quite severe. It is an extremely popular rule because a) it is simple to interpret and b) SPSS, which was the dominant statistical program of choice for a very long time, defaults to only using the Kaiser rule for PCA/EFA.</li>
+<li>Scree plots also should not be the first port of call as they are subjective judgements.</li>
 <li><strong>Theoretical and practical considerations</strong> should also inform your decision making. If parallel analysis suggests 7 factors, for example, but those 7 factors are hard to interpret then you should probably not run with that by default. Instead, the next thing to do would be to step through solutions that remove one factor at a time until an acceptable, interpretable model has been reached.</li>
 </ul>
-<p>There are other methods of identifying factors, such as Vellicer’s Minimum Average Partials test, but Jamovi does not provide these options. In the absence of any strong justification for anything else, it is best to fall back on parallel analysis. Thus, it’s best if we go with three factors.</p>
+<p>There are other methods of identifying factors, such as the Hull and Comparison data methods that we could also optionally run. Both R and Jamovi provide options for these analyses now (albeit through different packages/modules respectively). In the absence of any strong justification for anything else, it is best to fall back on parallel analysis. However, for pedagogical reasons we will proceed with extracting three factors (mainly because it demonstrates nice simple structure while still being interpretable).</p>
+<div class="callout callout-style-default callout-warning callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A further note on SPSS defaults
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 </section>
 </section>
 <section id="interpreting-output" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="interpreting-output"><span class="header-section-number">11.5</span> Interpreting output</h2>
-<p>Let’s now look at how to actually interpret the output of a factor analysis, including how to make sense of the main numbers that you get out of a basic EFA/PCA output.</p>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>Let’s now look at how to actually interpret the output of a factor analysis, including how to make sense of the main numbers that you get out of a basic EFA output.</p>
+</div>
 <section id="extraction-methods" class="level3" data-number="11.5.1">
 <h3 data-number="11.5.1" class="anchored" data-anchor-id="extraction-methods"><span class="header-section-number">11.5.1</span> Extraction methods</h3>
-<p>PCA only has one method of deriving the eigenvalues of the components, and so it will give the same answer every time you run it on the same dataset. EFA, however, has multiple possible means of estimating factors, which are typically termed extraction methods. We won’t go into the details of how exactly they work, but the key thing to know is that the extraction method essentially changes</p>
-<p>There are three extraction methods available in Jamovi:</p>
+<p>PCA only has one method of deriving the eigenvalues of the components, and so it will give the same answer every time you run it on the same dataset. EFA, however, has multiple possible means of estimating factors, which are termed extraction methods. We won’t go into the details of how exactly they work, but the key thing to know is that the extraction method essentially changes how factor loadings are calculated, which in turn have implications for intepretability.</p>
+<p>There are three extraction methods available in Jamovi, which we will also discuss here for parity:</p>
 <ul>
-<li><strong>Maximum likelihood.</strong> One of the most common options, and provides the most generalisable and robust estimates. ML methods assume normality and generally require large datasets, however.</li>
-<li><strong>Principal axis factoring.</strong> Principal axis factoring does not make particular assumptions about the normality or distribution of the data, meaning that it is good at handling more complex datasets.</li>
-<li><strong>Minimum residuals.</strong> The minimum residual method is sort of a middle-ground option between the two, but isn’t as commonly used in psychological research.</li>
+<li><strong>Maximum likelihood (ML).</strong> One of the most common options, and provides the most generalisable and robust estimates. ML methods assume multivariate normality and generally require large datasets, however.</li>
+<li><strong>Principal axis factoring (PAF).</strong> Principal axis factoring does not make particular assumptions about the normality or distribution of the data, meaning that it is good at handling more complex datasets.</li>
+<li><strong>Minimum residuals.</strong> Also known as <strong>unweighted least squares</strong>, this option is appropriate for instances in which you have either categorical or ordinal data. There are a few more steps that you must undertake before analysing categorical/ordinal data via EFA, however.</li>
 </ul>
-<p>Under ideal conditions, maximum likelihood (ML) and PA (principal axis) methods will generally give very similar estimates of the factors. When data are severely non-normal (or you want to anticipate that it will be), it is better to go with PA in the first instance. Otherwise, ML estimates are generally the way to go.</p>
-<p>To run a factor analysis in r, we use the <code>fa</code> function from <code>psych</code>. At minimum, we must specify the following:</p>
+<p>Under ideal conditions, maximum likelihood and principal axis factoring will generally give very similar estimates of the factors. When data are severely non-normal (or you anticipate that it will be), it is better to go with PAF in the first instance. Otherwise, ML estimates are generally the way to go.</p>
+<p>To run a factor analysis in R, we use the <code>fa()</code> function from <code>psych</code>. At minimum, we must specify the following:</p>
 <ul>
 <li>The dataset as the first argument</li>
 <li>The number of factors we want to extract</li>
-<li>The type of rotation - for now set this to “none”, as we’ll talk about this later</li>
+<li>The type of rotation - for now set this to <code>"none"</code>, as we’ll talk about this later</li>
 <li>The factoring method, <code>fm</code> - as above. <code>"ml"</code> stands for maximum likelihood, <code>"pa"</code> stands for principal axis factoring and <code>"minres"</code> stands for minimum residuals.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  saq,</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">"none"</span>,</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">"ml"</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  saq,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">"none"</span>,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">"ml"</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="interpreting-output-1" class="level3" data-number="11.5.2">
 <h3 data-number="11.5.2" class="anchored" data-anchor-id="interpreting-output-1"><span class="header-section-number">11.5.2</span> Interpreting output</h3>
 <p>Below is the main output of our EFA. This is what we call a factor matrix:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>saq_efa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>saq_efa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = saq, nfactors = 3, rotate = "none", fm = "ml")
@@ -884,10 +1043,25 @@ Multiple R square of scores with factors          0.79  0.43  0.35
 Minimum correlation of possible factor scores     0.59 -0.15 -0.31</code></pre>
 </div>
 </div>
-<p>What do these numbers mean? Firstly, each value in each factor column (labelled <code>ML1</code>, <code>ML2</code> etc) gives us our loadings. Note that as per the common factor model we described before, we estimate a loading for every variable on every factor. However, this can be a bit gross to interpret, so we generally choose to suppress (not remove) loadings below a certain threshold. By default, Jamovi will hide loadings below 0.3. We can also sort the items based on their loadings. To do this, we use the <code>fa.sort()</code> function and feed in our EFA object. We can then use <code>print()</code> to clean up this output with two arguments: <code>digits</code> to show rounding, and <code>cut</code> to suppress values below a certain size. This gives us a nicer output:</p>
+<p>What do these numbers mean? Firstly, our factors are denoted by the columns titled <code>ML</code> - so <code>ML1</code>, <code>ML2</code> and <code>ML3</code> all denote a factor each. Each value in each factor column represents our <strong>factor loadings</strong>. Note that as per the common factor model we described before, we estimate a loading for every variable on every factor.</p>
+<p>Statistically speaking, in a factor matrix each loading is a <strong>regression coefficient</strong> for the latent factor predicting the variable. We can interpret them as we would with normal regressions, except this is a regression coefficient for our latent variable predicting each observed variable. For example, the loading for q14 on factor 1 is 0.631. This means that for every 1 unit increase on latent factor 1, scores on Q14 increase by .631 units.</p>
+<p>Note too that we get a column called <code>h2</code>. This is our estimate of the <strong>communalities</strong> (<span class="math inline">\(h^2\)</span>) for each item, which is the amount of variance that is explained by the factors expressed as a percentage. The communality of Q14 is 0.420, which indicates that 42% of the variance in Q14 is explained by the three factors. Higher communalities indicate that the factors collectively explain more variance in the observed variable.</p>
+<p>Likewise, the <strong>uniqueness</strong> column, <code>u2</code> gives us the value of unique variance (<span class="math inline">\(u^2\)</span>) as a percentage. This is how much variance in each item is <em>not</em> explained by the factors we have chosen, and are calculated by subtracting the communalities from 1 (i.e.&nbsp;<span class="math inline">\(u^2 = 1 - h^2\)</span>). In this instance, 58% of the variance in Q14 is not explained by the three factors.</p>
+<p>How are communalities calculated? Communalities are the sum of the squared factor loadings. Therefore, we can look at Q14’s factor loadings in the first (pre-sorted) output table, and calculate the communality as:</p>
+<p><span class="math display">\[
+h^2 = .631^2 + -.116^2 + .0963^2
+\]</span></p>
+<p>Which gives us an answer of approximately 0.420:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa.sort</span>(saq_efa) </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> .<span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>.<span class="dv">631</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="sc">-</span>.<span class="dv">116</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> .<span class="dv">0963</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4208907</code></pre>
+</div>
+</div>
+<p>However, in general a full factor loading table can be a bit gross to interpret, so we generally choose to suppress (not remove) loadings below a certain threshold.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> We can also sort the items based on their loadings for readaability. To do this, we first use the <code>fa.sort()</code> function and feed in our EFA object. We can then use <code>print()</code> to clean up this output with two arguments: a) <code>digits</code> to show rounding, and b) <code>cut = .30</code> to suppress values below a certain size (in this case, loadings below 0.30). This gives us a nicer output:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa.sort</span>(saq_efa) </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> .<span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = saq, nfactors = 3, rotate = "none", fm = "ml")
@@ -933,26 +1107,12 @@ Multiple R square of scores with factors          0.795  0.425  0.345
 Minimum correlation of possible factor scores     0.590 -0.150 -0.310</code></pre>
 </div>
 </div>
-<p>Statistically speaking, in a factor matrix each loading is a <strong>regression coefficient</strong> for the latent factor predicting the variable. We can interpret them as we would with normal regressions, except this is a regression coefficient for our latent variable predicting each observed variable. For example, the loading for q14 on factor 1 is 0.631. This means that for every 1 unit increase on latent factor 1, scores on Q14 increase by .631 units.</p>
-<p>Jamovi typically only gives you the <strong>uniqueness</strong> column, <code>u2</code>, which gives us the value of unique variance as a percentage. This is how much variance in each item is not explained by the factors we have chosen. In this instance, 58% of the variance in Q14 is not explained by the three factors.</p>
-<p>Generally though, it’s easier to think in terms of <strong>communalities</strong>, or the values in the <code>h2</code> column, which is the amount of variance that is explained by the factors. Communalities are simply 1 - uniqueness; thus, the communality of Q14 is 0.420, which indicates that 42% of the variance in Q14 is explained by the three factors. Higher communalities indicate that the factors collectively explain more variance in the observed variable.</p>
-<p>How is this value calculated? Communalities are the sum of the squared factor loadings. Therefore, we can look at Q14’s factor loadings in the first (pre-sorted) output table, and calculate the communality as:</p>
-<p><span class="math display">\[
-h^2 = .631^2 + -.116^2 + .0963^2
-\]</span></p>
-<p>Which gives us an answer of approximately 0.420:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>.<span class="dv">631</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="sc">-</span>.<span class="dv">116</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> .<span class="dv">0963</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4208907</code></pre>
-</div>
-</div>
 </section>
 <section id="total-variance-explained" class="level3" data-number="11.5.3">
 <h3 data-number="11.5.3" class="anchored" data-anchor-id="total-variance-explained"><span class="header-section-number">11.5.3</span> Total variance explained</h3>
-<p>The output of <code>psych</code> will also give you a brief table of the total amount of variance explained by each factor. This is shown in the output of <code>fa</code>, but can also be accessed again below. It is generally useful to at least report the total cumulative variance explained by all factors. In this case, the three factors collectively explain 35.1% of the total variance in the data (shown by the row saying “Cumulative var”).</p>
+<p>The output of <code>fa()</code> will also give you a brief table of the total amount of variance explained by each factor. This can also be accessed again using the below. It is generally useful to at least report the total cumulative variance explained by all factors. In this case, the three factors collectively explain 35.1% of the total variance in the data (shown by the row saying “Cumulative var”).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>saq_efa<span class="sc">$</span>Vaccounted</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>saq_efa<span class="sc">$</span>Vaccounted</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            ML1        ML2        ML3
 SS loadings           2.3325379 0.47409809 0.35202983
@@ -966,17 +1126,14 @@ Cumulative Proportion 0.7384567 0.88855110 1.00000000</code></pre>
 </section>
 <section id="rotation-and-interpreting-output-again" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="rotation-and-interpreting-output-again"><span class="header-section-number">11.6</span> Rotation, and interpreting output again</h2>
-<p>You may have noticed that on the previous page, we didn’t make much of an effort to actually talk about what the factors were or what they meant. That’s because the output that we got on the previous page isn’t actually terribly informative or easy to interpret. To help with this, in EFA we perform a technique called <strong>rotation</strong>.</p>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>You may have noticed that in the previous section, we didn’t make much of an effort to actually talk about what the factors were or what they meant. That’s because the output that we got on the previous page isn’t actually terribly informative or easy to interpret. To help with this, in EFA we perform a technique called <strong>rotation</strong>.</p>
+</div>
 <section id="rotations" class="level3" data-number="11.6.1">
 <h3 data-number="11.6.1" class="anchored" data-anchor-id="rotations"><span class="header-section-number">11.6.1</span> Rotations</h3>
-<p>Rotations are a technique in EFA that are done to help with the interpretability of the factor solution. The key aim of rotation is to achieve <strong>simple structure</strong> where possible.</p>
-<p>You may have noticed that the matrix from the previous page has quite a few variables with high enough loadings on multiple factors. This is called <strong>cross-loading</strong>, and indicates that two factors explain the variable. This is not easily interpretable! Ideally, in a robust simple structure we want:</p>
-<ul>
-<li>Only one loading per variable</li>
-<li>At least three loadings per factor</li>
-</ul>
+<p>You may have noticed that the factor loading matrix from the previous page is still somewhat messy, even after we cleaned it up a bit:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(saq_efa, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = saq, nfactors = 3, rotate = "none", fm = "ml")
@@ -1022,7 +1179,14 @@ Multiple R square of scores with factors          0.795  0.425  0.345
 Minimum correlation of possible factor scores     0.590 -0.150 -0.310</code></pre>
 </div>
 </div>
-<p>Rotation can help us achieve this. What rotations essentially do is change how variance is distributed within each factor. That wording is extremely important to note. It does not change our data in any way - the actual amount of variance explained by each factor does not change. What does change is how variance is distributed across the factors, which has the effect of then changing the loadings. But the actual data does not change!!</p>
+<p>There are quite a few variables with high enough loadings on multiple factors. This is called <strong>cross-loading</strong>, and can indicate that two factors explain the variable. In addition, it’s not terribly clear how to actually interpret the factors.</p>
+<p><strong>Rotations</strong> are a technique in EFA that are conducted to help with the interpretability of the factor solution. The key aim of rotation is to achieve <strong>simple structure</strong> where possible. Ideally, in a robust simple structure we want:</p>
+<ul>
+<li>Only one loading per variable</li>
+<li>At least three loadings per factor</li>
+</ul>
+<p>Rotation can help us achieve this. What rotations essentially do is change how variance is distributed within each factor. In general, rotations align the factors more closely with their underlying variables, so that high loadings are increased and low loadings are decreased. This has the effect of clarifying which items load onto which factors as much as possible, and can help us obtain a more readily interpretable set of loadings for each factor.</p>
+<p>It’s extremely important to note that all rotations do is shift around the <em>variance</em> within the factors. Rotation does <em>not</em> change our data in any way - the actual amount of variance explained by each factor does not change. What does change is how variance is distributed across the factors, which has the effect of then changing the loadings. But (to reiterate one more time) the actual data does not change!!</p>
 <p>There are two families of rotations that we can employ.</p>
 <ul>
 <li><strong>Orthogonal</strong> rotations force factors to be <strong>uncorrelated</strong>.</li>
@@ -1042,25 +1206,25 @@ Minimum correlation of possible factor scores     0.590 -0.150 -0.310</code></pr
 </section>
 <section id="rotated-factor-solution" class="level3" data-number="11.6.2">
 <h3 data-number="11.6.2" class="anchored" data-anchor-id="rotated-factor-solution"><span class="header-section-number">11.6.2</span> Rotated factor solution</h3>
-<p>Let’s apply an oblique rotation to our factor analysis. The default oblique rotation is called oblimin. To do this, we need to re-run our <code>fa()</code> function with a rotation specified.</p>
+<p>Let’s apply an oblique rotation to our factor analysis. The most common oblique rotation is called (direct) oblimin. To do this, we need to re-run our <code>fa()</code> function with a rotation specified.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  saq,</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">"oblimin"</span>,</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">"ml"</span></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  saq,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">"oblimin"</span>,</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">"ml"</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This produces the following output, which we now term a pattern matrix:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot <span class="sc">%&gt;%</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fa.sort</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fa.sort</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = saq, nfactors = 3, rotate = "oblimin", fm = "ml")
 Standardized loadings (pattern matrix) based upon correlation matrix
-       ML1    ML3    ML2    h2    u2  com
+       ML2    ML1    ML3    h2    u2  com
 q01  0.714               0.458 0.542 1.02
 q04  0.609               0.441 0.559 1.06
 q05  0.553               0.358 0.642 1.02
@@ -1068,10 +1232,10 @@ q06         0.704        0.448 0.552 1.01
 q14         0.440        0.420 0.580 1.57
 q15         0.434        0.337 0.663 1.32
 q02                0.506 0.229 0.771 1.04
-q22                0.488 0.238 0.762 1.08
+q22                0.487 0.238 0.762 1.08
 q19                0.412 0.229 0.771 1.11
 
-                        ML1   ML3   ML2
+                        ML2   ML1   ML3
 SS loadings           1.360 1.043 0.756
 Proportion Var        0.151 0.116 0.084
 Cumulative Var        0.151 0.267 0.351
@@ -1079,10 +1243,10 @@ Proportion Explained  0.431 0.330 0.239
 Cumulative Proportion 0.431 0.761 1.000
 
  With factor correlations of 
-       ML1    ML3    ML2
-ML1  1.000  0.591 -0.411
-ML3  0.591  1.000 -0.448
-ML2 -0.411 -0.448  1.000
+       ML2    ML1    ML3
+ML2  1.000  0.591 -0.411
+ML1  0.591  1.000 -0.447
+ML3 -0.411 -0.447  1.000
 
 Mean item complexity =  1.1
 Test of the hypothesis that 3 factors are sufficient.
@@ -1101,34 +1265,196 @@ RMSEA index =  0.0266  and the 90 % confidence intervals are  0.0163 0.0374
 BIC =  -60.351
 Fit based upon off diagonal values = 0.998
 Measures of factor score adequacy             
-                                                    ML1    ML3    ML2
+                                                    ML2    ML1    ML3
 Correlation of (regression) scores with factors   0.718  0.672  0.636
-Multiple R square of scores with factors          0.515  0.452  0.405
+Multiple R square of scores with factors          0.516  0.452  0.405
 Minimum correlation of possible factor scores     0.031 -0.096 -0.190</code></pre>
 </div>
 </div>
-<p>Now we can see our simple structure taking effect, and this output is much more interpretable from before. These values are still regression coefficients between each latent factor and each variable, but now we can group these variables into their underlying latent factors much more easily. We can see that questions 1, 4 and 5 are best captured by factor 1, questions 6, 14 and 15 by factor 2 and questions 2, 19 and 22 by factor 3.</p>
-<p><strong>One warning here</strong>. On the previous page, where we had an unrotated solution, the communalities were calculated by summing the squared factor loadings for each variable. That rule no longer applies here because by allowing the factors to correlate, the regression loadings now capture non-specific variance. Summing the squared factor loadings will lead to greater communality values than what they actually are. However, as you can hopefully see in the uniqueness column, the actual communalities have not changed. Rotation does not change how much variance is explained in total - only how that variance is distributed!</p>
+<p>Now we can see a simple structure coming through more clearly, and this output is much more interpretable from before. These values are still regression coefficients between each latent factor and each variable, but now we can group these variables into their underlying latent factors much more easily. We can see that questions 1, 4 and 5 are best captured by factor 1, questions 6, 14 and 15 by factor 2 and questions 2, 19 and 22 by factor 3.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Rotation changes loading calculations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On the previous page, where we had an unrotated solution, the communalities were calculated by summing the squared factor loadings for each variable. That rule no longer applies here because by allowing the factors to correlate, the regression loadings now capture <strong>non-specific variance</strong>. Summing the squared factor loadings will lead to greater communality values than what they actually are.</p>
+<p>However, as you can hopefully see in the communality/uniqueness columns of the output, the actual communalities have not changed. Nor that the total amount of variance explained (under Cumulative Var) changed. Rotation does not change how much variance is explained in total - only how that variance is distributed!</p>
+</div>
+</div>
 <p>Oblique rotations will also generate a <strong>factor correlation matrix</strong>. This calculates the correlations between the factors - remembering that by specifying an oblique rotation, we allowed them to correlate:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Phi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Phi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           ML1        ML3        ML2
-ML1  1.0000000  0.5909483 -0.4107233
-ML3  0.5909483  1.0000000 -0.4475027
-ML2 -0.4107233 -0.4475027  1.0000000</code></pre>
+<pre><code>           ML2        ML1        ML3
+ML2  1.0000000  0.5909574 -0.4106341
+ML1  0.5909574  1.0000000 -0.4474248
+ML3 -0.4106341 -0.4474248  1.0000000</code></pre>
 </div>
 </div>
 <p>Finally, we get the table of variance explained. This is now not as useful because of the same reason we cannot sum the squared factor loadings - each factor on its own now captures shared variance across the other factors as they are allowed to correlate. However, the total amount of variance explained is still 35.1%; once again, this does not change.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Vaccounted</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>Vaccounted</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                            ML1       ML3        ML2
-SS loadings           1.3601670 1.0425634 0.75593543
-Proportion Var        0.1511297 0.1158404 0.08399283
-Cumulative Var        0.1511297 0.2669700 0.35096287
-Proportion Explained  0.4306144 0.3300645 0.23932111
-Cumulative Proportion 0.4306144 0.7606789 1.00000000</code></pre>
+<pre><code>                           ML2       ML1        ML3
+SS loadings           1.360188 1.0426182 0.75585993
+Proportion Var        0.151132 0.1158465 0.08398444
+Cumulative Var        0.151132 0.2669784 0.35096287
+Proportion Explained  0.430621 0.3300818 0.23929721
+Cumulative Proportion 0.430621 0.7607028 1.00000000</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="interpreting-solutions-and-factor-scores" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="interpreting-solutions-and-factor-scores"><span class="header-section-number">11.7</span> Interpreting solutions, and factor scores</h2>
+<div style="background-color: #f5f5f5;  padding: 1.75rem;">
+<p>Now that we’ve identified our final factor solution, it’s time to give the factors meaning! We’ll also briefly talk about what we can do with factors after deriving them.</p>
+</div>
+<section id="naming-factors" class="level3" data-number="11.7.1">
+<h3 data-number="11.7.1" class="anchored" data-anchor-id="naming-factors"><span class="header-section-number">11.7.1</span> Naming factors</h3>
+<p>At this point, we now have a rotated factor solution that has achieved our goal of simple structure. We can now finish our interpretation of this factor solution by naming the factors.</p>
+<p>This comes down to your judgement as the researcher. Generally, you’d want to name factors after the construct/thing that groups the relevant items together. So, let’s come back to our original list of questions and our rotated factor solution:</p>
+<ul>
+<li>Q1: Statistics makes me cry</li>
+<li>Q2: My friends will think I’m stupid for not being able to cope with SPSS</li>
+<li>Q4: I dream that Pearson is attacking me with correlation coefficients</li>
+<li>Q5: I don’t understand statistics</li>
+<li>Q6: I have little experience of computers</li>
+<li>Q14: Computers have minds of their own and deliberately go wrong whenever I use them</li>
+<li>Q15: Computers are out to get me</li>
+<li>Q19: Everybody looks at me when I use SPSS</li>
+<li>Q22: My friends are better at SPSS than I am</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fa.sort</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">cut =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = saq, nfactors = 3, rotate = "oblimin", fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+       ML2    ML1    ML3    h2    u2  com
+q01  0.714               0.458 0.542 1.02
+q04  0.609               0.441 0.559 1.06
+q05  0.553               0.358 0.642 1.02
+q06         0.704        0.448 0.552 1.01
+q14         0.440        0.420 0.580 1.57
+q15         0.434        0.337 0.663 1.32
+q02                0.506 0.229 0.771 1.04
+q22                0.487 0.238 0.762 1.08
+q19                0.412 0.229 0.771 1.11
+
+                        ML2   ML1   ML3
+SS loadings           1.360 1.043 0.756
+Proportion Var        0.151 0.116 0.084
+Cumulative Var        0.151 0.267 0.351
+Proportion Explained  0.431 0.330 0.239
+Cumulative Proportion 0.431 0.761 1.000
+
+ With factor correlations of 
+       ML2    ML1    ML3
+ML2  1.000  0.591 -0.411
+ML1  0.591  1.000 -0.447
+ML3 -0.411 -0.447  1.000
+
+Mean item complexity =  1.1
+Test of the hypothesis that 3 factors are sufficient.
+
+df null model =  36  with the objective function =  1.432 with Chi Square =  3674.737
+df of  the model are 12  and the objective function was  0.013 
+
+The root mean square of the residuals (RMSR) is  0.012 
+The df corrected root mean square of the residuals is  0.021 
+
+The harmonic n.obs is  2571 with the empirical chi square  14.257  with prob &lt;  0.285 
+The total n.obs was  2571  with Likelihood Chi Square =  33.874  with prob &lt;  0.000706 
+
+Tucker Lewis Index of factoring reliability =  0.982
+RMSEA index =  0.0266  and the 90 % confidence intervals are  0.0163 0.0374
+BIC =  -60.351
+Fit based upon off diagonal values = 0.998
+Measures of factor score adequacy             
+                                                    ML2    ML1    ML3
+Correlation of (regression) scores with factors   0.718  0.672  0.636
+Multiple R square of scores with factors          0.516  0.452  0.405
+Minimum correlation of possible factor scores     0.031 -0.096 -0.190</code></pre>
+</div>
+</div>
+<p>We can see that Factor 1 captures Q1, Q4 and Q5. These questions all relate to a fear of statistics. We might interpret the underlying latent factor, therefore, to be Fear of Stats.</p>
+<p>Factor 2 captures Q6, Q14 and Q15. All of these questions revolve around being scared of computers in some form! So we might name this Fear of Computers or something similar.</p>
+<p>Finally, Factor 3 captures Q2, Q19 and Q22. These questions relate to SPSS and what appears to be social stigma in particular. Let’s name this one SPSS Stigma.</p>
+<p>With that, we have successfully estimated latent factors underlying these nine survey questions, and named them.</p>
+</section>
+<section id="factor-scores" class="level3" data-number="11.7.2">
+<h3 data-number="11.7.2" class="anchored" data-anchor-id="factor-scores"><span class="header-section-number">11.7.2</span> Factor scores</h3>
+<p>One thing that can be done immediately after estimating latent factors/deriving components is to calculate <strong>factor/component scores</strong>. Factor scores calculate a single value for each factor that represents each participant’s overall ‘rank’/position on the distribution of that factor. Factor scores are roughly (but not perfectly) analogous to z-scores.</p>
+<p>With three factors, we can estimate a factor score for each person on each factor. We can then apply these to our usual set of statistical analyses, e.g.&nbsp;use them as predictors or outcomes for regressions and similar. There are three methods for calculating factor scores:</p>
+<ul>
+<li>The <strong>Thurstone</strong> or regression method</li>
+<li>The <strong>Bartlett</strong> or least-squares method</li>
+<li>The <strong>Anderson-Rubin</strong> method</li>
+</ul>
+<p>The Anderson-Rubin method assumes uncorrelated factors, so does not really work in obliquely rotated factor solutions. Either the Thurstone or Bartlett methods are generally ok, and truthfully it may not really matter that much in practice.</p>
+<p><code>psych</code> will calculate factor scores automatically when <code>fa()</code> is run, and will default to Thurstone/regression factor scores. You can access these within the object that is created from running <code>fa()</code> as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>saq_efa_rot<span class="sc">$</span>scores <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="co"># To only print the first few rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            ML2         ML1          ML3
+[1,] -0.8126203 -0.64450566 -0.006691997
+[2,] -0.6010978  0.07218026  0.201291005
+[3,] -0.0237762 -0.21821337 -0.130856583
+[4,]  0.8257239  0.51079636 -0.113770487
+[5,] -0.7699117 -0.37642041  0.533917359
+[6,]  0.2568379  1.31345903 -1.407705145</code></pre>
+</div>
+</div>
+<p>The method used to calculate factor scores can be changed when <code>fa()</code> is run by specifying the <code>scores</code> argument.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>saq_efa <span class="ot">&lt;-</span> <span class="fu">fa</span>(</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  saq,</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">3</span>,</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="st">"oblimin"</span>,</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fm =</span> <span class="st">"ml"</span>,</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">scores =</span> <span class="st">"Bartlett"</span></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>saq_efa<span class="sc">$</span>scores <span class="sc">%&gt;%</span></span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             ML2        ML1        ML3
+[1,] -1.15504310 -0.9153230 -0.6316210
+[2,] -1.09732119  0.6118992  0.3843241
+[3,]  0.04710615 -0.5164557 -0.4668799
+[4,]  1.22871282  0.5660408  0.2525480
+[5,] -1.13855465 -0.1424781  0.8932844
+[6,] -0.36616390  2.1892941 -2.6366018</code></pre>
+</div>
+</div>
+<p>Alternatively, you can manually calculate factor scores using the <code>factor.scores()</code> function from <code>psych</code>. To do so, you must supply a) the name of the dataframe, b) the EFA object from <code>fa()</code> and c) the method you with to use.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>manual_scores <span class="ot">&lt;-</span> <span class="fu">factor.scores</span>(</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> saq,</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">f =</span> saq_efa,</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"Bartlett"</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co"># To access the factor scores</span></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>manual_scores<span class="sc">$</span>scores <span class="sc">%&gt;%</span></span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             ML2        ML1        ML3
+[1,] -1.15504310 -0.9153230 -0.6316210
+[2,] -1.09732119  0.6118992  0.3843241
+[3,]  0.04710615 -0.5164557 -0.4668799
+[4,]  1.22871282  0.5660408  0.2525480
+[5,] -1.13855465 -0.1424781  0.8932844
+[6,] -0.36616390  2.1892941 -2.6366018</code></pre>
 </div>
 </div>
 
@@ -1138,8 +1464,10 @@ Cumulative Proportion 0.4306144 0.7606789 1.00000000</code></pre>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The <code>EFA.dimensions</code> package has a similar function called <code>RAWPAR()</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>As you can see from the output, there are two ways of calculating these eigenvalues - using either a PCA or PAF (principal axis factoring). The <code>fa.parallel()</code> function uses both. Although counterintuitive given that they are not the same technique conceptually, the PCA-based output (i.e.&nbsp;number of <em>components</em>) is the typical method, and actually does perform well at correctly identifying the number of factors to extract. Jamovi appears to default to PAF-based eigenvalues, however.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Note the questions were specifically chosen for demonstration purposes.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The <code>psych</code> package has a similar function called <code>fa.parallel()</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>As you can see from the code below, there are two ways of calculating these eigenvalues - using either a PCA or PAF (principal axis factoring). The <code>fa.parallel()</code> function uses both. Although counterintuitive given that they are not the same technique conceptually, the PCA-based output (i.e.&nbsp;number of <em>components</em>) is the typical method, and actually does perform well at correctly identifying the number of factors to extract. Jamovi appears to default to PAF-based eigenvalues, however.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>By default, Jamovi will hide loadings below 0.3. <code>psych</code> does not automatically impose a default.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

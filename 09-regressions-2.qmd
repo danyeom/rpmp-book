@@ -1,4 +1,4 @@
-# Regression continued
+# Regression continued {#sec-regressions-2}
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(tidyverse)
@@ -223,7 +223,7 @@ flow_data <- read_csv(here("data", "week_10", "w10_flow.csv"))
 
 In the first regressions module, we simply ran everything in one go as a multiple regression. Now let's imagine we want to run this as a hierarchical regression, with the following blocks:
 
--   Block 1: GOld MSI predicting proneness to flow (DFS_Total)
+-   Block 1: Gold MSI predicting proneness to flow (DFS_Total)
 -   Block 2: Gold MSI and openness predicting proneness to flow
 -   Block 3: Gold MSI, openness and trait anxiety predicting proneness to flow
 
@@ -268,14 +268,14 @@ Finally, in block 3 we can see that all three remain significant predictors. How
 summary(flow_block3)
 ```
 
-On the next page we'll talk about model comparison in a more formal manner. However, if we wanted to write these results up we would need to talk about the results from each block. For example:
-
-A hierarchical regression was conducted to examine the effect 
+In the next section we'll talk about model comparison in a more formal manner. 
 
 
 ## Comparing models
 
-On the previous page, we ended up with three models relating to the flow data. That's all well and good, and seeing how each model changed the predictors was valuable in its own right. But how do we actually... decide which model to run with? 
+:::{style="background-color: #f5f5f5;  padding: 1.75rem;"}
+On the previous page, we ended up with three models relating to the flow data. That's all well and good, and seeing how each model changed the predictors was valuable in its own right. But how do we actually... decide which model to run with?
+:::
 
 ### Comparing $R^2$
 
@@ -488,9 +488,10 @@ flow_data %>%
 
 Here, we can see that participants 378 and 528 are multivariate outliers, and thus we may want to consider doing something about them.
 
-<details>
-<summary>How do Mahalanobis distances work?</summary>
-::: {style="background-color: #f0f0f0;"}
+
+::: {.callout-note collapse="true"}
+### How are Mahalanobis distances calculated?
+
 The basic principle behind using Mahalanobis distances is basically the same as Cook's distances: if a datapoint has a distance value greater than a specified cutoff, it is a multivariate outlier. The main difference is that $D^2$ is used for identifying multivariate outliers, as described above, and is empirically tested against a specified distribution (as opposed to Cook's distances, where influential outliers are mainly identified on vibes).
 
 Mahalanobis distances follow a chi-square distribution, with the degrees of freedom being equal to the number of predictors (*k*) in a model. The significance level for $D^2$ is conventionally set at *p* < .001. In essence, any datapoint that has a $D^2$ greater than a cutoff point on a chi-square distribution, given df = *k* and at *p* < .001, is considered a significant outlier.
@@ -524,9 +525,8 @@ Alternatively - and this is what `rstatix` does - you can calculate the Mahalano
 qchisq(0.999, df = 3)
 ```
 This means that any Mahalanobis distance above 16.27 will be significant.
-
 :::
-</details>
+
 
 
 ### What happens if there is an outlier?
@@ -557,9 +557,16 @@ The code below lets us remove specific rows. Let's break down what this does:
 
 However, since all of that is preceded with the exclamation mark, the code is actually telling R to filter all the rows that are *not* `id` = 378 or 528 - in essence, it filters these rows *out*. It's a bit complex, but it's good to know as it applies to many scenarios!
 
-```{r}
+```{r eval = FALSE}
 flow_no_outliers <- flow_data %>%
   filter(!id %in% c(378, 528))
+```
+
+`dplyr` version 1.1.0 though now introduces the `filter_out()` function, which provides a much more readable syntax for filtering *out* rows:
+
+```{r}
+flow_no_outliers <- flow_data %>%
+  filter_out(id %in% c(378, 528))
 ```
 
 
@@ -666,7 +673,7 @@ If we wanted to find out how much X *uniquely* contributes to outcome Y, we coul
 
 **Squaring each sr value** (i.e. calculate $sr^2$), will give the **unique amount of variance** explained by predictor X, after controlling for all other variables. If $sr^2$ for variable X is 0.1, for instance, this means that **10% of the variance in Y is uniquely estimated/contributed by X**. In turn, if we calculate $sr^2$ values for each predictor, controlling for all other predictors, and subtract this from $R^2$, this will give us the shared variance.
 
-The diagram below summarises this info (shoutout to [UQ](https://uq.pressbooks.pub/psychological-research-methods-workbook/chapter/activity-5-standard-and-hierarchical-multiple-regression-in-jamovi/):
+The diagram below summarises this info (shoutout to [UQ](https://uq.pressbooks.pub/psychological-research-methods-workbook/chapter/activity-5-standard-and-hierarchical-multiple-regression-in-jamovi/)):
 
 ```{r echo = FALSE}
 knitr::include_graphics("https://uq.pressbooks.pub/app/uploads/sites/108/2024/01/activity-5-figure-5.1-update.png")

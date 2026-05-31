@@ -52,7 +52,7 @@ Below is an example of why data visualisation should be a crucial part of the qu
 
 ::: {.content-visible when-format="typst"}
 
-```{r fig.align='center'}
+```{r fig.align='center', fig.dim=c(5, 8), echo = FALSE}
 library(datasauRus)
 
 ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
@@ -60,6 +60,17 @@ ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
   theme_void() +
   theme(legend.position = "none")+
   facet_wrap(~dataset, ncol = 3)
+
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarise(
+    x_mean = mean(x),
+    y_mean = mean(y),
+    x_sd = sd(x),
+    y_sd = sd(y),
+    cor = cor(x, y)
+  ) %>%
+  knitr::kable(col.names = c("Dataset", "X Mean", "Y Mean", "X SD", "Y SD", "Cor"))
 ```
 
 :::
